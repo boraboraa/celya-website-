@@ -72,12 +72,27 @@ document.querySelectorAll('[data-toggle]').forEach(function(t){
   panel.querySelectorAll('a').forEach(function(a){a.addEventListener('click',close);});
 })();
 
-/* ---- Floating WhatsApp button ---- */
+/* ---- Floating "Talk to Janet" widget (every page) ---- */
 (function(){
   var lang=(document.documentElement.lang||'en').slice(0,2);
-  var M={en:"Hi Celya, I'd like to know more about what you can automate for my business.",fr:"Bonjour Celya, j'aimerais en savoir plus sur ce que vous pouvez automatiser pour mon entreprise.",nl:"Hallo Celya, ik wil graag meer weten over wat jullie voor mijn onderneming kunnen automatiseren."};
-  var msg=M[lang]||M.en;
-  var a=document.createElement('a');a.className='wafloat';a.href='https://wa.me/32470572864?text='+encodeURIComponent(msg);a.target='_blank';a.rel='noopener';a.setAttribute('aria-label','WhatsApp');
-  a.innerHTML='<svg viewBox="0 0 24 24" width="28" height="28" fill="#fff" aria-hidden="true"><path d="M19.05 4.91A9.82 9.82 0 0 0 12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.004c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.02zM12.04 20.15h-.003a8.23 8.23 0 0 1-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24a8.2 8.2 0 0 1 5.83 2.42 8.2 8.2 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.24 8.24zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.12-.16.25-.64.81-.78.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.01-.38.11-.5.11-.11.25-.29.37-.43.12-.14.16-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.41-.55-.42h-.48c-.17 0-.43.06-.66.31-.23.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.24 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.68-1.18.21-.58.21-1.07.14-1.18-.06-.11-.22-.17-.47-.29z"/></svg>';
-  document.body.appendChild(a);
+  var pre=(lang==='fr'||lang==='nl')?'../':''; /* fr/ and nl/ pages live one level below the assets */
+  var T={
+    en:{role:"Celya's AI agent",live:'Available now',call:'Call Janet',wa:'WhatsApp',msg:'Hi Janet — show me what you can do for my business.',note:'She picks up in seconds — 24/7, in FR, NL or EN.',aria:'Talk to Janet'},
+    fr:{role:"l'agent IA de Celya",live:'Disponible maintenant',call:'Appeler Janet',wa:'WhatsApp',msg:'Bonjour Janet — montrez-moi ce que vous pouvez faire pour mon entreprise.',note:'Elle répond en quelques secondes — 24h/24, en FR, NL ou EN.',aria:'Parler à Janet'},
+    nl:{role:'de AI-agent van Celya',live:'Nu beschikbaar',call:'Bel Janet',wa:'WhatsApp',msg:'Hallo Janet — laat me zien wat je voor mijn zaak kunt doen.',note:'Ze neemt op in enkele seconden — 24/7, in FR, NL of EN.',aria:'Praat met Janet'}
+  };var t=T[lang]||T.en;
+  var av=pre+'assets/janet-avatar-128.png';
+  var w=document.createElement('div');w.className='jfab';
+  w.innerHTML='<div class="jfab-p" role="dialog" aria-label="Janet">'
+    +'<div class="jfab-hd"><img src="'+av+'" alt="Janet — '+t.role+'"><div><b>Janet</b><span>'+t.role+'</span></div></div>'
+    +'<span class="jlive"><i></i>'+t.live+'</span>'
+    +'<a class="btn btn-grad" href="tel:+32460254413">'+t.call+'</a>'
+    +'<a class="btn btn-ghost" href="https://wa.me/32470572864?text='+encodeURIComponent(t.msg)+'" target="_blank" rel="noopener">'+t.wa+'</a>'
+    +'<p>'+t.note+'</p></div>'
+    +'<button class="jfab-b" aria-expanded="false" aria-label="'+t.aria+'"><img src="'+av+'" alt="Janet — '+t.role+'"><span class="dot"></span></button>';
+  document.body.appendChild(w);
+  var btn=w.querySelector('.jfab-b');
+  btn.addEventListener('click',function(){var o=w.classList.toggle('open');btn.setAttribute('aria-expanded',o?'true':'false');});
+  document.addEventListener('click',function(e){if(!w.contains(e.target))w.classList.remove('open');});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')w.classList.remove('open');});
 })();

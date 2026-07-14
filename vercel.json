@@ -1,0 +1,64 @@
+{
+  "redirects": [
+    {
+      "source": "/services.html",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/fr/services.html",
+      "destination": "/fr/",
+      "permanent": true
+    },
+    {
+      "source": "/nl/services.html",
+      "destination": "/nl/",
+      "permanent": true
+    },
+    {
+      "source": "/services-crm.html",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/fr/services-crm.html",
+      "destination": "/fr/",
+      "permanent": true
+    },
+    {
+      "source": "/nl/services-crm.html",
+      "destination": "/nl/",
+      "permanent": true
+    },
+    {
+      "source": "/services-sales.html",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/fr/services-sales.html",
+      "destination": "/fr/",
+      "permanent": true
+    },
+    {
+      "source": "/nl/services-sales.html",
+      "destination": "/nl/",
+      "permanent": true
+    },
+    {
+      "source": "/services-admin.html",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/fr/services-admin.html",
+      "destination": "/fr/",
+      "permanent": true
+    },
+    {
+      "source": "/nl/services-admin.html",
+      "destination": "/nl/",
+      "permanent": true
+    }
+  ]
+}
