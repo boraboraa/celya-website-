@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Waarom Celya — Over ons</title>
+<meta name="description" content="Waarom Celya: software op maat met een AI-laag die boven uw tools zweeft, uw data privé houdt en werkt als een werknemer.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700&family=Fraunces:ital,opsz,wght@1,9..144,400;1,9..144,500&family=Inter:wght@400;450;500;600&display=swap" rel="stylesheet">
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<meta name="theme-color" content="#0A0E1A">
+<link rel="canonical" href="https://celya.be/nl/about.html">
+<link rel="alternate" hreflang="en" href="https://celya.be/about.html">
+<link rel="alternate" hreflang="fr" href="https://celya.be/fr/about.html">
+<link rel="alternate" hreflang="nl" href="https://celya.be/nl/about.html">
+<link rel="alternate" hreflang="x-default" href="https://celya.be/about.html">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Celya">
+<meta property="og:locale" content="nl_BE">
+<meta property="og:locale:alternate" content="en_BE">
+<meta property="og:locale:alternate" content="fr_BE">
+<meta property="og:title" content="Waarom Celya — Over ons">
+<meta property="og:description" content="Waarom Celya: software op maat met een AI-laag die boven uw tools zweeft, uw data privé houdt en werkt als een werknemer.">
+<meta property="og:url" content="https://celya.be/nl/about.html">
+<meta property="og:image" content="https://celya.be/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Waarom Celya — Over ons">
+<meta name="twitter:description" content="Waarom Celya: software op maat met een AI-laag die boven uw tools zweeft, uw data privé houdt en werkt als een werknemer.">
+<meta name="twitter:image" content="https://celya.be/og-image.png">
+<link rel="stylesheet" href="../dark.css">
+<style>
+  /* usage bars */
+  .ubox{background:#0A0E1A;border:1px solid var(--line2);border-radius:16px;padding:26px}
+  .ulabel{font-family:'Schibsted Grotesk',sans-serif;font-size:13px;color:var(--mut);display:flex;justify-content:space-between;margin:14px 0 6px}
+  .ulabel:first-child{margin-top:0}
+  .utrack{height:16px;border-radius:999px;background:rgba(255,255,255,0.06);overflow:hidden}
+  .ufill{height:100%;border-radius:999px;background:var(--grad);transform:scaleX(0);transform-origin:left;animation:fillx 1.3s cubic-bezier(.2,.7,.2,1) forwards}
+  .ufill.pay{background:rgba(138,148,173,0.5);animation-delay:.4s}
+  @keyframes fillx{to{transform:scaleX(1)}}
+  .ubig{font-family:'Schibsted Grotesk',sans-serif;font-weight:700;font-size:15px}
+  /* AI layer stack */
+  .floatbar{background:var(--grad);color:#06080F;border-radius:13px;padding:16px;text-align:center;font-family:'Schibsted Grotesk',sans-serif;font-weight:700;box-shadow:0 18px 34px rgba(79,123,255,.45);animation:bob 3s ease-in-out infinite;position:relative;z-index:2}
+  .floatcap{text-align:center;color:var(--mut);font-size:12.5px;margin:12px 0;font-family:'Schibsted Grotesk',sans-serif}
+  .toolrow{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+  .toolbox{background:rgba(255,255,255,0.04);border:1px solid var(--line2);border-radius:11px;padding:14px;text-align:center;font-size:13px;color:var(--ink);font-family:'Schibsted Grotesk',sans-serif}
+  /* data cols */
+  .datacols{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:46px}
+  .dpanel{background:#0C1322;border:1px solid var(--line2);border-radius:18px;padding:26px}
+  .dpanel.good{border-color:rgba(34,211,238,0.45)}
+  .dpanel .dt{font-family:'Schibsted Grotesk',sans-serif;font-weight:600;font-size:15px;margin-bottom:16px;display:flex;align-items:center;gap:8px}
+  .dbox{background:#0A0E1A;border:1px solid var(--line2);border-radius:12px;padding:14px;text-align:center;font-family:'Schibsted Grotesk',sans-serif;font-size:13.5px;margin-bottom:10px}
+  .dbox.shield{border-color:rgba(34,211,238,0.4);background:linear-gradient(135deg,rgba(34,211,238,0.08),rgba(168,85,247,0.1))}
+  .dout{font-size:13px;color:var(--mut);padding:7px 0;display:flex;align-items:center;gap:8px}
+  .dout .ar{color:#8A94AD}
+  .din{font-size:13px;color:var(--ink);padding:7px 0;display:flex;align-items:center;gap:8px}
+  .din .ar{color:var(--cyan)}
+  /* comparison */
+  .vsgrid{margin-top:46px;border:1px solid var(--line2);border-radius:18px;overflow:hidden}
+  .vsrow{display:grid;grid-template-columns:1.5fr 1fr 1fr;border-top:1px solid var(--line)}
+  .vsrow:first-child{border-top:none}
+  .vsrow>div{padding:15px 18px;font-size:14px;display:flex;align-items:center;gap:8px}
+  .vsrow .ft{color:var(--mut);font-family:'Schibsted Grotesk',sans-serif}
+  .vshead>div{font-family:'Schibsted Grotesk',sans-serif;font-weight:600;font-size:13px;background:#0C1322}
+  .vshead .cy{color:var(--cyan)}
+  .vsrow .saas{color:#8A94AD;border-left:1px solid var(--line)}
+  .vsrow .cel{color:var(--ink);border-left:1px solid var(--line)}
+  @media(max-width:720px){.datacols{grid-template-columns:1fr}.vsrow{grid-template-columns:1fr}.vsrow .saas,.vsrow .cel{border-left:none;border-top:1px solid var(--line)}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute"><defs><linearGradient id="ng" x1="0" y1="1" x2="1" y2="0"><stop offset="0" stop-color="#22D3EE"/><stop offset=".5" stop-color="#4F7BFF"/><stop offset="1" stop-color="#A855F7"/></linearGradient></defs></svg>
+
+<header><div class="wrap"><nav>
+  <a class="brand" href="index.html" aria-label="Celya"><svg viewBox="0 0 284 138"><defs><linearGradient id="lg" gradientUnits="userSpaceOnUse" x1="12" y1="105" x2="268" y2="34"><stop offset="0" stop-color="#22D3EE"/><stop offset=".5" stop-color="#4F7BFF"/><stop offset="1" stop-color="#A855F7"/></linearGradient></defs><g fill="none" stroke="url(#lg)" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"><path d="M64.98 89.28 A30 30 0 1 1 64.98 50.72 L83.98 34"/><path d="M83.98 34 L79.8 46.3 M83.98 34 L71.3 36.6"/><path d="M135 79 L93 79 A21 21 0 1 1 129 92"/><path d="M157 40 L157 100"/><path d="M175 58 L193 92 M211 58 L180 118"/><circle cx="244" cy="79" r="21"/><path d="M265 62 L265 100"/></g><path d="M244 58 L244 49" fill="none" stroke="url(#lg)" stroke-width="6" stroke-linecap="round"/><circle cx="244" cy="45" r="3.6" fill="#9BF3FF"/><rect x="212" y="74" width="5" height="10" rx="1.6" fill="url(#lg)"/><rect x="271" y="74" width="5" height="10" rx="1.6" fill="url(#lg)"/><rect x="229" y="71.5" width="30" height="12" rx="6" fill="#161F36"/><rect x="234" y="75" width="7.5" height="3.6" rx="1.8" fill="#9BF3FF"/><rect x="248.5" y="75" width="7.5" height="3.6" rx="1.8" fill="#9BF3FF"/></svg></a>
+  <div class="nav-links"><div class="navitem"><a href="services.html">Diensten <span style="font-size:9px;opacity:.7">▼</span></a><div class="dropdown"><a href="services-crm.html">Slimme CRM</a><a href="services-sales.html">AI-verkoopagent</a><a href="services-web.html">AI Web &amp; Groei</a><a href="services-admin.html">AI Boekhouding &amp; Admin</a></div></div><a href="pricing.html">Aanpak</a><a href="about.html" class="active">Over ons</a><a href="contact.html">Contact</a></div>
+  <div class="langsw"><a href="../about.html">EN</a><a href="../fr/about.html">FR</a><a href="about.html" class="active">NL</a></div>
+  <a class="btn btn-grad" href="contact.html">Plan een gratis gesprek</a>
+</nav></div></header>
+
+<main>
+  <div class="wrap shead">
+    <span class="eyebrow">WAAROM CELYA</span>
+    <h1>Grote software is niet voor u gemaakt. <span class="gt it">Celya wel.</span></h1>
+    <p>De meeste groeiende bedrijven betalen voor opgeblazen tools die ze amper gebruiken — en lekken onderweg data. Wij doen het omgekeerde.</p>
+  </div>
+
+  <!-- PROBLEM -->
+  <section class="section"><div class="wrap"><div class="band reveal">
+    <div>
+      <span class="eyebrow">HET PROBLEEM</span>
+      <h2>U betaalt 100%. U gebruikt <span class="gt">20%.</span></h2>
+      <p>Om te automatiseren wenden bedrijven zich tot grote softwareleveranciers. Maar die tools passen zelden bij hoe u echt werkt.</p>
+      <ul class="mini">
+        <li>Niet echt afgestemd op uw onderneming</li>
+        <li>Abonnement <b>plus</b> verborgen installatie- &amp; instelkosten</li>
+        <li>Log, niet gemaakt voor niet-technische teams</li>
+        <li>Uw data verspreid over hun systemen — en lekt weg</li>
+      </ul>
+    </div>
+    <div class="ubox">
+      <div class="ulabel"><span>Wat u echt gebruikt</span><span class="ubig gt">20%</span></div>
+      <div class="utrack"><div class="ufill" style="width:20%"></div></div>
+      <div class="ulabel"><span>Waarvoor u betaalt</span><span class="ubig">100%</span></div>
+      <div class="utrack"><div class="ufill pay" style="width:100%"></div></div>
+    </div>
+  </div></div></section>
+
+  <!-- SOLUTION: AI LAYER FLOATS ON TOP -->
+  <section class="section bg2"><div class="wrap"><div class="band reveal">
+    <div>
+      <span class="eyebrow">DE CELYA-AANPAK</span>
+      <h2>Software op maat, met een AI-laag die <span class="gt">erbovenop zweeft.</span></h2>
+      <p>We bouwen software van nul rond uw echte behoeften — en herdenken hoe u beter kunt werken — met AI er doorheen geweven. Alleen wat uw use case dient, geen ballast, geen beperkingen.</p>
+      <ul class="mini"><li>Op maat voor uw use case</li><li>AI boven op uw data &amp; processen</li><li>Geen ballast, geen verspilde uitgaven</li></ul>
+    </div>
+    <div>
+      <div class="floatbar"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#06080F" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:6px"><rect x="6" y="6" width="12" height="12" rx="2"/><path d="M9 1v3M15 1v3M9 20v3M15 20v3M1 9h3M1 15h3M20 9h3M20 15h3"/></svg>Celya AI-laag</div>
+      <div class="floatcap">↓ zweeft boven alles wat u al gebruikt ↓</div>
+      <div class="toolrow">
+        <div class="toolbox">CRM</div><div class="toolbox">E-mail &amp; WhatsApp</div>
+        <div class="toolbox">Boekhouding</div><div class="toolbox">Bestanden &amp; data</div>
+      </div>
+    </div>
+  </div></div></section>
+
+  <!-- DATA -->
+  <section class="section"><div class="wrap">
+    <div class="center"><span class="eyebrow">UW DATA</span><h2 class="shh center">Uw data blijft <span class="gt">van u.</span></h2><p class="lead center">De AI werkt boven op uw data — die hoeft uw muren nooit te verlaten.</p></div>
+    <div class="datacols">
+      <div class="dpanel reveal">
+        <div class="dt"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:6px"><path d="M10.3 3.6L1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.6a2 2 0 0 0-3.4 0z"/><path d="M12 9v4M12 17h.01"/></svg>Generieke SaaS</div>
+        <div class="dbox">Uw data</div>
+        <div class="dout"><span class="ar">→</span> verstuurd naar hun cloud</div>
+        <div class="dout"><span class="ar">→</span> gedeeld met derden</div>
+        <div class="dout"><span class="ar">→</span> gebruikt om hun modellen te trainen</div>
+      </div>
+      <div class="dpanel good reveal">
+        <div class="dt gt"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="url(#ng)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:6px"><path d="M20 6L9 17l-5-5"/></svg>Celya</div>
+        <div class="dbox shield"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;margin-right:7px"><path d="M12 3l8 4v5c0 5-3.5 8-8 9-4.5-1-8-4-8-9V7z"/><path d="M9 12l2 2 4-4"/></svg>Uw data — blijft binnen</div>
+        <div class="din"><span class="ar">✓</span> privé van bij het ontwerp, nooit verkocht of gedeeld</div>
+        <div class="din"><span class="ar">✓</span> data in de EU, u houdt de controle</div>
+        <div class="din"><span class="ar">✓</span> conform AVG · EU AI Act · PDPL VAE</div>
+      </div>
+    </div>
+  </div></section>
+
+  <!-- COMPARISON -->
+  <section class="section bg2"><div class="wrap">
+    <div class="center"><span class="eyebrow">NAAST ELKAAR</span><h2 class="shh center">Generieke software vs Celya</h2></div>
+    <div class="vsgrid reveal">
+      <div class="vsrow vshead"><div class="ft">&nbsp;</div><div>Generieke SaaS</div><div class="cy">Celya</div></div>
+      <div class="vsrow"><div class="ft">Maatwerk</div><div class="saas">Standaard</div><div class="cel">Rond u gebouwd</div></div>
+      <div class="vsrow"><div class="ft">Kosten</div><div class="saas">Abonnement + verborgen setup</div><div class="cel">Eén duidelijke prijs op maat</div></div>
+      <div class="vsrow"><div class="ft">Gebruiksgemak</div><div class="saas">Log, technisch</div><div class="cel">Eenvoudig, voor u gemaakt</div></div>
+      <div class="vsrow"><div class="ft">Wat u gebruikt</div><div class="saas">~20%, betaal 100%</div><div class="cel">100% — alleen wat u nodig heeft</div></div>
+      <div class="vsrow"><div class="ft">Uw data</div><div class="saas">Verlaat uw muren</div><div class="cel">Blijft privé</div></div>
+      <div class="vsrow"><div class="ft">AI</div><div class="saas">Optie, indien aanwezig</div><div class="cel">Een laag over alles</div></div>
+    </div>
+  </div></section>
+
+  <!-- AI AS EMPLOYEE -->
+  <section class="section"><div class="wrap">
+    <div class="center"><span class="eyebrow">WAT DE AI DOET</span><h2 class="shh center">Het werkt als een werknemer</h2></div>
+    <div class="parts">
+      <div class="partcard reveal"><div class="picon"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M3 13h18"/></svg></div><h3>Verkoop</h3><p>Vangt leads op, antwoordt, volgt op en boekt — op elk kanaal.</p></div>
+      <div class="partcard reveal"><div class="picon"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h6a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></div><h3>Interne informatie</h3><p>Vindt en beheert de kennis van uw bedrijf, meteen, in gewone taal.</p></div>
+      <div class="partcard reveal"><div class="picon"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2.2 2.2M16.8 16.8L19 19M19 5l-2.2 2.2M7.2 16.8L5 19"/></svg></div><h3>Interne organisatie</h3><p>Handelt de repetitieve taken af die stilletjes de tijd van uw team opslokken.</p></div>
+      <div class="partcard reveal"><div class="picon"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3"/><path d="M3 20a6 6 0 0 1 12 0"/><path d="M16 6a3 3 0 0 1 0 6M21 20a6 6 0 0 0-5-5.9"/></svg></div><h3>Klantorganisatie</h3><p>Houdt elke klant, gesprek en volgende stap automatisch op orde.</p></div>
+    </div>
+  </div></section>
+
+  <div class="wrap"><div class="cta reveal">
+    <h2>Zie het rond uw onderneming gebouwd.</h2>
+    <p>Een gratis gesprek van 20 minuten. We leren hoe u werkt en tonen u dan precies waar Celya past.</p>
+    <a class="btn" href="contact.html">Plan een gratis gesprek →</a>
+  </div></div>
+</main>
+<footer><div class="wrap">
+  <div class="fgrid">
+    <div class="fcol"><svg viewBox="0 0 284 138" role="img" aria-label="Celya"><defs><linearGradient id="flg" gradientUnits="userSpaceOnUse" x1="12" y1="105" x2="268" y2="34"><stop offset="0" stop-color="#22D3EE"/><stop offset=".5" stop-color="#4F7BFF"/><stop offset="1" stop-color="#A855F7"/></linearGradient></defs><g fill="none" stroke="url(#flg)" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"><path d="M64.98 89.28 A30 30 0 1 1 64.98 50.72 L83.98 34"/><path d="M83.98 34 L79.8 46.3 M83.98 34 L71.3 36.6"/><path d="M135 79 L93 79 A21 21 0 1 1 129 92"/><path d="M157 40 L157 100"/><path d="M175 58 L193 92 M211 58 L180 118"/><circle cx="244" cy="79" r="21"/><path d="M265 62 L265 100"/></g><path d="M244 58 L244 49" fill="none" stroke="url(#flg)" stroke-width="6" stroke-linecap="round"/><circle cx="244" cy="45" r="3.6" fill="#9BF3FF"/><rect x="212" y="74" width="5" height="10" rx="1.6" fill="url(#flg)"/><rect x="271" y="74" width="5" height="10" rx="1.6" fill="url(#flg)"/><rect x="229" y="71.5" width="30" height="12" rx="6" fill="#161F36"/><rect x="234" y="75" width="7.5" height="3.6" rx="1.8" fill="#9BF3FF"/><rect x="248.5" y="75" width="7.5" height="3.6" rx="1.8" fill="#9BF3FF"/></svg><p class="tag">AI-automatisering, eenvoudig gemaakt. Voor kmo’s in België, de EU &amp; Dubai.</p></div>
+    <div class="fcol"><h5>Diensten</h5><a href="services-crm.html">Slimme CRM</a><a href="services-sales.html">AI-verkoopagent</a><a href="services-web.html">AI Web &amp; Groei</a><a href="services-admin.html">AI Boekhouding &amp; Admin</a></div>
+    <div class="fcol"><h5>Bedrijf</h5><a href="pricing.html">Aanpak</a><a href="about.html">Over ons</a><a href="contact.html">Contact</a></div>
+    <div class="fcol"><h5>Contact</h5><a href="mailto:sales@celya.be">sales@celya.be</a><a href="contact.html">Plan een gratis gesprek</a></div>
+  </div>
+  <div class="fbottom"><span>© <span id="yr"></span> Celya — een dienst van Veritasvet SRL · België</span><span class="flegal"><a href="legal.html">Juridische info</a> · <a href="privacy.html">Privacy</a> · <a href="cookies.html">Cookies</a></span><span>celya.be · sales@celya.be</span></div>
+</div></footer>
+<script src="../dark.js"></script>
+</body>
+</html>
