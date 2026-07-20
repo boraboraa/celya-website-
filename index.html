@@ -124,7 +124,7 @@ nav.top.solid{background:rgba(10,14,26,.72);backdrop-filter:blur(18px)}
 @media(max-width:900px){.nav-links{display:none}}
 
 /* ---------- hero ---------- */
-.hero{position:relative;min-height:104svh;display:flex;align-items:center;overflow:visible;padding-bottom:40px}
+.hero{position:relative;min-height:104svh;display:flex;align-items:center;overflow:visible;padding:130px 0 60px}
 #bg{position:fixed;inset:0;width:100%;height:100%;z-index:-2}
 #bgdim{position:fixed;inset:0;z-index:-1;pointer-events:none;
   background:radial-gradient(ellipse 85% 75% at 50% 42%,rgba(10,14,26,.14) 30%,rgba(10,14,26,.5) 78%,rgba(10,14,26,.66) 100%)}
@@ -140,8 +140,8 @@ nav.top.solid{background:rgba(10,14,26,.72);backdrop-filter:blur(18px)}
   .pscreen{min-height:400px}
   .hero{padding-bottom:80px}
 }
-h1{font-size:clamp(48px,7vw,96px)}
-h1 .l2{font-family:var(--a);font-weight:300;font-style:italic;letter-spacing:-.02em;font-size:clamp(56px,8.2vw,112px)}
+h1{font-size:clamp(38px,5.4vw,72px)}
+h1 .l2{font-family:var(--a);font-weight:300;font-style:italic;letter-spacing:-.02em;font-size:clamp(44px,6.2vw,84px)}
 h1 .l2 .gradtxt{font-style:italic}
 .sub{font-family:var(--a);font-weight:300;font-size:clamp(18px,2.1vw,22px);color:#C3CDE4;max-width:480px;margin:30px 0 40px;line-height:1.55}
 .sub .hl{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;font-style:italic}
@@ -1111,7 +1111,7 @@ fillWave('wave',26);fillWave('wm',30);
   if(saved==='granted'){gtag('consent','update',{ad_storage:'granted',analytics_storage:'granted',ad_user_data:'granted',ad_personalization:'granted'});loadGTM();return}
   if(saved==='denied')return;
   var b=document.createElement('div');b.className='cbanner';
-  b.innerHTML='<span class="cmsg">Nous utilisons des cookies pour mesurer l'audience (Google Analytics). À vous de choisir. <a href="fr/cookies.html">En savoir plus</a></span>'+
+  b.innerHTML='<span class="cmsg">Nous utilisons des cookies pour mesurer l\'audience (Google Analytics). À vous de choisir. <a href="fr/cookies.html">En savoir plus</a></span>'+
     '<span class="cbtns"><button class="cdecline">Refuser</button><button class="caccept">Accepter</button></span>';
   document.body.appendChild(b);
   b.querySelector('.caccept').addEventListener('click',function(){try{localStorage.setItem(KEY,'granted')}catch(e){}
