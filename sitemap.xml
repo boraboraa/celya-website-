@@ -2,194 +2,45 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://celya.be/</loc>
-    <lastmod>2026-07-14</lastmod>
-    <xhtml:link rel="alternate" hreflang="en" href="https://celya.be/"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/fr/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/"/>
     <xhtml:link rel="alternate" hreflang="nl" href="https://celya.be/nl/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/"/>
-  </url>
-  <url>
-    <loc>https://celya.be/fr/</loc>
-    <lastmod>2026-07-14</lastmod>
-    <xhtml:link rel="alternate" hreflang="en" href="https://celya.be/"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/fr/"/>
-    <xhtml:link rel="alternate" hreflang="nl" href="https://celya.be/nl/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://celya.be/en/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/"/>
   </url>
   <url>
     <loc>https://celya.be/nl/</loc>
-    <lastmod>2026-07-14</lastmod>
-    <xhtml:link rel="alternate" hreflang="en" href="https://celya.be/"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/fr/"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/"/>
     <xhtml:link rel="alternate" hreflang="nl" href="https://celya.be/nl/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://celya.be/en/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/"/>
   </url>
   <url>
-    <loc>https://celya.be/services-web.html</loc>
-    <lastmod>2026-07-14</lastmod>
-    <xhtml:link rel="alternate" hreflang="en" href="https://celya.be/services-web.html"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/fr/services-web.html"/>
-    <xhtml:link rel="alternate" hreflang="nl" href="https://celya.be/nl/services-web.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/services-web.html"/>
-  </url>
-  <url>
-    <loc>https://celya.be/fr/services-web.html</loc>
-    <lastmod>2026-07-14</lastmod>
-    <xhtml:link rel="alternate" hreflang="en" href="https://celya.be/services-web.html"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/fr/services-web.html"/>
-    <xhtml:link rel="alternate" hreflang="nl" href="https://celya.be/nl/services-web.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/services-web.html"/>
-  </url>
-  <url>
-    <loc>https://celya.be/nl/services-web.html</loc>
-    <lastmod>2026-07-14</lastmod>
-    <xhtml:link rel="alternate" hreflang="en" href="https://celya.be/services-web.html"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/fr/services-web.html"/>
-    <xhtml:link rel="alternate" hreflang="nl" href="https://celya.be/nl/services-web.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/services-web.html"/>
-  </url>
-  <url>
-    <loc>https://celya.be/pricing.html</loc>
-    <lastmod>2026-07-14</lastmod>
-    <xhtml:link rel="alternate" hreflang="en" href="https://celya.be/pricing.html"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/fr/pricing.html"/>
-    <xhtml:link rel="alternate" hreflang="nl" href="https://celya.be/nl/pricing.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/pricing.html"/>
-  </url>
-  <url>
-    <loc>https://celya.be/fr/pricing.html</loc>
-    <lastmod>2026-07-14</lastmod>
-    <xhtml:link rel="alternate" hreflang="en" href="https://celya.be/pricing.html"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/fr/pricing.html"/>
-    <xhtml:link rel="alternate" hreflang="nl" href="https://celya.be/nl/pricing.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/pricing.html"/>
-  </url>
-  <url>
-    <loc>https://celya.be/nl/pricing.html</loc>
-    <lastmod>2026-07-14</lastmod>
-    <xhtml:link rel="alternate" hreflang="en" href="https://celya.be/pricing.html"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/fr/pricing.html"/>
-    <xhtml:link rel="alternate" hreflang="nl" href="https://celya.be/nl/pricing.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/pricing.html"/>
-  </url>
-  <url>
-    <loc>https://celya.be/about.html</loc>
-    <lastmod>2026-07-14</lastmod>
-    <xhtml:link rel="alternate" hreflang="en" href="https://celya.be/about.html"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/fr/about.html"/>
-    <xhtml:link rel="alternate" hreflang="nl" href="https://celya.be/nl/about.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/about.html"/>
-  </url>
-  <url>
-    <loc>https://celya.be/fr/about.html</loc>
-    <lastmod>2026-07-14</lastmod>
-    <xhtml:link rel="alternate" hreflang="en" href="https://celya.be/about.html"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/fr/about.html"/>
-    <xhtml:link rel="alternate" hreflang="nl" href="https://celya.be/nl/about.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/about.html"/>
-  </url>
-  <url>
-    <loc>https://celya.be/nl/about.html</loc>
-    <lastmod>2026-07-14</lastmod>
-    <xhtml:link rel="alternate" hreflang="en" href="https://celya.be/about.html"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/fr/about.html"/>
-    <xhtml:link rel="alternate" hreflang="nl" href="https://celya.be/nl/about.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/about.html"/>
+    <loc>https://celya.be/en/</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://celya.be/nl/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://celya.be/en/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/"/>
   </url>
   <url>
     <loc>https://celya.be/contact.html</loc>
-    <lastmod>2026-07-14</lastmod>
-    <xhtml:link rel="alternate" hreflang="en" href="https://celya.be/contact.html"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/fr/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/contact.html"/>
     <xhtml:link rel="alternate" hreflang="nl" href="https://celya.be/nl/contact.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/contact.html"/>
-  </url>
-  <url>
-    <loc>https://celya.be/fr/contact.html</loc>
-    <lastmod>2026-07-14</lastmod>
-    <xhtml:link rel="alternate" hreflang="en" href="https://celya.be/contact.html"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/fr/contact.html"/>
-    <xhtml:link rel="alternate" hreflang="nl" href="https://celya.be/nl/contact.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://celya.be/en/contact.html"/>
   </url>
   <url>
     <loc>https://celya.be/nl/contact.html</loc>
-    <lastmod>2026-07-14</lastmod>
-    <xhtml:link rel="alternate" hreflang="en" href="https://celya.be/contact.html"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/fr/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/contact.html"/>
     <xhtml:link rel="alternate" hreflang="nl" href="https://celya.be/nl/contact.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://celya.be/en/contact.html"/>
   </url>
   <url>
-    <loc>https://celya.be/legal.html</loc>
-    <lastmod>2026-07-14</lastmod>
-    <xhtml:link rel="alternate" hreflang="en" href="https://celya.be/legal.html"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/fr/legal.html"/>
-    <xhtml:link rel="alternate" hreflang="nl" href="https://celya.be/nl/legal.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/legal.html"/>
+    <loc>https://celya.be/en/contact.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://celya.be/nl/contact.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://celya.be/en/contact.html"/>
   </url>
   <url>
-    <loc>https://celya.be/fr/legal.html</loc>
-    <lastmod>2026-07-14</lastmod>
-    <xhtml:link rel="alternate" hreflang="en" href="https://celya.be/legal.html"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/fr/legal.html"/>
-    <xhtml:link rel="alternate" hreflang="nl" href="https://celya.be/nl/legal.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/legal.html"/>
-  </url>
-  <url>
-    <loc>https://celya.be/nl/legal.html</loc>
-    <lastmod>2026-07-14</lastmod>
-    <xhtml:link rel="alternate" hreflang="en" href="https://celya.be/legal.html"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/fr/legal.html"/>
-    <xhtml:link rel="alternate" hreflang="nl" href="https://celya.be/nl/legal.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/legal.html"/>
-  </url>
-  <url>
-    <loc>https://celya.be/privacy.html</loc>
-    <lastmod>2026-07-14</lastmod>
-    <xhtml:link rel="alternate" hreflang="en" href="https://celya.be/privacy.html"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/fr/privacy.html"/>
-    <xhtml:link rel="alternate" hreflang="nl" href="https://celya.be/nl/privacy.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/privacy.html"/>
-  </url>
-  <url>
-    <loc>https://celya.be/fr/privacy.html</loc>
-    <lastmod>2026-07-14</lastmod>
-    <xhtml:link rel="alternate" hreflang="en" href="https://celya.be/privacy.html"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/fr/privacy.html"/>
-    <xhtml:link rel="alternate" hreflang="nl" href="https://celya.be/nl/privacy.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/privacy.html"/>
-  </url>
-  <url>
-    <loc>https://celya.be/nl/privacy.html</loc>
-    <lastmod>2026-07-14</lastmod>
-    <xhtml:link rel="alternate" hreflang="en" href="https://celya.be/privacy.html"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/fr/privacy.html"/>
-    <xhtml:link rel="alternate" hreflang="nl" href="https://celya.be/nl/privacy.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/privacy.html"/>
-  </url>
-  <url>
-    <loc>https://celya.be/cookies.html</loc>
-    <lastmod>2026-07-14</lastmod>
-    <xhtml:link rel="alternate" hreflang="en" href="https://celya.be/cookies.html"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/fr/cookies.html"/>
-    <xhtml:link rel="alternate" hreflang="nl" href="https://celya.be/nl/cookies.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/cookies.html"/>
-  </url>
-  <url>
-    <loc>https://celya.be/fr/cookies.html</loc>
-    <lastmod>2026-07-14</lastmod>
-    <xhtml:link rel="alternate" hreflang="en" href="https://celya.be/cookies.html"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/fr/cookies.html"/>
-    <xhtml:link rel="alternate" hreflang="nl" href="https://celya.be/nl/cookies.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/cookies.html"/>
-  </url>
-  <url>
-    <loc>https://celya.be/nl/cookies.html</loc>
-    <lastmod>2026-07-14</lastmod>
-    <xhtml:link rel="alternate" hreflang="en" href="https://celya.be/cookies.html"/>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/fr/cookies.html"/>
-    <xhtml:link rel="alternate" hreflang="nl" href="https://celya.be/nl/cookies.html"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/cookies.html"/>
+    <loc>https://celya.be/clinics.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://celya.be/clinics.html"/>
   </url>
 </urlset>

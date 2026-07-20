@@ -7,7 +7,7 @@
     },
     {
       "source": "/fr/services.html",
-      "destination": "/fr/",
+      "destination": "/",
       "permanent": true
     },
     {
@@ -22,7 +22,7 @@
     },
     {
       "source": "/fr/services-crm.html",
-      "destination": "/fr/",
+      "destination": "/",
       "permanent": true
     },
     {
@@ -37,7 +37,7 @@
     },
     {
       "source": "/fr/services-sales.html",
-      "destination": "/fr/",
+      "destination": "/",
       "permanent": true
     },
     {
@@ -52,11 +52,76 @@
     },
     {
       "source": "/fr/services-admin.html",
-      "destination": "/fr/",
+      "destination": "/",
       "permanent": true
     },
     {
       "source": "/nl/services-admin.html",
+      "destination": "/nl/",
+      "permanent": true
+    },
+    {
+      "source": "/services-web.html",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/fr/services-web.html",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/nl/services-web.html",
+      "destination": "/nl/",
+      "permanent": true
+    },
+    {
+      "source": "/fr",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/fr/",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/fr/index.html",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/fr/contact.html",
+      "destination": "/contact.html",
+      "permanent": true
+    },
+    {
+      "source": "/fr/about.html",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/fr/pricing.html",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/about.html",
+      "destination": "/en/",
+      "permanent": true
+    },
+    {
+      "source": "/pricing.html",
+      "destination": "/en/",
+      "permanent": true
+    },
+    {
+      "source": "/nl/about.html",
+      "destination": "/nl/",
+      "permanent": true
+    },
+    {
+      "source": "/nl/pricing.html",
       "destination": "/nl/",
       "permanent": true
     }
