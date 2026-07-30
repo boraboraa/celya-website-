@@ -1111,7 +1111,7 @@ fillWave('wave',26);fillWave('wm',30);
   if(saved==='granted'){gtag('consent','update',{ad_storage:'granted',analytics_storage:'granted',ad_user_data:'granted',ad_personalization:'granted'});loadGTM();return}
   if(saved==='denied')return;
   var b=document.createElement('div');b.className='cbanner';
-  b.innerHTML='<span class="cmsg">Nous utilisons des cookies pour mesurer l'audience (Google Analytics). À vous de choisir. <a href="fr/cookies.html">En savoir plus</a></span>'+
+  b.innerHTML=`<span class="cmsg">Nous utilisons des cookies pour mesurer l'audience (Google Analytics). À vous de choisir. <a href="fr/cookies.html">En savoir plus</a></span>`+
     '<span class="cbtns"><button class="cdecline">Refuser</button><button class="caccept">Accepter</button></span>';
   document.body.appendChild(b);
   b.querySelector('.caccept').addEventListener('click',function(){try{localStorage.setItem(KEY,'granted')}catch(e){}
