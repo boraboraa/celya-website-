@@ -1,5 +1,11 @@
 {
+  "cleanUrls": true,
   "redirects": [
+    {
+      "source": "/terms",
+      "destination": "/legal.html",
+      "permanent": false
+    },
     {
       "source": "/services.html",
       "destination": "/",
