@@ -57,6 +57,16 @@ header.top{position:sticky;top:0;z-index:50;background:rgba(10,14,26,.72);backdr
 /* héro */
 .t-hero{grid-column:span 8;padding:52px 48px;display:flex;flex-direction:column;justify-content:center}
 .t-hero h1{margin:14px 0 18px}
+/* apparition du héro au chargement */
+.t-hero .lr{display:block;overflow:hidden;padding-bottom:.08em;margin-bottom:-.08em}
+.t-hero .lr>span{display:block;transform:translateY(112%);animation:rise .9s cubic-bezier(.2,.7,.2,1) forwards}
+.t-hero .lr:nth-child(2)>span{animation-delay:.14s}
+@keyframes rise{to{transform:none}}
+.t-hero .sub,.t-hero .cta-row,.t-hero .proof{opacity:0;transform:translateY(14px);animation:fadeup .85s cubic-bezier(.2,.7,.2,1) forwards}
+.t-hero .sub{animation-delay:.3s}
+.t-hero .cta-row{animation-delay:.45s}
+.t-hero .proof{animation-delay:.6s}
+@keyframes fadeup{to{opacity:1;transform:none}}
 .t-hero .sub{font-size:18.5px;max-width:34em;color:var(--body)}
 .cta-row{display:flex;flex-wrap:wrap;gap:14px;margin:30px 0 18px}
 .proof{font-size:14.5px;color:var(--soft)}
@@ -65,10 +75,30 @@ header.top{position:sticky;top:0;z-index:50;background:rgba(10,14,26,.72);backdr
 /* démo d'appel */
 .t-demo{grid-column:span 4;display:flex;flex-direction:column;padding:26px}
 .demo-hd{display:flex;align-items:center;gap:12px;padding-bottom:14px;border-bottom:1px solid var(--line);margin-bottom:16px}
-.demo-hd .dot{width:9px;height:9px;border-radius:50%;background:var(--ok);box-shadow:0 0 10px var(--ok);flex:none;animation:pulse 2.2s infinite}
+.demo-hd .dav{position:relative;flex:none}
+.demo-hd .dav img{width:40px;height:40px;border-radius:50%}
+.demo-hd .dav i{position:absolute;right:-1px;bottom:-1px;width:11px;height:11px;border-radius:50%;background:var(--ok);border:2px solid #101628;animation:pulse 2.2s infinite}
 @keyframes pulse{50%{opacity:.4}}
 .demo-hd b{color:var(--ink);font-family:var(--h);font-size:15px}
 .demo-hd span{font-size:12.5px;color:var(--soft)}
+/* barres de voix pendant que Janet parle */
+.wave{display:inline-flex;gap:3px;align-items:flex-end;height:16px;margin-left:auto}
+.wave i{width:3px;height:30%;border-radius:2px;background:linear-gradient(180deg,var(--c1),var(--c2));transition:height .25s}
+.wave.on i{animation:wv .8s ease-in-out infinite}
+.wave i:nth-child(2){animation-delay:.1s}.wave i:nth-child(3){animation-delay:.2s}
+.wave i:nth-child(4){animation-delay:.3s}.wave i:nth-child(5){animation-delay:.15s}
+@keyframes wv{50%{height:100%}}
+.wave+.exbadge{margin-left:10px}
+/* scène téléphone : écran « appel entrant » puis conversation */
+.phone{position:relative;flex:1;min-height:230px;display:flex;flex-direction:column}
+.ph-incoming{position:absolute;inset:0;z-index:2;display:none;flex-direction:column;align-items:center;justify-content:center;gap:12px;text-align:center}
+.ph-incoming.onstage{display:flex}
+.ph-incoming img{width:76px;height:76px;border-radius:50%;box-shadow:0 0 0 3px rgba(79,123,255,.35),0 0 34px rgba(79,123,255,.35)}
+.ph-incoming b{font-family:var(--h);font-size:16px;color:var(--ink)}
+.ph-incoming span{font-size:12.5px;color:var(--soft)}
+.ph-ring{width:54px;height:54px;border-radius:50%;background:rgba(49,217,131,.14);border:1px solid rgba(49,217,131,.5);display:grid;place-items:center;color:#8FE3B0;animation:ringpulse 1.5s infinite}
+.ph-ring svg{width:22px;height:22px}
+@keyframes ringpulse{0%{box-shadow:0 0 0 0 rgba(49,217,131,.4)}75%{box-shadow:0 0 0 16px rgba(49,217,131,0)}100%{box-shadow:0 0 0 0 rgba(49,217,131,0)}}
 .exbadge{margin-left:auto;font:600 10.5px/1 var(--b);letter-spacing:.1em;text-transform:uppercase;color:var(--soft);border:1px solid var(--line);padding:4px 8px;border-radius:99px}
 .chat{display:flex;flex-direction:column;gap:9px;font-size:13.8px;line-height:1.45}
 .chat .m{max-width:88%;padding:9px 13px;border-radius:14px}
@@ -78,6 +108,12 @@ header.top{position:sticky;top:0;z-index:50;background:rgba(10,14,26,.72);backdr
 /* animation de la démo (bento.js) */
 .chat.anim .m,.chat.anim .done{opacity:0;transform:translateY(8px);transition:opacity .5s ease,transform .5s ease}
 .chat.anim .m.on,.chat.anim .done.on{opacity:1;transform:none}
+/* indicateur « Janet écrit » */
+.chat .typing{align-self:flex-start;display:inline-flex;gap:4px;align-items:center;padding:11px 14px;border-radius:14px;border-bottom-left-radius:5px;background:linear-gradient(120deg,rgba(34,211,238,.14),rgba(79,123,255,.14));border:1px solid rgba(79,123,255,.25)}
+.chat .typing i{width:5px;height:5px;border-radius:50%;background:var(--soft);animation:tdot 1s infinite}
+.chat .typing i:nth-child(2){animation-delay:.15s}
+.chat .typing i:nth-child(3){animation-delay:.3s}
+@keyframes tdot{30%{transform:translateY(-4px);opacity:1}}
 
 /* schéma 4 étapes */
 .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:22px}
@@ -87,6 +123,9 @@ header.top{position:sticky;top:0;z-index:50;background:rgba(10,14,26,.72);backdr
 .step b{display:block;font-family:var(--h);font-size:16.5px;color:var(--ink);margin-bottom:6px}
 .step p{font-size:13.5px;color:var(--soft);max-width:21em;margin:0 auto}
 .step + .step::before{content:'';position:absolute;left:-14px;top:44px;width:28px;height:2px;background:linear-gradient(90deg,rgba(79,123,255,.1),rgba(79,123,255,.65),rgba(79,123,255,.1))}
+/* étape active (cycle animé par bento.js) */
+.step .ic{transition:transform .45s ease,box-shadow .45s ease,border-color .45s ease}
+.step.cur .ic{transform:scale(1.09);border-color:rgba(79,123,255,.7);box-shadow:0 0 28px rgba(79,123,255,.45)}
 .step .acts{display:flex;gap:6px;justify-content:center;flex-wrap:wrap;margin-top:8px}
 .step .acts span{font:600 11.5px/1 var(--b);color:var(--ink);background:rgba(255,255,255,.07);border:1px solid var(--line);border-radius:99px;padding:5px 9px}
 
@@ -120,6 +159,31 @@ header.top{position:sticky;top:0;z-index:50;background:rgba(10,14,26,.72);backdr
 .t-mini{grid-column:span 3;padding:26px}
 .t-mini h3{font-size:16.5px}
 .t-mini p{font-size:13.5px;color:var(--soft)}
+
+/* ---------- simulateur d'appels manqués ---------- */
+.t-roi{grid-column:span 7}
+.roi-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:26px;margin-top:20px;align-items:center}
+.roi-ctl label{display:flex;justify-content:space-between;align-items:baseline;gap:12px;font:600 12px/1.3 var(--b);letter-spacing:.1em;text-transform:uppercase;color:var(--soft);margin:20px 0 10px}
+.roi-ctl label:first-child{margin-top:0}
+.roi-ctl output{font:700 15px var(--h);color:var(--ink);letter-spacing:0;text-transform:none}
+.roi-ctl input[type=range]{width:100%;accent-color:var(--c2);height:30px;cursor:pointer}
+.pills{display:flex;gap:8px;flex-wrap:wrap}
+.pills button{font:600 13.5px/1 var(--b);color:var(--body);background:rgba(255,255,255,.05);border:1px solid var(--line);border-radius:99px;padding:10px 15px;cursor:pointer;transition:border-color .2s}
+.pills button:hover{border-color:rgba(79,123,255,.5)}
+.pills button.on{background:var(--grad);color:#06080F;border-color:transparent}
+.roi-out{text-align:center;border:1px solid var(--line);border-radius:18px;padding:26px 20px;background:rgba(10,14,26,.5)}
+.roi-out b{display:block;font-family:var(--h);font-weight:800;font-size:clamp(32px,3.4vw,44px);line-height:1;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;font-variant-numeric:tabular-nums}
+.roi-out>span{display:block;color:var(--body);font-size:14px;margin-top:9px}
+.roi-out .note{font-size:12.5px;color:var(--soft);margin-top:14px;line-height:1.55}
+.roi-out .btn{margin-top:16px}
+
+/* ---------- portrait de Janet ---------- */
+.t-janet{grid-column:span 5;padding:0;min-height:360px}
+.t-janet img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 12%}
+.t-janet::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,14,26,0) 42%,rgba(10,14,26,.94) 90%)}
+.t-janet .jq{position:absolute;left:26px;right:26px;bottom:20px;z-index:2}
+.t-janet .jq b{display:block;font-family:var(--h);font-size:20px;line-height:1.3;color:var(--ink)}
+.t-janet .jq span{display:block;font-size:13px;color:var(--soft);margin-top:6px}
 
 /* FAQ */
 .t-faq details{border-bottom:1px solid rgba(255,255,255,.07);padding:4px 0}
@@ -198,9 +262,15 @@ footer.site a:hover{color:var(--ink)}
 @media(max-width:768px){.jfab{bottom:86px}}
 
 /* ---------- responsive ---------- */
+@media(hover:hover){
+  .tile{transition:border-color .35s ease,box-shadow .35s ease}
+  .tile:hover{border-color:rgba(79,123,255,.3);box-shadow:0 14px 44px rgba(6,10,26,.5)}
+}
 @media(max-width:900px){
-  .t-hero,.t-demo,.t-role,.t-fiche,.t-met,.t-mini{grid-column:span 12}
+  .t-hero,.t-demo,.t-role,.t-fiche,.t-met,.t-mini,.t-roi,.t-janet{grid-column:span 12}
   .t-mini{grid-column:span 6}
+  .t-janet{min-height:320px}
+  .roi-grid{grid-template-columns:1fr}
   .steps{grid-template-columns:1fr}
   .step{display:grid;grid-template-columns:52px 1fr;gap:0 18px;text-align:left;padding:14px 6px}
   .step .ic{margin:0;grid-row:span 3}
@@ -217,8 +287,12 @@ footer.site a:hover{color:var(--ink)}
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   .reveal{opacity:1;transform:none;transition:none}
-  .demo-hd .dot,.jlive i{animation:none}
+  .demo-hd .dav i,.jlive i,.ph-ring,.wave.on i{animation:none}
   .chat.anim .m,.chat.anim .done{opacity:1;transform:none;transition:none}
+  .t-hero .lr>span,.t-hero .sub,.t-hero .cta-row,.t-hero .proof{animation:none;transform:none;opacity:1}
+  .step .ic{transition:none}
+  .step.cur .ic{transform:none;box-shadow:none}
   .btn:hover{transform:none}
   .callbar{transition:none}
+  .tile{transition:none}
 }

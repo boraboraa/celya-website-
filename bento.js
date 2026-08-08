@@ -10,13 +10,27 @@
   /* ---- année du footer ---- */
   document.querySelectorAll('.yr').forEach(function(e){e.textContent=new Date().getFullYear();});
 
-  /* ---- apparition au scroll ---- */
-  if('IntersectionObserver' in window&&!REDUCE){
-    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.12});
-    document.querySelectorAll('.reveal').forEach(function(el){io.observe(el);});
-  }else{
-    document.querySelectorAll('.reveal').forEach(function(el){el.classList.add('in');});
-  }
+  /* ---- apparition au scroll (déterministe : jamais de tuile qui reste invisible) ---- */
+  (function(){
+    var els=[].slice.call(document.querySelectorAll('.reveal'));
+    if(!els.length)return;
+    if(REDUCE){els.forEach(function(el){el.classList.add('in');});return;}
+    var pending=false;
+    function check(){
+      pending=false;
+      var vh=window.innerHeight;
+      els=els.filter(function(el){
+        var r=el.getBoundingClientRect();
+        if(r.top<vh-40&&r.bottom>0||r.top<0){el.classList.add('in');return false;}
+        return true;
+      });
+      if(!els.length){removeEventListener('scroll',onS);removeEventListener('resize',onS);}
+    }
+    function onS(){if(!pending){pending=true;setTimeout(check,60);}}
+    addEventListener('scroll',onS,{passive:true});
+    addEventListener('resize',onS);
+    check();
+  })();
 
   /* ---- fond aurore : canvas basse résolution, ~15 img/s, pause hors onglet ---- */
   (function(){
@@ -51,22 +65,93 @@
     }
   })();
 
-  /* ---- démo d'appel : les messages apparaissent un à un, en boucle ---- */
-  document.querySelectorAll('.chat[data-anim]').forEach(function(ch){
-    var items=[].slice.call(ch.children);
-    if(REDUCE||!('IntersectionObserver' in window)||!items.length)return;
-    ch.classList.add('anim');
-    var idx=0,timer=null,started=false;
+  /* ---- démo d'appel : « appel entrant » → Janet décroche → conversation → boucle ---- */
+  document.querySelectorAll('.phone[data-demo]').forEach(function(ph){
+    var chat=ph.querySelector('.chat');if(!chat)return;
+    var inc=ph.querySelector('.ph-incoming');
+    var tile=ph.closest('.t-demo')||ph;
+    var wave=tile.querySelector('.wave');
+    var items=[].slice.call(chat.children);
+    if(REDUCE||!('IntersectionObserver' in window)||!items.length){if(inc)inc.remove();return;}
+    chat.classList.add('anim');
+    var idx=0,timer=null,started=false,typing=null;
+    function setWave(on){if(wave)wave.classList.toggle('on',!!on);}
+    function clearTyping(){if(typing){typing.remove();typing=null;}}
+    function showIncoming(){if(inc){inc.classList.add('onstage');chat.style.visibility='hidden';}}
+    function hideIncoming(){if(inc){inc.classList.remove('onstage');chat.style.visibility='';}}
+    function reset(){clearTimeout(timer);clearTyping();setWave(false);
+      items.forEach(function(m){m.classList.remove('on');m._typed=false;});idx=0;}
     function step(){
-      if(idx<items.length){items[idx].classList.add('on');idx++;timer=setTimeout(step,idx===items.length?4200:1500);}
-      else{items.forEach(function(m){m.classList.remove('on');});idx=0;timer=setTimeout(step,900);}
+      if(idx<items.length){
+        var el=items[idx],isJ=el.classList.contains('j');
+        if(isJ&&!el._typed){ /* points de frappe avant chaque réplique de Janet */
+          el._typed=true;
+          typing=document.createElement('div');typing.className='typing';
+          typing.innerHTML='<i></i><i></i><i></i>';
+          chat.insertBefore(typing,el);setWave(true);
+          timer=setTimeout(step,700);return;
+        }
+        clearTyping();el.classList.add('on');setWave(isJ);idx++;
+        timer=setTimeout(step,idx===items.length?4200:1450);
+      }else{
+        setWave(false);
+        reset();showIncoming();
+        timer=setTimeout(function(){hideIncoming();step();},2300);
+      }
     }
     var io2=new IntersectionObserver(function(es){es.forEach(function(e){
-      if(e.isIntersecting&&!started){started=true;timer=setTimeout(step,600);}
-      else if(!e.isIntersecting&&started){clearTimeout(timer);items.forEach(function(m){m.classList.remove('on');});idx=0;started=false;}
-    });},{threshold:.35});
-    io2.observe(ch);
+      if(e.isIntersecting&&!started){started=true;showIncoming();timer=setTimeout(function(){hideIncoming();step();},1700);}
+      else if(!e.isIntersecting&&started){reset();hideIncoming();started=false;}
+    });},{threshold:.3});
+    io2.observe(tile);
   });
+
+  /* ---- simulateur : ce que coûtent les appels manqués ---- */
+  (function(){
+    var roi=document.querySelector('.t-roi');if(!roi)return;
+    var miss=roi.querySelector('#roi-miss'),missOut=roi.querySelector('#roi-miss-n'),
+        out=roi.querySelector('#roi-num'),pills=roi.querySelectorAll('.pills button');
+    if(!miss||!out)return;
+    var FMT={
+      fr:function(n){return n.toLocaleString('fr-BE')+' €';},
+      nl:function(n){return '€ '+n.toLocaleString('nl-BE');},
+      en:function(n){return '€'+n.toLocaleString('en-GB');}
+    };var fmt=FMT[LANG]||FMT.fr;
+    var val=300,cur=0,anim=null;
+    /* ~30 % des appelants non répondus achètent ailleurs ; 4,33 semaines par mois */
+    function target(){return Math.round(miss.value*4.33*0.30*val);}
+    function render(n){out.textContent=fmt(n);}
+    function update(){
+      if(missOut)missOut.textContent=miss.value;
+      var to=target();
+      if(REDUCE){cur=to;render(to);return;}
+      if(anim)cancelAnimationFrame(anim);
+      var from=cur,t0=null;
+      function tick(ts){if(t0===null)t0=ts;var p=Math.min(1,(ts-t0)/500),e=1-Math.pow(1-p,3);
+        cur=Math.round(from+(to-from)*e);render(cur);if(p<1)anim=requestAnimationFrame(tick);}
+      anim=requestAnimationFrame(tick);
+    }
+    pills.forEach(function(b){b.addEventListener('click',function(){
+      pills.forEach(function(x){x.classList.remove('on');});b.classList.add('on');
+      val=+b.getAttribute('data-v')||300;update();
+    });});
+    miss.addEventListener('input',update);
+    cur=target();render(cur);if(missOut)missOut.textContent=miss.value;
+  })();
+
+  /* ---- schéma : l'étape active s'allume en boucle ---- */
+  (function(){
+    var wrap=document.querySelector('#marche .steps');if(!wrap||REDUCE||!('IntersectionObserver' in window))return;
+    var steps=[].slice.call(wrap.querySelectorAll('.step'));if(!steps.length)return;
+    var i=-1,timer=null;
+    var io3=new IntersectionObserver(function(es){es.forEach(function(e){
+      if(e.isIntersecting&&!timer){timer=setInterval(function(){i=(i+1)%steps.length;
+        steps.forEach(function(s,k){s.classList.toggle('cur',k===i);});},1900);}
+      else if(!e.isIntersecting&&timer){clearInterval(timer);timer=null;i=-1;
+        steps.forEach(function(s){s.classList.remove('cur');});}
+    });},{threshold:.3});
+    io3.observe(wrap);
+  })();
 
   /* ---- consentement cookies + Google Tag Manager (inchangé : chargé après accord) ---- */
   (function(){

@@ -36,6 +36,7 @@ gtag('consent','default',{ad_storage:'denied',analytics_storage:'denied',ad_user
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="bento.css">
+<noscript><style>.reveal{opacity:1;transform:none}</style></noscript>
 </head>
 <body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><linearGradient id="bgrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#22D3EE"/><stop offset=".5" stop-color="#4F7BFF"/><stop offset="1" stop-color="#A855F7"/></linearGradient></defs></svg>
@@ -56,7 +57,7 @@ gtag('consent','default',{ad_storage:'denied',analytics_storage:'denied',ad_user
   <div class="bento">
     <section class="tile t-hero">
       <div class="kick">Secrétariat téléphonique — Belgique</div>
-      <h1>Vous ratez des appels ?<br><span class="gradtxt">Elle répond à votre place.</span></h1>
+      <h1><span class="lr"><span>Vous ratez des appels ?</span></span><span class="lr"><span><span class="gradtxt">Elle répond à votre place.</span></span></span></h1>
       <p class="sub">Celya répond au téléphone quand vous ne pouvez pas. Elle prend vos rendez-vous et note vos messages. 24h/24, en français et en néerlandais.</p>
       <div class="cta-row">
         <a class="btn btn-grad btn-big" href="tel:+32460254413"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg> Appeler Janet — c'est une IA</a>
@@ -65,7 +66,14 @@ gtag('consent','default',{ad_storage:'denied',analytics_storage:'denied',ad_user
       <p class="proof">Ne nous croyez pas sur parole — appelez-la. C'est une IA qui décroche. <b>+32 460 25 44 13</b></p>
     </section>
     <aside class="tile t-demo reveal">
-      <div class="demo-hd"><span class="dot"></span><div><b>Janet</b><br><span>Appel entrant · en ligne</span></div><span class="exbadge">Exemple</span></div>
+      <div class="demo-hd"><span class="dav"><img src="assets/janet-avatar-128.webp" alt="Janet" width="40" height="40"><i></i></span><div><b>Janet</b><br><span>En ligne</span></div><span class="wave" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span><span class="exbadge">Exemple</span></div>
+      <div class="phone" data-demo>
+      <div class="ph-incoming">
+        <img src="assets/janet-avatar-256.webp" alt="Janet" width="76" height="76">
+        <b>Appel entrant</b>
+        <span>Janet décroche en quelques secondes</span>
+        <span class="ph-ring"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
+      </div>
       <div class="chat" data-anim>
         <div class="m j">Cabinet Dumont, bonjour. Je suis Janet, l'assistante du cabinet. Que puis-je faire pour vous ?</div>
         <div class="m c">Bonjour, je voudrais un rendez-vous cette semaine.</div>
@@ -73,6 +81,7 @@ gtag('consent','default',{ad_storage:'denied',analytics_storage:'denied',ad_user
         <div class="m c">Jeudi, parfait.</div>
         <div class="m j">C'est noté : jeudi 15&nbsp;h&nbsp;20. Bonne journée.</div>
         <div class="done">Rendez-vous enregistré dans l'agenda</div>
+      </div>
       </div>
     </aside>
     <section class="tile reveal" id="marche">
@@ -116,6 +125,33 @@ gtag('consent','default',{ad_storage:'denied',analytics_storage:'denied',ad_user
       <div class="kick">Conseillère</div>
       <h3>Elle répond aux questions</h3>
       <p>Horaires, tarifs, services : elle renseigne vos clients à partir de vos informations. Si elle ne sait pas, elle note et vous transmet.</p>
+    </section>
+    <section class="tile t-roi reveal">
+      <div class="kick">Vos chiffres</div>
+      <h2>Combien vous coûtent les appels manqués ?</h2>
+      <div class="roi-grid">
+        <div class="roi-ctl">
+          <label for="roi-miss">Appels manqués par semaine <output id="roi-miss-n">12</output></label>
+          <input type="range" id="roi-miss" min="2" max="60" value="12" step="1">
+          <label>Ce que vaut un nouveau client pour vous</label>
+          <div class="pills">
+            <button type="button" data-v="100">100&nbsp;&euro;</button>
+            <button type="button" data-v="300" class="on">300&nbsp;&euro;</button>
+            <button type="button" data-v="800">800&nbsp;&euro;</button>
+            <button type="button" data-v="2000">2&nbsp;000&nbsp;&euro;</button>
+          </div>
+        </div>
+        <div class="roi-out">
+          <b id="roi-num">4&nbsp;676&nbsp;&euro;</b>
+          <span>qui s'envolent chaque mois</span>
+          <p class="note">Estimation prudente : environ 30 % des appelants qui tombent sur un répondeur achètent ailleurs au lieu de rappeler.</p>
+          <a class="btn btn-grad" href="tel:+32460254413"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg> Stoppez la fuite — appelez Janet</a>
+        </div>
+      </div>
+    </section>
+    <section class="tile t-janet reveal">
+      <img src="assets/janet-hero.webp" alt="Janet, l'assistante téléphonique IA de Celya" loading="lazy" width="864" height="1100">
+      <div class="jq"><b>« Elle ne manque jamais un appel. »</b><span>Janet — l'assistante IA de Celya</span></div>
     </section>
     <section class="tile t-fiche reveal">
       <div class="kick">Après chaque appel</div>

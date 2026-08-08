@@ -35,6 +35,7 @@ gtag('consent','default',{ad_storage:'denied',analytics_storage:'denied',ad_user
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="bento.css">
+<noscript><style>.reveal{opacity:1;transform:none}</style></noscript>
 </head>
 <body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><linearGradient id="bgrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#22D3EE"/><stop offset=".5" stop-color="#4F7BFF"/><stop offset="1" stop-color="#A855F7"/></linearGradient></defs></svg>
@@ -55,7 +56,7 @@ gtag('consent','default',{ad_storage:'denied',analytics_storage:'denied',ad_user
   <div class="bento">
     <section class="tile t-hero">
       <div class="kick">Secrétariat téléphonique — Garages</div>
-      <h1>Le téléphone sonne pendant<br>que vous réparez.</h1>
+      <h1><span class="lr"><span>Le téléphone sonne pendant</span></span><span class="lr"><span>que vous réparez.</span></span></h1>
       <p class="sub">Les mains dans un moteur, on ne décroche pas — et un appel manqué au garage, c'est souvent un dépannage qui part chez le concurrent. Celya répond à votre place, pendant que vous restez sur la voiture.</p>
       <div class="cta-row">
         <a class="btn btn-grad btn-big" href="tel:+32460254413"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg> Appeler Janet — c'est une IA</a>
@@ -64,7 +65,14 @@ gtag('consent','default',{ad_storage:'denied',analytics_storage:'denied',ad_user
       <p class="proof">Ne nous croyez pas sur parole — appelez-la. C'est une IA qui décroche. <b>+32 460 25 44 13</b></p>
     </section>
     <aside class="tile t-demo reveal">
-      <div class="demo-hd"><span class="dot"></span><div><b>Janet</b><br><span>Appel entrant · en ligne</span></div><span class="exbadge">Exemple</span></div>
+      <div class="demo-hd"><span class="dav"><img src="assets/janet-avatar-128.webp" alt="Janet" width="40" height="40"><i></i></span><div><b>Janet</b><br><span>En ligne</span></div><span class="wave" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span><span class="exbadge">Exemple</span></div>
+      <div class="phone" data-demo>
+      <div class="ph-incoming">
+        <img src="assets/janet-avatar-256.webp" alt="Janet" width="76" height="76">
+        <b>Appel entrant</b>
+        <span>Janet décroche en quelques secondes</span>
+        <span class="ph-ring"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
+      </div>
       <div class="chat" data-anim>
         <div class="m j">Garage Martin, bonjour. Je suis Janet, l'assistante du garage. Que puis-je faire pour vous ?</div>
         <div class="m c">Ma voiture ne démarre pas ce matin, c'est urgent.</div>
@@ -72,6 +80,7 @@ gtag('consent','default',{ad_storage:'denied',analytics_storage:'denied',ad_user
         <div class="m c">Rue du Centre 12 à Wavre, une Clio de 2019.</div>
         <div class="m j">C'est noté. Je préviens le patron immédiatement — il vous rappelle au plus vite.</div>
         <div class="done">Message urgent transmis au garagiste</div>
+      </div>
       </div>
     </aside>
     <section class="tile t-role reveal">

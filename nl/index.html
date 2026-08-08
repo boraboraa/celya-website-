@@ -36,6 +36,7 @@ gtag('consent','default',{ad_storage:'denied',analytics_storage:'denied',ad_user
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../bento.css">
+<noscript><style>.reveal{opacity:1;transform:none}</style></noscript>
 </head>
 <body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><linearGradient id="bgrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#22D3EE"/><stop offset=".5" stop-color="#4F7BFF"/><stop offset="1" stop-color="#A855F7"/></linearGradient></defs></svg>
@@ -56,7 +57,7 @@ gtag('consent','default',{ad_storage:'denied',analytics_storage:'denied',ad_user
   <div class="bento">
     <section class="tile t-hero">
       <div class="kick">Telefoonsecretariaat — België</div>
-      <h1>Mist u oproepen?<br><span class="gradtxt">Zij neemt op in uw plaats.</span></h1>
+      <h1><span class="lr"><span>Mist u oproepen?</span></span><span class="lr"><span><span class="gradtxt">Zij neemt op in uw plaats.</span></span></span></h1>
       <p class="sub">Celya neemt de telefoon op wanneer u niet kunt. Ze plant uw afspraken in en noteert uw berichten. 24/7, in het Nederlands en het Frans.</p>
       <div class="cta-row">
         <a class="btn btn-grad btn-big" href="tel:+32460254413"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg> Bel Janet — het is een AI</a>
@@ -65,7 +66,14 @@ gtag('consent','default',{ad_storage:'denied',analytics_storage:'denied',ad_user
       <p class="proof">Geloof ons niet op ons woord — bel haar. Er neemt een AI op. <b>+32 460 25 44 13</b></p>
     </section>
     <aside class="tile t-demo reveal">
-      <div class="demo-hd"><span class="dot"></span><div><b>Janet</b><br><span>Inkomende oproep · aan de lijn</span></div><span class="exbadge">Voorbeeld</span></div>
+      <div class="demo-hd"><span class="dav"><img src="../assets/janet-avatar-128.webp" alt="Janet" width="40" height="40"><i></i></span><div><b>Janet</b><br><span>Aan de lijn</span></div><span class="wave" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span><span class="exbadge">Voorbeeld</span></div>
+      <div class="phone" data-demo>
+      <div class="ph-incoming">
+        <img src="../assets/janet-avatar-256.webp" alt="Janet" width="76" height="76">
+        <b>Inkomende oproep</b>
+        <span>Janet neemt op in enkele seconden</span>
+        <span class="ph-ring"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
+      </div>
       <div class="chat" data-anim>
         <div class="m j">Praktijk Demeyer, goedendag. Ik ben Janet, de assistente van de praktijk. Wat kan ik voor u doen?</div>
         <div class="m c">Dag, ik wil graag een afspraak deze week.</div>
@@ -73,6 +81,7 @@ gtag('consent','default',{ad_storage:'denied',analytics_storage:'denied',ad_user
         <div class="m c">Donderdag, perfect.</div>
         <div class="m j">Genoteerd: donderdag 15u20. Nog een fijne dag.</div>
         <div class="done">Afspraak in de agenda gezet</div>
+      </div>
       </div>
     </aside>
     <section class="tile reveal" id="marche">
@@ -116,6 +125,33 @@ gtag('consent','default',{ad_storage:'denied',analytics_storage:'denied',ad_user
       <div class="kick">Adviseur</div>
       <h3>Ze beantwoordt vragen</h3>
       <p>Openingsuren, prijzen, diensten: ze informeert uw klanten op basis van uw gegevens. Weet ze het niet, dan noteert ze en geeft ze door.</p>
+    </section>
+    <section class="tile t-roi reveal">
+      <div class="kick">Uw cijfers</div>
+      <h2>Wat kosten gemiste oproepen u?</h2>
+      <div class="roi-grid">
+        <div class="roi-ctl">
+          <label for="roi-miss">Gemiste oproepen per week <output id="roi-miss-n">12</output></label>
+          <input type="range" id="roi-miss" min="2" max="60" value="12" step="1">
+          <label>Wat een nieuwe klant voor u waard is</label>
+          <div class="pills">
+            <button type="button" data-v="100">100&nbsp;&euro;</button>
+            <button type="button" data-v="300" class="on">300&nbsp;&euro;</button>
+            <button type="button" data-v="800">800&nbsp;&euro;</button>
+            <button type="button" data-v="2000">2&nbsp;000&nbsp;&euro;</button>
+          </div>
+        </div>
+        <div class="roi-out">
+          <b id="roi-num">&euro;&nbsp;4.676</b>
+          <span>die elke maand verdampen</span>
+          <p class="note">Voorzichtige schatting: ongeveer 30% van de bellers die een antwoordapparaat horen, koopt elders in plaats van terug te bellen.</p>
+          <a class="btn btn-grad" href="tel:+32460254413"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg> Stop het lek — bel Janet</a>
+        </div>
+      </div>
+    </section>
+    <section class="tile t-janet reveal">
+      <img src="../assets/janet-hero.webp" alt="Janet, de AI-telefoonassistente van Celya" loading="lazy" width="864" height="1100">
+      <div class="jq"><b>« Ze mist nooit een oproep. »</b><span>Janet — de AI-assistente van Celya</span></div>
     </section>
     <section class="tile t-fiche reveal">
       <div class="kick">Na elke oproep</div>
