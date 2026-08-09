@@ -47,18 +47,19 @@
     var SCALE=.14; /* le blur CSS lisse le rendu — inutile de dessiner en pleine résolution */
     function size(){W=Math.max(2,Math.round(innerWidth*SCALE));H=Math.max(2,Math.round(innerHeight*SCALE));c.width=W;c.height=H;}
     var blobs=[
-      {c:'34,211,238',r:.62,ax:.28,ay:.20,sx:.13,sy:.17,ph:0},
-      {c:'79,123,255',r:.68,ax:.74,ay:.30,sx:.16,sy:.12,ph:2.1},
-      {c:'168,85,247',r:.60,ax:.45,ay:.86,sx:.14,sy:.15,ph:4.2}
+      {c:'34,211,238',r:.66,ax:.26,ay:.18,sx:.20,sy:.26,ph:0},
+      {c:'79,123,255',r:.72,ax:.76,ay:.32,sx:.24,sy:.19,ph:2.1},
+      {c:'168,85,247',r:.64,ax:.42,ay:.88,sx:.21,sy:.23,ph:4.2},
+      {c:'79,123,255',r:.5,ax:.1,ay:.65,sx:.18,sy:.2,ph:5.4}
     ];
     function draw(t){
       x.clearRect(0,0,W,H);x.globalCompositeOperation='lighter';
       for(var i=0;i<blobs.length;i++){var b=blobs[i];
-        var bx=(b.ax+Math.sin(t*.00006+b.ph)*b.sx)*W;
-        var by=(b.ay+Math.cos(t*.00005+b.ph)*b.sy)*H;
+        var bx=(b.ax+Math.sin(t*.00008+b.ph)*b.sx)*W;
+        var by=(b.ay+Math.cos(t*.000065+b.ph)*b.sy)*H;
         var r=b.r*Math.max(W,H);
         var g=x.createRadialGradient(bx,by,0,bx,by,r);
-        g.addColorStop(0,'rgba('+b.c+',.55)');g.addColorStop(1,'rgba('+b.c+',0)');
+        g.addColorStop(0,'rgba('+b.c+',.72)');g.addColorStop(1,'rgba('+b.c+',0)');
         x.fillStyle=g;x.beginPath();x.arc(bx,by,r,0,6.3);x.fill();}
       x.globalCompositeOperation='source-over';
     }
@@ -213,26 +214,4 @@
     addEventListener('scroll',onScroll,{passive:true});onScroll();
   })();
 
-  /* ---- widget Janet flottant ---- */
-  (function(){
-    var T={
-      fr:{role:'l’assistante IA de Celya',live:'Disponible maintenant',call:'Appeler Janet',wa:'WhatsApp',msg:'Bonjour Janet — montrez-moi ce que vous savez faire.',note:'Elle décroche en quelques secondes — 24h/24, en FR, NL ou EN.',aria:'Parler à Janet'},
-      nl:{role:'de AI-assistente van Celya',live:'Nu beschikbaar',call:'Bel Janet',wa:'WhatsApp',msg:'Hallo Janet — laat me zien wat u kunt.',note:'Ze neemt op in enkele seconden — 24/7, in NL, FR of EN.',aria:'Praat met Janet'},
-      en:{role:'Celya’s AI assistant',live:'Available now',call:'Call Janet',wa:'WhatsApp',msg:'Hi Janet — show me what you can do.',note:'She picks up in seconds — 24/7, in FR, NL or EN.',aria:'Talk to Janet'}
-    };var t=T[LANG]||T.fr;
-    var av=PRE+'assets/janet-avatar-128.webp';
-    var w=document.createElement('div');w.className='jfab';
-    w.innerHTML='<div class="jfab-p" role="dialog" aria-label="Janet">'
-      +'<div class="jfab-hd"><img src="'+av+'" alt="Janet — '+t.role+'"><div><b>Janet</b><span>'+t.role+'</span></div></div>'
-      +'<span class="jlive"><i></i>'+t.live+'</span>'
-      +'<a class="btn btn-grad" href="tel:+32460254413">'+t.call+'</a>'
-      +'<a class="btn btn-ghost" href="https://wa.me/32470572864?text='+encodeURIComponent(t.msg)+'" target="_blank" rel="noopener">'+t.wa+'</a>'
-      +'<p>'+t.note+'</p></div>'
-      +'<button class="jfab-b" aria-expanded="false" aria-label="'+t.aria+'"><img src="'+av+'" alt="Janet — '+t.role+'"><span class="dot"></span></button>';
-    document.body.appendChild(w);
-    var btn=w.querySelector('.jfab-b');
-    btn.addEventListener('click',function(){var o=w.classList.toggle('open');btn.setAttribute('aria-expanded',o?'true':'false');});
-    document.addEventListener('click',function(e){if(!w.contains(e.target))w.classList.remove('open');});
-    document.addEventListener('keydown',function(e){if(e.key==='Escape')w.classList.remove('open');});
-  })();
 })();
