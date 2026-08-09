@@ -281,60 +281,72 @@
     tick();
   })();
 
-  /* ---- agenda en direct : réservation en boucle, compteur, ligne « maintenant » ---- */
+  /* ---- tableau de planning : onglets métiers, réservations en boucle, ligne « maintenant » ---- */
   (function(){
-    var ag=document.querySelector('[data-agenda]');if(!ag)return;
-    var grid=ag.querySelector('.ag-slots');
-    var slots=[].slice.call(ag.querySelectorAll('.sl')).filter(function(x){return !x.classList.contains('ghost');});
-    var frees=slots.filter(function(x){return x.classList.contains('free');});
-    var cnt=ag.querySelector('#ag-n'),tag=ag.querySelector('.ag-tag'),now=ag.querySelector('.ag-now');
-    var add=ag.querySelector('.ag-add');
-    var names=[];try{names=JSON.parse(ag.getAttribute('data-names')||'[]');}catch(e){}
-    var suffix=ag.getAttribute('data-suffix')||'';
-    if(add&&grid){ /* le bouton révèle un créneau fantôme en pointillés */
-      add.addEventListener('mouseenter',function(){grid.classList.add('ghosted');});
-      add.addEventListener('mouseleave',function(){grid.classList.remove('ghosted');});
-    }
-    if(REDUCE||!('IntersectionObserver' in window)||!frees.length){
-      if(cnt)cnt.textContent='11';
-      if(now)now.style.transform='translateY('+Math.round((grid?grid.offsetHeight:120)*.42)+'px)';
-      return;
-    }
-    var n=12,qi=0,ni=0,timer=null,nowY=0,running=false;
-    function setCount(v){n=v;cnt.textContent=v;cnt.classList.remove('pop');void cnt.offsetWidth;cnt.classList.add('pop');}
-    function moveNow(){if(!now||!grid)return;nowY+=grid.offsetHeight/16;if(nowY>grid.offsetHeight-4)nowY=2;
-      now.style.transform='translateY('+nowY.toFixed(0)+'px)';}
-    function cycle(){
-      if(!running)return;
-      moveNow();
-      if(qi>=frees.length){ /* journée remplie : on remet la démo à zéro */
-        timer=setTimeout(function(){
-          frees.forEach(function(sl){sl.classList.remove('jan');sl.classList.add('free');});
-          qi=0;setCount(12);
-          timer=setTimeout(cycle,2200);
-        },2600);
+    var agf=document.querySelector('.agf');if(!agf)return;
+    var tabs=[].slice.call(agf.querySelectorAll('.agf-tabs button'));
+    var boards=[].slice.call(agf.querySelectorAll('.agf-board'));
+    if(!boards.length)return;
+    var states=boards.map(function(b){
+      var cs=[];try{cs=JSON.parse(b.getAttribute('data-states')||'[]');}catch(e){}
+      return {el:b,ups:[].slice.call(b.querySelectorAll('.blk.up')),
+              freez:[].slice.call(b.querySelectorAll('.freez')),
+              cnt:b.querySelector('.agf-cnt b'),cs:cs,
+              tag:b.querySelector('.ag-tag'),now:b.querySelector('.agf-now'),
+              ov:b.querySelector('.agf-ov'),idx:0,nowY:0,timer:null};
+    });
+    var cur=0,visible=false;
+    function setCnt(s,i){if(!s.cnt||!s.cs.length)return;
+      s.cnt.innerHTML=s.cs[Math.min(i,s.cs.length-1)];
+      s.cnt.classList.remove('pop');void s.cnt.offsetWidth;s.cnt.classList.add('pop');}
+    function resetBoard(s){clearTimeout(s.timer);s.idx=0;
+      s.ups.forEach(function(u){u.classList.remove('on');});
+      s.freez.forEach(function(f){f.classList.remove('off');});
+      if(s.tag)s.tag.classList.remove('on');
+      if(s.cnt&&s.cs.length)s.cnt.innerHTML=s.cs[0];}
+    function loop(s){
+      if(!visible||states[cur]!==s)return;
+      if(s.now&&s.ov){ /* la ligne « maintenant » descend lentement */
+        s.nowY+=s.ov.offsetHeight/14;
+        if(s.nowY>s.ov.offsetHeight-6)s.nowY=2;
+        s.now.style.transform='translateY('+s.nowY.toFixed(0)+'px)';
+      }
+      if(s.idx>=s.ups.length){ /* journée pleine : on repart de zéro */
+        s.timer=setTimeout(function(){resetBoard(s);
+          s.timer=setTimeout(function(){loop(s);},1500);},3800);
         return;
       }
-      var sl=frees[qi];qi++;
-      sl.classList.add('ring'); /* 1. le créneau s'illumine, un appel arrive */
-      timer=setTimeout(function(){
-        sl.classList.remove('ring','free');
-        sl.classList.add('jan'); /* 2. dégradé + coche qui se dessine */
-        if(tag){ /* 3. l'étiquette glisse depuis la droite */
-          tag.textContent=names[ni%names.length]+' — '+suffix;ni++;
-          tag.style.top=(sl.offsetTop+sl.offsetHeight/2-14)+'px';
-          tag.classList.add('on');
-          setTimeout(function(){tag.classList.remove('on');},2300);
-        }
-        setCount(n-1); /* 4. le compteur décrémente avec rebond */
-        timer=setTimeout(cycle,4200); /* 5. pause, puis créneau suivant */
-      },1250);
+      var u=s.ups[s.idx],f=s.freez[s.idx];
+      u.classList.add('on');if(f)f.classList.add('off');
+      if(s.tag&&s.ov){
+        s.tag.textContent=u.getAttribute('data-label')||'';
+        var ur=u.getBoundingClientRect(),gr=s.ov.getBoundingClientRect();
+        var top=ur.top-gr.top-10;
+        s.tag.style.top=Math.max(0,Math.min(gr.height-30,top))+'px';
+        s.tag.classList.add('on');
+        (function(t){setTimeout(function(){t.classList.remove('on');},2700);})(s.tag);
+      }
+      s.idx++;setCnt(s,s.idx);
+      s.timer=setTimeout(function(){loop(s);},5000);
     }
-    var ioA=new IntersectionObserver(function(es){es.forEach(function(e){
-      if(e.isIntersecting&&!running){running=true;timer=setTimeout(cycle,1200);}
-      else if(!e.isIntersecting&&running){running=false;clearTimeout(timer);}
-    });},{threshold:.3});
-    ioA.observe(ag);
+    function staticShow(s){s.ups.forEach(function(u){u.classList.add('on');});
+      s.freez.forEach(function(f){f.classList.add('off');});
+      if(s.cnt&&s.cs.length)s.cnt.innerHTML=s.cs[s.cs.length-1];}
+    function activate(i){
+      resetBoard(states[cur]);
+      boards[cur].classList.remove('on');tabs[cur].classList.remove('on');
+      cur=i;boards[i].classList.add('on');tabs[i].classList.add('on');
+      if(REDUCE){staticShow(states[i]);}
+      else if(visible){states[i].timer=setTimeout(function(){loop(states[i]);},1500);}
+    }
+    tabs.forEach(function(t,i){t.addEventListener('click',function(){if(i!==cur)activate(i);});});
+    if(REDUCE){staticShow(states[0]);return;}
+    var ioG=new IntersectionObserver(function(es){es.forEach(function(e){
+      if(e.isIntersecting&&!visible){visible=true;
+        states[cur].timer=setTimeout(function(){loop(states[cur]);},1300);}
+      else if(!e.isIntersecting&&visible){visible=false;clearTimeout(states[cur].timer);}
+    });},{threshold:.2});
+    ioG.observe(agf);
   })();
 
   /* ---- bande des langues : le grand mot tourne, le nuage s'éclaire ---- */
