@@ -10,6 +10,7 @@
   --ok:#31D983;
   --h:'Schibsted Grotesk',system-ui,sans-serif; --b:'Inter',system-ui,sans-serif; --a:'Fraunces',Georgia,serif;
   --r:26px; --max:1180px;
+  --spring:cubic-bezier(.34,1.56,.64,1);
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
@@ -20,6 +21,11 @@ body::before{content:'';position:fixed;inset:0;z-index:-2;pointer-events:none;
              radial-gradient(60vw 60vw at 100% 12%,rgba(79,123,255,.19),transparent 62%),
              radial-gradient(52vw 52vw at 38% 108%,rgba(168,85,247,.17),transparent 62%)}
 #aurora{position:fixed;inset:0;width:100%;height:100%;z-index:-1;pointer-events:none;filter:blur(58px) saturate(1.3);opacity:.75}
+/* grain : fine texture qui casse l'aspect lisse */
+body::after{content:'';position:fixed;inset:-60%;z-index:90;pointer-events:none;opacity:.045;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+  animation:grain 9s steps(10) infinite}
+@keyframes grain{0%,100%{transform:translate(0,0)}10%{transform:translate(-2%,-3%)}30%{transform:translate(3%,-2%)}50%{transform:translate(-3%,2%)}70%{transform:translate(2%,3%)}90%{transform:translate(-2%,1%)}}
 ::selection{background:rgba(79,123,255,.45);color:#fff}
 a{color:inherit;text-decoration:none}
 img{max-width:100%;display:block}
@@ -45,7 +51,7 @@ header.top{position:sticky;top:0;z-index:50;background:rgba(10,14,26,.72);backdr
 .lang a{padding:6px 10px;border-radius:99px;color:var(--soft)}
 .lang a.on{background:rgba(255,255,255,.1);color:var(--ink)}
 .btn{display:inline-flex;align-items:center;gap:10px;font:600 15px/1 var(--b);border-radius:99px;padding:13px 22px;transition:transform .2s ease;cursor:pointer}
-.btn:hover{transform:translateY(-2px)}
+.btn-ghost:hover{transform:translateY(-2px)}
 .btn{position:relative;overflow:hidden}
 .btn-grad::after{content:'';position:absolute;inset:0;background:linear-gradient(105deg,transparent 42%,rgba(255,255,255,.55) 50%,transparent 58%);transform:translateX(-130%)}
 .btn-grad:hover::after{transform:translateX(130%);transition:transform .65s ease}
@@ -58,18 +64,26 @@ header.top{position:sticky;top:0;z-index:50;background:rgba(10,14,26,.72);backdr
 
 /* ---------- bento ---------- */
 .bento{display:grid;grid-template-columns:repeat(12,1fr);gap:14px;margin-top:22px}
-.tile{position:relative;grid-column:span 12;border:1px solid var(--line);border-radius:var(--r);background:var(--glass);backdrop-filter:blur(12px);padding:26px;overflow:hidden}
-.tile::before{content:'';position:absolute;inset:0;border-radius:inherit;background:linear-gradient(160deg,rgba(255,255,255,.055),rgba(255,255,255,0) 38%);pointer-events:none}
+.tile{position:relative;grid-column:span 12;border:1px solid var(--line);border-radius:var(--r);background-color:var(--glass);background-image:linear-gradient(160deg,rgba(255,255,255,.055),rgba(255,255,255,0) 38%);backdrop-filter:blur(12px);padding:26px;overflow:hidden;transform:translate3d(0,var(--py,0px),0)}
+/* lueur qui suit le curseur */
+.tile::after{content:'';position:absolute;inset:0;border-radius:inherit;pointer-events:none;opacity:0;transition:opacity .45s ease;z-index:0;
+  background:radial-gradient(340px circle at var(--mx,50%) var(--my,50%),rgba(79,123,255,.14),rgba(34,211,238,.05) 45%,transparent 72%)}
+/* bordure illuminée au point le plus proche du curseur */
+.tile::before{content:'';position:absolute;inset:0;border-radius:inherit;pointer-events:none;opacity:0;transition:opacity .45s ease;padding:1px;
+  background:radial-gradient(280px circle at var(--mx,50%) var(--my,50%),rgba(34,211,238,.9),rgba(79,123,255,.5) 42%,rgba(168,85,247,.18) 65%,transparent 78%);
+  -webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);mask-composite:exclude}
+@media(hover:hover) and (pointer:fine){.tile:hover::after,.tile:hover::before{opacity:1}}
+.tile>*{position:relative;z-index:1}
 
 /* héro */
 .t-hero{grid-column:span 8;padding:40px 38px;display:flex;flex-direction:column;justify-content:center}
 .t-hero h1{margin:14px 0 18px}
 /* apparition du héro au chargement */
 .t-hero .lr{display:block;overflow:hidden;padding-bottom:.08em;margin-bottom:-.08em}
-.t-hero .lr>span{display:block;transform:translateY(112%);animation:rise .9s cubic-bezier(.2,.7,.2,1) forwards}
+.t-hero .lr>span{display:block;transform:translateY(112%);animation:rise 1s var(--spring) forwards}
 .t-hero .lr:nth-child(2)>span{animation-delay:.14s}
 @keyframes rise{to{transform:none}}
-.t-hero .sub,.t-hero .cta-row,.t-hero .proof{opacity:0;transform:translateY(14px);animation:fadeup .85s cubic-bezier(.2,.7,.2,1) forwards}
+.t-hero .sub,.t-hero .cta-row,.t-hero .proof{opacity:0;transform:translateY(14px);animation:fadeup .9s var(--spring) forwards}
 .t-hero .sub{animation-delay:.3s}
 .t-hero .cta-row{animation-delay:.45s}
 .t-hero .proof{animation-delay:.6s}
@@ -207,7 +221,15 @@ header.top{position:sticky;top:0;z-index:50;background:rgba(10,14,26,.72);backdr
 .t-janet::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,14,26,0) 58%,rgba(10,14,26,.8) 96%)}
 .t-janet .jq{position:absolute;left:14px;bottom:13px;z-index:2;display:inline-flex;align-items:center;gap:8px;background:rgba(10,14,26,.72);backdrop-filter:blur(8px);border:1px solid var(--line);border-radius:99px;padding:8px 14px}
 .t-janet .jq span{font-size:12.5px;color:var(--body)}
-.t-janet .jq i{width:8px;height:8px;border-radius:50%;background:var(--ok);font-style:normal;animation:pulse 2.2s infinite}
+.t-janet .jq>i{width:8px;height:8px;border-radius:50%;background:var(--ok);font-style:normal;animation:pulse 2.2s infinite;flex:none}
+/* onde vocale : jamais figée */
+.t-janet .jq .w{display:inline-flex;gap:2.5px;align-items:center;height:14px;flex:none}
+.t-janet .jq .w i{width:2.5px;height:30%;border-radius:2px;background:linear-gradient(180deg,var(--c1),var(--c3));font-style:normal}
+.t-janet .jq .w i:nth-child(1){animation:jw 1s ease-in-out infinite}
+.t-janet .jq .w i:nth-child(2){animation:jw .8s ease-in-out .12s infinite}
+.t-janet .jq .w i:nth-child(3){animation:jw 1.25s ease-in-out .05s infinite}
+.t-janet .jq .w i:nth-child(4){animation:jw .95s ease-in-out .2s infinite}
+@keyframes jw{50%{height:100%}}
 
 /* FAQ */
 .t-faq .qs{columns:2 340px;column-gap:34px;margin-top:4px}
@@ -249,11 +271,13 @@ footer.site a:hover{color:var(--ink)}
 .legal a{color:var(--c1)}
 
 /* ---------- apparition au scroll ---------- */
-.reveal{opacity:0;transform:translateY(24px);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1),border-color .35s ease,box-shadow .35s ease}
-.reveal.in{opacity:1;transform:none}
+.reveal{opacity:0;transform:translate3d(0,calc(var(--py,0px) + 30px),0) scale(.978);transition:opacity .65s cubic-bezier(.22,1,.36,1),transform .9s var(--spring),border-color .35s ease,box-shadow .35s ease}
+.reveal.in{opacity:1;transform:translate3d(0,var(--py,0px),0) scale(1)}
+/* après l'entrée : la parallaxe pilote transform sans être lissée */
+.reveal.done{transition:opacity .3s ease,border-color .35s ease,box-shadow .35s ease}
 /* titres : lever de ligne avec légère rotation, à la révélation de la tuile */
 .l2{display:block;overflow:hidden;padding-bottom:.12em;margin-bottom:-.12em}
-.l2>span{display:block;transform:translateY(115%) rotate(1.2deg);transform-origin:0 100%;transition:transform 1s cubic-bezier(.2,.7,.2,1) .08s}
+.l2>span{display:block;transform:translateY(115%) rotate(1.2deg);transform-origin:0 100%;transition:transform 1s var(--spring) .1s}
 .reveal.in .l2>span{transform:none}
 
 /* fil de progression de lecture */
@@ -280,7 +304,7 @@ footer.site a:hover{color:var(--ink)}
 /* ---------- responsive ---------- */
 @media(hover:hover){
   .tile:not(.reveal){transition:border-color .35s ease,box-shadow .35s ease}
-  .tile:hover{border-color:rgba(79,123,255,.3);box-shadow:0 14px 44px rgba(6,10,26,.5)}
+  .tile:hover{border-color:rgba(79,123,255,.22);box-shadow:0 14px 44px rgba(6,10,26,.5)}
 }
 @media(max-width:900px){
   .t-hero,.t-demo,.t-role,.t-fiche,.t-met,.t-met-home,.t-mini,.t-roi,.t-janet,.t-steps{grid-column:span 12}
@@ -316,4 +340,12 @@ footer.site a:hover{color:var(--ink)}
   .t-faq details[open] .a{animation:none}
   .roi-out b.pop{animation:none}
   .mrow:hover i{transform:none}
+  body::after{animation:none}
+  .t-janet .jq .w i{animation:none}
+  .t-janet .jq .w i:nth-child(1){height:45%}
+  .t-janet .jq .w i:nth-child(2){height:80%}
+  .t-janet .jq .w i:nth-child(3){height:60%}
+  .t-janet .jq .w i:nth-child(4){height:90%}
+  .tile{transform:none}
+  .reveal,.reveal.in{transform:none}
 }
