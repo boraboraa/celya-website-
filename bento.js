@@ -281,6 +281,36 @@
     tick();
   })();
 
+  /* ---- bande des langues : le grand mot tourne, le nuage s'éclaire ---- */
+  (function(){
+    var band=document.querySelector('.lang-free');if(!band)return;
+    var bw=band.querySelector('.bigword');if(!bw)return;
+    var words=[];try{words=JSON.parse(bw.getAttribute('data-words')||'[]');}catch(e){}
+    var cloud=[].slice.call(band.querySelectorAll('.langcloud span'));
+    if(REDUCE||words.length<2||!('IntersectionObserver' in window))return;
+    var i=0,wt=null,ct=null,cur=bw.querySelector('span');
+    function next(){
+      i=(i+1)%words.length;
+      var nx=document.createElement('span');
+      nx.className='gradtxt inq';nx.dir='auto';nx.textContent=words[i];
+      bw.appendChild(nx);void nx.offsetWidth;
+      cur.classList.add('out');nx.classList.remove('inq');
+      var old=cur;cur=nx;
+      setTimeout(function(){if(old.parentNode)old.remove();},750);
+    }
+    function light(){
+      var sp=cloud[Math.floor(Math.random()*cloud.length)];
+      if(!sp||sp.classList.contains('lit'))return;
+      sp.classList.add('lit');
+      setTimeout(function(){sp.classList.remove('lit');},1500);
+    }
+    var iol=new IntersectionObserver(function(es){es.forEach(function(e){
+      if(e.isIntersecting){if(!wt){wt=setInterval(next,2100);ct=setInterval(light,700);}}
+      else if(wt){clearInterval(wt);clearInterval(ct);wt=ct=null;}
+    });},{threshold:.3});
+    iol.observe(band);
+  })();
+
   /* ---- fil de progression de lecture ---- */
   (function(){
     var bar=document.createElement('div');bar.id='sprog';document.body.appendChild(bar);

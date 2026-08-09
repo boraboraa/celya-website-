@@ -223,6 +223,7 @@ header.top{position:sticky;top:0;z-index:50;background:rgba(10,14,26,.72);backdr
 
 /* petites tuiles */
 .t-mini{grid-column:span 3;padding:22px}
+.t-mini-w{grid-column:span 6}
 .t-mini h3{font-size:16.5px}
 .t-mini p{font-size:13.5px;color:var(--body)}
 
@@ -271,6 +272,17 @@ header.top{position:sticky;top:0;z-index:50;background:rgba(10,14,26,.72);backdr
 .faq-free details[open] summary::after{transform:rotate(45deg)}
 .faq-free .a{padding:0 2px 17px;max-width:52em;font-size:15px}
 .faq-free details[open] .a{animation:fadeup .45s cubic-bezier(.2,.7,.2,1) both}
+
+/* bande des langues : grand mot serif qui tourne, ligne, nuage discret */
+.lang-free{text-align:center}
+.bigword{position:relative;height:1.3em;overflow:hidden;font-family:var(--a);font-style:italic;font-weight:300;font-size:clamp(54px,8.5vw,106px);line-height:1.25;letter-spacing:-.02em}
+.bigword span{position:absolute;left:0;right:0;top:0;display:block;transition:transform .7s var(--spring),opacity .5s ease}
+.bigword span.out{transform:translateY(-108%);opacity:0}
+.bigword span.inq{transform:translateY(108%);opacity:0}
+.langline{margin:16px auto 30px;max-width:44em;font-size:16.5px;color:var(--body)}
+.langcloud{display:flex;flex-wrap:wrap;gap:9px 10px;justify-content:center;max-width:780px;margin:0 auto}
+.langcloud span{font:500 13px/1 var(--b);color:var(--soft);border:1px solid var(--line);border-radius:99px;padding:7px 13px;transition:color .5s ease,border-color .5s ease,box-shadow .5s ease}
+.langcloud span.lit{color:var(--ink);border-color:rgba(79,123,255,.6);box-shadow:0 0 14px rgba(79,123,255,.35)}
 
 /* CTA final : pleine largeur, très grand */
 .cta-free{text-align:center;margin:150px 0 110px}
@@ -388,6 +400,8 @@ footer.site a:hover{color:var(--ink)}
   .reveal .ic-s svg *,.reveal .step .ic svg *{stroke-dasharray:none;stroke-dashoffset:0;transition:none}
   .btn-grad::after{display:none}
   .faq-free details[open] .a{animation:none}
+  .bigword span{transition:none}
+  .langcloud span{transition:none}
   .roi-out b.pop{animation:none}
   .mrow:hover i{transform:none}
   body::after{animation:none}
