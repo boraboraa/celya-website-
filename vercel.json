@@ -106,13 +106,28 @@
       "permanent": true
     },
     {
+      "source": "/fr/legal.html",
+      "destination": "/legal.html",
+      "permanent": true
+    },
+    {
+      "source": "/fr/privacy.html",
+      "destination": "/privacy.html",
+      "permanent": true
+    },
+    {
+      "source": "/fr/cookies.html",
+      "destination": "/cookies.html",
+      "permanent": true
+    },
+    {
       "source": "/about.html",
-      "destination": "/en/",
+      "destination": "/",
       "permanent": true
     },
     {
       "source": "/pricing.html",
-      "destination": "/en/",
+      "destination": "/",
       "permanent": true
     },
     {
@@ -123,6 +138,11 @@
     {
       "source": "/nl/pricing.html",
       "destination": "/nl/",
+      "permanent": true
+    },
+    {
+      "source": "/clinics.html",
+      "destination": "/cabinets.html",
       "permanent": true
     }
   ]
