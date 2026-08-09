@@ -75,22 +75,41 @@
     }
   })();
 
-  /* ---- démo d'appel : « appel entrant » → Janet décroche → conversation → boucle ---- */
+  /* ---- appel en direct : sonnerie → décroché → minuteur + conversation → fiche remplie → boucle ---- */
   document.querySelectorAll('.phone[data-demo]').forEach(function(ph){
     var chat=ph.querySelector('.chat');if(!chat)return;
     var inc=ph.querySelector('.ph-incoming');
+    var card=ph.querySelector('.ph-card');
     var tile=ph.closest('.t-demo')||ph;
     var wave=tile.querySelector('.wave');
+    var clock=tile.querySelector('.timer');
     var items=[].slice.call(chat.children);
-    if(REDUCE||!('IntersectionObserver' in window)||!items.length){if(inc)inc.remove();return;}
+    var rows=card?[].slice.call(card.querySelectorAll('.pcrow')):[];
+    if(REDUCE||!('IntersectionObserver' in window)||!items.length){
+      if(inc)inc.remove();
+      return; /* tout est visible statiquement, fiche comprise */
+    }
     chat.classList.add('anim');
-    var idx=0,timer=null,started=false,typing=null;
+    if(card)card.classList.add('anim');
+    var idx=0,timer=null,started=false,typing=null,sec=0,tick=null;
+    function fmt(n){return ('0'+Math.floor(n/60)).slice(-2)+':'+('0'+n%60).slice(-2);}
+    function startClock(){sec=0;if(clock)clock.textContent='00:00';
+      tick=setInterval(function(){sec++;if(clock)clock.textContent=fmt(sec);},1000);}
+    function stopClock(){clearInterval(tick);}
     function setWave(on){if(wave)wave.classList.toggle('on',!!on);}
     function clearTyping(){if(typing){typing.remove();typing=null;}}
     function showIncoming(){if(inc){inc.classList.add('onstage');chat.style.visibility='hidden';}}
     function hideIncoming(){if(inc){inc.classList.remove('onstage');chat.style.visibility='';}}
-    function reset(){clearTimeout(timer);clearTyping();setWave(false);
+    function hideCard(){if(card){card.classList.remove('onstage');rows.forEach(function(r){r.classList.remove('on');});}}
+    function reset(){clearTimeout(timer);clearTyping();stopClock();setWave(false);hideCard();
       items.forEach(function(m){m.classList.remove('on');m._typed=false;});idx=0;}
+    function fillCard(i){
+      if(i<rows.length){rows[i].classList.add('on');timer=setTimeout(function(){fillCard(i+1);},430);}
+      else{timer=setTimeout(function(){ /* fin de cycle : nouvel appel */
+        reset();showIncoming();
+        timer=setTimeout(function(){hideIncoming();startClock();step();},2100);
+      },3400);}
+    }
     function step(){
       if(idx<items.length){
         var el=items[idx],isJ=el.classList.contains('j');
@@ -102,15 +121,17 @@
           timer=setTimeout(step,700);return;
         }
         clearTyping();el.classList.add('on');setWave(isJ);idx++;
-        timer=setTimeout(step,idx===items.length?4200:1450);
-      }else{
-        setWave(false);
-        reset();showIncoming();
-        timer=setTimeout(function(){hideIncoming();step();},2300);
+        timer=setTimeout(step,1450);
+      }else{ /* appel terminé : la fiche se remplit */
+        setWave(false);stopClock();
+        if(card){card.classList.add('onstage');timer=setTimeout(function(){fillCard(0);},350);}
+        else{timer=setTimeout(function(){reset();showIncoming();
+          timer=setTimeout(function(){hideIncoming();startClock();step();},2100);},3400);}
       }
     }
     var io2=new IntersectionObserver(function(es){es.forEach(function(e){
-      if(e.isIntersecting&&!started){started=true;showIncoming();timer=setTimeout(function(){hideIncoming();step();},1700);}
+      if(e.isIntersecting&&!started){started=true;showIncoming();
+        timer=setTimeout(function(){hideIncoming();startClock();step();},1600);}
       else if(!e.isIntersecting&&started){reset();hideIncoming();started=false;}
     });},{threshold:.3});
     io2.observe(tile);
