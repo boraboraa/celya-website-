@@ -281,6 +281,62 @@
     tick();
   })();
 
+  /* ---- agenda en direct : réservation en boucle, compteur, ligne « maintenant » ---- */
+  (function(){
+    var ag=document.querySelector('[data-agenda]');if(!ag)return;
+    var grid=ag.querySelector('.ag-slots');
+    var slots=[].slice.call(ag.querySelectorAll('.sl')).filter(function(x){return !x.classList.contains('ghost');});
+    var frees=slots.filter(function(x){return x.classList.contains('free');});
+    var cnt=ag.querySelector('#ag-n'),tag=ag.querySelector('.ag-tag'),now=ag.querySelector('.ag-now');
+    var add=ag.querySelector('.ag-add');
+    var names=[];try{names=JSON.parse(ag.getAttribute('data-names')||'[]');}catch(e){}
+    var suffix=ag.getAttribute('data-suffix')||'';
+    if(add&&grid){ /* le bouton révèle un créneau fantôme en pointillés */
+      add.addEventListener('mouseenter',function(){grid.classList.add('ghosted');});
+      add.addEventListener('mouseleave',function(){grid.classList.remove('ghosted');});
+    }
+    if(REDUCE||!('IntersectionObserver' in window)||!frees.length){
+      if(cnt)cnt.textContent='11';
+      if(now)now.style.transform='translateY('+Math.round((grid?grid.offsetHeight:120)*.42)+'px)';
+      return;
+    }
+    var n=12,qi=0,ni=0,timer=null,nowY=0,running=false;
+    function setCount(v){n=v;cnt.textContent=v;cnt.classList.remove('pop');void cnt.offsetWidth;cnt.classList.add('pop');}
+    function moveNow(){if(!now||!grid)return;nowY+=grid.offsetHeight/16;if(nowY>grid.offsetHeight-4)nowY=2;
+      now.style.transform='translateY('+nowY.toFixed(0)+'px)';}
+    function cycle(){
+      if(!running)return;
+      moveNow();
+      if(qi>=frees.length){ /* journée remplie : on remet la démo à zéro */
+        timer=setTimeout(function(){
+          frees.forEach(function(sl){sl.classList.remove('jan');sl.classList.add('free');});
+          qi=0;setCount(12);
+          timer=setTimeout(cycle,2200);
+        },2600);
+        return;
+      }
+      var sl=frees[qi];qi++;
+      sl.classList.add('ring'); /* 1. le créneau s'illumine, un appel arrive */
+      timer=setTimeout(function(){
+        sl.classList.remove('ring','free');
+        sl.classList.add('jan'); /* 2. dégradé + coche qui se dessine */
+        if(tag){ /* 3. l'étiquette glisse depuis la droite */
+          tag.textContent=names[ni%names.length]+' — '+suffix;ni++;
+          tag.style.top=(sl.offsetTop+sl.offsetHeight/2-14)+'px';
+          tag.classList.add('on');
+          setTimeout(function(){tag.classList.remove('on');},2300);
+        }
+        setCount(n-1); /* 4. le compteur décrémente avec rebond */
+        timer=setTimeout(cycle,4200); /* 5. pause, puis créneau suivant */
+      },1250);
+    }
+    var ioA=new IntersectionObserver(function(es){es.forEach(function(e){
+      if(e.isIntersecting&&!running){running=true;timer=setTimeout(cycle,1200);}
+      else if(!e.isIntersecting&&running){running=false;clearTimeout(timer);}
+    });},{threshold:.3});
+    ioA.observe(ag);
+  })();
+
   /* ---- bande des langues : le grand mot tourne, le nuage s'éclaire ---- */
   (function(){
     var band=document.querySelector('.lang-free');if(!band)return;
