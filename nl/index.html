@@ -36,7 +36,7 @@ gtag('consent','default',{ad_storage:'denied',analytics_storage:'denied',ad_user
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@700;800&family=Fraunces:ital,opsz,wght@1,9..144,300;1,9..144,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../bento.css">
-<noscript><style>.reveal{opacity:1;transform:none}</style></noscript>
+<noscript><style>.reveal{opacity:1;transform:none}.l2>span{transform:none}.product-free.reveal .frame{transform:rotateX(7deg)}</style></noscript>
 </head>
 <body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><linearGradient id="bgrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#22D3EE"/><stop offset=".5" stop-color="#4F7BFF"/><stop offset="1" stop-color="#A855F7"/></linearGradient></defs></svg>
@@ -45,7 +45,15 @@ gtag('consent','default',{ad_storage:'denied',analytics_storage:'denied',ad_user
     <a href="./" aria-label="Celya"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 284 138" role="img" aria-label="Celya" style="height:30px;width:auto;display:block"><defs><linearGradient id="celyaNeon" gradientUnits="userSpaceOnUse" x1="12" y1="105" x2="268" y2="34"><stop offset="0" stop-color="#22D3EE"/><stop offset="0.5" stop-color="#4F7BFF"/><stop offset="1" stop-color="#A855F7"/></linearGradient><filter id="celyaGlow" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="1.8" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs><g fill="none" stroke="url(#celyaNeon)" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" filter="url(#celyaGlow)"><path d="M64.98 89.28 A30 30 0 1 1 64.98 50.72 L83.98 34"/><path d="M83.98 34 L79.8 46.3 M83.98 34 L71.3 36.6"/><path d="M135 79 L93 79 A21 21 0 1 1 129 92"/><path d="M157 40 L157 100"/><path d="M175 58 L193 92 M211 58 L180 118"/><circle cx="244" cy="79" r="21"/><path d="M265 62 L265 100"/></g><path d="M244 58 L244 49" fill="none" stroke="url(#celyaNeon)" stroke-width="6" stroke-linecap="round" filter="url(#celyaGlow)"/><circle cx="244" cy="45" r="3.6" fill="#9BF3FF" filter="url(#celyaGlow)"/><rect x="212" y="74" width="5" height="10" rx="1.6" fill="url(#celyaNeon)"/><rect x="271" y="74" width="5" height="10" rx="1.6" fill="url(#celyaNeon)"/><rect x="229" y="71.5" width="30" height="12" rx="6" fill="#161F36" stroke="url(#celyaNeon)" stroke-width="1.5"/><g filter="url(#celyaGlow)"><rect x="234" y="75" width="7.5" height="3.6" rx="1.8" fill="#9BF3FF"/><rect x="248.5" y="75" width="7.5" height="3.6" rx="1.8" fill="#9BF3FF"/></g></svg></a>
     <nav class="nav-links">
       <a href="#marche">Hoe het werkt</a>
-      <a href="#metier">Uw sector</a>
+      <div class="nav-drop">
+        <a href="#metier">Uw sector <svg class="car" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></a>
+        <div class="drop-panel">
+          <a href="garages.html"><img src="../assets/metier-garage.webp" alt="Garages" width="56" height="42" loading="lazy"><b>Garages</b><i aria-hidden="true">&rarr;</i></a>
+          <a href="restaurants.html"><img src="../assets/metier-restaurant.webp" alt="Restaurants" width="56" height="42" loading="lazy"><b>Restaurants</b><i aria-hidden="true">&rarr;</i></a>
+          <a href="praktijken.html"><img src="../assets/metier-cabinet.webp" alt="Praktijken" width="56" height="42" loading="lazy"><b>Praktijken</b><i aria-hidden="true">&rarr;</i></a>
+          <a href="zelfstandigen.html"><img src="../assets/metier-artisan.webp" alt="Zelfstandigen" width="56" height="42" loading="lazy"><b>Zelfstandigen</b><i aria-hidden="true">&rarr;</i></a>
+        </div>
+      </div>
       <a href="#faq">FAQ</a>
       <a href="contact.html">Contact</a>
     </nav>
@@ -134,6 +142,11 @@ gtag('consent','default',{ad_storage:'denied',analytics_storage:'denied',ad_user
         </div>
       </div>
     </section>
+    <section class="cine reveal">
+      <img src="../assets/cine-atelier-1600.webp" srcset="../assets/cine-atelier-800.webp 800w, ../assets/cine-atelier-1600.webp 1600w" sizes="100vw" alt="Handen aan het werk op een motor, sleutel in de hand" loading="lazy" width="1600" height="1000">
+      <span class="cine-shade"></span>
+      <div class="wrap"><p class="cine-line"><span class="l2"><span>Uw handen zitten vol. <span class="it">Zij neemt op.</span></span></span></p></div>
+    </section>
 <div class="wrap sec">
   <div class="bento">
     <section class="tile t-role reveal">
@@ -154,6 +167,10 @@ gtag('consent','default',{ad_storage:'denied',analytics_storage:'denied',ad_user
       <h3>Ze beantwoordt vragen</h3>
       <p>Openingsuren, prijzen, diensten: ze informeert uw klanten op basis van uw gegevens. Weet ze het niet, dan noteert ze en geeft ze door.</p>
     </section>
+  </div>
+</div>
+<div class="wrap sec">
+  <div class="bento">
     <section class="tile t-roi reveal">
       <div class="kick"><b>02</b><span>Uw cijfers</span></div>
       <h2><span class="l2"><span>Wat kosten <span class="it">gemiste oproepen</span> u?</span></span></h2>
@@ -177,20 +194,50 @@ gtag('consent','default',{ad_storage:'denied',analytics_storage:'denied',ad_user
         </div>
       </div>
     </section>
-    <section class="tile t-fiche reveal">
-      <div class="kick"><b>03</b><span>Na elke oproep</span></div>
-      <h2><span class="l2"><span>U ontvangt een duidelijke fiche, <span class="it">geen post-it</span></span></span></h2>
-      <div class="fiche">
-        <span class="exbadge">Voorbeeld</span>
-        <div class="frow"><span class="k">Beller</span><span class="v">Marie D.</span></div>
-        <div class="frow"><span class="k">Reden</span><span class="v">Afspraak</span></div>
-        <div class="frow"><span class="k">Urgentie</span><span class="pill norm">Normaal</span></div>
-        <div class="frow"><span class="k">Geboekt</span><span class="v">Donderdag 15u20</span></div>
-        <div class="frow"><span class="k">Transcriptie</span><span class="pill link">Beschikbaar</span></div>
-      </div>
-    </section>
   </div>
 </div>
+    <section class="freesec product-free reveal" id="fiche">
+      <div class="wrap">
+        <div class="fs-head">
+          <div class="kick"><b>03</b><span>Na elke oproep</span></div>
+          <h2><span class="l2"><span>U ontvangt een duidelijke fiche, <span class="it">geen post-it</span></span></span></h2>
+        </div>
+        <div class="frame-wrap">
+          <div class="frame">
+            <div class="frame-bar"><span class="fdots" aria-hidden="true"><i></i><i></i><i></i></span><span class="furl">app.celya.be</span><span class="exbadge">Voorbeeld</span></div>
+            <div class="frame-body">
+              <div class="fpane">
+                <header><i></i>Oproepfiche</header>
+                <div class="flist">
+                  <div class="fli onrow"><b>Marie D.</b><span>Afspraak</span><span class="pill norm">Normaal</span></div>
+                  <div class="fli"><b>Karim B.</b><span>Bericht</span><span class="pill urg">Dringend</span></div>
+                  <div class="fli"><b>M. Peeters</b><span>Antwoord</span><span class="pill norm">Normaal</span></div>
+                </div>
+                <div class="fiche">
+                  <div class="frow"><span class="k">Beller</span><span class="v">Marie D.</span></div>
+                  <div class="frow"><span class="k">Reden</span><span class="v">Afspraak</span></div>
+                  <div class="frow"><span class="k">Urgentie</span><span class="pill norm">Normaal</span></div>
+                  <div class="frow"><span class="k">Geboekt</span><span class="v">Donderdag 15u20</span></div>
+                  <div class="frow"><span class="k">Transcriptie</span><span class="pill link">Beschikbaar</span></div>
+                </div>
+              </div>
+              <div class="fpane">
+                <header><i></i>Agenda — Donderdag</header>
+                <div class="mcal">
+                  <div class="mcal-ruler"><span style="top:0%">14:00</span><span style="top:25%">15:00</span><span style="top:50%">16:00</span><span style="top:75%">17:00</span><span style="top:100%">18:00</span></div>
+                  <div class="mcal-body">
+                    <div class="blk man" style="top:2%;height:15%"><i class="fx"></i><b>M. Peeters</b><span>14u05</span><svg class="bhd" viewBox="0 0 24 24" aria-hidden="true"><path d="M7.2 11.5V6.2a1.35 1.35 0 0 1 2.7 0v4M9.9 10.2V4.6a1.35 1.35 0 0 1 2.7 0v5.6M12.6 10.4V6.2a1.35 1.35 0 0 1 2.7 0v6.6c0 3-2 5-5 5-2.6 0-4.3-1.4-5.3-3.7l-1.3-3a1.3 1.3 0 0 1 2.3-1.2l1.2 1.9"/></svg></div>
+                    <div class="blk jan" style="top:33.3%;height:15%"><i class="fx"></i><b>Marie D.</b><span>15u20</span><svg class="bck" viewBox="0 0 24 24" aria-hidden="true"><path d="M5.5 12.5l4.3 4.3L18.5 8" pathLength="1"/></svg></div>
+                    <div class="freez" style="top:57%;height:13%" aria-hidden="true"></div>
+                    <div class="blk jan" style="top:79%;height:15%"><i class="fx"></i><b>Karim B.</b><span>17u10</span><svg class="bck" viewBox="0 0 24 24" aria-hidden="true"><path d="M5.5 12.5l4.3 4.3L18.5 8" pathLength="1"/></svg></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
     <section class="freesec agf reveal" id="agenda">
       <span class="exbadge">Voorbeeld</span>
       <div class="wrap">
@@ -225,6 +272,11 @@ gtag('consent','default',{ad_storage:'denied',analytics_storage:'denied',ad_user
         </div>
       </div>
     </section>
+    <section class="cine reveal">
+      <img src="../assets/cine-restaurant-1600.webp" srcset="../assets/cine-restaurant-800.webp 800w, ../assets/cine-restaurant-1600.webp 1600w" sizes="100vw" alt="Een warm restaurantinterieur 's avonds" loading="lazy" width="1600" height="1000">
+      <span class="cine-shade"></span>
+      <div class="wrap"><p class="cine-line"><span class="l2"><span>Midden in de service <span class="it">gaat geen oproep verloren.</span></span></span></p></div>
+    </section>
 <div class="wrap sec">
   <div class="bento">
     <div class="pc-head reveal" id="metier">
@@ -232,25 +284,29 @@ gtag('consent','default',{ad_storage:'denied',analytics_storage:'denied',ad_user
       <h2><span class="l2"><span>Ook bij u <span class="it">rinkelt de telefoon</span></span></span></h2>
     </div>
     <a class="tile pcard reveal" href="garages.html">
-      <img src="assets/metier-garage.webp" alt="Garages" loading="lazy" width="1000" height="700">
+      <img src="../assets/metier-garage.webp" alt="Garages" loading="lazy" width="1000" height="700">
       <span class="pc-shade"></span>
       <span class="pc-in"><b>Garages</b><em>« Mijn auto start niet, het is dringend. »</em><i aria-hidden="true">&rarr;</i></span>
     </a>
     <a class="tile pcard reveal" href="restaurants.html">
-      <img src="assets/metier-restaurant.webp" alt="Restaurants" loading="lazy" width="1000" height="700">
+      <img src="../assets/metier-restaurant.webp" alt="Restaurants" loading="lazy" width="1000" height="700">
       <span class="pc-shade"></span>
       <span class="pc-in"><b>Restaurants</b><em>« Een tafel voor 4 vanavond, kan dat? »</em><i aria-hidden="true">&rarr;</i></span>
     </a>
     <a class="tile pcard reveal" href="praktijken.html">
-      <img src="assets/metier-cabinet.webp" alt="Praktijken" loading="lazy" width="1000" height="700">
+      <img src="../assets/metier-cabinet.webp" alt="Praktijken" loading="lazy" width="1000" height="700">
       <span class="pc-shade"></span>
       <span class="pc-in"><b>Praktijken</b><em>« Ik wil mijn afspraak van donderdag verzetten. »</em><i aria-hidden="true">&rarr;</i></span>
     </a>
     <a class="tile pcard reveal" href="zelfstandigen.html">
-      <img src="assets/metier-artisan.webp" alt="Zelfstandigen" loading="lazy" width="1000" height="700">
+      <img src="../assets/metier-artisan.webp" alt="Zelfstandigen" loading="lazy" width="1000" height="700">
       <span class="pc-shade"></span>
       <span class="pc-in"><b>Zelfstandigen</b><em>« Doet u ook depannages op zaterdag? »</em><i aria-hidden="true">&rarr;</i></span>
     </a>
+  </div>
+</div>
+<div class="wrap sec">
+  <div class="bento">
     <section class="tile t-mini reveal">
       <div class="ic-s"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9.5" pathLength="1"/><path d="M12 7v5l3.5 2" pathLength="1"/></svg></div>
       <h3>24/7, ook in het weekend</h3>

@@ -36,7 +36,7 @@ gtag('consent','default',{ad_storage:'denied',analytics_storage:'denied',ad_user
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@700;800&family=Fraunces:ital,opsz,wght@1,9..144,300;1,9..144,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../bento.css">
-<noscript><style>.reveal{opacity:1;transform:none}</style></noscript>
+<noscript><style>.reveal{opacity:1;transform:none}.l2>span{transform:none}.product-free.reveal .frame{transform:rotateX(7deg)}</style></noscript>
 </head>
 <body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><linearGradient id="bgrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#22D3EE"/><stop offset=".5" stop-color="#4F7BFF"/><stop offset="1" stop-color="#A855F7"/></linearGradient></defs></svg>
@@ -45,6 +45,15 @@ gtag('consent','default',{ad_storage:'denied',analytics_storage:'denied',ad_user
     <a href="./" aria-label="Celya"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 284 138" role="img" aria-label="Celya" style="height:30px;width:auto;display:block"><defs><linearGradient id="celyaNeon" gradientUnits="userSpaceOnUse" x1="12" y1="105" x2="268" y2="34"><stop offset="0" stop-color="#22D3EE"/><stop offset="0.5" stop-color="#4F7BFF"/><stop offset="1" stop-color="#A855F7"/></linearGradient><filter id="celyaGlow" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="1.8" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs><g fill="none" stroke="url(#celyaNeon)" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" filter="url(#celyaGlow)"><path d="M64.98 89.28 A30 30 0 1 1 64.98 50.72 L83.98 34"/><path d="M83.98 34 L79.8 46.3 M83.98 34 L71.3 36.6"/><path d="M135 79 L93 79 A21 21 0 1 1 129 92"/><path d="M157 40 L157 100"/><path d="M175 58 L193 92 M211 58 L180 118"/><circle cx="244" cy="79" r="21"/><path d="M265 62 L265 100"/></g><path d="M244 58 L244 49" fill="none" stroke="url(#celyaNeon)" stroke-width="6" stroke-linecap="round" filter="url(#celyaGlow)"/><circle cx="244" cy="45" r="3.6" fill="#9BF3FF" filter="url(#celyaGlow)"/><rect x="212" y="74" width="5" height="10" rx="1.6" fill="url(#celyaNeon)"/><rect x="271" y="74" width="5" height="10" rx="1.6" fill="url(#celyaNeon)"/><rect x="229" y="71.5" width="30" height="12" rx="6" fill="#161F36" stroke="url(#celyaNeon)" stroke-width="1.5"/><g filter="url(#celyaGlow)"><rect x="234" y="75" width="7.5" height="3.6" rx="1.8" fill="#9BF3FF"/><rect x="248.5" y="75" width="7.5" height="3.6" rx="1.8" fill="#9BF3FF"/></g></svg></a>
     <nav class="nav-links">
       <a href="#marche">How it works</a>
+      <div class="nav-drop">
+        <a href="#metier">Your sector <svg class="car" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></a>
+        <div class="drop-panel">
+          <a href="../garages.html"><img src="../assets/metier-garage.webp" alt="Garages" width="56" height="42" loading="lazy"><b>Garages</b><i aria-hidden="true">&rarr;</i></a>
+          <a href="../restaurants.html"><img src="../assets/metier-restaurant.webp" alt="Restaurants" width="56" height="42" loading="lazy"><b>Restaurants</b><i aria-hidden="true">&rarr;</i></a>
+          <a href="../cabinets.html"><img src="../assets/metier-cabinet.webp" alt="Medical practices" width="56" height="42" loading="lazy"><b>Medical practices</b><i aria-hidden="true">&rarr;</i></a>
+          <a href="../independants.html"><img src="../assets/metier-artisan.webp" alt="Independents" width="56" height="42" loading="lazy"><b>Independents</b><i aria-hidden="true">&rarr;</i></a>
+        </div>
+      </div>
       <a href="#faq">FAQ</a>
       <a href="contact.html">Contact</a>
     </nav>
@@ -133,6 +142,11 @@ gtag('consent','default',{ad_storage:'denied',analytics_storage:'denied',ad_user
         </div>
       </div>
     </section>
+    <section class="cine reveal">
+      <img src="../assets/cine-atelier-1600.webp" srcset="../assets/cine-atelier-800.webp 800w, ../assets/cine-atelier-1600.webp 1600w" sizes="100vw" alt="Hands at work on an engine, wrench in hand" loading="lazy" width="1600" height="1000">
+      <span class="cine-shade"></span>
+      <div class="wrap"><p class="cine-line"><span class="l2"><span>Your hands are full. <span class="it">She picks up.</span></span></span></p></div>
+    </section>
 <div class="wrap sec">
   <div class="bento">
     <section class="tile t-role reveal">
@@ -153,6 +167,10 @@ gtag('consent','default',{ad_storage:'denied',analytics_storage:'denied',ad_user
       <h3>She answers questions</h3>
       <p>Opening hours, prices, services: she informs your customers from your information. If she doesn't know, she takes a note and passes it on.</p>
     </section>
+  </div>
+</div>
+<div class="wrap sec">
+  <div class="bento">
     <section class="tile t-roi reveal">
       <div class="kick"><b>02</b><span>Your numbers</span></div>
       <h2><span class="l2"><span>What are <span class="it">missed calls</span> costing you?</span></span></h2>
@@ -176,20 +194,50 @@ gtag('consent','default',{ad_storage:'denied',analytics_storage:'denied',ad_user
         </div>
       </div>
     </section>
-    <section class="tile t-fiche reveal">
-      <div class="kick"><b>03</b><span>After every call</span></div>
-      <h2><span class="l2"><span>You get a clear summary, <span class="it">not a sticky note</span></span></span></h2>
-      <div class="fiche">
-        <span class="exbadge">Example</span>
-        <div class="frow"><span class="k">Caller</span><span class="v">Marie D.</span></div>
-        <div class="frow"><span class="k">Reason</span><span class="v">Appointment</span></div>
-        <div class="frow"><span class="k">Urgency</span><span class="pill norm">Normal</span></div>
-        <div class="frow"><span class="k">Booked</span><span class="v">Thursday 3:20&nbsp;pm</span></div>
-        <div class="frow"><span class="k">Transcript</span><span class="pill link">Available</span></div>
-      </div>
-    </section>
   </div>
 </div>
+    <section class="freesec product-free reveal" id="fiche">
+      <div class="wrap">
+        <div class="fs-head">
+          <div class="kick"><b>03</b><span>After every call</span></div>
+          <h2><span class="l2"><span>You get a clear summary, <span class="it">not a sticky note</span></span></span></h2>
+        </div>
+        <div class="frame-wrap">
+          <div class="frame">
+            <div class="frame-bar"><span class="fdots" aria-hidden="true"><i></i><i></i><i></i></span><span class="furl">app.celya.be</span><span class="exbadge">Example</span></div>
+            <div class="frame-body">
+              <div class="fpane">
+                <header><i></i>Call summary</header>
+                <div class="flist">
+                  <div class="fli onrow"><b>Marie D.</b><span>Appointment</span><span class="pill norm">Normal</span></div>
+                  <div class="fli"><b>Karim B.</b><span>Message</span><span class="pill urg">Urgent</span></div>
+                  <div class="fli"><b>M. Peeters</b><span>Answer</span><span class="pill norm">Normal</span></div>
+                </div>
+                <div class="fiche">
+                  <div class="frow"><span class="k">Caller</span><span class="v">Marie D.</span></div>
+                  <div class="frow"><span class="k">Reason</span><span class="v">Appointment</span></div>
+                  <div class="frow"><span class="k">Urgency</span><span class="pill norm">Normal</span></div>
+                  <div class="frow"><span class="k">Booked</span><span class="v">Thursday 3:20&nbsp;pm</span></div>
+                  <div class="frow"><span class="k">Transcript</span><span class="pill link">Available</span></div>
+                </div>
+              </div>
+              <div class="fpane">
+                <header><i></i>Calendar — Thursday</header>
+                <div class="mcal">
+                  <div class="mcal-ruler"><span style="top:0%">2 pm</span><span style="top:25%">3 pm</span><span style="top:50%">4 pm</span><span style="top:75%">5 pm</span><span style="top:100%">6 pm</span></div>
+                  <div class="mcal-body">
+                    <div class="blk man" style="top:2%;height:15%"><i class="fx"></i><b>M. Peeters</b><span>2:05&nbsp;pm</span><svg class="bhd" viewBox="0 0 24 24" aria-hidden="true"><path d="M7.2 11.5V6.2a1.35 1.35 0 0 1 2.7 0v4M9.9 10.2V4.6a1.35 1.35 0 0 1 2.7 0v5.6M12.6 10.4V6.2a1.35 1.35 0 0 1 2.7 0v6.6c0 3-2 5-5 5-2.6 0-4.3-1.4-5.3-3.7l-1.3-3a1.3 1.3 0 0 1 2.3-1.2l1.2 1.9"/></svg></div>
+                    <div class="blk jan" style="top:33.3%;height:15%"><i class="fx"></i><b>Marie D.</b><span>3:20&nbsp;pm</span><svg class="bck" viewBox="0 0 24 24" aria-hidden="true"><path d="M5.5 12.5l4.3 4.3L18.5 8" pathLength="1"/></svg></div>
+                    <div class="freez" style="top:57%;height:13%" aria-hidden="true"></div>
+                    <div class="blk jan" style="top:79%;height:15%"><i class="fx"></i><b>Karim B.</b><span>5:10&nbsp;pm</span><svg class="bck" viewBox="0 0 24 24" aria-hidden="true"><path d="M5.5 12.5l4.3 4.3L18.5 8" pathLength="1"/></svg></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
     <section class="freesec agf reveal" id="agenda">
       <span class="exbadge">Example</span>
       <div class="wrap">
@@ -224,6 +272,11 @@ gtag('consent','default',{ad_storage:'denied',analytics_storage:'denied',ad_user
         </div>
       </div>
     </section>
+    <section class="cine reveal">
+      <img src="../assets/cine-restaurant-1600.webp" srcset="../assets/cine-restaurant-800.webp 800w, ../assets/cine-restaurant-1600.webp 1600w" sizes="100vw" alt="A warm restaurant interior in the evening" loading="lazy" width="1600" height="1000">
+      <span class="cine-shade"></span>
+      <div class="wrap"><p class="cine-line"><span class="l2"><span>In the middle of service, <span class="it">no call is lost.</span></span></span></p></div>
+    </section>
 <div class="wrap sec">
   <div class="bento">
     <div class="pc-head reveal" id="metier">
@@ -231,25 +284,29 @@ gtag('consent','default',{ad_storage:'denied',analytics_storage:'denied',ad_user
       <h2><span class="l2"><span>Your phone <span class="it">rings too</span></span></span></h2>
     </div>
     <a class="tile pcard reveal" href="../garages.html">
-      <img src="assets/metier-garage.webp" alt="Garages" loading="lazy" width="1000" height="700">
+      <img src="../assets/metier-garage.webp" alt="Garages" loading="lazy" width="1000" height="700">
       <span class="pc-shade"></span>
       <span class="pc-in"><b>Garages</b><em>“My car won't start, it's urgent.” (page in French)</em><i aria-hidden="true">&rarr;</i></span>
     </a>
     <a class="tile pcard reveal" href="../restaurants.html">
-      <img src="assets/metier-restaurant.webp" alt="Restaurants" loading="lazy" width="1000" height="700">
+      <img src="../assets/metier-restaurant.webp" alt="Restaurants" loading="lazy" width="1000" height="700">
       <span class="pc-shade"></span>
       <span class="pc-in"><b>Restaurants</b><em>“A table for 4 tonight, is that possible?” (page in French)</em><i aria-hidden="true">&rarr;</i></span>
     </a>
     <a class="tile pcard reveal" href="../cabinets.html">
-      <img src="assets/metier-cabinet.webp" alt="Medical practices" loading="lazy" width="1000" height="700">
+      <img src="../assets/metier-cabinet.webp" alt="Medical practices" loading="lazy" width="1000" height="700">
       <span class="pc-shade"></span>
       <span class="pc-in"><b>Medical practices</b><em>“I'd like to move my Thursday appointment.” (page in French)</em><i aria-hidden="true">&rarr;</i></span>
     </a>
     <a class="tile pcard reveal" href="../independants.html">
-      <img src="assets/metier-artisan.webp" alt="Independents" loading="lazy" width="1000" height="700">
+      <img src="../assets/metier-artisan.webp" alt="Independents" loading="lazy" width="1000" height="700">
       <span class="pc-shade"></span>
       <span class="pc-in"><b>Independents</b><em>“Do you also do repairs on Saturdays?” (page in French)</em><i aria-hidden="true">&rarr;</i></span>
     </a>
+  </div>
+</div>
+<div class="wrap sec">
+  <div class="bento">
     <section class="tile t-mini reveal">
       <div class="ic-s"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9.5" pathLength="1"/><path d="M12 7v5l3.5 2" pathLength="1"/></svg></div>
       <h3>24/7, weekends included</h3>
