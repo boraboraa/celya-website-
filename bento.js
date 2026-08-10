@@ -426,9 +426,9 @@
   /* ---- barre d'appel mobile (toujours accessible) ---- */
   (function(){
     var T={
-      fr:{b:'Janet décroche maintenant',s:'Disponible — c’est une IA',btn:'Appeler'},
-      nl:{b:'Janet neemt nu op',s:'Beschikbaar — het is een AI',btn:'Bellen'},
-      en:{b:'Janet picks up now',s:'Available — it’s an AI',btn:'Call'}
+      fr:{b:'Janet décroche maintenant',s:'Disponible · c’est une IA',btn:'Appeler'},
+      nl:{b:'Janet neemt nu op',s:'Beschikbaar · het is een AI',btn:'Bellen'},
+      en:{b:'Janet picks up now',s:'Available · it’s an AI',btn:'Call'}
     };var t=T[LANG]||T.fr;
     var bar=document.createElement('div');bar.className='callbar';
     bar.innerHTML='<img src="'+PRE+'assets/janet-avatar-128.webp" alt="Janet" width="38" height="38">'+

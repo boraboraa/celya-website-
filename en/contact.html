@@ -169,7 +169,7 @@ m.addEventListener('click',function(e){if(e.target.closest&&e.target.closest('a'
 
 <header class="page">
   <div class="wrap">
-    <div class="kicker fade inview"><b>Contact</b> Four ways in — pick yours</div>
+    <div class="kicker fade inview"><b>Contact</b> Four ways in: pick yours</div>
     <h1 class="fade inview">Talk to us.<br><span class="em">Or talk to her.</span></h1>
     <p class="lead fade d1 inview">The fastest way to understand Janet is to meet her. The fastest way to get her working for you is five minutes with the founder.</p>
   </div>
@@ -182,12 +182,12 @@ m.addEventListener('click',function(e){if(e.target.closest&&e.target.closest('a'
       <span><b>Call Janet</b><span>+32 460 25 44 13 · picks up in seconds, 24/7</span></span>
       <span class="go">→</span>
     </a>
-    <a class="way fade d1" href="https://wa.me/32470572864?text=Hi%20—%20I%27d%20like%20a%20free%20audit%20of%20how%20calls%20reach%20my%20business.">
+    <a class="way fade d1" href="https://wa.me/32470572864?text=Hi,%20I%27d%20like%20a%20free%20audit%20of%20how%20calls%20reach%20my%20business.">
       <span class="ic"><svg viewBox="0 0 24 24"><path d="M21 11.5a8.4 8.4 0 01-9 8.4 8.6 8.6 0 01-3.9-.9L3 20l1-4.9a8.4 8.4 0 1117-3.6z"/></svg></span>
       <span><b>WhatsApp the founder</b><span>+32 470 57 28 64 · Bora replies personally</span></span>
       <span class="go">→</span>
     </a>
-    <a class="way fade d2" href="https://wa.me/32470572864?text=Hi%20—%20I%27d%20like%20to%20book%20the%20free%20audit%20call.">
+    <a class="way fade d2" href="https://wa.me/32470572864?text=Hi,%20I%27d%20like%20to%20book%20the%20free%20audit%20call.">
       <span class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 11h18"/></svg></span>
       <span><b>Book the free audit</b><span>20 minutes · where do your calls leak revenue?</span></span>
       <span class="go">→</span>
@@ -197,12 +197,12 @@ m.addEventListener('click',function(e){if(e.target.closest&&e.target.closest('a'
       <span><b>Email</b><span>sales@celya.be</span></span>
       <span class="go">→</span>
     </a>
-    <p class="jnote fade d2">Leave the form instead — we get back to you quickly.</p>
+    <p class="jnote fade d2">Leave the form instead: we get back to you quickly.</p>
   </div>
 
   <form id="lf" class="fade d1" novalidate>
     <h2>Leave your details</h2>
-    <p class="sub">We get back to you quickly — usually the same day.</p>
+    <p class="sub">We get back to you quickly, usually the same day.</p>
     <div id="fbody">
       <div class="two">
         <div class="field"><label for="f-name">Your name</label><input id="f-name" name="name" required autocomplete="name"></div>
@@ -212,14 +212,14 @@ m.addEventListener('click',function(e){if(e.target.closest&&e.target.closest('a'
         <div class="field"><label for="f-phone">Phone</label><input id="f-phone" name="phone" type="tel" autocomplete="tel" placeholder="+32 …"></div>
         <div class="field"><label for="f-email">Email</label><input id="f-email" name="email" type="email" autocomplete="email"></div>
       </div>
-      <div class="field"><label for="f-need">What do you need?</label><textarea id="f-need" name="need" placeholder="e.g. We miss calls every afternoon — I want them answered and booked."></textarea></div>
+      <div class="field"><label for="f-need">What do you need?</label><textarea id="f-need" name="need" placeholder="e.g. We miss calls every afternoon, I want them answered and booked."></textarea></div>
       <input class="hp" name="website" tabindex="-1" autocomplete="off">
       <button class="btn" type="submit" style="width:100%">Send</button>
-      <p class="err" id="ferr">Something went wrong — try WhatsApp or call Janet directly.</p>
+      <p class="err" id="ferr">Something went wrong: try WhatsApp or call Janet directly.</p>
     </div>
     <div class="ok" id="fok">
       <div class="chk"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></div>
-      <b>Got it — message received.</b>
+      <b>Got it, message received.</b>
       <p>We get back to you quickly, usually the same day.</p>
     </div>
   </form>
@@ -232,7 +232,7 @@ m.addEventListener('click',function(e){if(e.target.closest&&e.target.closest('a'
 </section>
 
 <footer>
-  <span>© <span id="yr"></span> Celya — operated by VeritasVet SRL · BE 0633.747.322 · Avenue de Broqueville 136/1, 1200 Woluwe-Saint-Lambert</span>
+  <span>© <span id="yr"></span> Celya · operated by VeritasVet SRL · BE 0633.747.322 · Avenue de Broqueville 136/1, 1200 Woluwe-Saint-Lambert</span>
   <a href="privacy.html" style="color:var(--muted)">Privacy</a>
 </footer>
 
@@ -256,7 +256,7 @@ document.getElementById('lf').addEventListener('submit',function(ev){
   }).then(function(r){return r.json()}).then(function(j){
     if(j.ok){document.getElementById('fbody').style.display='none';document.getElementById('fok').style.display='block'}
     else{throw 0}
-  }).catch(function(){btn.disabled=false;btn.textContent='Send';err.style.display='block';err.textContent='Something went wrong — try WhatsApp or call Janet directly.'});
+  }).catch(function(){btn.disabled=false;btn.textContent='Send';err.style.display='block';err.textContent='Something went wrong: try WhatsApp or call Janet directly.'});
 });
 </script>
 </body>

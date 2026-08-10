@@ -169,7 +169,7 @@ m.addEventListener('click',function(e){if(e.target.closest&&e.target.closest('a'
 
 <header class="page">
   <div class="wrap">
-    <div class="kicker fade inview"><b>Contact</b> Vier ingangen — kies de uwe</div>
+    <div class="kicker fade inview"><b>Contact</b> Vier ingangen: kies de uwe</div>
     <h1 class="fade inview">Praat met ons.<br><span class="em">Of praat met haar.</span></h1>
     <p class="lead fade d1 inview">De snelste manier om Janet te begrijpen: haar ontmoeten. De snelste manier om haar voor u te laten werken: vijf minuten met de oprichter.</p>
   </div>
@@ -182,12 +182,12 @@ m.addEventListener('click',function(e){if(e.target.closest&&e.target.closest('a'
       <span><b>Bel Janet</b><span>+32 460 25 44 13 · neemt op binnen seconden, 24/7</span></span>
       <span class="go">→</span>
     </a>
-    <a class="way fade d1" href="https://wa.me/32470572864?text=Hallo%20—%20ik%20wil%20graag%20een%20gratis%20audit%20van%20mijn%20oproepen.">
+    <a class="way fade d1" href="https://wa.me/32470572864?text=Hallo,%20ik%20wil%20graag%20een%20gratis%20audit%20van%20mijn%20oproepen.">
       <span class="ic"><svg viewBox="0 0 24 24"><path d="M21 11.5a8.4 8.4 0 01-9 8.4 8.6 8.6 0 01-3.9-.9L3 20l1-4.9a8.4 8.4 0 1117-3.6z"/></svg></span>
       <span><b>WhatsApp de oprichter</b><span>+32 470 57 28 64 · Bora antwoordt persoonlijk</span></span>
       <span class="go">→</span>
     </a>
-    <a class="way fade d2" href="https://wa.me/32470572864?text=Hallo%20—%20ik%20wil%20graag%20de%20gratis%20auditcall%20boeken.">
+    <a class="way fade d2" href="https://wa.me/32470572864?text=Hallo,%20ik%20wil%20graag%20de%20gratis%20auditcall%20boeken.">
       <span class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 11h18"/></svg></span>
       <span><b>Boek de gratis audit</b><span>20 minuten · waar lekt uw telefonie omzet?</span></span>
       <span class="go">→</span>
@@ -197,12 +197,12 @@ m.addEventListener('click',function(e){if(e.target.closest&&e.target.closest('a'
       <span><b>E-mail</b><span>sales@celya.be</span></span>
       <span class="go">→</span>
     </a>
-    <p class="jnote fade d2">Of laat het formulier achter — we komen snel bij u terug.</p>
+    <p class="jnote fade d2">Of laat het formulier achter: we komen snel bij u terug.</p>
   </div>
 
   <form id="lf" class="fade d1" novalidate>
     <h2>Laat uw gegevens achter</h2>
-    <p class="sub">We komen snel bij u terug — meestal nog dezelfde dag.</p>
+    <p class="sub">We komen snel bij u terug, meestal nog dezelfde dag.</p>
     <div id="fbody">
       <div class="two">
         <div class="field"><label for="f-name">Uw naam</label><input id="f-name" name="name" required autocomplete="name"></div>
@@ -212,14 +212,14 @@ m.addEventListener('click',function(e){if(e.target.closest&&e.target.closest('a'
         <div class="field"><label for="f-phone">Telefoon</label><input id="f-phone" name="phone" type="tel" autocomplete="tel" placeholder="+32 …"></div>
         <div class="field"><label for="f-email">E-mail</label><input id="f-email" name="email" type="email" autocomplete="email"></div>
       </div>
-      <div class="field"><label for="f-need">Wat hebt u nodig?</label><textarea id="f-need" name="need" placeholder="bv. We missen elke namiddag oproepen — ik wil dat ze beantwoord en geboekt worden."></textarea></div>
+      <div class="field"><label for="f-need">Wat hebt u nodig?</label><textarea id="f-need" name="need" placeholder="bv. We missen elke namiddag oproepen, ik wil dat ze beantwoord en geboekt worden."></textarea></div>
       <input class="hp" name="website" tabindex="-1" autocomplete="off">
       <button class="btn" type="submit" style="width:100%">Versturen</button>
-      <p class="err" id="ferr">Er ging iets mis — probeer WhatsApp of bel Janet rechtstreeks.</p>
+      <p class="err" id="ferr">Er ging iets mis: probeer WhatsApp of bel Janet rechtstreeks.</p>
     </div>
     <div class="ok" id="fok">
       <div class="chk"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></div>
-      <b>Genoteerd — goed ontvangen.</b>
+      <b>Genoteerd, goed ontvangen.</b>
       <p>We komen snel bij u terug, meestal nog dezelfde dag.</p>
     </div>
   </form>
@@ -232,7 +232,7 @@ m.addEventListener('click',function(e){if(e.target.closest&&e.target.closest('a'
 </section>
 
 <footer>
-  <span>© <span id="yr"></span> Celya — operated by VeritasVet SRL · BE 0633.747.322 · Avenue de Broqueville 136/1, 1200 Woluwe-Saint-Lambert</span>
+  <span>© <span id="yr"></span> Celya · operated by VeritasVet SRL · BE 0633.747.322 · Avenue de Broqueville 136/1, 1200 Woluwe-Saint-Lambert</span>
   <a href="privacy.html" style="color:var(--muted)">Privacy</a>
 </footer>
 
@@ -256,7 +256,7 @@ document.getElementById('lf').addEventListener('submit',function(ev){
   }).then(function(r){return r.json()}).then(function(j){
     if(j.ok){document.getElementById('fbody').style.display='none';document.getElementById('fok').style.display='block'}
     else{throw 0}
-  }).catch(function(){btn.disabled=false;btn.textContent='Versturen';err.style.display='block';err.textContent='Er ging iets mis — probeer WhatsApp of bel Janet rechtstreeks.'});
+  }).catch(function(){btn.disabled=false;btn.textContent='Versturen';err.style.display='block';err.textContent='Er ging iets mis: probeer WhatsApp of bel Janet rechtstreeks.'});
 });
 </script>
 </body>
