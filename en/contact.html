@@ -82,6 +82,46 @@ form .sub{font-size:14px;color:var(--muted);margin-bottom:26px}
 .ok p{color:var(--muted);font-size:14.5px}
 .err{display:none;color:#F9A8A8;font-size:13.5px;margin-top:10px}
 footer{border-top:1px solid rgba(255,255,255,.06);padding:40px 0;color:var(--faint);font-size:13px;display:flex;justify-content:center;gap:8px;flex-wrap:wrap;text-align:center}
+
+/* --- menu : liens + déroulant métiers + burger (partagé avec le thème bento) --- */
+nav.top .nav-in{justify-content:flex-start;gap:20px}
+.nav-links{display:flex;align-items:center;gap:22px;font-size:14.5px;color:#AEB9D6;margin-left:auto}
+.nav-links>a:hover,.nav-drop>a:hover{color:var(--ink)}
+.nav-drop{position:relative}
+.nav-drop>a{display:inline-flex;align-items:center;gap:5px}
+.nav-drop .car{width:12px;height:12px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:none;transition:transform .3s ease}
+.nav-drop:hover .car,.nav-drop:focus-within .car{transform:rotate(180deg)}
+.nav-drop:hover::before,.nav-drop:focus-within::before{content:'';position:absolute;left:-24px;right:-24px;top:100%;height:26px}
+.drop-panel{position:absolute;top:calc(100% + 20px);left:50%;width:296px;padding:10px;border-radius:20px;border:1px solid rgba(255,255,255,.13);background:rgba(12,17,32,.88);backdrop-filter:blur(20px) saturate(1.3);box-shadow:0 30px 70px rgba(4,8,20,.6);opacity:0;visibility:hidden;transform:translate(-50%,10px);transition:opacity .28s ease,transform .34s cubic-bezier(.22,1,.36,1),visibility 0s linear .3s}
+.nav-drop:hover .drop-panel,.nav-drop:focus-within .drop-panel{opacity:1;visibility:visible;transform:translate(-50%,0);transition:opacity .28s ease,transform .34s cubic-bezier(.22,1,.36,1)}
+.drop-panel a{display:flex;align-items:center;gap:13px;padding:8px 10px;border-radius:14px;color:var(--ink);transition:background .2s ease}
+.drop-panel a:hover{background:rgba(255,255,255,.06)}
+.drop-panel img{width:56px;height:42px;object-fit:cover;border-radius:10px;flex:none;border:1px solid rgba(255,255,255,.12)}
+.drop-panel b{font:700 14.5px/1.3 var(--h);letter-spacing:-.01em}
+.drop-panel i{margin-left:auto;font-style:normal;font-weight:700;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;opacity:0;transform:translateX(-5px);transition:opacity .2s ease,transform .25s ease}
+.drop-panel a:hover i{opacity:1;transform:none}
+.burger{display:none;width:42px;height:42px;border-radius:12px;border:1px solid var(--line);background:rgba(255,255,255,.05);cursor:pointer;position:relative;flex:none;padding:0}
+.burger i{position:absolute;left:11px;right:11px;height:2px;border-radius:2px;background:var(--ink);font-style:normal;top:15px;transition:top .3s ease,transform .35s ease}
+.burger i:last-child{top:24px}
+body.mnav-open .burger i:first-child{top:19.5px;transform:rotate(45deg)}
+body.mnav-open .burger i:last-child{top:19.5px;transform:rotate(-45deg)}
+.mnav{position:fixed;inset:0;z-index:49;background:rgba(8,12,24,.94);backdrop-filter:blur(22px);opacity:0;visibility:hidden;transition:opacity .35s ease,visibility 0s linear .35s;overflow-y:auto}
+body.mnav-open .mnav{opacity:1;visibility:visible;transition:opacity .35s ease}
+body.mnav-open{overflow:hidden}
+.mnav-in{padding:100px 26px 60px;max-width:520px;margin:0 auto;display:flex;flex-direction:column}
+.mnav-l{font:700 21px/1.3 var(--h);color:var(--ink);padding:14px 2px;border-bottom:1px solid rgba(255,255,255,.07)}
+.mnav-h{display:block;font:600 11.5px/1 var(--b);letter-spacing:.22em;text-transform:uppercase;color:#BCC6E0;margin:24px 0 12px}
+.mnav-grid{display:grid;gap:8px}
+.mnav-grid a{display:flex;align-items:center;gap:13px;border:1px solid var(--line);background:rgba(255,255,255,.045);border-radius:14px;padding:10px 12px;font:700 15.5px/1.3 var(--h);color:var(--ink)}
+.mnav-grid img{width:56px;height:42px;object-fit:cover;border-radius:10px;flex:none;border:1px solid rgba(255,255,255,.12)}
+@media(max-width:900px){.nav-links{display:none}.burger{display:block}.nav-in>.btn{margin-left:auto}}
+/* --- bande cinématique pleine largeur --- */
+.cine{position:relative;margin:30px 0 100px;height:56vh;min-height:340px;max-height:640px;overflow:hidden;display:flex;align-items:center;justify-content:center;text-align:center}
+.cine img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.cine-shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,14,26,.85),rgba(10,14,26,.38) 40%,rgba(10,14,26,.92))}
+.cine p{position:relative;z-index:2;font-family:var(--h);font-weight:800;color:#fff;font-size:clamp(30px,5vw,58px);letter-spacing:-.035em;line-height:1.08;padding:0 22px;text-shadow:0 6px 44px rgba(4,8,20,.55);text-wrap:balance}
+.cine .em{font-family:var(--a);font-style:italic;font-weight:300;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+@media (prefers-reduced-motion:reduce){.drop-panel,.nav-drop .car,.drop-panel i,.mnav,.burger i{transition:none}}
 </style>
 </head>
 <body>
@@ -89,13 +129,47 @@ footer{border-top:1px solid rgba(255,255,255,.06);padding:40px 0;color:var(--fai
 <nav class="top">
   <div class="nav-in">
     <a href="./" class="logo" aria-label="Celya"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 284 138" role="img" aria-label="Celya" style="height:32px;width:auto;display:block"><defs><linearGradient id="celyaNeon" gradientUnits="userSpaceOnUse" x1="12" y1="105" x2="268" y2="34"><stop offset="0" stop-color="#22D3EE"/><stop offset="0.5" stop-color="#4F7BFF"/><stop offset="1" stop-color="#A855F7"/></linearGradient><filter id="celyaGlow" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="1.8" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs><g fill="none" stroke="url(#celyaNeon)" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" filter="url(#celyaGlow)"><path d="M64.98 89.28 A30 30 0 1 1 64.98 50.72 L83.98 34"/><path d="M83.98 34 L79.8 46.3 M83.98 34 L71.3 36.6"/><path d="M135 79 L93 79 A21 21 0 1 1 129 92"/><path d="M157 40 L157 100"/><path d="M175 58 L193 92 M211 58 L180 118"/><circle cx="244" cy="79" r="21"/><path d="M265 62 L265 100"/></g><path d="M244 58 L244 49" fill="none" stroke="url(#celyaNeon)" stroke-width="6" stroke-linecap="round" filter="url(#celyaGlow)"/><circle cx="244" cy="45" r="3.6" fill="#9BF3FF" filter="url(#celyaGlow)"/><rect x="212" y="74" width="5" height="10" rx="1.6" fill="url(#celyaNeon)"/><rect x="271" y="74" width="5" height="10" rx="1.6" fill="url(#celyaNeon)"/><rect x="229" y="71.5" width="30" height="12" rx="6" fill="#161F36" stroke="url(#celyaNeon)" stroke-width="1.5"/><g filter="url(#celyaGlow)"><rect x="234" y="75" width="7.5" height="3.6" rx="1.8" fill="#9BF3FF"/><rect x="248.5" y="75" width="7.5" height="3.6" rx="1.8" fill="#9BF3FF"/></g></svg></a>
+    <nav class="nav-links">
+      <a href="./#marche">How it works</a>
+      <div class="nav-drop">
+        <a href="./#metier">Your sector <svg class="car" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></a>
+        <div class="drop-panel">
+          <a href="../garages.html"><img src="../assets/metier-garage.webp" alt="Garages" width="56" height="42" loading="lazy"><b>Garages</b><i aria-hidden="true">&rarr;</i></a>
+          <a href="../restaurants.html"><img src="../assets/metier-restaurant.webp" alt="Restaurants" width="56" height="42" loading="lazy"><b>Restaurants</b><i aria-hidden="true">&rarr;</i></a>
+          <a href="../cabinets.html"><img src="../assets/metier-cabinet.webp" alt="Medical practices" width="56" height="42" loading="lazy"><b>Medical practices</b><i aria-hidden="true">&rarr;</i></a>
+          <a href="../independants.html"><img src="../assets/metier-artisan.webp" alt="Independents" width="56" height="42" loading="lazy"><b>Independents</b><i aria-hidden="true">&rarr;</i></a>
+        </div>
+      </div>
+      <a href="./#faq">FAQ</a>
+    </nav>
     <a href="tel:+32460254413" class="btn" style="padding:11px 20px;font-size:14px">Call Janet</a>
+    <button class="burger" id="mbtn" type="button" aria-label="Menu" aria-expanded="false"><i></i><i></i></button>
   </div>
 </nav>
 
+<nav class="mnav" id="mnav">
+  <div class="mnav-in">
+    <a class="mnav-l" href="./#marche">How it works</a>
+    <a class="mnav-l" href="./#faq">FAQ</a>
+    <b class="mnav-h">Your sector</b>
+    <div class="mnav-grid">
+      <a href="../garages.html"><img src="../assets/metier-garage.webp" alt="Garages" width="56" height="42" loading="lazy"><b>Garages</b></a>
+      <a href="../restaurants.html"><img src="../assets/metier-restaurant.webp" alt="Restaurants" width="56" height="42" loading="lazy"><b>Restaurants</b></a>
+      <a href="../cabinets.html"><img src="../assets/metier-cabinet.webp" alt="Medical practices" width="56" height="42" loading="lazy"><b>Medical practices</b></a>
+      <a href="../independants.html"><img src="../assets/metier-artisan.webp" alt="Independents" width="56" height="42" loading="lazy"><b>Independents</b></a>
+    </div>
+  </div>
+</nav>
+<script>
+(function(){var b=document.getElementById('mbtn'),m=document.getElementById('mnav');if(!b||!m)return;
+b.addEventListener('click',function(){var o=document.body.classList.toggle('mnav-open');b.setAttribute('aria-expanded',o?'true':'false');});
+m.addEventListener('click',function(e){if(e.target.closest&&e.target.closest('a'))document.body.classList.remove('mnav-open');});
+})();
+</script>
+
 <header class="page">
   <div class="wrap">
-    <div class="kicker fade inview"><b>Contact</b> Four ways in — pick yours</div>
+    <div class="kicker fade inview"><b>Contact</b> Four ways in: pick yours</div>
     <h1 class="fade inview">Talk to us.<br><span class="em">Or talk to her.</span></h1>
     <p class="lead fade d1 inview">The fastest way to understand Janet is to meet her. The fastest way to get her working for you is five minutes with the founder.</p>
   </div>
@@ -108,12 +182,12 @@ footer{border-top:1px solid rgba(255,255,255,.06);padding:40px 0;color:var(--fai
       <span><b>Call Janet</b><span>+32 460 25 44 13 · picks up in seconds, 24/7</span></span>
       <span class="go">→</span>
     </a>
-    <a class="way fade d1" href="https://wa.me/32470572864?text=Hi%20—%20I%27d%20like%20a%20free%20audit%20of%20how%20calls%20reach%20my%20business.">
+    <a class="way fade d1" href="https://wa.me/32470572864?text=Hi,%20I%27d%20like%20a%20free%20audit%20of%20how%20calls%20reach%20my%20business.">
       <span class="ic"><svg viewBox="0 0 24 24"><path d="M21 11.5a8.4 8.4 0 01-9 8.4 8.6 8.6 0 01-3.9-.9L3 20l1-4.9a8.4 8.4 0 1117-3.6z"/></svg></span>
       <span><b>WhatsApp the founder</b><span>+32 470 57 28 64 · Bora replies personally</span></span>
       <span class="go">→</span>
     </a>
-    <a class="way fade d2" href="https://wa.me/32470572864?text=Hi%20—%20I%27d%20like%20to%20book%20the%20free%20audit%20call.">
+    <a class="way fade d2" href="https://wa.me/32470572864?text=Hi,%20I%27d%20like%20to%20book%20the%20free%20audit%20call.">
       <span class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 11h18"/></svg></span>
       <span><b>Book the free audit</b><span>20 minutes · where do your calls leak revenue?</span></span>
       <span class="go">→</span>
@@ -123,12 +197,12 @@ footer{border-top:1px solid rgba(255,255,255,.06);padding:40px 0;color:var(--fai
       <span><b>Email</b><span>sales@celya.be</span></span>
       <span class="go">→</span>
     </a>
-    <p class="jnote fade d2">Leave the form instead — we get back to you quickly.</p>
+    <p class="jnote fade d2">Leave the form instead: we get back to you quickly.</p>
   </div>
 
   <form id="lf" class="fade d1" novalidate>
     <h2>Leave your details</h2>
-    <p class="sub">We get back to you quickly — usually the same day.</p>
+    <p class="sub">We get back to you quickly, usually the same day.</p>
     <div id="fbody">
       <div class="two">
         <div class="field"><label for="f-name">Your name</label><input id="f-name" name="name" required autocomplete="name"></div>
@@ -138,21 +212,27 @@ footer{border-top:1px solid rgba(255,255,255,.06);padding:40px 0;color:var(--fai
         <div class="field"><label for="f-phone">Phone</label><input id="f-phone" name="phone" type="tel" autocomplete="tel" placeholder="+32 …"></div>
         <div class="field"><label for="f-email">Email</label><input id="f-email" name="email" type="email" autocomplete="email"></div>
       </div>
-      <div class="field"><label for="f-need">What do you need?</label><textarea id="f-need" name="need" placeholder="e.g. We miss calls every afternoon — I want them answered and booked."></textarea></div>
+      <div class="field"><label for="f-need">What do you need?</label><textarea id="f-need" name="need" placeholder="e.g. We miss calls every afternoon, I want them answered and booked."></textarea></div>
       <input class="hp" name="website" tabindex="-1" autocomplete="off">
       <button class="btn" type="submit" style="width:100%">Send</button>
-      <p class="err" id="ferr">Something went wrong — try WhatsApp or call Janet directly.</p>
+      <p class="err" id="ferr">Something went wrong: try WhatsApp or call Janet directly.</p>
     </div>
     <div class="ok" id="fok">
       <div class="chk"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></div>
-      <b>Got it — message received.</b>
+      <b>Got it, message received.</b>
       <p>We get back to you quickly, usually the same day.</p>
     </div>
   </form>
 </div>
 
+<section class="cine fade">
+  <img src="../assets/cine-phone-1600.webp" srcset="../assets/cine-phone-800.webp 800w, ../assets/cine-phone-1600.webp 1600w" sizes="100vw" alt="A vintage telephone on a midnight-blue background" loading="lazy" width="1600" height="1067">
+  <span class="cine-shade"></span>
+  <p>The simplest way? <span class="em">Call her.</span></p>
+</section>
+
 <footer>
-  <span>© <span id="yr"></span> Celya — operated by VeritasVet SRL · BE 0633.747.322 · Avenue de Broqueville 136/1, 1200 Woluwe-Saint-Lambert</span>
+  <span>© <span id="yr"></span> Celya · operated by VeritasVet SRL · BE 0633.747.322 · Avenue de Broqueville 136/1, 1200 Woluwe-Saint-Lambert</span>
   <a href="privacy.html" style="color:var(--muted)">Privacy</a>
 </footer>
 
@@ -176,7 +256,7 @@ document.getElementById('lf').addEventListener('submit',function(ev){
   }).then(function(r){return r.json()}).then(function(j){
     if(j.ok){document.getElementById('fbody').style.display='none';document.getElementById('fok').style.display='block'}
     else{throw 0}
-  }).catch(function(){btn.disabled=false;btn.textContent='Send';err.style.display='block';err.textContent='Something went wrong — try WhatsApp or call Janet directly.'});
+  }).catch(function(){btn.disabled=false;btn.textContent='Send';err.style.display='block';err.textContent='Something went wrong: try WhatsApp or call Janet directly.'});
 });
 </script>
 </body>

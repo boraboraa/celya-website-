@@ -10,6 +10,40 @@
   /* ---- année du footer ---- */
   document.querySelectorAll('.yr').forEach(function(e){e.textContent=new Date().getFullYear();});
 
+  /* ---- menu mobile : burger + panneau, les liens métiers du menu déroulant y sont dépliés ---- */
+  (function(){
+    var nav=document.querySelector('.nav-links'),head=document.querySelector('.nav-in');
+    if(!nav||!head)return;
+    var btn=document.createElement('button');
+    btn.className='burger';btn.type='button';
+    btn.setAttribute('aria-label','Menu');btn.setAttribute('aria-expanded','false');
+    btn.innerHTML='<i></i><i></i>';
+    head.appendChild(btn);
+    var pan=document.createElement('nav');pan.className='mnav';
+    var inner=document.createElement('div');inner.className='mnav-in';pan.appendChild(inner);
+    [].slice.call(nav.children).forEach(function(el){
+      if(el.classList&&el.classList.contains('nav-drop')){
+        var lab=el.querySelector('a');
+        var h=document.createElement('b');h.className='mnav-h';h.textContent=lab?lab.textContent.trim():'';
+        inner.appendChild(h);
+        var dp=el.querySelector('.drop-panel');
+        if(dp){var g=document.createElement('div');g.className='mnav-grid';
+          [].slice.call(dp.querySelectorAll('a')).forEach(function(a){g.appendChild(a.cloneNode(true));});
+          inner.appendChild(g);}
+      }else if(el.tagName==='A'){
+        var c=el.cloneNode(true);c.className='mnav-l';inner.appendChild(c);
+      }
+    });
+    document.body.appendChild(pan);
+    function set(open){
+      document.body.classList.toggle('mnav-open',open);
+      btn.setAttribute('aria-expanded',open?'true':'false');
+    }
+    btn.addEventListener('click',function(){set(!document.body.classList.contains('mnav-open'));});
+    pan.addEventListener('click',function(e){if(e.target.closest&&e.target.closest('a'))set(false);});
+    addEventListener('resize',function(){if(innerWidth>900)set(false);});
+  })();
+
   /* ---- apparition au scroll (déterministe : jamais de tuile qui reste invisible) ---- */
   (function(){
     var els=[].slice.call(document.querySelectorAll('.reveal'));
@@ -392,9 +426,9 @@
   /* ---- barre d'appel mobile (toujours accessible) ---- */
   (function(){
     var T={
-      fr:{b:'Janet décroche maintenant',s:'Disponible — c’est une IA',btn:'Appeler'},
-      nl:{b:'Janet neemt nu op',s:'Beschikbaar — het is een AI',btn:'Bellen'},
-      en:{b:'Janet picks up now',s:'Available — it’s an AI',btn:'Call'}
+      fr:{b:'Janet décroche maintenant',s:'Disponible · c’est une IA',btn:'Appeler'},
+      nl:{b:'Janet neemt nu op',s:'Beschikbaar · het is een AI',btn:'Bellen'},
+      en:{b:'Janet picks up now',s:'Available · it’s an AI',btn:'Call'}
     };var t=T[LANG]||T.fr;
     var bar=document.createElement('div');bar.className='callbar';
     bar.innerHTML='<img src="'+PRE+'assets/janet-avatar-128.webp" alt="Janet" width="38" height="38">'+
