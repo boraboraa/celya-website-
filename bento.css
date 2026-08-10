@@ -104,6 +104,34 @@ body.mnav-open{overflow:hidden}
 .mnav-grid i{margin-left:auto;font-style:normal;font-weight:700;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
 @media(max-width:900px){.nav-links{display:none}.nav-in{gap:14px}.burger{display:block}}
 
+/* ---------- héro : une seule scène en profondeur (fond → photo → panneau flottant → texte) ---------- */
+.hero{position:relative;min-height:min(92vh,980px);display:flex;align-items:center;overflow:hidden}
+/* la photo de Janet émerge du fond : plein bord à droite, fondue par masque à gauche et en bas */
+.hero-jwrap{position:absolute;top:0;right:0;bottom:0;width:54%;z-index:0;
+  -webkit-mask-image:linear-gradient(90deg,transparent 0,#000 38%);mask-image:linear-gradient(90deg,transparent 0,#000 38%)}
+.hero-jwrap img{width:100%;height:100%;object-fit:cover;object-position:center 10%;
+  -webkit-mask-image:linear-gradient(180deg,#000 60%,transparent 98%);mask-image:linear-gradient(180deg,#000 60%,transparent 98%)}
+/* dégradé sombre du bord gauche vers le centre : le texte reste lisible par-dessus aurore et photo */
+.hero-shade{position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:linear-gradient(90deg,rgba(10,14,26,.92) 0,rgba(10,14,26,.6) 32%,rgba(10,14,26,.16) 54%,rgba(10,14,26,0) 68%),
+             linear-gradient(180deg,rgba(10,14,26,0) 74%,rgba(10,14,26,.5) 100%)}
+.hero-in{position:relative;z-index:2;width:100%}
+.hero-txt{max-width:660px;padding:100px 0}
+.hero-txt h1{margin:16px 0 20px;font-size:clamp(42px,5.8vw,82px)}
+.hero-txt .sub{font-size:19px;max-width:30em}
+.hero .jq{position:absolute;z-index:2;left:auto;bottom:auto;top:max(88px,10vh);right:5vw}
+/* la démo d'appel flotte au-dessus de la scène, à cheval sur le bas de la photo */
+.hero-demo{position:absolute;z-index:3;right:5vw;bottom:6vh;width:356px;border-radius:24px;
+  background:rgba(12,17,32,.72);backdrop-filter:blur(18px) saturate(1.25);border:1px solid rgba(255,255,255,.12);
+  box-shadow:0 44px 96px rgba(4,8,20,.66),0 12px 34px rgba(4,8,20,.45);
+  opacity:0;transform:translateY(18px);
+  animation:fadeup .9s var(--spring) .75s forwards,hfloat 7s ease-in-out 1.9s infinite}
+@keyframes hfloat{0%,100%{transform:none}50%{transform:translateY(-9px)}}
+@media(max-width:1120px) and (min-width:901px){
+  .hero-txt{max-width:52vw}
+  .hero-demo{width:320px;right:3vw}
+}
+
 /* ---------- bento ---------- */
 .bento{display:grid;grid-template-columns:repeat(12,1fr);gap:14px}
 .b-hero .t-hero{grid-row:span 2;background-color:rgba(14,20,38,.32);padding:52px 44px}
@@ -123,20 +151,20 @@ body.mnav-open{overflow:hidden}
 .t-hero{grid-column:span 8;padding:40px 38px;display:flex;flex-direction:column;justify-content:center}
 .t-hero h1{margin:14px 0 18px}
 /* apparition du héro au chargement */
-.t-hero .lr{display:block;overflow:hidden;padding-bottom:.08em;margin-bottom:-.08em}
-.t-hero .lr>span{display:block;transform:translateY(112%);animation:rise 1s var(--spring) forwards}
-.t-hero .lr:nth-child(2)>span{animation-delay:.14s}
+.t-hero .lr,.hero-txt .lr{display:block;overflow:hidden;padding-bottom:.08em;margin-bottom:-.08em}
+.t-hero .lr>span,.hero-txt .lr>span{display:block;transform:translateY(112%);animation:rise 1s var(--spring) forwards}
+.t-hero .lr:nth-child(2)>span,.hero-txt .lr:nth-child(2)>span{animation-delay:.14s}
 @keyframes rise{to{transform:none}}
-.t-hero .sub,.t-hero .cta-row,.t-hero .proof{opacity:0;transform:translateY(14px);animation:fadeup .9s var(--spring) forwards}
-.t-hero .sub{animation-delay:.3s}
-.t-hero .cta-row{animation-delay:.45s}
-.t-hero .proof{animation-delay:.68s}
+.t-hero .sub,.t-hero .cta-row,.t-hero .proof,.hero-txt .sub,.hero-txt .cta-row,.hero-txt .proof{opacity:0;transform:translateY(14px);animation:fadeup .9s var(--spring) forwards}
+.t-hero .sub,.hero-txt .sub{animation-delay:.3s}
+.t-hero .cta-row,.hero-txt .cta-row{animation-delay:.45s}
+.t-hero .proof,.hero-txt .proof{animation-delay:.68s}
 @keyframes fadeup{to{opacity:1;transform:none}}
-.t-hero .sub{font-size:18.5px;max-width:34em;color:var(--body)}
+.t-hero .sub,.hero-txt .sub{font-size:18.5px;max-width:34em;color:var(--body)}
 .cta-row{display:flex;flex-wrap:wrap;gap:12px;margin:24px 0 15px}
 .foundpill{display:inline-flex;align-items:center;gap:9px;width:fit-content;margin-bottom:13px;font:600 12.5px/1.4 var(--b);color:var(--ink);border:1px solid rgba(168,85,247,.45);background:rgba(168,85,247,.09);border-radius:99px;padding:8px 15px}
 .foundpill i{width:7px;height:7px;border-radius:50%;background:var(--grad);font-style:normal;flex:none}
-.t-hero .foundpill{opacity:0;transform:translateY(14px);animation:fadeup .9s var(--spring) .55s forwards}
+.t-hero .foundpill,.hero-txt .foundpill{opacity:0;transform:translateY(14px);animation:fadeup .9s var(--spring) .55s forwards}
 .proof{font-size:14.5px;color:var(--soft)}
 .proof b{font-weight:700;white-space:nowrap}
 
@@ -318,16 +346,16 @@ body.mnav-open{overflow:hidden}
 .t-janet{grid-column:span 4;padding:0;min-height:340px}
 .t-janet img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 14%}
 .t-janet::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,14,26,0) 58%,rgba(10,14,26,.8) 96%)}
-.t-janet .jq{position:absolute;left:14px;bottom:13px;z-index:2;display:inline-flex;align-items:center;gap:8px;background:rgba(10,14,26,.72);backdrop-filter:blur(8px);border:1px solid var(--line);border-radius:99px;padding:8px 14px}
-.t-janet .jq span{font-size:12.5px;color:var(--body)}
-.t-janet .jq>i{width:8px;height:8px;border-radius:50%;background:var(--ok);font-style:normal;animation:pulse 2.2s infinite;flex:none}
+.jq{position:absolute;left:14px;bottom:13px;z-index:2;display:inline-flex;align-items:center;gap:8px;background:rgba(10,14,26,.72);backdrop-filter:blur(8px);border:1px solid var(--line);border-radius:99px;padding:8px 14px}
+.jq span{font-size:12.5px;color:var(--body)}
+.jq>i{width:8px;height:8px;border-radius:50%;background:var(--ok);font-style:normal;animation:pulse 2.2s infinite;flex:none}
 /* onde vocale : jamais figée */
-.t-janet .jq .w{display:inline-flex;gap:2.5px;align-items:center;height:14px;flex:none}
-.t-janet .jq .w i{width:2.5px;height:30%;border-radius:2px;background:linear-gradient(180deg,var(--c1),var(--c3));font-style:normal}
-.t-janet .jq .w i:nth-child(1){animation:jw 1s ease-in-out infinite}
-.t-janet .jq .w i:nth-child(2){animation:jw .8s ease-in-out .12s infinite}
-.t-janet .jq .w i:nth-child(3){animation:jw 1.25s ease-in-out .05s infinite}
-.t-janet .jq .w i:nth-child(4){animation:jw .95s ease-in-out .2s infinite}
+.jq .w{display:inline-flex;gap:2.5px;align-items:center;height:14px;flex:none}
+.jq .w i{width:2.5px;height:30%;border-radius:2px;background:linear-gradient(180deg,var(--c1),var(--c3));font-style:normal}
+.jq .w i:nth-child(1){animation:jw 1s ease-in-out infinite}
+.jq .w i:nth-child(2){animation:jw .8s ease-in-out .12s infinite}
+.jq .w i:nth-child(3){animation:jw 1.25s ease-in-out .05s infinite}
+.jq .w i:nth-child(4){animation:jw .95s ease-in-out .2s infinite}
 @keyframes jw{50%{height:100%}}
 
 /* FAQ */
@@ -528,6 +556,16 @@ footer.site a:hover{color:var(--ink)}
   .tile:hover{border-color:rgba(79,123,255,.22);box-shadow:0 14px 44px rgba(6,10,26,.5)}
 }
 @media(max-width:900px){
+  /* héro : la photo reste en toile de fond, la démo redescend dans le flux */
+  .hero{min-height:0;display:block;padding:40px 0 26px}
+  .hero-jwrap{width:96%;right:-26%}
+  .hero-shade{background:linear-gradient(90deg,rgba(10,14,26,.9) 0,rgba(10,14,26,.64) 45%,rgba(10,14,26,.3) 75%,rgba(10,14,26,.14) 100%),
+              linear-gradient(180deg,rgba(10,14,26,0) 42%,rgba(10,14,26,.5) 72%,rgba(10,14,26,.8) 100%)}
+  .hero-txt{padding:14px 0 0;max-width:none}
+  .hero-txt h1{font-size:clamp(38px,10vw,54px)}
+  .hero .jq{position:static;margin:20px 22px 0;width:fit-content}
+  .hero-demo{position:static;width:auto;margin:22px 22px 0;transform:none;
+    animation:fadeup .9s var(--spring) .35s forwards}
   .t-hero,.t-demo,.t-role,.t-fiche,.t-met,.t-met-home,.t-mini,.t-roi,.t-janet{grid-column:span 12}
   .b-hero .t-hero{grid-row:auto;padding:40px 26px}
   .t-met-home{grid-row:auto}
@@ -570,9 +608,11 @@ footer.site a:hover{color:var(--ink)}
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   .reveal{opacity:1;transform:none;transition:none}
-  .demo-hd .dav i,.t-janet .jq i,.ph-ring,.wave.on i{animation:none}
+  .demo-hd .dav i,.jq i,.ph-ring,.wave.on i{animation:none}
   .chat.anim .m,.chat.anim .done{opacity:1;transform:none;transition:none}
   .t-hero .lr>span,.t-hero .sub,.t-hero .cta-row,.t-hero .proof{animation:none;transform:none;opacity:1}
+  .hero-txt .lr>span,.hero-txt .sub,.hero-txt .cta-row,.hero-txt .proof,.t-hero .foundpill,.hero-txt .foundpill{animation:none;transform:none;opacity:1}
+  .hero-demo{animation:none;transform:none;opacity:1}
   .step .ic{transition:none}
   .step.cur .ic{transform:none;box-shadow:none}
   .btn:hover{transform:none}
@@ -606,11 +646,11 @@ footer.site a:hover{color:var(--ink)}
   .roi-out b.pop{animation:none}
   .mrow:hover i{transform:none}
   body::after{animation:none}
-  .t-janet .jq .w i{animation:none}
-  .t-janet .jq .w i:nth-child(1){height:45%}
-  .t-janet .jq .w i:nth-child(2){height:80%}
-  .t-janet .jq .w i:nth-child(3){height:60%}
-  .t-janet .jq .w i:nth-child(4){height:90%}
+  .jq .w i{animation:none}
+  .jq .w i:nth-child(1){height:45%}
+  .jq .w i:nth-child(2){height:80%}
+  .jq .w i:nth-child(3){height:60%}
+  .jq .w i:nth-child(4){height:90%}
   .wave i{animation:none}
   .ph-card.anim{opacity:1;transform:none;transition:none}
   .ph-card.anim .pcrow{opacity:1;transform:none;transition:none}
