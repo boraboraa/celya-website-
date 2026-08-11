@@ -96,7 +96,7 @@
         var by=(b.ay+Math.cos(t*W1*.8+b.ph)*b.sy+Math.cos(t*W2+b.ph2)*b.s2)*H;
         var r=b.r*(1+.14*Math.sin(t*W2*.6+b.pr))*Math.max(W,H);
         var g=x.createRadialGradient(bx,by,0,bx,by,r);
-        g.addColorStop(0,'rgba('+b.c+',.68)');g.addColorStop(1,'rgba('+b.c+',0)');
+        g.addColorStop(0,'rgba('+b.c+',.55)');g.addColorStop(1,'rgba('+b.c+',0)');
         x.fillStyle=g;x.beginPath();x.arc(bx,by,r,0,6.3);x.fill();}
       x.globalCompositeOperation='source-over';
     }
