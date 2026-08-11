@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Contact Celya — Parlez à Janet ou au fondateur</title>
-<meta name="description" content="Appelez Janet, écrivez-nous sur WhatsApp, ou laissez vos coordonnées — nous revenons vers vous rapidement. Réservez un audit gratuit de vos appels.">
+<meta name="description" content="Appelez Janet, écrivez-nous, ou laissez vos coordonnées — nous revenons vers vous rapidement. Réservez un audit gratuit de vos appels.">
 <link rel="canonical" href="https://celya.be/contact.html">
 <link rel="alternate" hreflang="fr" href="https://celya.be/contact.html">
 <link rel="alternate" hreflang="nl" href="https://celya.be/nl/contact.html">
@@ -167,7 +167,7 @@ m.addEventListener('click',function(e){if(e.target.closest&&e.target.closest('a'
 
 <header class="page">
   <div class="wrap">
-    <div class="kicker fade inview"><b>Contact</b> Quatre portes d'entrée : choisissez la vôtre</div>
+    <div class="kicker fade inview"><b>Contact</b> Trois portes d'entrée : choisissez la vôtre</div>
     <h1 class="fade inview">Parlez-nous.<br><span class="em">Ou parlez-lui.</span></h1>
     <p class="lead fade d1 inview">Le moyen le plus rapide de comprendre Janet, c'est de la rencontrer. Le moyen le plus rapide de la mettre à votre service : cinq minutes avec le fondateur.</p>
   </div>
@@ -180,12 +180,7 @@ m.addEventListener('click',function(e){if(e.target.closest&&e.target.closest('a'
       <span><b>Appeler Janet</b><span>+32 460 25 44 13 · décroche en quelques secondes, 24h/24</span></span>
       <span class="go">→</span>
     </a>
-    <a class="way fade d1" href="https://wa.me/32470572864?text=Bonjour,%20je%20voudrais%20un%20audit%20gratuit%20de%20mes%20appels.">
-      <span class="ic"><svg viewBox="0 0 24 24"><path d="M21 11.5a8.4 8.4 0 01-9 8.4 8.6 8.6 0 01-3.9-.9L3 20l1-4.9a8.4 8.4 0 1117-3.6z"/></svg></span>
-      <span><b>WhatsApp au fondateur</b><span>+32 470 57 28 64 · Bora répond personnellement</span></span>
-      <span class="go">→</span>
-    </a>
-    <a class="way fade d2" href="https://wa.me/32470572864?text=Bonjour,%20je%20voudrais%20r%C3%A9server%20l%27audit%20gratuit.">
+    <a class="way fade d1" href="mailto:sales@celya.be?subject=Audit%20gratuit%20de%20mes%20appels">
       <span class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 11h18"/></svg></span>
       <span><b>Réserver l'audit gratuit</b><span>20 minutes · où vos appels perdent-ils du chiffre ?</span></span>
       <span class="go">→</span>
@@ -213,7 +208,7 @@ m.addEventListener('click',function(e){if(e.target.closest&&e.target.closest('a'
       <div class="field"><label for="f-need">De quoi avez-vous besoin ?</label><textarea id="f-need" name="need" placeholder="ex. Nous manquons des appels chaque après-midi, je veux qu'on y réponde et qu'on réserve."></textarea></div>
       <input class="hp" name="website" tabindex="-1" autocomplete="off">
       <button class="btn" type="submit" style="width:100%">Envoyer</button>
-      <p class="err" id="ferr">Une erreur est survenue : essayez WhatsApp ou appelez Janet directement.</p>
+      <p class="err" id="ferr">Une erreur est survenue : appelez Janet directement ou écrivez à sales@celya.be.</p>
     </div>
     <div class="ok" id="fok">
       <div class="chk"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></div>
@@ -254,7 +249,7 @@ document.getElementById('lf').addEventListener('submit',function(ev){
   }).then(function(r){return r.json()}).then(function(j){
     if(j.ok){document.getElementById('fbody').style.display='none';document.getElementById('fok').style.display='block'}
     else{throw 0}
-  }).catch(function(){btn.disabled=false;btn.textContent='Envoyer';err.style.display='block';err.textContent='Une erreur est survenue : essayez WhatsApp ou appelez Janet directement.'});
+  }).catch(function(){btn.disabled=false;btn.textContent='Envoyer';err.style.display='block';err.textContent='Une erreur est survenue : appelez Janet directement ou écrivez à sales@celya.be.'});
 });
 </script>
 </body>

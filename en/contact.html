@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Contact Celya — Talk to Janet or the founder</title>
-<meta name="description" content="Call Janet, message us on WhatsApp, or leave your details — we get back to you quickly. Book a free audit of how calls reach your business.">
+<meta name="description" content="Call Janet, write to us, or leave your details — we get back to you quickly. Book a free audit of how calls reach your business.">
 <link rel="canonical" href="https://celya.be/en/contact.html">
 <link rel="alternate" hreflang="fr" href="https://celya.be/contact.html">
 <link rel="alternate" hreflang="nl" href="https://celya.be/nl/contact.html">
@@ -167,7 +167,7 @@ m.addEventListener('click',function(e){if(e.target.closest&&e.target.closest('a'
 
 <header class="page">
   <div class="wrap">
-    <div class="kicker fade inview"><b>Contact</b> Four ways in: pick yours</div>
+    <div class="kicker fade inview"><b>Contact</b> Three ways in: pick yours</div>
     <h1 class="fade inview">Talk to us.<br><span class="em">Or talk to her.</span></h1>
     <p class="lead fade d1 inview">The fastest way to understand Janet is to meet her. The fastest way to get her working for you is five minutes with the founder.</p>
   </div>
@@ -180,12 +180,7 @@ m.addEventListener('click',function(e){if(e.target.closest&&e.target.closest('a'
       <span><b>Call Janet</b><span>+32 460 25 44 13 · picks up in seconds, 24/7</span></span>
       <span class="go">→</span>
     </a>
-    <a class="way fade d1" href="https://wa.me/32470572864?text=Hi,%20I%27d%20like%20a%20free%20audit%20of%20how%20calls%20reach%20my%20business.">
-      <span class="ic"><svg viewBox="0 0 24 24"><path d="M21 11.5a8.4 8.4 0 01-9 8.4 8.6 8.6 0 01-3.9-.9L3 20l1-4.9a8.4 8.4 0 1117-3.6z"/></svg></span>
-      <span><b>WhatsApp the founder</b><span>+32 470 57 28 64 · Bora replies personally</span></span>
-      <span class="go">→</span>
-    </a>
-    <a class="way fade d2" href="https://wa.me/32470572864?text=Hi,%20I%27d%20like%20to%20book%20the%20free%20audit%20call.">
+    <a class="way fade d1" href="mailto:sales@celya.be?subject=Free%20audit%20of%20my%20calls">
       <span class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 11h18"/></svg></span>
       <span><b>Book the free audit</b><span>20 minutes · where do your calls leak revenue?</span></span>
       <span class="go">→</span>
@@ -213,7 +208,7 @@ m.addEventListener('click',function(e){if(e.target.closest&&e.target.closest('a'
       <div class="field"><label for="f-need">What do you need?</label><textarea id="f-need" name="need" placeholder="e.g. We miss calls every afternoon, I want them answered and booked."></textarea></div>
       <input class="hp" name="website" tabindex="-1" autocomplete="off">
       <button class="btn" type="submit" style="width:100%">Send</button>
-      <p class="err" id="ferr">Something went wrong: try WhatsApp or call Janet directly.</p>
+      <p class="err" id="ferr">Something went wrong: call Janet directly or email sales@celya.be.</p>
     </div>
     <div class="ok" id="fok">
       <div class="chk"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></div>
@@ -254,7 +249,7 @@ document.getElementById('lf').addEventListener('submit',function(ev){
   }).then(function(r){return r.json()}).then(function(j){
     if(j.ok){document.getElementById('fbody').style.display='none';document.getElementById('fok').style.display='block'}
     else{throw 0}
-  }).catch(function(){btn.disabled=false;btn.textContent='Send';err.style.display='block';err.textContent='Something went wrong: try WhatsApp or call Janet directly.'});
+  }).catch(function(){btn.disabled=false;btn.textContent='Send';err.style.display='block';err.textContent='Something went wrong: call Janet directly or email sales@celya.be.'});
 });
 </script>
 </body>
