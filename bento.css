@@ -1131,11 +1131,11 @@ footer.site a:hover{color:var(--ink)}
 /* -- héro : la photo montre quelqu'un, pas un lieu -- */
 .t-hero-solo{min-height:560px}
 .t-hero-solo .hph{position:absolute;inset:0;z-index:0;border-radius:inherit;overflow:hidden}
-.t-hero-solo .hph img{width:100%;height:100%;object-fit:cover;object-position:68% 62%}
+.t-hero-solo .hph img{width:100%;height:100%;object-fit:cover;object-position:28% 42%}
 /* voile gauche + pied sombre : le texte reste lisible, le sujet reste visible à droite */
 .t-hero-solo .hph::after{content:'';position:absolute;inset:0;background:
-  linear-gradient(90deg,rgba(7,10,20,.88) 0,rgba(7,10,20,.6) 38%,rgba(7,10,20,.18) 66%,rgba(7,10,20,.05) 100%),
-  linear-gradient(0deg,rgba(7,10,20,.6) 0,rgba(7,10,20,.08) 42%)}
+  linear-gradient(90deg,rgba(7,10,20,.9) 0,rgba(7,10,20,.66) 40%,rgba(7,10,20,.28) 64%,rgba(7,10,20,.06) 100%),
+  linear-gradient(0deg,rgba(7,10,20,.62) 0,rgba(7,10,20,.1) 44%)}
 .t-hero-solo .sub{max-width:46ch}
 
 /* -- bande des métiers concernés : pastilles en cascade -- */
