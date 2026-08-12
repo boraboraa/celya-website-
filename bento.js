@@ -468,6 +468,115 @@
     addEventListener('scroll',up,{passive:true});addEventListener('resize',up);up();
   })();
 
+  /* ---- duel serveur vocal / Celya (page cabinets) : deux chronos qui partent ensemble ----
+     Sans JS ou en mouvement réduit, le HTML/CSS affiche l'état final figé. */
+  (function(){
+    var duel=document.querySelector('[data-duel]');if(!duel)return;
+    var tL=duel.querySelector('[data-dt-l]'),tR=duel.querySelector('[data-dt-r]');
+    var ivr=duel.querySelector('.dcol-ivr');
+    if(REDUCE||!('IntersectionObserver' in window))return;
+    duel.classList.add('anim');
+    var evs=[];
+    function reg(sel,ts){[].slice.call(duel.querySelectorAll(sel)).forEach(function(el,i){
+      if(ts[i]!=null)evs.push({t:ts[i],el:el});});}
+    reg('.dcol-ivr .dstep',[300,1600,2900,7200,12400]);
+    reg('.dcol-ivr .dfail',[14600]);
+    reg('.dcol-cel .dm',[500,1500,2500,3300]);
+    reg('.dcol-cel .ddone',[3900]);
+    reg('.dcol-cel .dcard',[4700]);
+    /* chronos accélérés : 02:30 affichés côté serveur vocal quand l'appel est
+       abandonné (14,6 s réelles), 00:38 côté Celya quand le rendez-vous est posé */
+    var CYCLE=15000,HOLD=2200,raf=null,t0=null,run=false;
+    function fmt(s){return ('0'+Math.floor(s/60)).slice(-2)+':'+('0'+(s%60)).slice(-2);}
+    function reset(){
+      evs.forEach(function(e){e.el.classList.remove('on');});
+      ivr.classList.remove('lost');
+      if(tL)tL.textContent='00:00';if(tR)tR.textContent='00:00';
+      t0=null;
+    }
+    function frame(now){
+      if(!run)return;
+      if(t0===null)t0=now;
+      var t=now-t0;
+      if(t>=CYCLE+HOLD){reset();t0=now;t=0;}
+      if(tL)tL.textContent=fmt(Math.min(Math.floor(t*0.010274),150));
+      if(tR)tR.textContent=fmt(Math.min(Math.floor(t*0.009744),38));
+      for(var i=0;i<evs.length;i++){var e=evs[i];
+        if(t>=e.t&&!e.el.classList.contains('on')){
+          e.el.classList.add('on');
+          if(e.el.classList.contains('dfail'))ivr.classList.add('lost');
+        }
+      }
+      raf=requestAnimationFrame(frame);
+    }
+    var iod=new IntersectionObserver(function(es){es.forEach(function(e){
+      if(e.isIntersecting&&!run){run=true;reset();raf=requestAnimationFrame(frame);}
+      else if(!e.isIntersecting&&run){run=false;cancelAnimationFrame(raf);reset();}
+    });},{threshold:.25});
+    iod.observe(duel);
+  })();
+
+  /* ---- tri des appels (page cabinets) : points lumineux, pause hors écran ---- */
+  (function(){
+    var tf=document.querySelector('[data-triflow]');if(!tf)return;
+    var zone=tf.querySelector('.tf-zone');
+    /* les points suivent les branches : décalage horizontal recalculé sur la largeur réelle */
+    function size(){if(zone)tf.style.setProperty('--bx',Math.round(zone.offsetWidth*0.267)+'px');}
+    size();addEventListener('resize',size);
+    if(REDUCE||!('IntersectionObserver' in window))return;
+    var iot=new IntersectionObserver(function(es){es.forEach(function(e){
+      tf.classList.toggle('run',e.isIntersecting);});},{threshold:.25});
+    iot.observe(tf);
+  })();
+
+  /* ---- fiche mémoire patient (page cabinets) : la fiche se remplit, en boucle ---- */
+  (function(){
+    var mc=document.querySelector('[data-mem]');if(!mc)return;
+    var rows=[].slice.call(mc.querySelectorAll('.mem-row'));if(!rows.length)return;
+    if(REDUCE||!('IntersectionObserver' in window))return;
+    mc.classList.add('anim');
+    var D=[950,750,700,700,950,0]; /* attente APRÈS chaque ligne affichée */
+    var idx=0,timer=null,vis=false;
+    function clear(){clearTimeout(timer);rows.forEach(function(r){r.classList.remove('on');});idx=0;}
+    function step(){
+      if(idx<rows.length){
+        rows[idx].classList.add('on');
+        var d=D[idx]||800;idx++;
+        timer=setTimeout(step,d);
+      }else{
+        timer=setTimeout(function(){clear();timer=setTimeout(step,700);},3600);
+      }
+    }
+    var iom=new IntersectionObserver(function(es){es.forEach(function(e){
+      if(e.isIntersecting&&!vis){vis=true;timer=setTimeout(step,500);}
+      else if(!e.isIntersecting&&vis){vis=false;clear();}
+    });},{threshold:.3});
+    iom.observe(mc);
+  })();
+
+  /* ---- installation (page cabinets) : la ligne des étapes se dessine au scroll ---- */
+  (function(){
+    var st=document.querySelector('.setup');if(!st)return;
+    var line=st.querySelector('.set-line i');
+    var steps=[].slice.call(st.querySelectorAll('.sstep'));
+    if(REDUCE||!line)return;
+    st.classList.add('anim');
+    var queued=false;
+    function up(){
+      queued=false;
+      var r=st.getBoundingClientRect();
+      var p=(innerHeight*.82-r.top)/r.height;p=Math.max(0,Math.min(1,p));
+      line.style.transform='scaleY('+p.toFixed(4)+')';
+      var reach=r.top+10+p*(r.height-20);
+      for(var i=0;i<steps.length;i++){
+        steps[i].classList.toggle('lit',steps[i].getBoundingClientRect().top+16<=reach);
+      }
+    }
+    addEventListener('scroll',function(){if(!queued){queued=true;requestAnimationFrame(up);}},{passive:true});
+    addEventListener('resize',function(){if(!queued){queued=true;requestAnimationFrame(up);}});
+    up();
+  })();
+
   /* ---- barre d'appel mobile (toujours accessible) ---- */
   (function(){
     var T={
