@@ -90,4 +90,10 @@
     <xhtml:link rel="alternate" hreflang="nl" href="https://celya.be/nl/zelfstandigen.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/independants.html"/>
   </url>
+  <url>
+    <loc>https://celya.be/blog/</loc>
+  </url>
+  <url>
+    <loc>https://celya.be/blog/garages-appels-manques.html</loc>
+  </url>
 </urlset>

@@ -4,7 +4,8 @@
 
 (function(){
   var LANG=(document.documentElement.lang||'fr').slice(0,2);
-  var PRE=(LANG==='nl'||LANG==='en')?'../':''; /* nl/ et en/ sont un niveau sous les assets */
+  var BLOG=/\/blog\//.test(location.pathname); /* blog/ est un niveau sous la racine, comme nl/ et en/ */
+  var PRE=(LANG==='nl'||LANG==='en'||BLOG)?'../':''; /* nl/, en/ et blog/ sont un niveau sous les assets */
   var REDUCE=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   /* ---- année du footer ---- */
@@ -219,6 +220,50 @@
     io3.observe(wrap);
   })();
 
+  /* ---- entonnoir de tri (page garages) : chaque branche s'illumine à tour de rôle ---- */
+  (function(){
+    var fn=document.querySelector('.funnel');if(!fn)return;
+    var cards=[].slice.call(fn.querySelectorAll('.fcard'));
+    var paths=[].slice.call(fn.querySelectorAll('.fun-fork path'));
+    if(!cards.length)return;
+    if(REDUCE||!('IntersectionObserver' in window)){fn.classList.add('static');return;}
+    var i=-1,t=null,vis=false;
+    function clear(){cards.forEach(function(c){c.classList.remove('on');});
+      paths.forEach(function(p){p.classList.remove('on');});}
+    function step(){
+      i=(i+1)%cards.length;
+      cards.forEach(function(c,k){c.classList.toggle('on',k===i);});
+      paths.forEach(function(p,k){p.classList.toggle('on',k===i);});
+      /* l'urgence — la dernière branche — reste allumée un peu plus longtemps */
+      t=setTimeout(step,i===cards.length-1?4600:3400);
+    }
+    var iof=new IntersectionObserver(function(es){es.forEach(function(e){
+      if(e.isIntersecting&&!vis){vis=true;t=setTimeout(step,700);}
+      else if(!e.isIntersecting&&vis){vis=false;clearTimeout(t);i=-1;clear();}
+    });},{threshold:.3});
+    iof.observe(fn);
+  })();
+
+  /* ---- article de blog : le sommaire suit la lecture ---- */
+  (function(){
+    var toc=document.querySelector('.art-side .toc');if(!toc)return;
+    var links=[].slice.call(toc.querySelectorAll('a'));
+    var heads=links.map(function(a){var id=(a.getAttribute('href')||'').slice(1);
+      return document.getElementById(id);});
+    if(!links.length)return;
+    var cur=-1,queued=false;
+    function pick(){
+      queued=false;
+      var sel=0;
+      for(var k=0;k<heads.length;k++){
+        if(heads[k]&&heads[k].getBoundingClientRect().top<=120)sel=k;
+      }
+      if(sel!==cur){cur=sel;links.forEach(function(a,k){a.classList.toggle('on',k===sel);});}
+    }
+    addEventListener('scroll',function(){if(!queued){queued=true;requestAnimationFrame(pick);}},{passive:true});
+    pick();
+  })();
+
   /* ---- consentement cookies + Google Tag Manager (inchangé : chargé après accord) ---- */
   (function(){
     var GTM_ID='GTM-KF9QCKB2',KEY='celya-consent';
@@ -237,7 +282,7 @@
     if(saved==='denied')return;
     function build(){
       var b=document.createElement('div');b.className='cbanner';
-      b.innerHTML='<span class="cmsg">'+t.msg+' <a href="cookies.html">'+t.more+'</a></span>'+
+      b.innerHTML='<span class="cmsg">'+t.msg+' <a href="'+(BLOG?'../':'')+'cookies.html">'+t.more+'</a></span>'+
         '<span class="cbtns"><button class="cdecline">'+t.no+'</button><button class="caccept">'+t.ok+'</button></span>';
       document.body.appendChild(b);
       b.querySelector('.caccept').addEventListener('click',function(){try{localStorage.setItem(KEY,'granted');}catch(e){}grant();loadGTM();b.remove();});
