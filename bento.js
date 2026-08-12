@@ -577,6 +577,149 @@
     up();
   })();
 
+  /* ---- journée avec/sans (page indépendants) : la même frise, deux fins ----
+     Sans JS ou en mouvement réduit, les deux versions affichent leur état final. */
+  (function(){
+    var day=document.querySelector('[data-day]');if(!day)return;
+    if(REDUCE||!('IntersectionObserver' in window))return;
+    var rows=[
+      {el:day.querySelector('.day-sans'),miss:true},
+      {el:day.querySelector('.day-avec'),miss:false}
+    ];
+    if(!rows[0].el||!rows[1].el)return;
+    rows.forEach(function(r){
+      r.blks=[].slice.call(r.el.querySelectorAll('.day-blk'));
+      r.calls=[].slice.call(r.el.querySelectorAll('.day-call'));
+      r.outs=[].slice.call(r.el.querySelectorAll(r.miss?'.dp-chip':'.dg'));
+      r.fail=r.el.querySelector('.day-fail');
+      r.score=r.el.querySelector('.day-score');
+      r.score0=r.score?r.score.textContent:'';
+    });
+    day.classList.add('anim');
+    var timers=[],vis=false;
+    function later(fn,d){timers.push(setTimeout(fn,d));}
+    function clearAll(){timers.forEach(clearTimeout);timers=[];}
+    function resetRow(r){
+      r.el.classList.remove('cur','lost');
+      r.blks.concat(r.calls,r.outs).forEach(function(e){e.classList.remove('on');});
+      r.calls.forEach(function(c){c.classList.remove('gone','done');});
+      if(r.fail)r.fail.classList.remove('on');
+      /* le compteur reste vide tant que sa version n'a pas joué */
+      if(r.score)r.score.textContent='';
+    }
+    function reset(){clearAll();rows.forEach(resetRow);}
+    /* une version : blocs posés de gauche à droite, appels qui tombent à
+       intervalles irréguliers, puis le sort de chaque appel */
+    function play(r,next){
+      resetRow(r);r.el.classList.add('cur');
+      var t=200;
+      r.blks.forEach(function(b){later(function(){b.classList.add('on');},t);t+=380;});
+      t+=200;
+      var gaps=[0,1150,700,1500],n=0;
+      r.calls.forEach(function(c,i){
+        t+=gaps[i]||900;
+        later(function(){c.classList.add('on');},t);
+        later(function(){
+          c.classList.add(r.miss?'gone':'done');
+          if(r.outs[i])r.outs[i].classList.add('on');
+          n++;
+          if(r.score)r.score.textContent=r.miss
+            ?(n+(n>1?' appels manqués':' appel manqué'))
+            :(n+(n>1?' appels traités':' appel traité'));
+        },t+620);
+      });
+      t+=1300;
+      if(r.miss)later(function(){
+        r.el.classList.add('lost');
+        if(r.fail)r.fail.classList.add('on');
+        if(r.score)r.score.textContent='0 rappel passé';
+      },t);
+      /* 2 s de pause entre les deux versions */
+      later(function(){r.el.classList.remove('cur');next();},t+2300);
+    }
+    function cycle(){
+      if(!vis)return;
+      play(rows[0],function(){
+        if(!vis)return;
+        later(function(){play(rows[1],function(){
+          later(function(){reset();later(cycle,600);},1200);
+        });},350);
+      });
+    }
+    var iod=new IntersectionObserver(function(es){es.forEach(function(e){
+      if(e.isIntersecting&&!vis){vis=true;reset();later(cycle,450);}
+      else if(!e.isIntersecting&&vis){vis=false;reset();}
+    });},{threshold:.25});
+    iod.observe(day);
+  })();
+
+  /* ---- extension du numéro (page indépendants) : points lumineux, pause hors écran ---- */
+  (function(){
+    var ns=document.querySelector('[data-split]');if(!ns)return;
+    var zone=ns.querySelector('.ns-zone');
+    function size(){if(zone)ns.style.setProperty('--bx',Math.round(zone.offsetWidth*0.267)+'px');}
+    size();addEventListener('resize',size);
+    if(REDUCE||!('IntersectionObserver' in window))return;
+    var ion=new IntersectionObserver(function(es){es.forEach(function(e){
+      ns.classList.toggle('run',e.isIntersecting);});},{threshold:.25});
+    ion.observe(ns);
+  })();
+
+  /* ---- tableau de bord du soir (page indépendants) : les lignes se classent une à une ---- */
+  (function(){
+    var dash=document.querySelector('[data-dash]');if(!dash)return;
+    if(REDUCE||!('IntersectionObserver' in window))return;
+    var rows=[].slice.call(dash.querySelectorAll('.drow'));
+    var pop=dash.querySelector('.dash-pop');
+    if(rows.length<3)return;
+    dash.classList.add('anim');
+    /* ordre : ligne 1 → ligne 2 → badge + historique → ligne 3 */
+    var steps=[
+      {el:rows[0],d:900},
+      {el:rows[1],d:650},
+      {el:pop,d:1250,lit:rows[1]},
+      {el:rows[2],d:1100}
+    ];
+    var idx=0,timer=null,vis=false;
+    function clear(){clearTimeout(timer);idx=0;
+      rows.forEach(function(r){r.classList.remove('on','lit');});
+      if(pop)pop.classList.remove('on');}
+    function step(){
+      if(idx<steps.length){
+        var s=steps[idx];
+        if(s.el)s.el.classList.add('on');
+        if(s.lit)s.lit.classList.add('lit');
+        idx++;timer=setTimeout(step,s.d);
+      }else{
+        timer=setTimeout(function(){clear();timer=setTimeout(step,650);},3900);
+      }
+    }
+    var iob=new IntersectionObserver(function(es){es.forEach(function(e){
+      if(e.isIntersecting&&!vis){vis=true;timer=setTimeout(step,500);}
+      else if(!e.isIntersecting&&vis){vis=false;clear();}
+    });},{threshold:.3});
+    iob.observe(dash);
+  })();
+
+  /* ---- congés (page indépendants) : l'interrupteur ferme les jours, en boucle ----
+     L'état par défaut du HTML est « fermé » (.on) : c'est l'état final figé. */
+  (function(){
+    var aw=document.querySelector('[data-away]');if(!aw)return;
+    if(REDUCE||!('IntersectionObserver' in window))return;
+    var timer=null,vis=false;
+    function clear(){clearTimeout(timer);aw.classList.add('on');}
+    function cycle(open){
+      /* open=true : tout est disponible ; puis l'interrupteur bascule */
+      aw.classList.toggle('on',!open);
+      timer=setTimeout(function(){cycle(!open);},open?1700:3400);
+    }
+    var ioa=new IntersectionObserver(function(es){es.forEach(function(e){
+      if(e.isIntersecting&&!vis){vis=true;timer=setTimeout(function(){cycle(true);},900);}
+      else if(!e.isIntersecting&&vis){vis=false;clear();}
+    });},{threshold:.35});
+    ioa.observe(aw);
+  })();
+
   /* ---- barre d'appel mobile (toujours accessible) ---- */
   (function(){
     var T={
