@@ -92,17 +92,107 @@
   </url>
   <url>
     <loc>https://celya.be/blog/</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/blog/"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://celya.be/nl/blog/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://celya.be/en/blog/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/blog/"/>
+  </url>
+  <url>
+    <loc>https://celya.be/nl/blog/</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/blog/"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://celya.be/nl/blog/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://celya.be/en/blog/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/blog/"/>
+  </url>
+  <url>
+    <loc>https://celya.be/en/blog/</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/blog/"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://celya.be/nl/blog/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://celya.be/en/blog/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/blog/"/>
   </url>
   <url>
     <loc>https://celya.be/blog/garages-appels-manques.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/blog/garages-appels-manques.html"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://celya.be/nl/blog/garages-gemiste-oproepen.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://celya.be/en/blog/garages-missed-calls.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/blog/garages-appels-manques.html"/>
+  </url>
+  <url>
+    <loc>https://celya.be/nl/blog/garages-gemiste-oproepen.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/blog/garages-appels-manques.html"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://celya.be/nl/blog/garages-gemiste-oproepen.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://celya.be/en/blog/garages-missed-calls.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/blog/garages-appels-manques.html"/>
+  </url>
+  <url>
+    <loc>https://celya.be/en/blog/garages-missed-calls.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/blog/garages-appels-manques.html"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://celya.be/nl/blog/garages-gemiste-oproepen.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://celya.be/en/blog/garages-missed-calls.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/blog/garages-appels-manques.html"/>
   </url>
   <url>
     <loc>https://celya.be/blog/restaurants-reservations-telephone.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/blog/restaurants-reservations-telephone.html"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://celya.be/nl/blog/restaurants-telefonische-reserveringen.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://celya.be/en/blog/restaurants-phone-reservations.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/blog/restaurants-reservations-telephone.html"/>
+  </url>
+  <url>
+    <loc>https://celya.be/nl/blog/restaurants-telefonische-reserveringen.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/blog/restaurants-reservations-telephone.html"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://celya.be/nl/blog/restaurants-telefonische-reserveringen.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://celya.be/en/blog/restaurants-phone-reservations.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/blog/restaurants-reservations-telephone.html"/>
+  </url>
+  <url>
+    <loc>https://celya.be/en/blog/restaurants-phone-reservations.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/blog/restaurants-reservations-telephone.html"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://celya.be/nl/blog/restaurants-telefonische-reserveringen.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://celya.be/en/blog/restaurants-phone-reservations.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/blog/restaurants-reservations-telephone.html"/>
   </url>
   <url>
     <loc>https://celya.be/blog/cabinets-serveur-vocal-appels.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/blog/cabinets-serveur-vocal-appels.html"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://celya.be/nl/blog/praktijken-keuzemenu-oproepen.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://celya.be/en/blog/medical-practices-phone-menu.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/blog/cabinets-serveur-vocal-appels.html"/>
+  </url>
+  <url>
+    <loc>https://celya.be/nl/blog/praktijken-keuzemenu-oproepen.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/blog/cabinets-serveur-vocal-appels.html"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://celya.be/nl/blog/praktijken-keuzemenu-oproepen.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://celya.be/en/blog/medical-practices-phone-menu.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/blog/cabinets-serveur-vocal-appels.html"/>
+  </url>
+  <url>
+    <loc>https://celya.be/en/blog/medical-practices-phone-menu.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/blog/cabinets-serveur-vocal-appels.html"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://celya.be/nl/blog/praktijken-keuzemenu-oproepen.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://celya.be/en/blog/medical-practices-phone-menu.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/blog/cabinets-serveur-vocal-appels.html"/>
   </url>
   <url>
     <loc>https://celya.be/blog/independants-rappels-oublies.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/blog/independants-rappels-oublies.html"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://celya.be/nl/blog/zelfstandigen-gemiste-terugbelverzoeken.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://celya.be/en/blog/self-employed-missed-callbacks.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/blog/independants-rappels-oublies.html"/>
+  </url>
+  <url>
+    <loc>https://celya.be/nl/blog/zelfstandigen-gemiste-terugbelverzoeken.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/blog/independants-rappels-oublies.html"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://celya.be/nl/blog/zelfstandigen-gemiste-terugbelverzoeken.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://celya.be/en/blog/self-employed-missed-callbacks.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/blog/independants-rappels-oublies.html"/>
+  </url>
+  <url>
+    <loc>https://celya.be/en/blog/self-employed-missed-callbacks.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/blog/independants-rappels-oublies.html"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://celya.be/nl/blog/zelfstandigen-gemiste-terugbelverzoeken.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://celya.be/en/blog/self-employed-missed-callbacks.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/blog/independants-rappels-oublies.html"/>
   </url>
 </urlset>
