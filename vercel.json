@@ -16,21 +16,6 @@
       "permanent": true
     },
     {
-      "source": "/services-crm.html",
-      "destination": "/",
-      "permanent": true
-    },
-    {
-      "source": "/fr/services-crm.html",
-      "destination": "/",
-      "permanent": true
-    },
-    {
-      "source": "/nl/services-crm.html",
-      "destination": "/nl/",
-      "permanent": true
-    },
-    {
       "source": "/services-sales.html",
       "destination": "/",
       "permanent": true
@@ -42,36 +27,6 @@
     },
     {
       "source": "/nl/services-sales.html",
-      "destination": "/nl/",
-      "permanent": true
-    },
-    {
-      "source": "/services-admin.html",
-      "destination": "/",
-      "permanent": true
-    },
-    {
-      "source": "/fr/services-admin.html",
-      "destination": "/",
-      "permanent": true
-    },
-    {
-      "source": "/nl/services-admin.html",
-      "destination": "/nl/",
-      "permanent": true
-    },
-    {
-      "source": "/services-web.html",
-      "destination": "/",
-      "permanent": true
-    },
-    {
-      "source": "/fr/services-web.html",
-      "destination": "/",
-      "permanent": true
-    },
-    {
-      "source": "/nl/services-web.html",
       "destination": "/nl/",
       "permanent": true
     },
@@ -102,7 +57,7 @@
     },
     {
       "source": "/fr/pricing.html",
-      "destination": "/",
+      "destination": "/contact.html",
       "permanent": true
     },
     {
@@ -127,7 +82,7 @@
     },
     {
       "source": "/pricing.html",
-      "destination": "/",
+      "destination": "/contact.html",
       "permanent": true
     },
     {
@@ -144,6 +99,44 @@
       "source": "/clinics.html",
       "destination": "/cabinets.html",
       "permanent": true
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/services-crm.html",
+      "destination": "/api/gone"
+    },
+    {
+      "source": "/fr/services-crm.html",
+      "destination": "/api/gone"
+    },
+    {
+      "source": "/nl/services-crm.html",
+      "destination": "/api/gone"
+    },
+    {
+      "source": "/services-web.html",
+      "destination": "/api/gone"
+    },
+    {
+      "source": "/fr/services-web.html",
+      "destination": "/api/gone"
+    },
+    {
+      "source": "/nl/services-web.html",
+      "destination": "/api/gone"
+    },
+    {
+      "source": "/services-admin.html",
+      "destination": "/api/gone"
+    },
+    {
+      "source": "/fr/services-admin.html",
+      "destination": "/api/gone"
+    },
+    {
+      "source": "/nl/services-admin.html",
+      "destination": "/api/gone"
     }
   ]
 }
