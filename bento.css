@@ -786,7 +786,7 @@ footer.site a:hover{color:var(--ink)}
 .bbody{display:flex;flex-direction:column;gap:10px;padding:20px 24px 24px;flex:1}
 .bmeta{display:flex;flex-wrap:wrap;gap:6px 12px;font:500 11.5px/1.4 var(--b);letter-spacing:.12em;text-transform:uppercase;color:var(--soft)}
 .bmeta b{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;font-weight:700}
-.bcard h2{font-size:21px;line-height:1.2;margin:0}
+.bcard h2,.bcard h3{font-size:21px;line-height:1.2;margin:0}
 .bcard .chapo{font-size:14.5px;color:var(--body);flex:1}
 .bmore{display:inline-flex;align-items:center;gap:7px;font:500 14px/1 var(--b);color:var(--ink)}
 .bmore i{font-style:normal;font-weight:700;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;transition:transform .25s ease}
@@ -797,6 +797,13 @@ footer.site a:hover{color:var(--ink)}
 .bcard.feat h2{font-size:clamp(24px,3vw,34px)}
 .bcard.feat .chapo{font-size:16px;flex:none;max-width:56ch}
 .bsoon{margin:28px auto 0;text-align:center;font-size:13.5px;color:var(--soft)}
+.bsoon a{color:var(--ink)}
+.bsoon a:hover{color:var(--c1)}
+/* accueil : rappel des derniers articles, hors grille bento — 4 cartes, jamais d'orpheline */
+.home-arts{margin-top:26px;grid-template-columns:repeat(4,minmax(0,1fr))}
+.home-arts .chapo{font-size:14px}
+@media(max-width:1080px){.home-arts{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:560px){.home-arts{grid-template-columns:minmax(0,1fr)}}
 @media(max-width:860px){
   .bcard.feat{flex-direction:column;min-height:0}
   .bcard.feat .bimg{width:100%;aspect-ratio:16/10}
