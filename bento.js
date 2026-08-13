@@ -562,6 +562,12 @@
   (function(){
     var day=document.querySelector('[data-day]');if(!day)return;
     if(REDUCE||!('IntersectionObserver' in window))return;
+    /* le compteur est réécrit par le script : il doit suivre la langue de la page */
+    var DT={
+      fr:{m1:' appel manqué',mN:' appels manqués',d1:' appel traité',dN:' appels traités',none:'0 rappel passé'},
+      nl:{m1:' gemiste oproep',mN:' gemiste oproepen',d1:' behandelde oproep',dN:' behandelde oproepen',none:'0 keer teruggebeld'},
+      en:{m1:' missed call',mN:' missed calls',d1:' call handled',dN:' calls handled',none:'0 callbacks made'}
+    };var DL=DT[LANG]||DT.fr;
     var rows=[
       {el:day.querySelector('.day-sans'),miss:true},
       {el:day.querySelector('.day-avec'),miss:false}
@@ -604,15 +610,15 @@
           if(r.outs[i])r.outs[i].classList.add('on');
           n++;
           if(r.score)r.score.textContent=r.miss
-            ?(n+(n>1?' appels manqués':' appel manqué'))
-            :(n+(n>1?' appels traités':' appel traité'));
+            ?(n+(n>1?DL.mN:DL.m1))
+            :(n+(n>1?DL.dN:DL.d1));
         },t+620);
       });
       t+=1300;
       if(r.miss)later(function(){
         r.el.classList.add('lost');
         if(r.fail)r.fail.classList.add('on');
-        if(r.score)r.score.textContent='0 rappel passé';
+        if(r.score)r.score.textContent=DL.none;
       },t);
       /* 2 s de pause entre les deux versions */
       later(function(){r.el.classList.remove('cur');next();},t+2300);

@@ -46,48 +46,84 @@
     <loc>https://celya.be/garages.html</loc>
     <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/garages.html"/>
     <xhtml:link rel="alternate" hreflang="nl" href="https://celya.be/nl/garages.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://celya.be/en/garages.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/garages.html"/>
   </url>
   <url>
     <loc>https://celya.be/nl/garages.html</loc>
     <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/garages.html"/>
     <xhtml:link rel="alternate" hreflang="nl" href="https://celya.be/nl/garages.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://celya.be/en/garages.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/garages.html"/>
+  </url>
+  <url>
+    <loc>https://celya.be/en/garages.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/garages.html"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://celya.be/nl/garages.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://celya.be/en/garages.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/garages.html"/>
   </url>
   <url>
     <loc>https://celya.be/restaurants.html</loc>
     <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/restaurants.html"/>
     <xhtml:link rel="alternate" hreflang="nl" href="https://celya.be/nl/restaurants.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://celya.be/en/restaurants.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/restaurants.html"/>
   </url>
   <url>
     <loc>https://celya.be/nl/restaurants.html</loc>
     <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/restaurants.html"/>
     <xhtml:link rel="alternate" hreflang="nl" href="https://celya.be/nl/restaurants.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://celya.be/en/restaurants.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/restaurants.html"/>
+  </url>
+  <url>
+    <loc>https://celya.be/en/restaurants.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/restaurants.html"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://celya.be/nl/restaurants.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://celya.be/en/restaurants.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/restaurants.html"/>
   </url>
   <url>
     <loc>https://celya.be/cabinets.html</loc>
     <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/cabinets.html"/>
     <xhtml:link rel="alternate" hreflang="nl" href="https://celya.be/nl/praktijken.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://celya.be/en/medical-practices.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/cabinets.html"/>
   </url>
   <url>
     <loc>https://celya.be/nl/praktijken.html</loc>
     <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/cabinets.html"/>
     <xhtml:link rel="alternate" hreflang="nl" href="https://celya.be/nl/praktijken.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://celya.be/en/medical-practices.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/cabinets.html"/>
+  </url>
+  <url>
+    <loc>https://celya.be/en/medical-practices.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/cabinets.html"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://celya.be/nl/praktijken.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://celya.be/en/medical-practices.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/cabinets.html"/>
   </url>
   <url>
     <loc>https://celya.be/independants.html</loc>
     <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/independants.html"/>
     <xhtml:link rel="alternate" hreflang="nl" href="https://celya.be/nl/zelfstandigen.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://celya.be/en/self-employed.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/independants.html"/>
   </url>
   <url>
     <loc>https://celya.be/nl/zelfstandigen.html</loc>
     <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/independants.html"/>
     <xhtml:link rel="alternate" hreflang="nl" href="https://celya.be/nl/zelfstandigen.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://celya.be/en/self-employed.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/independants.html"/>
+  </url>
+  <url>
+    <loc>https://celya.be/en/self-employed.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/independants.html"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://celya.be/nl/zelfstandigen.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://celya.be/en/self-employed.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/independants.html"/>
   </url>
   <url>
