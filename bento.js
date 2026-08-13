@@ -5,37 +5,17 @@
 (function(){
   var LANG=(document.documentElement.lang||'fr').slice(0,2);
   var BLOG=/\/blog\//.test(location.pathname); /* blog/ est un niveau sous la racine, comme nl/ et en/ */
-  var PRE=(LANG==='nl'||LANG==='en'||BLOG)?'../':''; /* nl/, en/ et blog/ sont un niveau sous les assets */
+  var PRE=((LANG==='nl'||LANG==='en')&&BLOG)?'../../':((LANG==='nl'||LANG==='en'||BLOG)?'../':''); /* nl/, en/ et blog/ sont un niveau sous les assets ; nl/blog/ et en/blog/ deux niveaux */
   var REDUCE=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   /* ---- année du footer ---- */
   document.querySelectorAll('.yr').forEach(function(e){e.textContent=new Date().getFullYear();});
 
-  /* ---- menu mobile : burger + panneau, les liens métiers du menu déroulant y sont dépliés ---- */
+  /* ---- menu mobile : burger + panneau écrits en dur dans le HTML de chaque page
+     (SEO : les liens existent sans JS) — ici on ne gère que l'ouverture/fermeture ---- */
   (function(){
-    var nav=document.querySelector('.nav-links'),head=document.querySelector('.nav-in');
-    if(!nav||!head)return;
-    var btn=document.createElement('button');
-    btn.className='burger';btn.type='button';
-    btn.setAttribute('aria-label','Menu');btn.setAttribute('aria-expanded','false');
-    btn.innerHTML='<i></i><i></i>';
-    head.appendChild(btn);
-    var pan=document.createElement('nav');pan.className='mnav';
-    var inner=document.createElement('div');inner.className='mnav-in';pan.appendChild(inner);
-    [].slice.call(nav.children).forEach(function(el){
-      if(el.classList&&el.classList.contains('nav-drop')){
-        var lab=el.querySelector('a');
-        var h=document.createElement('b');h.className='mnav-h';h.textContent=lab?lab.textContent.trim():'';
-        inner.appendChild(h);
-        var dp=el.querySelector('.drop-panel');
-        if(dp){var g=document.createElement('div');g.className='mnav-grid';
-          [].slice.call(dp.querySelectorAll('a')).forEach(function(a){g.appendChild(a.cloneNode(true));});
-          inner.appendChild(g);}
-      }else if(el.tagName==='A'){
-        var c=el.cloneNode(true);c.className='mnav-l';inner.appendChild(c);
-      }
-    });
-    document.body.appendChild(pan);
+    var btn=document.querySelector('.burger'),pan=document.querySelector('.mnav');
+    if(!btn||!pan)return;
     function set(open){
       document.body.classList.toggle('mnav-open',open);
       btn.setAttribute('aria-expanded',open?'true':'false');
