@@ -28,6 +28,18 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/"/>
   </url>
   <url>
+    <loc>https://celya.be/a-propos.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/a-propos.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/a-propos.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/a-propos.html"/>
+  </url>
+  <url>
+    <loc>https://celya.be/base-de-connaissance.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/base-de-connaissance.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/base-de-connaissance.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/base-de-connaissance.html"/>
+  </url>
+  <url>
     <loc>https://celya.be/blog/</loc>
     <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/blog/"/>
     <xhtml:link rel="alternate" hreflang="nl-BE" href="https://celya.be/nl/blog/"/>
@@ -92,6 +104,18 @@
     <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/combien-coute-une-secretaire-en-belgique.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/combien-coute-une-secretaire-en-belgique.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/combien-coute-une-secretaire-en-belgique.html"/>
+  </url>
+  <url>
+    <loc>https://celya.be/conditions.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/conditions.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/conditions.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/conditions.html"/>
+  </url>
+  <url>
+    <loc>https://celya.be/conformite-ai-act.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/conformite-ai-act.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/conformite-ai-act.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/conformite-ai-act.html"/>
   </url>
   <url>
     <loc>https://celya.be/contact.html</loc>
@@ -211,6 +235,18 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/fiduciaires.html"/>
   </url>
   <url>
+    <loc>https://celya.be/fonctionnalites.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/fonctionnalites.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/fonctionnalites.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/fonctionnalites.html"/>
+  </url>
+  <url>
+    <loc>https://celya.be/francais-neerlandais.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/francais-neerlandais.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/francais-neerlandais.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/francais-neerlandais.html"/>
+  </url>
+  <url>
     <loc>https://celya.be/garages.html</loc>
     <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/garages.html"/>
     <xhtml:link rel="alternate" hreflang="nl-BE" href="https://celya.be/nl/garages.html"/>
@@ -218,6 +254,12 @@
     <xhtml:link rel="alternate" hreflang="nl" href="https://celya.be/nl/garages.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://celya.be/en/garages.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/garages.html"/>
+  </url>
+  <url>
+    <loc>https://celya.be/horaires-et-garde.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/horaires-et-garde.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/horaires-et-garde.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/horaires-et-garde.html"/>
   </url>
   <url>
     <loc>https://celya.be/independants.html</loc>
@@ -331,10 +373,34 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/independants.html"/>
   </url>
   <url>
+    <loc>https://celya.be/numero-belge.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/numero-belge.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/numero-belge.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/numero-belge.html"/>
+  </url>
+  <url>
+    <loc>https://celya.be/plan-de-charge.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/plan-de-charge.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/plan-de-charge.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/plan-de-charge.html"/>
+  </url>
+  <url>
     <loc>https://celya.be/plombiers.html</loc>
     <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/plombiers.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/plombiers.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/plombiers.html"/>
+  </url>
+  <url>
+    <loc>https://celya.be/prise-de-message.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/prise-de-message.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/prise-de-message.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/prise-de-message.html"/>
+  </url>
+  <url>
+    <loc>https://celya.be/prise-de-rendez-vous.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/prise-de-rendez-vous.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/prise-de-rendez-vous.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/prise-de-rendez-vous.html"/>
   </url>
   <url>
     <loc>https://celya.be/prix.html</loc>
@@ -352,16 +418,52 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/restaurants.html"/>
   </url>
   <url>
+    <loc>https://celya.be/resume-et-transcript.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/resume-et-transcript.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/resume-et-transcript.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/resume-et-transcript.html"/>
+  </url>
+  <url>
+    <loc>https://celya.be/securite.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/securite.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/securite.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/securite.html"/>
+  </url>
+  <url>
     <loc>https://celya.be/serruriers.html</loc>
     <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/serruriers.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/serruriers.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/serruriers.html"/>
   </url>
   <url>
+    <loc>https://celya.be/support.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/support.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/support.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/support.html"/>
+  </url>
+  <url>
     <loc>https://celya.be/syndics.html</loc>
     <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/syndics.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/syndics.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/syndics.html"/>
+  </url>
+  <url>
+    <loc>https://celya.be/traitement-des-donnees.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/traitement-des-donnees.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/traitement-des-donnees.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/traitement-des-donnees.html"/>
+  </url>
+  <url>
+    <loc>https://celya.be/transfert-vers-un-humain.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/transfert-vers-un-humain.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/transfert-vers-un-humain.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/transfert-vers-un-humain.html"/>
+  </url>
+  <url>
+    <loc>https://celya.be/tri-des-appels.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/tri-des-appels.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/tri-des-appels.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/tri-des-appels.html"/>
   </url>
   <url>
     <loc>https://celya.be/veterinaires.html</loc>
