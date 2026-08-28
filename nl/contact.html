@@ -87,6 +87,12 @@ form .sub{font-size:14px;color:var(--muted);margin-bottom:26px}
 .err{display:none;color:#F9A8A8;font-size:13.5px;margin-top:10px}
 footer{border-top:1px solid rgba(255,255,255,.06);padding:40px 0;color:var(--faint);font-size:13px;display:flex;justify-content:center;gap:8px;flex-wrap:wrap;text-align:center}
 
+/* --- sélecteur de langue : copie des règles .lang de bento.css, que cette page ne charge pas --- */
+.lang{display:flex;gap:2px;border:1px solid var(--line);border-radius:99px;padding:3px;font:500 12px/1 var(--b)}
+.lang a{padding:6px 10px;border-radius:99px;color:#AEB9D6}
+.lang a.on{background:rgba(255,255,255,.1);color:var(--ink)}
+@media(max-width:720px){nav.top .lang{display:none}}
+.mnav-in .lang{align-self:flex-start}
 /* --- menu : liens + déroulant métiers + burger (partagé avec le thème bento) --- */
 nav.top .nav-in{justify-content:flex-start;gap:20px}
 .nav-links{display:flex;align-items:center;gap:22px;font-size:14.5px;color:#AEB9D6;margin-left:auto}
@@ -147,6 +153,7 @@ body.mnav-open{overflow:hidden}
       <a href="./#faq">FAQ</a>
       <a href="blog/">Blog</a>
     </nav>
+    <div class="lang"><a href="../contact.html">FR</a><a class="on" href="contact.html">NL</a><a href="../en/contact.html">EN</a></div>
     <a href="tel:+32460254413" class="btn" style="padding:11px 20px;font-size:14px">Bel Janet</a>
     <button class="burger" id="mbtn" type="button" aria-label="Menu" aria-expanded="false"><i></i><i></i></button>
   </div>
@@ -164,6 +171,8 @@ body.mnav-open{overflow:hidden}
       <a href="praktijken.html"><img src="../assets/metier-cabinet.webp" alt="Praktijken" width="56" height="42" loading="lazy"><b>Praktijken</b></a>
       <a href="zelfstandigen.html"><img src="../assets/metier-artisan.webp" alt="Zelfstandigen" width="56" height="42" loading="lazy"><b>Zelfstandigen</b></a>
     </div>
+    <b class="mnav-h">Taal</b>
+    <div class="lang"><a href="../contact.html">FR</a><a class="on" href="contact.html">NL</a><a href="../en/contact.html">EN</a></div>
   </div>
 </nav>
 <script>
