@@ -303,6 +303,7 @@ body.mnav-open{overflow:hidden}
   .mrow:hover .mic-resto .k{transform:translateX(1.7px) rotate(7deg)}
   .mrow:hover .mic-cab .hb{animation:hbeat 1.05s ease-in-out infinite}
   .mrow:hover .mic-tools .lid{transform:rotate(-13deg)}
+  .mrow:hover .mic-bureau .ln{transform:translateX(1.7px)}
 }
 @keyframes hbeat{0%,100%{transform:scale(1)}22%{transform:scale(1.3)}44%{transform:scale(1)}60%{transform:scale(1.22)}80%{transform:scale(1)}}
 .mrow span{font-size:13.5px;color:var(--body);font-style:italic;flex:1}
