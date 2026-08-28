@@ -307,6 +307,12 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/je-rate-des-appels-clients.html"/>
   </url>
   <url>
+    <loc>https://celya.be/jours-feries-belges-permanence-telephonique.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/jours-feries-belges-permanence-telephonique.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/jours-feries-belges-permanence-telephonique.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/jours-feries-belges-permanence-telephonique.html"/>
+  </url>
+  <url>
     <loc>https://celya.be/message-repondeur-professionnel.html</loc>
     <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/message-repondeur-professionnel.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/message-repondeur-professionnel.html"/>
@@ -413,6 +419,18 @@
     <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/numero-belge.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/numero-belge.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/numero-belge.html"/>
+  </url>
+  <url>
+    <loc>https://celya.be/permanence-telephonique-de-nuit.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/permanence-telephonique-de-nuit.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/permanence-telephonique-de-nuit.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/permanence-telephonique-de-nuit.html"/>
+  </url>
+  <url>
+    <loc>https://celya.be/pic-appels-saisonnier.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/pic-appels-saisonnier.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/pic-appels-saisonnier.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/pic-appels-saisonnier.html"/>
   </url>
   <url>
     <loc>https://celya.be/plan-de-charge.html</loc>
