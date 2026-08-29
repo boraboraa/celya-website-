@@ -343,6 +343,42 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/independants.html"/>
   </url>
   <url>
+    <loc>https://celya.be/j-oublie-de-rappeler-mes-clients.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/j-oublie-de-rappeler-mes-clients.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/j-oublie-de-rappeler-mes-clients.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/j-oublie-de-rappeler-mes-clients.html"/>
+  </url>
+  <url>
+    <loc>https://celya.be/je-n-ai-pas-le-temps-de-repondre.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/je-n-ai-pas-le-temps-de-repondre.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/je-n-ai-pas-le-temps-de-repondre.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/je-n-ai-pas-le-temps-de-repondre.html"/>
+  </url>
+  <url>
+    <loc>https://celya.be/je-ne-peux-pas-embaucher-une-secretaire.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/je-ne-peux-pas-embaucher-une-secretaire.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/je-ne-peux-pas-embaucher-une-secretaire.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/je-ne-peux-pas-embaucher-une-secretaire.html"/>
+  </url>
+  <url>
+    <loc>https://celya.be/je-ne-sais-pas-combien-d-appels-je-rate.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/je-ne-sais-pas-combien-d-appels-je-rate.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/je-ne-sais-pas-combien-d-appels-je-rate.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/je-ne-sais-pas-combien-d-appels-je-rate.html"/>
+  </url>
+  <url>
+    <loc>https://celya.be/je-ne-veux-pas-etre-derange-en-permanence.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/je-ne-veux-pas-etre-derange-en-permanence.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/je-ne-veux-pas-etre-derange-en-permanence.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/je-ne-veux-pas-etre-derange-en-permanence.html"/>
+  </url>
+  <url>
+    <loc>https://celya.be/je-perds-du-temps-avec-des-appels-inutiles.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/je-perds-du-temps-avec-des-appels-inutiles.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/je-perds-du-temps-avec-des-appels-inutiles.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/je-perds-du-temps-avec-des-appels-inutiles.html"/>
+  </url>
+  <url>
     <loc>https://celya.be/je-rate-des-appels-clients.html</loc>
     <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/je-rate-des-appels-clients.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/je-rate-des-appels-clients.html"/>
@@ -361,6 +397,24 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/jours-feries-belges-permanence-telephonique.html"/>
   </url>
   <url>
+    <loc>https://celya.be/mes-appels-partent-a-la-concurrence.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/mes-appels-partent-a-la-concurrence.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/mes-appels-partent-a-la-concurrence.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/mes-appels-partent-a-la-concurrence.html"/>
+  </url>
+  <url>
+    <loc>https://celya.be/mes-clients-tombent-sur-le-repondeur.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/mes-clients-tombent-sur-le-repondeur.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/mes-clients-tombent-sur-le-repondeur.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/mes-clients-tombent-sur-le-repondeur.html"/>
+  </url>
+  <url>
+    <loc>https://celya.be/mes-clients-vont-ils-accepter-une-ia.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/mes-clients-vont-ils-accepter-une-ia.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/mes-clients-vont-ils-accepter-une-ia.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/mes-clients-vont-ils-accepter-une-ia.html"/>
+  </url>
+  <url>
     <loc>https://celya.be/message-repondeur-professionnel.html</loc>
     <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/message-repondeur-professionnel.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/message-repondeur-professionnel.html"/>
@@ -371,6 +425,12 @@
     <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/metiers.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/metiers.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/metiers.html"/>
+  </url>
+  <url>
+    <loc>https://celya.be/mon-numero-sonne-occupe.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/mon-numero-sonne-occupe.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/mon-numero-sonne-occupe.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/mon-numero-sonne-occupe.html"/>
   </url>
   <url>
     <loc>https://celya.be/nl/blog/</loc>
