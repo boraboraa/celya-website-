@@ -34,6 +34,30 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/a-propos.html"/>
   </url>
   <url>
+    <loc>https://celya.be/absence-imprevue-qui-repond.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/absence-imprevue-qui-repond.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/absence-imprevue-qui-repond.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/absence-imprevue-qui-repond.html"/>
+  </url>
+  <url>
+    <loc>https://celya.be/appels-avant-l-ouverture.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/appels-avant-l-ouverture.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/appels-avant-l-ouverture.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/appels-avant-l-ouverture.html"/>
+  </url>
+  <url>
+    <loc>https://celya.be/appels-pendant-la-pause-de-midi.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/appels-pendant-la-pause-de-midi.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/appels-pendant-la-pause-de-midi.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/appels-pendant-la-pause-de-midi.html"/>
+  </url>
+  <url>
+    <loc>https://celya.be/appels-pendant-une-intervention.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/appels-pendant-une-intervention.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/appels-pendant-une-intervention.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/appels-pendant-une-intervention.html"/>
+  </url>
+  <url>
     <loc>https://celya.be/base-de-connaissance.html</loc>
     <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/base-de-connaissance.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/base-de-connaissance.html"/>
@@ -134,6 +158,12 @@
     <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/conges-du-batiment-permanence-telephonique.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/conges-du-batiment-permanence-telephonique.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/conges-du-batiment-permanence-telephonique.html"/>
+  </url>
+  <url>
+    <loc>https://celya.be/conges-scolaires-belgique-telephone.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/conges-scolaires-belgique-telephone.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/conges-scolaires-belgique-telephone.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/conges-scolaires-belgique-telephone.html"/>
   </url>
   <url>
     <loc>https://celya.be/contact.html</loc>
@@ -247,10 +277,22 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/independants.html"/>
   </url>
   <url>
+    <loc>https://celya.be/entre-noel-et-nouvel-an-telephone.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/entre-noel-et-nouvel-an-telephone.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/entre-noel-et-nouvel-an-telephone.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/entre-noel-et-nouvel-an-telephone.html"/>
+  </url>
+  <url>
     <loc>https://celya.be/est-ce-legal-en-belgique.html</loc>
     <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/est-ce-legal-en-belgique.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/est-ce-legal-en-belgique.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/est-ce-legal-en-belgique.html"/>
+  </url>
+  <url>
+    <loc>https://celya.be/fermeture-annuelle-telephone.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/fermeture-annuelle-telephone.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/fermeture-annuelle-telephone.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/fermeture-annuelle-telephone.html"/>
   </url>
   <url>
     <loc>https://celya.be/fiduciaires.html</loc>
@@ -305,6 +347,12 @@
     <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/je-rate-des-appels-clients.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/je-rate-des-appels-clients.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/je-rate-des-appels-clients.html"/>
+  </url>
+  <url>
+    <loc>https://celya.be/jour-de-fermeture-hebdomadaire.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/jour-de-fermeture-hebdomadaire.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/jour-de-fermeture-hebdomadaire.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/jour-de-fermeture-hebdomadaire.html"/>
   </url>
   <url>
     <loc>https://celya.be/jours-feries-belges-permanence-telephonique.html</loc>
@@ -425,6 +473,12 @@
     <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/permanence-telephonique-de-nuit.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/permanence-telephonique-de-nuit.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/permanence-telephonique-de-nuit.html"/>
+  </url>
+  <url>
+    <loc>https://celya.be/permanence-telephonique-week-end.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/permanence-telephonique-week-end.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/permanence-telephonique-week-end.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/permanence-telephonique-week-end.html"/>
   </url>
   <url>
     <loc>https://celya.be/pic-appels-saisonnier.html</loc>
