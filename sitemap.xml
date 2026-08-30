@@ -64,6 +64,12 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/appels-avant-l-ouverture.html"/>
   </url>
   <url>
+    <loc>https://celya.be/appels-depuis-l-etranger.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/appels-depuis-l-etranger.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/appels-depuis-l-etranger.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/appels-depuis-l-etranger.html"/>
+  </url>
+  <url>
     <loc>https://celya.be/appels-pendant-la-pause-de-midi.html</loc>
     <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/appels-pendant-la-pause-de-midi.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/appels-pendant-la-pause-de-midi.html"/>
@@ -143,6 +149,12 @@
     <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/c-est-quoi-un-telesecretariat.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/c-est-quoi-un-telesecretariat.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/c-est-quoi-un-telesecretariat.html"/>
+  </url>
+  <url>
+    <loc>https://celya.be/ca-marche-avec-mon-operateur.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/ca-marche-avec-mon-operateur.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/ca-marche-avec-mon-operateur.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/ca-marche-avec-mon-operateur.html"/>
   </url>
   <url>
     <loc>https://celya.be/cabinets.html</loc>
@@ -269,6 +281,12 @@
     <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/devier-ses-appels-proximus.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/devier-ses-appels-proximus.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/devier-ses-appels-proximus.html"/>
+  </url>
+  <url>
+    <loc>https://celya.be/dois-je-le-declarer-quelque-part.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/dois-je-le-declarer-quelque-part.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/dois-je-le-declarer-quelque-part.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/dois-je-le-declarer-quelque-part.html"/>
   </url>
   <url>
     <loc>https://celya.be/electriciens.html</loc>
@@ -842,6 +860,12 @@
     <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/resume-et-transcript.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/resume-et-transcript.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/resume-et-transcript.html"/>
+  </url>
+  <url>
+    <loc>https://celya.be/rgpd-belgique-est-ce-different.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/rgpd-belgique-est-ce-different.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/rgpd-belgique-est-ce-different.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/rgpd-belgique-est-ce-different.html"/>
   </url>
   <url>
     <loc>https://celya.be/secretariat-partage-ou-dedie.html</loc>
