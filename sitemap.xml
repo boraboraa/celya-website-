@@ -133,6 +133,12 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/blog/restaurants-reservations-telephone.html"/>
   </url>
   <url>
+    <loc>https://celya.be/c-est-pour-les-grosses-entreprises.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/c-est-pour-les-grosses-entreprises.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/c-est-pour-les-grosses-entreprises.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/c-est-pour-les-grosses-entreprises.html"/>
+  </url>
+  <url>
     <loc>https://celya.be/c-est-quoi-un-telesecretariat.html</loc>
     <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/c-est-quoi-un-telesecretariat.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/c-est-quoi-un-telesecretariat.html"/>
@@ -385,6 +391,12 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/est-ce-qu-elle-rappelle-les-gens.html"/>
   </url>
   <url>
+    <loc>https://celya.be/est-ce-que-ca-marche-aussi-bien-qu-un-humain.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/est-ce-que-ca-marche-aussi-bien-qu-un-humain.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/est-ce-que-ca-marche-aussi-bien-qu-un-humain.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/est-ce-que-ca-marche-aussi-bien-qu-un-humain.html"/>
+  </url>
+  <url>
     <loc>https://celya.be/est-ce-que-je-paie-si-personne-n-appelle.html</loc>
     <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/est-ce-que-je-paie-si-personne-n-appelle.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/est-ce-que-je-paie-si-personne-n-appelle.html"/>
@@ -557,6 +569,12 @@
     <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/message-repondeur-professionnel.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/message-repondeur-professionnel.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/message-repondeur-professionnel.html"/>
+  </url>
+  <url>
+    <loc>https://celya.be/messagerie-qui-transcrit.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/messagerie-qui-transcrit.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/messagerie-qui-transcrit.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/messagerie-qui-transcrit.html"/>
   </url>
   <url>
     <loc>https://celya.be/metiers.html</loc>
@@ -902,6 +920,12 @@
     <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/si-un-appelant-est-mecontent.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/si-un-appelant-est-mecontent.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/si-un-appelant-est-mecontent.html"/>
+  </url>
+  <url>
+    <loc>https://celya.be/sonner-sur-plusieurs-telephones.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/sonner-sur-plusieurs-telephones.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/sonner-sur-plusieurs-telephones.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/sonner-sur-plusieurs-telephones.html"/>
   </url>
   <url>
     <loc>https://celya.be/standard-telephonique-virtuel.html</loc>
