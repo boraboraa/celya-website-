@@ -20,14 +20,50 @@ const interdits = [
   [/(?<!\p{L})(?:Deutsch|Duits\p{L}*)/iu, "langue allemande : hors produit"],
   [/(plus de\s*)?\b(1[0-9]|[2-9][0-9])\s*(langues|talen|languages)\b/i,
    "revendication multilingue non adossee : le produit annonce FR + NL"],
+
+  /* Pieges NL-NL : ce sont ceux qu'on ne voit pas en se relisant.
+   * Reference : docs/vocabulaire-be.md, section « Neerlandais de Belgique ». */
+  [/(?<!\p{L})dakdekker\p{L}*/iu, "NL-NL : ecrire « dakwerker »"],
+  [/(?<!\p{L})glaszetter\p{L}*/iu, "NL-NL : ecrire « glazenmaker »"],
+  [/(?<!\p{L})stukadoor\p{L}*/iu, "NL-NL : ecrire « plafonneerder »"],
+  [/(?<!\p{L})timmerman(?!\p{L})|(?<!\p{L})timmerlieden(?!\p{L})/iu,
+   "NL-NL : ecrire « schrijnwerker »"],
+  [/(?<!\p{L})huisartsenpost\p{L}*/iu, "NL-NL : ecrire « wachtpost »"],
+  [/(?<!\p{L})administratiekantoor\p{L}*/iu, "NL-NL : ecrire « boekhoudkantoor »"],
+  [/(?<!\p{L})reservering\p{L}*/iu, "NL-NL : ecrire « reservatie »"],
+  [/(?<!\p{L})cv-monteur\p{L}*/iu, "NL-NL : ecrire « technicus centrale verwarming »"],
+  /* « deurwaarder » seul est NL-NL ; precede de « gerechts » il est correct. */
+  [/(?<!\p{L})(?<!gerechts)deurwaarder\p{L}*/iu, "NL-NL : ecrire « gerechtsdeurwaarder »"],
+
+  /* Pieges FR de France. Reference : docs/vocabulaire-be.md, section
+   * « Francais de Belgique ». */
+  /* « expert-comptable certifie » est un titre legal belge protege (loi du
+   * 17 mars 2019, ITAA), pas un francisme : le motif large frappait un usage
+   * correct dans l'audienceType de fiduciaires.html. On ne vise donc que la
+   * formulation de France que le referentiel ecarte vraiment. */
+  [/cabinets?\s+d[e']\s*(expertise\s+comptable|experts?-comptables?)/iu,
+   "FR-FR : ecrire « fiduciaire » ou « comptable-fiscaliste »"],
+  [/(?<!\p{L})orthophonist\p{L}*/iu, "FR-FR : ecrire « logopede »"],
+  [/(?<!\p{L})plaquiste\p{L}*/iu, "FR-FR : ecrire « plafonneur »"],
+  [/(?<!\p{L})masseur-kin\p{L}*/iu, "FR-FR : ecrire « kinesitherapeute »"],
 ];
 
 /* Les fichiers de travail hors site ne sont pas controles. */
 const CONTROLE = /\.(html|md)$/i;
 
+/* Le referentiel et les notes de travail CITENT les mots interdits : c'est
+ * leur fonction. Les controler bloquerait toute edition du referentiel. */
+const EXEMPTS = /(?:^|\/)(?:docs\/vocabulaire-be\.md|CLAUDE\.md)$/;
+
+/* Les URL deja publiees ne sont pas de la prose : renommer un fichier en
+ * ligne est un probleme de redirection, pas de vocabulaire. On neutralise
+ * donc le contenu des attributs href et src avant de chercher. */
+const LIENS = /\b(?:href|src|content)\s*=\s*"[^"]*"/gi;
+
 function verifie(chemin) {
-  if (!CONTROLE.test(chemin) || !fs.existsSync(chemin)) return [];
-  const src = fs.readFileSync(chemin, 'utf8');
+  if (!CONTROLE.test(chemin) || EXEMPTS.test(chemin) || !fs.existsSync(chemin)) return [];
+  const src = fs.readFileSync(chemin, 'utf8')
+    .replace(LIENS, (m) => (/^\s*content/i.test(m) ? m : m.replace(/[^\s="]/g, '.')));
   const lignes = src.split('\n');
   const trouves = [];
   for (const [re, motif] of interdits) {
