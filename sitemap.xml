@@ -346,6 +346,12 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/glossaire.html"/>
   </url>
   <url>
+    <loc>https://celya.be/grille-horaires-garde-transferts.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/grille-horaires-garde-transferts.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/grille-horaires-garde-transferts.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/grille-horaires-garde-transferts.html"/>
+  </url>
+  <url>
     <loc>https://celya.be/horaires-et-garde.html</loc>
     <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/horaires-et-garde.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/horaires-et-garde.html"/>

@@ -196,10 +196,17 @@ gtag('consent','default',{ad_storage:'denied',analytics_storage:'denied',ad_user
       <h2><span class="l2"><span>Combien vous coûtent <span class="it">les appels manqués&nbsp;?</span></span></span></h2>
       <div class="roi-grid">
         <div class="roi-ctl">
-          <label for="roi-miss">Appels manqués par semaine <output id="roi-miss-n">12</output></label>
-          <input type="range" id="roi-miss" min="2" max="60" value="12" step="1">
+          <label for="hm-miss">Appels manqués par semaine <output id="hm-miss-n">12</output></label>
+          <input type="range" id="hm-miss" min="2" max="60" value="12" step="1">
+          <label>Sur 10 appelants sans réponse, combien ne rappellent pas&nbsp;? <output id="hm-lost-n">5 sur 10</output></label>
+          <div class="pills" id="hm-lost">
+            <button type="button" data-v="2">2</button>
+            <button type="button" data-v="5" class="on">5</button>
+            <button type="button" data-v="8">8</button>
+            <button type="button" data-v="10">10</button>
+          </div>
           <label>Ce que vaut un nouveau client pour vous</label>
-          <div class="pills">
+          <div class="pills" id="hm-val">
             <button type="button" data-v="100">100&nbsp;&euro;</button>
             <button type="button" data-v="300" class="on">300&nbsp;&euro;</button>
             <button type="button" data-v="800">800&nbsp;&euro;</button>
@@ -207,9 +214,9 @@ gtag('consent','default',{ad_storage:'denied',analytics_storage:'denied',ad_user
           </div>
         </div>
         <div class="roi-out">
-          <b id="roi-num">4&nbsp;676&nbsp;&euro;</b>
-          <span>qui s'envolent chaque mois</span>
-          <p class="note">Estimation prudente : environ 30 % des appelants qui tombent sur un répondeur achètent ailleurs au lieu de rappeler.</p>
+          <b id="hm-num">6&nbsp;900&nbsp;&euro;</b>
+          <span>selon vos hypothèses, chaque mois</span>
+          <p class="note"><b>Nous ne fournissons aucun de ces chiffres.</b> Les trois valeurs ci-contre sont les vôtres. Base de calcul&nbsp;: 46 semaines travaillées par an, soit 52 moins les dix jours fériés légaux belges et une fermeture annuelle. <a href="calculateur-appels-manques.html">Le calculateur détaillé</a> explique la méthode.</p>
           <a class="btn btn-grad" href="tel:+32460254413"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg> Stoppez la fuite : appelez Janet</a>
         </div>
       </div>
@@ -495,7 +502,7 @@ gtag('consent','default',{ad_storage:'denied',analytics_storage:'denied',ad_user
       <div class="cols"><span>Vos objections</span></div>
     </div>
     <div class="frows">
-      <div class="cols"><a href="calculateur-appels-manques.html">Calculateur d'appels</a><a href="engager-ou-externaliser-son-accueil.html">Engager ou externaliser</a><a href="modele-fiche-message-telephonique.html">Fiche de message</a><a href="modele-annonce-fermeture-annuelle.html">Annonce de fermeture</a><a href="checklist-rgpd-enregistrement-appels.html">Checklist RGPD</a></div>
+      <div class="cols"><a href="calculateur-appels-manques.html">Calculateur d'appels</a><a href="engager-ou-externaliser-son-accueil.html">Engager ou externaliser</a><a href="modele-fiche-message-telephonique.html">Fiche de message</a><a href="modele-annonce-fermeture-annuelle.html">Annonce de fermeture</a><a href="checklist-rgpd-enregistrement-appels.html">Checklist RGPD</a><a href="grille-horaires-garde-transferts.html">Grille de mise en service</a></div>
       <div class="cols"><span>Outils</span></div>
     </div>
     <div class="frows">
@@ -506,5 +513,35 @@ gtag('consent','default',{ad_storage:'denied',analytics_storage:'denied',ad_user
 </div>
 </main>
 <script src="bento.js" defer></script>
+<script>
+/* Simulateur de la page d'accueil — même logique que /calculateur-appels-manques.html :
+   aucun taux n'est imposé, les trois entrees viennent du visiteur.
+   Base : 46 semaines travaillees par an, soit 46/12 semaines par mois. */
+(function(){
+  var miss=document.getElementById('hm-miss'),missOut=document.getElementById('hm-miss-n'),
+      lostOut=document.getElementById('hm-lost-n'),out=document.getElementById('hm-num'),
+      pv=document.querySelectorAll('#hm-val button'),pl=document.querySelectorAll('#hm-lost button');
+  if(!miss||!out)return;
+  var SEM_MOIS=46/12, val=300, lost=5;
+  function fmt(n){return n.toLocaleString('fr-BE')+' \u20AC';}
+  function update(){
+    if(missOut)missOut.textContent=miss.value;
+    if(lostOut)lostOut.textContent=lost+' sur 10';
+    out.textContent=fmt(Math.round(miss.value*SEM_MOIS*(lost/10)*val));
+  }
+  function group(list,set){
+    for(var i=0;i<list.length;i++)(function(b){
+      b.addEventListener('click',function(){
+        for(var j=0;j<list.length;j++)list[j].classList.remove('on');
+        b.classList.add('on');set(+b.getAttribute('data-v'));update();
+      });
+    })(list[i]);
+  }
+  group(pv,function(v){val=v;});
+  group(pl,function(v){lost=v;});
+  miss.addEventListener('input',update);
+  update();
+})();
+</script>
 </body>
 </html>
