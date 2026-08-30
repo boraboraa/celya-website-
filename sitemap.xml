@@ -40,6 +40,18 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/absence-imprevue-qui-repond.html"/>
   </url>
   <url>
+    <loc>https://celya.be/agenda-en-ligne-ou-rendez-vous-par-telephone.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/agenda-en-ligne-ou-rendez-vous-par-telephone.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/agenda-en-ligne-ou-rendez-vous-par-telephone.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/agenda-en-ligne-ou-rendez-vous-par-telephone.html"/>
+  </url>
+  <url>
+    <loc>https://celya.be/agent-vocal-ou-telesecretariat-humain.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/agent-vocal-ou-telesecretariat-humain.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/agent-vocal-ou-telesecretariat-humain.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/agent-vocal-ou-telesecretariat-humain.html"/>
+  </url>
+  <url>
     <loc>https://celya.be/appels-avant-l-ouverture.html</loc>
     <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/appels-avant-l-ouverture.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/appels-avant-l-ouverture.html"/>
@@ -130,6 +142,12 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/calculateur-appels-manques.html"/>
   </url>
   <url>
+    <loc>https://celya.be/callbot-ou-agent-vocal.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/callbot-ou-agent-vocal.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/callbot-ou-agent-vocal.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/callbot-ou-agent-vocal.html"/>
+  </url>
+  <url>
     <loc>https://celya.be/chauffagistes.html</loc>
     <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/chauffagistes.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/chauffagistes.html"/>
@@ -185,6 +203,12 @@
     <xhtml:link rel="alternate" hreflang="nl" href="https://celya.be/nl/contact.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://celya.be/en/contact.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/contact.html"/>
+  </url>
+  <url>
+    <loc>https://celya.be/deviation-d-appel-ou-portabilite-du-numero.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/deviation-d-appel-ou-portabilite-du-numero.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/deviation-d-appel-ou-portabilite-du-numero.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/deviation-d-appel-ou-portabilite-du-numero.html"/>
   </url>
   <url>
     <loc>https://celya.be/devier-ses-appels-proximus.html</loc>
@@ -323,6 +347,12 @@
     <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/fonctionnalites.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/fonctionnalites.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/fonctionnalites.html"/>
+  </url>
+  <url>
+    <loc>https://celya.be/forfait-ou-facturation-a-l-appel.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/forfait-ou-facturation-a-l-appel.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/forfait-ou-facturation-a-l-appel.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/forfait-ou-facturation-a-l-appel.html"/>
   </url>
   <url>
     <loc>https://celya.be/francais-neerlandais.html</loc>
@@ -565,6 +595,12 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/numero-belge.html"/>
   </url>
   <url>
+    <loc>https://celya.be/permanence-en-belgique-ou-a-l-etranger.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/permanence-en-belgique-ou-a-l-etranger.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/permanence-en-belgique-ou-a-l-etranger.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/permanence-en-belgique-ou-a-l-etranger.html"/>
+  </url>
+  <url>
     <loc>https://celya.be/permanence-telephonique-de-nuit.html</loc>
     <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/permanence-telephonique-de-nuit.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/permanence-telephonique-de-nuit.html"/>
@@ -619,6 +655,12 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/questions.html"/>
   </url>
   <url>
+    <loc>https://celya.be/repondeur-ou-permanence-telephonique.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/repondeur-ou-permanence-telephonique.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/repondeur-ou-permanence-telephonique.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/repondeur-ou-permanence-telephonique.html"/>
+  </url>
+  <url>
     <loc>https://celya.be/restaurants.html</loc>
     <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/restaurants.html"/>
     <xhtml:link rel="alternate" hreflang="nl-BE" href="https://celya.be/nl/restaurants.html"/>
@@ -632,6 +674,12 @@
     <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/resume-et-transcript.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/resume-et-transcript.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/resume-et-transcript.html"/>
+  </url>
+  <url>
+    <loc>https://celya.be/secretariat-partage-ou-dedie.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/secretariat-partage-ou-dedie.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/secretariat-partage-ou-dedie.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/secretariat-partage-ou-dedie.html"/>
   </url>
   <url>
     <loc>https://celya.be/securite.html</loc>
