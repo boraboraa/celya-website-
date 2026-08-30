@@ -254,7 +254,9 @@
   <url>
     <loc>https://celya.be/conges-du-batiment-permanence-telephonique.html</loc>
     <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/conges-du-batiment-permanence-telephonique.html"/>
+    <xhtml:link rel="alternate" hreflang="nl-BE" href="https://celya.be/nl/bouwverlof-telefoonpermanentie.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/conges-du-batiment-permanence-telephonique.html"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://celya.be/nl/bouwverlof-telefoonpermanentie.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/conges-du-batiment-permanence-telephonique.html"/>
   </url>
   <url>
@@ -533,7 +535,9 @@
   <url>
     <loc>https://celya.be/je-ne-peux-pas-embaucher-une-secretaire.html</loc>
     <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/je-ne-peux-pas-embaucher-une-secretaire.html"/>
+    <xhtml:link rel="alternate" hreflang="nl-BE" href="https://celya.be/nl/geen-secretaresse-aanwerven.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/je-ne-peux-pas-embaucher-une-secretaire.html"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://celya.be/nl/geen-secretaresse-aanwerven.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/je-ne-peux-pas-embaucher-une-secretaire.html"/>
   </url>
   <url>
@@ -557,7 +561,9 @@
   <url>
     <loc>https://celya.be/je-rate-des-appels-clients.html</loc>
     <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/je-rate-des-appels-clients.html"/>
+    <xhtml:link rel="alternate" hreflang="nl-BE" href="https://celya.be/nl/gemiste-oproepen.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/je-rate-des-appels-clients.html"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://celya.be/nl/gemiste-oproepen.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/je-rate-des-appels-clients.html"/>
   </url>
   <url>
@@ -569,7 +575,9 @@
   <url>
     <loc>https://celya.be/jours-feries-belges-permanence-telephonique.html</loc>
     <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/jours-feries-belges-permanence-telephonique.html"/>
+    <xhtml:link rel="alternate" hreflang="nl-BE" href="https://celya.be/nl/belgische-feestdagen-telefoon.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/jours-feries-belges-permanence-telephonique.html"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://celya.be/nl/belgische-feestdagen-telefoon.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/jours-feries-belges-permanence-telephonique.html"/>
   </url>
   <url>
@@ -587,7 +595,9 @@
   <url>
     <loc>https://celya.be/mes-clients-tombent-sur-le-repondeur.html</loc>
     <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/mes-clients-tombent-sur-le-repondeur.html"/>
+    <xhtml:link rel="alternate" hreflang="nl-BE" href="https://celya.be/nl/antwoordapparaat.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/mes-clients-tombent-sur-le-repondeur.html"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://celya.be/nl/antwoordapparaat.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/mes-clients-tombent-sur-le-repondeur.html"/>
   </url>
   <url>
@@ -631,7 +641,9 @@
   <url>
     <loc>https://celya.be/mon-numero-sonne-occupe.html</loc>
     <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/mon-numero-sonne-occupe.html"/>
+    <xhtml:link rel="alternate" hreflang="nl-BE" href="https://celya.be/nl/bezette-lijn.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/mon-numero-sonne-occupe.html"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://celya.be/nl/bezette-lijn.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/mon-numero-sonne-occupe.html"/>
   </url>
   <url>
@@ -641,6 +653,30 @@
     <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/conformite-ai-act.html"/>
     <xhtml:link rel="alternate" hreflang="nl" href="https://celya.be/nl/ai-act-conformiteit.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/conformite-ai-act.html"/>
+  </url>
+  <url>
+    <loc>https://celya.be/nl/antwoordapparaat.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/mes-clients-tombent-sur-le-repondeur.html"/>
+    <xhtml:link rel="alternate" hreflang="nl-BE" href="https://celya.be/nl/antwoordapparaat.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/mes-clients-tombent-sur-le-repondeur.html"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://celya.be/nl/antwoordapparaat.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/mes-clients-tombent-sur-le-repondeur.html"/>
+  </url>
+  <url>
+    <loc>https://celya.be/nl/belgische-feestdagen-telefoon.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/jours-feries-belges-permanence-telephonique.html"/>
+    <xhtml:link rel="alternate" hreflang="nl-BE" href="https://celya.be/nl/belgische-feestdagen-telefoon.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/jours-feries-belges-permanence-telephonique.html"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://celya.be/nl/belgische-feestdagen-telefoon.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/jours-feries-belges-permanence-telephonique.html"/>
+  </url>
+  <url>
+    <loc>https://celya.be/nl/bezette-lijn.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/mon-numero-sonne-occupe.html"/>
+    <xhtml:link rel="alternate" hreflang="nl-BE" href="https://celya.be/nl/bezette-lijn.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/mon-numero-sonne-occupe.html"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://celya.be/nl/bezette-lijn.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/mon-numero-sonne-occupe.html"/>
   </url>
   <url>
     <loc>https://celya.be/nl/blog/</loc>
@@ -696,6 +732,14 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/fiduciaires.html"/>
   </url>
   <url>
+    <loc>https://celya.be/nl/bouwverlof-telefoonpermanentie.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/conges-du-batiment-permanence-telephonique.html"/>
+    <xhtml:link rel="alternate" hreflang="nl-BE" href="https://celya.be/nl/bouwverlof-telefoonpermanentie.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/conges-du-batiment-permanence-telephonique.html"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://celya.be/nl/bouwverlof-telefoonpermanentie.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/conges-du-batiment-permanence-telephonique.html"/>
+  </url>
+  <url>
     <loc>https://celya.be/nl/contact.html</loc>
     <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/contact.html"/>
     <xhtml:link rel="alternate" hreflang="nl-BE" href="https://celya.be/nl/contact.html"/>
@@ -730,12 +774,28 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/garages.html"/>
   </url>
   <url>
+    <loc>https://celya.be/nl/geen-secretaresse-aanwerven.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/je-ne-peux-pas-embaucher-une-secretaire.html"/>
+    <xhtml:link rel="alternate" hreflang="nl-BE" href="https://celya.be/nl/geen-secretaresse-aanwerven.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/je-ne-peux-pas-embaucher-une-secretaire.html"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://celya.be/nl/geen-secretaresse-aanwerven.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/je-ne-peux-pas-embaucher-une-secretaire.html"/>
+  </url>
+  <url>
     <loc>https://celya.be/nl/gegevensverwerking.html</loc>
     <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/traitement-des-donnees.html"/>
     <xhtml:link rel="alternate" hreflang="nl-BE" href="https://celya.be/nl/gegevensverwerking.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/traitement-des-donnees.html"/>
     <xhtml:link rel="alternate" hreflang="nl" href="https://celya.be/nl/gegevensverwerking.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/traitement-des-donnees.html"/>
+  </url>
+  <url>
+    <loc>https://celya.be/nl/gemiste-oproepen.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/je-rate-des-appels-clients.html"/>
+    <xhtml:link rel="alternate" hreflang="nl-BE" href="https://celya.be/nl/gemiste-oproepen.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/je-rate-des-appels-clients.html"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://celya.be/nl/gemiste-oproepen.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/je-rate-des-appels-clients.html"/>
   </url>
   <url>
     <loc>https://celya.be/nl/loodgieters.html</loc>
@@ -812,6 +872,22 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/syndics.html"/>
   </url>
   <url>
+    <loc>https://celya.be/nl/telefoonpermanentie-s-nachts.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/permanence-telephonique-de-nuit.html"/>
+    <xhtml:link rel="alternate" hreflang="nl-BE" href="https://celya.be/nl/telefoonpermanentie-s-nachts.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/permanence-telephonique-de-nuit.html"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://celya.be/nl/telefoonpermanentie-s-nachts.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/permanence-telephonique-de-nuit.html"/>
+  </url>
+  <url>
+    <loc>https://celya.be/nl/telefoonpermanentie-weekend.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/permanence-telephonique-week-end.html"/>
+    <xhtml:link rel="alternate" hreflang="nl-BE" href="https://celya.be/nl/telefoonpermanentie-weekend.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/permanence-telephonique-week-end.html"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://celya.be/nl/telefoonpermanentie-weekend.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/permanence-telephonique-week-end.html"/>
+  </url>
+  <url>
     <loc>https://celya.be/nl/veiligheid.html</loc>
     <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/securite.html"/>
     <xhtml:link rel="alternate" hreflang="nl-BE" href="https://celya.be/nl/veiligheid.html"/>
@@ -873,13 +949,17 @@
   <url>
     <loc>https://celya.be/permanence-telephonique-de-nuit.html</loc>
     <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/permanence-telephonique-de-nuit.html"/>
+    <xhtml:link rel="alternate" hreflang="nl-BE" href="https://celya.be/nl/telefoonpermanentie-s-nachts.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/permanence-telephonique-de-nuit.html"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://celya.be/nl/telefoonpermanentie-s-nachts.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/permanence-telephonique-de-nuit.html"/>
   </url>
   <url>
     <loc>https://celya.be/permanence-telephonique-week-end.html</loc>
     <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/permanence-telephonique-week-end.html"/>
+    <xhtml:link rel="alternate" hreflang="nl-BE" href="https://celya.be/nl/telefoonpermanentie-weekend.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/permanence-telephonique-week-end.html"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://celya.be/nl/telefoonpermanentie-weekend.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/permanence-telephonique-week-end.html"/>
   </url>
   <url>
