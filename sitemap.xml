@@ -862,10 +862,46 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/si-elle-ne-comprend-pas.html"/>
   </url>
   <url>
+    <loc>https://celya.be/si-j-ai-deja-une-secretaire.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/si-j-ai-deja-une-secretaire.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/si-j-ai-deja-une-secretaire.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/si-j-ai-deja-une-secretaire.html"/>
+  </url>
+  <url>
+    <loc>https://celya.be/si-j-ai-plusieurs-implantations.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/si-j-ai-plusieurs-implantations.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/si-j-ai-plusieurs-implantations.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/si-j-ai-plusieurs-implantations.html"/>
+  </url>
+  <url>
     <loc>https://celya.be/si-je-depasse-mon-volume.html</loc>
     <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/si-je-depasse-mon-volume.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/si-je-depasse-mon-volume.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/si-je-depasse-mon-volume.html"/>
+  </url>
+  <url>
+    <loc>https://celya.be/si-je-recois-peu-d-appels.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/si-je-recois-peu-d-appels.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/si-je-recois-peu-d-appels.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/si-je-recois-peu-d-appels.html"/>
+  </url>
+  <url>
+    <loc>https://celya.be/si-je-suis-souvent-en-deplacement.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/si-je-suis-souvent-en-deplacement.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/si-je-suis-souvent-en-deplacement.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/si-je-suis-souvent-en-deplacement.html"/>
+  </url>
+  <url>
+    <loc>https://celya.be/si-mes-clients-sont-des-professionnels.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/si-mes-clients-sont-des-professionnels.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/si-mes-clients-sont-des-professionnels.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/si-mes-clients-sont-des-professionnels.html"/>
+  </url>
+  <url>
+    <loc>https://celya.be/si-un-appelant-est-mecontent.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/si-un-appelant-est-mecontent.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/si-un-appelant-est-mecontent.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/si-un-appelant-est-mecontent.html"/>
   </url>
   <url>
     <loc>https://celya.be/standard-telephonique-virtuel.html</loc>
