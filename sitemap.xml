@@ -236,7 +236,9 @@
   <url>
     <loc>https://celya.be/combien-coute-une-secretaire-en-belgique.html</loc>
     <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/combien-coute-une-secretaire-en-belgique.html"/>
+    <xhtml:link rel="alternate" hreflang="nl-BE" href="https://celya.be/nl/wat-kost-een-secretaresse-in-belgie.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/combien-coute-une-secretaire-en-belgique.html"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://celya.be/nl/wat-kost-een-secretaresse-in-belgie.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/combien-coute-une-secretaire-en-belgique.html"/>
   </url>
   <url>
@@ -339,7 +341,9 @@
   <url>
     <loc>https://celya.be/devier-ses-appels-proximus.html</loc>
     <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/devier-ses-appels-proximus.html"/>
+    <xhtml:link rel="alternate" hreflang="nl-BE" href="https://celya.be/nl/oproepen-doorschakelen-proximus.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/devier-ses-appels-proximus.html"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://celya.be/nl/oproepen-doorschakelen-proximus.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/devier-ses-appels-proximus.html"/>
   </url>
   <url>
@@ -555,7 +559,9 @@
   <url>
     <loc>https://celya.be/francais-neerlandais.html</loc>
     <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/francais-neerlandais.html"/>
+    <xhtml:link rel="alternate" hreflang="nl-BE" href="https://celya.be/nl/nederlands-en-frans.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/francais-neerlandais.html"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://celya.be/nl/nederlands-en-frans.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/francais-neerlandais.html"/>
   </url>
   <url>
@@ -705,7 +711,9 @@
   <url>
     <loc>https://celya.be/message-repondeur-professionnel.html</loc>
     <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/message-repondeur-professionnel.html"/>
+    <xhtml:link rel="alternate" hreflang="nl-BE" href="https://celya.be/nl/professioneel-bericht-antwoordapparaat.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/message-repondeur-professionnel.html"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://celya.be/nl/professioneel-bericht-antwoordapparaat.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/message-repondeur-professionnel.html"/>
   </url>
   <url>
@@ -843,6 +851,14 @@
     <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/permanence-en-belgique-ou-a-l-etranger.html"/>
     <xhtml:link rel="alternate" hreflang="nl" href="https://celya.be/nl/belgie-of-buitenland.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/permanence-en-belgique-ou-a-l-etranger.html"/>
+  </url>
+  <url>
+    <loc>https://celya.be/nl/belgisch-nummer-houden.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/numero-belge.html"/>
+    <xhtml:link rel="alternate" hreflang="nl-BE" href="https://celya.be/nl/belgisch-nummer-houden.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/numero-belge.html"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://celya.be/nl/belgisch-nummer-houden.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/numero-belge.html"/>
   </url>
   <url>
     <loc>https://celya.be/nl/belgische-feestdagen-telefoon.html</loc>
@@ -1332,6 +1348,14 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/faut-il-prevenir-mes-clients.html"/>
   </url>
   <url>
+    <loc>https://celya.be/nl/nederlands-en-frans.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/francais-neerlandais.html"/>
+    <xhtml:link rel="alternate" hreflang="nl-BE" href="https://celya.be/nl/nederlands-en-frans.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/francais-neerlandais.html"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://celya.be/nl/nederlands-en-frans.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/francais-neerlandais.html"/>
+  </url>
+  <url>
     <loc>https://celya.be/nl/niet-altijd-gestoord-worden.html</loc>
     <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/je-ne-veux-pas-etre-derange-en-permanence.html"/>
     <xhtml:link rel="alternate" hreflang="nl-BE" href="https://celya.be/nl/niet-altijd-gestoord-worden.html"/>
@@ -1386,6 +1410,14 @@
     <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/horaires-et-garde.html"/>
     <xhtml:link rel="alternate" hreflang="nl" href="https://celya.be/nl/openingsuren-en-wachtdienst.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/horaires-et-garde.html"/>
+  </url>
+  <url>
+    <loc>https://celya.be/nl/oproepen-doorschakelen-proximus.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/devier-ses-appels-proximus.html"/>
+    <xhtml:link rel="alternate" hreflang="nl-BE" href="https://celya.be/nl/oproepen-doorschakelen-proximus.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/devier-ses-appels-proximus.html"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://celya.be/nl/oproepen-doorschakelen-proximus.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/devier-ses-appels-proximus.html"/>
   </url>
   <url>
     <loc>https://celya.be/nl/oproepen-klasseren.html</loc>
@@ -1459,6 +1491,14 @@
     <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/prix.html"/>
     <xhtml:link rel="alternate" hreflang="nl" href="https://celya.be/nl/prijzen.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/prix.html"/>
+  </url>
+  <url>
+    <loc>https://celya.be/nl/professioneel-bericht-antwoordapparaat.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/message-repondeur-professionnel.html"/>
+    <xhtml:link rel="alternate" hreflang="nl-BE" href="https://celya.be/nl/professioneel-bericht-antwoordapparaat.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/message-repondeur-professionnel.html"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://celya.be/nl/professioneel-bericht-antwoordapparaat.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/message-repondeur-professionnel.html"/>
   </url>
   <url>
     <loc>https://celya.be/nl/rekenblad-gemiste-oproepen.html</loc>
@@ -1694,6 +1734,14 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/c-est-quoi-un-telesecretariat.html"/>
   </url>
   <url>
+    <loc>https://celya.be/nl/wat-kost-een-secretaresse-in-belgie.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/combien-coute-une-secretaire-en-belgique.html"/>
+    <xhtml:link rel="alternate" hreflang="nl-BE" href="https://celya.be/nl/wat-kost-een-secretaresse-in-belgie.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/combien-coute-une-secretaire-en-belgique.html"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://celya.be/nl/wat-kost-een-secretaresse-in-belgie.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/combien-coute-une-secretaire-en-belgique.html"/>
+  </url>
+  <url>
     <loc>https://celya.be/nl/wat-moet-ik-voorbereiden.html</loc>
     <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/que-dois-je-preparer.html"/>
     <xhtml:link rel="alternate" hreflang="nl-BE" href="https://celya.be/nl/wat-moet-ik-voorbereiden.html"/>
@@ -1777,7 +1825,9 @@
   <url>
     <loc>https://celya.be/numero-belge.html</loc>
     <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/numero-belge.html"/>
+    <xhtml:link rel="alternate" hreflang="nl-BE" href="https://celya.be/nl/belgisch-nummer-houden.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/numero-belge.html"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://celya.be/nl/belgisch-nummer-houden.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/numero-belge.html"/>
   </url>
   <url>
