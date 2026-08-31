@@ -857,6 +857,14 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/est-ce-que-je-paie-si-personne-n-appelle.html"/>
   </url>
   <url>
+    <loc>https://celya.be/nl/beurtrol-en-wachtpost.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/tour-de-garde-et-poste-de-garde.html"/>
+    <xhtml:link rel="alternate" hreflang="nl-BE" href="https://celya.be/nl/beurtrol-en-wachtpost.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/tour-de-garde-et-poste-de-garde.html"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://celya.be/nl/beurtrol-en-wachtpost.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/tour-de-garde-et-poste-de-garde.html"/>
+  </url>
+  <url>
     <loc>https://celya.be/nl/bezette-lijn.html</loc>
     <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/mon-numero-sonne-occupe.html"/>
     <xhtml:link rel="alternate" hreflang="nl-BE" href="https://celya.be/nl/bezette-lijn.html"/>
@@ -1136,6 +1144,14 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/y-a-t-il-des-frais-d-installation.html"/>
   </url>
   <url>
+    <loc>https://celya.be/nl/interactief-keuzemenu.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/serveur-vocal-interactif.html"/>
+    <xhtml:link rel="alternate" hreflang="nl-BE" href="https://celya.be/nl/interactief-keuzemenu.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/serveur-vocal-interactif.html"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://celya.be/nl/interactief-keuzemenu.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/serveur-vocal-interactif.html"/>
+  </url>
+  <url>
     <loc>https://celya.be/nl/is-dit-voor-grote-bedrijven.html</loc>
     <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/c-est-pour-les-grosses-entreprises.html"/>
     <xhtml:link rel="alternate" hreflang="nl-BE" href="https://celya.be/nl/is-dit-voor-grote-bedrijven.html"/>
@@ -1182,6 +1198,14 @@
     <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/puis-je-modifier-les-reglages.html"/>
     <xhtml:link rel="alternate" hreflang="nl" href="https://celya.be/nl/kan-ik-instellingen-wijzigen.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/puis-je-modifier-les-reglages.html"/>
+  </url>
+  <url>
+    <loc>https://celya.be/nl/keuzemenu-of-spraakagent.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/serveur-vocal-ou-agent-vocal.html"/>
+    <xhtml:link rel="alternate" hreflang="nl-BE" href="https://celya.be/nl/keuzemenu-of-spraakagent.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/serveur-vocal-ou-agent-vocal.html"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://celya.be/nl/keuzemenu-of-spraakagent.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/serveur-vocal-ou-agent-vocal.html"/>
   </url>
   <url>
     <loc>https://celya.be/nl/klanten-bellen-de-concurrent.html</loc>
@@ -1426,12 +1450,28 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/pic-appels-saisonnier.html"/>
   </url>
   <url>
+    <loc>https://celya.be/nl/sip-trunk.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/trunk-sip.html"/>
+    <xhtml:link rel="alternate" hreflang="nl-BE" href="https://celya.be/nl/sip-trunk.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/trunk-sip.html"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://celya.be/nl/sip-trunk.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/trunk-sip.html"/>
+  </url>
+  <url>
     <loc>https://celya.be/nl/slotenmakers.html</loc>
     <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/serruriers.html"/>
     <xhtml:link rel="alternate" hreflang="nl-BE" href="https://celya.be/nl/slotenmakers.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/serruriers.html"/>
     <xhtml:link rel="alternate" hreflang="nl" href="https://celya.be/nl/slotenmakers.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/serruriers.html"/>
+  </url>
+  <url>
+    <loc>https://celya.be/nl/spraaksynthese-en-spraakherkenning.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/synthese-et-reconnaissance-vocale.html"/>
+    <xhtml:link rel="alternate" hreflang="nl-BE" href="https://celya.be/nl/spraaksynthese-en-spraakherkenning.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/synthese-et-reconnaissance-vocale.html"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://celya.be/nl/spraaksynthese-en-spraakherkenning.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/synthese-et-reconnaissance-vocale.html"/>
   </url>
   <url>
     <loc>https://celya.be/nl/syndici.html</loc>
@@ -1538,6 +1578,14 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/chauffagistes.html"/>
   </url>
   <url>
+    <loc>https://celya.be/nl/virtuele-telefooncentrale.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/standard-telephonique-virtuel.html"/>
+    <xhtml:link rel="alternate" hreflang="nl-BE" href="https://celya.be/nl/virtuele-telefooncentrale.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/standard-telephonique-virtuel.html"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://celya.be/nl/virtuele-telefooncentrale.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/standard-telephonique-virtuel.html"/>
+  </url>
+  <url>
     <loc>https://celya.be/nl/voicemail-die-transcribeert.html</loc>
     <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/messagerie-qui-transcrit.html"/>
     <xhtml:link rel="alternate" hreflang="nl-BE" href="https://celya.be/nl/voicemail-die-transcribeert.html"/>
@@ -1552,6 +1600,14 @@
     <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/conditions.html"/>
     <xhtml:link rel="alternate" hreflang="nl" href="https://celya.be/nl/voorwaarden.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/conditions.html"/>
+  </url>
+  <url>
+    <loc>https://celya.be/nl/warm-of-koud-doorverbinden.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/transfert-supervise-ou-aveugle.html"/>
+    <xhtml:link rel="alternate" hreflang="nl-BE" href="https://celya.be/nl/warm-of-koud-doorverbinden.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/transfert-supervise-ou-aveugle.html"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://celya.be/nl/warm-of-koud-doorverbinden.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/transfert-supervise-ou-aveugle.html"/>
   </url>
   <url>
     <loc>https://celya.be/nl/wat-doet-ze-met-verkoopoproepen.html</loc>
@@ -1874,13 +1930,17 @@
   <url>
     <loc>https://celya.be/serveur-vocal-interactif.html</loc>
     <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/serveur-vocal-interactif.html"/>
+    <xhtml:link rel="alternate" hreflang="nl-BE" href="https://celya.be/nl/interactief-keuzemenu.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/serveur-vocal-interactif.html"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://celya.be/nl/interactief-keuzemenu.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/serveur-vocal-interactif.html"/>
   </url>
   <url>
     <loc>https://celya.be/serveur-vocal-ou-agent-vocal.html</loc>
     <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/serveur-vocal-ou-agent-vocal.html"/>
+    <xhtml:link rel="alternate" hreflang="nl-BE" href="https://celya.be/nl/keuzemenu-of-spraakagent.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/serveur-vocal-ou-agent-vocal.html"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://celya.be/nl/keuzemenu-of-spraakagent.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/serveur-vocal-ou-agent-vocal.html"/>
   </url>
   <url>
@@ -1958,7 +2018,9 @@
   <url>
     <loc>https://celya.be/standard-telephonique-virtuel.html</loc>
     <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/standard-telephonique-virtuel.html"/>
+    <xhtml:link rel="alternate" hreflang="nl-BE" href="https://celya.be/nl/virtuele-telefooncentrale.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/standard-telephonique-virtuel.html"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://celya.be/nl/virtuele-telefooncentrale.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/standard-telephonique-virtuel.html"/>
   </url>
   <url>
@@ -1988,7 +2050,9 @@
   <url>
     <loc>https://celya.be/synthese-et-reconnaissance-vocale.html</loc>
     <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/synthese-et-reconnaissance-vocale.html"/>
+    <xhtml:link rel="alternate" hreflang="nl-BE" href="https://celya.be/nl/spraaksynthese-en-spraakherkenning.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/synthese-et-reconnaissance-vocale.html"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://celya.be/nl/spraaksynthese-en-spraakherkenning.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/synthese-et-reconnaissance-vocale.html"/>
   </url>
   <url>
@@ -2002,7 +2066,9 @@
   <url>
     <loc>https://celya.be/tour-de-garde-et-poste-de-garde.html</loc>
     <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/tour-de-garde-et-poste-de-garde.html"/>
+    <xhtml:link rel="alternate" hreflang="nl-BE" href="https://celya.be/nl/beurtrol-en-wachtpost.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/tour-de-garde-et-poste-de-garde.html"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://celya.be/nl/beurtrol-en-wachtpost.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/tour-de-garde-et-poste-de-garde.html"/>
   </url>
   <url>
@@ -2016,7 +2082,9 @@
   <url>
     <loc>https://celya.be/transfert-supervise-ou-aveugle.html</loc>
     <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/transfert-supervise-ou-aveugle.html"/>
+    <xhtml:link rel="alternate" hreflang="nl-BE" href="https://celya.be/nl/warm-of-koud-doorverbinden.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/transfert-supervise-ou-aveugle.html"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://celya.be/nl/warm-of-koud-doorverbinden.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/transfert-supervise-ou-aveugle.html"/>
   </url>
   <url>
@@ -2034,7 +2102,9 @@
   <url>
     <loc>https://celya.be/trunk-sip.html</loc>
     <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/trunk-sip.html"/>
+    <xhtml:link rel="alternate" hreflang="nl-BE" href="https://celya.be/nl/sip-trunk.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/trunk-sip.html"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://celya.be/nl/sip-trunk.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/trunk-sip.html"/>
   </url>
   <url>
