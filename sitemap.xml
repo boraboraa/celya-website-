@@ -214,7 +214,9 @@
   <url>
     <loc>https://celya.be/combien-coute-un-secretariat-telephonique.html</loc>
     <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/combien-coute-un-secretariat-telephonique.html"/>
+    <xhtml:link rel="alternate" hreflang="nl-BE" href="https://celya.be/nl/hoeveel-kost-een-telefoonsecretariaat.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/combien-coute-un-secretariat-telephonique.html"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://celya.be/nl/hoeveel-kost-een-telefoonsecretariaat.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/combien-coute-un-secretariat-telephonique.html"/>
   </url>
   <url>
@@ -250,7 +252,9 @@
   <url>
     <loc>https://celya.be/comment-se-passe-la-facturation.html</loc>
     <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/comment-se-passe-la-facturation.html"/>
+    <xhtml:link rel="alternate" hreflang="nl-BE" href="https://celya.be/nl/hoe-verloopt-de-facturatie.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/comment-se-passe-la-facturation.html"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://celya.be/nl/hoe-verloopt-de-facturatie.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/comment-se-passe-la-facturation.html"/>
   </url>
   <url>
@@ -455,7 +459,9 @@
   <url>
     <loc>https://celya.be/est-ce-que-je-paie-si-personne-n-appelle.html</loc>
     <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/est-ce-que-je-paie-si-personne-n-appelle.html"/>
+    <xhtml:link rel="alternate" hreflang="nl-BE" href="https://celya.be/nl/betaal-ik-als-niemand-belt.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/est-ce-que-je-paie-si-personne-n-appelle.html"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://celya.be/nl/betaal-ik-als-niemand-belt.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/est-ce-que-je-paie-si-personne-n-appelle.html"/>
   </url>
   <url>
@@ -763,6 +769,14 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/jours-feries-belges-permanence-telephonique.html"/>
   </url>
   <url>
+    <loc>https://celya.be/nl/betaal-ik-als-niemand-belt.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/est-ce-que-je-paie-si-personne-n-appelle.html"/>
+    <xhtml:link rel="alternate" hreflang="nl-BE" href="https://celya.be/nl/betaal-ik-als-niemand-belt.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/est-ce-que-je-paie-si-personne-n-appelle.html"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://celya.be/nl/betaal-ik-als-niemand-belt.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/est-ce-que-je-paie-si-personne-n-appelle.html"/>
+  </url>
+  <url>
     <loc>https://celya.be/nl/bezette-lijn.html</loc>
     <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/mon-numero-sonne-occupe.html"/>
     <xhtml:link rel="alternate" hreflang="nl-BE" href="https://celya.be/nl/bezette-lijn.html"/>
@@ -830,6 +844,14 @@
     <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/conges-du-batiment-permanence-telephonique.html"/>
     <xhtml:link rel="alternate" hreflang="nl" href="https://celya.be/nl/bouwverlof-telefoonpermanentie.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/conges-du-batiment-permanence-telephonique.html"/>
+  </url>
+  <url>
+    <loc>https://celya.be/nl/boven-het-volume.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/si-je-depasse-mon-volume.html"/>
+    <xhtml:link rel="alternate" hreflang="nl-BE" href="https://celya.be/nl/boven-het-volume.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/si-je-depasse-mon-volume.html"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://celya.be/nl/boven-het-volume.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/si-je-depasse-mon-volume.html"/>
   </url>
   <url>
     <loc>https://celya.be/nl/callbot-of-spraakagent.html</loc>
@@ -938,12 +960,44 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/je-rate-des-appels-clients.html"/>
   </url>
   <url>
+    <loc>https://celya.be/nl/hoe-verloopt-de-facturatie.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/comment-se-passe-la-facturation.html"/>
+    <xhtml:link rel="alternate" hreflang="nl-BE" href="https://celya.be/nl/hoe-verloopt-de-facturatie.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/comment-se-passe-la-facturation.html"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://celya.be/nl/hoe-verloopt-de-facturatie.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/comment-se-passe-la-facturation.html"/>
+  </url>
+  <url>
+    <loc>https://celya.be/nl/hoeveel-kost-een-telefoonsecretariaat.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/combien-coute-un-secretariat-telephonique.html"/>
+    <xhtml:link rel="alternate" hreflang="nl-BE" href="https://celya.be/nl/hoeveel-kost-een-telefoonsecretariaat.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/combien-coute-un-secretariat-telephonique.html"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://celya.be/nl/hoeveel-kost-een-telefoonsecretariaat.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/combien-coute-un-secretariat-telephonique.html"/>
+  </url>
+  <url>
     <loc>https://celya.be/nl/hoeveel-oproepen-mis-ik.html</loc>
     <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/je-ne-sais-pas-combien-d-appels-je-rate.html"/>
     <xhtml:link rel="alternate" hreflang="nl-BE" href="https://celya.be/nl/hoeveel-oproepen-mis-ik.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/je-ne-sais-pas-combien-d-appels-je-rate.html"/>
     <xhtml:link rel="alternate" hreflang="nl" href="https://celya.be/nl/hoeveel-oproepen-mis-ik.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/je-ne-sais-pas-combien-d-appels-je-rate.html"/>
+  </url>
+  <url>
+    <loc>https://celya.be/nl/installatiekosten.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/y-a-t-il-des-frais-d-installation.html"/>
+    <xhtml:link rel="alternate" hreflang="nl-BE" href="https://celya.be/nl/installatiekosten.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/y-a-t-il-des-frais-d-installation.html"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://celya.be/nl/installatiekosten.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/y-a-t-il-des-frais-d-installation.html"/>
+  </url>
+  <url>
+    <loc>https://celya.be/nl/is-er-een-contractduur.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/y-a-t-il-un-engagement-de-duree.html"/>
+    <xhtml:link rel="alternate" hreflang="nl-BE" href="https://celya.be/nl/is-er-een-contractduur.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/y-a-t-il-un-engagement-de-duree.html"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://celya.be/nl/is-er-een-contractduur.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/y-a-t-il-un-engagement-de-duree.html"/>
   </url>
   <url>
     <loc>https://celya.be/nl/jaarlijkse-sluiting-telefoon.html</loc>
@@ -1450,7 +1504,9 @@
   <url>
     <loc>https://celya.be/si-je-depasse-mon-volume.html</loc>
     <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/si-je-depasse-mon-volume.html"/>
+    <xhtml:link rel="alternate" hreflang="nl-BE" href="https://celya.be/nl/boven-het-volume.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/si-je-depasse-mon-volume.html"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://celya.be/nl/boven-het-volume.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/si-je-depasse-mon-volume.html"/>
   </url>
   <url>
@@ -1572,13 +1628,17 @@
   <url>
     <loc>https://celya.be/y-a-t-il-des-frais-d-installation.html</loc>
     <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/y-a-t-il-des-frais-d-installation.html"/>
+    <xhtml:link rel="alternate" hreflang="nl-BE" href="https://celya.be/nl/installatiekosten.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/y-a-t-il-des-frais-d-installation.html"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://celya.be/nl/installatiekosten.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/y-a-t-il-des-frais-d-installation.html"/>
   </url>
   <url>
     <loc>https://celya.be/y-a-t-il-un-engagement-de-duree.html</loc>
     <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/y-a-t-il-un-engagement-de-duree.html"/>
+    <xhtml:link rel="alternate" hreflang="nl-BE" href="https://celya.be/nl/is-er-een-contractduur.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/y-a-t-il-un-engagement-de-duree.html"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://celya.be/nl/is-er-een-contractduur.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/y-a-t-il-un-engagement-de-duree.html"/>
   </url>
 </urlset>
