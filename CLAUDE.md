@@ -64,10 +64,48 @@ Ils viennent du journal d'appels de Celya, **appels entrants seuls** : les
 tables de production contiennent la prospection sortante, qui a déjà contaminé
 deux publications. Tout chiffre se recompte en base avant d'être écrit.
 
-Relevé au 28 août 2026 : 140 appels reçus · 118 classés par motif · 71 messages
-pris · 90 rendez-vous dont 66 posés par l'agent · 0 enregistrement audio ·
+Relevé au 28 août 2026 : 140 appels reçus · 118 classés par motif · **67 messages
+pris** · 90 rendez-vous dont 66 posés par l'agent · 0 enregistrement audio ·
 37 tables sur 37 en RLS · médiane 1 min 14, moyenne 1 min 25 · 10 paires qui se
 chevauchent, jusqu'à 3 conversations simultanées.
+
+### « Messages pris » : la définition, et la requête qui la produit
+
+C'était la troisième valeur publiée pour cette mesure — 138, puis 71 — et
+aucune définition écrite ne la fixait. Elle est fixée ici. **Un « message
+pris » est un appel entrant, abouti, pour lequel l'agent a produit une fiche
+d'appel, et qui n'a pas débouché sur un rendez-vous.** Un rendez-vous n'est pas
+un message : il est compté ailleurs, dans les 90 réservations.
+
+```sql
+-- Projet Supabase celya-sales-agent (piufpzeicmvgtieybgra)
+select count(*) as messages_pris
+from public.calls
+where direction   = 'inbound'                              -- appels ENTRANTS seuls
+  and status      = 'completed'                            -- l'appel a abouti
+  and structured_notes ? 'card'                            -- une fiche d'appel existe
+  and coalesce(disposition,'') <> 'rdv_planifie'           -- le RDV n'est pas un message
+  and created_at  < timestamptz '2026-08-29 00:00:00+00';  -- arrêté à la fin du 28 août 2026
+-- => 67
+```
+
+**Ce qu'on exclut, et pourquoi.** Les 107 lignes `direction = 'outbound'` :
+c'est la prospection sortante, elle a déjà contaminé deux publications. Les
+appels sans fiche (`structured_notes` sans clé `card`) : sans fiche, aucun
+message n'a été transmis. Les `disposition = 'rdv_planifie'` : ce sont des
+rendez-vous. Aucun statut d'échec ni brouillon ne subsiste — sur cette table,
+`status` vaut `completed` sur la totalité des entrants.
+
+**La borne est vérifiée, pas supposée.** Arrêtée à la fin du 28 août 2026, la
+même table rend 140 appels reçus et 118 classés par motif : exactement les deux
+autres chiffres du relevé. La date du relevé est donc la bonne, et c'était la
+valeur qui était fausse. Au même instant la requête donne 67, pas 71 — 71 est
+ce qu'elle rend deux jours plus tard, le 30 août : le chiffre avait été compté
+un autre jour que le reste du relevé.
+
+**Pour rejouer.** Changer la borne, et changer les trois chiffres ensemble :
+ils sont publiés dans la même phrase sur 81 pages et ne se déplacent pas
+séparément.
 
 ## Design
 
