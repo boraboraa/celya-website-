@@ -234,7 +234,9 @@
   <url>
     <loc>https://celya.be/combien-de-temps-les-donnees-sont-conservees.html</loc>
     <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/combien-de-temps-les-donnees-sont-conservees.html"/>
+    <xhtml:link rel="alternate" hreflang="nl-BE" href="https://celya.be/nl/hoelang-blijven-gegevens-bewaard.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/combien-de-temps-les-donnees-sont-conservees.html"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://celya.be/nl/hoelang-blijven-gegevens-bewaard.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/combien-de-temps-les-donnees-sont-conservees.html"/>
   </url>
   <url>
@@ -473,7 +475,9 @@
   <url>
     <loc>https://celya.be/faut-il-prevenir-mes-clients.html</loc>
     <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/faut-il-prevenir-mes-clients.html"/>
+    <xhtml:link rel="alternate" hreflang="nl-BE" href="https://celya.be/nl/moet-ik-mijn-klanten-verwittigen.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/faut-il-prevenir-mes-clients.html"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://celya.be/nl/moet-ik-mijn-klanten-verwittigen.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/faut-il-prevenir-mes-clients.html"/>
   </url>
   <url>
@@ -633,7 +637,9 @@
   <url>
     <loc>https://celya.be/les-appels-sont-ils-enregistres.html</loc>
     <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/les-appels-sont-ils-enregistres.html"/>
+    <xhtml:link rel="alternate" hreflang="nl-BE" href="https://celya.be/nl/worden-oproepen-opgenomen.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/les-appels-sont-ils-enregistres.html"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://celya.be/nl/worden-oproepen-opgenomen.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/les-appels-sont-ils-enregistres.html"/>
   </url>
   <url>
@@ -944,6 +950,14 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/je-n-ai-pas-le-temps-de-repondre.html"/>
   </url>
   <url>
+    <loc>https://celya.be/nl/gegevens-laten-wissen.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/supprimer-les-donnees-d-un-appelant.html"/>
+    <xhtml:link rel="alternate" hreflang="nl-BE" href="https://celya.be/nl/gegevens-laten-wissen.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/supprimer-les-donnees-d-un-appelant.html"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://celya.be/nl/gegevens-laten-wissen.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/supprimer-les-donnees-d-un-appelant.html"/>
+  </url>
+  <url>
     <loc>https://celya.be/nl/gegevensverwerking.html</loc>
     <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/traitement-des-donnees.html"/>
     <xhtml:link rel="alternate" hreflang="nl-BE" href="https://celya.be/nl/gegevensverwerking.html"/>
@@ -966,6 +980,14 @@
     <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/comment-se-passe-la-facturation.html"/>
     <xhtml:link rel="alternate" hreflang="nl" href="https://celya.be/nl/hoe-verloopt-de-facturatie.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/comment-se-passe-la-facturation.html"/>
+  </url>
+  <url>
+    <loc>https://celya.be/nl/hoelang-blijven-gegevens-bewaard.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/combien-de-temps-les-donnees-sont-conservees.html"/>
+    <xhtml:link rel="alternate" hreflang="nl-BE" href="https://celya.be/nl/hoelang-blijven-gegevens-bewaard.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/combien-de-temps-les-donnees-sont-conservees.html"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://celya.be/nl/hoelang-blijven-gegevens-bewaard.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/combien-de-temps-les-donnees-sont-conservees.html"/>
   </url>
   <url>
     <loc>https://celya.be/nl/hoeveel-kost-een-telefoonsecretariaat.html</loc>
@@ -1038,6 +1060,14 @@
     <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/modele-fiche-message-telephonique.html"/>
     <xhtml:link rel="alternate" hreflang="nl" href="https://celya.be/nl/model-telefoonbericht.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/modele-fiche-message-telephonique.html"/>
+  </url>
+  <url>
+    <loc>https://celya.be/nl/moet-ik-mijn-klanten-verwittigen.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/faut-il-prevenir-mes-clients.html"/>
+    <xhtml:link rel="alternate" hreflang="nl-BE" href="https://celya.be/nl/moet-ik-mijn-klanten-verwittigen.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/faut-il-prevenir-mes-clients.html"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://celya.be/nl/moet-ik-mijn-klanten-verwittigen.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/faut-il-prevenir-mes-clients.html"/>
   </url>
   <url>
     <loc>https://celya.be/nl/niet-altijd-gestoord-worden.html</loc>
@@ -1266,6 +1296,30 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/fonctionnalites.html"/>
   </url>
   <url>
+    <loc>https://celya.be/nl/wie-is-de-verwerkingsverantwoordelijke.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/qui-est-responsable-du-traitement.html"/>
+    <xhtml:link rel="alternate" hreflang="nl-BE" href="https://celya.be/nl/wie-is-de-verwerkingsverantwoordelijke.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/qui-est-responsable-du-traitement.html"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://celya.be/nl/wie-is-de-verwerkingsverantwoordelijke.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/qui-est-responsable-du-traitement.html"/>
+  </url>
+  <url>
+    <loc>https://celya.be/nl/wie-leest-mijn-fiches.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/qui-peut-lire-mes-fiches-d-appel.html"/>
+    <xhtml:link rel="alternate" hreflang="nl-BE" href="https://celya.be/nl/wie-leest-mijn-fiches.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/qui-peut-lire-mes-fiches-d-appel.html"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://celya.be/nl/wie-leest-mijn-fiches.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/qui-peut-lire-mes-fiches-d-appel.html"/>
+  </url>
+  <url>
+    <loc>https://celya.be/nl/worden-oproepen-opgenomen.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/les-appels-sont-ils-enregistres.html"/>
+    <xhtml:link rel="alternate" hreflang="nl-BE" href="https://celya.be/nl/worden-oproepen-opgenomen.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/les-appels-sont-ils-enregistres.html"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://celya.be/nl/worden-oproepen-opgenomen.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/les-appels-sont-ils-enregistres.html"/>
+  </url>
+  <url>
     <loc>https://celya.be/nl/zelfstandigen.html</loc>
     <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/independants.html"/>
     <xhtml:link rel="alternate" hreflang="nl-BE" href="https://celya.be/nl/zelfstandigen.html"/>
@@ -1403,13 +1457,17 @@
   <url>
     <loc>https://celya.be/qui-est-responsable-du-traitement.html</loc>
     <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/qui-est-responsable-du-traitement.html"/>
+    <xhtml:link rel="alternate" hreflang="nl-BE" href="https://celya.be/nl/wie-is-de-verwerkingsverantwoordelijke.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/qui-est-responsable-du-traitement.html"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://celya.be/nl/wie-is-de-verwerkingsverantwoordelijke.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/qui-est-responsable-du-traitement.html"/>
   </url>
   <url>
     <loc>https://celya.be/qui-peut-lire-mes-fiches-d-appel.html</loc>
     <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/qui-peut-lire-mes-fiches-d-appel.html"/>
+    <xhtml:link rel="alternate" hreflang="nl-BE" href="https://celya.be/nl/wie-leest-mijn-fiches.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/qui-peut-lire-mes-fiches-d-appel.html"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://celya.be/nl/wie-leest-mijn-fiches.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/qui-peut-lire-mes-fiches-d-appel.html"/>
   </url>
   <url>
@@ -1556,7 +1614,9 @@
   <url>
     <loc>https://celya.be/supprimer-les-donnees-d-un-appelant.html</loc>
     <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/supprimer-les-donnees-d-un-appelant.html"/>
+    <xhtml:link rel="alternate" hreflang="nl-BE" href="https://celya.be/nl/gegevens-laten-wissen.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/supprimer-les-donnees-d-un-appelant.html"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://celya.be/nl/gegevens-laten-wissen.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/supprimer-les-donnees-d-un-appelant.html"/>
   </url>
   <url>
