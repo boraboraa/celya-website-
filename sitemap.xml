@@ -576,7 +576,9 @@
   <url>
     <loc>https://celya.be/glossaire.html</loc>
     <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/glossaire.html"/>
+    <xhtml:link rel="alternate" hreflang="nl-BE" href="https://celya.be/nl/glossarium.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/glossaire.html"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://celya.be/nl/glossarium.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/glossaire.html"/>
   </url>
   <url>
@@ -1122,6 +1124,14 @@
     <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/numero-geographique-belgique.html"/>
     <xhtml:link rel="alternate" hreflang="nl" href="https://celya.be/nl/geografisch-nummer-belgie.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/numero-geographique-belgique.html"/>
+  </url>
+  <url>
+    <loc>https://celya.be/nl/glossarium.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/glossaire.html"/>
+    <xhtml:link rel="alternate" hreflang="nl-BE" href="https://celya.be/nl/glossarium.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/glossaire.html"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://celya.be/nl/glossarium.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/glossaire.html"/>
   </url>
   <url>
     <loc>https://celya.be/nl/herkent-ze-een-terugbeller.html</loc>
@@ -1710,6 +1720,14 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/conditions.html"/>
   </url>
   <url>
+    <loc>https://celya.be/nl/vragen.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/questions.html"/>
+    <xhtml:link rel="alternate" hreflang="nl-BE" href="https://celya.be/nl/vragen.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/questions.html"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://celya.be/nl/vragen.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/questions.html"/>
+  </url>
+  <url>
     <loc>https://celya.be/nl/warm-of-koud-doorverbinden.html</loc>
     <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/transfert-supervise-ou-aveugle.html"/>
     <xhtml:link rel="alternate" hreflang="nl-BE" href="https://celya.be/nl/warm-of-koud-doorverbinden.html"/>
@@ -1969,7 +1987,9 @@
   <url>
     <loc>https://celya.be/questions.html</loc>
     <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/questions.html"/>
+    <xhtml:link rel="alternate" hreflang="nl-BE" href="https://celya.be/nl/vragen.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/questions.html"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://celya.be/nl/vragen.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/questions.html"/>
   </url>
   <url>
