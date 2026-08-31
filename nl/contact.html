@@ -6,9 +6,12 @@
 <title>Contact Celya — Praat met Janet of de oprichter</title>
 <meta name="description" content="Bel Janet, schrijf ons, of laat uw gegevens achter — we komen snel bij u terug. Boek een gratis audit van uw telefonie.">
 <link rel="canonical" href="https://celya.be/nl/contact.html">
+<link rel="alternate" hreflang="fr-BE" href="https://celya.be/contact.html">
+<link rel="alternate" hreflang="nl-BE" href="https://celya.be/nl/contact.html">
 <link rel="alternate" hreflang="fr" href="https://celya.be/contact.html">
 <link rel="alternate" hreflang="nl" href="https://celya.be/nl/contact.html">
 <link rel="alternate" hreflang="en" href="https://celya.be/en/contact.html">
+<link rel="alternate" hreflang="x-default" href="https://celya.be/contact.html">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <meta name="theme-color" content="#070A14">
 <meta name="color-scheme" content="dark">
@@ -17,6 +20,9 @@
 <meta property="og:title" content="Contact Celya — Praat met Janet of de oprichter">
 <meta property="og:description" content="Bel Janet, stuur een bericht, of laat uw gegevens achter — we komen snel bij u terug.">
 <meta property="og:image" content="https://celya.be/og-image.png">
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@graph": [{"@type": "Organization", "@id": "https://celya.be/#organization", "name": "Celya", "alternateName": "Celya — secrétariat téléphonique", "url": "https://celya.be/", "logo": {"@type": "ImageObject", "url": "https://celya.be/og-image.png", "width": 1200, "height": 630}, "image": "https://celya.be/og-image.png", "email": "sales@celya.be", "telephone": "+32460254413", "description": "Celya is een telefoonsecretariaat met AI-stemassistente voor zelfstandigen, handelszaken en kmo's in België.", "address": {"@type": "PostalAddress", "streetAddress": "Avenue de Broqueville 136/1", "postalCode": "1200", "addressLocality": "Woluwe-Saint-Lambert", "addressCountry": "BE"}, "areaServed": {"@type": "Country", "name": "België"}, "contactPoint": [{"@type": "ContactPoint", "telephone": "+32460254413", "contactType": "customer service", "email": "sales@celya.be", "areaServed": "BE", "availableLanguage": ["fr", "nl", "en"]}], "parentOrganization": {"@type": "Organization", "name": "VeritasVet SRL", "vatID": "BE 0633.747.322", "address": {"@type": "PostalAddress", "streetAddress": "Avenue de Broqueville 136/1", "postalCode": "1200", "addressLocality": "Woluwe-Saint-Lambert", "addressCountry": "BE"}}}, {"@type": "WebSite", "@id": "https://celya.be/nl/#website", "name": "Celya", "url": "https://celya.be/nl/", "inLanguage": "nl-BE", "publisher": {"@id": "https://celya.be/#organization"}}, {"@type": "LocalBusiness", "@id": "https://celya.be/#business", "name": "Celya", "url": "https://celya.be/", "image": "https://celya.be/og-image.png", "logo": "https://celya.be/og-image.png", "email": "sales@celya.be", "telephone": "+32460254413", "description": "Celya is een telefoonsecretariaat met AI-stemassistente voor zelfstandigen, handelszaken en kmo's in België.", "address": {"@type": "PostalAddress", "streetAddress": "Avenue de Broqueville 136/1", "postalCode": "1200", "addressLocality": "Woluwe-Saint-Lambert", "addressCountry": "BE"}, "vatID": "BE 0633.747.322", "areaServed": {"@type": "Country", "name": "België"}, "contactPoint": [{"@type": "ContactPoint", "telephone": "+32460254413", "contactType": "customer service", "email": "sales@celya.be", "areaServed": "BE", "availableLanguage": ["fr", "nl", "en"]}], "parentOrganization": {"@id": "https://celya.be/#organization"}}, {"@type": "ContactPage", "@id": "https://celya.be/nl/contact.html#contactpage", "url": "https://celya.be/nl/contact.html", "name": "Contact Celya — Praat met Janet of de oprichter", "description": "Drie manieren om Celya te bereiken: bel Janet en hoor haar opnemen, schrijf naar sales@celya.be, of laat uw gegevens achter voor een gesprek met de oprichter.", "inLanguage": "nl-BE", "isPartOf": {"@id": "https://celya.be/nl/#website"}, "about": {"@id": "https://celya.be/#organization"}, "mainEntity": {"@id": "https://celya.be/#organization"}, "breadcrumb": {"@id": "https://celya.be/nl/contact.html#breadcrumb"}}, {"@type": "BreadcrumbList", "@id": "https://celya.be/nl/contact.html#breadcrumb", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://celya.be/nl/"}, {"@type": "ListItem", "position": 2, "name": "Contact", "item": "https://celya.be/nl/contact.html"}]}]}
+</script>
 <link rel="stylesheet" href="../fonts.css">
 <style>
 :root{
@@ -81,6 +87,12 @@ form .sub{font-size:14px;color:var(--muted);margin-bottom:26px}
 .err{display:none;color:#F9A8A8;font-size:13.5px;margin-top:10px}
 footer{border-top:1px solid rgba(255,255,255,.06);padding:40px 0;color:var(--faint);font-size:13px;display:flex;justify-content:center;gap:8px;flex-wrap:wrap;text-align:center}
 
+/* --- sélecteur de langue : copie des règles .lang de bento.css, que cette page ne charge pas --- */
+.lang{display:flex;gap:2px;border:1px solid var(--line);border-radius:99px;padding:3px;font:500 12px/1 var(--b)}
+.lang a{padding:6px 10px;border-radius:99px;color:#AEB9D6}
+.lang a.on{background:rgba(255,255,255,.1);color:var(--ink)}
+@media(max-width:720px){nav.top .lang{display:none}}
+.mnav-in .lang{align-self:flex-start}
 /* --- menu : liens + déroulant métiers + burger (partagé avec le thème bento) --- */
 nav.top .nav-in{justify-content:flex-start;gap:20px}
 .nav-links{display:flex;align-items:center;gap:22px;font-size:14.5px;color:#AEB9D6;margin-left:auto}
@@ -119,8 +131,9 @@ body.mnav-open{overflow:hidden}
 .cine-shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,14,26,.85),rgba(10,14,26,.38) 40%,rgba(10,14,26,.92))}
 .cine p{position:relative;z-index:2;font-family:var(--h);font-weight:700;color:#fff;font-size:clamp(30px,5vw,58px);letter-spacing:-.035em;line-height:1.08;padding:0 22px;text-shadow:0 6px 44px rgba(4,8,20,.55);text-wrap:balance}
 .cine .em{font-family:var(--a);font-style:italic;font-weight:400;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
-@media (prefers-reduced-motion:reduce){.drop-panel,.nav-drop .car,.drop-panel i,.mnav,.burger i{transition:none}}
+@media (prefers-reduced-motion:reduce){.drop-panel,.nav-drop .car,.drop-panel i,.mnav,.burger i{transition:none}.fade{opacity:1;transform:none;filter:none;transition:none}}
 </style>
+<noscript><style>.fade{opacity:1;transform:none;filter:none}</style></noscript>
 </head>
 <body>
 
@@ -141,6 +154,7 @@ body.mnav-open{overflow:hidden}
       <a href="./#faq">FAQ</a>
       <a href="blog/">Blog</a>
     </nav>
+    <div class="lang"><a href="../contact.html">FR</a><a class="on" href="contact.html">NL</a><a href="../en/contact.html">EN</a></div>
     <a href="tel:+32460254413" class="btn" style="padding:11px 20px;font-size:14px">Bel Janet</a>
     <button class="burger" id="mbtn" type="button" aria-label="Menu" aria-expanded="false"><i></i><i></i></button>
   </div>
@@ -158,6 +172,8 @@ body.mnav-open{overflow:hidden}
       <a href="praktijken.html"><img src="../assets/metier-cabinet.webp" alt="Praktijken" width="56" height="42" loading="lazy"><b>Praktijken</b></a>
       <a href="zelfstandigen.html"><img src="../assets/metier-artisan.webp" alt="Zelfstandigen" width="56" height="42" loading="lazy"><b>Zelfstandigen</b></a>
     </div>
+    <b class="mnav-h">Taal</b>
+    <div class="lang"><a href="../contact.html">FR</a><a class="on" href="contact.html">NL</a><a href="../en/contact.html">EN</a></div>
   </div>
 </nav>
 <script>

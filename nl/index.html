@@ -6,6 +6,8 @@
 <title>Telefoonsecretariaat in België — Celya neemt op, 24/7</title>
 <meta name="description" content="Telefoonsecretariaat in België: Celya neemt op in uw plaats, plant afspraken in en geeft dringende berichten door. 24/7, NL en FR. Test: +32 460 25 44 13.">
 <link rel="canonical" href="https://celya.be/nl/">
+<link rel="alternate" hreflang="fr-BE" href="https://celya.be/">
+<link rel="alternate" hreflang="nl-BE" href="https://celya.be/nl/">
 <link rel="alternate" hreflang="fr" href="https://celya.be/">
 <link rel="alternate" hreflang="nl" href="https://celya.be/nl/">
 <link rel="alternate" hreflang="en" href="https://celya.be/en/">
@@ -34,7 +36,7 @@ gtag('consent','default',{ad_storage:'denied',analytics_storage:'denied',ad_user
 </script>
 <link rel="stylesheet" href="../fonts.css">
 <link rel="stylesheet" href="../bento.css">
-<noscript><style>.reveal{opacity:1;transform:none}.l2>span{transform:none}.product-free.reveal .frame{transform:rotateX(7deg)}</style></noscript>
+<noscript><style>.reveal{opacity:1;transform:none}.l2>span{transform:none}.reveal .mic svg [pathLength]{stroke-dasharray:none;stroke-dashoffset:0}.product-free.reveal .frame{transform:rotateX(7deg)}.fcard,.fc-out{opacity:1;transform:none}.fun-fork path{opacity:.75}.fo-ic svg [pathLength]{stroke-dasharray:none;stroke-dashoffset:0}.blk.up{opacity:1}.blk.up .fx{transform:none}.blk.up b,.blk.up>span{opacity:1}.blk.up .bck path{stroke-dasharray:none;stroke-dashoffset:0}.reveal .durrow .db i{transform:scaleX(var(--w,1))}.triflow .fdot{animation:none}.ns-dot{display:none}</style></noscript>
 </head>
 <body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><linearGradient id="bgrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#22D3EE"/><stop offset=".5" stop-color="#4F7BFF"/><stop offset="1" stop-color="#A855F7"/></linearGradient></defs></svg>
@@ -85,7 +87,8 @@ gtag('consent','default',{ad_storage:'denied',analytics_storage:'denied',ad_user
   <div class="wrap hero-in">
     <div class="hero-txt">
       <div class="kick">Telefoonsecretariaat · België</div>
-      <h1><span class="lr"><span>Mist u oproepen?</span></span><span class="lr"><span><span class="gradtxt it">Zij neemt op in uw plaats.</span></span></span></h1>
+      <h1><span class="lr"><span>Mist u oproepen?</span></span>
+  <span class="lr"><span><span class="gradtxt it">Zij neemt op in uw plaats.</span></span></span></h1>
       <p class="sub">Celya neemt de telefoon op wanneer u niet kunt. Ze plant uw afspraken in en noteert uw berichten. 24/7, in het Nederlands en het Frans.</p>
       <div class="cta-row">
         <a class="btn btn-grad btn-big" href="tel:+32460254413"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg> Bel Janet (het is een AI)</a>
@@ -192,10 +195,17 @@ gtag('consent','default',{ad_storage:'denied',analytics_storage:'denied',ad_user
       <h2><span class="l2"><span>Wat kosten <span class="it">gemiste oproepen</span> u?</span></span></h2>
       <div class="roi-grid">
         <div class="roi-ctl">
-          <label for="roi-miss">Gemiste oproepen per week <output id="roi-miss-n">12</output></label>
-          <input type="range" id="roi-miss" min="2" max="60" value="12" step="1">
-          <label>Wat een nieuwe klant voor u waard is</label>
-          <div class="pills">
+          <label for="hm-miss">Gemiste oproepen per week <output id="hm-miss-n">12</output></label>
+          <input type="range" id="hm-miss" min="2" max="60" value="12" step="1">
+          <label>Op 10 bellers zonder antwoord, hoeveel bellen niet terug? <output id="hm-lost-n">5 op 10</output></label>
+          <div class="pills" id="hm-lost">
+            <button type="button" data-v="2">2</button>
+            <button type="button" data-v="5" class="on">5</button>
+            <button type="button" data-v="8">8</button>
+            <button type="button" data-v="10">10</button>
+          </div>
+          <label>Wat een nieuwe klant u waard is</label>
+          <div class="pills" id="hm-val">
             <button type="button" data-v="100">100&nbsp;&euro;</button>
             <button type="button" data-v="300" class="on">300&nbsp;&euro;</button>
             <button type="button" data-v="800">800&nbsp;&euro;</button>
@@ -203,9 +213,9 @@ gtag('consent','default',{ad_storage:'denied',analytics_storage:'denied',ad_user
           </div>
         </div>
         <div class="roi-out">
-          <b id="roi-num">&euro;&nbsp;4.676</b>
-          <span>die elke maand verdampen</span>
-          <p class="note">Voorzichtige schatting: ongeveer 30% van de bellers die een antwoordapparaat horen, koopt elders in plaats van terug te bellen.</p>
+          <b id="hm-num">6&nbsp;900&nbsp;&euro;</b>
+          <span>per maand, volgens uw eigen aannames</span>
+          <p class="note"><b>Geen van deze cijfers komt van ons.</b> De drie waarden hiernaast zijn de uwe. Rekenbasis: 46 gewerkte weken per jaar, dus 52 min de tien wettelijke Belgische feestdagen en een jaarlijkse sluiting.</p>
           <a class="btn btn-grad" href="tel:+32460254413"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg> Stop het lek: bel Janet</a>
         </div>
       </div>
@@ -387,9 +397,9 @@ gtag('consent','default',{ad_storage:'denied',analytics_storage:'denied',ad_user
 </div>
     <section class="freesec lang-free reveal" id="langues">
       <div class="wrap">
-        <div class="bigword" data-words="[&quot;Hallo&quot;, &quot;Bonjour&quot;, &quot;Hello&quot;, &quot;Hola&quot;, &quot;Ciao&quot;, &quot;Olá&quot;, &quot;Merhaba&quot;, &quot;مرحبا&quot;, &quot;你好&quot;, &quot;Dzień dobry&quot;]" aria-hidden="true"><span class="gradtxt" dir="auto">Hallo</span></div>
-        <p class="langline">Ze antwoordt in de taal van de beller. Nederlands, Frans en Engels eerst, meer dan 30 talen in totaal.</p>
-        <div class="langcloud" aria-hidden="true"><span>Français</span><span>Nederlands</span><span>English</span><span>Deutsch</span><span>Español</span><span>Italiano</span><span>Português</span><span>Türkçe</span><span>العربية</span><span>Polski</span><span>Română</span><span>Ελληνικά</span><span>中文</span><span>日本語</span></div>
+        <div class="bigword" data-words="[&quot;Hallo&quot;, &quot;Bonjour&quot;]" aria-hidden="true"><span class="gradtxt" dir="auto">Hallo</span></div>
+        <p class="langline">Janet antwoordt vandaag in het Nederlands en het Frans, en schakelt tijdens het gesprek van taal als uw beller dat doet. Andere talen zijn technisch mogelijk: laat het ons weten.</p>
+        <div class="langcloud" aria-hidden="true"><span>Français</span><span>Nederlands</span></div>
       </div>
     </section>
     <section class="freesec faq-free reveal" id="faq">
@@ -463,6 +473,38 @@ gtag('consent','default',{ad_storage:'denied',analytics_storage:'denied',ad_user
       <div class="cols"><span>Telefoonsecretariaat met AI-assistente · België</span></div>
     </div>
     <div class="frows">
+      <div class="cols"><a href="sectoren.html">Alle sectoren</a><a href="garages.html">Garages</a><a href="restaurants.html">Restaurants</a><a href="praktijken.html">Praktijken</a><a href="zelfstandigen.html">Zelfstandigen</a><a href="dierenartsen.html">Dierenartsen</a></div>
+      <div class="cols"><span>Sectoren</span></div>
+    </div>
+    <div class="frows">
+      <div class="cols"><a href="loodgieters.html">Loodgieters</a><a href="elektriciens.html">Elektriciens</a><a href="verwarmingsinstallateurs.html">Verwarming</a><a href="slotenmakers.html">Slotenmakers</a><a href="syndici.html">Syndici</a><a href="boekhouders.html">Boekhouders</a></div>
+      <div class="cols"><span>Vaklui en kantoren</span></div>
+    </div>
+    <div class="frows">
+      <div class="cols"><a href="werking.html">Wat ze doet</a><a href="prijzen.html">Prijzen</a><a href="veiligheid.html">Veiligheid</a><a href="gegevensverwerking.html">Gegevensverwerking</a><a href="ai-act-conformiteit.html">AI Act</a><a href="ondersteuning.html">Ondersteuning</a><a href="voorwaarden.html">Voorwaarden</a><a href="over-ons.html">Over ons</a></div>
+      <div class="cols"><span>De dienst</span></div>
+    </div>
+    <div class="frows">
+      <div class="cols"><a href="bouwverlof-telefoonpermanentie.html">Bouwverlof</a><a href="belgische-feestdagen-telefoon.html">Feestdagen</a><a href="telefoonpermanentie-s-nachts.html">'s Nachts</a><a href="telefoonpermanentie-weekend.html">In het weekend</a><a href="gemiste-oproepen.html">Gemiste oproepen</a><a href="antwoordapparaat.html">Het antwoordapparaat</a><a href="bezette-lijn.html">De bezette lijn</a><a href="geen-secretaresse-aanwerven.html">Niet kunnen aanwerven</a></div>
+      <div class="cols"><span>Momenten en bezwaren</span></div>
+    </div>
+    <div class="frows">
+      <div class="cols"><a href="schoolvakanties-telefoon.html">Schoolvakanties</a><a href="jaarlijkse-sluiting-telefoon.html">Jaarlijkse sluiting</a><a href="wekelijkse-sluitingsdag.html">Sluitingsdag</a><a href="tussen-kerst-en-nieuwjaar.html">Kerst en nieuwjaar</a><a href="seizoenspiek-oproepen.html">Seizoenspiek</a><a href="oproepen-voor-openingstijd.html">Voor de opening</a><a href="oproepen-tijdens-de-middagpauze.html">De middagpauze</a><a href="oproepen-tijdens-een-interventie.html">Tijdens een interventie</a><a href="onverwachte-afwezigheid.html">Onverwacht afwezig</a></div>
+      <div class="cols"><span>Momenten in het jaar</span></div>
+    </div>
+    <div class="frows">
+      <div class="cols"><a href="geen-tijd-om-op-te-nemen.html">Geen tijd</a><a href="vergeten-terug-te-bellen.html">Vergeten terug te bellen</a><a href="klanten-bellen-de-concurrent.html">Naar de concurrent</a><a href="hoeveel-oproepen-mis-ik.html">Hoeveel mis ik</a><a href="aanvaarden-klanten-een-ai.html">Aanvaarden klanten dit</a><a href="nutteloze-oproepen.html">Nutteloze oproepen</a><a href="niet-altijd-gestoord-worden.html">Niet altijd gestoord</a></div>
+      <div class="cols"><span>Uw bezwaren</span></div>
+    </div>
+    <div class="frows">
+      <div class="cols"><a href="agent-of-mens.html">Agent of mens</a><a href="antwoordapparaat-of-permanentie.html">Apparaat of permanentie</a><a href="callbot-of-spraakagent.html">Callbot of agent</a><a href="doorschakeling-of-nummeroverdracht.html">Doorschakelen of overdragen</a><a href="gedeeld-of-exclusief.html">Gedeeld of exclusief</a><a href="forfait-of-per-oproep.html">Forfait of per oproep</a><a href="belgie-of-buitenland.html">België of buitenland</a><a href="online-agenda-of-telefoon.html">Online of telefoon</a></div>
+      <div class="cols"><span>Vergelijken</span></div>
+    </div>
+    <div class="frows">
+      <div class="cols"><a href="rekenblad-gemiste-oproepen.html">Rekenblad</a><a href="model-telefoonbericht.html">Model telefoonbericht</a><a href="model-sluitingsbericht.html">Model sluitingsbericht</a><a href="checklist-opnames-avg.html">Checklist opnames</a><a href="aanwerven-of-uitbesteden.html">Aanwerven of uitbesteden</a><a href="uren-wachtdienst-doorschakeling.html">Het invulblad</a></div>
+      <div class="cols"><span>Hulpmiddelen</span></div>
+    </div>
+    <div class="frows">
       <div class="cols"><a href="privacy.html">Privacy</a><a href="cookies.html">Cookies</a><a href="legal.html">Juridische info</a></div>
       <div class="cols"><a href="../">FR</a><a href="../en/">EN</a></div>
     </div>
@@ -470,5 +512,34 @@ gtag('consent','default',{ad_storage:'denied',analytics_storage:'denied',ad_user
 </div>
 </main>
 <script src="../bento.js" defer></script>
+<script>
+/* Same logic as the French calculator: no rate is imposed, the three inputs
+   come from the visitor. Basis: 46 working weeks a year, so 46/12 a month. */
+(function(){
+  var miss=document.getElementById('hm-miss'),missOut=document.getElementById('hm-miss-n'),
+      lostOut=document.getElementById('hm-lost-n'),out=document.getElementById('hm-num'),
+      pv=document.querySelectorAll('#hm-val button'),pl=document.querySelectorAll('#hm-lost button');
+  if(!miss||!out)return;
+  var SEM=46/12, val=300, lost=5, LOC='nl-BE', SUR='op 10';
+  function fmt(n){return n.toLocaleString(LOC)+' \u20AC';}
+  function update(){
+    if(missOut)missOut.textContent=miss.value;
+    if(lostOut)lostOut.textContent=lost+' '+SUR;
+    out.textContent=fmt(Math.round(miss.value*SEM*(lost/10)*val));
+  }
+  function group(list,set){
+    for(var i=0;i<list.length;i++)(function(b){
+      b.addEventListener('click',function(){
+        for(var j=0;j<list.length;j++)list[j].classList.remove('on');
+        b.classList.add('on');set(+b.getAttribute('data-v'));update();
+      });
+    })(list[i]);
+  }
+  group(pv,function(v){val=v;});
+  group(pl,function(v){lost=v;});
+  miss.addEventListener('input',update);
+  update();
+})();
+</script>
 </body>
 </html>
