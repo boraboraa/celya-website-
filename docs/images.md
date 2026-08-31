@@ -42,6 +42,24 @@ en « provenance non retrouvée ».
 | `blog-garage-1600.webp` · `-800` | Un mécanicien en gants, penché sur une pièce | Unsplash — provenance non retrouvée | Unsplash License, présumée | 2026-08-12 |
 | `hero-independant-1600.webp` · `-800` | Un homme assis à l'arrière d'un véhicule, face à un plan d'eau | Unsplash — provenance non retrouvée | Unsplash License, présumée | 2026-08-12 |
 
+## Vignettes de menu — 112 × 84
+
+Le menu déroulant et le menu mobile affichent la vignette en **56 × 42 CSS**.
+Servir le fichier 1000 × 700 pour ça coûtait **389 Ko sur chacune des 290
+pages**. Chaque `metier-*.webp` a donc un jumeau `metier-*-112.webp`, même
+cadrage, redimensionné à 112 × 84 (le double de la taille d'affichage, pour
+les écrans à densité 2×), de 1,2 à 5,7 Ko pièce — 36 Ko pour les onze.
+
+**Règle :** dans `.drop-panel` et `.mnav-grid`, toujours le `-112`. Le fichier
+1000 × 700 reste réservé aux grandes tuiles `.pcard` des trois pages d'accueil.
+Même provenance et même licence que son grand frère, ligne par ligne
+ci-dessous : c'est le même fichier source.
+
+Les sept masters 1000 × 700 des métiers ajoutés le 31 août ne sont, à ce jour,
+utilisés par aucune tuile `.pcard` — seuls les quatre vitrines en ont une. Ils
+sont conservés parce qu'une tuile pour ces métiers en aurait besoin, et parce
+qu'ils sont la source des vignettes de menu.
+
 ## Vignettes métier — 1000 × 700
 
 | Fichier | Sujet réel | Source | Licence | Date |
