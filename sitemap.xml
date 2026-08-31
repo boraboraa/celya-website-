@@ -244,13 +244,17 @@
   <url>
     <loc>https://celya.be/combien-de-temps-pour-etre-operationnel.html</loc>
     <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/combien-de-temps-pour-etre-operationnel.html"/>
+    <xhtml:link rel="alternate" hreflang="nl-BE" href="https://celya.be/nl/hoelang-tot-de-start.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/combien-de-temps-pour-etre-operationnel.html"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://celya.be/nl/hoelang-tot-de-start.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/combien-de-temps-pour-etre-operationnel.html"/>
   </url>
   <url>
     <loc>https://celya.be/comment-arreter-le-service.html</loc>
     <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/comment-arreter-le-service.html"/>
+    <xhtml:link rel="alternate" hreflang="nl-BE" href="https://celya.be/nl/hoe-stop-ik-de-dienst.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/comment-arreter-le-service.html"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://celya.be/nl/hoe-stop-ik-de-dienst.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/comment-arreter-le-service.html"/>
   </url>
   <url>
@@ -473,7 +477,9 @@
   <url>
     <loc>https://celya.be/faut-il-installer-quelque-chose.html</loc>
     <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/faut-il-installer-quelque-chose.html"/>
+    <xhtml:link rel="alternate" hreflang="nl-BE" href="https://celya.be/nl/moet-ik-iets-installeren.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/faut-il-installer-quelque-chose.html"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://celya.be/nl/moet-ik-iets-installeren.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/faut-il-installer-quelque-chose.html"/>
   </url>
   <url>
@@ -1002,6 +1008,14 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/reconnait-elle-un-client-qui-rappelle.html"/>
   </url>
   <url>
+    <loc>https://celya.be/nl/hoe-stop-ik-de-dienst.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/comment-arreter-le-service.html"/>
+    <xhtml:link rel="alternate" hreflang="nl-BE" href="https://celya.be/nl/hoe-stop-ik-de-dienst.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/comment-arreter-le-service.html"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://celya.be/nl/hoe-stop-ik-de-dienst.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/comment-arreter-le-service.html"/>
+  </url>
+  <url>
     <loc>https://celya.be/nl/hoe-verloopt-de-facturatie.html</loc>
     <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/comment-se-passe-la-facturation.html"/>
     <xhtml:link rel="alternate" hreflang="nl-BE" href="https://celya.be/nl/hoe-verloopt-de-facturatie.html"/>
@@ -1024,6 +1038,14 @@
     <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/combien-de-temps-dure-un-appel.html"/>
     <xhtml:link rel="alternate" hreflang="nl" href="https://celya.be/nl/hoelang-duurt-een-oproep.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/combien-de-temps-dure-un-appel.html"/>
+  </url>
+  <url>
+    <loc>https://celya.be/nl/hoelang-tot-de-start.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/combien-de-temps-pour-etre-operationnel.html"/>
+    <xhtml:link rel="alternate" hreflang="nl-BE" href="https://celya.be/nl/hoelang-tot-de-start.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/combien-de-temps-pour-etre-operationnel.html"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://celya.be/nl/hoelang-tot-de-start.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/combien-de-temps-pour-etre-operationnel.html"/>
   </url>
   <url>
     <loc>https://celya.be/nl/hoeveel-kost-een-telefoonsecretariaat.html</loc>
@@ -1064,6 +1086,22 @@
     <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/fermeture-annuelle-telephone.html"/>
     <xhtml:link rel="alternate" hreflang="nl" href="https://celya.be/nl/jaarlijkse-sluiting-telefoon.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/fermeture-annuelle-telephone.html"/>
+  </url>
+  <url>
+    <loc>https://celya.be/nl/kan-ik-eerst-proberen.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/puis-je-essayer-avant.html"/>
+    <xhtml:link rel="alternate" hreflang="nl-BE" href="https://celya.be/nl/kan-ik-eerst-proberen.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/puis-je-essayer-avant.html"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://celya.be/nl/kan-ik-eerst-proberen.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/puis-je-essayer-avant.html"/>
+  </url>
+  <url>
+    <loc>https://celya.be/nl/kan-ik-instellingen-wijzigen.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/puis-je-modifier-les-reglages.html"/>
+    <xhtml:link rel="alternate" hreflang="nl-BE" href="https://celya.be/nl/kan-ik-instellingen-wijzigen.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/puis-je-modifier-les-reglages.html"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://celya.be/nl/kan-ik-instellingen-wijzigen.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/puis-je-modifier-les-reglages.html"/>
   </url>
   <url>
     <loc>https://celya.be/nl/klanten-bellen-de-concurrent.html</loc>
@@ -1112,6 +1150,14 @@
     <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/modele-fiche-message-telephonique.html"/>
     <xhtml:link rel="alternate" hreflang="nl" href="https://celya.be/nl/model-telefoonbericht.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/modele-fiche-message-telephonique.html"/>
+  </url>
+  <url>
+    <loc>https://celya.be/nl/moet-ik-iets-installeren.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/faut-il-installer-quelque-chose.html"/>
+    <xhtml:link rel="alternate" hreflang="nl-BE" href="https://celya.be/nl/moet-ik-iets-installeren.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/faut-il-installer-quelque-chose.html"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://celya.be/nl/moet-ik-iets-installeren.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/faut-il-installer-quelque-chose.html"/>
   </url>
   <url>
     <loc>https://celya.be/nl/moet-ik-mijn-klanten-verwittigen.html</loc>
@@ -1340,6 +1386,14 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/que-fait-elle-des-demarchages.html"/>
   </url>
   <url>
+    <loc>https://celya.be/nl/wat-moet-ik-voorbereiden.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/que-dois-je-preparer.html"/>
+    <xhtml:link rel="alternate" hreflang="nl-BE" href="https://celya.be/nl/wat-moet-ik-voorbereiden.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/que-dois-je-preparer.html"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://celya.be/nl/wat-moet-ik-voorbereiden.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/que-dois-je-preparer.html"/>
+  </url>
+  <url>
     <loc>https://celya.be/nl/wekelijkse-sluitingsdag.html</loc>
     <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/jour-de-fermeture-hebdomadaire.html"/>
     <xhtml:link rel="alternate" hreflang="nl-BE" href="https://celya.be/nl/wekelijkse-sluitingsdag.html"/>
@@ -1491,19 +1545,25 @@
   <url>
     <loc>https://celya.be/puis-je-essayer-avant.html</loc>
     <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/puis-je-essayer-avant.html"/>
+    <xhtml:link rel="alternate" hreflang="nl-BE" href="https://celya.be/nl/kan-ik-eerst-proberen.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/puis-je-essayer-avant.html"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://celya.be/nl/kan-ik-eerst-proberen.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/puis-je-essayer-avant.html"/>
   </url>
   <url>
     <loc>https://celya.be/puis-je-modifier-les-reglages.html</loc>
     <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/puis-je-modifier-les-reglages.html"/>
+    <xhtml:link rel="alternate" hreflang="nl-BE" href="https://celya.be/nl/kan-ik-instellingen-wijzigen.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/puis-je-modifier-les-reglages.html"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://celya.be/nl/kan-ik-instellingen-wijzigen.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/puis-je-modifier-les-reglages.html"/>
   </url>
   <url>
     <loc>https://celya.be/que-dois-je-preparer.html</loc>
     <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/que-dois-je-preparer.html"/>
+    <xhtml:link rel="alternate" hreflang="nl-BE" href="https://celya.be/nl/wat-moet-ik-voorbereiden.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/que-dois-je-preparer.html"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://celya.be/nl/wat-moet-ik-voorbereiden.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/que-dois-je-preparer.html"/>
   </url>
   <url>
