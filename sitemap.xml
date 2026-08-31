@@ -228,7 +228,9 @@
   <url>
     <loc>https://celya.be/combien-de-temps-dure-un-appel.html</loc>
     <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/combien-de-temps-dure-un-appel.html"/>
+    <xhtml:link rel="alternate" hreflang="nl-BE" href="https://celya.be/nl/hoelang-duurt-een-oproep.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/combien-de-temps-dure-un-appel.html"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://celya.be/nl/hoelang-duurt-een-oproep.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/combien-de-temps-dure-un-appel.html"/>
   </url>
   <url>
@@ -449,7 +451,9 @@
   <url>
     <loc>https://celya.be/est-ce-qu-elle-rappelle-les-gens.html</loc>
     <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/est-ce-qu-elle-rappelle-les-gens.html"/>
+    <xhtml:link rel="alternate" hreflang="nl-BE" href="https://celya.be/nl/belt-ze-mensen-terug.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/est-ce-qu-elle-rappelle-les-gens.html"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://celya.be/nl/belt-ze-mensen-terug.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/est-ce-qu-elle-rappelle-les-gens.html"/>
   </url>
   <url>
@@ -743,6 +747,14 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/conformite-ai-act.html"/>
   </url>
   <url>
+    <loc>https://celya.be/nl/als-ze-het-niet-begrijpt.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/si-elle-ne-comprend-pas.html"/>
+    <xhtml:link rel="alternate" hreflang="nl-BE" href="https://celya.be/nl/als-ze-het-niet-begrijpt.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/si-elle-ne-comprend-pas.html"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://celya.be/nl/als-ze-het-niet-begrijpt.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/si-elle-ne-comprend-pas.html"/>
+  </url>
+  <url>
     <loc>https://celya.be/nl/antwoordapparaat-of-permanentie.html</loc>
     <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/repondeur-ou-permanence-telephonique.html"/>
     <xhtml:link rel="alternate" hreflang="nl-BE" href="https://celya.be/nl/antwoordapparaat-of-permanentie.html"/>
@@ -773,6 +785,14 @@
     <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/jours-feries-belges-permanence-telephonique.html"/>
     <xhtml:link rel="alternate" hreflang="nl" href="https://celya.be/nl/belgische-feestdagen-telefoon.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/jours-feries-belges-permanence-telephonique.html"/>
+  </url>
+  <url>
+    <loc>https://celya.be/nl/belt-ze-mensen-terug.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/est-ce-qu-elle-rappelle-les-gens.html"/>
+    <xhtml:link rel="alternate" hreflang="nl-BE" href="https://celya.be/nl/belt-ze-mensen-terug.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/est-ce-qu-elle-rappelle-les-gens.html"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://celya.be/nl/belt-ze-mensen-terug.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/est-ce-qu-elle-rappelle-les-gens.html"/>
   </url>
   <url>
     <loc>https://celya.be/nl/betaal-ik-als-niemand-belt.html</loc>
@@ -974,6 +994,14 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/je-rate-des-appels-clients.html"/>
   </url>
   <url>
+    <loc>https://celya.be/nl/herkent-ze-een-terugbeller.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/reconnait-elle-un-client-qui-rappelle.html"/>
+    <xhtml:link rel="alternate" hreflang="nl-BE" href="https://celya.be/nl/herkent-ze-een-terugbeller.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/reconnait-elle-un-client-qui-rappelle.html"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://celya.be/nl/herkent-ze-een-terugbeller.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/reconnait-elle-un-client-qui-rappelle.html"/>
+  </url>
+  <url>
     <loc>https://celya.be/nl/hoe-verloopt-de-facturatie.html</loc>
     <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/comment-se-passe-la-facturation.html"/>
     <xhtml:link rel="alternate" hreflang="nl-BE" href="https://celya.be/nl/hoe-verloopt-de-facturatie.html"/>
@@ -988,6 +1016,14 @@
     <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/combien-de-temps-les-donnees-sont-conservees.html"/>
     <xhtml:link rel="alternate" hreflang="nl" href="https://celya.be/nl/hoelang-blijven-gegevens-bewaard.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/combien-de-temps-les-donnees-sont-conservees.html"/>
+  </url>
+  <url>
+    <loc>https://celya.be/nl/hoelang-duurt-een-oproep.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/combien-de-temps-dure-un-appel.html"/>
+    <xhtml:link rel="alternate" hreflang="nl-BE" href="https://celya.be/nl/hoelang-duurt-een-oproep.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/combien-de-temps-dure-un-appel.html"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://celya.be/nl/hoelang-duurt-een-oproep.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/combien-de-temps-dure-un-appel.html"/>
   </url>
   <url>
     <loc>https://celya.be/nl/hoeveel-kost-een-telefoonsecretariaat.html</loc>
@@ -1044,6 +1080,22 @@
     <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/plombiers.html"/>
     <xhtml:link rel="alternate" hreflang="nl" href="https://celya.be/nl/loodgieters.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/plombiers.html"/>
+  </url>
+  <url>
+    <loc>https://celya.be/nl/mag-ze-mijn-prijzen-geven.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/peut-elle-donner-mes-tarifs.html"/>
+    <xhtml:link rel="alternate" hreflang="nl-BE" href="https://celya.be/nl/mag-ze-mijn-prijzen-geven.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/peut-elle-donner-mes-tarifs.html"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://celya.be/nl/mag-ze-mijn-prijzen-geven.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/peut-elle-donner-mes-tarifs.html"/>
+  </url>
+  <url>
+    <loc>https://celya.be/nl/meerdere-agendas.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/plusieurs-personnes-plusieurs-agendas.html"/>
+    <xhtml:link rel="alternate" hreflang="nl-BE" href="https://celya.be/nl/meerdere-agendas.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/plusieurs-personnes-plusieurs-agendas.html"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://celya.be/nl/meerdere-agendas.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/plusieurs-personnes-plusieurs-agendas.html"/>
   </url>
   <url>
     <loc>https://celya.be/nl/model-sluitingsbericht.html</loc>
@@ -1280,6 +1332,14 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/conditions.html"/>
   </url>
   <url>
+    <loc>https://celya.be/nl/wat-doet-ze-met-verkoopoproepen.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/que-fait-elle-des-demarchages.html"/>
+    <xhtml:link rel="alternate" hreflang="nl-BE" href="https://celya.be/nl/wat-doet-ze-met-verkoopoproepen.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/que-fait-elle-des-demarchages.html"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://celya.be/nl/wat-doet-ze-met-verkoopoproepen.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/que-fait-elle-des-demarchages.html"/>
+  </url>
+  <url>
     <loc>https://celya.be/nl/wekelijkse-sluitingsdag.html</loc>
     <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/jour-de-fermeture-hebdomadaire.html"/>
     <xhtml:link rel="alternate" hreflang="nl-BE" href="https://celya.be/nl/wekelijkse-sluitingsdag.html"/>
@@ -1373,7 +1433,9 @@
   <url>
     <loc>https://celya.be/peut-elle-donner-mes-tarifs.html</loc>
     <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/peut-elle-donner-mes-tarifs.html"/>
+    <xhtml:link rel="alternate" hreflang="nl-BE" href="https://celya.be/nl/mag-ze-mijn-prijzen-geven.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/peut-elle-donner-mes-tarifs.html"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://celya.be/nl/mag-ze-mijn-prijzen-geven.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/peut-elle-donner-mes-tarifs.html"/>
   </url>
   <url>
@@ -1401,7 +1463,9 @@
   <url>
     <loc>https://celya.be/plusieurs-personnes-plusieurs-agendas.html</loc>
     <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/plusieurs-personnes-plusieurs-agendas.html"/>
+    <xhtml:link rel="alternate" hreflang="nl-BE" href="https://celya.be/nl/meerdere-agendas.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/plusieurs-personnes-plusieurs-agendas.html"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://celya.be/nl/meerdere-agendas.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/plusieurs-personnes-plusieurs-agendas.html"/>
   </url>
   <url>
@@ -1445,7 +1509,9 @@
   <url>
     <loc>https://celya.be/que-fait-elle-des-demarchages.html</loc>
     <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/que-fait-elle-des-demarchages.html"/>
+    <xhtml:link rel="alternate" hreflang="nl-BE" href="https://celya.be/nl/wat-doet-ze-met-verkoopoproepen.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/que-fait-elle-des-demarchages.html"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://celya.be/nl/wat-doet-ze-met-verkoopoproepen.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/que-fait-elle-des-demarchages.html"/>
   </url>
   <url>
@@ -1473,7 +1539,9 @@
   <url>
     <loc>https://celya.be/reconnait-elle-un-client-qui-rappelle.html</loc>
     <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/reconnait-elle-un-client-qui-rappelle.html"/>
+    <xhtml:link rel="alternate" hreflang="nl-BE" href="https://celya.be/nl/herkent-ze-een-terugbeller.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/reconnait-elle-un-client-qui-rappelle.html"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://celya.be/nl/herkent-ze-een-terugbeller.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/reconnait-elle-un-client-qui-rappelle.html"/>
   </url>
   <url>
@@ -1544,7 +1612,9 @@
   <url>
     <loc>https://celya.be/si-elle-ne-comprend-pas.html</loc>
     <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/si-elle-ne-comprend-pas.html"/>
+    <xhtml:link rel="alternate" hreflang="nl-BE" href="https://celya.be/nl/als-ze-het-niet-begrijpt.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/si-elle-ne-comprend-pas.html"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://celya.be/nl/als-ze-het-niet-begrijpt.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/si-elle-ne-comprend-pas.html"/>
   </url>
   <url>
