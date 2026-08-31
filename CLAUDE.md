@@ -21,8 +21,36 @@ mais il ne couvre pas tout le tableau — la relecture reste obligatoire.
 - l'agent n'évalue jamais un symptôme médical
 - pas d'emailing, pas d'appels sortants, pas de WhatsApp
 - pas de synchronisation Google Agenda ou Outlook annoncée, pas de SMS de confirmation
-- aucune revendication multilingue au-delà de FR + NL
+- aucune revendication multilingue au-delà de FR + NL **en promesse de service**
 - **aucun chiffre sans sa source et sa date**
+
+## Les langues : on les nomme, on ne les compte pas
+
+« Plus de N langues / talen / languages » reste **interdit partout** : un total
+ne se vérifie pas. Le hook le bloque et continuera de le bloquer.
+
+Ce qui est autorisé, c'est de **nommer** les langues, à une condition : chacune
+doit figurer dans la documentation publique du moteur vocal. Source relevée le
+31 août 2026 sur <https://elevenlabs.io/docs/overview/models> — Eleven Flash
+v2.5, le modèle basse latence des agents, y liste nommément 32 langues, dont
+les quatorze affichées sur les trois accueils : Français, Nederlands, Deutsch,
+English, Español, Italiano, Português, Polski, Türkçe, العربية, Română,
+Ελληνικά, Русский, 中文.
+
+La légende du nuage sépare **deux choses**, et doit continuer à le faire :
+
+1. **ce que le moteur gère** — les langues nommées dans le nuage ;
+2. **ce qui tourne aujourd'hui** — « Chez nos clients belges, Janet répond en
+   français et en néerlandais, et bascule d'une langue à l'autre en cours
+   d'appel. Une autre langue ? Parlons-en. »
+
+**L'allemand** peut figurer dans le nuage : c'est une capacité du moteur. Il ne
+doit apparaître dans **aucune page** comme une promesse de service. Le hook
+applique exactement ça : le motif `Deutsch | Duits*` est levé pour le seul bloc
+`<div class="langcloud">` des trois pages d'accueil, et reste bloquant partout
+ailleurs — y compris ailleurs sur ces trois pages, et y compris si le nuage est
+recopié sur une autre page. Les cinq cas de contrôle sont dans l'historique du
+lot 5.
 
 Formulation autorisée pour l'agenda, FR : « Vous utilisez déjà un logiciel de
 gestion ? Vous le gardez. Une connexion directe à votre outil peut être
