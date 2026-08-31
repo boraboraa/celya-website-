@@ -51,9 +51,14 @@ const interdits = [
 /* Les fichiers de travail hors site ne sont pas controles. */
 const CONTROLE = /\.(html|md)$/i;
 
-/* Le referentiel et les notes de travail CITENT les mots interdits : c'est
- * leur fonction. Les controler bloquerait toute edition du referentiel. */
-const EXEMPTS = /(?:^|\/)(?:docs\/vocabulaire-be\.md|CLAUDE\.md)$/;
+/* Le referentiel, les notes de travail et l'inventaire interne CITENT les mots
+ * interdits : c'est leur fonction. Les controler bloquerait toute edition du
+ * referentiel, et apercu.html affiche en clair le nom de chaque fichier du
+ * depot — dont nl/blog/restaurants-telefonische-reserveringen.html, une URL
+ * publiee qu'on ne renomme pas. Aucune des trois n'est une page publique :
+ * apercu.html porte noindex,nofollow, ne figure pas au sitemap et n'est liee
+ * depuis nulle part. */
+const EXEMPTS = /(?:^|\/)(?:docs\/vocabulaire-be\.md|CLAUDE\.md|apercu\.html)$/;
 
 /* Les URL deja publiees ne sont pas de la prose : renommer un fichier en
  * ligne est un probleme de redirection, pas de vocabulaire. On neutralise
