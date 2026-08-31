@@ -131,7 +131,7 @@ body.mnav-open{overflow:hidden}
 .cine-shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,14,26,.85),rgba(10,14,26,.38) 40%,rgba(10,14,26,.92))}
 .cine p{position:relative;z-index:2;font-family:var(--h);font-weight:700;color:#fff;font-size:clamp(30px,5vw,58px);letter-spacing:-.035em;line-height:1.08;padding:0 22px;text-shadow:0 6px 44px rgba(4,8,20,.55);text-wrap:balance}
 .cine .em{font-family:var(--a);font-style:italic;font-weight:400;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
-@media (prefers-reduced-motion:reduce){.drop-panel,.nav-drop .car,.drop-panel i,.mnav,.burger i{transition:none}.fade{opacity:1;transform:none;filter:none;transition:none}}
+@media (prefers-reduced-motion:reduce){.drop-panel,.drop-panel a,.nav-drop .car,.drop-panel i,.mnav,.burger i,.btn,.field,.field input,.field textarea{transition:none;animation:none}.fade{opacity:1;transform:none;filter:none;transition:none}}
 </style>
 <noscript><style>.fade{opacity:1;transform:none;filter:none}</style></noscript>
 </head>
@@ -145,10 +145,18 @@ body.mnav-open{overflow:hidden}
       <div class="nav-drop">
         <a href="metiers.html">Votre métier <svg class="car" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></a>
         <div class="drop-panel">
-          <a href="garages.html"><img src="assets/metier-garage.webp" alt="Garages" width="56" height="42" loading="lazy"><b>Garages</b><i aria-hidden="true">&rarr;</i></a>
-          <a href="restaurants.html"><img src="assets/metier-restaurant.webp" alt="Restaurants" width="56" height="42" loading="lazy"><b>Restaurants</b><i aria-hidden="true">&rarr;</i></a>
-          <a href="cabinets.html"><img src="assets/metier-cabinet.webp" alt="Cabinets médicaux" width="56" height="42" loading="lazy"><b>Cabinets médicaux</b><i aria-hidden="true">&rarr;</i></a>
-          <a href="independants.html"><img src="assets/metier-artisan.webp" alt="Indépendants" width="56" height="42" loading="lazy"><b>Indépendants</b><i aria-hidden="true">&rarr;</i></a>
+          <a href="garages.html"><img src="assets/metier-garage-112.webp" alt="" width="56" height="42" loading="lazy"><b>Garages</b><i aria-hidden="true">&rarr;</i></a>
+          <a href="restaurants.html"><img src="assets/metier-restaurant-112.webp" alt="" width="56" height="42" loading="lazy"><b>Restaurants</b><i aria-hidden="true">&rarr;</i></a>
+          <a href="cabinets.html"><img src="assets/metier-cabinet-112.webp" alt="" width="56" height="42" loading="lazy"><b>Cabinets médicaux</b><i aria-hidden="true">&rarr;</i></a>
+          <a href="veterinaires.html"><img src="assets/metier-veterinaire-112.webp" alt="" width="56" height="42" loading="lazy"><b>Vétérinaires</b><i aria-hidden="true">&rarr;</i></a>
+          <a href="independants.html"><img src="assets/metier-artisan-112.webp" alt="" width="56" height="42" loading="lazy"><b>Indépendants</b><i aria-hidden="true">&rarr;</i></a>
+          <a href="plombiers.html"><img src="assets/metier-plombier-112.webp" alt="" width="56" height="42" loading="lazy"><b>Plombiers</b><i aria-hidden="true">&rarr;</i></a>
+          <a href="chauffagistes.html"><img src="assets/metier-chauffagiste-112.webp" alt="" width="56" height="42" loading="lazy"><b>Chauffagistes</b><i aria-hidden="true">&rarr;</i></a>
+          <a href="electriciens.html"><img src="assets/metier-electricien-112.webp" alt="" width="56" height="42" loading="lazy"><b>Électriciens</b><i aria-hidden="true">&rarr;</i></a>
+          <a href="serruriers.html"><img src="assets/metier-serrurier-112.webp" alt="" width="56" height="42" loading="lazy"><b>Serruriers</b><i aria-hidden="true">&rarr;</i></a>
+          <a href="syndics.html"><img src="assets/metier-syndic-112.webp" alt="" width="56" height="42" loading="lazy"><b>Syndics d'immeuble</b><i aria-hidden="true">&rarr;</i></a>
+          <a href="fiduciaires.html"><img src="assets/metier-fiduciaire-112.webp" alt="" width="56" height="42" loading="lazy"><b>Fiduciaires</b><i aria-hidden="true">&rarr;</i></a>
+          <a href="metiers.html"><b>Tous les métiers</b><i aria-hidden="true">&rarr;</i></a>
         </div>
       </div>
       <a href="./#faq">FAQ</a>
@@ -168,10 +176,18 @@ body.mnav-open{overflow:hidden}
     <a class="mnav-l" href="metiers.html">Tous les métiers</a>
     <b class="mnav-h">Votre métier</b>
     <div class="mnav-grid">
-      <a href="garages.html"><img src="assets/metier-garage.webp" alt="Garages" width="56" height="42" loading="lazy"><b>Garages</b></a>
-      <a href="restaurants.html"><img src="assets/metier-restaurant.webp" alt="Restaurants" width="56" height="42" loading="lazy"><b>Restaurants</b></a>
-      <a href="cabinets.html"><img src="assets/metier-cabinet.webp" alt="Cabinets médicaux" width="56" height="42" loading="lazy"><b>Cabinets médicaux</b></a>
-      <a href="independants.html"><img src="assets/metier-artisan.webp" alt="Indépendants" width="56" height="42" loading="lazy"><b>Indépendants</b></a>
+      <a href="garages.html"><img src="assets/metier-garage-112.webp" alt="" width="56" height="42" loading="lazy"><b>Garages</b><i aria-hidden="true">&rarr;</i></a>
+      <a href="restaurants.html"><img src="assets/metier-restaurant-112.webp" alt="" width="56" height="42" loading="lazy"><b>Restaurants</b><i aria-hidden="true">&rarr;</i></a>
+      <a href="cabinets.html"><img src="assets/metier-cabinet-112.webp" alt="" width="56" height="42" loading="lazy"><b>Cabinets médicaux</b><i aria-hidden="true">&rarr;</i></a>
+      <a href="veterinaires.html"><img src="assets/metier-veterinaire-112.webp" alt="" width="56" height="42" loading="lazy"><b>Vétérinaires</b><i aria-hidden="true">&rarr;</i></a>
+      <a href="independants.html"><img src="assets/metier-artisan-112.webp" alt="" width="56" height="42" loading="lazy"><b>Indépendants</b><i aria-hidden="true">&rarr;</i></a>
+      <a href="plombiers.html"><img src="assets/metier-plombier-112.webp" alt="" width="56" height="42" loading="lazy"><b>Plombiers</b><i aria-hidden="true">&rarr;</i></a>
+      <a href="chauffagistes.html"><img src="assets/metier-chauffagiste-112.webp" alt="" width="56" height="42" loading="lazy"><b>Chauffagistes</b><i aria-hidden="true">&rarr;</i></a>
+      <a href="electriciens.html"><img src="assets/metier-electricien-112.webp" alt="" width="56" height="42" loading="lazy"><b>Électriciens</b><i aria-hidden="true">&rarr;</i></a>
+      <a href="serruriers.html"><img src="assets/metier-serrurier-112.webp" alt="" width="56" height="42" loading="lazy"><b>Serruriers</b><i aria-hidden="true">&rarr;</i></a>
+      <a href="syndics.html"><img src="assets/metier-syndic-112.webp" alt="" width="56" height="42" loading="lazy"><b>Syndics d'immeuble</b><i aria-hidden="true">&rarr;</i></a>
+      <a href="fiduciaires.html"><img src="assets/metier-fiduciaire-112.webp" alt="" width="56" height="42" loading="lazy"><b>Fiduciaires</b><i aria-hidden="true">&rarr;</i></a>
+      <a href="metiers.html"><b>Tous les métiers</b><i aria-hidden="true">&rarr;</i></a>
     </div>
     <b class="mnav-h">Langue</b>
     <div class="lang"><a class="on" href="contact.html">FR</a><a href="nl/contact.html">NL</a><a href="en/contact.html">EN</a></div>
@@ -238,7 +254,7 @@ m.addEventListener('click',function(e){if(e.target.closest&&e.target.closest('a'
 </div>
 
 <section class="cine fade">
-  <img src="assets/cine-phone-1600.webp" srcset="assets/cine-phone-800.webp 800w, assets/cine-phone-1600.webp 1600w" sizes="100vw" alt="Un téléphone vintage sur fond bleu nuit" loading="lazy" width="1600" height="1067">
+  <img src="assets/cine-poste-1600.webp" srcset="assets/cine-poste-800.webp 800w, assets/cine-poste-1600.webp 1600w" sizes="100vw" alt="Un poste de travail éclairé d'une lampe, clavier et téléphone de bureau, en soirée" loading="lazy" width="1600" height="1000">
   <span class="cine-shade"></span>
   <p>Le plus simple&nbsp;? <span class="em">Appelez-la.</span></p>
 </section>

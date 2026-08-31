@@ -16,10 +16,12 @@ const fs = require('fs');
  * combien-coute-une-secretaire-en-belgique.html : « conges legaux deduits ».
  * On garde donc la frontiere par lookaround sur \p{L}, ce qui attrape en prime
  * Duitstalig, Duitse et Duitsland. */
+/* Chaque regle lit soit le fichier entier, soit la variante ou le nuage de
+ * langues des trois accueils est neutralise (voir NUAGE plus bas). */
 const interdits = [
-  [/(?<!\p{L})(?:Deutsch|Duits\p{L}*)/iu, "langue allemande : hors produit"],
+  [/(?<!\p{L})(?:Deutsch|Duits\p{L}*)/iu, "langue allemande : hors produit", 'horsNuage'],
   [/(plus de\s*)?\b(1[0-9]|[2-9][0-9])\s*(langues|talen|languages)\b/i,
-   "revendication multilingue non adossee : le produit annonce FR + NL"],
+   "revendication multilingue non adossee : on nomme les langues, on ne les compte pas"],
 
   /* Pieges NL-NL : ce sont ceux qu'on ne voit pas en se relisant.
    * Reference : docs/vocabulaire-be.md, section « Neerlandais de Belgique ». */
@@ -65,14 +67,29 @@ const EXEMPTS = /(?:^|\/)(?:docs\/vocabulaire-be\.md|CLAUDE\.md|apercu\.html)$/;
  * donc le contenu des attributs href et src avant de chercher. */
 const LIENS = /\b(?:href|src|content)\s*=\s*"[^"]*"/gi;
 
+/* Le nuage de langues des trois accueils NOMME les langues que le moteur vocal
+ * sait parler — chacune verifiee dans la documentation publique du fournisseur,
+ * citee dans CLAUDE.md. « Deutsch » y a donc sa place, et nulle part ailleurs :
+ * c'est une capacite du moteur, jamais une promesse de service. La regle reste
+ * bloquante sur les 287 autres pages, et sur le reste de ces trois-la.
+ * Le plafond « N langues / talen / languages », lui, ne bouge pas : un total
+ * ne se verifie pas, on nomme les langues au lieu de les compter. */
+const ACCUEILS = /(?:^|\/)(?:nl\/|en\/)?index\.html$/;
+const NUAGE = /<div class="langcloud"[\s\S]*?<\/div>/gi;
+
 function verifie(chemin) {
   if (!CONTROLE.test(chemin) || EXEMPTS.test(chemin) || !fs.existsSync(chemin)) return [];
   const src = fs.readFileSync(chemin, 'utf8')
     .replace(LIENS, (m) => (/^\s*content/i.test(m) ? m : m.replace(/[^\s="]/g, '.')));
-  const lignes = src.split('\n');
+  /* Meme decoupage en lignes des deux cotes : le remplacement conserve les
+   * retours a la ligne, donc les numeros signales restent justes. */
+  const horsNuage = ACCUEILS.test(chemin)
+    ? src.replace(NUAGE, (m) => m.replace(/[^\n]/g, ' '))
+    : src;
+  const lignes = { src: src.split('\n'), horsNuage: horsNuage.split('\n') };
   const trouves = [];
-  for (const [re, motif] of interdits) {
-    lignes.forEach((l, i) => {
+  for (const [re, motif, source] of interdits) {
+    lignes[source || 'src'].forEach((l, i) => {
       const m = l.match(re);
       if (m) trouves.push(`${chemin}:${i + 1}  « ${m[0]} » — ${motif}`);
     });
