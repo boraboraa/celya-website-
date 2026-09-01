@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-2.25 19.75 288 112.5" width="288" height="112.5" role="img">
+  <title>Celya</title>
+  <g fill="none" stroke="#FFFFFF" stroke-width="9" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M64.98 89.28 A30 30 0 1 1 64.98 50.72 L83.98 34"/>
+    <path d="M83.98 34 L79.8 46.3 M83.98 34 L71.3 36.6"/>
+    <path d="M135 79 L93 79 A21 21 0 1 1 129 92"/>
+    <path d="M157 40 L157 100"/>
+    <path d="M175 58 L193 92 M211 58 L180 118"/>
+    <circle cx="244" cy="79" r="21"/>
+    <path d="M265 62 L265 100"/>
+  </g>
+  <path d="M244 58 L244 49" fill="none" stroke="#FFFFFF" stroke-width="6" stroke-linecap="round"/>
+  <circle cx="244" cy="45" r="3.6" fill="#FFFFFF"/>
+  <rect x="212" y="74" width="5" height="10" rx="1.6" fill="#FFFFFF"/>
+  <rect x="271" y="74" width="5" height="10" rx="1.6" fill="#FFFFFF"/>
+  <rect x="229" y="71.5" width="30" height="12" rx="6" fill="none" stroke="#FFFFFF" stroke-width="1.5"/>
+  <rect x="234" y="75" width="7.5" height="3.6" rx="1.8" fill="#FFFFFF"/>
+  <rect x="248.5" y="75" width="7.5" height="3.6" rx="1.8" fill="#FFFFFF"/>
+</svg>

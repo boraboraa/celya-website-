@@ -89,6 +89,80 @@ qu'ils sont la source des vignettes de menu.
 | `favicon.svg`, `og-image.png` | Marque Celya | Production interne | Interne | — |
 | `assets/fonts/*.woff2` | Geist et Instrument Serif, auto-hébergées | Google Fonts | SIL Open Font License 1.1 | 2026-08-11 |
 
+## Fichiers de marque — `assets/brand/`
+
+Le logotype n'existait que sous forme de SVG inline, recopié dans l'en-tête des
+**280 pages**. Vérifié le 1<sup>er</sup> septembre 2026 : les 280 copies portent
+le même tracé au caractère près, seul l'attribut `style` diffère
+(`height:30px` partout, `32px` sur les trois pages `contact`). Ces neuf fichiers
+en sont l'extraction — **aucun tracé n'a été redessiné**, chaque `d`, `cx`,
+`cy`, `r`, `x`, `y`, `rx` est repris tel quel de l'en-tête.
+
+| Fichier | Sujet réel | Source | Licence | Date |
+|---|---|---|---|---|
+| `brand/celya-logo.svg` | Le logotype « Celya » complet, dégradé cyan→violet et halo conservés | Extrait du SVG inline de l'en-tête | Interne | 2026-09-01 |
+| `brand/celya-logo-mono-blanc.svg` | Le même logotype en aplat blanc, sans dégradé ni halo | Extrait du SVG inline de l'en-tête | Interne | 2026-09-01 |
+| `brand/celya-logo-mono-noir.svg` | Le même logotype en aplat noir, sans dégradé ni halo | Extrait du SVG inline de l'en-tête | Interne | 2026-09-01 |
+| `brand/celya-mark.svg` | Le seul « a » — la tête de robot — cadré carré, dégradé et halo conservés | Extrait du SVG inline de l'en-tête | Interne | 2026-09-01 |
+| `brand/celya-logo-512.png` · `-1024` | Logotype couleur, fond transparent, 512 × 200 et 1024 × 400 | Rendu Chromium de `celya-logo.svg` | Interne | 2026-09-01 |
+| `brand/celya-mark-256.png` · `-512` · `-1024` | Marque carrée, fond transparent, 256 · 512 · 1024 px de côté | Rendu Chromium de `celya-mark.svg` | Interne | 2026-09-01 |
+
+**Chaque SVG est autonome.** `xmlns` déclaré, `<title>Celya</title>` pour le nom
+accessible, aucune classe, aucune variable CSS, aucune référence à une règle de
+la page. Les identifiants sont préfixés par fichier — `celyaLogoNeon` /
+`celyaLogoGlow` et `celyaMarkNeon` / `celyaMarkGlow` — donc distincts des
+`celyaNeon` / `celyaGlow` de l'en-tête : inliner un de ces fichiers dans une page
+ne peut pas capturer le dégradé du logo déjà présent, ni l'inverse. Contrôlé
+fichier par fichier, ouvert seul en `file://` : zéro `url(#…)` non résolu.
+
+**Les `viewBox` sont mesurées, pas reprises.** Celle de l'en-tête, `0 0 284 138`,
+laisse 29,5 unités de vide en haut et 15,5 en bas : elle ne cadre rien. L'encre
+réelle a donc été relevée dans Chromium, demi-épaisseur de trait comprise.
+
+- Logotype — encre **268,5 × 93**, coin haut-gauche (7,5 ; 29,5). Marge uniforme
+  de 9,75 → `viewBox="-2.25 19.75 288 112.5"`. Rapport **2,56 exactement**,
+  d'où des PNG de 512 × 200 et 1024 × 400 sans arrondi.
+- Marque — encre **64 × 63,1**, coin haut-gauche (212 ; 41,4), symétrique autour
+  de x = 244. Carré de 80 → `viewBox="204 33 80 80"` : 8 unités de marge à
+  gauche comme à droite, 8,4 en haut et 8,5 en bas.
+- Le halo (`feGaussianBlur stdDeviation="1.8"`) déborde d'environ 5,4 unités,
+  soit moins que la plus petite de ces marges. Confirmé sur les rendus : sur les
+  cinq PNG, les quatre coins sont à alpha 0 et l'encre ne touche aucun bord.
+
+**Ce que « mono » enlève.** Le dégradé et le halo, remplacés par `#FFFFFF` ou
+`#000000` en dur — pas `currentColor`, qui vaudrait noir dans un fichier ouvert
+seul et casserait la version blanche. La visière, pleine de `#161F36` dans la
+version couleur, passe en `fill="none"` : un aplat mono la rendrait aveugle. Les
+yeux et le point d'antenne, `#9BF3FF` en couleur, prennent la teinte mono. Les
+deux `viewBox` mono sont identiques à celle du logotype couleur : les trois
+fichiers sont interchangeables sans retoucher une largeur.
+
+**La marque est violette, et c'est voulu.** Le dégradé de `celya-mark.svg` garde
+les coordonnées du logotype (`x1="12" y1="105" x2="268" y2="34"`, en
+`userSpaceOnUse`). Le « a » occupant la fin de la course, la marque isolée rend
+exactement ce qu'on voit dans l'en-tête : mesuré sur `celya-mark-1024.png`,
+**#7D67FB** à l'oreille gauche, **#A357F7** à l'oreille droite, yeux **#9BF3FF**.
+Ce n'est pas le balayage cyan→violet complet du logotype. Réaimer le dégradé sur
+la seule boîte de la marque le donnerait — c'est une ligne à changer — mais ce
+serait un choix graphique nouveau, pas une extraction, et il n'a pas été fait.
+
+**Poids mesurés** : SVG de 1,0 à 1,7 Ko · PNG de 38,9 à 322,5 Ko. Les PNG sont
+lourds pour leur surface encrée parce que le halo est un dégradé d'alpha continu,
+que PNG ne sait pas compresser. Ils ont été refiltrés ligne à ligne puis
+recompressés en `deflate 9`, pixels vérifiés identiques : 5 à 10 % de gagné, et
+rien de plus à prendre sans passer en destructif.
+
+**Réserve.** Ouvert seul dans un navigateur, `celya-logo-mono-blanc.svg` est
+invisible : c'est un aplat blanc sur transparent, sur la page blanche par défaut.
+Le contrôle se fait sur fond sombre. Le fichier n'est pas en cause.
+
+**Ces neuf fichiers ne sont référencés par aucune page.** Ils ne remplacent pas
+le SVG inline de l'en-tête, qui reste la version servie, ni `favicon.svg`, qui a
+son propre tracé : le « C » fléché seul, redessiné à un autre rayon (22 au lieu
+de 30) sur un carré sombre plein, dans un `viewBox` `0 0 100 100` sans rapport
+avec celui de l'en-tête. Ces neuf fichiers existent pour ce qui vit hors du
+site : signature, facture, profil, fichier à envoyer.
+
 ---
 
 ## Ce qu'on vérifie avant d'ajouter une image

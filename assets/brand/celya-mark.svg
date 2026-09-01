@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="204 33 80 80" width="80" height="80" role="img">
+  <title>Celya</title>
+  <defs>
+    <linearGradient id="celyaMarkNeon" gradientUnits="userSpaceOnUse" x1="12" y1="105" x2="268" y2="34">
+      <stop offset="0" stop-color="#22D3EE"/><stop offset=".5" stop-color="#4F7BFF"/><stop offset="1" stop-color="#A855F7"/>
+    </linearGradient>
+    <filter id="celyaMarkGlow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="1.8" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <g fill="none" stroke="url(#celyaMarkNeon)" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" filter="url(#celyaMarkGlow)">
+    <circle cx="244" cy="79" r="21"/>
+    <path d="M265 62 L265 100"/>
+  </g>
+  <path d="M244 58 L244 49" fill="none" stroke="url(#celyaMarkNeon)" stroke-width="6" stroke-linecap="round" filter="url(#celyaMarkGlow)"/>
+  <circle cx="244" cy="45" r="3.6" fill="#9BF3FF" filter="url(#celyaMarkGlow)"/>
+  <rect x="212" y="74" width="5" height="10" rx="1.6" fill="url(#celyaMarkNeon)"/>
+  <rect x="271" y="74" width="5" height="10" rx="1.6" fill="url(#celyaMarkNeon)"/>
+  <rect x="229" y="71.5" width="30" height="12" rx="6" fill="#161F36" stroke="url(#celyaMarkNeon)" stroke-width="1.5"/>
+  <g filter="url(#celyaMarkGlow)">
+    <rect x="234" y="75" width="7.5" height="3.6" rx="1.8" fill="#9BF3FF"/>
+    <rect x="248.5" y="75" width="7.5" height="3.6" rx="1.8" fill="#9BF3FF"/>
+  </g>
+</svg>
