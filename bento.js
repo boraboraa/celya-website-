@@ -1,12 +1,50 @@
 /* Celya — bento shared JS (accueil + pages métiers, FR/NL/EN)
    GTM (GTM-KF9QCKB2) ne se charge QU'APRÈS le consentement (localStorage
-   'celya-consent') — jamais d'iframe noscript. GA4 est configuré DANS GTM. */
+   'celya-consent') — jamais d'iframe noscript. GA4 est configuré DANS GTM.
+
+   Budget navigateur : une seule boucle requestAnimationFrame (RAF), qui
+   s'arrête d'elle-même quand plus rien n'est à animer ; un seul écouteur
+   scroll et un seul resize (onScroll / onResize) ; aucune lecture de mise en
+   page (getBoundingClientRect, offsetTop) dans une boucle — tout passe par
+   vrect()/drect(), mis en cache et invalidés au scroll, au resize ou quand la
+   hauteur de la page change ; rien ne s'anime hors écran (.anim-off). */
 
 (function(){
   var LANG=(document.documentElement.lang||'fr').slice(0,2);
   var BLOG=/\/blog\//.test(location.pathname); /* blog/ est un niveau sous la racine, comme nl/ et en/ */
   var PRE=((LANG==='nl'||LANG==='en')&&BLOG)?'../../':((LANG==='nl'||LANG==='en'||BLOG)?'../':''); /* nl/, en/ et blog/ sont un niveau sous les assets ; nl/blog/ et en/blog/ deux niveaux */
   var REDUCE=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var HAS_IO='IntersectionObserver' in window;
+
+  /* ---- ordonnanceur : une seule boucle rAF, qui ne tourne que si quelqu'un a du travail ----
+     RAF(fn) inscrit fn pour la prochaine image (une seule fois par image) ; une boucle
+     continue se réinscrit elle-même, et s'arrête simplement en ne le faisant plus. */
+  var RAF=(function(){
+    var q=[],id=null;
+    function frame(now){id=null;var run=q;q=[];for(var i=0;i<run.length;i++)run[i](now);}
+    return function(fn){if(q.indexOf(fn)<0)q.push(fn);if(id===null)id=requestAnimationFrame(frame);};
+  })();
+
+  /* ---- mesures en cache ----
+     vrect(el) : rectangle dans le viewport, valable jusqu'au prochain scroll/resize.
+     drect(el) : position dans le document (sans transform) + hauteur, valable jusqu'au
+                 prochain resize ou changement de hauteur de la page. */
+  var VR=new Map(),DR=new Map();
+  function vrect(el){var r=VR.get(el);if(!r){r=el.getBoundingClientRect();VR.set(el,r);}return r;}
+  function drect(el){var r=DR.get(el);if(!r){var top=0,e=el;while(e){top+=e.offsetTop;e=e.offsetParent;}r={top:top,height:el.offsetHeight};DR.set(el,r);}return r;}
+
+  /* ---- un seul écouteur scroll, un seul resize, tous deux passifs et rythmés par RAF ---- */
+  var scrollFns=[],resizeFns=[];
+  function onScroll(fn){scrollFns.push(fn);}
+  function offScroll(fn){var i=scrollFns.indexOf(fn);if(i>=0)scrollFns.splice(i,1);}
+  function onResize(fn){resizeFns.push(fn);}
+  function scrolled(){VR.clear();for(var i=0;i<scrollFns.length;i++)scrollFns[i]();}
+  function resized(){VR.clear();DR.clear();for(var i=0;i<resizeFns.length;i++)resizeFns[i]();}
+  addEventListener('scroll',function(){RAF(scrolled);},{passive:true});
+  addEventListener('resize',function(){RAF(resized);},{passive:true});
+  /* la page change de hauteur (image chargée, <details> ouvert) : les positions cachées sont fausses */
+  if('ResizeObserver' in window){var roQuiet=true;new ResizeObserver(function(){if(roQuiet){roQuiet=false;return;}RAF(resized);}).observe(document.body);}
+  addEventListener('load',function(){RAF(resized);});
 
   /* ---- année du footer ---- */
   document.querySelectorAll('.yr').forEach(function(e){e.textContent=new Date().getFullYear();});
@@ -22,56 +60,79 @@
     }
     btn.addEventListener('click',function(){set(!document.body.classList.contains('mnav-open'));});
     pan.addEventListener('click',function(e){if(e.target.closest&&e.target.closest('a'))set(false);});
-    addEventListener('resize',function(){if(innerWidth>900)set(false);});
+    onResize(function(){if(innerWidth>900)set(false);});
   })();
 
-  /* ---- apparition au scroll (déterministe : jamais de tuile qui reste invisible) ---- */
+  /* ---- rien ne s'anime hors écran ----
+     Chaque bloc (tuile, section libre, héro, pied de page…) sorti du viewport reçoit
+     .anim-off : le CSS met en pause toutes ses animations, descendants et pseudo-éléments
+     compris, et les relance à l'entrée. Les blocs imbriqués sont observés séparément. */
+  (function(){
+    if(!HAS_IO)return;
+    var seen=new Set();
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){
+      e.target.classList.toggle('anim-off',!e.isIntersecting);
+    });},{rootMargin:'0px'});
+    function watch(el){if(el&&el.nodeType===1&&!seen.has(el)){seen.add(el);io.observe(el);}}
+    /* 1. les blocs : couvrent aussi les animations créées plus tard par un changement de classe */
+    [].slice.call(document.querySelectorAll('main>*,main .wrap>*,.tile,.freesec,.hero,.hero-txt>*,.hero-demo,.jq,.fs-head,.cine,footer,article,aside')).forEach(watch);
+    /* 2. chaque élément qui porte déjà une animation CSS (mot en dégradé dans un long
+       article, pastille, halo…) : un bloc peut être visible alors que son titre ne l'est plus */
+    function fine(){if(document.getAnimations)document.getAnimations().forEach(function(a){
+      if(a.effect&&a.effect.target)watch(a.effect.target);});}
+    fine();addEventListener('load',fine);
+  })();
+
+  /* ---- apparition au scroll (déterministe : jamais de tuile qui reste invisible) ----
+     IntersectionObserver : le navigateur mesure, le script ne lit rien. Une tuile déjà
+     passée (rechargement à mi-page) est révélée aussi. */
   (function(){
     var els=[].slice.call(document.querySelectorAll('.reveal'));
     if(!els.length)return;
-    if(REDUCE){els.forEach(function(el){el.classList.add('in');});return;}
-    var pending=false;
-    function check(){
-      pending=false;
-      var vh=window.innerHeight,batch=0;
-      els=els.filter(function(el){
-        var r=el.getBoundingClientRect();
-        if(r.top<vh-40&&r.bottom>0||r.top<0){
-          /* cascade : les tuiles d'un même lot apparaissent l'une après l'autre */
-          var d=Math.min(batch*85,340);batch++;
-          el.style.transitionDelay=d+'ms';el.classList.add('in');
-          setTimeout(function(){el.style.transitionDelay='';el.classList.add('done');},d+1000);
-          return false;
-        }
-        return true;
-      });
-      if(!els.length){removeEventListener('scroll',onS);removeEventListener('resize',onS);}
+    if(REDUCE||!HAS_IO){els.forEach(function(el){el.classList.add('in');});return;}
+    function show(el,d){ /* cascade : les tuiles d'un même lot apparaissent l'une après l'autre */
+      el.style.transitionDelay=d+'ms';el.classList.add('in');
+      setTimeout(function(){el.style.transitionDelay='';el.classList.add('done');},d+1000);
     }
-    function onS(){if(!pending){pending=true;setTimeout(check,60);}}
-    addEventListener('scroll',onS,{passive:true});
-    addEventListener('resize',onS);
-    check();
+    /* la zone observée s'étend très loin AU-DESSUS du viewport : une tuile déjà dépassée
+       (rechargement à mi-page, défilement si rapide qu'elle traverse l'écran entre deux
+       images) compte comme visible — l'ancienne condition r.top<0. En bas, 40 px de marge. */
+    var io=new IntersectionObserver(function(es){
+      var batch=0;
+      es.forEach(function(e){
+        if(e.isIntersecting){io.unobserve(e.target);show(e.target,Math.min(batch*85,340));batch++;}
+      });
+    },{rootMargin:'100000px 0px -40px 0px'});
+    els.forEach(function(el){io.observe(el);});
   })();
 
-  /* ---- fond aurore : canvas basse résolution, ~15 img/s, pause hors onglet ---- */
+  /* ---- fond aurore : canvas basse résolution, ~15 img/s, pause hors onglet ----
+     Le flou (58 px à l'écran) et la saturation (×1.5) qui étaient des filter: CSS —
+     recalculés par le GPU à chaque image sur tout l'écran — sont ici pré-calculés :
+     flou appliqué une fois par image dans le canvas (12 px à l'échelle .2), couleurs
+     déjà saturées. Le compositeur ne fait plus qu'afficher une texture. */
   (function(){
     var c=document.createElement('canvas');c.id='aurora';c.setAttribute('aria-hidden','true');
     document.body.prepend(c);
     var x=c.getContext('2d');if(!x)return;
     var W,H,running=!document.hidden,last=0;
-    var SCALE=.14; /* le blur CSS lisse le rendu — inutile de dessiner en pleine résolution */
+    var SCALE=.2; /* l'agrandissement bilinéaire lisse le rendu — inutile de dessiner en pleine résolution */
+    var BLUR=('filter' in x)?'blur('+Math.round(58*SCALE)+'px)':null;
     function size(){W=Math.max(2,Math.round(innerWidth*SCALE));H=Math.max(2,Math.round(innerHeight*SCALE));c.width=W;c.height=H;}
     /* cycle principal ~25 s (w1) + harmonique ~9 s (w2) : les nappes se recomposent sans jamais s'arrêter */
     var W1=2*Math.PI/25000, W2=2*Math.PI/9000;
+    /* couleurs = celles du thème passées par saturate(1.5) : cyan 34,211,238 → 0,229,255 ;
+       bleu 79,123,255 → 57,123,255 ; violet 168,85,247 → 195,70,255 */
     var blobs=[
-      {c:'34,211,238', r:.62,ax:.26,ay:.18,sx:.20,sy:.24,s2:.07,ph:0,  ph2:1.3,pr:2.2},
-      {c:'79,123,255', r:.70,ax:.76,ay:.30,sx:.23,sy:.19,s2:.08,ph:2.1,ph2:4.0,pr:0.7},
-      {c:'168,85,247', r:.60,ax:.44,ay:.88,sx:.21,sy:.22,s2:.06,ph:4.2,ph2:2.2,pr:3.9},
-      {c:'79,123,255', r:.48,ax:.08,ay:.62,sx:.17,sy:.20,s2:.07,ph:5.4,ph2:0.5,pr:5.1},
-      {c:'34,211,238', r:.44,ax:.92,ay:.78,sx:.15,sy:.17,s2:.06,ph:1.1,ph2:3.1,pr:1.6}
+      {c:'0,229,255',  r:.62,ax:.26,ay:.18,sx:.20,sy:.24,s2:.07,ph:0,  ph2:1.3,pr:2.2},
+      {c:'57,123,255', r:.70,ax:.76,ay:.30,sx:.23,sy:.19,s2:.08,ph:2.1,ph2:4.0,pr:0.7},
+      {c:'195,70,255', r:.60,ax:.44,ay:.88,sx:.21,sy:.22,s2:.06,ph:4.2,ph2:2.2,pr:3.9},
+      {c:'57,123,255', r:.48,ax:.08,ay:.62,sx:.17,sy:.20,s2:.07,ph:5.4,ph2:0.5,pr:5.1},
+      {c:'0,229,255',  r:.44,ax:.92,ay:.78,sx:.15,sy:.17,s2:.06,ph:1.1,ph2:3.1,pr:1.6}
     ];
     function draw(t){
       x.clearRect(0,0,W,H);x.globalCompositeOperation='lighter';
+      if(BLUR)x.filter=BLUR;
       for(var i=0;i<blobs.length;i++){var b=blobs[i];
         var bx=(b.ax+Math.sin(t*W1+b.ph)*b.sx+Math.sin(t*W2+b.ph2)*b.s2)*W;
         var by=(b.ay+Math.cos(t*W1*.8+b.ph)*b.sy+Math.cos(t*W2+b.ph2)*b.s2)*H;
@@ -79,14 +140,15 @@
         var g=x.createRadialGradient(bx,by,0,bx,by,r);
         g.addColorStop(0,'rgba('+b.c+',.55)');g.addColorStop(1,'rgba('+b.c+',0)');
         x.fillStyle=g;x.beginPath();x.arc(bx,by,r,0,6.3);x.fill();}
+      if(BLUR)x.filter='none';
       x.globalCompositeOperation='source-over';
     }
-    function loop(now){if(!running)return;if(now-last>33){last=now;draw(now);}requestAnimationFrame(loop);}
+    function loop(now){if(!running)return;if(now-last>33){last=now;draw(now);}RAF(loop);}
     size();draw(0);
-    addEventListener('resize',function(){size();draw(last);});
+    onResize(function(){size();draw(last);});
     if(!REDUCE){
-      requestAnimationFrame(loop);
-      document.addEventListener('visibilitychange',function(){var was=running;running=!document.hidden;if(running&&!was)requestAnimationFrame(loop);});
+      RAF(loop);
+      document.addEventListener('visibilitychange',function(){var was=running;running=!document.hidden;if(running&&!was)RAF(loop);});
     }
   })();
 
@@ -100,7 +162,7 @@
     var clock=tile.querySelector('.timer');
     var items=[].slice.call(chat.children);
     var rows=card?[].slice.call(card.querySelectorAll('.pcrow')):[];
-    if(REDUCE||!('IntersectionObserver' in window)||!items.length){
+    if(REDUCE||!HAS_IO||!items.length){
       if(inc)inc.remove();
       return; /* tout est visible statiquement, fiche comprise */
     }
@@ -159,11 +221,11 @@
         out=roi.querySelector('#roi-num'),pills=roi.querySelectorAll('.pills button');
     if(!miss||!out)return;
     var FMT={
-      fr:function(n){return n.toLocaleString('fr-BE')+' €';},
-      nl:function(n){return '€ '+n.toLocaleString('nl-BE');},
+      fr:function(n){return n.toLocaleString('fr-BE')+' €';},
+      nl:function(n){return '€ '+n.toLocaleString('nl-BE');},
       en:function(n){return '€'+n.toLocaleString('en-GB');}
     };var fmt=FMT[LANG]||FMT.fr;
-    var val=300,cur=0,anim=null;
+    var val=300,cur=0,run=0;
     /* ~30 % des appelants non répondus achètent ailleurs ; 4,33 semaines par mois */
     function target(){return Math.round(miss.value*4.33*0.30*val);}
     function render(n){out.textContent=fmt(n);}
@@ -172,11 +234,10 @@
       var to=target();
       if(REDUCE){cur=to;render(to);return;}
       out.classList.remove('pop');void out.offsetWidth;out.classList.add('pop');
-      if(anim)cancelAnimationFrame(anim);
-      var from=cur,t0=null;
-      function tick(ts){if(t0===null)t0=ts;var p=Math.min(1,(ts-t0)/500),e=1-Math.pow(1-p,3);
-        cur=Math.round(from+(to-from)*e);render(cur);if(p<1)anim=requestAnimationFrame(tick);}
-      anim=requestAnimationFrame(tick);
+      var my=++run,from=cur,t0=null; /* un nouveau réglage annule le comptage en cours */
+      function tick(ts){if(my!==run)return;if(t0===null)t0=ts;var p=Math.min(1,(ts-t0)/500),e=1-Math.pow(1-p,3);
+        cur=Math.round(from+(to-from)*e);render(cur);if(p<1)RAF(tick);}
+      RAF(tick);
     }
     pills.forEach(function(b){b.addEventListener('click',function(){
       pills.forEach(function(x){x.classList.remove('on');});b.classList.add('on');
@@ -188,7 +249,7 @@
 
   /* ---- schéma : l'étape active s'allume en boucle ---- */
   (function(){
-    var wrap=document.querySelector('#marche .steps');if(!wrap||REDUCE||!('IntersectionObserver' in window))return;
+    var wrap=document.querySelector('#marche .steps');if(!wrap||REDUCE||!HAS_IO)return;
     var steps=[].slice.call(wrap.querySelectorAll('.step'));if(!steps.length)return;
     var i=-1,timer=null;
     var io3=new IntersectionObserver(function(es){es.forEach(function(e){
@@ -206,7 +267,7 @@
     var cards=[].slice.call(fn.querySelectorAll('.fcard'));
     var paths=[].slice.call(fn.querySelectorAll('.fun-fork path'));
     if(!cards.length)return;
-    if(REDUCE||!('IntersectionObserver' in window)){fn.classList.add('static');return;}
+    if(REDUCE||!HAS_IO){fn.classList.add('static');return;}
     var i=-1,t=null,vis=false;
     function clear(){cards.forEach(function(c){c.classList.remove('on');});
       paths.forEach(function(p){p.classList.remove('on');});}
@@ -224,23 +285,22 @@
     iof.observe(fn);
   })();
 
-  /* ---- article de blog : le sommaire suit la lecture ---- */
+  /* ---- article de blog : le sommaire suit la lecture (positions des titres en cache) ---- */
   (function(){
     var toc=document.querySelector('.art-side .toc');if(!toc)return;
     var links=[].slice.call(toc.querySelectorAll('a'));
     var heads=links.map(function(a){var id=(a.getAttribute('href')||'').slice(1);
       return document.getElementById(id);});
     if(!links.length)return;
-    var cur=-1,queued=false;
+    var cur=-1;
     function pick(){
-      queued=false;
-      var sel=0;
+      var sel=0,y=scrollY+120;
       for(var k=0;k<heads.length;k++){
-        if(heads[k]&&heads[k].getBoundingClientRect().top<=120)sel=k;
+        if(heads[k]&&drect(heads[k]).top<=y)sel=k;
       }
       if(sel!==cur){cur=sel;links.forEach(function(a,k){a.classList.toggle('on',k===sel);});}
     }
-    addEventListener('scroll',function(){if(!queued){queued=true;requestAnimationFrame(pick);}},{passive:true});
+    onScroll(pick);onResize(pick);
     pick();
   })();
 
@@ -271,19 +331,20 @@
     if(document.body)build();else document.addEventListener('DOMContentLoaded',build);
   })();
 
-  /* ---- spotlight : la lueur des tuiles suit le curseur ---- */
+  /* ---- spotlight : la lueur des tuiles suit le curseur (rectangle de la tuile lu une fois par
+     position de défilement, pas à chaque mouvement) ---- */
   if(window.matchMedia&&matchMedia('(hover:hover) and (pointer:fine)').matches){
     (function(){
-      var tile=null,px=0,py=0,queued=false;
+      var tile=null,px=0,py=0;
+      function apply(){
+        if(tile){var r=vrect(tile);
+          tile.style.setProperty('--mx',(px-r.left).toFixed(0)+'px');
+          tile.style.setProperty('--my',(py-r.top).toFixed(0)+'px');}
+      }
       document.addEventListener('mousemove',function(e){
         tile=e.target&&e.target.closest?e.target.closest('.tile'):null;
         px=e.clientX;py=e.clientY;
-        if(!queued){queued=true;requestAnimationFrame(function(){
-          queued=false;
-          if(tile){var r=tile.getBoundingClientRect();
-            tile.style.setProperty('--mx',(px-r.left).toFixed(0)+'px');
-            tile.style.setProperty('--my',(py-r.top).toFixed(0)+'px');}
-        });}
+        RAF(apply);
       },{passive:true});
     })();
 
@@ -291,11 +352,10 @@
     if(!REDUCE)(function(){
       var mags=[].slice.call(document.querySelectorAll('.btn-grad'));
       if(!mags.length)return;
-      var mx=0,my=0,queued=false;
+      var mx=0,my=0;
       function tick(){
-        queued=false;
         for(var i=0;i<mags.length;i++){var b=mags[i];
-          var r=b.getBoundingClientRect();if(!r.width)continue;
+          var r=vrect(b);if(!r.width)continue;
           var dx=mx-(r.left+r.width/2),dy=my-(r.top+r.height/2);
           var reach=Math.max(r.width*.75,80)+44,d=Math.hypot(dx,dy);
           if(d<reach){
@@ -311,32 +371,29 @@
           }
         }
       }
-      document.addEventListener('mousemove',function(e){mx=e.clientX;my=e.clientY;
-        if(!queued){queued=true;requestAnimationFrame(tick);}},{passive:true});
+      document.addEventListener('mousemove',function(e){mx=e.clientX;my=e.clientY;RAF(tick);},{passive:true});
     })();
   }
 
-  /* ---- parallaxe subtile : les tuiles dérivent à des vitesses différentes ---- */
+  /* ---- parallaxe subtile : les tuiles dérivent à des vitesses différentes ----
+     Position de chaque tuile lue une fois (drect), puis simple arithmétique sur scrollY. */
   if(!REDUCE&&innerWidth>900)(function(){
     var F=[0,.022,-.018,.028,0,-.024,.02];
     var tiles=[].slice.call(document.querySelectorAll('.tile')).map(function(el,i){
       return {el:el,f:F[i%F.length]};
     }).filter(function(t){return t.f;});
     if(!tiles.length)return;
-    var queued=false;
     function tick(){
-      queued=false;
-      var vc=innerHeight/2;
+      var y=scrollY,vh=innerHeight,vc=vh/2;
       for(var i=0;i<tiles.length;i++){var t=tiles[i];
-        var r=t.el.getBoundingClientRect();
-        if(r.bottom<-120||r.top>innerHeight+120)continue; /* hors écran : on ne touche pas */
-        var off=(r.top+r.height/2-vc)*t.f;
+        var d=drect(t.el),top=d.top-y;
+        if(top+d.height<-120||top>vh+120)continue; /* hors écran : on ne touche pas */
+        var off=(top+d.height/2-vc)*t.f;
         off=Math.max(-16,Math.min(16,off));
         t.el.style.setProperty('--py',off.toFixed(1)+'px');
       }
     }
-    addEventListener('scroll',function(){if(!queued){queued=true;requestAnimationFrame(tick);}},{passive:true});
-    addEventListener('resize',function(){if(!queued){queued=true;requestAnimationFrame(tick);}});
+    onScroll(tick);onResize(tick);
     tick();
   })();
 
@@ -377,7 +434,7 @@
       }
       var u=s.ups[s.idx],f=s.freez[s.idx];
       u.classList.add('on');if(f)f.classList.add('off');
-      if(s.tag&&s.ov){
+      if(s.tag&&s.ov){ /* une lecture toutes les 5 s, hors de toute boucle d'image */
         s.tag.textContent=u.getAttribute('data-label')||'';
         var ur=u.getBoundingClientRect(),gr=s.ov.getBoundingClientRect();
         var top=ur.top-gr.top-10;
@@ -399,7 +456,7 @@
       else if(visible){states[i].timer=setTimeout(function(){loop(states[i]);},1500);}
     }
     tabs.forEach(function(t,i){t.addEventListener('click',function(){if(i!==cur)activate(i);});});
-    if(REDUCE){staticShow(states[0]);return;}
+    if(REDUCE||!HAS_IO){staticShow(states[0]);return;}
     var ioG=new IntersectionObserver(function(es){es.forEach(function(e){
       if(e.isIntersecting&&!visible){visible=true;
         states[cur].timer=setTimeout(function(){loop(states[cur]);},1300);}
@@ -414,7 +471,7 @@
     var bw=band.querySelector('.bigword');if(!bw)return;
     var words=[];try{words=JSON.parse(bw.getAttribute('data-words')||'[]');}catch(e){}
     var cloud=[].slice.call(band.querySelectorAll('.langcloud span'));
-    if(REDUCE||words.length<2||!('IntersectionObserver' in window))return;
+    if(REDUCE||words.length<2||!HAS_IO)return;
     var i=0,wt=null,ct=null,cur=bw.querySelector('span');
     function next(){
       i=(i+1)%words.length;
@@ -441,11 +498,10 @@
   /* ---- fil de progression de lecture ---- */
   (function(){
     var bar=document.createElement('div');bar.id='sprog';document.body.appendChild(bar);
-    function up(){
-      var max=document.documentElement.scrollHeight-innerHeight;
-      bar.style.width=(max>0?Math.min(100,scrollY/max*100):0)+'%';
-    }
-    addEventListener('scroll',up,{passive:true});addEventListener('resize',up);up();
+    var max=0;
+    function size(){max=document.documentElement.scrollHeight-innerHeight;up();}
+    function up(){bar.style.width=(max>0?Math.min(100,scrollY/max*100):0)+'%';}
+    onScroll(up);onResize(size);size();
   })();
 
   /* ---- duel serveur vocal / Celya (page cabinets) : deux chronos qui partent ensemble ----
@@ -454,7 +510,7 @@
     var duel=document.querySelector('[data-duel]');if(!duel)return;
     var tL=duel.querySelector('[data-dt-l]'),tR=duel.querySelector('[data-dt-r]');
     var ivr=duel.querySelector('.dcol-ivr');
-    if(REDUCE||!('IntersectionObserver' in window))return;
+    if(REDUCE||!HAS_IO)return;
     duel.classList.add('anim');
     var evs=[];
     function reg(sel,ts){[].slice.call(duel.querySelectorAll(sel)).forEach(function(el,i){
@@ -466,12 +522,12 @@
     reg('.dcol-cel .dcard',[4700]);
     /* chronos accélérés : 02:30 affichés côté serveur vocal quand l'appel est
        abandonné (14,6 s réelles), 00:38 côté Celya quand le rendez-vous est posé */
-    var CYCLE=15000,HOLD=2200,raf=null,t0=null,run=false;
+    var CYCLE=15000,HOLD=2200,t0=null,run=false,lastL='',lastR='';
     function fmt(s){return ('0'+Math.floor(s/60)).slice(-2)+':'+('0'+(s%60)).slice(-2);}
     function reset(){
       evs.forEach(function(e){e.el.classList.remove('on');});
       ivr.classList.remove('lost');
-      if(tL)tL.textContent='00:00';if(tR)tR.textContent='00:00';
+      if(tL)tL.textContent='00:00';if(tR)tR.textContent='00:00';lastL=lastR='';
       t0=null;
     }
     function frame(now){
@@ -479,19 +535,21 @@
       if(t0===null)t0=now;
       var t=now-t0;
       if(t>=CYCLE+HOLD){reset();t0=now;t=0;}
-      if(tL)tL.textContent=fmt(Math.min(Math.floor(t*0.010274),150));
-      if(tR)tR.textContent=fmt(Math.min(Math.floor(t*0.009744),38));
+      /* le texte n'est réécrit que quand la seconde affichée change */
+      var sL=fmt(Math.min(Math.floor(t*0.010274),150)),sR=fmt(Math.min(Math.floor(t*0.009744),38));
+      if(tL&&sL!==lastL){tL.textContent=sL;lastL=sL;}
+      if(tR&&sR!==lastR){tR.textContent=sR;lastR=sR;}
       for(var i=0;i<evs.length;i++){var e=evs[i];
         if(t>=e.t&&!e.el.classList.contains('on')){
           e.el.classList.add('on');
           if(e.el.classList.contains('dfail'))ivr.classList.add('lost');
         }
       }
-      raf=requestAnimationFrame(frame);
+      RAF(frame);
     }
     var iod=new IntersectionObserver(function(es){es.forEach(function(e){
-      if(e.isIntersecting&&!run){run=true;reset();raf=requestAnimationFrame(frame);}
-      else if(!e.isIntersecting&&run){run=false;cancelAnimationFrame(raf);reset();}
+      if(e.isIntersecting&&!run){run=true;reset();RAF(frame);}
+      else if(!e.isIntersecting&&run){run=false;reset();}
     });},{threshold:.25});
     iod.observe(duel);
   })();
@@ -502,8 +560,8 @@
     var zone=tf.querySelector('.tf-zone');
     /* les points suivent les branches : décalage horizontal recalculé sur la largeur réelle */
     function size(){if(zone)tf.style.setProperty('--bx',Math.round(zone.offsetWidth*0.267)+'px');}
-    size();addEventListener('resize',size);
-    if(REDUCE||!('IntersectionObserver' in window))return;
+    size();onResize(size);
+    if(REDUCE||!HAS_IO)return;
     var iot=new IntersectionObserver(function(es){es.forEach(function(e){
       tf.classList.toggle('run',e.isIntersecting);});},{threshold:.25});
     iot.observe(tf);
@@ -513,7 +571,7 @@
   (function(){
     var mc=document.querySelector('[data-mem]');if(!mc)return;
     var rows=[].slice.call(mc.querySelectorAll('.mem-row'));if(!rows.length)return;
-    if(REDUCE||!('IntersectionObserver' in window))return;
+    if(REDUCE||!HAS_IO)return;
     mc.classList.add('anim');
     var D=[950,750,700,700,950,0]; /* attente APRÈS chaque ligne affichée */
     var idx=0,timer=null,vis=false;
@@ -534,26 +592,24 @@
     iom.observe(mc);
   })();
 
-  /* ---- installation (page cabinets) : la ligne des étapes se dessine au scroll ---- */
+  /* ---- installation (page cabinets) : la ligne des étapes se dessine au scroll ----
+     Positions du bloc et des étapes en cache (drect) : zéro mesure par image. */
   (function(){
     var st=document.querySelector('.setup');if(!st)return;
     var line=st.querySelector('.set-line i');
     var steps=[].slice.call(st.querySelectorAll('.sstep'));
     if(REDUCE||!line)return;
     st.classList.add('anim');
-    var queued=false;
     function up(){
-      queued=false;
-      var r=st.getBoundingClientRect();
-      var p=(innerHeight*.82-r.top)/r.height;p=Math.max(0,Math.min(1,p));
+      var y=scrollY,r=drect(st),top=r.top-y;
+      var p=(innerHeight*.82-top)/r.height;p=Math.max(0,Math.min(1,p));
       line.style.transform='scaleY('+p.toFixed(4)+')';
-      var reach=r.top+10+p*(r.height-20);
+      var reach=top+10+p*(r.height-20);
       for(var i=0;i<steps.length;i++){
-        steps[i].classList.toggle('lit',steps[i].getBoundingClientRect().top+16<=reach);
+        steps[i].classList.toggle('lit',drect(steps[i]).top-y+16<=reach);
       }
     }
-    addEventListener('scroll',function(){if(!queued){queued=true;requestAnimationFrame(up);}},{passive:true});
-    addEventListener('resize',function(){if(!queued){queued=true;requestAnimationFrame(up);}});
+    onScroll(up);onResize(up);
     up();
   })();
 
@@ -561,7 +617,7 @@
      Sans JS ou en mouvement réduit, les deux versions affichent leur état final. */
   (function(){
     var day=document.querySelector('[data-day]');if(!day)return;
-    if(REDUCE||!('IntersectionObserver' in window))return;
+    if(REDUCE||!HAS_IO)return;
     /* le compteur est réécrit par le script : il doit suivre la langue de la page */
     var DT={
       fr:{m1:' appel manqué',mN:' appels manqués',d1:' appel traité',dN:' appels traités',none:'0 rappel passé'},
@@ -644,8 +700,8 @@
     var ns=document.querySelector('[data-split]');if(!ns)return;
     var zone=ns.querySelector('.ns-zone');
     function size(){if(zone)ns.style.setProperty('--bx',Math.round(zone.offsetWidth*0.267)+'px');}
-    size();addEventListener('resize',size);
-    if(REDUCE||!('IntersectionObserver' in window))return;
+    size();onResize(size);
+    if(REDUCE||!HAS_IO)return;
     var ion=new IntersectionObserver(function(es){es.forEach(function(e){
       ns.classList.toggle('run',e.isIntersecting);});},{threshold:.25});
     ion.observe(ns);
@@ -654,7 +710,7 @@
   /* ---- tableau de bord du soir (page indépendants) : les lignes se classent une à une ---- */
   (function(){
     var dash=document.querySelector('[data-dash]');if(!dash)return;
-    if(REDUCE||!('IntersectionObserver' in window))return;
+    if(REDUCE||!HAS_IO)return;
     var rows=[].slice.call(dash.querySelectorAll('.drow'));
     var pop=dash.querySelector('.dash-pop');
     if(rows.length<3)return;
@@ -691,7 +747,7 @@
      L'état par défaut du HTML est « fermé » (.on) : c'est l'état final figé. */
   (function(){
     var aw=document.querySelector('[data-away]');if(!aw)return;
-    if(REDUCE||!('IntersectionObserver' in window))return;
+    if(REDUCE||!HAS_IO)return;
     var timer=null,vis=false;
     function clear(){clearTimeout(timer);aw.classList.add('on');}
     function cycle(open){
@@ -718,8 +774,9 @@
       '<div class="t"><b>'+t.b+'</b><span>'+t.s+'</span></div>'+
       '<a class="btn btn-grad" href="tel:+32460254413">'+t.btn+'</a>';
     document.body.appendChild(bar);
-    function onScroll(){if(scrollY>300)bar.classList.add('show');else bar.classList.remove('show');}
-    addEventListener('scroll',onScroll,{passive:true});onScroll();
+    var shown=null;
+    function up(){var s=scrollY>300;if(s!==shown){shown=s;bar.classList.toggle('show',s);}}
+    onScroll(up);up();
   })();
 
 })();
