@@ -114,6 +114,31 @@ Aucun composant visuel nouveau. `bento.js` n'est jamais touché. Compléter une
 série existante en suivant exactement le motif en place n'est pas une
 modification du système.
 
+## Budget de rendu (lot performance du 5 septembre 2026)
+
+Le site n'est pas lourd, il était occupé : la décoration saturait le GPU et le
+thread principal (page qui figeait Chrome, INP dégradé). Les règles qui en
+sortent tiennent en cinq lignes et se vérifient d'un `grep` :
+
+- `backdrop-filter` : **3 occurrences maximum** dans `bento.css` — la nav
+  (`header.top`), le menu déroulant (`.drop-panel`) et le panneau du héro
+  (`.hero-demo`). Partout ailleurs, le verre dépoli est un fond
+  `var(--glass)` (`rgba(14,20,38,.86)`) plus la bordure `--line`.
+- **aucun `filter:` sur un élément qui bouge.** Le flou de l'aurore est calculé
+  dans le canvas par `bento.js`, pas par le compositeur.
+- **rien ne s'anime hors écran** : `bento.js` pose `.anim-off` sur chaque bloc
+  sorti du viewport et sur chaque élément qui porte une animation ; le CSS met
+  ses animations en pause. Vérifiable via `document.getAnimations()`.
+- une seule boucle `requestAnimationFrame` (`RAF()`), un seul écouteur scroll
+  et un seul resize (`onScroll` / `onResize`) ; **aucune mesure de mise en page
+  dans une boucle** — passer par `vrect()` / `drect()`, qui sont en cache.
+- `will-change` : deux éléments (`.hero-demo`, le grain `body::after`). Pas
+  plus sans mesure.
+
+Une animation qui change `height`, `box-shadow` ou `background-position`
+repeint à chaque image : préférer `transform` / `opacity`, ou l'accepter en
+connaissance de cause (le dégradé qui glisse sur les mots, `gpan`, l'est).
+
 ## Deux pièges du dépôt
 
 - Le JSON-LD est en `@graph` : toujours le traiter comme tel.
