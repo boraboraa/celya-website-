@@ -24,6 +24,32 @@ mais il ne couvre pas tout le tableau — la relecture reste obligatoire.
 - aucune revendication multilingue au-delà de FR + NL **en promesse de service**
 - **aucun chiffre sans sa source et sa date**
 
+## L'entité : Celya Technologies SRL, et la TVA qui n'est pas encore là
+
+Depuis le **04/09/2026**, l'éditeur du site est **Celya Technologies SRL**,
+BCE **1042.115.837**, Avenue de Broqueville 136/1, 1200 Woluwe-Saint-Lambert,
+administrateur Osman Bora Doğrul. L'ancienne société et son numéro ont quitté
+le dépôt le 06/09/2026, et ne doivent jamais y revenir : un `grep -ri` sur
+l'ancienne dénomination comme sur son numéro doit renvoyer **zéro**. Le siège,
+lui, n'a pas bougé.
+
+**La TVA n'est pas activée.** Le numéro se publie donc en une seule forme,
+`BE 1042.115.837 — en cours d'activation` (NL : `activering loopt`, EN :
+`activation in progress`), et **jamais seul**. Le pied de page, lui, porte le
+numéro d'entreprise sous son libellé de numéro d'entreprise : `BCE/KBO
+1042.115.837`.
+
+Dans le JSON-LD, `Organization` et `LocalBusiness` portent `legalName` et un
+`identifier` `PropertyValue` / `BCE` / `1042.115.837` — **et aucun `vatID`** :
+`grep -ro vatID` doit renvoyer zéro. Le `founder` de l'`Organization` est Bora
+Doğrul.
+
+**Temps 2, le jour où VIES répond `valide` pour BE1042115837** — vérifier
+d'abord sur <https://ec.europa.eu/taxation_customs/vies>, puis, seulement
+ensuite : remplacer la mention « en cours d'activation » par `BE 1042.115.837`
+dans les trois langues, et remettre `"vatID": "BE1042115837"` dans les deux
+nœuds JSON-LD des 281 pages.
+
 ## Les langues : on les nomme, on ne les compte pas
 
 « Plus de N langues / talen / languages » reste **interdit partout** : un total
