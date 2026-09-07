@@ -157,7 +157,7 @@ gtag('consent','default',{ad_storage:'denied',analytics_storage:'denied',ad_user
             </ul>
             <p class="plan-f">Une vraie réceptionniste, dès la première formule.</p>
           </div>
-          <div class="plan plan-mid">
+          <div class="plan plan-mid" data-on="1">
             <div class="plan-hd">
               <div class="plan-n">Intermédiaire</div>
               <div class="plan-p"><b>150&nbsp;€</b><span>par mois, hors TVA</span></div>
@@ -188,6 +188,56 @@ gtag('consent','default',{ad_storage:'denied',analytics_storage:'denied',ad_user
         <div class="plans-note">
           <p>Tous les prix sont <b>hors TVA</b>&nbsp;; les 21&nbsp;% belges s'ajoutent. Si vous dépassez vos minutes, vous <b>basculez sur la formule supérieure</b> — nous ne facturons jamais à la minute. Les frais de mise en service ne sont pas systématiques et, quand il y en a, ils sont <b>plafonnés à une mensualité</b>. Pas de frais cachés, pas de supplément d'amplitude horaire, rien à installer chez vous. Et si vous arrêtez, vous coupez la déviation d'appel&nbsp;: vos appels reviennent chez vous, il n'y a rien à démonter.</p>
         </div>
+        <section class="diag" id="diagnostic">
+          <p class="kick">Le <b>diagnostic</b></p>
+          <h2>Vous ne connaissez pas votre nombre de minutes. <span class="it">Personne ne le connaît.</span></h2>
+          <div class="diag-grid">
+            <div>
+              <div class="q">
+                <div class="q-l"><span class="q-n">01</span><span class="q-t">Combien d'appels recevez-vous par jour&nbsp;?</span></div>
+                <div class="pills" data-group="calls">
+                  <button type="button" data-v="5" aria-pressed="false">environ 5</button>
+                  <button type="button" data-v="15" aria-pressed="true">environ 15</button>
+                  <button type="button" data-v="30" aria-pressed="false">30 et plus</button>
+                </div>
+              </div>
+              <div class="q">
+                <div class="q-l"><span class="q-n">02</span><span class="q-t">Vous décrochez quand&nbsp;?</span></div>
+                <div class="pills" data-group="miss">
+                  <button type="button" data-v="0.35" aria-pressed="false">au bureau, aux heures ouvrables</button>
+                  <button type="button" data-v="0.60" aria-pressed="true">quand je peux</button>
+                  <button type="button" data-v="0.85" aria-pressed="false">jamais en intervention</button>
+                </div>
+              </div>
+              <div class="q">
+                <div class="q-l"><span class="q-n">03</span><span class="q-t">Des clients néerlandophones&nbsp;?</span></div>
+                <div class="pills" data-group="nl">
+                  <button type="button" data-v="0" aria-pressed="true">non</button>
+                  <button type="button" data-v="1" aria-pressed="false">oui</button>
+                </div>
+              </div>
+            </div>
+            <div class="read" aria-live="polite">
+              <span class="read-h">Votre relevé</span>
+              <p class="eq" id="eq"><b>15</b> appels par jour × <b>22</b> jours ouvrés<br>× <b>60 %</b> que vous ne prenez pas = <b>198</b> appels<br>× <b>1 min 41</b> en moyenne</p>
+              <div class="big"><em id="mins">333</em><span>minutes par mois</span></div>
+              <div class="axis">
+                <div class="track">
+                  <div class="fill" id="fill" style="width:19%"></div>
+                  <div class="gate" style="left:14.3%"></div>
+                  <div class="gate" style="left:42.9%"></div>
+                </div>
+                <div class="marks">
+                  <span class="mark" style="left:14.3%">250<i>Entrée</i></span>
+                  <span class="mark" style="left:42.9%">750<i>Intermédiaire</i></span>
+                  <span class="mark" style="left:95%">1&nbsp;750<i>Répondant</i></span>
+                </div>
+              </div>
+              <p class="verdict" id="verdict">Votre formule&nbsp;: <b>Intermédiaire</b>, 150&nbsp;€ par mois hors TVA — c'est le premier palier qui couvre vos 333 minutes.</p>
+              <p class="caveat" id="caveat">Soit 198 appels par mois qui, aujourd'hui, sonnent dans le vide.</p>
+            </div>
+          </div>
+        </section>
       </div>
     </section>
     <section class="freesec access-free reveal">
@@ -408,5 +458,71 @@ gtag('consent','default',{ad_storage:'denied',analytics_storage:'denied',ad_user
 </div>
 </main>
 <script src="bento.js" defer></script>
+<script>
+/* Le diagnostic — trois réponses, une formule, le calcul posé à l'écran.
+   Tout tourne ici : aucune donnée envoyée, aucun appel réseau, rien stocké.
+
+   DUREE : 1 min 41 (101 s) par appel, moyenne relevée dans la table calls du
+   projet Supabase celya-sales-agent, appels entrants des deux clients réels,
+   du 23/07 au 04/09/2026 — New Auto Torino 57 appels (moy. 102 s, méd. 99 s),
+   Celya Brasserie 44 appels (moy. 100 s, méd. 86 s). Les 173 appels de
+   « Celya — Production » sont exclus : ce sont des tests. Échantillon petit,
+   101 appels sur sept semaines : à revérifier à chaque nouveau client.
+
+   Les parts d'appels non pris (35 / 60 / 85 %) ne sont pas une statistique :
+   c'est la traduction de ce que le visiteur vient de déclarer, et l'écran le
+   présente ainsi. 22 jours ouvrés par mois est la convention usuelle. */
+(function(){
+  var s = {calls:15, miss:0.60, nl:0};
+  var JOURS = 22, DUREE = 101/60, MAXI = 1750;
+  var noms = ['Entrée', 'Intermédiaire', 'Premier répondant'];
+  var prix = ['75', '150', '300'];
+  var eq = document.getElementById('eq'), mins = document.getElementById('mins'),
+      fill = document.getElementById('fill'), verdict = document.getElementById('verdict'),
+      caveat = document.getElementById('caveat');
+  if (!eq || !mins || !fill || !verdict || !caveat) return;
+  function fmt(n){ return n.toLocaleString('fr-BE').replace(/[\u202F\u00A0]/g, ' '); }
+  function render(){
+    var perdus = Math.round(s.calls * JOURS * s.miss);
+    var m      = Math.round(perdus * DUREE);
+    var pct    = Math.round(s.miss * 100);
+    var idx = m <= 250 ? 0 : (m <= 750 ? 1 : 2);
+    var forceNl = (s.nl === 1 && idx === 0);
+    if (forceNl) idx = 1;
+    eq.innerHTML =
+      '<b>' + s.calls + '</b> appels par jour × <b>' + JOURS + '</b> jours ouvrés<br>'
+      + '× <b>' + pct + ' %</b> que vous ne prenez pas = <b>' + fmt(perdus) + '</b> appels<br>'
+      + '× <b>1 min 41</b> en moyenne';
+    mins.textContent = fmt(m);
+    fill.style.width = Math.min(100, m / MAXI * 100) + '%';
+    var raison = forceNl
+      ? 'vos minutes tiendraient dans la formule d’entrée, mais elle ne parle qu’une langue'
+      : 'c’est le premier palier qui couvre vos ' + fmt(m) + ' minutes';
+    verdict.innerHTML =
+      'Votre formule : <b>' + noms[idx] + '</b>, ' + prix[idx] + ' € par mois hors TVA — ' + raison + '.';
+    caveat.textContent =
+      'Soit ' + fmt(perdus) + ' appels par mois qui, aujourd’hui, sonnent dans le vide.';
+    var cards = document.querySelectorAll('.plan');
+    for (var i = 0; i < cards.length; i++){
+      cards[i].setAttribute('data-on', i === idx ? '1' : '0');
+    }
+  }
+  var groups = document.querySelectorAll('.diag .pills');
+  for (var g = 0; g < groups.length; g++){
+    (function(grp){
+      grp.addEventListener('click', function(e){
+        var btn = e.target.closest('button');
+        if (!btn) return;
+        var kids = grp.querySelectorAll('button');
+        for (var k = 0; k < kids.length; k++) kids[k].setAttribute('aria-pressed', 'false');
+        btn.setAttribute('aria-pressed', 'true');
+        s[grp.getAttribute('data-group')] = parseFloat(btn.getAttribute('data-v'));
+        render();
+      });
+    })(groups[g]);
+  }
+  render();
+})();
+</script>
 </body>
 </html>

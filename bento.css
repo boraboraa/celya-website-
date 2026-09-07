@@ -1497,3 +1497,63 @@ footer.site a:hover{color:var(--ink)}
 @media (prefers-reduced-motion:reduce){
   .playbtn i,.playbtn:hover i{transition:none;transform:none}
 }
+
+/* ---------- le diagnostic (prix.html) ----------
+   Trois questions qu'un artisan sait répondre, et en sortie la formule qui lui
+   correspond, calcul posé à l'écran. Tout tourne dans le navigateur, aucun
+   appel réseau. Motifs repris du site : .pills (le sélecteur d'options),
+   .roi-out b (le grand nombre en dégradé), .kick, et le liseré en masque xor
+   de .tile::before pour la carte sélectionnée. */
+.diag{margin:76px 0 0;border-top:1px solid var(--line);padding-top:44px}
+.diag-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start;margin-top:26px}
+.q{border-top:1px solid var(--line);padding:18px 0 20px}
+.q:first-child{border-top:0;padding-top:0}
+.q-l{display:flex;gap:12px;align-items:baseline;margin-bottom:12px}
+.q-n{font:700 11px/1 var(--b);letter-spacing:.1em;font-variant-numeric:tabular-nums;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.q-t{font-size:15px;color:var(--ink)}
+/* .pills existe déjà (ligne ~364) : on complète la série avec l'état
+   aria-pressed, qui vaut .on, et le focus clavier. */
+.pills button[aria-pressed="true"]{background:var(--grad);color:#06080F;border-color:transparent}
+.pills button:focus-visible{outline:2px solid var(--c1);outline-offset:2px}
+/* min-height dimensionné sur l'état le plus haut mesuré à chaque largeur (le
+   verdict passe de 2 à 4 lignes selon la réponse) : 459 px au plus étroit des
+   deux colonnes, 530 px en 320 px. Le margin:auto du verdict absorbe la marge,
+   le panneau ne change jamais de hauteur quand la réponse change. */
+.read{border:1px solid var(--line);border-radius:22px;background:var(--glass);padding:26px 24px;min-height:470px;display:flex;flex-direction:column;gap:20px}
+.read-h{font:500 11.5px/1 var(--b);letter-spacing:.16em;text-transform:uppercase;color:#BCC6E0}
+.eq{font-size:13.5px;color:var(--soft);font-variant-numeric:tabular-nums;line-height:1.75;margin:0}
+.eq b{color:var(--body);font-weight:500}
+.big{display:flex;align-items:baseline;gap:12px}
+.big em{
+  font-family:var(--h);font-weight:700;font-style:normal;
+  font-size:clamp(32px,3.4vw,44px);line-height:1;letter-spacing:-.02em;
+  font-variant-numeric:tabular-nums;
+  background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent
+}
+.big span{font-size:14px;color:var(--soft)}
+.axis{margin:2px 0 0}
+.track{position:relative;height:4px;background:rgba(255,255,255,.09);border-radius:99px}
+.fill{position:absolute;left:0;top:0;bottom:0;background:var(--grad);border-radius:99px;transition:width .35s cubic-bezier(.23,1,.32,1)}
+.gate{position:absolute;top:-5px;width:1px;height:14px;background:rgba(255,255,255,.22)}
+.marks{position:relative;height:32px;margin-top:10px;font-size:11.5px;color:var(--soft);font-variant-numeric:tabular-nums}
+.mark{position:absolute;transform:translateX(-50%);text-align:center;line-height:1.35;white-space:nowrap}
+.mark i{font-style:normal;display:block;color:rgba(255,255,255,.34);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase}
+.verdict{border-top:1px solid var(--line);padding-top:18px;margin:auto 0 0;font-size:14.5px}
+.verdict b{color:var(--ink);font-weight:500}
+.caveat{font-size:12px;color:rgba(255,255,255,.36);margin:10px 0 0}
+/* La carte que le diagnostic désigne : un liseré en dégradé posé par un
+   ::after en inset:-1px et masque xor — aucune bordure ne change d'épaisseur,
+   donc aucun décalage de mise en page au changement de sélection. */
+.plan[data-on="1"]::after{content:'';position:absolute;inset:-1px;border-radius:inherit;pointer-events:none;padding:1px;
+  background:var(--grad);
+  -webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);mask-composite:exclude}
+@media(max-width:860px){
+  .diag{margin-top:56px;padding-top:36px}
+  .diag-grid{grid-template-columns:1fr;gap:28px}
+}
+@media(max-width:400px){
+  .read{min-height:540px}
+}
+@media (prefers-reduced-motion:reduce){
+  .fill,.pills button{transition:none}
+}
