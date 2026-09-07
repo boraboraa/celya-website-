@@ -1437,6 +1437,48 @@ footer.site a:hover{color:var(--ink)}
   .plan-p b{font-size:30px}
 }
 
+/* ---------- la vignette vidéo du héros ----------
+   Dans la colonne de texte, sous les boutons : une <img> (l'affiche 800 px),
+   le lecteur est construit au clic dans une surcouche plein écran (.vlay).
+   La hauteur est réservée par aspect-ratio, la surcouche est fixed : rien ne
+   se décale. 620 px est le plafond : la colonne fait 660 px.
+   Budget de rendu : aucun backdrop-filter (le plafond de 3 est atteint), aucun
+   will-change, aucun filter animé. */
+.vbig{position:relative;display:block;width:620px;aspect-ratio:16/9;margin:24px 0 0;
+  padding:0;border:1px solid var(--line);border-radius:18px;overflow:hidden;cursor:pointer;
+  background:var(--bg);box-shadow:0 30px 80px rgba(4,8,20,.6);transition:border-color .2s}
+.vbig:hover{border-color:rgba(255,255,255,.28)}
+.vbig:focus-visible{outline:2px solid var(--c1);outline-offset:3px}
+.vbig img{width:100%;height:100%;object-fit:cover;display:block}
+.vplay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center}
+.vplay::before{content:"";position:absolute;width:64px;height:64px;border-radius:99px;
+  background:var(--grad);box-shadow:0 10px 30px rgba(0,0,0,.55);
+  transition:transform .25s cubic-bezier(.23,1,.32,1)}
+.vbig:hover .vplay::before{transform:scale(1.07)}
+.vplay svg{position:relative;z-index:1;width:24px;height:24px;fill:#06080F;margin-left:3px}
+.vcap{position:absolute;left:0;right:0;bottom:0;display:flex;align-items:center;
+  justify-content:space-between;gap:12px;padding:26px 16px 13px;text-align:left;
+  background:linear-gradient(180deg,transparent,rgba(5,6,12,.88) 62%)}
+.vcap b{font:600 15.5px/1.2 var(--b);color:var(--ink)}
+.vcap em{font:600 12px/1 var(--b);font-style:normal;color:var(--soft);font-variant-numeric:tabular-nums}
+@media(max-width:1120px) and (min-width:901px){ .vbig{width:min(560px,52vw)} }
+@media(max-width:900px){ .vbig{width:100%;margin-top:20px} }
+@media(prefers-reduced-motion:reduce){
+  .vplay::before,.vbig:hover .vplay::before{transition:none;transform:none}
+}
+/* le lecteur plein écran, construit au clic */
+.vlay{position:fixed;inset:0;z-index:200;display:flex;align-items:center;justify-content:center;
+  background:rgba(3,5,11,.92);padding:24px}
+.vlay video{width:min(1200px,94vw);max-height:88vh;border-radius:16px;background:var(--bg);
+  box-shadow:0 40px 120px rgba(0,0,0,.7)}
+.vclose{position:absolute;top:18px;right:20px;width:44px;height:44px;border-radius:99px;
+  display:flex;align-items:center;justify-content:center;cursor:pointer;
+  background:rgba(255,255,255,.08);border:1px solid var(--line)}
+.vclose svg{width:20px;height:20px;fill:none;stroke:var(--ink);stroke-width:2;stroke-linecap:round}
+.vclose:hover{background:rgba(255,255,255,.14)}
+.vclose:focus-visible{outline:2px solid var(--c1);outline-offset:2px}
+@media(max-width:600px){ .vlay{padding:12px} .vlay video{width:100%} }
+
 /* ---------- le diagnostic (prix.html) ----------
    Trois questions qu'un artisan sait répondre, et en sortie la formule qui lui
    correspond, calcul posé à l'écran. Tout tourne dans le navigateur, aucun
