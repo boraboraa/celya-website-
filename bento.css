@@ -177,18 +177,6 @@ body.mnav-open{overflow:hidden}
 .foundpill{display:inline-flex;align-items:center;gap:9px;width:fit-content;margin-bottom:13px;font:500 12.5px/1.4 var(--b);color:var(--ink);border:1px solid rgba(168,85,247,.45);background:rgba(168,85,247,.09);border-radius:99px;padding:8px 15px}
 .foundpill i{width:7px;height:7px;border-radius:50%;background:var(--grad);font-style:normal;flex:none}
 .t-hero .foundpill,.hero-txt .foundpill{opacity:0;transform:translateY(14px);animation:fadeup .9s var(--spring) .55s forwards}
-/* Le lien vers la vidéo prend son rang dans la cascade du héros, entre la
-   rangée de boutons (.45s) et la pastille fondateurs (.55s). */
-.hero-txt .filmlink{opacity:0;transform:translateY(14px);animation:fadeup .9s var(--spring) .5s forwards}
-.filmlink{
-  display:flex;width:fit-content;align-items:center;gap:8px;margin:14px 0 18px;
-  font:500 14.5px/1 var(--b);color:var(--body);text-decoration:none;
-  border-bottom:1px solid rgba(255,255,255,.18);padding-bottom:3px;
-  transition:color .2s,border-color .2s
-}
-.filmlink:hover{color:var(--ink);border-color:var(--c2)}
-.filmlink:focus-visible{outline:2px solid var(--c1);outline-offset:3px}
-.filmlink svg{width:13px;height:13px;fill:currentColor;flex:none}
 .proof{font-size:14.5px;color:var(--soft)}
 .proof b{font-weight:700;white-space:nowrap}
 
@@ -675,7 +663,7 @@ footer.site a:hover{color:var(--ink)}
   .demo-hd .dav i,.jq i,.ph-ring,.wave.on i{animation:none}
   .chat.anim .m,.chat.anim .done{opacity:1;transform:none;transition:none}
   .t-hero .lr>span,.t-hero .sub,.t-hero .cta-row,.t-hero .proof{animation:none;transform:none;opacity:1}
-  .hero-txt .lr>span,.hero-txt .sub,.hero-txt .cta-row,.hero-txt .proof,.t-hero .foundpill,.hero-txt .foundpill,.hero-txt .filmlink{animation:none;transform:none;opacity:1}
+  .hero-txt .lr>span,.hero-txt .sub,.hero-txt .cta-row,.hero-txt .proof,.t-hero .foundpill,.hero-txt .foundpill{animation:none;transform:none;opacity:1}
   .hero-demo{animation:none;transform:none;opacity:1}
   .step .ic{transition:none}
   .step.cur .ic{transform:none;box-shadow:none}
@@ -1447,55 +1435,6 @@ footer.site a:hover{color:var(--ink)}
   .plans{grid-template-columns:1fr;gap:10px}
   .plan{padding:20px}
   .plan-p b{font-size:30px}
-}
-
-/* ---------- la vidéo d'intro ----------
-   Aucune vidéo dans le DOM au chargement : l'affiche est une <img>, le lecteur
-   est construit au premier clic. La hauteur est réservée par aspect-ratio, donc
-   le remplacement <img> → <video> ne décale rien.
-   Budget de rendu : aucun backdrop-filter (le plafond de 3 est atteint), aucun
-   will-change, aucun filter animé. */
-.filmsec{padding:78px 0 6px}
-.filmsec .fs-head{max-width:720px;margin:0 auto 26px}
-.filmsec h2{margin:6px 0 10px}
-.filmsec .sub{color:var(--body);font-size:17px;margin:0}
-.film{
-  position:relative;max-width:1080px;margin:0 auto;
-  aspect-ratio:16/9;                 /* la hauteur est réservée : aucun décalage au clic */
-  border:1px solid var(--line);border-radius:24px;overflow:hidden;
-  background:var(--bg);
-  box-shadow:0 40px 120px rgba(79,123,255,.16)
-}
-.film img,.film video{display:block;width:100%;height:100%;object-fit:cover;border:0}
-.film video{object-fit:contain;background:#06080F}
-.playbtn{
-  position:absolute;inset:0;width:100%;height:100%;
-  display:flex;align-items:center;justify-content:center;gap:0;
-  background:transparent;border:0;cursor:pointer;padding:0
-}
-.playbtn i{
-  display:flex;align-items:center;justify-content:center;
-  width:88px;height:88px;border-radius:99px;background:var(--grad);
-  box-shadow:0 12px 40px rgba(0,0,0,.5);
-  transition:transform .25s cubic-bezier(.23,1,.32,1)
-}
-.playbtn svg{width:30px;height:30px;margin-left:4px;fill:#06080F}
-.playbtn:hover i{transform:scale(1.06)}
-.playbtn:focus-visible{outline:2px solid var(--c1);outline-offset:4px;border-radius:24px}
-.playbtn span{
-  position:absolute;left:0;right:0;bottom:20px;text-align:center;
-  font:500 13px/1 var(--b);color:rgba(255,255,255,.72);
-  font-variant-numeric:tabular-nums
-}
-.film-cta{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;margin:26px 0 0}
-@media (max-width:768px){
-  .filmsec{padding:56px 0 4px}
-  .film{border-radius:18px}
-  .playbtn i{width:68px;height:68px}
-  .playbtn svg{width:24px;height:24px}
-}
-@media (prefers-reduced-motion:reduce){
-  .playbtn i,.playbtn:hover i{transition:none;transform:none}
 }
 
 /* ---------- le diagnostic (prix.html) ----------
