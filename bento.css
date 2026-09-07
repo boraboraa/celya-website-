@@ -177,6 +177,18 @@ body.mnav-open{overflow:hidden}
 .foundpill{display:inline-flex;align-items:center;gap:9px;width:fit-content;margin-bottom:13px;font:500 12.5px/1.4 var(--b);color:var(--ink);border:1px solid rgba(168,85,247,.45);background:rgba(168,85,247,.09);border-radius:99px;padding:8px 15px}
 .foundpill i{width:7px;height:7px;border-radius:50%;background:var(--grad);font-style:normal;flex:none}
 .t-hero .foundpill,.hero-txt .foundpill{opacity:0;transform:translateY(14px);animation:fadeup .9s var(--spring) .55s forwards}
+/* Le lien vers la vidéo prend son rang dans la cascade du héros, entre la
+   rangée de boutons (.45s) et la pastille fondateurs (.55s). */
+.hero-txt .filmlink{opacity:0;transform:translateY(14px);animation:fadeup .9s var(--spring) .5s forwards}
+.filmlink{
+  display:flex;width:fit-content;align-items:center;gap:8px;margin:14px 0 18px;
+  font:500 14.5px/1 var(--b);color:var(--body);text-decoration:none;
+  border-bottom:1px solid rgba(255,255,255,.18);padding-bottom:3px;
+  transition:color .2s,border-color .2s
+}
+.filmlink:hover{color:var(--ink);border-color:var(--c2)}
+.filmlink:focus-visible{outline:2px solid var(--c1);outline-offset:3px}
+.filmlink svg{width:13px;height:13px;fill:currentColor;flex:none}
 .proof{font-size:14.5px;color:var(--soft)}
 .proof b{font-weight:700;white-space:nowrap}
 
@@ -663,7 +675,7 @@ footer.site a:hover{color:var(--ink)}
   .demo-hd .dav i,.jq i,.ph-ring,.wave.on i{animation:none}
   .chat.anim .m,.chat.anim .done{opacity:1;transform:none;transition:none}
   .t-hero .lr>span,.t-hero .sub,.t-hero .cta-row,.t-hero .proof{animation:none;transform:none;opacity:1}
-  .hero-txt .lr>span,.hero-txt .sub,.hero-txt .cta-row,.hero-txt .proof,.t-hero .foundpill,.hero-txt .foundpill{animation:none;transform:none;opacity:1}
+  .hero-txt .lr>span,.hero-txt .sub,.hero-txt .cta-row,.hero-txt .proof,.t-hero .foundpill,.hero-txt .foundpill,.hero-txt .filmlink{animation:none;transform:none;opacity:1}
   .hero-demo{animation:none;transform:none;opacity:1}
   .step .ic{transition:none}
   .step.cur .ic{transform:none;box-shadow:none}

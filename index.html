@@ -111,8 +111,11 @@ gtag('consent','default',{ad_storage:'denied',analytics_storage:'denied',ad_user
       <div class="cta-row">
         <a class="btn btn-grad btn-big" href="tel:+32460254413"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg> Appeler Janet (c'est une IA)</a>
         <a class="btn btn-ghost" href="contact.html">Prendre rendez-vous</a>
-        <a class="btn btn-ghost" href="#video">Voir la vidéo · 37 s</a>
       </div>
+      <a class="filmlink" href="#video">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+        Voir la vidéo · 37 s
+      </a>
       <p class="foundpill"><i></i>Offre fondateurs : conditions spéciales pour nos cinq premières entreprises</p>
       <p class="proof">Ne nous croyez pas sur parole : appelez-la. C'est une IA qui décroche. <b>+32 460 25 44 13</b></p>
     </div>
@@ -156,7 +159,7 @@ gtag('consent','default',{ad_storage:'denied',analytics_storage:'denied',ad_user
           <img src="assets/video/celya-intro-poster.webp" alt="Celya, l'assistante téléphonique IA — vidéo de présentation" width="1920" height="1080" loading="lazy" decoding="async">
           <button class="playbtn" type="button" aria-label="Lire la vidéo de présentation, 37 secondes, avec le son">
             <i aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></i>
-            <span>37 s · son activé · sous-titres FR &amp; NL</span>
+            <span>37 s · son activé · sous-titres FR · NL · EN</span>
           </button>
         </div>
         <div class="film-cta">
@@ -542,7 +545,9 @@ gtag('consent','default',{ad_storage:'denied',analytics_storage:'denied',ad_user
   var btn = box.querySelector('.playbtn');
   var BASE = 'assets/video/';
   var LANG = 'fr';
-  var LBL  = {fr:'Français', nl:'Nederlands', en:'English'};
+  /* Les trois pistes sur chaque page, celle de la page en default : un
+     néerlandophone sur la page française est un cas réel en Belgique. */
+  var PISTES = [['fr','Français'], ['nl','Nederlands'], ['en','English']];
   var sent = {};
   function push(ev, extra){
     window.dataLayer = window.dataLayer || [];
@@ -564,10 +569,15 @@ gtag('consent','default',{ad_storage:'denied',analytics_storage:'denied',ad_user
       if (s[2]) el.media = s[2];
       v.appendChild(el);
     });
-    var t = document.createElement('track');
-    t.kind = 'captions'; t.src = BASE + 'celya-intro.' + LANG + '.vtt';
-    t.srclang = LANG; t.label = LBL[LANG]; t.default = true;
-    v.appendChild(t);
+    PISTES.forEach(function(p){
+      var t = document.createElement('track');
+      t.kind = 'captions';
+      t.src = BASE + 'celya-intro.' + p[0] + '.vtt';
+      t.srclang = p[0];
+      t.label = p[1];
+      if (p[0] === LANG) t.default = true;
+      v.appendChild(t);
+    });
     v.addEventListener('play', function(){ if (!sent.start){ sent.start = 1; push('video_start'); } });
     v.addEventListener('timeupdate', function(){
       if (!v.duration) return;
