@@ -1581,3 +1581,22 @@ footer.site a:hover{color:var(--ink)}
   .call{margin-top:56px;padding:40px 0}
   .contact{grid-template-columns:1fr;gap:10px}
 }
+
+/* ---------- le comparatif en tableau (prix.html) ----------
+   Quatre modèles × six critères, dans un conteneur qui défile en largeur :
+   le corps de page ne déborde jamais. Les en-têtes reprennent .plan-n, la
+   colonne Celya le fond de .det-li. */
+.cmpwrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin-top:26px;border:1px solid var(--line);border-radius:22px;background:var(--glass)}
+.cmp{border-collapse:collapse;width:100%;min-width:820px;font-size:14px;line-height:1.5}
+.cmp th,.cmp td{padding:16px 18px;text-align:left;vertical-align:top;border-top:1px solid var(--line)}
+.cmp thead th{border-top:0;font:700 11px/1.3 var(--b);letter-spacing:.14em;text-transform:uppercase;color:var(--soft);padding-top:20px;padding-bottom:14px}
+.cmp tbody th{font:500 13.5px/1.4 var(--b);color:var(--ink);width:15%}
+.cmp td{color:var(--body);width:21.25%}
+.cmp td b{color:var(--ink);font-weight:500}
+.cmp .me{background:rgba(255,255,255,.035)}
+.cmp thead .me{color:var(--ink)}
+.cmp-note{margin:14px 0 0;font-size:12.5px;color:var(--soft);line-height:1.55}
+@media(max-width:860px){
+  .cmpwrap{border-radius:18px}
+  .cmp th,.cmp td{padding:13px 14px}
+}
