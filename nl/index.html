@@ -114,8 +114,13 @@ gtag('consent','default',{ad_storage:'denied',analytics_storage:'denied',ad_user
         <a class="btn btn-grad btn-big" href="tel:+32460254413"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg> Bel Janet (het is een AI)</a>
         <a class="btn btn-ghost" href="contact.html">Maak een afspraak</a>
       </div>
-      <p class="foundpill"><i></i>Foundersaanbod: speciale voorwaarden voor onze eerste vijf bedrijven</p>
+      <button class="vbig" type="button" aria-label="Speel de presentatievideo af, 37 seconden, met geluid">
+        <img src="../assets/video/celya-intro-poster-800.webp" alt="" width="800" height="450" loading="lazy" decoding="async" fetchpriority="low">
+        <span class="vplay" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span>
+        <span class="vcap"><b>Bekijk Celya in 37 seconden</b><em>0:37</em></span>
+      </button>
       <p class="proof">Geloof ons niet op ons woord: bel haar. Er neemt een AI op. <b>+32 460 25 44 13</b></p>
+      <p class="foundpill"><i></i>Foundersaanbod: speciale voorwaarden voor onze eerste vijf bedrijven</p>
     </div>
   </div>
   <div class="jq"><i></i><span class="w" aria-hidden="true"><i></i><i></i><i></i><i></i></span><span>Janet · de AI-assistente van Celya</span></div>
@@ -533,6 +538,98 @@ gtag('consent','default',{ad_storage:'denied',analytics_storage:'denied',ad_user
   group(pl,function(v){lost=v;});
   miss.addEventListener('input',update);
   update();
+})();
+</script>
+<script>
+/* Intro film — no <video> in the DOM at load: the hero thumbnail is an <img>,
+   the player is built on click inside a full-screen overlay. Zero video bytes
+   until the visitor asks, so no effect on LCP. On click, playback starts with
+   sound: the voice-over carries half the message. All three caption tracks are
+   attached, the page's own as default. Escape or a click outside the player
+   closes it, and focus returns to the thumbnail. */
+(function(){
+  var btn = document.querySelector('.vbig');
+  if (!btn) return;
+  var BASE = '../assets/video/';
+  var LANG = 'nl';
+  var PISTES = [['fr','Français'], ['nl','Nederlands'], ['en','English']];
+  var sent = {}, lay = null, vid = null;
+
+  function push(ev, extra){
+    window.dataLayer = window.dataLayer || [];
+    var o = {event: ev, video_title: 'celya-intro-v17', video_locale: LANG, video_duration: 37};
+    for (var k in extra) o[k] = extra[k];
+    window.dataLayer.push(o);
+  }
+  function onKey(e){ if (e.key === 'Escape') close(); }
+  function close(){
+    if (!lay) return;
+    try { vid.pause(); } catch(e){}
+    lay.remove(); lay = null; vid = null;
+    document.documentElement.style.overflow = '';
+    document.removeEventListener('keydown', onKey);
+    btn.focus();
+  }
+
+  btn.addEventListener('click', function(){
+    lay = document.createElement('div');
+    lay.className = 'vlay';
+    lay.setAttribute('role', 'dialog');
+    lay.setAttribute('aria-modal', 'true');
+    lay.setAttribute('aria-label', 'Presentatievideo van Celya');
+
+    var x = document.createElement('button');
+    x.className = 'vclose'; x.type = 'button';
+    x.setAttribute('aria-label', 'Video sluiten');
+    x.innerHTML = '<svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg>';
+    x.addEventListener('click', close);
+
+    vid = document.createElement('video');
+    vid.setAttribute('controls', ''); vid.setAttribute('playsinline', '');
+    vid.setAttribute('preload', 'auto');
+    vid.setAttribute('poster', BASE + 'celya-intro-poster.webp');
+
+    [['celya-intro.webm','video/webm',''],
+     ['celya-intro-720.mp4','video/mp4','(max-width:768px)'],
+     ['celya-intro-1080.mp4','video/mp4','']].forEach(function(s){
+      var el = document.createElement('source');
+      el.src = BASE + s[0]; el.type = s[1];
+      if (s[2]) el.media = s[2];
+      vid.appendChild(el);
+    });
+    PISTES.forEach(function(p){
+      var t = document.createElement('track');
+      t.kind = 'captions'; t.src = BASE + 'celya-intro.' + p[0] + '.vtt';
+      t.srclang = p[0]; t.label = p[1];
+      if (p[0] === LANG) t.default = true;
+      vid.appendChild(t);
+    });
+
+    /* The listeners keep their own reference: on close, vid goes back to null
+       while the pause still fires one last timeupdate. */
+    var v = vid;
+    v.addEventListener('play', function(){ if (!sent.start){ sent.start = 1; push('video_start'); } });
+    v.addEventListener('timeupdate', function(){
+      if (!v.duration) return;
+      var pc = v.currentTime / v.duration;
+      [25, 50, 75].forEach(function(m){
+        if (pc >= m / 100 && !sent[m]){ sent[m] = 1; push('video_progress', {video_percent: m}); }
+      });
+    });
+    v.addEventListener('ended', function(){ if (!sent.end){ sent.end = 1; push('video_complete'); } });
+
+    lay.appendChild(vid); lay.appendChild(x);
+    lay.addEventListener('click', function(e){ if (e.target === lay) close(); });
+    document.body.appendChild(lay);
+    document.documentElement.style.overflow = 'hidden';
+    document.addEventListener('keydown', onKey);
+    x.focus();
+    /* play() returns a promise: rejected if the player is closed before it
+       starts or if the browser blocks playback — the controls stay there to
+       retry, nothing to report to the console. */
+    var p = v.play();
+    if (p && p.catch) p.catch(function(){});
+  });
 })();
 </script>
 </body>
