@@ -82,8 +82,7 @@ h1{font-size:clamp(36px,4.9vw,64px);font-weight:700;line-height:1.02;letter-spac
 .it{font-family:var(--a);font-style:italic;font-weight:400;letter-spacing:-.015em;font-size:1.04em}
 h1 .it{font-weight:400;letter-spacing:-.02em}
 h2{font-size:clamp(24px,3.1vw,38px);font-weight:700;line-height:1.08;letter-spacing:-.03em;margin-bottom:10px}
-/* chiffres tabulaires : minuteur et compteurs ne sautent pas en s'animant */
-.timer,.roi-ctl output,.roi-out b,.agf-cnt b,.agf-ruler,.mcal-ruler,.blk>span,.pcrow em{font-variant-numeric:tabular-nums;font-feature-settings:"tnum" 1}
+/* chiffres tabulaires : la règle est en fin de feuille, après tous les raccourcis font: qui la remettraient à zéro */
 p{text-wrap:pretty}
 h3{font-size:var(--t-xl);font-weight:700;line-height:1.25;margin-bottom:8px}
 .gradtxt,h2 .it,.proof b,.roi-ctl output,.mrow i{background:var(--grad);background-size:190% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:gpan 8s ease-in-out infinite alternate}
@@ -438,7 +437,7 @@ body.mnav-open{overflow:hidden}
 .agf-board.on{display:block;animation:boardin .55s var(--spring)}
 @keyframes boardin{from{opacity:0;transform:translateY(16px) scale(.988)}}
 .agf-cnt{display:flex;align-items:baseline;gap:12px;justify-content:center;margin-bottom:22px}
-.agf-cnt b{font-family:var(--h);font-weight:700;font-size:clamp(34px,3.8vw,50px);line-height:1;background:var(--grad);background-size:190% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;font-variant-numeric:tabular-nums}
+.agf-cnt b{font-family:var(--h);font-weight:700;font-size:clamp(34px,3.8vw,50px);line-height:1;background:var(--grad);background-size:190% 100%;-webkit-background-clip:text;background-clip:text;color:transparent}
 .agf-cnt b.pop{animation:npop .5s var(--spring)}
 .agf-cnt span{font-size:var(--t-md);color:var(--body)}
 .agf-grid{position:relative;display:grid;gap:0 10px;max-width:1080px;margin:0 auto}
@@ -1636,3 +1635,13 @@ p a,li a,dd a,td a,small a,.a a,.note a,.eq a,.verdict a,.caveat a,.cmp-note a,.
 p a::after,li a::after,dd a::after,td a::after,small a::after,.a a::after,.note a::after,.eq a::after,.verdict a::after,.caveat a::after,.cmp-note a::after,.plans-note a::after,.fun-note a::after,.set-note a::after,.det-note a::after{content:'';position:absolute;inset:-6px 0}
 /* les boutons dans un paragraphe gardent leur propre ::after (reflet) : inset:0 */
 p .btn::after,li .btn::after{inset:0}
+
+/* chiffres tabulaires : tout ce qui porte un nombre — prix, minutes, numéro de téléphone, durées,
+   minuteurs, compteurs, dates, colonnes — ne saute pas quand il change et s'aligne en colonne */
+time,output,.timer,.num,.proof b,.plan-p b,.plan-m,.eq,.big em,.marks,.vcap b,.vcap em,.call .num,.ccard a,.cmp td,.cmp th,
+.legal td,.legal dd,.frow .v,.pcrow em,.drow .dtime,.dtimer,.day-score,.dt-h,.durrow .dl,.durrow .dv,.mc-hd span,.mc-li b,
+.det-li .dur,.figure b,.t-study .st-num,.q-n,.agf-cnt b,.agf-ruler,.mcal-ruler,.agf-col header,.blk>span,.blk b,.day-blk span,
+.pills button,.agf-tabs button,.kick b,.bmeta,.art-meta,.callbar .t,.demo-hd span,.dash-hd span,.roi-ctl label,.roi-out b,.roi-out>span,
+.jq span,.yr,.mark,.ag-tag,.chat .m,.dm,.dstep,.dcard span,.tf-ok span,.ns-act span,.fc-out span,.sstep p,.ph-incoming span,.exbadge,
+.fun-top span,.tf-top span,.ns-num span,.step p,.proof,.dcard b,.dst,.mc-known,.plan-p span,.day-fail,.dg,.dp-chip,
+.roi-ctl output,.ns-act>div span,.ns-res span,.tf-ctx span,.dash-pop span,.mc-li span,.agf-gap,.fc-tag{font-variant-numeric:tabular-nums;font-feature-settings:"tnum" 1}
