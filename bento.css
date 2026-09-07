@@ -129,9 +129,16 @@ body.mnav-open{overflow:hidden}
   background:linear-gradient(90deg,rgba(7,10,20,.92) 0,rgba(7,10,20,.6) 32%,rgba(7,10,20,.16) 54%,rgba(7,10,20,0) 68%),
              linear-gradient(180deg,rgba(7,10,20,0) 70%,rgba(7,10,20,.45) 90%,rgba(7,10,20,0) 100%)}
 .hero-in{position:relative;z-index:2;width:100%}
-.hero-txt{max-width:660px;padding:100px 0}
-.hero-txt h1{margin:16px 0 20px;font-size:clamp(42px,5.8vw,82px)}
+.hero-txt{max-width:660px;padding:44px 0 100px}
+/* rythme vertical du héros : 14 px entre les blocs de texte (accroche, titre, sous-titre, boutons,
+   preuve, pastille), 22 px avant et après la vignette. Le h1 rend .16em au masque des .lr : on le
+   rajoute à sa marge basse pour que l'écart visible reste 14 px. */
+.hero-txt .kick{margin-bottom:14px}
+.hero-txt h1{margin:14px 0 calc(14px + .16em);font-size:clamp(42px,5.8vw,82px)}
 .hero-txt .sub{font-size:19px;max-width:58ch}
+.hero-txt .cta-row{margin:14px 0 0}
+.hero-txt .proof{margin-top:22px}
+.hero-txt .foundpill{display:flex;margin:14px 0 0} /* flex, pas inline-flex : plus de demi-interligne parasite au-dessus de la pastille */
 .hero .jq{position:absolute;z-index:2;left:auto;bottom:auto;top:max(88px,10vh);right:5vw}
 /* la démo d'appel flotte au-dessus de la scène, à cheval sur le bas de la photo */
 .hero-demo{position:absolute;z-index:3;right:5vw;bottom:6vh;width:356px;border-radius:24px;
@@ -583,10 +590,10 @@ footer.site a:hover{color:var(--ink)}
 }
 @media(max-width:900px){
   /* héro : la photo devient le fond du héro, plein cadre en tête de scène ;
-     le portrait reste entier (zone photo plafonnée à 86vh, jamais sur-zoomée),
-     le texte démarre sous le visage, sur le dégradé sombre qui monte du bas */
-  .hero{min-height:88vh;min-height:88svh;display:flex;flex-direction:column;padding:96px 0 0;overflow:visible}
-  .hero-jwrap{top:0;left:0;right:0;bottom:auto;width:100%;height:min(100%,86vh);height:min(100%,86svh);
+     le portrait reste entier (zone photo plafonnée à 80vh, jamais sur-zoomée),
+     le texte démarre sous le visage (46svh), sur le dégradé sombre qui monte du bas */
+  .hero{min-height:88vh;min-height:88svh;display:flex;flex-direction:column;padding:96px 0 12px;overflow:visible}
+  .hero-jwrap{top:0;left:0;right:0;bottom:auto;width:100%;height:min(100%,80vh);height:min(100%,80svh);
     -webkit-mask-image:none;mask-image:none}
   .hero-jwrap img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 25%;
     -webkit-mask-image:linear-gradient(180deg,#000 55%,rgba(0,0,0,.4) 82%,transparent 98%);
@@ -598,19 +605,19 @@ footer.site a:hover{color:var(--ink)}
     linear-gradient(0deg,rgba(7,10,20,.05) 0,rgba(7,10,20,.8) 10%,rgba(7,10,20,.66) 30%,rgba(7,10,20,0) 52%),
     linear-gradient(rgba(7,10,20,.18),rgba(7,10,20,.18))}
   .hero-shade{display:none}
-  .hero-txt{padding:max(120px,calc(52vh - 96px)) 0 0;padding:max(120px,calc(52svh - 96px)) 0 0;max-width:none}
-  .hero-txt h1{font-size:clamp(38px,10vw,54px);margin:14px 0 16px}
+  .hero-txt{padding:max(96px,calc(46vh - 100px)) 0 0;padding:max(96px,calc(46svh - 100px)) 0 0;max-width:none}
+  .hero-txt h1{font-size:clamp(38px,10vw,54px)}
   .hero-txt .sub{font-size:17px}
-  .hero-txt .cta-row{flex-direction:column;align-items:stretch;gap:10px;margin:22px 0 16px}
+  .hero-txt .cta-row{flex-direction:column;align-items:stretch;gap:10px}
   .hero-txt .cta-row .btn{width:100%;justify-content:center}
-  .hero-txt .foundpill{margin-bottom:12px}
   .hero .jq{position:static;margin:18px auto 0;width:fit-content}
   /* accroches : capitales compactes, toujours sur UNE seule ligne */
   .kick{font-size:10px;letter-spacing:.15em;gap:9px}
   /* accroches longues (héros métiers, section 04) : repli en casse normale discrète */
   .pc-head .kick,.b-hero .t-hero .kick{text-transform:none;letter-spacing:.01em;font-size:12px;color:#A9B4CE}
-  .hero-demo{position:relative;z-index:3;right:auto;bottom:auto;width:92%;margin:24px auto -48px;transform:none;will-change:auto;
-    animation:fadeup .9s var(--spring) .35s forwards}
+  /* la démo simulée ne s'affiche pas sous 900 px : la vidéo, juste au-dessus, montre la même chose ;
+     le bloc reste dans le DOM (moteurs, lecteurs d'écran ne sont pas concernés : c'est un exemple) */
+  .hero-demo{display:none}
   /* pas de parallaxe sous 900 px (bento.js) : aucun translate3d, donc aucun calque GPU par tuile */
   .tile{transform:none}
   .t-hero,.t-demo,.t-role,.t-fiche,.t-met,.t-met-home,.t-mini,.t-roi,.t-janet{grid-column:span 12}
@@ -1444,10 +1451,10 @@ footer.site a:hover{color:var(--ink)}
    Dans la colonne de texte, sous les boutons : une <img> (l'affiche 800 px),
    le lecteur est construit au clic dans une surcouche plein écran (.vlay).
    La hauteur est réservée par aspect-ratio, la surcouche est fixed : rien ne
-   se décale. 620 px est le plafond : la colonne fait 660 px.
+   se décale. 540 px : en 1440 × 900, la vignette entre dans le premier écran à 80 %.
    Budget de rendu : aucun backdrop-filter (le plafond de 3 est atteint), aucun
    will-change, aucun filter animé. */
-.vbig{position:relative;display:block;width:620px;aspect-ratio:16/9;margin:24px 0 0;
+.vbig{position:relative;display:block;width:540px;aspect-ratio:16/9;margin:22px 0 0;
   padding:0;border:1px solid var(--line);border-radius:18px;overflow:hidden;cursor:pointer;
   background:var(--bg);box-shadow:0 30px 80px rgba(4,8,20,.6);transition:border-color .2s}
 .vbig:hover{border-color:rgba(255,255,255,.28)}
@@ -1464,8 +1471,8 @@ footer.site a:hover{color:var(--ink)}
   background:linear-gradient(180deg,transparent,rgba(5,6,12,.88) 62%)}
 .vcap b{font:600 15.5px/1.2 var(--b);color:var(--ink)}
 .vcap em{font:600 12px/1 var(--b);font-style:normal;color:var(--soft);font-variant-numeric:tabular-nums}
-@media(max-width:1120px) and (min-width:901px){ .vbig{width:min(560px,52vw)} }
-@media(max-width:900px){ .vbig{width:100%;margin-top:20px} }
+@media(max-width:1120px) and (min-width:901px){ .vbig{width:min(540px,52vw)} }
+@media(max-width:900px){ .vbig{width:100%} }
 @media(prefers-reduced-motion:reduce){
   .vplay::before,.vbig:hover .vplay::before{transition:none;transform:none}
 }
