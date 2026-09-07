@@ -163,8 +163,11 @@ body.mnav-open{overflow:hidden}
 .t-hero{grid-column:span 8;padding:40px 38px;display:flex;flex-direction:column;justify-content:center}
 .t-hero h1{margin:14px 0 18px}
 /* apparition du héro au chargement */
-.t-hero .lr,.hero-txt .lr{display:block;overflow:hidden;padding-bottom:.12em;margin-bottom:-.12em}
+.t-hero .lr,.hero-txt .lr{display:block;overflow:hidden;padding-bottom:.16em;margin-bottom:-.16em} /* .16em : la boîte peinte de l'italique dépasse la ligne (197 px pour 174 en 1440), .12em ne suffisait pas */
 .t-hero .lr>span,.hero-txt .lr>span{display:block;transform:translateY(112%);animation:rise 1s var(--spring) forwards}
+/* le span démarre entièrement sous le masque : l'IntersectionObserver de bento.js le voit hors écran, pose .anim-off et
+   fige rise à t=0 — la ligne ne monte jamais. La montée (1 s, une fois) tourne donc même sous .anim-off. */
+.t-hero .lr>span.anim-off,.hero-txt .lr>span.anim-off{animation-play-state:running!important}
 .t-hero .lr:nth-child(2)>span,.hero-txt .lr:nth-child(2)>span{animation-delay:.14s}
 @keyframes rise{to{transform:none}}
 .t-hero .sub,.t-hero .cta-row,.t-hero .proof,.hero-txt .sub,.hero-txt .cta-row,.hero-txt .proof{opacity:0;transform:translateY(14px);animation:fadeup .9s var(--spring) forwards}
