@@ -1483,7 +1483,6 @@ footer.site a:hover{color:var(--ink)}
   padding:0;border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden;cursor:pointer;
   background:var(--bg);box-shadow:0 30px 80px rgba(4,8,20,.6);transition:border-color var(--dur) var(--ease-out)}
 .vbig:hover{border-color:var(--line-strong)}
-.vbig:focus-visible{outline:2px solid var(--c1);outline-offset:3px}
 .vbig img{width:100%;height:100%;object-fit:cover;display:block}
 .vplay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center}
 .vplay::before{content:"";position:absolute;width:64px;height:64px;border-radius:var(--r-pill);
@@ -1511,7 +1510,6 @@ footer.site a:hover{color:var(--ink)}
   background:var(--surface-3);border:1px solid var(--line)}
 .vclose svg{width:20px;height:20px;fill:none;stroke:var(--ink);stroke-width:2;stroke-linecap:round}
 .vclose:hover{background:var(--line-strong)}
-.vclose:focus-visible{outline:2px solid var(--c1);outline-offset:2px}
 @media(max-width:600px){ .vlay{padding:12px} .vlay video{width:100%} }
 
 /* ---------- le diagnostic (prix.html) ----------
@@ -1527,10 +1525,8 @@ footer.site a:hover{color:var(--ink)}
 .q-l{display:flex;gap:12px;align-items:baseline;margin-bottom:12px}
 .q-n{font:700 var(--t-xs)/1 var(--b);letter-spacing:.1em;font-variant-numeric:tabular-nums;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
 .q-t{font-size:var(--t-md);color:var(--ink)}
-/* .pills existe déjà (ligne ~364) : on complète la série avec l'état
-   aria-pressed, qui vaut .on, et le focus clavier. */
+/* .pills existe déjà : on complète la série avec l'état aria-pressed, qui vaut .on. */
 .pills button[aria-pressed="true"]{background:var(--grad);color:#06080F;border-color:transparent}
-.pills button:focus-visible{outline:2px solid var(--c1);outline-offset:2px}
 /* min-height dimensionné sur l'état le plus haut mesuré à chaque largeur, FR
    et NL (le verdict passe de 2 à 4 lignes selon la réponse) : 483 px au plus
    étroit des deux colonnes, 554 px en 320 px. Le margin:auto du verdict
@@ -1588,14 +1584,13 @@ footer.site a:hover{color:var(--ink)}
   border-bottom:1px solid var(--line-strong);padding-bottom:8px
 }
 .call .num:hover{border-color:var(--c2)}
-.call .num:focus-visible{outline:2px solid var(--c1);outline-offset:6px}
+.call .num:focus-visible{outline-offset:6px} /* exception : texte en dégradé, très grand — l'anneau s'écarte */
 .call small{display:block;margin-top:20px;font-size:var(--t-sm);color:var(--soft)}
 .contact{margin:34px 0 0;display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
 .ccard{border:1px solid var(--line);border-radius:var(--r-lg);padding:20px 22px;background:var(--glass)}
 .ccard span{display:block;font:500 var(--t-xs)/1 var(--b);text-transform:uppercase;letter-spacing:.14em;color:var(--soft);margin-bottom:10px}
 .ccard a{color:var(--ink);text-decoration:none;font-size:var(--t-lg);border-bottom:1px solid var(--line-strong);padding-bottom:2px}
 .ccard a:hover{border-color:var(--c2)}
-.ccard a:focus-visible{outline:2px solid var(--c1);outline-offset:3px}
 @media(max-width:860px){
   .call{margin-top:56px;padding:40px 0}
   .contact{grid-template-columns:1fr;gap:10px}
@@ -1619,3 +1614,25 @@ footer.site a:hover{color:var(--ink)}
   .cmpwrap{border-radius:var(--r-lg)}
   .cmp th,.cmp td{padding:13px 14px}
 }
+
+/* ---------- accessibilité : focus clavier et cibles tactiles ----------
+   Une règle de focus globale, puis les exceptions justifiées. Les cibles font
+   au moins 24 × 24 px (WCAG 2.2, 2.5.8) et 44 px sur la navigation, le
+   sélecteur de langue et le pied de page — obtenues par padding compensé par
+   une marge négative, ou par une zone cliquable étendue (::after), jamais par
+   une hauteur fixe : aucun alignement ne bouge. */
+:focus-visible{outline:2px solid var(--c1);outline-offset:2px}
+/* sur un fond en dégradé cyan → violet, le cyan se perd : anneau clair */
+.btn-grad:focus-visible,.pills button.on:focus-visible,.pills button[aria-pressed="true"]:focus-visible,.agf-tabs button.on:focus-visible,.cbanner .caccept:focus-visible{outline-color:var(--ink)}
+button,input,select,textarea,summary,[role=button]{min-height:24px}
+.nav-links>a,.nav-drop>a{padding:10px 4px;margin:-10px -4px}    /* 24 → 44 px de haut, « Prix » passe 24 px de large */
+.lang a{position:relative}
+.lang a::after{content:'';position:absolute;inset:-10px -4px}       /* 24 → 44 px de haut, 24 de large, sans agrandir la pilule */
+footer.site a{padding:12px 5px;margin:-5px 0}                       /* 21 → 45 px de haut, FR/NL/EN ≥ 24 de large ; la marge ne compense que 5 px en hauteur (deux rangées ne se recouvrent jamais, gap 10) et rien en largeur : un lien en bord de conteneur ne déborde pas */
+footer.site .cols{gap:10px 16px}                                    /* 26 − 2 × 5 : l'espacement visible entre deux liens reste 26 px */
+.bmore,.art-back,.st-link{padding-top:5px;padding-bottom:5px;margin-top:-5px;margin-bottom:-5px}
+/* liens en ligne dans un texte : la zone cliquable dépasse la ligne de 6 px de chaque côté */
+p a,li a,dd a,td a,small a,.a a,.note a,.eq a,.verdict a,.caveat a,.cmp-note a,.plans-note a,.fun-note a,.set-note a,.det-note a{position:relative}
+p a::after,li a::after,dd a::after,td a::after,small a::after,.a a::after,.note a::after,.eq a::after,.verdict a::after,.caveat a::after,.cmp-note a::after,.plans-note a::after,.fun-note a::after,.set-note a::after,.det-note a::after{content:'';position:absolute;inset:-6px 0}
+/* les boutons dans un paragraphe gardent leur propre ::after (reflet) : inset:0 */
+p .btn::after,li .btn::after{inset:0}
