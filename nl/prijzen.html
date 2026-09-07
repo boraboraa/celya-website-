@@ -131,7 +131,7 @@ gtag('consent','default',{ad_storage:'denied',analytics_storage:'denied',ad_user
             </ul>
             <p class="plan-f">Een volwaardig telefonisch onthaal, vanaf de eerste formule.</p>
           </div>
-          <div class="plan plan-mid">
+          <div class="plan plan-mid" data-on="1">
             <div class="plan-hd">
               <div class="plan-n">Tussenformule</div>
               <div class="plan-p"><b>150&nbsp;€</b><span>per maand, excl. btw</span></div>
@@ -162,6 +162,66 @@ gtag('consent','default',{ad_storage:'denied',analytics_storage:'denied',ad_user
         <div class="plans-note">
           <p>Alle prijzen zijn <b>exclusief btw</b>&nbsp;; de Belgische 21&nbsp;% komt erbij. Gaat u boven uw minuten, dan <b>schuift u door naar de formule erboven</b> — wij rekenen nooit per minuut af. Opstartkosten zijn niet systematisch en worden, als ze er zijn, <b>afgetopt op één maandbedrag</b>. Geen verborgen kosten, geen toeslag voor ruimere uren, niets te installeren bij u. En stopt u, dan zet u de doorschakeling af&nbsp;: uw oproepen komen gewoon weer bij u binnen, er valt niets af te breken.</p>
         </div>
+        <section class="diag" id="diagnose">
+          <p class="kick">De <b>diagnose</b></p>
+          <h2>U kent uw aantal minuten niet. <span class="it">Niemand kent het.</span></h2>
+          <div class="diag-grid">
+            <div>
+              <div class="q">
+                <div class="q-l"><span class="q-n">01</span><span class="q-t">Hoeveel oproepen krijgt u per dag&nbsp;?</span></div>
+                <div class="pills" data-group="calls">
+                  <button type="button" data-v="5" aria-pressed="false">ongeveer 5</button>
+                  <button type="button" data-v="15" aria-pressed="true">ongeveer 15</button>
+                  <button type="button" data-v="30" aria-pressed="false">30 en meer</button>
+                </div>
+              </div>
+              <div class="q">
+                <div class="q-l"><span class="q-n">02</span><span class="q-t">Wanneer neemt u op&nbsp;?</span></div>
+                <div class="pills" data-group="miss">
+                  <button type="button" data-v="0.35" aria-pressed="false">op kantoor, tijdens de kantooruren</button>
+                  <button type="button" data-v="0.60" aria-pressed="true">wanneer ik kan</button>
+                  <button type="button" data-v="0.85" aria-pressed="false">nooit tijdens een interventie</button>
+                </div>
+              </div>
+              <div class="q">
+                <div class="q-l"><span class="q-n">03</span><span class="q-t">Franstalige klanten&nbsp;?</span></div>
+                <div class="pills" data-group="nl">
+                  <button type="button" data-v="0" aria-pressed="true">nee</button>
+                  <button type="button" data-v="1" aria-pressed="false">ja</button>
+                </div>
+              </div>
+            </div>
+            <div class="read" aria-live="polite">
+              <span class="read-h">Uw overzicht</span>
+              <p class="eq" id="eq"><b>15</b> oproepen per dag × <b>22</b> werkdagen<br>× <b>60 %</b> die u niet opneemt = <b>198</b> oproepen<br>× <b>1 min 41</b> gemiddeld</p>
+              <div class="big"><em id="mins">333</em><span>minuten per maand</span></div>
+              <div class="axis">
+                <div class="track">
+                  <div class="fill" id="fill" style="width:19%"></div>
+                  <div class="gate" style="left:14.3%"></div>
+                  <div class="gate" style="left:42.9%"></div>
+                </div>
+                <div class="marks">
+                  <span class="mark" style="left:14.3%">250<i>Instap</i></span>
+                  <span class="mark" style="left:42.9%">750<i>Tussenformule</i></span>
+                  <span class="mark mark-end">1&nbsp;750<i>Eerste hulplijn</i></span>
+                </div>
+              </div>
+              <p class="verdict" id="verdict">Uw formule&nbsp;: <b>Tussenformule</b>, 150&nbsp;€ per maand exclusief btw — de eerste trap die uw 333 minuten dekt.</p>
+              <p class="caveat" id="caveat">Dat zijn 198 oproepen per maand die vandaag in het ijle rinkelen.</p>
+            </div>
+          </div>
+        </section>
+        <section class="call">
+          <p>Geloof ons niet op ons woord.</p>
+          <a class="num" href="tel:+32460254413">+32 460 25 44 13</a>
+          <small>Janet neemt op. Het is een AI — u hoort het, of niet.</small>
+        </section>
+        <section class="contact">
+          <div class="ccard"><span>Per e-mail</span><a href="mailto:sales@celya.be">sales@celya.be</a></div>
+          <div class="ccard"><span>Per telefoon</span><a href="tel:+32460254413">+32 460 25 44 13</a></div>
+          <div class="ccard"><span>In twintig minuten</span><a href="contact.html">Afspraak maken</a></div>
+        </section>
       </div>
     </section>
     <section class="cine reveal">
@@ -195,10 +255,79 @@ gtag('consent','default',{ad_storage:'denied',analytics_storage:'denied',ad_user
         </div>
       </div>
     </section>
+    <section class="freesec access-free reveal" id="modellen">
+      <div class="wrap">
+        <div class="fs-head">
+          <div class="kick"><b>04</b><span>De modellen</span></div>
+          <h2><span class="l2"><span>De vier manieren om <span class="it">uw telefoon te laten opnemen</span></span></span></h2>
+        </div>
+        <div class="access-txt">
+        <p>Wanneer een professioneel nummer rinkelt, zijn er maar vier mogelijkheden&nbsp;: iemand van de zaak neemt op, een externe dienst neemt op, een toestel registreert, of niemand antwoordt. Die vier hebben niet dezelfde prijs, maar vooral niet dezelfde <b>prijsstructuur</b> — en die beslist wat er gebeurt wanneer uw activiteit verandert. Een model dat werkt bij tien oproepen per dag kan absurd worden bij zestig, en omgekeerd.</p>
+        </div>
+        <div class="cmpwrap">
+          <table class="cmp">
+            <thead>
+              <tr>
+                <th scope="col">Criterium</th>
+                <th scope="col">Uzelf</th>
+                <th scope="col">Het antwoordapparaat</th>
+                <th scope="col">Het menselijk telesecretariaat</th>
+                <th scope="col" class="me">Celya, de spraakagent</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Wie neemt op</th>
+                <td>U, tussen twee interventies door — of niemand.</td>
+                <td>Een toestel dat registreert.</td>
+                <td>Een echte persoon, op een plateau, in naam van uw zaak. Voor een complex of heel persoonlijk onthaal is dat nog altijd het beste wat er is.</td>
+                <td class="me">Janet, een AI die zich als AI voorstelt. Ze voert het gesprek, legt de afspraak vast, noteert de boodschap, schakelt door volgens uw regels.</td>
+              </tr>
+              <tr>
+                <th scope="row">Wat de prijs bepaalt</th>
+                <td>Uw tijd. Elke opgenomen oproep onderbreekt een interventie&nbsp;; elke gemiste oproep is een klant die de volgende belt.</td>
+                <td>Niets&nbsp;: het is veruit de goedkoopste optie op de markt.</td>
+                <td>Een loon achter elk gedekt uur. De prijs volgt dus mechanisch de gedekte uren.</td>
+                <td class="me">Een pakket minuten. Geen loon achter een gedekt uur&nbsp;: een lijn die om 3&nbsp;u 's nachts openstaat, kost niet meer dan om 15&nbsp;u.</td>
+              </tr>
+              <tr>
+                <th scope="row">Maandelijkse kost</th>
+                <td>Geen factuur — een gemiste omzet die in geen enkele boekhouding verschijnt.</td>
+                <td>Inbegrepen in uw telefoonabonnement.</td>
+                <td>— <br><small>Wij noemen geen enkele aanbieder en publiceren geen tarieven die we bij hen hebben opgetekend&nbsp;: wij beschrijven het model, niet de spelers.</small></td>
+                <td class="me"><b>75, 150 of 300&nbsp;€</b> exclusief btw, volgens de formule. Nooit per minuut.</td>
+              </tr>
+              <tr>
+                <th scope="row">'s Avonds, in het weekend, 's nachts</th>
+                <td>Wanneer u er bent.</td>
+                <td>Altijd aan — maar de beller haakt in vóór de piep.</td>
+                <td>Betaalbaar tijdens de kantooruren&nbsp;; 's avonds en in het weekend beduidend duurder, en dat is volkomen logisch. Daardoor bleef een permanentie 24&nbsp;u voor de meeste zelfstandigen onbereikbaar.</td>
+                <td class="me">Voor dezelfde prijs als een dinsdagnamiddag. Geen toeslag voor ruimere uren.</td>
+              </tr>
+              <tr>
+                <th scope="row">Twee oproepen tegelijk</th>
+                <td>De tweede krijgt een bezettoon.</td>
+                <td>Allebei komen ze op het toestel terecht.</td>
+                <td>Volgens het plateau en de gedekte uren van de formule.</td>
+                <td class="me">Eén, twee of vier gelijktijdige oproepen volgens de formule, zonder dubbele wachttijd. Het seizoenspiek vraagt geen aanwerving.</td>
+              </tr>
+              <tr>
+                <th scope="row">Wat de beller krijgt</th>
+                <td>Een antwoord, als u er bent.</td>
+                <td>Stilte. Voor een lek, een dichtgeklapte deur of een afspraak die moet worden vastgelegd, spreekt niemand tegen een toestel dat niet antwoordt.</td>
+                <td>Een onthaal, een genoteerde boodschap, soms een afspraak.</td>
+                <td class="me">Een afspraak vastgelegd tijdens het gesprek, een boodschap met gedateerde fiche, of een doorschakeling naar u. Niets te installeren, u houdt uw nummer en uw operator.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="cmp-note">Alle rijen van deze tabel gaan over uitgaven. De zwaarste is er geen&nbsp;: dat is de gemiste oproep, en die rekent u uit met uw eigen cijfers.</p>
+      </div>
+    </section>
     <section class="freesec faq-free reveal" id="faq-prijzen">
       <div class="wrap-n">
         <div class="fs-head">
-          <div class="kick"><b>04</b><span>Veelgestelde vragen</span></div>
+          <div class="kick"><b>05</b><span>Veelgestelde vragen</span></div>
           <h2><span class="l2"><span>De prijs: <span class="it">uw vragen</span></span></span></h2>
         </div>
         <div class="qa-wrap">
@@ -352,5 +481,72 @@ gtag('consent','default',{ad_storage:'denied',analytics_storage:'denied',ad_user
 </div>
 </main>
 <script src="../bento.js" defer></script>
+<script>
+/* De diagnose — drie antwoorden, één formule, de berekening op het scherm.
+   Alles draait hier : niets verstuurd, geen netwerkoproep, niets opgeslagen.
+
+   DUREE : 1 min 41 (101 s) per oproep, gemiddelde uit de tabel calls van het
+   Supabase-project celya-sales-agent, inkomende oproepen van de twee echte
+   klanten, 23/07 tot 04/09/2026 — New Auto Torino 57 oproepen (gem. 102 s,
+   med. 99 s), Celya Brasserie 44 oproepen (gem. 100 s, med. 86 s). De 173
+   oproepen van « Celya — Production » zijn uitgesloten : dat zijn tests.
+   Kleine steekproef, 101 oproepen over zeven weken : bij elke nieuwe klant
+   opnieuw na te kijken.
+
+   De aandelen niet-opgenomen oproepen (35 / 60 / 85 %) zijn geen statistiek :
+   het is de vertaling van wat de bezoeker net verklaard heeft, en zo toont
+   het scherm ze. 22 werkdagen per maand is de gangbare conventie. */
+(function(){
+  var s = {calls:15, miss:0.60, nl:0};
+  var JOURS = 22, DUREE = 101/60, MAXI = 1750;
+  var noms = ['Instap', 'Tussenformule', 'Eerste hulplijn'];
+  var prix = ['75', '150', '300'];
+  var eq = document.getElementById('eq'), mins = document.getElementById('mins'),
+      fill = document.getElementById('fill'), verdict = document.getElementById('verdict'),
+      caveat = document.getElementById('caveat');
+  if (!eq || !mins || !fill || !verdict || !caveat) return;
+  function fmt(n){ return n.toLocaleString('nl-BE').replace(/\./g, ' '); }
+  function render(){
+    var perdus = Math.round(s.calls * JOURS * s.miss);
+    var m      = Math.round(perdus * DUREE);
+    var pct    = Math.round(s.miss * 100);
+    var idx = m <= 250 ? 0 : (m <= 750 ? 1 : 2);
+    var forceNl = (s.nl === 1 && idx === 0);
+    if (forceNl) idx = 1;
+    eq.innerHTML =
+      '<b>' + s.calls + '</b> oproepen per dag × <b>' + JOURS + '</b> werkdagen<br>'
+      + '× <b>' + pct + ' %</b> die u niet opneemt = <b>' + fmt(perdus) + '</b> oproepen<br>'
+      + '× <b>1 min 41</b> gemiddeld';
+    mins.textContent = fmt(m);
+    fill.style.width = Math.min(100, m / MAXI * 100) + '%';
+    var raison = forceNl
+      ? 'uw minuten zouden in de instapformule passen, maar die spreekt maar één taal'
+      : 'de eerste trap die uw ' + fmt(m) + ' minuten dekt';
+    verdict.innerHTML =
+      'Uw formule : <b>' + noms[idx] + '</b>, ' + prix[idx] + ' € per maand exclusief btw — ' + raison + '.';
+    caveat.textContent =
+      'Dat zijn ' + fmt(perdus) + ' oproepen per maand die vandaag in het ijle rinkelen.';
+    var cards = document.querySelectorAll('.plan');
+    for (var i = 0; i < cards.length; i++){
+      cards[i].setAttribute('data-on', i === idx ? '1' : '0');
+    }
+  }
+  var groups = document.querySelectorAll('.diag .pills');
+  for (var g = 0; g < groups.length; g++){
+    (function(grp){
+      grp.addEventListener('click', function(e){
+        var btn = e.target.closest('button');
+        if (!btn) return;
+        var kids = grp.querySelectorAll('button');
+        for (var k = 0; k < kids.length; k++) kids[k].setAttribute('aria-pressed', 'false');
+        btn.setAttribute('aria-pressed', 'true');
+        s[grp.getAttribute('data-group')] = parseFloat(btn.getAttribute('data-v'));
+        render();
+      });
+    })(groups[g]);
+  }
+  render();
+})();
+</script>
 </body>
 </html>

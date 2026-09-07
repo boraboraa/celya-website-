@@ -1515,11 +1515,12 @@ footer.site a:hover{color:var(--ink)}
    aria-pressed, qui vaut .on, et le focus clavier. */
 .pills button[aria-pressed="true"]{background:var(--grad);color:#06080F;border-color:transparent}
 .pills button:focus-visible{outline:2px solid var(--c1);outline-offset:2px}
-/* min-height dimensionné sur l'état le plus haut mesuré à chaque largeur (le
-   verdict passe de 2 à 4 lignes selon la réponse) : 459 px au plus étroit des
-   deux colonnes, 530 px en 320 px. Le margin:auto du verdict absorbe la marge,
-   le panneau ne change jamais de hauteur quand la réponse change. */
-.read{border:1px solid var(--line);border-radius:22px;background:var(--glass);padding:26px 24px;min-height:470px;display:flex;flex-direction:column;gap:20px}
+/* min-height dimensionné sur l'état le plus haut mesuré à chaque largeur, FR
+   et NL (le verdict passe de 2 à 4 lignes selon la réponse) : 483 px au plus
+   étroit des deux colonnes, 554 px en 320 px. Le margin:auto du verdict
+   absorbe la marge, le panneau ne change jamais de hauteur quand la réponse
+   change. */
+.read{border:1px solid var(--line);border-radius:22px;background:var(--glass);padding:26px 24px;min-height:490px;display:flex;flex-direction:column;gap:20px}
 .read-h{font:500 11.5px/1 var(--b);letter-spacing:.16em;text-transform:uppercase;color:#BCC6E0}
 .eq{font-size:13.5px;color:var(--soft);font-variant-numeric:tabular-nums;line-height:1.75;margin:0}
 .eq b{color:var(--body);font-weight:500}
@@ -1538,6 +1539,8 @@ footer.site a:hover{color:var(--ink)}
 .marks{position:relative;height:32px;margin-top:10px;font-size:11.5px;color:var(--soft);font-variant-numeric:tabular-nums}
 .mark{position:absolute;transform:translateX(-50%);text-align:center;line-height:1.35;white-space:nowrap}
 .mark i{font-style:normal;display:block;color:rgba(255,255,255,.34);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase}
+/* le dernier repère s'ancre à droite : centré sur 95 %, un libellé long (« Eerste hulplijn ») sortait du panneau */
+.mark-end{right:0;transform:none;text-align:right}
 .verdict{border-top:1px solid var(--line);padding-top:18px;margin:auto 0 0;font-size:14.5px}
 .verdict b{color:var(--ink);font-weight:500}
 .caveat{font-size:12px;color:rgba(255,255,255,.36);margin:10px 0 0}
@@ -1552,7 +1555,7 @@ footer.site a:hover{color:var(--ink)}
   .diag-grid{grid-template-columns:1fr;gap:28px}
 }
 @media(max-width:400px){
-  .read{min-height:540px}
+  .read{min-height:560px}
 }
 @media (prefers-reduced-motion:reduce){
   .fill,.pills button{transition:none}
