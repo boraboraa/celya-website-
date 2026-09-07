@@ -35,6 +35,7 @@ gtag('consent','default',{ad_storage:'denied',analytics_storage:'denied',ad_user
 <link rel="stylesheet" href="fonts.css">
 <link rel="stylesheet" href="bento.css">
 <noscript><style>.reveal{opacity:1;transform:none}.l2>span{transform:none}.reveal .mic svg [pathLength]{stroke-dasharray:none;stroke-dashoffset:0}.product-free.reveal .frame{transform:rotateX(7deg)}.fcard,.fc-out{opacity:1;transform:none}.fun-fork path{opacity:.75}.fo-ic svg [pathLength]{stroke-dasharray:none;stroke-dashoffset:0}.blk.up{opacity:1}.blk.up .fx{transform:none}.blk.up b,.blk.up>span{opacity:1}.blk.up .bck path{stroke-dasharray:none;stroke-dashoffset:0}.reveal .durrow .db i{transform:scaleX(var(--w,1))}.triflow .fdot{animation:none}.ns-dot{display:none}</style></noscript>
+<script type="application/ld+json">{"@context": "https://schema.org", "@graph": [{"@type": "VideoObject", "@id": "https://celya.be/#video-intro", "name": "Celya en trente-sept secondes", "description": "Celya répond au téléphone quand vous ne pouvez pas : elle renseigne vos clients, prend le rendez-vous pendant l'appel et note tout dans votre console.", "thumbnailUrl": "https://celya.be/assets/video/celya-intro-poster.jpg", "uploadDate": "2026-09-07", "duration": "PT37S", "contentUrl": "https://celya.be/assets/video/celya-intro-1080.mp4", "inLanguage": "fr-BE"}]}</script>
 </head>
 <body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><linearGradient id="bgrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#22D3EE"/><stop offset=".5" stop-color="#4F7BFF"/><stop offset="1" stop-color="#A855F7"/></linearGradient></defs></svg>
@@ -110,6 +111,7 @@ gtag('consent','default',{ad_storage:'denied',analytics_storage:'denied',ad_user
       <div class="cta-row">
         <a class="btn btn-grad btn-big" href="tel:+32460254413"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg> Appeler Janet (c'est une IA)</a>
         <a class="btn btn-ghost" href="contact.html">Prendre rendez-vous</a>
+        <a class="btn btn-ghost" href="#video">Voir la vidéo · 37 s</a>
       </div>
       <p class="foundpill"><i></i>Offre fondateurs : conditions spéciales pour nos cinq premières entreprises</p>
       <p class="proof">Ne nous croyez pas sur parole : appelez-la. C'est une IA qui décroche. <b>+32 460 25 44 13</b></p>
@@ -143,6 +145,26 @@ gtag('consent','default',{ad_storage:'denied',analytics_storage:'denied',ad_user
       </div>
   </aside>
 </section>
+    <section class="filmsec reveal" id="video">
+      <div class="wrap">
+        <div class="fs-head">
+          <div class="kick">La vidéo</div>
+          <h2>Celya en <span class="it">trente-sept secondes</span></h2>
+          <p class="sub">Ce que vos clients entendent quand vous ne pouvez pas décrocher.</p>
+        </div>
+        <div class="film" data-film>
+          <img src="assets/video/celya-intro-poster.webp" alt="Celya, l'assistante téléphonique IA — vidéo de présentation" width="1920" height="1080" loading="lazy" decoding="async">
+          <button class="playbtn" type="button" aria-label="Lire la vidéo de présentation, 37 secondes, avec le son">
+            <i aria-hidden="true"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></i>
+            <span>37 s · son activé · sous-titres FR &amp; NL</span>
+          </button>
+        </div>
+        <div class="film-cta">
+          <a class="btn btn-grad" href="tel:+32460254413">Appeler Janet (c'est une IA)</a>
+          <a class="btn btn-ghost" href="contact.html">Prendre rendez-vous</a>
+        </div>
+      </div>
+    </section>
     <section class="freesec steps-free reveal" id="marche">
       <div class="wrap">
         <div class="fs-head">
@@ -506,6 +528,59 @@ gtag('consent','default',{ad_storage:'denied',analytics_storage:'denied',ad_user
   group(pl,function(v){lost=v;});
   miss.addEventListener('input',update);
   update();
+})();
+</script>
+<script>
+/* Vidéo d'intro — aucun <video> dans le DOM au chargement : l'affiche est une
+   <img>, le lecteur est construit au premier clic. Zéro octet de vidéo tant que
+   le visiteur n'a pas demandé, donc aucun effet sur le LCP. Au clic, la lecture
+   part avec le son : la voix off porte la moitié du message. Les sous-titres
+   sont activés par défaut, pour ceux qui regarderont sans le son. */
+(function(){
+  var box = document.querySelector('[data-film]');
+  if (!box) return;
+  var btn = box.querySelector('.playbtn');
+  var BASE = 'assets/video/';
+  var LANG = 'fr';
+  var LBL  = {fr:'Français', nl:'Nederlands', en:'English'};
+  var sent = {};
+  function push(ev, extra){
+    window.dataLayer = window.dataLayer || [];
+    var o = {event: ev, video_title: 'celya-intro-v17', video_locale: LANG, video_duration: 37};
+    for (var k in extra) o[k] = extra[k];
+    window.dataLayer.push(o);
+  }
+  btn.addEventListener('click', function(){
+    var v = document.createElement('video');
+    v.setAttribute('controls', '');
+    v.setAttribute('playsinline', '');
+    v.setAttribute('preload', 'auto');
+    v.setAttribute('poster', BASE + 'celya-intro-poster.webp');
+    [['celya-intro.webm','video/webm',''],
+     ['celya-intro-720.mp4','video/mp4','(max-width:768px)'],
+     ['celya-intro-1080.mp4','video/mp4','']].forEach(function(s){
+      var el = document.createElement('source');
+      el.src = BASE + s[0]; el.type = s[1];
+      if (s[2]) el.media = s[2];
+      v.appendChild(el);
+    });
+    var t = document.createElement('track');
+    t.kind = 'captions'; t.src = BASE + 'celya-intro.' + LANG + '.vtt';
+    t.srclang = LANG; t.label = LBL[LANG]; t.default = true;
+    v.appendChild(t);
+    v.addEventListener('play', function(){ if (!sent.start){ sent.start = 1; push('video_start'); } });
+    v.addEventListener('timeupdate', function(){
+      if (!v.duration) return;
+      var p = v.currentTime / v.duration;
+      [25, 50, 75].forEach(function(m){
+        if (p >= m / 100 && !sent[m]){ sent[m] = 1; push('video_progress', {video_percent: m}); }
+      });
+    });
+    v.addEventListener('ended', function(){ if (!sent.end){ sent.end = 1; push('video_complete'); } });
+    box.innerHTML = '';
+    box.appendChild(v);
+    v.play();
+  });
 })();
 </script>
 </body>

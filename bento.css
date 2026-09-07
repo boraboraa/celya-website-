@@ -1436,3 +1436,52 @@ footer.site a:hover{color:var(--ink)}
   .plan{padding:20px}
   .plan-p b{font-size:30px}
 }
+
+/* ---------- la vidéo d'intro ----------
+   Aucune vidéo dans le DOM au chargement : l'affiche est une <img>, le lecteur
+   est construit au premier clic. La hauteur est réservée par aspect-ratio, donc
+   le remplacement <img> → <video> ne décale rien.
+   Budget de rendu : aucun backdrop-filter (le plafond de 3 est atteint), aucun
+   will-change, aucun filter animé. */
+.filmsec{padding:78px 0 6px}
+.filmsec .fs-head{max-width:720px;margin:0 auto 26px}
+.filmsec h2{margin:6px 0 10px}
+.filmsec .sub{color:var(--body);font-size:17px;margin:0}
+.film{
+  position:relative;max-width:1080px;margin:0 auto;
+  aspect-ratio:16/9;                 /* la hauteur est réservée : aucun décalage au clic */
+  border:1px solid var(--line);border-radius:24px;overflow:hidden;
+  background:var(--bg);
+  box-shadow:0 40px 120px rgba(79,123,255,.16)
+}
+.film img,.film video{display:block;width:100%;height:100%;object-fit:cover;border:0}
+.film video{object-fit:contain;background:#06080F}
+.playbtn{
+  position:absolute;inset:0;width:100%;height:100%;
+  display:flex;align-items:center;justify-content:center;gap:0;
+  background:transparent;border:0;cursor:pointer;padding:0
+}
+.playbtn i{
+  display:flex;align-items:center;justify-content:center;
+  width:88px;height:88px;border-radius:99px;background:var(--grad);
+  box-shadow:0 12px 40px rgba(0,0,0,.5);
+  transition:transform .25s cubic-bezier(.23,1,.32,1)
+}
+.playbtn svg{width:30px;height:30px;margin-left:4px;fill:#06080F}
+.playbtn:hover i{transform:scale(1.06)}
+.playbtn:focus-visible{outline:2px solid var(--c1);outline-offset:4px;border-radius:24px}
+.playbtn span{
+  position:absolute;left:0;right:0;bottom:20px;text-align:center;
+  font:500 13px/1 var(--b);color:rgba(255,255,255,.72);
+  font-variant-numeric:tabular-nums
+}
+.film-cta{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;margin:26px 0 0}
+@media (max-width:768px){
+  .filmsec{padding:56px 0 4px}
+  .film{border-radius:18px}
+  .playbtn i{width:68px;height:68px}
+  .playbtn svg{width:24px;height:24px}
+}
+@media (prefers-reduced-motion:reduce){
+  .playbtn i,.playbtn:hover i{transition:none;transform:none}
+}
