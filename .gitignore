@@ -1,1 +1,7 @@
 .vercel
+
+# rapports régénérés à chaque exécution de sweep.js / sweep_nl.js
+sweep-fr.txt
+sweep-fr.json
+sweep-nl.txt
+sweep-nl.json
