@@ -177,6 +177,18 @@ body.mnav-open{overflow:hidden}
 .foundpill{display:inline-flex;align-items:center;gap:9px;width:fit-content;margin-bottom:13px;font:500 12.5px/1.4 var(--b);color:var(--ink);border:1px solid rgba(168,85,247,.45);background:rgba(168,85,247,.09);border-radius:99px;padding:8px 15px}
 .foundpill i{width:7px;height:7px;border-radius:50%;background:var(--grad);font-style:normal;flex:none}
 .t-hero .foundpill,.hero-txt .foundpill{opacity:0;transform:translateY(14px);animation:fadeup .9s var(--spring) .55s forwards}
+/* Le lien vers la vidéo prend son rang dans la cascade du héros, entre la
+   rangée de boutons (.45s) et la pastille fondateurs (.55s). */
+.hero-txt .filmlink{opacity:0;transform:translateY(14px);animation:fadeup .9s var(--spring) .5s forwards}
+.filmlink{
+  display:flex;width:fit-content;align-items:center;gap:8px;margin:14px 0 18px;
+  font:500 14.5px/1 var(--b);color:var(--body);text-decoration:none;
+  border-bottom:1px solid rgba(255,255,255,.18);padding-bottom:3px;
+  transition:color .2s,border-color .2s
+}
+.filmlink:hover{color:var(--ink);border-color:var(--c2)}
+.filmlink:focus-visible{outline:2px solid var(--c1);outline-offset:3px}
+.filmlink svg{width:13px;height:13px;fill:currentColor;flex:none}
 .proof{font-size:14.5px;color:var(--soft)}
 .proof b{font-weight:700;white-space:nowrap}
 
@@ -663,7 +675,7 @@ footer.site a:hover{color:var(--ink)}
   .demo-hd .dav i,.jq i,.ph-ring,.wave.on i{animation:none}
   .chat.anim .m,.chat.anim .done{opacity:1;transform:none;transition:none}
   .t-hero .lr>span,.t-hero .sub,.t-hero .cta-row,.t-hero .proof{animation:none;transform:none;opacity:1}
-  .hero-txt .lr>span,.hero-txt .sub,.hero-txt .cta-row,.hero-txt .proof,.t-hero .foundpill,.hero-txt .foundpill{animation:none;transform:none;opacity:1}
+  .hero-txt .lr>span,.hero-txt .sub,.hero-txt .cta-row,.hero-txt .proof,.t-hero .foundpill,.hero-txt .foundpill,.hero-txt .filmlink{animation:none;transform:none;opacity:1}
   .hero-demo{animation:none;transform:none;opacity:1}
   .step .ic{transition:none}
   .step.cur .ic{transform:none;box-shadow:none}
@@ -1435,4 +1447,159 @@ footer.site a:hover{color:var(--ink)}
   .plans{grid-template-columns:1fr;gap:10px}
   .plan{padding:20px}
   .plan-p b{font-size:30px}
+}
+
+/* ---------- la vidéo d'intro ----------
+   Aucune vidéo dans le DOM au chargement : l'affiche est une <img>, le lecteur
+   est construit au premier clic. La hauteur est réservée par aspect-ratio, donc
+   le remplacement <img> → <video> ne décale rien.
+   Budget de rendu : aucun backdrop-filter (le plafond de 3 est atteint), aucun
+   will-change, aucun filter animé. */
+.filmsec{padding:78px 0 6px}
+.filmsec .fs-head{max-width:720px;margin:0 auto 26px}
+.filmsec h2{margin:6px 0 10px}
+.filmsec .sub{color:var(--body);font-size:17px;margin:0}
+.film{
+  position:relative;max-width:1080px;margin:0 auto;
+  aspect-ratio:16/9;                 /* la hauteur est réservée : aucun décalage au clic */
+  border:1px solid var(--line);border-radius:24px;overflow:hidden;
+  background:var(--bg);
+  box-shadow:0 40px 120px rgba(79,123,255,.16)
+}
+.film img,.film video{display:block;width:100%;height:100%;object-fit:cover;border:0}
+.film video{object-fit:contain;background:#06080F}
+.playbtn{
+  position:absolute;inset:0;width:100%;height:100%;
+  display:flex;align-items:center;justify-content:center;gap:0;
+  background:transparent;border:0;cursor:pointer;padding:0
+}
+.playbtn i{
+  display:flex;align-items:center;justify-content:center;
+  width:88px;height:88px;border-radius:99px;background:var(--grad);
+  box-shadow:0 12px 40px rgba(0,0,0,.5);
+  transition:transform .25s cubic-bezier(.23,1,.32,1)
+}
+.playbtn svg{width:30px;height:30px;margin-left:4px;fill:#06080F}
+.playbtn:hover i{transform:scale(1.06)}
+.playbtn:focus-visible{outline:2px solid var(--c1);outline-offset:4px;border-radius:24px}
+.playbtn span{
+  position:absolute;left:0;right:0;bottom:20px;text-align:center;
+  font:500 13px/1 var(--b);color:rgba(255,255,255,.72);
+  font-variant-numeric:tabular-nums
+}
+.film-cta{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;margin:26px 0 0}
+@media (max-width:768px){
+  .filmsec{padding:56px 0 4px}
+  .film{border-radius:18px}
+  .playbtn i{width:68px;height:68px}
+  .playbtn svg{width:24px;height:24px}
+}
+@media (prefers-reduced-motion:reduce){
+  .playbtn i,.playbtn:hover i{transition:none;transform:none}
+}
+
+/* ---------- le diagnostic (prix.html) ----------
+   Trois questions qu'un artisan sait répondre, et en sortie la formule qui lui
+   correspond, calcul posé à l'écran. Tout tourne dans le navigateur, aucun
+   appel réseau. Motifs repris du site : .pills (le sélecteur d'options),
+   .roi-out b (le grand nombre en dégradé), .kick, et le liseré en masque xor
+   de .tile::before pour la carte sélectionnée. */
+.diag{margin:76px 0 0;border-top:1px solid var(--line);padding-top:44px}
+.diag-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start;margin-top:26px}
+.q{border-top:1px solid var(--line);padding:18px 0 20px}
+.q:first-child{border-top:0;padding-top:0}
+.q-l{display:flex;gap:12px;align-items:baseline;margin-bottom:12px}
+.q-n{font:700 11px/1 var(--b);letter-spacing:.1em;font-variant-numeric:tabular-nums;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.q-t{font-size:15px;color:var(--ink)}
+/* .pills existe déjà (ligne ~364) : on complète la série avec l'état
+   aria-pressed, qui vaut .on, et le focus clavier. */
+.pills button[aria-pressed="true"]{background:var(--grad);color:#06080F;border-color:transparent}
+.pills button:focus-visible{outline:2px solid var(--c1);outline-offset:2px}
+/* min-height dimensionné sur l'état le plus haut mesuré à chaque largeur, FR
+   et NL (le verdict passe de 2 à 4 lignes selon la réponse) : 483 px au plus
+   étroit des deux colonnes, 554 px en 320 px. Le margin:auto du verdict
+   absorbe la marge, le panneau ne change jamais de hauteur quand la réponse
+   change. */
+.read{border:1px solid var(--line);border-radius:22px;background:var(--glass);padding:26px 24px;min-height:490px;display:flex;flex-direction:column;gap:20px}
+.read-h{font:500 11.5px/1 var(--b);letter-spacing:.16em;text-transform:uppercase;color:#BCC6E0}
+.eq{font-size:13.5px;color:var(--soft);font-variant-numeric:tabular-nums;line-height:1.75;margin:0}
+.eq b{color:var(--body);font-weight:500}
+.big{display:flex;align-items:baseline;gap:12px}
+.big em{
+  font-family:var(--h);font-weight:700;font-style:normal;
+  font-size:clamp(32px,3.4vw,44px);line-height:1;letter-spacing:-.02em;
+  font-variant-numeric:tabular-nums;
+  background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent
+}
+.big span{font-size:14px;color:var(--soft)}
+.axis{margin:2px 0 0}
+.track{position:relative;height:4px;background:rgba(255,255,255,.09);border-radius:99px}
+.fill{position:absolute;left:0;top:0;bottom:0;background:var(--grad);border-radius:99px;transition:width .35s cubic-bezier(.23,1,.32,1)}
+.gate{position:absolute;top:-5px;width:1px;height:14px;background:rgba(255,255,255,.22)}
+.marks{position:relative;height:32px;margin-top:10px;font-size:11.5px;color:var(--soft);font-variant-numeric:tabular-nums}
+.mark{position:absolute;transform:translateX(-50%);text-align:center;line-height:1.35;white-space:nowrap}
+.mark i{font-style:normal;display:block;color:rgba(255,255,255,.34);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase}
+/* le dernier repère s'ancre à droite : centré sur 95 %, un libellé long (« Eerste hulplijn ») sortait du panneau */
+.mark-end{right:0;transform:none;text-align:right}
+.verdict{border-top:1px solid var(--line);padding-top:18px;margin:auto 0 0;font-size:14.5px}
+.verdict b{color:var(--ink);font-weight:500}
+.caveat{font-size:12px;color:rgba(255,255,255,.36);margin:10px 0 0}
+/* La carte que le diagnostic désigne : un liseré en dégradé posé par un
+   ::after en inset:-1px et masque xor — aucune bordure ne change d'épaisseur,
+   donc aucun décalage de mise en page au changement de sélection. */
+.plan[data-on="1"]::after{content:'';position:absolute;inset:-1px;border-radius:inherit;pointer-events:none;padding:1px;
+  background:var(--grad);
+  -webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);-webkit-mask-composite:xor;mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);mask-composite:exclude}
+@media(max-width:860px){
+  .diag{margin-top:56px;padding-top:36px}
+  .diag-grid{grid-template-columns:1fr;gap:28px}
+}
+@media(max-width:400px){
+  .read{min-height:560px}
+}
+@media (prefers-reduced-motion:reduce){
+  .fill,.pills button{transition:none}
+}
+
+/* ---------- le numéro, et le bandeau de contact (prix.html) ---------- */
+.call{margin:76px 0 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:52px 0;text-align:center}
+.call p{margin:0 0 20px;font-size:17px}
+.call .num{
+  display:inline-block;font-family:var(--h);font-weight:700;
+  font-size:clamp(30px,4.6vw,52px);letter-spacing:-.03em;text-decoration:none;
+  font-variant-numeric:tabular-nums;
+  background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;
+  border-bottom:1px solid rgba(255,255,255,.18);padding-bottom:8px
+}
+.call .num:hover{border-color:var(--c2)}
+.call .num:focus-visible{outline:2px solid var(--c1);outline-offset:6px}
+.call small{display:block;margin-top:20px;font-size:13px;color:var(--soft)}
+.contact{margin:34px 0 0;display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.ccard{border:1px solid var(--line);border-radius:22px;padding:20px 22px;background:var(--glass)}
+.ccard span{display:block;font:500 11px/1 var(--b);text-transform:uppercase;letter-spacing:.14em;color:var(--soft);margin-bottom:10px}
+.ccard a{color:var(--ink);text-decoration:none;font-size:16px;border-bottom:1px solid rgba(255,255,255,.18);padding-bottom:2px}
+.ccard a:hover{border-color:var(--c2)}
+.ccard a:focus-visible{outline:2px solid var(--c1);outline-offset:3px}
+@media(max-width:860px){
+  .call{margin-top:56px;padding:40px 0}
+  .contact{grid-template-columns:1fr;gap:10px}
+}
+
+/* ---------- le comparatif en tableau (prix.html) ----------
+   Quatre modèles × six critères, dans un conteneur qui défile en largeur :
+   le corps de page ne déborde jamais. Les en-têtes reprennent .plan-n, la
+   colonne Celya le fond de .det-li. */
+.cmpwrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin-top:26px;border:1px solid var(--line);border-radius:22px;background:var(--glass)}
+.cmp{border-collapse:collapse;width:100%;min-width:820px;font-size:14px;line-height:1.5}
+.cmp th,.cmp td{padding:16px 18px;text-align:left;vertical-align:top;border-top:1px solid var(--line)}
+.cmp thead th{border-top:0;font:700 11px/1.3 var(--b);letter-spacing:.14em;text-transform:uppercase;color:var(--soft);padding-top:20px;padding-bottom:14px}
+.cmp tbody th{font:500 13.5px/1.4 var(--b);color:var(--ink);width:15%}
+.cmp td{color:var(--body);width:21.25%}
+.cmp td b{color:var(--ink);font-weight:500}
+.cmp .me{background:rgba(255,255,255,.035)}
+.cmp thead .me{color:var(--ink)}
+.cmp-note{margin:14px 0 0;font-size:12.5px;color:var(--soft);line-height:1.55}
+@media(max-width:860px){
+  .cmpwrap{border-radius:18px}
+  .cmp th,.cmp td{padding:13px 14px}
 }
