@@ -1400,3 +1400,39 @@ footer.site a:hover{color:var(--ink)}
   .aw-sw i,.aw-sw,.aw-slot,.aw-day,.aw-day em{transition:none}
   .t-hero-solo .hph img{transition:none}
 }
+
+/* ---------- grille tarifaire (prix.html, nl/prijzen.html) ----------
+   Reprend exactement le motif de .fun-cards / .fcard : mêmes jetons, même
+   rayon, même verre dépoli, même gouttière, même point de bascule mobile.
+   Aucune couleur nouvelle, aucune variable nouvelle. La formule du milieu
+   porte l'accent permanent que .fcard.on donne au survol — c'est le même
+   bleu, appliqué au repos parce qu'il désigne un choix, pas un état. */
+.plans{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;align-items:stretch;margin-top:26px}
+.plan{position:relative;display:flex;flex-direction:column;gap:14px;padding:22px;
+  border:1px solid var(--line);border-radius:20px;background-color:var(--glass);
+  background-image:linear-gradient(160deg,rgba(255,255,255,.055),rgba(255,255,255,0) 38%)}
+.plan-mid{border-color:rgba(79,123,255,.55);
+  box-shadow:0 18px 48px rgba(6,10,26,.5),0 0 34px rgba(79,123,255,.16)}
+.plan-hd{display:flex;flex-direction:column;gap:7px;padding-bottom:14px;border-bottom:1px solid var(--line)}
+.plan-n{font:700 11px/1 var(--b);letter-spacing:.14em;text-transform:uppercase;color:var(--soft)}
+.plan-p{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
+.plan-p b{font:700 34px/1 var(--h);color:var(--ink);letter-spacing:-.02em}
+/* « hors TVA » colle au montant : la règle du dépôt veut la mention à côté de
+   chaque chiffre, pas reléguée en note de bas de page. */
+.plan-p span{font-size:13px;color:var(--soft)}
+.plan-m{font-size:14.5px;color:var(--body)}
+.plan-m b{color:var(--ink);font-weight:700}
+.plan-l{list-style:none;display:flex;flex-direction:column;gap:9px;flex:1;margin:0;padding:0}
+.plan-l li{position:relative;padding-left:20px;font-size:14.5px;line-height:1.5;color:var(--body)}
+.plan-l li::before{content:'';position:absolute;left:0;top:.52em;width:9px;height:9px;border-radius:3px;
+  background:var(--grad);opacity:.85}
+.plan-l li b{color:var(--ink);font-weight:700}
+.plan-f{font-family:var(--a);font-style:italic;font-size:16px;line-height:1.45;color:var(--ink);
+  padding-top:14px;border-top:1px solid var(--line)}
+.plans-note{margin:22px auto 0;max-width:60ch;font-size:14.5px;line-height:1.6;color:var(--soft)}
+.plans-note b{color:var(--body)}
+@media(max-width:860px){
+  .plans{grid-template-columns:1fr;gap:10px}
+  .plan{padding:20px}
+  .plan-p b{font-size:30px}
+}
