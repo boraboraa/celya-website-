@@ -1557,3 +1557,27 @@ footer.site a:hover{color:var(--ink)}
 @media (prefers-reduced-motion:reduce){
   .fill,.pills button{transition:none}
 }
+
+/* ---------- le numéro, et le bandeau de contact (prix.html) ---------- */
+.call{margin:76px 0 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:52px 0;text-align:center}
+.call p{margin:0 0 20px;font-size:17px}
+.call .num{
+  display:inline-block;font-family:var(--h);font-weight:700;
+  font-size:clamp(30px,4.6vw,52px);letter-spacing:-.03em;text-decoration:none;
+  font-variant-numeric:tabular-nums;
+  background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;
+  border-bottom:1px solid rgba(255,255,255,.18);padding-bottom:8px
+}
+.call .num:hover{border-color:var(--c2)}
+.call .num:focus-visible{outline:2px solid var(--c1);outline-offset:6px}
+.call small{display:block;margin-top:20px;font-size:13px;color:var(--soft)}
+.contact{margin:34px 0 0;display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.ccard{border:1px solid var(--line);border-radius:22px;padding:20px 22px;background:var(--glass)}
+.ccard span{display:block;font:500 11px/1 var(--b);text-transform:uppercase;letter-spacing:.14em;color:var(--soft);margin-bottom:10px}
+.ccard a{color:var(--ink);text-decoration:none;font-size:16px;border-bottom:1px solid rgba(255,255,255,.18);padding-bottom:2px}
+.ccard a:hover{border-color:var(--c2)}
+.ccard a:focus-visible{outline:2px solid var(--c1);outline-offset:3px}
+@media(max-width:860px){
+  .call{margin-top:56px;padding:40px 0}
+  .contact{grid-template-columns:1fr;gap:10px}
+}
