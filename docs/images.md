@@ -91,6 +91,59 @@ qu'ils sont la source des vignettes de menu.
 
 ---
 
+## Vidéo d'intro — `assets/video/`
+
+Le film de présentation, 37,0 s, 1920 × 1080, 25 images/s. Il n'y a **aucune
+image sous licence tierce dedans** : c'est un rendu de motion design produit
+pour Celya, voix off comprise. Les deux affiches sont une image extraite du
+film à **1,6 s** — les cinq cartes métier allumées, la ligne « Vous travaillez.
+Le téléphone sonne. » incrustée par le montage.
+
+| Fichier | Rôle | Format mesuré | Poids |
+|---|---|---|---|
+| `celya-intro.webm` | Source servie en premier — VP9 + Opus, prise par Chrome et Firefox | 1920 × 1080 | 3,0 Mo |
+| `celya-intro-1080.mp4` | Repli H.264 High + AAC, `+faststart` — Safari, iOS | 1920 × 1080 | 6,3 Mo |
+| `celya-intro-720.mp4` | Même repli, servi sous 768 px de large | 1280 × 720 | 2,8 Mo |
+| `celya-intro-poster.webp` | Affiche du lecteur | 1920 × 1080 | 46 Ko |
+| `celya-intro-poster-800.webp` | Vignette du héros, `800 × 450` dans le HTML | 800 × 450 | 16 Ko |
+| `celya-intro-poster.jpg` | `thumbnailUrl` du `VideoObject` — schema.org ne prend pas le WebP | 1280 × 720 | 57 Ko |
+| `celya-intro.fr.vtt` · `.nl.vtt` · `.en.vtt` | Sous-titres des trois pistes attachées par le lecteur | — | ~1 Ko |
+
+**Rien de tout ça n'est chargé tant que le visiteur n'a pas cliqué.** La
+vignette du héros est une `<img>` ; le `<video>` est construit au clic. Le
+budget de rendu et le LCP ne bougent pas — c'est pour ça que le poids en mégaoctets
+est acceptable ici et nulle part ailleurs.
+
+**Pour régénérer** depuis un nouveau master (`master.mp4`, sortie du montage) :
+
+```
+ffmpeg -i master.mp4 -vf "scale=in_range=full:out_range=tv,format=yuv420p" \
+  -c:v libx264 -profile:v high -preset slow -crf 21 -g 50 \
+  -c:a aac -b:a 128k -ac 2 -movflags +faststart celya-intro-1080.mp4
+ffmpeg -i master.mp4 -vf "scale=1280:720:flags=lanczos:in_range=full:out_range=tv,format=yuv420p" \
+  -c:v libx264 -profile:v high -preset slow -crf 22 -g 50 \
+  -c:a aac -b:a 128k -ac 2 -movflags +faststart celya-intro-720.mp4
+ffmpeg -i master.mp4 -vf "scale=in_range=full:out_range=tv,format=yuv420p" \
+  -c:v libvpx-vp9 -crf 33 -b:v 0 -row-mt 1 -tile-columns 2 -deadline good -cpu-used 2 -g 240 \
+  -c:a libopus -b:a 96k celya-intro.webm
+ffmpeg -ss 1.6 -i master.mp4 -frames:v 1 -vf "scale=1920:1080:flags=lanczos" \
+  -c:v libwebp -quality 80 -compression_level 6 celya-intro-poster.webp
+```
+
+`in_range=full:out_range=tv` n'est pas décoratif : le master sort en `yuvj420p`
+(échelle pleine). Sans la conversion, les noirs du film — et il est presque
+entièrement noir — remontent d'un cran chez la moitié des lecteurs.
+
+**Ce qui reste à vérifier à l'oreille.** Les sous-titres ont été calés sur la
+bande son, pas recopiés d'un script : aucun script du film n'existe dans le
+dépôt. Deux points à confirmer avant de considérer le texte comme définitif —
+le pluriel de « les couverts du restaurant, les places du garage » (le singulier
+s'entend aussi), et la dernière réplique, « Celya. C'est l'IA. », posée sur la
+musique de fin. Les NL et EN sont des traductions de ce relevé, pas des
+transcriptions : le film est en français seulement.
+
+---
+
 ## Ce qu'on vérifie avant d'ajouter une image
 
 1. **Licence** — usage commercial explicite, sans attribution obligatoire.
