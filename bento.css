@@ -2,7 +2,7 @@
    Fond aurore : canvas #aurora géré par bento.js (léger, pause hors écran,
    coupé si prefers-reduced-motion). Tuiles verre dépoli sur #070A14.
    Budget GPU : le flou est pré-calculé dans le canvas (aucun filter: sur un
-   élément qui bouge), backdrop-filter réservé à la nav et au panneau du héro,
+   élément qui bouge), backdrop-filter réservé à la nav et au menu déroulant,
    toute animation hors écran est mise en pause par bento.js (.anim-off). */
 
 :root{
@@ -178,8 +178,10 @@ body.mnav-open{overflow:hidden}
 .mnav-grid i{margin-left:auto;font-style:normal;font-weight:700;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
 @media(max-width:900px){.nav-links{display:none}.nav-in{gap:14px}.burger{display:block}}
 
-/* ---------- héro : une seule scène en profondeur (fond → photo → panneau flottant → texte) ---------- */
-.hero{position:relative;min-height:min(92vh,980px);display:flex;align-items:center;overflow:hidden}
+/* ---------- héro : une seule scène en profondeur (fond → photo → vignette vidéo → texte) ---------- */
+/* le héro tient dans le premier écran d'un portable 1440 × 784 : 88vh plafonné
+   à 716 px, texte compris, vignette vidéo comprise */
+.hero{position:relative;min-height:min(88vh,716px);display:flex;align-items:center;overflow:hidden}
 /* la photo de Janet émerge du fond : plein bord à droite, fondue par masque à gauche et en bas */
 .hero-jwrap{position:absolute;top:0;right:0;bottom:0;width:54%;z-index:0;
   -webkit-mask-image:linear-gradient(90deg,transparent 0,#000 38%);mask-image:linear-gradient(90deg,transparent 0,#000 38%)}
@@ -190,27 +192,23 @@ body.mnav-open{overflow:hidden}
   background:linear-gradient(90deg,rgba(7,10,20,.92) 0,rgba(7,10,20,.6) 32%,rgba(7,10,20,.16) 54%,rgba(7,10,20,0) 68%),
              linear-gradient(180deg,rgba(7,10,20,0) 70%,rgba(7,10,20,.45) 90%,rgba(7,10,20,0) 100%)}
 .hero-in{position:relative;z-index:2;width:100%}
-.hero-txt{max-width:660px;padding:44px 0 100px;container-type:inline-size} /* conteneur de requête du CTA : 660 px, au-dessus du seuil, libellé long */
+.hero-txt{max-width:660px;padding:36px 0 56px;container-type:inline-size} /* conteneur de requête du CTA : 660 px, au-dessus du seuil, libellé long */
 /* rythme vertical du héros : 14 px entre les blocs de texte (accroche, titre, sous-titre, boutons,
-   preuve, pastille), 22 px avant et après la vignette. Le h1 rend .16em au masque des .lr : on le
+   ligne de preuves, preuve, pastille). Le h1 rend .16em au masque des .lr : on le
    rajoute à sa marge basse pour que l'écart visible reste 14 px. */
 .hero-txt .kick{margin-bottom:14px}
 .hero-txt h1{margin:14px 0 calc(14px + .16em);font-size:var(--fs-display);line-height:var(--lh-tight)}
 .hero-txt .sub{font-size:var(--fs-h3);max-width:58ch}
 .hero-txt .cta-row{margin:14px 0 0}
-.hero-txt .proof{margin-top:22px}
+.hero-txt .proof{margin-top:14px}
 .hero-txt .foundpill{display:flex;margin:14px 0 0} /* flex, pas inline-flex : plus de demi-interligne parasite au-dessus de la pastille */
 .hero .jq{position:absolute;z-index:2;left:auto;bottom:auto;top:max(88px,10vh);right:5vw}
-/* la démo d'appel flotte au-dessus de la scène, à cheval sur le bas de la photo */
-.hero-demo{position:absolute;z-index:3;right:5vw;bottom:6vh;width:356px;border-radius:var(--r-lg);
-  background:rgba(12,17,32,.72);backdrop-filter:blur(18px) saturate(1.25);border:1px solid var(--line);
-  box-shadow:0 44px 96px rgba(4,8,20,.66),0 12px 34px rgba(4,8,20,.45);
-  opacity:0;transform:translateY(18px);will-change:transform;
-  animation:fadeup .9s var(--spring) .75s forwards,hfloat 7s ease-in-out 1.9s infinite}
-@keyframes hfloat{0%,100%{transform:none}50%{transform:translateY(-9px)}}
+/* la vignette vidéo tient la place de l'ancienne démo d'appel : en bas à droite,
+   à cheval sur le bas de la photo. C'est le même contenu qu'une simulation, mais
+   filmé — et sans backdrop-filter ni will-change (budget de rendu). */
+.hero>.vbig{position:absolute;z-index:3;right:5vw;bottom:6vh;width:min(440px,30vw);margin:0}
 @media(max-width:1120px) and (min-width:901px){
   .hero-txt{max-width:52vw}
-  .hero-demo{width:320px;right:3vw}
 }
 
 /* ---------- bento ---------- */
@@ -244,9 +242,10 @@ body.mnav-open{overflow:hidden}
 .t-hero .lr>span.anim-off,.hero-txt .lr>span.anim-off{animation-play-state:running!important}
 .t-hero .lr:nth-child(2)>span,.hero-txt .lr:nth-child(2)>span{animation-delay:.14s}
 @keyframes rise{to{transform:none}}
-.t-hero .sub,.t-hero .cta-row,.t-hero .proof,.hero-txt .sub,.hero-txt .cta-row,.hero-txt .proof{opacity:0;transform:translateY(14px);animation:fadeup .9s var(--spring) forwards}
+.t-hero .sub,.t-hero .cta-row,.t-hero .proof,.hero-txt .sub,.hero-txt .cta-row,.hero-txt .proofs,.hero-txt .proof{opacity:0;transform:translateY(14px);animation:fadeup .9s var(--spring) forwards}
 .t-hero .sub,.hero-txt .sub{animation-delay:.3s}
 .t-hero .cta-row,.hero-txt .cta-row{animation-delay:.45s}
+.hero-txt .proofs{animation-delay:.58s}
 .t-hero .proof,.hero-txt .proof{animation-delay:.68s}
 @keyframes fadeup{to{opacity:1;transform:none}}
 .t-hero .sub,.hero-txt .sub{font-size:var(--fs-h3);max-width:52ch;color:var(--body);line-height:var(--lh-heading)}
@@ -256,11 +255,15 @@ body.mnav-open{overflow:hidden}
 .t-hero .foundpill,.hero-txt .foundpill{opacity:0;transform:translateY(14px);animation:fadeup .9s var(--spring) .55s forwards}
 .proof{font-size:var(--fs-body);color:var(--soft)}
 .proof b{font-weight:700;white-space:nowrap}
+/* ligne de preuves du héro : les trois garanties, en une ligne sous les boutons */
+.proofs{list-style:none;margin:16px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:8px 18px;font:500 var(--fs-small)/1.3 var(--b);color:var(--soft)}
+.proofs li{display:inline-flex;align-items:center;gap:7px;white-space:nowrap}
+.proofs svg{width:15px;height:15px;stroke:url(#bgrad);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex:none}
 
 /* démo d'appel */
 .t-demo{grid-column:span 4;display:flex;flex-direction:column;padding:22px}
 .b-hero .t-demo{align-self:stretch} /* le .phone est en flex:1 : la démo remplit la hauteur du héro */
-/* Démo étirée (sous-pages seulement, pas le .hero-demo de l'accueil) : l'appel
+/* Démo étirée (sous-pages seulement, l'accueil n'en a plus) : l'appel
    et la conversation s'ancrent en haut, la fiche en bas, le vide se met entre
    les deux plutôt que de tout centrer dans un panneau trop grand.
    La fiche passe en flux (position:static) : elle occupe déjà sa place, donc
@@ -414,8 +417,6 @@ body.mnav-open{overflow:hidden}
 .ic-s::after{content:'';position:absolute;inset:-1px;border-radius:inherit;pointer-events:none;box-shadow:0 0 26px rgba(79,123,255,.32);opacity:0;animation:iglowo 4.5s ease-in-out infinite}
 @keyframes iglowo{50%{opacity:1}}
 .ic-s svg{width:22px;height:22px;stroke:url(#bgrad);fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
-.t-mini .ic-s{width:40px;height:40px;border-radius:var(--r-sm);margin-bottom:12px}
-.t-mini .ic-s svg{width:19px;height:19px}
 .step .ic{animation:iglow 4.5s ease-in-out infinite}
 .tile:nth-child(3n) .ic-s::after,.step:nth-child(2) .ic{animation-delay:1.4s}
 .tile:nth-child(3n+1) .ic-s::after,.step:nth-child(3) .ic{animation-delay:2.6s}
@@ -423,12 +424,6 @@ body.mnav-open{overflow:hidden}
 @keyframes iglow{0%,100%{box-shadow:0 0 10px rgba(79,123,255,.1)}50%{box-shadow:0 0 26px rgba(79,123,255,.32)}}
 .reveal .ic-s svg *,.reveal .step .ic svg *{stroke-dasharray:1;stroke-dashoffset:1;transition:stroke-dashoffset 1.2s var(--ease-out) .25s}
 .reveal.in .ic-s svg *,.reveal.in .step .ic svg *{stroke-dashoffset:0}
-
-/* petites tuiles */
-.t-mini{grid-column:span 4;padding:22px}
-.t-mini-w{grid-column:span 4}
-.t-mini h3{font-size:var(--fs-h3)}
-.t-mini p{font-size:var(--fs-small);color:var(--body)}
 
 /* ---------- simulateur d'appels manqués : seul sur sa ligne, son propre moment ---------- */
 .t-roi{grid-column:span 12;padding:40px 44px}
@@ -690,39 +685,40 @@ footer.site a:hover{color:var(--ink)}
   .tile:hover{border-color:var(--line-accent);box-shadow:0 14px 44px rgba(6,10,26,.5)}
 }
 @media(max-width:900px){
-  /* héro : la photo devient le fond du héro, plein cadre en tête de scène ;
-     le portrait reste entier (zone photo plafonnée à 80vh, jamais sur-zoomée),
-     le texte démarre sous le visage (46svh), sur le dégradé sombre qui monte du bas */
-  .hero{min-height:88vh;min-height:88svh;display:flex;flex-direction:column;padding:96px 0 12px;overflow:visible}
-  .hero-jwrap{top:0;left:0;right:0;bottom:auto;width:100%;height:min(100%,80vh);height:min(100%,80svh);
+  /* héro : la photo devient le bandeau de tête du héro, court (38svh) pour que le
+     bouton d'appel entre dans le premier écran d'un 390 × 760 ; le portrait est
+     cadré haut (20 %) et son bas se dissout dans le fond — masque puis voile,
+     aucune arête. Le texte démarre dans cette dissolution, 20 px avant le bas
+     du bandeau (38svh − 20, dont 76 px de padding du héro). */
+  .hero{min-height:88vh;min-height:88svh;display:flex;flex-direction:column;padding:76px 0 12px;overflow:visible}
+  .hero-jwrap{top:0;left:0;right:0;bottom:auto;width:100%;height:38vh;height:38svh;max-height:38vh;max-height:38svh;
     -webkit-mask-image:none;mask-image:none}
-  .hero-jwrap img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 25%;
-    -webkit-mask-image:linear-gradient(180deg,#000 55%,rgba(0,0,0,.4) 82%,transparent 98%);
-    mask-image:linear-gradient(180deg,#000 55%,rgba(0,0,0,.4) 82%,transparent 98%)}
-  /* voile : bande douce sous la nav, montée sombre depuis le bas (transparente à ~52 %),
+  .hero-jwrap img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 20%;
+    -webkit-mask-image:linear-gradient(180deg,#000 46%,rgba(0,0,0,.5) 74%,transparent 97%);
+    mask-image:linear-gradient(180deg,#000 46%,rgba(0,0,0,.5) 74%,transparent 97%)}
+  /* voile : bande douce sous la nav, montée sombre depuis le bas (transparente à ~62 %),
      léger tamis global — tout finit en transparent progressif, aucune arête */
   .hero-jwrap::after{content:'';position:absolute;inset:0;background:
-    linear-gradient(180deg,rgba(7,10,20,.55) 0,rgba(7,10,20,0) 18%),
-    linear-gradient(0deg,rgba(7,10,20,.05) 0,rgba(7,10,20,.8) 10%,rgba(7,10,20,.66) 30%,rgba(7,10,20,0) 52%),
-    linear-gradient(rgba(7,10,20,.18),rgba(7,10,20,.18))}
+    linear-gradient(180deg,rgba(7,10,20,.5) 0,rgba(7,10,20,0) 22%),
+    linear-gradient(0deg,rgba(7,10,20,.92) 0,rgba(7,10,20,.74) 14%,rgba(7,10,20,.44) 34%,rgba(7,10,20,0) 62%),
+    linear-gradient(rgba(7,10,20,.16),rgba(7,10,20,.16))}
   .hero-shade{display:none}
-  .hero-txt{padding:max(96px,calc(46vh - 100px)) 0 0;padding:max(96px,calc(46svh - 100px)) 0 0;max-width:none}
+  .hero-txt{padding:calc(38vh - 96px) 0 0;padding:calc(38svh - 96px) 0 0;max-width:none}
   .hero-txt .cta-row{flex-direction:column;align-items:stretch;gap:10px}
   .hero-txt .cta-row .btn{width:100%;justify-content:center}
   .hero .jq{position:static;margin:18px auto 0;width:fit-content}
+  /* la vignette vidéo repasse dans le flux, sous le badge, alignée sur le texte.
+     relative, pas static : .vplay et .vcap se calent sur la vignette, pas sur le héro */
+  .hero>.vbig{position:relative;right:auto;bottom:auto;width:calc(100% - 44px);margin:18px 22px 0}
   /* accroches : capitales compactes, toujours sur UNE seule ligne */
   .kick{letter-spacing:.15em;gap:9px}
   /* accroches longues (héros métiers, section 04) : repli en casse normale discrète */
   .pc-head .kick,.b-hero .t-hero .kick{text-transform:none;letter-spacing:.01em;font-size:var(--fs-small);color:#A9B4CE}
-  /* la démo simulée ne s'affiche pas sous 900 px : la vidéo, juste au-dessus, montre la même chose ;
-     le bloc reste dans le DOM (moteurs, lecteurs d'écran ne sont pas concernés : c'est un exemple) */
-  .hero-demo{display:none}
   /* pas de parallaxe sous 900 px (bento.js) : aucun translate3d, donc aucun calque GPU par tuile */
   .tile{transform:none}
-  .t-hero,.t-demo,.t-role,.t-fiche,.t-met,.t-met-home,.t-mini,.t-roi,.t-janet{grid-column:span 12}
+  .t-hero,.t-demo,.t-role,.t-fiche,.t-met,.t-met-home,.t-roi,.t-janet{grid-column:span 12}
   .b-hero .t-hero{grid-row:auto;padding:40px 26px}
   .t-met-home{grid-row:auto}
-  .t-mini{grid-column:span 6}
   .t-janet{aspect-ratio:4/5} /* la tuile suit son contenu, plus de hauteur fixe */
   :root{--secgap:72px}
   .roi-grid{grid-template-columns:1fr}
@@ -758,7 +754,9 @@ footer.site a:hover{color:var(--ink)}
 }
 
 @media(max-width:720px){
-  .t-mini{grid-column:span 12}
+  /* 5 lignes de 24 px ne tiennent pas au-dessus du bouton d'appel : le sous-titre
+     du héro passe au corps de texte sous 720 px */
+  .hero-txt .sub{font-size:var(--fs-body)}
   /* le libellé du CTA ne dépend plus de la largeur d'écran : voir la requête
      de conteneur @container (max-width:639px), plus haut */
   .t-hero{padding:38px 26px}
@@ -779,8 +777,7 @@ footer.site a:hover{color:var(--ink)}
   .demo-hd .dav i,.jq i,.ph-ring,.wave.on i{animation:none}
   .chat.anim .m,.chat.anim .done{opacity:1;transform:none;transition:none var(--ease-out)}
   .t-hero .lr>span,.t-hero .sub,.t-hero .cta-row,.t-hero .proof{animation:none;transform:none;opacity:1}
-  .hero-txt .lr>span,.hero-txt .sub,.hero-txt .cta-row,.hero-txt .proof,.t-hero .foundpill,.hero-txt .foundpill{animation:none;transform:none;opacity:1}
-  .hero-demo{animation:none;transform:none;opacity:1}
+  .hero-txt .lr>span,.hero-txt .sub,.hero-txt .cta-row,.hero-txt .proofs,.hero-txt .proof,.t-hero .foundpill,.hero-txt .foundpill{animation:none;transform:none;opacity:1}
   .step .ic{transition:none var(--ease-out)}
   .step.cur .ic{transform:none;box-shadow:none}
   .btn:hover{transform:none}
@@ -1606,12 +1603,12 @@ h2[id],section[id]{scroll-margin-top:96px}
 }
 
 /* ---------- la vignette vidéo du héros ----------
-   Dans la colonne de texte, sous les boutons : une <img> (l'affiche 800 px),
-   le lecteur est construit au clic dans une surcouche plein écran (.vlay).
-   La hauteur est réservée par aspect-ratio, la surcouche est fixed : rien ne
-   se décale. 540 px : en 1440 × 900, la vignette entre dans le premier écran à 80 %.
-   Budget de rendu : aucun backdrop-filter (le plafond de 3 est atteint), aucun
-   will-change, aucun filter animé. */
+   Une <img> (l'affiche 800 px) ; le lecteur est construit au clic dans une
+   surcouche plein écran (.vlay). La hauteur est réservée par aspect-ratio, la
+   surcouche est fixed : rien ne se décale. La mise en place dans le héro de
+   l'accueil est plus haut (.hero>.vbig) ; la largeur ci-dessous ne sert que si
+   la vignette est posée ailleurs, dans une colonne de texte.
+   Budget de rendu : aucun backdrop-filter, aucun will-change, aucun filter animé. */
 .vbig{position:relative;display:block;width:540px;aspect-ratio:16/9;margin:22px 0 0;
   padding:0;border:1px solid var(--line);border-radius:var(--r-lg);overflow:hidden;cursor:pointer;
   background:var(--bg);box-shadow:0 30px 80px rgba(4,8,20,.6);transition:border-color var(--dur) var(--ease-out)}
@@ -1628,8 +1625,6 @@ h2[id],section[id]{scroll-margin-top:96px}
   background:linear-gradient(180deg,transparent,rgba(5,6,12,.88) 62%)}
 .vcap b{font:500 var(--fs-small)/1.2 var(--b);color:var(--ink)}
 .vcap em{font:500 var(--fs-small)/1 var(--b);font-style:normal;color:var(--soft);font-variant-numeric:tabular-nums}
-@media(max-width:1120px) and (min-width:901px){ .vbig{width:min(540px,52vw)} }
-@media(max-width:900px){ .vbig{width:100%} }
 @media(prefers-reduced-motion:reduce){
   .vplay::before,.vbig:hover .vplay::before{transition:none var(--ease-out);transform:none}
 }
