@@ -435,6 +435,15 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/cabinets.html"/>
   </url>
   <url>
+    <loc>https://celya.be/en/pricing.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/prix.html"/>
+    <xhtml:link rel="alternate" hreflang="nl-BE" href="https://celya.be/nl/prijzen.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/prix.html"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://celya.be/nl/prijzen.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://celya.be/en/pricing.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/prix.html"/>
+  </url>
+  <url>
     <loc>https://celya.be/en/restaurants.html</loc>
     <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/restaurants.html"/>
     <xhtml:link rel="alternate" hreflang="nl-BE" href="https://celya.be/nl/restaurants.html"/>
@@ -1500,6 +1509,7 @@
     <xhtml:link rel="alternate" hreflang="nl-BE" href="https://celya.be/nl/prijzen.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/prix.html"/>
     <xhtml:link rel="alternate" hreflang="nl" href="https://celya.be/nl/prijzen.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://celya.be/en/pricing.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/prix.html"/>
   </url>
   <url>
@@ -1950,6 +1960,7 @@
     <xhtml:link rel="alternate" hreflang="nl-BE" href="https://celya.be/nl/prijzen.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/prix.html"/>
     <xhtml:link rel="alternate" hreflang="nl" href="https://celya.be/nl/prijzen.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://celya.be/en/pricing.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/prix.html"/>
   </url>
   <url>
