@@ -42,8 +42,7 @@ gtag('consent','default',{ad_storage:'denied',analytics_storage:'denied',ad_user
 .field input{width:100%;padding:14px 16px;border-radius:13px;border:1px solid var(--line);background:rgba(255,255,255,.035);color:var(--ink);font-family:var(--b);font-size:15px;outline:none;transition:.3s}
 .field input:focus{border-color:rgba(79,123,255,.6);box-shadow:0 0 0 3px rgba(79,123,255,.12)}
 .field .hint{font-size:13px;line-height:1.55;color:var(--muted);margin:7px 0 0}
-.two{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-@media(max-width:640px){.two{grid-template-columns:1fr}}
+.two{display:grid;grid-template-columns:1fr;gap:16px}
 .calcout{margin:22px 0 0;padding:20px;border-radius:16px;border:1px solid var(--line);background:rgba(255,255,255,.03)}
 .calcout dl{margin:0;display:grid;grid-template-columns:1fr auto;gap:10px 18px;align-items:baseline}
 .calcout dt{margin:0;color:var(--muted);font-size:15px}
@@ -114,7 +113,7 @@ gtag('consent','default',{ad_storage:'denied',analytics_storage:'denied',ad_user
 <main>
 <div class="wrap sec sec-hero">
   <div class="bento b-hero">
-    <section class="tile t-hero t-hero-solo">
+    <section class="tile t-hero t-hero-7 t-hero-solo">
       <div class="kick">Outil · Calculateur</div>
       <h1><span class="lr"><span>Combien d'appels</span></span>
   <span class="lr"><span>vous échappent, <span class="gradtxt it">et ce qu'ils valent.</span></span></span></h1>
@@ -124,61 +123,52 @@ gtag('consent','default',{ad_storage:'denied',analytics_storage:'denied',ad_user
         <a class="btn btn-ghost" href="contact.html">Prendre rendez-vous</a>
       </div>
       <p class="proof">Nous ne fournissons aucun taux de conversion. Vous mettez les vôtres, ou vous en testez plusieurs. <b>+32 460 25 44 13</b></p>
-    </section>  </div>
-</div>
-    <section class="freesec access-free reveal" id="calculateur">
-      <div class="wrap-n">
-        <div class="fs-head">
-          <div class="kick"><b>01</b><span>L'outil</span></div>
-          <h2><span class="l2"><span>Vos chiffres, <span class="it">pas les nôtres</span></span></span></h2>
-        </div>
-        <div class="access-txt">
-        <form id="calc" novalidate>
-          <div class="two">
-            <div class="field">
-              <label for="c-appels">Appels reçus, une semaine ordinaire</label>
-              <input id="c-appels" type="number" min="0" step="1" inputmode="numeric" value="40">
-            </div>
-            <div class="field">
-              <label for="c-sem">Semaines travaillées par an</label>
-              <input id="c-sem" type="number" min="1" max="52" step="1" inputmode="numeric" value="46">
-              <p class="hint">52 semaines, moins les dix jours fériés légaux belges et une fermeture annuelle de deux à trois semaines. Corrigez selon votre métier&nbsp;: le bâtiment ferme plus longtemps.</p>
-            </div>
-          </div>
-          <div class="two">
-            <div class="field">
-              <label for="c-rate">Sur 10 appels, combien restent sans réponse&nbsp;?</label>
-              <input id="c-rate" type="number" min="0" max="10" step="1" inputmode="numeric" value="3">
-              <p class="hint">Comptez sur votre propre journal d'appels plutôt que d'estimer&nbsp;: c'est le seul chiffre fiable ici.</p>
-            </div>
-            <div class="field">
-              <label for="c-perdu">Sur 10 appelants sans réponse, combien ne rappellent pas&nbsp;?</label>
-              <input id="c-perdu" type="number" min="0" max="10" step="1" inputmode="numeric" value="5">
-              <p class="hint"><b>Nous ne fournissons pas ce chiffre.</b> Les taux qui circulent n'ont pas de source vérifiable et viennent rarement de Belgique. Mettez le vôtre, ou testez plusieurs valeurs.</p>
-            </div>
+    </section>
+    <aside class="tile t-tool reveal" id="calculateur">
+      <form id="calc" novalidate>
+        <div class="two">
+          <div class="field">
+            <label for="c-appels">Appels reçus, une semaine ordinaire</label>
+            <input id="c-appels" type="number" min="0" step="1" inputmode="numeric" value="40">
           </div>
           <div class="field">
-            <label for="c-valeur">Ce que vaut en moyenne un client gagné, pour vous</label>
-            <input id="c-valeur" type="number" min="0" step="1" inputmode="numeric" value="0">
-            <p class="hint">Laissez à zéro si vous préférez raisonner en nombre d'appelants plutôt qu'en euros. Ce montant est le vôtre&nbsp;: nous n'en proposons aucun.</p>
+            <label for="c-sem">Semaines travaillées par an</label>
+            <input id="c-sem" type="number" min="1" max="52" step="1" inputmode="numeric" value="46">
+            <p class="hint">52 semaines, moins les dix jours fériés légaux belges et une fermeture annuelle de deux à trois semaines. Corrigez selon votre métier&nbsp;: le bâtiment ferme plus longtemps.</p>
           </div>
-        </form>
-        <div class="calcout" id="cres" aria-live="polite">
-          <dl>
-            <dt>Appels sans réponse, par semaine</dt><dd id="r1">—</dd>
-            <dt>Appelants qui ne rappellent pas, par semaine</dt><dd id="r2">—</dd>
-            <dt>Sur une année</dt><dd id="r3">—</dd>
-          </dl>
-          <dl class="big" id="rmon" hidden>
-            <dt>Valeur annuelle correspondante</dt><dd id="r4">—</dd>
-          </dl>
-          <p class="copyzone" id="ctxt"></p>
-          <p><button class="btn btn-ghost" type="button" id="ccopy">Copier ce résultat</button></p>
         </div>
-
+        <div class="two">
+          <div class="field">
+            <label for="c-rate">Sur 10 appels, combien restent sans réponse&nbsp;?</label>
+            <input id="c-rate" type="number" min="0" max="10" step="1" inputmode="numeric" value="3">
+            <p class="hint">Comptez sur votre propre journal d'appels plutôt que d'estimer&nbsp;: c'est le seul chiffre fiable ici.</p>
+          </div>
+          <div class="field">
+            <label for="c-perdu">Sur 10 appelants sans réponse, combien ne rappellent pas&nbsp;?</label>
+            <input id="c-perdu" type="number" min="0" max="10" step="1" inputmode="numeric" value="5">
+            <p class="hint"><b>Nous ne fournissons pas ce chiffre.</b> Les taux qui circulent n'ont pas de source vérifiable et viennent rarement de Belgique. Mettez le vôtre, ou testez plusieurs valeurs.</p>
+          </div>
         </div>
+        <div class="field">
+          <label for="c-valeur">Ce que vaut en moyenne un client gagné, pour vous</label>
+          <input id="c-valeur" type="number" min="0" step="1" inputmode="numeric" value="0">
+          <p class="hint">Laissez à zéro si vous préférez raisonner en nombre d'appelants plutôt qu'en euros. Ce montant est le vôtre&nbsp;: nous n'en proposons aucun.</p>
+        </div>
+      </form>
+      <div class="calcout" id="cres" aria-live="polite">
+        <dl>
+          <dt>Appels sans réponse, par semaine</dt><dd id="r1">—</dd>
+          <dt>Appelants qui ne rappellent pas, par semaine</dt><dd id="r2">—</dd>
+          <dt>Sur une année</dt><dd id="r3">—</dd>
+        </dl>
+        <dl class="big" id="rmon" hidden>
+          <dt>Valeur annuelle correspondante</dt><dd id="r4">—</dd>
+        </dl>
+        <p class="copyzone" id="ctxt"></p>
+        <p><button class="btn btn-ghost" type="button" id="ccopy">Copier ce résultat</button></p>
       </div>
-    </section>
+    </aside>  </div>
+</div>
     <section class="freesec access-free reveal">
       <div class="wrap-n">
         <div class="fs-head">

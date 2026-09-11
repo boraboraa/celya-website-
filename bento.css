@@ -193,7 +193,10 @@ body.mnav-open{overflow:hidden}
 
 /* ---------- bento ---------- */
 .bento{display:grid;grid-template-columns:repeat(12,1fr);gap:14px}
-.b-hero .t-hero{grid-row:span 2;background-color:rgba(14,20,38,.32);padding:52px 44px}
+/* une seule rangée : la carte de droite (démo ou « Sur cette page ») s'étire à la
+   hauteur du héro au lieu de laisser la rangée 2 vide. Aucun .b-hero ne porte de
+   troisième tuile, rien ne vivait donc en rangée 2. */
+.b-hero .t-hero{grid-row:auto;background-color:rgba(14,20,38,.32);padding:52px 44px}
 .tile{position:relative;isolation:isolate;grid-column:span 12;border:1px solid var(--line);border-radius:var(--r-lg);background-color:var(--glass);background-image:linear-gradient(160deg,var(--surface-2),transparent 38%);padding:26px;overflow:hidden;transform:translate3d(0,var(--py,0px),0)}
 /* lueur qui suit le curseur */
 .tile::after{content:'';position:absolute;inset:0;border-radius:inherit;pointer-events:none;opacity:0;transition:opacity var(--dur) var(--ease-out);z-index:0;
@@ -231,6 +234,7 @@ body.mnav-open{overflow:hidden}
 
 /* démo d'appel */
 .t-demo{grid-column:span 4;display:flex;flex-direction:column;padding:22px}
+.b-hero .t-demo{align-self:stretch} /* le .phone est en flex:1 : la démo remplit la hauteur du héro */
 .demo-hd{display:flex;align-items:center;gap:12px;padding-bottom:12px;border-bottom:1px solid var(--line);margin-bottom:12px}
 .demo-hd .dav{position:relative;flex:none}
 .demo-hd .dav img{width:40px;height:40px;border-radius:var(--r-pill)}
@@ -1229,6 +1233,33 @@ footer.site a:hover{color:var(--ink)}
   linear-gradient(0deg,rgba(7,10,20,.62) 0,rgba(7,10,20,.1) 44%)}
 .t-hero-solo .sub{max-width:46ch}
 
+/* -- la colonne de droite du héro : sommaire de la page, ou outil --
+   Le héro passe de 8 à 7 colonnes par une CLASSE posée sur la section
+   (t-hero-7), pas par :has() : les navigateurs sans :has() garderaient
+   sinon un héro de 8 colonnes à côté d'une carte de 5.
+   align-self:start : le héro garde sa hauteur propre. Sans lui, la carte
+   « outil » du calculateur (plus haute que le héro) étirait le héro à 1369 px
+   et centrait le H1 au milieu d'une carte vide. Sans effet sur les pages à
+   sommaire, où le héro est déjà la plus haute des deux tuiles. */
+.t-hero-7{grid-column:span 7;align-self:start}
+.t-answer{grid-column:span 5;align-self:stretch;display:flex;flex-direction:column;padding:34px 34px 30px}
+.t-answer>.kick{margin-bottom:0}
+.t-answer ol{list-style:none;margin:0;padding:0;flex:1;display:flex;flex-direction:column;justify-content:center}
+.t-answer li{border-top:1px solid var(--line)}
+.t-answer li:first-child{border-top:0}
+.t-answer a{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:16px 0;font:500 var(--t-lg)/1.35 var(--h);color:var(--ink);letter-spacing:-.01em;transition:color var(--dur-fast) var(--ease-out)}
+/* même flèche que .mrow i : dégradé détouré sur le texte, avance au survol.
+   position:static annule le ::after d'agrandissement de cible (« li a::after »,
+   plus bas) : sans lui la flèche serait un calque absolu de la largeur du lien.
+   La cible reste à 55 px de haut sur toute la colonne, bien au-dessus du minimum. */
+.t-answer a::after{content:'\2192';position:static;flex:none;font-weight:700;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;transition:transform var(--dur-fast) var(--spring)}
+.t-answer a:hover{color:var(--c1)}
+.t-answer a:hover::after{transform:translateX(5px)}
+/* le calculateur : le formulaire et son résultat vivent dans le héro */
+.t-tool{grid-column:span 5;align-self:stretch;padding:28px 28px 24px}
+/* une ancre du sommaire ne glisse pas sous la nav collante */
+h2[id],section[id]{scroll-margin-top:96px}
+
 /* -- bande des métiers concernés : pastilles en cascade -- */
 .jobs-free{--secgap-half:1}
 .jobs{display:flex;flex-wrap:wrap;gap:9px 10px;justify-content:center;max-width:840px;margin:0 auto}
@@ -1410,6 +1441,10 @@ footer.site a:hover{color:var(--ink)}
   .t-hero-solo .hph{position:relative;inset:auto;height:min(46vh,380px);min-height:280px;margin:-40px -26px 26px;border-radius:0}
   .t-hero-solo .hph img{object-position:62% 58%}
   .t-hero-solo .hph::after{background:linear-gradient(180deg,rgba(7,10,20,.32) 0,rgba(7,10,20,0) 30%,rgba(7,10,20,0) 58%,rgba(7,10,20,.82) 96%)}
+  /* une colonne : la carte de droite passe SOUS le héro, donc après les boutons —
+     c'est l'ordre du DOM, la lecture ne change pas */
+  .t-hero-7,.t-answer,.t-tool{grid-column:span 12}
+  .t-answer,.t-tool{padding:24px 26px}
 }
 @media(max-width:760px){
   .day-track{height:70px}
