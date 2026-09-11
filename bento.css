@@ -114,8 +114,23 @@ header.top{position:sticky;top:0;z-index:50;background:rgba(7,10,20,.72);backdro
 .btn-ghost{border:1px solid var(--line-strong);color:var(--ink);background:var(--surface-1)}
 .btn svg{width:17px;height:17px;flex:none}
 .btn-big{font-size:var(--t-lg);padding:17px 28px;box-shadow:0 8px 34px rgba(79,123,255,.35)}
-/* le libellé court et la sous-ligne du CTA n'existent que sous 720 px */
-.cta-s,.cta-sub{display:none}
+/* Un seul mécanisme pour les deux libellés du CTA, mobile compris : c'est la
+   largeur du CONTENEUR qui décide, pas celle de l'écran. Un héro de 7 colonnes
+   à 1440 est aussi étroit qu'un téléphone (567 px de contenu) — il prend donc
+   le libellé court, sinon les deux boutons s'empilent (387 + 12 + 193 > 567).
+   Le qualificatif « Notre réceptionniste IA · » repart alors dans la preuve,
+   où il ne dispute plus la place au bouton : c'est .cta-q, qui remplace la
+   sous-ligne <small class="cta-sub"> supprimée du DOM.
+   Les quatre conteneurs qui portent un .btn-big sont relevés par grep :
+   .t-hero, .hero-txt, .cta-free .wrap, .art-cta. Ils sont nommés là où ils
+   sont définis, chacun avec son container-type:inline-size.
+   639 px : au-dessus, « Appelez Janet, notre réceptionniste IA » (387) et
+   « Prendre rendez-vous » (193) tiennent côte à côte avec leur gouttière. */
+.cta-s,.cta-q{display:none}
+@container (max-width:639px){
+  .cta-l{display:none}
+  .cta-s,.cta-q{display:inline}
+}
 /* CTA de nav : plus haut que large en proportion du logo — largeur ≤ 1,5 × celle du
    logo (132 px pour 88). « Appeler Janet » est la plus longue des trois langues :
    c'est elle qui fixe le pas de type et le padding. */
@@ -168,7 +183,7 @@ body.mnav-open{overflow:hidden}
   background:linear-gradient(90deg,rgba(7,10,20,.92) 0,rgba(7,10,20,.6) 32%,rgba(7,10,20,.16) 54%,rgba(7,10,20,0) 68%),
              linear-gradient(180deg,rgba(7,10,20,0) 70%,rgba(7,10,20,.45) 90%,rgba(7,10,20,0) 100%)}
 .hero-in{position:relative;z-index:2;width:100%}
-.hero-txt{max-width:660px;padding:44px 0 100px}
+.hero-txt{max-width:660px;padding:44px 0 100px;container-type:inline-size} /* conteneur de requête du CTA : 660 px, au-dessus du seuil, libellé long */
 /* rythme vertical du héros : 14 px entre les blocs de texte (accroche, titre, sous-titre, boutons,
    preuve, pastille), 22 px avant et après la vignette. Le h1 rend .16em au masque des .lr : on le
    rajoute à sa marge basse pour que l'écart visible reste 14 px. */
@@ -209,7 +224,10 @@ body.mnav-open{overflow:hidden}
 .tile>*{position:relative;z-index:1}
 
 /* héro */
-.t-hero{grid-column:span 8;padding:40px 38px;display:flex;flex-direction:column;justify-content:center}
+/* container-type:inline-size — conteneur de requête pour le libellé du CTA.
+   Le héro reste un item de grille en colonne flex : seule sa largeur cesse
+   d'être déduite du contenu, or elle vient déjà de la piste (span 7 / 8 / 12). */
+.t-hero{grid-column:span 8;padding:40px 38px;display:flex;flex-direction:column;justify-content:center;container-type:inline-size}
 .t-hero h1{margin:14px 0 18px}
 /* apparition du héro au chargement */
 .t-hero .lr,.hero-txt .lr{display:block;overflow:hidden;padding-bottom:.16em;margin-bottom:-.16em} /* .16em : la boîte peinte de l'italique dépasse la ligne (197 px pour 174 en 1440), .12em ne suffisait pas */
@@ -235,6 +253,16 @@ body.mnav-open{overflow:hidden}
 /* démo d'appel */
 .t-demo{grid-column:span 4;display:flex;flex-direction:column;padding:22px}
 .b-hero .t-demo{align-self:stretch} /* le .phone est en flex:1 : la démo remplit la hauteur du héro */
+/* Démo étirée (sous-pages seulement, pas le .hero-demo de l'accueil) : l'appel
+   et la conversation s'ancrent en haut, la fiche en bas, le vide se met entre
+   les deux plutôt que de tout centrer dans un panneau trop grand.
+   La fiche passe en flux (position:static) : elle occupe déjà sa place, donc
+   rien ne saute quand l'animation la révèle — seules l'opacité et la
+   translation changent. L'écran « Appel entrant » reste en absolu inset:0 et
+   couvre le panneau entier. */
+.b-hero .t-demo .phone{justify-content:flex-start}
+.b-hero .t-demo .chat{flex:0 0 auto;justify-content:flex-start}
+.b-hero .t-demo .ph-card{position:static;margin-top:auto}
 .demo-hd{display:flex;align-items:center;gap:12px;padding-bottom:12px;border-bottom:1px solid var(--line);margin-bottom:12px}
 .demo-hd .dav{position:relative;flex:none}
 .demo-hd .dav img{width:40px;height:40px;border-radius:var(--r-pill)}
@@ -568,6 +596,7 @@ body.mnav-open{overflow:hidden}
 /* CTA final : pleine largeur, très grand */
 .cta-free{text-align:center;margin:var(--secgap) 0 120px}
 .cta-free h2{font-size:clamp(32px,5vw,58px);letter-spacing:-.04em;line-height:1.02;margin-bottom:10px}
+.cta-free .wrap{container-type:inline-size} /* conteneur de requête du CTA : pleine largeur, libellé long */
 .cta-free .cta-row{justify-content:center;margin-top:30px}
 .cta-free .btn-big{font-size:var(--t-lg);padding:19px 32px}
 .cta-free .proof{margin-top:6px}
@@ -714,9 +743,8 @@ footer.site a:hover{color:var(--ink)}
 
 @media(max-width:720px){
   .t-mini{grid-column:span 12}
-  /* le CTA principal passe au libellé court, le numéro descend sous le bouton */
-  .cta-l{display:none}.cta-s{display:inline}
-  .cta-sub{display:block;width:100%;text-align:inherit;font:500 var(--t-sm)/1.4 var(--b);color:var(--soft);margin:-2px 0 2px;font-variant-numeric:tabular-nums} /* inherit : à gauche sous un héro aligné à gauche, centré dans un bloc centré */
+  /* le libellé du CTA ne dépend plus de la largeur d'écran : voir la requête
+     de conteneur @container (max-width:639px), plus haut */
   .t-hero{padding:38px 26px}
   body{padding-bottom:76px}
   .nav-logo{height:24px}
@@ -933,7 +961,7 @@ footer.site a:hover{color:var(--ink)}
 .figure.urgf{border-color:rgba(255,120,100,.32)}
 .art-note{border-left:2px solid var(--line-accent-strong);background:rgba(79,123,255,.06);border-radius:0 var(--r-md) var(--r-md) 0;padding:16px 20px;margin:0 0 24px}
 .art-note p{font-size:var(--t-md);line-height:1.6;margin:0}
-.art-cta{border:1px solid var(--line-accent);border-radius:var(--r-lg);background:linear-gradient(160deg,rgba(34,211,238,.08),rgba(168,85,247,.08));padding:32px 30px;margin:48px 0 0;text-align:center}
+.art-cta{border:1px solid var(--line-accent);border-radius:var(--r-lg);background:linear-gradient(160deg,rgba(34,211,238,.08),rgba(168,85,247,.08));padding:32px 30px;margin:48px 0 0;text-align:center;container-type:inline-size} /* conteneur de requête du CTA dans un article */
 .art-cta h2{margin:0 0 8px;font-size:var(--t-2xl)}
 .art-cta p{font-size:var(--t-md);margin:0;color:var(--body)}
 .art-cta .cta-row{justify-content:center;margin:20px 0 10px}
@@ -1233,14 +1261,12 @@ footer.site a:hover{color:var(--ink)}
   linear-gradient(0deg,rgba(7,10,20,.62) 0,rgba(7,10,20,.1) 44%)}
 .t-hero-solo .sub{max-width:46ch}
 
-/* -- la colonne de droite du héro : sommaire de la page, ou outil --
+/* -- la colonne de droite du héro : le sommaire de la page --
    Le héro passe de 8 à 7 colonnes par une CLASSE posée sur la section
    (t-hero-7), pas par :has() : les navigateurs sans :has() garderaient
    sinon un héro de 8 colonnes à côté d'une carte de 5.
-   align-self:start : le héro garde sa hauteur propre. Sans lui, la carte
-   « outil » du calculateur (plus haute que le héro) étirait le héro à 1369 px
-   et centrait le H1 au milieu d'une carte vide. Sans effet sur les pages à
-   sommaire, où le héro est déjà la plus haute des deux tuiles. */
+   align-self:start : le héro garde sa hauteur propre. Sans effet sur les
+   pages à sommaire, où le héro est déjà la plus haute des deux tuiles. */
 .t-hero-7{grid-column:span 7;align-self:start}
 .t-answer{grid-column:span 5;align-self:stretch;display:flex;flex-direction:column;padding:34px 34px 30px}
 .t-answer>.kick{margin-bottom:0}
@@ -1255,8 +1281,25 @@ footer.site a:hover{color:var(--ink)}
 .t-answer a::after{content:'\2192';position:static;flex:none;font-weight:700;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;transition:transform var(--dur-fast) var(--spring)}
 .t-answer a:hover{color:var(--c1)}
 .t-answer a:hover::after{transform:translateX(5px)}
-/* le calculateur : le formulaire et son résultat vivent dans le héro */
-.t-tool{grid-column:span 5;align-self:stretch;padding:28px 28px 24px}
+/* -- le calculateur : héro compact, outil en dessous --
+   Pas de carte à côté du héro : il reprend ses 12 colonnes et perd sa hauteur
+   minimale. L'outil vient juste dessous, en deux tuiles — le formulaire sur 7
+   colonnes (≈ 600 px de contenu, donc deux champs de front) et la carte de
+   résultat sur 5, collée sous la nav pendant qu'on remplit le formulaire.
+   align-self:start : sans lui la tuile s'étirerait sur toute la rangée et
+   position:sticky n'aurait plus de course. */
+.t-hero-12{grid-column:span 12;min-height:0}
+.sec-in{margin-top:56px} /* provisoire : la phase 9 posera les tokens d'espacement */
+.t-calc-in{grid-column:span 7}
+.t-calc-out{grid-column:span 5;position:sticky;top:88px;align-self:start}
+/* transform:none annule la parallaxe de .tile sur les deux tuiles de l'outil :
+   la carte collante ne dérive pas de ±16 px contre la nav sous laquelle elle
+   tient, et le formulaire ne se décale pas de sa carte — les deux forment un
+   seul objet, pas deux tuiles indépendantes. */
+.t-calc-in,.t-calc-out{transform:none}
+.t-calc-out>.calcout{margin-top:0}
+/* au-dessus de 900 px le détail est déplié en permanence : pas de poignée */
+.calc-more>summary{display:none}
 /* une ancre du sommaire ne glisse pas sous la nav collante */
 h2[id],section[id]{scroll-margin-top:96px}
 
@@ -1443,8 +1486,23 @@ h2[id],section[id]{scroll-margin-top:96px}
   .t-hero-solo .hph::after{background:linear-gradient(180deg,rgba(7,10,20,.32) 0,rgba(7,10,20,0) 30%,rgba(7,10,20,0) 58%,rgba(7,10,20,.82) 96%)}
   /* une colonne : la carte de droite passe SOUS le héro, donc après les boutons —
      c'est l'ordre du DOM, la lecture ne change pas */
-  .t-hero-7,.t-answer,.t-tool{grid-column:span 12}
-  .t-answer,.t-tool{padding:24px 26px}
+  .t-hero-7,.t-answer{grid-column:span 12}
+  .t-answer{padding:24px 26px}
+  /* calculateur : une colonne, et la carte de résultat se colle en bas d'écran
+     plutôt qu'en haut — au-dessus de la barre d'appel (.callbar, fixe en bas
+     dès 300 px de défilement, 67 px mesurés en 390) : 84 px laissent 17 px de
+     jour entre les deux, et gardent la marge si la barre grandit. */
+  .t-calc-in,.t-calc-out{grid-column:span 12;padding:24px 26px}
+  /* fond plein : collée, la carte passe par-dessus le formulaire — var(--glass)
+     à .86, puis .96, laissaient encore lire les libellés au travers. C'est le
+     fond de page, aucune couleur nouvelle. */
+  .t-calc-out{position:sticky;top:auto;bottom:calc(84px + env(safe-area-inset-bottom));background-color:var(--bg)}
+  /* montant seul au premier affichage : le détail se replie, sa poignée revient.
+     Même motif que le sommaire mobile d'un article (.toc-m). */
+  .calc-more>summary{display:flex;align-items:center;justify-content:space-between;gap:12px;cursor:pointer;list-style:none;margin-top:14px;padding-top:13px;border-top:1px solid var(--line);font:700 var(--t-md)/1.3 var(--h);color:var(--ink)}
+  .calc-more>summary::-webkit-details-marker{display:none}
+  .calc-more>summary::after{content:'+';font-size:var(--t-xl);font-weight:400;color:var(--soft);transition:transform var(--dur-fast) var(--spring)}
+  .calc-more[open]>summary::after{transform:rotate(45deg)}
 }
 @media(max-width:760px){
   .day-track{height:70px}

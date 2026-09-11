@@ -42,8 +42,10 @@ gtag('consent','default',{ad_storage:'denied',analytics_storage:'denied',ad_user
 .field input{width:100%;padding:14px 16px;border-radius:13px;border:1px solid var(--line);background:rgba(255,255,255,.035);color:var(--ink);font-family:var(--b);font-size:15px;outline:none;transition:.3s}
 .field input:focus{border-color:rgba(79,123,255,.6);box-shadow:0 0 0 3px rgba(79,123,255,.12)}
 .field .hint{font-size:13px;line-height:1.55;color:var(--muted);margin:7px 0 0}
-.two{display:grid;grid-template-columns:1fr;gap:16px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:640px){.two{grid-template-columns:1fr}}
 .calcout{margin:22px 0 0;padding:20px;border-radius:16px;border:1px solid var(--line);background:rgba(255,255,255,.03)}
+.calcout dl[hidden]{display:none}
 .calcout dl{margin:0;display:grid;grid-template-columns:1fr auto;gap:10px 18px;align-items:baseline}
 .calcout dt{margin:0;color:var(--muted);font-size:15px}
 .calcout dd{margin:0;text-align:right;font-family:var(--h);font-size:19px;font-weight:600}
@@ -113,18 +115,22 @@ gtag('consent','default',{ad_storage:'denied',analytics_storage:'denied',ad_user
 <main>
 <div class="wrap sec sec-hero">
   <div class="bento b-hero">
-    <section class="tile t-hero t-hero-7 t-hero-solo">
+    <section class="tile t-hero t-hero-12 t-hero-solo">
       <div class="kick">Outil · Calculateur</div>
       <h1><span class="lr"><span>Combien d'appels</span></span>
   <span class="lr"><span>vous échappent, <span class="gradtxt it">et ce qu'ils valent.</span></span></span></h1>
       <p class="sub">Un calcul simple, fait avec vos chiffres et une année belge de référence. Rien à installer, rien à créer, aucune adresse à laisser.</p>
       <div class="cta-row">
-        <a class="btn btn-grad btn-big" href="tel:+32460254413"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg> <span class="cta-l">Appelez Janet, notre réceptionniste IA</span><span class="cta-s">Appeler Janet</span></a><small class="cta-sub">Notre réceptionniste IA · +32 460 25 44 13</small>
+        <a class="btn btn-grad btn-big" href="tel:+32460254413"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg> <span class="cta-l">Appelez Janet, notre réceptionniste IA</span><span class="cta-s">Appeler Janet</span></a>
         <a class="btn btn-ghost" href="contact.html">Prendre rendez-vous</a>
       </div>
-      <p class="proof">Nous ne fournissons aucun taux de conversion. Vous mettez les vôtres, ou vous en testez plusieurs. <b>+32 460 25 44 13</b></p>
-    </section>
-    <aside class="tile t-tool reveal" id="calculateur">
+      <p class="proof">Nous ne fournissons aucun taux de conversion. Vous mettez les vôtres, ou vous en testez plusieurs. <span class="cta-q">Notre réceptionniste IA · </span><b>+32 460 25 44 13</b></p>
+    </section>  </div>
+</div>
+
+<div class="wrap sec-in">
+  <div class="bento calc">
+    <section class="tile t-calc-in" id="calculateur">
       <form id="calc" novalidate>
         <div class="two">
           <div class="field">
@@ -155,19 +161,27 @@ gtag('consent','default',{ad_storage:'denied',analytics_storage:'denied',ad_user
           <p class="hint">Laissez à zéro si vous préférez raisonner en nombre d'appelants plutôt qu'en euros. Ce montant est le vôtre&nbsp;: nous n'en proposons aucun.</p>
         </div>
       </form>
+    </section>
+    <aside class="tile t-calc-out">
       <div class="calcout" id="cres" aria-live="polite">
         <dl>
-          <dt>Appels sans réponse, par semaine</dt><dd id="r1">—</dd>
-          <dt>Appelants qui ne rappellent pas, par semaine</dt><dd id="r2">—</dd>
           <dt>Sur une année</dt><dd id="r3">—</dd>
         </dl>
         <dl class="big" id="rmon" hidden>
           <dt>Valeur annuelle correspondante</dt><dd id="r4">—</dd>
         </dl>
-        <p class="copyzone" id="ctxt"></p>
-        <p><button class="btn btn-ghost" type="button" id="ccopy">Copier ce résultat</button></p>
+        <details class="calc-more" open>
+          <summary>Détail</summary>
+          <dl>
+            <dt>Appels sans réponse, par semaine</dt><dd id="r1">—</dd>
+            <dt>Appelants qui ne rappellent pas, par semaine</dt><dd id="r2">—</dd>
+          </dl>
+          <p class="copyzone" id="ctxt"></p>
+          <p><button class="btn btn-ghost" type="button" id="ccopy">Copier ce résultat</button></p>
+        </details>
       </div>
-    </aside>  </div>
+    </aside>
+  </div>
 </div>
     <section class="freesec access-free reveal">
       <div class="wrap-n">
@@ -332,10 +346,10 @@ gtag('consent','default',{ad_storage:'denied',analytics_storage:'denied',ad_user
       <div class="wrap">
         <h2><span class="l2"><span>Vos chiffres valent mieux <span class="it">qu'une moyenne empruntée.</span></span></span></h2>
         <div class="cta-row">
-          <a class="btn btn-grad btn-big" href="tel:+32460254413"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg> <span class="cta-l">Appelez Janet, notre réceptionniste IA</span><span class="cta-s">Appeler Janet</span></a><small class="cta-sub">Notre réceptionniste IA · +32 460 25 44 13</small>
+          <a class="btn btn-grad btn-big" href="tel:+32460254413"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg> <span class="cta-l">Appelez Janet, notre réceptionniste IA</span><span class="cta-s">Appeler Janet</span></a>
           <a class="btn btn-ghost" href="contact.html">Prendre rendez-vous</a>
         </div>
-        <p class="proof"><b>+32 460 25 44 13</b>. Vingt minutes pour transformer l'hypothèse en relevé.</p>
+        <p class="proof"><span class="cta-q">Notre réceptionniste IA · </span><b>+32 460 25 44 13</b>. Vingt minutes pour transformer l'hypothèse en relevé.</p>
       </div>
     </section>
 <div class="wrap">
@@ -399,6 +413,13 @@ gtag('consent','default',{ad_storage:'denied',analytics_storage:'denied',ad_user
   });}
   calc();
 })();
+</script>
+<script>
+/* « montant seul » au premier affichage mobile : le détail du calcul est replié
+   sous 900 px, déplié au-dessus — là, sa summary est masquée par la CSS. */
+(function(){var d=document.querySelector('.calc-more');if(!d)return;
+ var m=window.matchMedia('(max-width:899px)');function s(){d.open=!m.matches;}
+ s();m.addEventListener('change',s);})();
 </script>
 </body>
 </html>
