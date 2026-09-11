@@ -168,7 +168,7 @@
     }
     chat.classList.add('anim');
     if(card)card.classList.add('anim');
-    var idx=0,timer=null,started=false,typing=null,sec=0,tick=null;
+    var idx=0,timer=null,started=false,typing=null,sec=0,tick=null,premier=true;
     function fmt(n){return ('0'+Math.floor(n/60)).slice(-2)+':'+('0'+n%60).slice(-2);}
     function startClock(){sec=0;if(clock)clock.textContent='00:00';
       tick=setInterval(function(){sec++;if(clock)clock.textContent=fmt(sec);},1000);}
@@ -180,6 +180,13 @@
     function hideCard(){if(card){card.classList.remove('onstage');rows.forEach(function(r){r.classList.remove('on');});}}
     function reset(){clearTimeout(timer);clearTyping();stopClock();setWave(false);hideCard();
       items.forEach(function(m){m.classList.remove('on');m._typed=false;});idx=0;}
+    /* premier cycle : l'écran est déjà rempli — conversation lue, fiche remplie,
+       minuteur à l'arrêt. On ne démarre jamais sur un panneau vide. */
+    function showFilled(){items.forEach(function(m){m.classList.add('on');});
+      if(card){card.classList.add('onstage');rows.forEach(function(r){r.classList.add('on');});}
+      setWave(false);if(clock)clock.textContent='00:19';
+      timer=setTimeout(function(){reset();showIncoming();
+        timer=setTimeout(function(){hideIncoming();startClock();step();},2100);},3400);}
     function fillCard(i){
       if(i<rows.length){rows[i].classList.add('on');timer=setTimeout(function(){fillCard(i+1);},430);}
       else{timer=setTimeout(function(){ /* fin de cycle : nouvel appel */
@@ -207,7 +214,9 @@
       }
     }
     var io2=new IntersectionObserver(function(es){es.forEach(function(e){
-      if(e.isIntersecting&&!started){started=true;showIncoming();
+      if(e.isIntersecting&&!started){started=true;
+        if(premier){premier=false;showFilled();return;}
+        showIncoming();
         timer=setTimeout(function(){hideIncoming();startClock();step();},1600);}
       else if(!e.isIntersecting&&started){reset();hideIncoming();started=false;}
     });},{threshold:.3});
