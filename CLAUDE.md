@@ -58,25 +58,27 @@ ne se vérifie pas. Le hook le bloque et continuera de le bloquer.
 Ce qui est autorisé, c'est de **nommer** les langues, à une condition : chacune
 doit figurer dans la documentation publique du moteur vocal. Source relevée le
 31 août 2026 sur <https://elevenlabs.io/docs/overview/models> — Eleven Flash
-v2.5, le modèle basse latence des agents, y liste nommément 32 langues, dont
-les quatorze affichées sur les trois accueils : Français, Nederlands, Deutsch,
-English, Español, Italiano, Português, Polski, Türkçe, العربية, Română,
-Ελληνικά, Русский, 中文.
+v2.5, le modèle basse latence des agents, y liste nommément 32 langues.
 
-La légende du nuage sépare **deux choses**, et doit continuer à le faire :
+**Depuis le 11 septembre 2026, le site ne nomme plus que ce qui tourne.** La
+section « Bonjour » des trois accueils (grand mot tournant, légende, nuage des
+quatorze langues du moteur) a été réduite, à la demande de Bora, à une question
+de FAQ dans les trois langues, dont la réponse est la seule formulation
+autorisée : « Chez nos clients belges, Janet répond en français et en
+néerlandais, et bascule d'une langue à l'autre en cours d'appel. Une autre
+langue ? Parlons-en. » (NL : « Bij onze Belgische klanten antwoordt Janet in
+het Frans en het Nederlands, en schakelt ze tijdens het gesprek van de ene taal
+naar de andere. Een andere taal? Laten we erover praten. » — EN : « French and
+Dutch. She switches from one to the other during the call. Another language?
+Let's talk. »). Elle figure aussi dans le `FAQPage` du JSON-LD des trois
+accueils. Si le nuage revient un jour, il revient avec sa légende en deux
+parties (ce que le moteur gère / ce qui tourne aujourd'hui).
 
-1. **ce que le moteur gère** — les langues nommées dans le nuage ;
-2. **ce qui tourne aujourd'hui** — « Chez nos clients belges, Janet répond en
-   français et en néerlandais, et bascule d'une langue à l'autre en cours
-   d'appel. Une autre langue ? Parlons-en. »
-
-**L'allemand** peut figurer dans le nuage : c'est une capacité du moteur. Il ne
-doit apparaître dans **aucune page** comme une promesse de service. Le hook
-applique exactement ça : le motif `Deutsch | Duits*` est levé pour le seul bloc
-`<div class="langcloud">` des trois pages d'accueil, et reste bloquant partout
-ailleurs — y compris ailleurs sur ces trois pages, et y compris si le nuage est
-recopié sur une autre page. Les cinq cas de contrôle sont dans l'historique du
-lot 5.
+**L'allemand** ne doit apparaître dans **aucune page** comme une promesse de
+service. Le hook bloque le motif `Deutsch | Duits*` partout ; l'exception qu'il
+lève pour un bloc `<div class="langcloud">` des trois accueils ne s'applique
+plus à rien depuis que le nuage a disparu (`grep -rl Deutsch` doit renvoyer
+zéro), mais reste en place pour le jour où il reviendrait.
 
 Formulation autorisée pour l'agenda, FR : « Vous utilisez déjà un logiciel de
 gestion ? Vous le gardez. Une connexion directe à votre outil peut être
@@ -148,6 +150,40 @@ hero de l'accueil). `bento.js` y est touché sur **un seul point** : le premier
 cycle de la démo d'appel démarre sur l'écran rempli (la conversation affichée),
 jamais sur l'écran vide. Rien d'autre dans `bento.js` ne bouge, et la règle
 ci-dessus reprend après ce lot.
+
+**Ce que le lot a fixé, et qui se vérifie d'un `grep` ou d'une mesure :**
+
+- **Sept tailles de fonte, trois interlignes, rien en dur** : `--fs-display`
+  (h1 de l'accueil, grands nombres), `--fs-h1` (h1 des sous-pages, titres de
+  chapitre `.fs-head h2`), `--fs-h2`, `--fs-h3` (24), `--fs-body` (17),
+  `--fs-small` (14), `--fs-label` (12, capitales espacées seulement) ;
+  `--lh-tight`, `--lh-heading`, `--lh-body`. À 1440 l'accueil rend exactement
+  12 · 14 · 17 · 24 · 40 · 56 · 72 ; `grep -cE 'font-size:[0-9.]+px' bento.css`
+  rend 1 (l'exception mesurée de `.day-blk span` sous 760 px). Aucune phrase
+  sous 14 px ; `.it` est à `1em`.
+- **Deux espacements** : `--space-in` (96 px, entre blocs d'un même chapitre,
+  classe `.sec-in`, bandes `.cine` et ce qui les suit) et `--space-out`
+  (200 px, entre chapitres) ; 64 / 120 sous 720 px. `--secgap` n'existe plus.
+- **Le bouton d'appel** : un seul balisage, `<span class="cta-l">` (libellé
+  long) / `<span class="cta-s">` (court), bascule par container query sous
+  640 px de conteneur ; le qualificatif `<span class="cta-q">` vit dans la
+  ligne `.proof`, avant le numéro. Plus de sous-ligne.
+- **Le héro des sous-pages** : 7 colonnes + `aside.t-answer` (« Sur cette
+  page », trois liens d'ancre vers les H2, ids `s-…` posés sur les H2) sur les
+  pages sans démo ; 8 + 4 avec démo étirée. Le générateur est dans l'historique
+  du lot (phase 3).
+- **Les apparitions** : état de repos visible, `translateY(12px) → 0` en
+  400 ms (`--ease-reveal`), **aucune opacité animée** au-dessus de la ligne de
+  flottaison ; les tracés qui se dessinent restent.
+- **Pas de numéro d'eyebrow** (`.kick > b` numérique) ; seuls les 1-2-3-4 du
+  parcours d'appel, les étapes d'installation et le diagnostic gardent leurs
+  chiffres.
+- **Tuiles métiers** : quatre par rangée, `aspect-ratio 3/4`, duotone par
+  `filter` sur une image **qui ne bouge plus** (le zoom au survol a disparu :
+  un filtre sur un élément animé est interdit), carrousel `scroll-snap` sous
+  720 px.
+- **`/en/pricing.html`** existe (traduction de `prix.html`), hreflang
+  réciproques avec `prix.html` et `nl/prijzen.html`, « Pricing » dans la nav EN.
 
 ## Budget de rendu (lot performance du 5 septembre 2026)
 

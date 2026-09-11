@@ -27,7 +27,11 @@
   --r-lg:26px;   /* cartes de section, panneaux, la vignette vidéo — 26 et non 22 : le bouton principal (51 px de haut, rayon effectif 25,5) doit rester sous le rayon de la carte qui le porte */
   --r-pill:99px; /* pilules, badges, ronds (un carré en 99px est un cercle) */
   --max:1180px;
-  --secgap:180px; /* respiration entre les grandes sections */
+  /* rythme vertical : deux pas, et deux seulement. --space-in sépare deux blocs
+     d'un même chapitre, --space-out sépare deux chapitres. Fin des 180 px
+     uniformes, qui ne disaient plus rien de la structure. */
+  --space-in:96px;
+  --space-out:200px;
   /* mouvement : trois courbes, deux durées */
   --ease-out:cubic-bezier(.22,1,.36,1);  /* micro-états : survol, couleur, opacité */
   --spring:cubic-bezier(.34,1.56,.64,1); /* entrées, panneaux, translations */
@@ -75,9 +79,13 @@ small{font-size:var(--fs-small)} /* et non « smaller », qui tombait entre deux
 img{max-width:100%;display:block}
 .wrap{max-width:var(--max);margin:0 auto;padding:0 22px}
 .wrap-n{max-width:840px;margin:0 auto;padding:0 22px}
-.sec{margin-top:var(--secgap)}
+.sec{margin-top:var(--space-out)}
 .sec-hero{margin-top:40px}
-.freesec{margin:var(--secgap) 0;position:relative}
+/* haut seulement : deux marges basses qui s'effondraient l'une dans l'autre
+   rendaient le rythme illisible. Il se lit maintenant de haut en bas. */
+.freesec{margin:var(--space-out) 0 0;position:relative}
+/* second bloc d'un chapitre : il ne recommence rien, il continue */
+.sec-in,.freesec.sec-in{margin-top:var(--space-in)}
 .fs-head{text-align:center;max-width:720px;margin:0 auto 56px}
 .fs-head .kick{justify-content:center}
 /* en-tête d'une section pleine largeur : un cran au-dessus du h2 de tuile,
@@ -369,18 +377,36 @@ body.mnav-open{overflow:hidden}
 .pill.urg{color:#FFB4A8;border-color:rgba(255,120,100,.4);background:rgba(255,120,100,.08)}
 .pill.link{color:var(--c1);border-color:rgba(34,211,238,.35);background:rgba(34,211,238,.06)}
 
-/* grandes cartes métiers avec photos : hautes, photo bien visible, zoom lent */
+/* cartes métiers : quatre portraits 3/4 sur une rangée, même duotone, même
+   lisibilité. La photo ne bouge plus (plus de zoom au survol) : elle peut donc
+   porter un filter, calculé une fois, jamais à chaque image. Seuls le voile et
+   la flèche répondent au survol. */
 .pc-head{grid-column:span 12;margin-top:4px}
-.pcard{grid-column:span 6;height:460px;padding:0;display:block;background:none}
-.pcard img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(1.01);transition:transform 2.4s var(--spring);z-index:0}
-.pc-shade{position:absolute;inset:0;z-index:1;background:linear-gradient(200deg,rgba(7,10,20,.06),rgba(7,10,20,.46) 46%,rgba(7,10,20,.93));transition:opacity var(--dur) var(--ease-out)}
-.pcard:hover img{transform:scale(1.07)}
+.pc-row{grid-column:span 12;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.pcard{grid-column:auto;aspect-ratio:3/4;height:auto;padding:0;display:block;background:none}
+.pcard img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.05);z-index:0}
+/* duotone : le gris de la photo reprend les deux bleus de la marque, puis
+   s'éteint dans le fond — la même teinte sur les quatre vignettes */
+.pc-shade{position:absolute;inset:0;z-index:1;mix-blend-mode:normal;background:linear-gradient(200deg,rgba(34,211,238,.34),rgba(79,123,255,.38) 46%,rgba(7,10,20,.94));transition:opacity var(--dur) var(--ease-out)}
 .pcard:hover .pc-shade{opacity:.74}
-.pc-in{position:absolute;left:26px;right:26px;bottom:21px;z-index:2;display:block}
+.pc-in{position:absolute;left:20px;right:20px;bottom:18px;z-index:2;display:block}
 .pc-in b{display:block;font:700 var(--fs-h3)/var(--lh-heading) var(--h);color:var(--ink);letter-spacing:-.02em}
-.pc-in em{display:block;font-family:var(--a);font-style:italic;font-size:var(--fs-body);color:var(--body);margin-top:7px;max-width:30em}
-.pc-in i{position:absolute;right:0;bottom:3px;font-style:normal;font-weight:700;font-size:var(--fs-h3);background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;transition:transform var(--dur) var(--spring)}
+/* la vignette fait ≈ 272 px : la citation passe au corps d'interface et laisse
+   la place de la pastille à sa droite */
+.pc-in em{display:block;font-family:var(--a);font-style:italic;font-size:var(--fs-small);color:var(--body);margin-top:7px;max-width:none;padding-right:40px;text-wrap:balance}
+/* la flèche est une pastille, pas un signe posé sur la photo : fond et bordure
+   sur le rond, flèche en --ink (un fond de pastille et background-clip:text ne
+   peuvent pas vivre sur le même élément) */
+.pc-in i{position:absolute;right:0;bottom:0;width:32px;height:32px;border-radius:var(--r-pill);display:grid;place-items:center;background:var(--surface-3);border:1px solid var(--line-strong);font-style:normal;font-weight:700;font-size:var(--fs-body);line-height:1;color:var(--ink);transition:transform var(--dur) var(--spring)}
 .pcard:hover .pc-in i{transform:translateX(7px)}
+/* 4 portraits 3/4 sur 170 px de large seraient illisibles : deux par rangée */
+@media(max-width:1000px) and (min-width:721px){.pc-row{grid-template-columns:repeat(2,minmax(0,1fr))}}
+/* téléphone : carrousel à l'intérieur du bloc, le document ne défile jamais */
+@media(max-width:720px){
+  .pc-row{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:12px;padding:0 22px 6px;margin:0 -22px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+  .pc-row::-webkit-scrollbar{display:none}
+  .pcard{flex:0 0 76%;scroll-snap-align:start}
+}
 
 /* liens métiers */
 .t-met{grid-column:span 7;display:flex;flex-direction:column}
@@ -554,19 +580,11 @@ body.mnav-open{overflow:hidden}
   background:rgba(12,17,32,.97);border:1px solid var(--line-accent-strong);border-radius:var(--r-pill);padding:8px 13px;font:500 var(--fs-small)/1 var(--b);color:var(--ink);white-space:nowrap;box-shadow:0 12px 30px rgba(6,10,26,.55)}
 .ag-tag.on{opacity:1;transform:none}
 
-/* bande des langues : grand mot serif qui tourne, ligne, nuage discret */
-.lang-free{text-align:center}
-.bigword{position:relative;height:1.3em;overflow:hidden;font-family:var(--a);font-style:italic;font-weight:400;font-size:var(--fs-display);line-height:1.25;letter-spacing:-.02em}
-.bigword span{position:absolute;left:0;right:0;top:0;display:block;transition:transform .7s var(--spring),opacity .5s var(--ease-out)}
-.bigword span.out{transform:translateY(-108%);opacity:0}
-.bigword span.inq{transform:translateY(108%);opacity:0}
-.langline{margin:16px auto 30px;max-width:65ch;font-size:var(--fs-body);color:var(--body);text-align:left}
-.langcloud{display:flex;flex-wrap:wrap;gap:9px 10px;justify-content:center;max-width:780px;margin:0 auto}
-.langcloud span{font:500 var(--fs-small)/1 var(--b);color:var(--soft);border:1px solid var(--line);border-radius:var(--r-pill);padding:7px 13px;transition:color var(--dur) var(--ease-out),border-color var(--dur) var(--ease-out),box-shadow var(--dur) var(--ease-out)}
-.langcloud span.lit{color:var(--ink);border-color:var(--line-accent-strong);box-shadow:0 0 14px rgba(79,123,255,.35)}
 
 /* ---------- bandes cinématiques pleine largeur ---------- */
-.cine{position:relative;margin:var(--secgap) 0;height:66vh;min-height:430px;max-height:780px;overflow:hidden;display:flex;align-items:center;justify-content:center;text-align:center}
+/* une bande cinématique est une respiration DANS un chapitre, pas un chapitre :
+   elle s'ouvre et se referme sur --space-in, des deux côtés. */
+.cine{position:relative;margin:var(--space-in) 0 0;height:66vh;min-height:430px;max-height:780px;overflow:hidden;display:flex;align-items:center;justify-content:center;text-align:center}
 /* la photo fond progressivement dans la page à ses deux bords (masque) :
    l'aurore continue derrière, aucune arête ni saut de luminosité */
 .cine img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
@@ -579,6 +597,7 @@ body.mnav-open{overflow:hidden}
 .cine-line .it{font-weight:400;background:var(--grad);background-size:190% 100%;-webkit-background-clip:text;background-clip:text;color:transparent}
 .cine .l2{padding-bottom:.16em;margin-bottom:-.16em}
 .cine .l2>span{transition-duration:.4s}
+.cine+.freesec,.cine+.sec,.cine+.wrap{margin-top:var(--space-in)}
 @media(max-width:900px){.cine{height:52vh;min-height:340px}}
 
 /* ---------- vitrine produit : l'interface Celya dans un écran ---------- */
@@ -620,7 +639,7 @@ body.mnav-open{overflow:hidden}
 }
 
 /* CTA final : pleine largeur, très grand */
-.cta-free{text-align:center;margin:var(--secgap) 0 120px}
+.cta-free{text-align:center;margin:var(--space-out) 0 120px}
 .cta-free h2{font-size:var(--fs-h1);letter-spacing:-.04em;line-height:var(--lh-tight);margin-bottom:10px}
 .cta-free .wrap{container-type:inline-size} /* conteneur de requête du CTA : pleine largeur, libellé long */
 .cta-free .cta-row{justify-content:center;margin-top:30px}
@@ -630,7 +649,9 @@ body.mnav-open{overflow:hidden}
 /* ---------- footer ----------
    Le logotype d'abord, en grand et monochrome (le dessin du logo de nav, sans
    dégradé ni lueur), puis quatre colonnes titrées, puis la barre légale. */
-footer.site{margin:28px 0 40px;border-top:1px solid var(--line);padding-top:40px;font-size:var(--fs-small);color:var(--soft)}
+/* le pied de page ne colle jamais au dernier bloc : --space-in au minimum, quel
+   que soit le gabarit (l'article et les pages légales n'avaient que 28 px). */
+footer.site{margin:var(--space-in) 0 40px;border-top:1px solid var(--line);padding-top:40px;font-size:var(--fs-small);color:var(--soft)}
 .flogo{display:block;width:fit-content;color:var(--ink);opacity:.9;margin-bottom:40px}
 .fmark{height:clamp(56px,8vw,96px);width:auto;display:block;overflow:visible}
 .fgrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:28px 26px}
@@ -738,10 +759,8 @@ footer.site a:hover{color:var(--ink)}
   .b-hero .t-hero{grid-row:auto;padding:40px 26px}
   .t-met-home{grid-row:auto}
   .t-janet{aspect-ratio:4/5} /* la tuile suit son contenu, plus de hauteur fixe */
-  :root{--secgap:72px}
   .roi-grid{grid-template-columns:1fr}
   .t-roi{padding:30px 26px}
-  .pcard{grid-column:span 12;height:340px}
   .agf-grid{overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:6px}
   .agf-col{min-width:118px}
   .agf-ruler,.agf-body,.agf-ov{height:430px}
@@ -775,6 +794,8 @@ footer.site a:hover{color:var(--ink)}
 }
 
 @media(max-width:720px){
+  /* le rythme se resserre : deux pas toujours, mais à l'échelle du téléphone */
+  :root{--space-in:64px;--space-out:120px}
   /* 5 lignes de 24 px ne tiennent pas au-dessus du bouton d'appel : le sous-titre
      du héro passe au corps de texte sous 720 px */
   .hero-txt .sub{font-size:var(--fs-body)}
@@ -823,8 +844,6 @@ footer.site a:hover{color:var(--ink)}
   .reveal .ic-s svg *,.reveal .step .ic svg *{stroke-dasharray:none;stroke-dashoffset:0;transition:none var(--ease-out)}
   .btn-grad::after{display:none}
   .faq-free details[open] .a{animation:none}
-  .bigword span{transition:none var(--ease-out)}
-  .langcloud span{transition:none var(--ease-out)}
   .agf-board.on{animation:none}
   .agf-board.on .blk:not(.up){animation:none}
   .freez{animation:none}
@@ -835,7 +854,7 @@ footer.site a:hover{color:var(--ink)}
   .agf-now{transition:none var(--ease-out)}
   .ag-tag{transition:none var(--ease-out)}
   .agf-cnt b.pop{animation:none}
-  .pcard img,.pc-shade,.pc-in i{transition:none var(--ease-out)}
+  .pc-shade,.pc-in i{transition:none var(--ease-out)}
   .drop-panel,.nav-drop .car,.drop-panel i{transition:none var(--ease-out)}
   .mnav,.burger i{transition:none var(--ease-out)}
   .frame{transition:none var(--ease-out)}
@@ -1325,7 +1344,6 @@ footer.site a:hover{color:var(--ink)}
    align-self:start : sans lui la tuile s'étirerait sur toute la rangée et
    position:sticky n'aurait plus de course. */
 .t-hero-12{grid-column:span 12;min-height:0}
-.sec-in{margin-top:56px} /* provisoire : la phase 9 posera les tokens d'espacement */
 .t-calc-in{grid-column:span 7}
 .t-calc-out{grid-column:span 5;position:sticky;top:88px;align-self:start}
 /* transform:none annule la parallaxe de .tile sur les deux tuiles de l'outil :
@@ -1340,7 +1358,6 @@ footer.site a:hover{color:var(--ink)}
 h2[id],section[id]{scroll-margin-top:96px}
 
 /* -- bande des métiers concernés : pastilles en cascade -- */
-.jobs-free{--secgap-half:1}
 .jobs{display:flex;flex-wrap:wrap;gap:9px 10px;justify-content:center;max-width:840px;margin:0 auto}
 .jobs span{font:500 var(--fs-small)/1 var(--b);color:var(--ink);border:1px solid var(--line);background:var(--surface-1);border-radius:var(--r-pill);padding:9px 15px;white-space:nowrap}
 .jobs-line{margin:24px auto 0;max-width:65ch;text-align:left;font-size:var(--fs-body);color:var(--body)}
