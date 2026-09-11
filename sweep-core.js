@@ -393,11 +393,13 @@ function auditInPage(cfg) {
     if (parseFloat(s.opacity) < 0.6) continue;
     if (s.position !== 'static' && s.position !== 'relative') continue;
     if (s.transform !== 'none') continue;
-    /* un ancêtre positionné ou transformé = superposition voulue */
+    /* un ancêtre positionné ou transformé = superposition voulue. Le sticky
+     * compte aussi : une carte collante (le résultat du calculateur sous 900 px)
+     * recouvre ce qu'elle a dépassé exactement comme un fixed, par construction. */
     let skip = false, p = el.parentElement, d = 0;
     while (p && p !== body && d < 8) {
       const ps = cs(p);
-      if (ps.position === 'absolute' || ps.position === 'fixed' || ps.transform !== 'none') { skip = true; break; }
+      if (ps.position === 'absolute' || ps.position === 'fixed' || ps.position === 'sticky' || ps.transform !== 'none') { skip = true; break; }
       p = p.parentElement; d++;
     }
     if (skip) continue;
@@ -472,7 +474,7 @@ function auditInPage(cfg) {
     };
   })();
 
-  const ALLOWED = 'header.top, nav.top, .drop-panel, .hero-demo';
+  const ALLOWED = 'header.top, nav.top, .drop-panel'; /* .hero-demo a disparu le 11/09/2026 (lot design) */
   for (let i = 0; i < nodes.length; i++) {
     const el = nodes[i];
     const s = cs(el);
@@ -559,7 +561,7 @@ function auditInPage(cfg) {
  * ------------------------------------------------------------------ */
 
 const WIDTHS = [390, 1280];
-const ALLOWED_BACKDROP = ['header.top', '.drop-panel', '.hero-demo'];
+const ALLOWED_BACKDROP = ['header.top', '.drop-panel']; /* .hero-demo a disparu le 11/09/2026 (lot design) */
 
 function tag(s, n) { return (s + ' '.repeat(n)).slice(0, n); }
 

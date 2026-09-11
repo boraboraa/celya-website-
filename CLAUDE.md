@@ -15,7 +15,10 @@ mais il ne couvre pas tout le tableau — la relecture reste obligatoire.
 
 ## Ce que le site ne dit jamais
 
-- aucun prix, aucune fourchette, aucun montant
+- **les seuls montants publics sont les trois formules** : 75, 150 et 300 €
+  hors TVA par mois, pour 250, 750 et 1 750 minutes — sur `prix.html`,
+  `nl/prijzen.html`, `en/pricing.html` et dans les FAQ prix des trois
+  accueils. Aucun autre montant, aucune fourchette, rien d'inventé ailleurs.
 - aucun concurrent nommé
 - Celya ne remplace jamais une secrétaire
 - l'agent n'évalue jamais un symptôme médical
