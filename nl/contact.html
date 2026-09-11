@@ -50,11 +50,15 @@ h1 .em{font-family:var(--a);font-style:italic;font-weight:400;background:var(--g
 nav.top{position:fixed;top:0;left:0;right:0;z-index:50;background:rgba(10,14,26,.72);backdrop-filter:blur(18px)}
 .nav-in{max-width:var(--max);margin:0 auto;padding:16px 28px;display:flex;align-items:center;justify-content:space-between}
 .logo{font-family:var(--h);font-weight:700;font-size:22px;letter-spacing:-.04em;display:flex;align-items:center;gap:9px}
+/* logo : viewBox recadrée sur le dessin, donc la hauteur CSS est la hauteur vue.
+   overflow visible — les traits de 9 px et la lueur dépassent la boîte géométrique */
+.nav-logo{height:28px;width:auto;display:block;overflow:visible}
 .logo .dot{width:9px;height:9px;border-radius:50%;background:var(--grad);box-shadow:0 0 16px var(--c2)}
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:14px 26px;border-radius:999px;font-family:var(--h);font-weight:500;font-size:15px;background:var(--grad);color:#05070E;transition:.3s;box-shadow:0 6px 30px rgba(79,123,255,.3);border:0;cursor:pointer}
 .btn:hover{transform:translateY(-2px);box-shadow:0 14px 46px rgba(168,85,247,.42)}
 .btn-ghost{background:transparent;color:var(--ink);border:1px solid rgba(255,255,255,.16);box-shadow:none}
 .btn-ghost:hover{border-color:rgba(255,255,255,.34);background:rgba(255,255,255,.04)}
+nav.top .btn{height:36px;padding:0 13px;font-size:13px;gap:6px}
 header.page{padding:170px 0 70px}
 .grid{display:grid;grid-template-columns:1fr 1.1fr;gap:60px;padding-bottom:140px;align-items:start}
 @media(max-width:900px){.grid{grid-template-columns:1fr}.kicker{text-transform:none;letter-spacing:.01em;font-size:11.5px}}
@@ -86,15 +90,18 @@ form .sub{font-size:14px;color:var(--muted);margin-bottom:26px}
 .ok p{color:var(--muted);font-size:14.5px}
 .err{display:none;color:#F9A8A8;font-size:13.5px;margin-top:10px}
 footer{border-top:1px solid rgba(255,255,255,.06);padding:40px 0;color:var(--faint);font-size:13px;display:flex;justify-content:center;gap:8px;flex-wrap:wrap;text-align:center}
+/* logotype du pied de page : le dessin du logo de nav, monochrome, centré sur sa propre ligne */
+.flogo{display:block;flex:0 0 100%;color:var(--ink);opacity:.9;margin:0 auto 24px}
+.fmark{height:clamp(56px,8vw,96px);width:auto;display:block;margin:0 auto;overflow:visible}
 
 /* --- sélecteur de langue : copie des règles .lang de bento.css, que cette page ne charge pas --- */
 .lang{display:flex;gap:2px;border:1px solid var(--line);border-radius:99px;padding:3px;font:500 12px/1 var(--b)}
 .lang a{padding:6px 10px;border-radius:99px;color:#AEB9D6}
 .lang a.on{background:rgba(255,255,255,.1);color:var(--ink)}
-@media(max-width:720px){nav.top .lang{display:none}}
+@media(max-width:720px){nav.top .lang{display:none}.nav-logo{height:24px}}
 .mnav-in .lang{align-self:flex-start}
 /* --- menu : liens + déroulant métiers + burger (partagé avec le thème bento) --- */
-nav.top .nav-in{justify-content:flex-start;gap:20px}
+nav.top .nav-in{justify-content:flex-start;gap:20px;padding:14px 28px;min-height:67px}
 .nav-links{display:flex;align-items:center;gap:22px;font-size:14.5px;color:#AEB9D6;margin-left:auto}
 .nav-links>a:hover,.nav-drop>a:hover{color:var(--ink)}
 .nav-drop{position:relative}
@@ -139,7 +146,7 @@ body.mnav-open{overflow:hidden}
 
 <nav class="top">
   <div class="nav-in">
-    <a href="./" class="logo" aria-label="Celya"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 284 138" role="img" aria-label="Celya" style="height:32px;width:auto;display:block"><defs><linearGradient id="celyaNeon" gradientUnits="userSpaceOnUse" x1="12" y1="105" x2="268" y2="34"><stop offset="0" stop-color="#22D3EE"/><stop offset="0.5" stop-color="#4F7BFF"/><stop offset="1" stop-color="#A855F7"/></linearGradient><filter id="celyaGlow" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="1.8" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs><g fill="none" stroke="url(#celyaNeon)" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" filter="url(#celyaGlow)"><path d="M64.98 89.28 A30 30 0 1 1 64.98 50.72 L83.98 34"/><path d="M83.98 34 L79.8 46.3 M83.98 34 L71.3 36.6"/><path d="M135 79 L93 79 A21 21 0 1 1 129 92"/><path d="M157 40 L157 100"/><path d="M175 58 L193 92 M211 58 L180 118"/><circle cx="244" cy="79" r="21"/><path d="M265 62 L265 100"/></g><path d="M244 58 L244 49" fill="none" stroke="url(#celyaNeon)" stroke-width="6" stroke-linecap="round" filter="url(#celyaGlow)"/><circle cx="244" cy="45" r="3.6" fill="#9BF3FF" filter="url(#celyaGlow)"/><rect x="212" y="74" width="5" height="10" rx="1.6" fill="url(#celyaNeon)"/><rect x="271" y="74" width="5" height="10" rx="1.6" fill="url(#celyaNeon)"/><rect x="229" y="71.5" width="30" height="12" rx="6" fill="#161F36" stroke="url(#celyaNeon)" stroke-width="1.5"/><g filter="url(#celyaGlow)"><rect x="234" y="75" width="7.5" height="3.6" rx="1.8" fill="#9BF3FF"/><rect x="248.5" y="75" width="7.5" height="3.6" rx="1.8" fill="#9BF3FF"/></g></svg></a>
+    <a href="./" class="logo" aria-label="Celya"><svg xmlns="http://www.w3.org/2000/svg" viewBox="12 34 264 84" role="img" aria-label="Celya" class="nav-logo"><defs><linearGradient id="celyaNeon" gradientUnits="userSpaceOnUse" x1="12" y1="105" x2="268" y2="34"><stop offset="0" stop-color="#22D3EE"/><stop offset="0.5" stop-color="#4F7BFF"/><stop offset="1" stop-color="#A855F7"/></linearGradient><filter id="celyaGlow" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="1.8" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs><g fill="none" stroke="url(#celyaNeon)" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" filter="url(#celyaGlow)"><path d="M64.98 89.28 A30 30 0 1 1 64.98 50.72 L83.98 34"/><path d="M83.98 34 L79.8 46.3 M83.98 34 L71.3 36.6"/><path d="M135 79 L93 79 A21 21 0 1 1 129 92"/><path d="M157 40 L157 100"/><path d="M175 58 L193 92 M211 58 L180 118"/><circle cx="244" cy="79" r="21"/><path d="M265 62 L265 100"/></g><path d="M244 58 L244 49" fill="none" stroke="url(#celyaNeon)" stroke-width="6" stroke-linecap="round" filter="url(#celyaGlow)"/><circle cx="244" cy="45" r="3.6" fill="#9BF3FF" filter="url(#celyaGlow)"/><rect x="212" y="74" width="5" height="10" rx="1.6" fill="url(#celyaNeon)"/><rect x="271" y="74" width="5" height="10" rx="1.6" fill="url(#celyaNeon)"/><rect x="229" y="71.5" width="30" height="12" rx="6" fill="#161F36" stroke="url(#celyaNeon)" stroke-width="1.5"/><g filter="url(#celyaGlow)"><rect x="234" y="75" width="7.5" height="3.6" rx="1.8" fill="#9BF3FF"/><rect x="248.5" y="75" width="7.5" height="3.6" rx="1.8" fill="#9BF3FF"/></g></svg></a>
     <nav class="nav-links">
       <a href="./#marche">Hoe het werkt</a>
       <div class="nav-drop">
@@ -164,7 +171,7 @@ body.mnav-open{overflow:hidden}
       <a href="blog/">Blog</a>
     </nav>
     <div class="lang"><a href="../contact.html">FR</a><a class="on" href="contact.html">NL</a><a href="../en/contact.html">EN</a></div>
-    <a href="tel:+32460254413" class="btn" style="padding:11px 20px;font-size:14px">Bel Janet</a>
+    <a href="tel:+32460254413" class="btn">Bel Janet</a>
     <button class="burger" id="mbtn" type="button" aria-label="Menu" aria-expanded="false"><i></i><i></i></button>
   </div>
 </nav>
@@ -262,6 +269,7 @@ m.addEventListener('click',function(e){if(e.target.closest&&e.target.closest('a'
 </section>
 
 <footer>
+  <a class="flogo" href="./" aria-label="Celya"><svg class="fmark" viewBox="12 34 264 84" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"><path d="M64.98 89.28 A30 30 0 1 1 64.98 50.72 L83.98 34"/><path d="M83.98 34 L79.8 46.3 M83.98 34 L71.3 36.6"/><path d="M135 79 L93 79 A21 21 0 1 1 129 92"/><path d="M157 40 L157 100"/><path d="M175 58 L193 92 M211 58 L180 118"/><circle cx="244" cy="79" r="21"/><path d="M265 62 L265 100"/></g><path d="M244 58 L244 49" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round"/><circle cx="244" cy="45" r="3.6" fill="currentColor"/><rect x="212" y="74" width="5" height="10" rx="1.6" fill="currentColor"/><rect x="271" y="74" width="5" height="10" rx="1.6" fill="currentColor"/><rect x="229" y="71.5" width="30" height="12" rx="6" fill="var(--bg)" stroke="currentColor" stroke-width="1.5"/><g><rect x="234" y="75" width="7.5" height="3.6" rx="1.8" fill="currentColor"/><rect x="248.5" y="75" width="7.5" height="3.6" rx="1.8" fill="currentColor"/></g></svg></a>
   <span>© <span id="yr"></span> Celya · Celya Technologies SRL · BCE/KBO 1042.115.837 · Avenue de Broqueville 136/1, 1200 Woluwe-Saint-Lambert</span>
   <a href="privacy.html" style="color:var(--muted)">Privacy</a>
 </footer>

@@ -90,10 +90,16 @@ h3{font-size:var(--t-xl);font-weight:700;line-height:1.25;margin-bottom:8px}
 .kick{display:flex;align-items:baseline;gap:12px;font:500 var(--t-xs)/1 var(--b);letter-spacing:.16em;text-transform:uppercase;color:#BCC6E0;margin-bottom:16px}
 .kick span,.kick b{white-space:nowrap} /* une accroche ne passe jamais à la ligne */
 .kick b{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;font-weight:700;letter-spacing:.12em}
+/* accroche de marque : le « C » fléché du favicon en tête de l'accroche du héro.
+   overflow visible — le trait de 9 et les bouts ronds dépassent la boîte géométrique */
+.kick-brand .sym{width:16px;height:16px;flex:none;overflow:visible;align-self:center}
 
 /* ---------- nav ---------- */
 header.top{position:sticky;top:0;z-index:50;background:rgba(7,10,20,.72);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
-.nav-in{max-width:var(--max);margin:0 auto;padding:14px 22px;display:flex;align-items:center;gap:26px}
+.nav-in{max-width:var(--max);margin:0 auto;padding:14px 22px;display:flex;align-items:center;gap:26px;min-height:67px}
+/* logo : viewBox recadrée sur le dessin, donc la hauteur CSS est la hauteur vue.
+   overflow visible — les traits de 9 px et la lueur dépassent la boîte géométrique */
+.nav-logo{height:28px;width:auto;display:block;overflow:visible}
 .nav-links{display:flex;gap:22px;font-size:var(--t-md);color:var(--soft);margin-left:auto}
 .nav-links a:hover{color:var(--ink)}
 .lang{display:flex;gap:2px;border:1px solid var(--line);border-radius:var(--r-pill);padding:3px;font:500 var(--t-sm)/1 var(--b)}
@@ -108,7 +114,11 @@ header.top{position:sticky;top:0;z-index:50;background:rgba(7,10,20,.72);backdro
 .btn-ghost{border:1px solid var(--line-strong);color:var(--ink);background:var(--surface-1)}
 .btn svg{width:17px;height:17px;flex:none}
 .btn-big{font-size:var(--t-lg);padding:17px 28px;box-shadow:0 8px 34px rgba(79,123,255,.35)}
-.nav-cta{padding:11px 20px;font-size:var(--t-md)}
+/* CTA de nav : plus haut que large en proportion du logo — largeur ≤ 1,5 × celle du
+   logo (132 px pour 88). « Appeler Janet » est la plus longue des trois langues :
+   c'est elle qui fixe le pas de type et le padding. */
+.nav-cta{height:36px;padding:0 13px;font-size:var(--t-sm);gap:6px}
+.nav-cta svg{width:13px;height:13px}
 
 /* ---------- menu déroulant « Votre métier » ---------- */
 .nav-drop{position:relative}
@@ -556,11 +566,23 @@ body.mnav-open{overflow:hidden}
 .cta-free .btn-big{font-size:var(--t-lg);padding:19px 32px}
 .cta-free .proof{margin-top:6px}
 
-/* ---------- footer ---------- */
-footer.site{margin:28px 0 40px;border-top:1px solid var(--line);padding-top:22px;font-size:var(--t-sm);color:var(--soft)}
-footer.site .frows{display:flex;flex-wrap:wrap;gap:10px 26px;justify-content:space-between;margin-bottom:12px}
-footer.site .cols{display:flex;flex-wrap:wrap;gap:10px 26px;align-items:center}
+/* ---------- footer ----------
+   Le logotype d'abord, en grand et monochrome (le dessin du logo de nav, sans
+   dégradé ni lueur), puis quatre colonnes titrées, puis la barre légale. */
+footer.site{margin:28px 0 40px;border-top:1px solid var(--line);padding-top:40px;font-size:var(--t-sm);color:var(--soft)}
+.flogo{display:block;width:fit-content;color:var(--ink);opacity:.9;margin-bottom:40px}
+.fmark{height:clamp(56px,8vw,96px);width:auto;display:block;overflow:visible}
+.fgrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:28px 26px}
+.fcol{display:flex;flex-direction:column;align-items:flex-start;gap:0}
+.fcol b{font:500 var(--t-xs)/1 var(--b);letter-spacing:.16em;text-transform:uppercase;color:#BCC6E0;margin-bottom:10px}
+/* 21 px de ligne + 2 × 10 de padding = 41 px de cible tactile, gap 0 : deux liens
+   successifs se touchent sans jamais se recouvrir */
+.fcol a{padding:10px 0;margin:0}
 footer.site a:hover{color:var(--ink)}
+.fbar{display:flex;flex-wrap:wrap;align-items:center;gap:10px 26px;margin-top:36px;padding-top:18px;border-top:1px solid var(--line)}
+.fbar a{padding:12px 5px;margin:-5px 0}
+.flang{margin-left:auto;display:flex;gap:16px}
+@media(max-width:400px){.fgrid{grid-template-columns:1fr}}
 
 /* ---------- pages métiers ---------- */
 .t-pain{grid-column:span 12;padding:26px 34px}
@@ -688,8 +710,13 @@ footer.site a:hover{color:var(--ink)}
   .t-mini{grid-column:span 12}
   .t-hero{padding:38px 26px}
   body{padding-bottom:76px}
+  .nav-logo{height:24px}
   /* la barre d'appel en bas d'écran prend le relais du CTA de la nav */
   .nav-cta{display:none}
+  /* seule exception à « une accroche ne passe jamais à la ligne » : l'accroche de
+     marque du héro, trop longue pour tenir sur une ligne de 390 px */
+  .kick-brand span{white-space:normal}
+  .fgrid{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
 
 /* ---------- accessibilité mouvement ---------- */
@@ -1627,8 +1654,9 @@ button,input,select,textarea,summary,[role=button]{min-height:24px}
 .nav-links>a,.nav-drop>a{padding:10px 4px;margin:-10px -4px}    /* 24 → 44 px de haut, « Prix » passe 24 px de large */
 .lang a{position:relative}
 .lang a::after{content:'';position:absolute;inset:-10px -4px}       /* 24 → 44 px de haut, 24 de large, sans agrandir la pilule */
-footer.site a{padding:12px 5px;margin:-5px 0}                       /* 21 → 45 px de haut, FR/NL/EN ≥ 24 de large ; la marge ne compense que 5 px en hauteur (deux rangées ne se recouvrent jamais, gap 10) et rien en largeur : un lien en bord de conteneur ne déborde pas */
-footer.site .cols{gap:10px 16px}                                    /* 26 − 2 × 5 : l'espacement visible entre deux liens reste 26 px */
+footer.site .fbar a{padding:12px 5px;margin:-5px 0}                 /* 21 → 45 px de haut, FR/NL/EN ≥ 24 de large ; la marge ne compense que 5 px en hauteur (deux rangées ne se recouvrent jamais, gap 10) et rien en largeur : un lien en bord de conteneur ne déborde pas */
+footer.site .fbar{gap:10px 16px}                                    /* 26 − 2 × 5 : l'espacement visible entre deux liens reste 26 px */
+/* les liens de colonne ont leur propre cible (41 px, .fcol a) et le logotype n'en veut pas */
 .bmore,.art-back,.st-link{padding-top:5px;padding-bottom:5px;margin-top:-5px;margin-bottom:-5px}
 /* liens en ligne dans un texte : la zone cliquable dépasse la ligne de 6 px de chaque côté */
 p a,li a,dd a,td a,small a,.a a,.note a,.eq a,.verdict a,.caveat a,.cmp-note a,.plans-note a,.fun-note a,.set-note a,.det-note a{position:relative}
