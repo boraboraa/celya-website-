@@ -114,6 +114,8 @@ header.top{position:sticky;top:0;z-index:50;background:rgba(7,10,20,.72);backdro
 .btn-ghost{border:1px solid var(--line-strong);color:var(--ink);background:var(--surface-1)}
 .btn svg{width:17px;height:17px;flex:none}
 .btn-big{font-size:var(--t-lg);padding:17px 28px;box-shadow:0 8px 34px rgba(79,123,255,.35)}
+/* le libellé court et la sous-ligne du CTA n'existent que sous 720 px */
+.cta-s,.cta-sub{display:none}
 /* CTA de nav : plus haut que large en proportion du logo — largeur ≤ 1,5 × celle du
    logo (132 px pour 88). « Appeler Janet » est la plus longue des trois langues :
    c'est elle qui fixe le pas de type et le padding. */
@@ -708,6 +710,9 @@ footer.site a:hover{color:var(--ink)}
 
 @media(max-width:720px){
   .t-mini{grid-column:span 12}
+  /* le CTA principal passe au libellé court, le numéro descend sous le bouton */
+  .cta-l{display:none}.cta-s{display:inline}
+  .cta-sub{display:block;width:100%;text-align:inherit;font:500 var(--t-sm)/1.4 var(--b);color:var(--soft);margin:-2px 0 2px;font-variant-numeric:tabular-nums} /* inherit : à gauche sous un héro aligné à gauche, centré dans un bloc centré */
   .t-hero{padding:38px 26px}
   body{padding-bottom:76px}
   .nav-logo{height:24px}
