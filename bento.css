@@ -28,9 +28,10 @@
   --r-pill:99px; /* pilules, badges, ronds (un carré en 99px est un cercle) */
   --max:1180px;
   --secgap:180px; /* respiration entre les grandes sections */
-  /* mouvement : deux courbes, deux durées */
+  /* mouvement : trois courbes, deux durées */
   --ease-out:cubic-bezier(.22,1,.36,1);  /* micro-états : survol, couleur, opacité */
   --spring:cubic-bezier(.34,1.56,.64,1); /* entrées, panneaux, translations */
+  --ease-reveal:cubic-bezier(.2,.7,.2,1); /* apparitions : courte, sans rebond, sans opacité */
   --dur-fast:.16s;
   --dur:.36s;
   /* échelle typographique : sept pas, trois interlignes. Un seul jeu pour toute
@@ -236,23 +237,26 @@ body.mnav-open{overflow:hidden}
 .t-hero h1{margin:14px 0 18px}
 /* apparition du héro au chargement */
 .t-hero .lr,.hero-txt .lr{display:block;overflow:hidden;padding-bottom:.16em;margin-bottom:-.16em} /* .16em : la boîte peinte de l'italique dépasse la ligne (197 px pour 174 en 1440), .12em ne suffisait pas */
-.t-hero .lr>span,.hero-txt .lr>span{display:block;transform:translateY(112%);animation:rise 1s var(--spring) forwards}
-/* le span démarre entièrement sous le masque : l'IntersectionObserver de bento.js le voit hors écran, pose .anim-off et
-   fige rise à t=0 — la ligne ne monte jamais. La montée (1 s, une fois) tourne donc même sous .anim-off. */
+/* la ligne monte de 12 px et n'est jamais invisible : elle reste dans le masque. */
+.t-hero .lr>span,.hero-txt .lr>span{display:block;transform:translateY(12px);animation:slideup .4s var(--ease-reveal) forwards}
+/* l'IntersectionObserver de bento.js pose .anim-off sur ce qui sort de l'écran ;
+   la montée du héro (.4 s, une fois) tourne quand même. */
 .t-hero .lr>span.anim-off,.hero-txt .lr>span.anim-off{animation-play-state:running!important}
-.t-hero .lr:nth-child(2)>span,.hero-txt .lr:nth-child(2)>span{animation-delay:.14s}
-@keyframes rise{to{transform:none}}
-.t-hero .sub,.t-hero .cta-row,.t-hero .proof,.hero-txt .sub,.hero-txt .cta-row,.hero-txt .proofs,.hero-txt .proof{opacity:0;transform:translateY(14px);animation:fadeup .9s var(--spring) forwards}
-.t-hero .sub,.hero-txt .sub{animation-delay:.3s}
-.t-hero .cta-row,.hero-txt .cta-row{animation-delay:.45s}
-.hero-txt .proofs{animation-delay:.58s}
-.t-hero .proof,.hero-txt .proof{animation-delay:.68s}
+.t-hero .lr:nth-child(2)>span,.hero-txt .lr:nth-child(2)>span{animation-delay:.05s}
+@keyframes slideup{from{transform:translateY(12px)}to{transform:none}}
+/* aucune opacité dans l'ouverture du héro : le premier écran est lisible dès la
+   première image, seul le déplacement reste à jouer */
+.t-hero .sub,.t-hero .cta-row,.t-hero .proof,.hero-txt .sub,.hero-txt .cta-row,.hero-txt .proofs,.hero-txt .proof{transform:translateY(12px);animation:slideup .4s var(--ease-reveal) forwards}
+.t-hero .sub,.hero-txt .sub{animation-delay:.1s}
+.t-hero .cta-row,.hero-txt .cta-row{animation-delay:.15s}
+.hero-txt .proofs{animation-delay:.2s}
+.t-hero .proof,.hero-txt .proof{animation-delay:.25s}
 @keyframes fadeup{to{opacity:1;transform:none}}
 .t-hero .sub,.hero-txt .sub{font-size:var(--fs-h3);max-width:52ch;color:var(--body);line-height:var(--lh-heading)}
 .cta-row{display:flex;flex-wrap:wrap;gap:12px;margin:24px 0 15px}
 .foundpill{display:inline-flex;align-items:center;gap:9px;width:fit-content;margin-bottom:13px;font:500 var(--fs-small)/1.4 var(--b);color:var(--ink);border:1px solid rgba(168,85,247,.45);background:rgba(168,85,247,.09);border-radius:var(--r-pill);padding:8px 15px}
 .foundpill i{width:7px;height:7px;border-radius:var(--r-pill);background:var(--grad);font-style:normal;flex:none}
-.t-hero .foundpill,.hero-txt .foundpill{opacity:0;transform:translateY(14px);animation:fadeup .9s var(--spring) .55s forwards}
+.t-hero .foundpill,.hero-txt .foundpill{transform:translateY(12px);animation:slideup .4s var(--ease-reveal) .25s forwards}
 .proof{font-size:var(--fs-body);color:var(--soft)}
 .proof b{font-weight:700;white-space:nowrap}
 /* ligne de preuves du héro : les trois garanties, en une ligne sous les boutons */
@@ -473,10 +477,13 @@ body.mnav-open{overflow:hidden}
 .faq-free details[open] .a{animation:fadeup .45s var(--ease-out) both}
 
 /* ---------- tableau de planning pleine largeur ---------- */
-.agf>.exbadge{position:absolute;top:-6px;right:26px}
+/* le badge « Exemple » se pose dans le coin de la carte agenda, pas au-dessus du
+   titre : sous 720 px l'ancien top:-6px de la section le faisait tomber dans le H2 */
+.agf-boards{position:relative}
+.agf-boards>.exbadge{position:absolute;top:0;right:0;z-index:3;margin:0}
 .agf .fs-head{margin-bottom:24px;max-width:760px}
 .agf-sub{margin:12px auto 0;max-width:65ch;font-size:var(--fs-body);color:var(--body);text-align:left}
-.agf-tabs{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-bottom:24px}
+.agf-tabs{display:flex;gap:8px;justify-content:center;flex-wrap:nowrap;margin-bottom:24px}
 .agf-tabs button{font:500 var(--fs-small)/1 var(--b);color:var(--body);background:var(--surface-1);border:1px solid var(--line);border-radius:var(--r-pill);padding:11px 22px;cursor:pointer;transition:border-color var(--dur-fast) var(--ease-out),color var(--dur-fast) var(--ease-out)}
 .agf-tabs button:hover{border-color:var(--line-accent-strong);color:var(--ink)}
 .agf-tabs button.on{background:var(--grad);color:#06080F;border-color:transparent}
@@ -499,7 +506,15 @@ body.mnav-open{overflow:hidden}
   background-image:repeating-linear-gradient(180deg,var(--surface-1) 0,var(--surface-1) 1px,transparent 1px,transparent calc(100%/var(--nrows)))}
 .agf-ov{position:absolute;left:62px;right:0;top:40px;height:520px;pointer-events:none}
 .agf-band{position:absolute;left:0;right:0;background:rgba(79,123,255,.055);border-top:1px dashed var(--line-accent);border-bottom:1px dashed var(--line-accent)}
-.agf-band i{position:absolute;left:9px;top:7px;font:500 var(--fs-label)/1 var(--b);letter-spacing:.16em;text-transform:uppercase;color:#D6DFF4;font-style:normal}
+/* étiquette de service (Midi, Soir) : dans la gouttière de la règle horaire, à
+   gauche de la première colonne — plus jamais posée sur une réservation.
+   La règle fait 52 px, ses heures s'arrêtent à 42 (right:10px), la grille ouvre
+   à 62 (gap 10) : l'étiquette tient entre 44 et 60. Une étiquette longue
+   (« Service du midi · 12 h – 14 h ») ne se replie pas sur une deuxième
+   colonne : elle repasserait sur les heures. */
+.agf-band i{position:absolute;left:auto;right:calc(100% + 2px);top:0;bottom:0;width:16px;
+  display:flex;align-items:center;justify-content:center;writing-mode:vertical-rl;transform:rotate(180deg);white-space:nowrap;
+  font:500 var(--fs-label)/1 var(--b);letter-spacing:.16em;text-transform:uppercase;color:#D6DFF4;font-style:normal}
 /* blocs de rendez-vous : hauteur = durée réelle.
    Exception mesurée à l'échelle typographique : le libellé du bloc reste à
    --fs-label. À 14 px « Th. Simon · 2 cvts » demande 114 px pour 111 de
@@ -563,7 +578,7 @@ body.mnav-open{overflow:hidden}
 .cine-line{font-family:var(--h);font-weight:700;color:#fff;font-size:var(--fs-h1);line-height:var(--lh-tight);letter-spacing:-.04em;text-wrap:balance;max-width:15em;margin:0 auto;text-shadow:0 6px 44px rgba(4,8,20,.55)}
 .cine-line .it{font-weight:400;background:var(--grad);background-size:190% 100%;-webkit-background-clip:text;background-clip:text;color:transparent}
 .cine .l2{padding-bottom:.16em;margin-bottom:-.16em}
-.cine .l2>span{transition-duration:1.15s}
+.cine .l2>span{transition-duration:.4s}
 @media(max-width:900px){.cine{height:52vh;min-height:340px}}
 
 /* ---------- vitrine produit : l'interface Celya dans un écran ---------- */
@@ -571,8 +586,8 @@ body.mnav-open{overflow:hidden}
 .frame{position:relative;border-radius:var(--r-lg);border:1px solid var(--line-strong);background:rgba(11,16,30,.92);overflow:hidden;transform:rotateX(7deg);transform-origin:50% 0;
   box-shadow:0 60px 120px rgba(4,8,20,.62),0 24px 48px rgba(4,8,20,.5),0 0 90px rgba(79,123,255,.13)}
 /* l'écran se redresse à la révélation */
-.product-free.reveal .frame{transform:rotateX(13deg) translateY(28px)}
-.product-free.reveal.in .frame{transform:rotateX(7deg) translateY(0);transition:transform 1.25s var(--spring) .15s}
+.product-free.reveal .frame{transform:rotateX(7deg) translateY(12px)}
+.product-free.reveal.in .frame{transform:rotateX(7deg);transition:transform .4s var(--ease-reveal)}
 /* reflet subtil sur la vitre */
 .frame::after{content:'';position:absolute;inset:0;z-index:6;pointer-events:none;background:linear-gradient(115deg,var(--surface-3),var(--surface-1) 26%,transparent 44%)}
 .frame-bar{display:flex;align-items:center;gap:14px;padding:11px 16px;border-bottom:1px solid var(--line);background:var(--surface-1)}
@@ -650,13 +665,15 @@ footer.site a:hover{color:var(--ink)}
 .legal a{color:var(--c1)}
 
 /* ---------- apparition au scroll ---------- */
-.reveal{opacity:0;transform:translate3d(0,calc(var(--py,0px) + 30px),0) scale(.978);transition:opacity .65s var(--ease-out),transform .9s var(--spring),border-color .35s var(--ease-out),box-shadow .35s var(--ease-out)}
-.reveal.in{opacity:1;transform:translate3d(0,var(--py,0px),0) scale(1)}
+/* état de repos VISIBLE : plus aucune opacité ici. Un bloc qui n'a pas encore
+   reçu .in se lit quand même — seul le déplacement de 12 px reste à jouer. */
+.reveal{transform:translate3d(0,calc(var(--py,0px) + 12px),0);transition:transform .4s var(--ease-reveal),border-color .35s var(--ease-out),box-shadow .35s var(--ease-out)}
+.reveal.in{transform:translate3d(0,var(--py,0px),0)}
 /* après l'entrée : la parallaxe pilote transform sans être lissée */
-.reveal.done{transition:opacity .3s var(--ease-out),border-color .35s var(--ease-out),box-shadow .35s var(--ease-out)}
-/* titres : lever de ligne avec légère rotation, à la révélation de la tuile */
+.reveal.done{transition:border-color .35s var(--ease-out),box-shadow .35s var(--ease-out)}
+/* titres : lever de ligne court, sans rotation, à la révélation de la tuile */
 .l2{display:block;overflow:hidden;padding-bottom:.12em;margin-bottom:-.12em}
-.l2>span{display:block;transform:translateY(115%) rotate(1.2deg);transform-origin:0 100%;transition:transform 1s var(--spring) .1s}
+.l2>span{display:block;transform:translateY(12px);transform-origin:0 100%;transition:transform .4s var(--ease-reveal)}
 .reveal.in .l2>span{transform:none}
 
 /* fil de progression de lecture */
@@ -729,6 +746,9 @@ footer.site a:hover{color:var(--ink)}
   .agf-col{min-width:118px}
   .agf-ruler,.agf-body,.agf-ov{height:430px}
   .agf-ruler{min-width:44px}
+  /* la gouttière se resserre sous 900 px : l'étiquette de service disparaît,
+     les bandes restent */
+  .agf-band i{display:none}
   /* agenda simplifié : 2 colonnes de ressources maximum (celles où Janet réserve
      en direct), tout est visible, aucun défilement horizontal */
   @supports selector(:has(*)){
@@ -769,16 +789,28 @@ footer.site a:hover{color:var(--ink)}
      marque du héro, trop longue pour tenir sur une ligne de 390 px */
   .kick-brand span{white-space:normal}
   .fgrid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  /* le badge « Exemple » repasse dans le flux, bloc aligné à droite au-dessus
+     du compteur : plus rien à croiser */
+  .agf-boards>.exbadge{position:static;display:table;margin:0 0 10px auto}
+}
+/* les trois puces de métier tiennent sur une ligne ; sous 420 px la ligne
+   défile à l'intérieur du bloc, jamais le document */
+@media(max-width:420px){
+  .agf-tabs{overflow-x:auto;justify-content:flex-start;-webkit-overflow-scrolling:touch;scrollbar-width:none;
+    padding:0 22px;margin-left:-22px;margin-right:-22px}
+  .agf-tabs::-webkit-scrollbar{display:none}
+  .agf-tabs button{flex:none}
 }
 
 /* ---------- accessibilité mouvement ---------- */
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
-  .reveal{opacity:1;transform:none;transition:none var(--ease-out)}
+  .reveal{transform:none;transition:none var(--ease-out)}
   .demo-hd .dav i,.jq i,.ph-ring,.wave.on i{animation:none}
   .chat.anim .m,.chat.anim .done{opacity:1;transform:none;transition:none var(--ease-out)}
-  .t-hero .lr>span,.t-hero .sub,.t-hero .cta-row,.t-hero .proof{animation:none;transform:none;opacity:1}
-  .hero-txt .lr>span,.hero-txt .sub,.hero-txt .cta-row,.hero-txt .proofs,.hero-txt .proof,.t-hero .foundpill,.hero-txt .foundpill{animation:none;transform:none;opacity:1}
+  /* slideup (ex-rise, ex-fadeup) : rien ne bouge, rien ne se transitionne */
+  .t-hero .lr>span,.t-hero .sub,.t-hero .cta-row,.t-hero .proof{animation:none;transform:none;transition:none}
+  .hero-txt .lr>span,.hero-txt .sub,.hero-txt .cta-row,.hero-txt .proofs,.hero-txt .proof,.t-hero .foundpill,.hero-txt .foundpill{animation:none;transform:none;transition:none}
   .step .ic{transition:none var(--ease-out)}
   .step.cur .ic{transform:none;box-shadow:none}
   .btn:hover{transform:none}
@@ -1313,8 +1345,8 @@ h2[id],section[id]{scroll-margin-top:96px}
 .jobs span{font:500 var(--fs-small)/1 var(--b);color:var(--ink);border:1px solid var(--line);background:var(--surface-1);border-radius:var(--r-pill);padding:9px 15px;white-space:nowrap}
 .jobs-line{margin:24px auto 0;max-width:65ch;text-align:left;font-size:var(--fs-body);color:var(--body)}
 .jobs-line b{color:var(--ink)}
-.reveal .jobs span{opacity:0;transform:translateY(10px);transition:opacity .5s var(--ease-out),transform .6s var(--spring);transition-delay:calc(var(--i,0)*55ms)}
-.reveal.in .jobs span{opacity:1;transform:none}
+.reveal .jobs span{transform:translateY(12px);transition:transform .4s var(--ease-reveal);transition-delay:calc(var(--i,0)*55ms)}
+.reveal.in .jobs span{transform:none}
 
 /* -- le rappel qui n'arrive jamais : deux attentes face à face -- */
 .rappel-txt{max-width:65ch;margin:0 auto;text-align:left;font-size:var(--fs-body);color:var(--body)}
@@ -1551,7 +1583,7 @@ h2[id],section[id]{scroll-margin-top:96px}
   .aw-day{padding:8px 5px 10px;border-radius:var(--r-sm)}
 }
 @media (prefers-reduced-motion:reduce){
-  .reveal .jobs span{opacity:1;transform:none;transition:none var(--ease-out)}
+  .reveal .jobs span{transform:none;transition:none var(--ease-out)}
   .wd-dots i{animation:none}
   .day.anim .dayrow{opacity:1}
   .day.anim .day-blk{transform:scaleX(1);transition:none var(--ease-out)}
@@ -1771,8 +1803,11 @@ p .btn::after,li .btn::after{inset:0}
    minuteurs, compteurs, dates, colonnes — ne saute pas quand il change et s'aligne en colonne */
 time,output,.timer,.num,.proof b,.plan-p b,.plan-m,.eq,.big em,.marks,.vcap b,.vcap em,.call .num,.ccard a,.cmp td,.cmp th,
 .legal td,.legal dd,.frow .v,.pcrow em,.drow .dtime,.dtimer,.day-score,.dt-h,.durrow .dl,.durrow .dv,.mc-hd span,.mc-li b,
-.det-li .dur,.figure b,.t-study .st-num,.q-n,.agf-cnt b,.agf-ruler,.mcal-ruler,.agf-col header,.blk>span,.blk b,.day-blk span,
+.det-li .dur,.figure b,.t-study .st-num,.q-n,.agf-ruler,.mcal-ruler,.agf-col header,.blk>span,.blk b,.day-blk span,
 .pills button,.agf-tabs button,.kick b,.bmeta,.art-meta,.callbar .t,.demo-hd span,.dash-hd span,.roi-ctl label,.roi-out>b,.roi-out>span,
 .jq span,.yr,.mark,.ag-tag,.chat .m,.dm,.dstep,.dcard span,.tf-ok span,.ns-act span,.fc-out span,.sstep p,.ph-incoming span,.exbadge,
 .fun-top span,.tf-top span,.ns-num span,.step p,.proof,.dcard b,.dst,.mc-known,.plan-p span,.day-fail,.dg,.dp-chip,
 .roi-ctl output,.ns-act>div span,.ns-res span,.tf-ctx span,.dash-pop span,.mc-li span,.agf-gap,.fc-tag{font-variant-numeric:tabular-nums;font-feature-settings:"tnum" 1}
+/* exception : le grand compteur de l'agenda (« 12 couverts ») ne s'aligne sur
+   aucune colonne — les chasses fixes y creusent le 1 */
+.agf-cnt b{font-variant-numeric:proportional-nums;font-feature-settings:"pnum" 1}
