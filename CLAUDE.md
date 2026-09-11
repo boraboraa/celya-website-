@@ -140,6 +140,15 @@ Aucun composant visuel nouveau. `bento.js` n'est jamais touché. Compléter une
 série existante en suivant exactement le motif en place n'est pas une
 modification du système.
 
+**Exception datée — lot « design & proportions » du 11 septembre 2026, validé
+par Bora le même jour.** Ce lot est un brief CSS : `bento.css` y est modifié
+(logo et bouton de nav, pied de page à colonnes titrées, `aside.t-answer` des
+sous-pages, tokens `--fs-*` et `--space-in/--space-out`, reveal sans opacité,
+hero de l'accueil). `bento.js` y est touché sur **un seul point** : le premier
+cycle de la démo d'appel démarre sur l'écran rempli (la conversation affichée),
+jamais sur l'écran vide. Rien d'autre dans `bento.js` ne bouge, et la règle
+ci-dessus reprend après ce lot.
+
 ## Budget de rendu (lot performance du 5 septembre 2026)
 
 Le site n'est pas lourd, il était occupé : la décoration saturait le GPU et le
