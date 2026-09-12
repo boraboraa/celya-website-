@@ -796,9 +796,44 @@ footer.site a:hover{color:var(--ink)}
 @media(max-width:720px){
   /* le rythme se resserre : deux pas toujours, mais à l'échelle du téléphone */
   :root{--space-in:64px;--space-out:120px}
+
+  /* ---------- héro de l'accueil sur téléphone (lot du 12 septembre 2026) ----------
+     La bande de photo de 289 px, coupée net au menton et posée comme un bandeau,
+     disparaît : sous 720 px la photo devient le FOND du héro et le texte se pose
+     dessus. Trois défauts tombent avec elle — l'arête franche entre la bande et
+     le fond de page, l'accroche à cheval sur cette arête, et le second bouton
+     rejeté sous la barre du navigateur. Le bas du portrait se dissout par masque
+     ET le voile finit transparent : plus aucune ligne de raccord.
+     Mesuré à 393 × 730 (Safari iOS, barre visible) : bas de « Prendre
+     rendez-vous » ≤ 660 px ; à 360 × 640 : ≤ 600 px. */
+  .hero{position:relative;display:block;min-height:0;padding:0 0 12px;overflow:hidden}
+  /* le cadre de la photo garde le rapport de la source (864 × 1100) : le visage
+     entre en entier, aucun recadrage au menton, et la hauteur suit la largeur */
+  .hero-jwrap{position:absolute;top:0;left:0;right:0;bottom:auto;z-index:0;
+    width:100%;height:auto;max-height:none;aspect-ratio:864/1100;
+    -webkit-mask-image:none;mask-image:none}
+  .hero-jwrap img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+    object-position:50% 18%;
+    -webkit-mask-image:linear-gradient(180deg,#000 0,#000 56%,transparent 88%);
+    mask-image:linear-gradient(180deg,#000 0,#000 56%,transparent 88%)}
+  /* voile : assez sombre dès le haut pour que l'accroche et le titre passent le
+     4.5:1 sur la peau, opaque au 88e centième, puis rendu transparent sur les
+     douze derniers centièmes — le fond de page (aurore comprise) reprend la
+     main sans marche. */
+  .hero-jwrap::after{content:'';position:absolute;inset:0;background:
+    linear-gradient(180deg,rgba(7,10,20,.42) 0,rgba(7,10,20,.70) 42%,var(--bg) 88%,rgba(7,10,20,0) 100%)}
+  .hero-in{position:relative;z-index:1}
+  /* 88 px en haut : la nav fixe (70 px) est franchie, l'accroche démarre dessous */
+  .hero-txt{padding-block:88px 32px;max-width:none}
+  .hero-txt h1{font-size:clamp(32px,8.5vw,40px)} /* seule dérogation à --fs-display : sur 393 px, 48 px donnait cinq lignes */
+  .hero-txt .cta-row{gap:12px}
   /* 5 lignes de 24 px ne tiennent pas au-dessus du bouton d'appel : le sous-titre
      du héro passe au corps de texte sous 720 px */
   .hero-txt .sub{font-size:var(--fs-body)}
+  /* l'accroche tient sur UNE ligne : le pays passe à la trappe et les capitales
+     se resserrent. Le symbole se centre sur cette ligne unique. */
+  .kick{line-height:1.4;align-items:center;letter-spacing:.08em;gap:8px}
+  .kick-geo{display:none}
   /* le libellé du CTA ne dépend plus de la largeur d'écran : voir la requête
      de conteneur @container (max-width:639px), plus haut */
   .t-hero{padding:38px 26px}
@@ -806,9 +841,6 @@ footer.site a:hover{color:var(--ink)}
   .nav-logo{height:24px}
   /* la barre d'appel en bas d'écran prend le relais du CTA de la nav */
   .nav-cta{display:none}
-  /* seule exception à « une accroche ne passe jamais à la ligne » : l'accroche de
-     marque du héro, trop longue pour tenir sur une ligne de 390 px */
-  .kick-brand span{white-space:normal}
   .fgrid{grid-template-columns:repeat(2,minmax(0,1fr))}
   /* le badge « Exemple » repasse dans le flux, bloc aligné à droite au-dessus
      du compteur : plus rien à croiser */

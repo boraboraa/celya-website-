@@ -188,6 +188,45 @@ ci-dessus reprend après ce lot.
 - **`/en/pricing.html`** existe (traduction de `prix.html`), hreflang
   réciproques avec `prix.html` et `nl/prijzen.html`, « Pricing » dans la nav EN.
 
+**Exception datée — lot « héro mobile » du 12 septembre 2026, demandé par Bora
+le même jour.** Second brief CSS, limité au haut des trois accueils sous 720 px.
+`bento.css` y est modifié (bloc `@media(max-width:720px)`), `index.html`,
+`nl/index.html` et `en/index.html` gagnent un `<span class="kick-geo">` autour
+du pays dans l'accroche de marque. `bento.js` n'est pas touché. La règle du
+haut reprend après ce lot.
+
+Ce que le lot a fixé, et qui se mesure (harnais Chromium à 393 × 730, 390 × 640
+et 360 × 640, iPhone Safari, barre visible) :
+
+- **La photo n'est plus une bande, c'est le fond du héro.** La bande de 289 px
+  coupée net au menton disparaît : `.hero-jwrap` passe en `position:absolute`
+  sur toute la largeur, au rapport de la source (`aspect-ratio:864/1100`) pour
+  que le visage entre en entier, et le texte se pose dessus (`.hero-in` en
+  `z-index:1`).
+- **Aucune arête.** Le bas du portrait se dissout par masque (opaque jusqu'à
+  56 %, transparent à 88 %) **et** le voile finit en `rgba(7,10,20,0)` à 100 %
+  après être passé par `var(--bg)` à 88 % : le fond de page, aurore comprise,
+  reprend la main sans marche. Mesuré : le plus grand saut de luminance d'une
+  ligne à la suivante sous la nav tombe de **0,027 à 0,0015** (× 17).
+- **L'accroche tient sur une ligne.** Le pays est dans un
+  `<span class="kick-geo">` masqué sous 720 px ; il reste « Celya · secrétariat
+  téléphonique IA » (NL « Celya · AI-telefoonsecretariaat », EN « Celya · AI
+  phone answering »). `.kick` sous 720 px : `line-height:1.4`,
+  `align-items:center` (le symbole se centre sur la ligne), `letter-spacing`
+  ramené à `.08em`, `gap:8px`. La dérogation `.kick-brand span{white-space:
+  normal}` n'a plus lieu d'être et a disparu.
+- **Le h1 de l'accueil passe à `clamp(32px,8.5vw,40px)` sous 720 px** — seule
+  dérogation à `--fs-display`, qui rendait 48 px et cinq lignes sur 393. Trois
+  lignes en FR, deux en NL et EN.
+- **Les deux boutons sont dans le premier écran.** Empilés, pleine largeur,
+  `gap:12px`. Bas de « Prendre rendez-vous » : **509 px à 393 × 730** (seuil
+  660) et **505 px à 360 × 640** (seuil 600) ; il était à 781 et 747.
+- **Contraste** relevé sur le pixel le plus clair de la photo sous chaque bloc,
+  texte masqué : accroche ≥ 5,18, h1 ≥ 7,20, paragraphe ≥ 6,07. Le seuil est
+  4,5.
+- Le budget de rendu tient : aucun `backdrop-filter` ni `will-change` ajouté,
+  aucun `filter:` sur un élément qui bouge.
+
 ## Budget de rendu (lot performance du 5 septembre 2026)
 
 Le site n'est pas lourd, il était occupé : la décoration saturait le GPU et le
