@@ -189,10 +189,14 @@ ci-dessus reprend après ce lot.
   réciproques avec `prix.html` et `nl/prijzen.html`, « Pricing » dans la nav EN.
 
 **Exception datée — lot « héro mobile » du 12 septembre 2026, demandé par Bora
-le même jour.** Second brief CSS, limité au haut des trois accueils sous 720 px.
-`bento.css` y est modifié (bloc `@media(max-width:720px)`), `index.html`,
-`nl/index.html` et `en/index.html` gagnent un `<span class="kick-geo">` autour
-du pays dans l'accroche de marque. `bento.js` n'est pas touché. La règle du
+le même jour.** Second brief CSS, limité au premier écran des trois accueils
+sous 720 px. `bento.css` y est modifié (blocs `@media(max-width:720px)` et
+`@media(max-width:480px)`, plus le fond du bandeau cookies en barre basse) ;
+`index.html`, `nl/index.html` et `en/index.html` gagnent un
+`<span class="kick-geo">` autour du pays dans l'accroche de marque. `bento.js`
+y est touché sur **un seul point**, le second depuis le début : le bandeau
+cookies publie sa hauteur dans `--cbanner-h` et la retire au clic. Le
+consentement et le chargement de GTM ne bougent pas d'une ligne. La règle du
 haut reprend après ce lot.
 
 Ce que le lot a fixé, et qui se mesure (harnais Chromium à 393 × 730, 390 × 640
@@ -231,8 +235,39 @@ et 360 × 640, iPhone Safari, barre visible) :
 - **Contraste** relevé sur le pixel le plus clair de la photo sous chaque bloc,
   texte masqué : accroche ≥ 5,18, h1 ≥ 7,20, paragraphe ≥ 6,07. Le seuil est
   4,5.
+- **Le bandeau cookies ne recouvre plus les boutons.** Il se posait à 399 px du
+  haut sur un écran de 640 (`bottom:84px`, 157 px de haut) et couvrait les deux
+  boutons du héro dans 7 des 9 cas mesurés. Sous 720 px il devient une barre
+  basse : `bottom:0`, pleine largeur, `border-radius:0`, bord haut seul,
+  padding 12/16, message à 14 px sur deux lignes, Refuser / Accepter sur la
+  ligne du message tant que 210 px lui suffisent et dessous sinon. **Hauteur
+  107 px** dans huit cas sur neuf. Son fond passe de `rgba(13,18,32,.97)` à
+  **`#0D1220` opaque** : en barre pleine largeur, 3 % d'un texte clair sur un
+  panneau presque noir vaut quatre fois la luminance du fond, et le texte du
+  dessous se lisait à travers. Même couleur, alpha à 1 — c'est la seule couleur
+  que le lot déplace.
+- **`--cbanner-h`** : `bento.js` publie la hauteur du bandeau sur
+  `document.documentElement` à l'affichage, la met à jour sur le `onResize`
+  commun et sur `document.fonts.ready`, et la retire au clic sur l'un ou
+  l'autre bouton. `onResize` n'a pas de retrait : la fonction de mesure porte
+  donc un drapeau et ne fait plus rien une fois le bandeau fermé — sans quoi
+  elle réécrivait `--cbanner-h: 0px` sur un nœud détaché à chaque
+  redimensionnement. Sous 720 px le héro rend `padding-bottom:calc(12px +
+  var(--cbanner-h,0px))`. **Attention à ce que cette variable fait et ne fait
+  pas** : le bandeau est `position:fixed`, le padding du héro ajoute de la
+  place *sous* les boutons, il ne les remonte pas. Ce qui dégage les boutons,
+  c'est la barre à `bottom:0` et sa hauteur plafonnée. Mesuré, bandeau
+  affiché : **aucun élément de `.cta-row` recouvert, 9 cas sur 9**, dans les
+  trois langues et aux trois tailles.
+- **Reste ouvert** : en français à 360 px le message tient sur 3 lignes et le
+  bandeau fait 126 px, au-dessus du plafond de 112. Le texte déroulé mesure
+  796 px et il en faudrait 656 pour deux lignes — aucun réglage de gouttière ne
+  comble 140 px, seule la formulation le peut. Le néerlandais passe à 1 px
+  près (658 pour 656) : il tient, sans marge. Aucun bouton n'est recouvert dans
+  ni l'un ni l'autre cas.
 - Le budget de rendu tient : aucun `backdrop-filter` ni `will-change` ajouté,
-  aucun `filter:` sur un élément qui bouge.
+  aucun `filter:` sur un élément qui bouge, aucun écouteur nouveau (le bandeau
+  passe par le `onResize` commun).
 
 ## Budget de rendu (lot performance du 5 septembre 2026)
 
@@ -282,5 +317,24 @@ ignorer définitivement.
 
 ## Déploiement
 
-**Claude ne déploie jamais.** Bora merge et lance `vercel --prod` lui-même,
-puis resoumet le sitemap dans la Search Console.
+**Le dépôt est relié à Vercel par l'intégration Git** (app Vercel for GitHub,
+projet `celya-website`, équipe `bora`). Vérifié le 12 septembre 2026 sur
+l'historique du projet : le seul déploiement Production est « Merge pull
+request #26 », branche `main`, source Git. **`vercel --prod` n'est jamais
+lancé.**
+
+**Donc : fusionner vers `main` met en production, tout seul, dans la minute.**
+Il n'y a pas de seconde étape, pas de garde-fou, pas de fenêtre pour se
+raviser. Trois conséquences, dans cet ordre :
+
+1. **Rien ne se fusionne sans que la prévisualisation ait été validée.** Chaque
+   PR reçoit son déploiement de prévisualisation (le commentaire de
+   `vercel[bot]` en porte l'URL) : c'est là que le travail se regarde, sur le
+   vrai rendu et sur un vrai téléphone. La fusion vient après, jamais avant.
+2. **Claude ne fusionne jamais.** Ouvrir la PR, oui ; la fusionner
+   reviendrait à déployer. C'est Bora qui fusionne.
+3. Le sitemap se resoumet dans la Search Console après coup, quand les URL
+   ont bougé.
+
+**Claude ne déploie jamais** — ce qui, ici, veut dire : ne pousse jamais sur
+`main` et ne fusionne jamais une PR.
