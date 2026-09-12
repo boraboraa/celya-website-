@@ -215,6 +215,13 @@ et 360 × 640, iPhone Safari, barre visible) :
   `align-items:center` (le symbole se centre sur la ligne), `letter-spacing`
   ramené à `.08em`, `gap:8px`. La dérogation `.kick-brand span{white-space:
   normal}` n'a plus lieu d'être et a disparu.
+- **Une seule accroche passe encore à la ligne, et sous 480 px seulement** :
+  celle du chapitre métiers (`.pc-head .kick`, 45 signes en casse normale à
+  14 px), qui débordait le document de 4 px à 360 px — `body{overflow-x:hidden}`
+  la rognait au lieu de la montrer. `white-space:normal` + `line-height:1.4`
+  sous 480 px, le `letter-spacing` ne bouge pas. Vérifié :
+  `document.scrollWidth == innerWidth` sur les trois accueils à 360, 390 et
+  393 px, 9 cas sur 9.
 - **Le h1 de l'accueil passe à `clamp(32px,8.5vw,40px)` sous 720 px** — seule
   dérogation à `--fs-display`, qui rendait 48 px et cinq lignes sur 393. Trois
   lignes en FR, deux en NL et EN.

@@ -846,6 +846,15 @@ footer.site a:hover{color:var(--ink)}
      du compteur : plus rien à croiser */
   .agf-boards>.exbadge{position:static;display:table;margin:0 0 10px auto}
 }
+/* seconde exception à « une accroche ne passe jamais à la ligne » : l'accroche
+   du chapitre métiers, en casse normale et 14 px sous 900 px, fait 45 signes —
+   elle débordait le document de 4 px à 360 px, et `body{overflow-x:hidden}` la
+   rognait. Sous 480 px elle passe à la ligne ; l'interligne de 1,4 hérité de
+   .kick empêche les deux lignes de se toucher. Le letter-spacing ne bouge pas. */
+@media(max-width:480px){
+  .pc-head .kick{line-height:1.4}
+  .pc-head .kick span{white-space:normal}
+}
 /* les trois puces de métier tiennent sur une ligne ; sous 420 px la ligne
    défile à l'intérieur du bloc, jamais le document */
 @media(max-width:420px){
