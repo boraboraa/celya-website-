@@ -334,8 +334,18 @@
       b.innerHTML='<span class="cmsg">'+t.msg+' <a href="'+(BLOG?'../':'')+'cookies.html">'+t.more+'</a></span>'+
         '<span class="cbtns"><button class="cdecline">'+t.no+'</button><button class="caccept">'+t.ok+'</button></span>';
       document.body.appendChild(b);
-      b.querySelector('.caccept').addEventListener('click',function(){try{localStorage.setItem(KEY,'granted');}catch(e){}grant();loadGTM();b.remove();});
-      b.querySelector('.cdecline').addEventListener('click',function(){try{localStorage.setItem(KEY,'denied');}catch(e){}b.remove();});
+      /* la hauteur du bandeau est publiée dans --cbanner-h : sous 720 px le héro
+         s'en sert comme padding bas tant que le bandeau est affiché. Retirée au
+         clic, sur l'un comme sur l'autre bouton. Rien d'autre ne change ici :
+         ni le consentement, ni le chargement de GTM. */
+      var vivant=true; /* onResize n'a pas de retrait : après le clic, mesure() doit ne plus rien faire,
+                          sinon elle réécrit --cbanner-h à 0 sur un bandeau détaché à chaque resize */
+      function mesure(){if(!vivant)return;document.documentElement.style.setProperty('--cbanner-h',Math.ceil(b.getBoundingClientRect().height)+'px');}
+      function ferme(){vivant=false;document.documentElement.style.removeProperty('--cbanner-h');b.remove();}
+      mesure();onResize(mesure);
+      if(document.fonts&&document.fonts.ready)document.fonts.ready.then(mesure); /* les Geist chargées changent le nombre de lignes */
+      b.querySelector('.caccept').addEventListener('click',function(){try{localStorage.setItem(KEY,'granted');}catch(e){}grant();loadGTM();ferme();});
+      b.querySelector('.cdecline').addEventListener('click',function(){try{localStorage.setItem(KEY,'denied');}catch(e){}ferme();});
     }
     if(document.body)build();else document.addEventListener('DOMContentLoaded',build);
   })();
