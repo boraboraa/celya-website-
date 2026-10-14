@@ -80,7 +80,7 @@ gtag('consent','default',{ad_storage:'denied',analytics_storage:'denied',ad_user
 <main class="legal">
 <h1>Privacy policy.</h1>
 <p>We keep this simple: we only collect what we need, we never sell your data, and you stay in control of it.</p>
-<p>Last updated: 6 September 2026</p>
+<p>Last updated: 14 October 2026</p>
 
 <h2>1. Who is responsible for your data</h2>
 <p>The controller of your personal data is <strong>Celya Technologies SRL</strong> (trading as Celya), company number 1042.115.837, whose registered office is stated in the <a href="legal.html">legal notice</a>. You can reach us at <a href="mailto:sales@celya.be">sales@celya.be</a> for anything related to your data.</p>
@@ -105,7 +105,7 @@ gtag('consent','default',{ad_storage:'denied',analytics_storage:'denied',ad_user
 <p>We keep enquiry data for as long as needed to handle your request and, if you become a client, for the duration of our relationship plus the legal retention periods (e.g. 7 years for accounting records in Belgium). Otherwise we delete or anonymise it within 24 months.</p>
 
 <h2>5. Who can access it</h2>
-<p>Your data is handled by Celya Technologies SRL and by a small number of trusted processors acting on our instructions, such as our email provider (Google Workspace) and our website hosting provider. We do not transfer your data outside the EEA unless an adequate safeguard (e.g. EU Standard Contractual Clauses) is in place.</p>
+<p>Your data is handled by Celya Technologies SRL and by a small number of trusted processors acting on our instructions, such as our email provider (Zoho Mail) and our website hosting provider. We do not transfer your data outside the EEA unless an adequate safeguard (e.g. EU Standard Contractual Clauses) is in place.</p>
 
 <h2>6. Your rights</h2>
 <p>Under the GDPR you can, at any time, request: access to your data; correction; erasure; restriction; objection to processing; and data portability. To exercise any of these, email <a href="mailto:sales@celya.be">sales@celya.be</a>. You also have the right to lodge a complaint with the Belgian Data Protection Authority (Autorité de protection des données / Gegevensbeschermingsautoriteit), <a href="https://www.dataprotectionauthority.be" target="_blank" rel="noopener">dataprotectionauthority.be</a>.</p>
@@ -113,7 +113,20 @@ gtag('consent','default',{ad_storage:'denied',analytics_storage:'denied',ad_user
 <h2>7. Security</h2>
 <p>We apply reasonable technical and organisational measures to protect your data against loss, misuse and unauthorised access. No method is 100% secure, but we work to keep risk low.</p>
 
-<h2>8. Changes</h2>
+<h2 id="google-calendar">8. Google Calendar</h2>
+<p>If you connect your Google Calendar account to Celya (Settings → Integrations), Celya Technologies SRL accesses some of your calendar data through Google APIs. Connecting is optional, and you can remove it at any time.</p>
+<p><strong>What we read and keep.</strong> For the calendar you connect: the start and end time of each event, its title, and its status (confirmed, cancelled, marked “free”, invitation declined). We do not keep the description, location or attendee list of your events.</p>
+<p><strong>What we write.</strong> Celya creates a separate calendar in your Google account, “Celya — Réservations”. We add each appointment booked by Celya to it (the person’s name, date and time, and a link to the booking in your console), update it if it moves, and delete it if it is cancelled in Celya. Celya cannot change or delete events in your other calendars: the permission we request from Google does not allow it.</p>
+<p><strong>Why.</strong> So your AI receptionist never offers a slot when you are already busy, and so your console can show your Google events next to your Celya bookings.</p>
+<p><strong>What we never do.</strong> Your event titles are visible only in your Celya console, to the users of your account — and to the Celya team when it assists you. They are never read out to callers, never sent to an artificial-intelligence provider, and never included in our emails or WhatsApp summaries. We do not sell your Google data, use it for advertising, or share it with anyone other than our hosting providers (Supabase for the database, Vercel for the application), who process it on our behalf.</p>
+<p><strong>Your summaries.</strong> If you receive the daily summary of your calendar by WhatsApp or email, it may show that a slot is “Busy” and at what time — never the event’s title. That summary is then delivered through WhatsApp (Meta) or our email delivery service, to you alone.</p>
+<p><strong>Storage and security.</strong> Data is stored in the European Union. Your Google access tokens are encrypted, and access to your calendar data is restricted to your account.</p>
+<p><strong>How long.</strong> An imported event is deleted from Celya 30 days after it ends. If you disconnect Google Calendar from Celya, we delete the “Celya — Réservations” calendar from your Google account, revoke our access, and erase your access tokens and all data imported from that calendar. If access is withdrawn or expires on Google’s side, we likewise erase your tokens and the imported data as soon as we detect it, at the next synchronisation; we can then no longer reach the “Celya — Réservations” calendar, which you can delete yourself in Google Calendar.</p>
+<p><strong>Removing access.</strong> In Celya: Settings → Integrations → Disconnect. Or from your Google account: <a href="https://myaccount.google.com/connections" target="_blank" rel="noopener">myaccount.google.com/connections</a>.</p>
+<p><strong>Limited Use.</strong> Celya’s use and transfer to any other app of information received from Google APIs will adhere to the <a href="https://developers.google.com/terms/api-services-user-data-policy" target="_blank" rel="noopener">Google API Services User Data Policy</a>, including the Limited Use requirements. Celya does not use data obtained through Google Workspace APIs to develop, improve or train generalized artificial-intelligence or machine-learning models.</p>
+<p>Questions: <a href="mailto:sales@celya.be">sales@celya.be</a>.</p>
+
+<h2>9. Changes</h2>
 <p>We may update this policy as our service evolves. The current version is always the one published on this page, with its "last updated" date.</p>
 
 <p>See also our <a href="cookies.html">Cookie Notice</a> and <a href="legal.html">Legal Notice</a>.</p>
