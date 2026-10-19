@@ -115,25 +115,81 @@ gtag('consent','default',{ad_storage:'denied',analytics_storage:'denied',ad_user
 
 <h2 id="google-calendar">8. Google Calendar</h2>
 <p>If you connect your Google Calendar account to Celya (Settings → Integrations), Celya Technologies SRL accesses some of your calendar data through Google APIs. Connecting is optional, and you can remove it at any time.</p>
-<p><strong>What we read and keep.</strong> For the calendar you connect: the start and end time of each event, its title, and its status (confirmed, cancelled, marked “free”, invitation declined). We do not keep the description, location or attendee list of your events.</p>
-<p><strong>What we write.</strong> Celya creates a separate calendar in your Google account, “Celya — Réservations”. We add each appointment booked by Celya to it (the person’s name, date and time, and a link to the booking in your console), update it if it moves, and delete it if it is cancelled in Celya. Celya cannot change or delete events in your other calendars: the permission we request from Google does not allow it.</p>
-<p><strong>Why.</strong> So your AI receptionist never offers a slot when you are already busy, and so your console can show your Google events next to your Celya bookings.</p>
-<p><strong>What we never do.</strong> Your event titles are visible only in your Celya console, to the users of your account — and to the Celya team when it assists you. They are never read out to callers, never sent to an artificial-intelligence provider, and never included in our emails or WhatsApp summaries. We do not sell your Google data, use it for advertising, or share it with anyone other than our hosting providers (Supabase for the database, Vercel for the application), who process it on our behalf.</p>
-<p><strong>Your summaries.</strong> If you receive the daily summary of your calendar by WhatsApp or email, it may show that a slot is “Busy” and at what time — never the event’s title. That summary is then delivered through WhatsApp (Meta) or our email delivery service, to you alone.</p>
-<p><strong>Storage and security.</strong> Data is stored in the European Union. Your Google access tokens are encrypted, and access to your calendar data is restricted to your account.</p>
-<p><strong>How long.</strong> An imported event is deleted from Celya 30 days after it ends. If you disconnect Google Calendar from Celya, we delete the “Celya — Réservations” calendar from your Google account, revoke our access, and erase your access tokens and all data imported from that calendar. If access is withdrawn or expires on Google’s side, we likewise erase your tokens and the imported data as soon as we detect it, at the next synchronisation; we can then no longer reach the “Celya — Réservations” calendar, which you can delete yourself in Google Calendar.</p>
-<p><strong>Removing access.</strong> In Celya: Settings → Integrations → Disconnect. Or from your Google account: <a href="https://myaccount.google.com/connections" target="_blank" rel="noopener">myaccount.google.com/connections</a>.</p>
+<p><strong>What we read, and why</strong></p>
+<table>
+  <tr><th>Calendar data</th><th>What we do with it</th></tr>
+  <tr><td>Start and end time of each event</td><td>Your AI receptionist never offers that slot to a caller.</td></tr>
+  <tr><td>Event title</td><td>Shown in your Celya console, to the users of your account (and to the Celya team when it assists you). Nowhere else.</td></tr>
+  <tr><td>Status (confirmed, cancelled, marked “free”, invitation declined)</td><td>Knowing whether the slot is really taken.</td></tr>
+  <tr><td>Description, location, attendee list</td><td>Never kept.</td></tr>
+</table>
+<p><strong>What we write</strong></p>
+<ul>
+  <li>Celya creates a separate calendar in your Google account, “Celya — Réservations”.</li>
+  <li>We add each appointment booked by Celya to it (the person’s name, date and time, and a link to the booking in your console), update it if it moves, and delete it if it is cancelled in Celya.</li>
+  <li>Celya cannot change or delete events in your other calendars: the permission we request from Google does not allow it.</li>
+</ul>
+<p><strong>Where this data goes</strong></p>
+<ul>
+  <li>It is stored in the European Union. Your Google access tokens are encrypted, and access to your calendar data is restricted to your account.</li>
+  <li>Our hosting providers process it on our behalf: Supabase (database) and Vercel (application).</li>
+  <li>The daily summary of your calendar (by WhatsApp or email) may show that a slot is “Busy” and at what time — never the event’s title. It is delivered through WhatsApp (Meta, see section 9) or our email delivery service, to you alone.</li>
+</ul>
+<p><strong>What we never do</strong></p>
+<ul>
+  <li>Read your event titles out to callers.</li>
+  <li>Send your Google data to an artificial-intelligence provider.</li>
+  <li>Sell your Google data, use it for advertising, or share it with anyone other than our hosting providers.</li>
+</ul>
+<p><strong>How long</strong></p>
+<table>
+  <tr><th>Situation</th><th>What we erase</th></tr>
+  <tr><td>An imported event ended 30 days ago</td><td>The event is deleted from Celya.</td></tr>
+  <tr><td>You disconnect Google Calendar from Celya</td><td>We delete the “Celya — Réservations” calendar from your Google account, revoke our access, and erase your access tokens and all data imported from that calendar.</td></tr>
+  <tr><td>Access is withdrawn or expires on Google’s side</td><td>We erase your tokens and the imported data as soon as we detect it, at the next synchronisation. We can then no longer reach the “Celya — Réservations” calendar, which you can delete yourself in Google Calendar.</td></tr>
+</table>
+<p><strong>Removing access</strong></p>
+<ul>
+  <li>In Celya: Settings → Integrations → Disconnect.</li>
+  <li>From your Google account: <a href="https://myaccount.google.com/connections" target="_blank" rel="noopener">myaccount.google.com/connections</a>.</li>
+</ul>
 <p><strong>Limited Use.</strong> Celya’s use and transfer to any other app of information received from Google APIs will adhere to the <a href="https://developers.google.com/terms/api-services-user-data-policy" target="_blank" rel="noopener">Google API Services User Data Policy</a>, including the Limited Use requirements. Celya does not use data obtained through Google Workspace APIs to develop, improve or train generalized artificial-intelligence or machine-learning models.</p>
 <p>Questions: <a href="mailto:sales@celya.be">sales@celya.be</a>.</p>
 
 <h2 id="whatsapp">9. WhatsApp notifications</h2>
 <p>Celya can send you notifications on WhatsApp. This is optional and off by default: you turn it on yourself in your Celya console (Settings → “Notifications WhatsApp”) by entering your WhatsApp number.</p>
-<p><strong>What we send.</strong> A confirmation message, once, when you register your number; then, if you turn it on, a summary of your day at the time you choose: your business name, the number of appointments that day and, for each one (five at most), the time and the person’s name. A slot imported from Google Calendar only appears as “Busy”. We never include your customers’ phone numbers. These messages go only to the number you registered: Celya never messages your customers on WhatsApp and sends no advertising.</p>
-<p><strong>What we keep.</strong> Your WhatsApp number, the time chosen for the summary, a copy of each message sent (visible in your console) and its delivery identifier. If you write to Celya’s WhatsApp number, your message is stored.</p>
-<p><strong>Who carries these messages.</strong> Messages are sent through Meta’s WhatsApp Business Platform (Meta Platforms Ireland Limited), which processes them on our behalf under its WhatsApp Business data processing terms. This may involve transferring data outside the European Economic Area, covered by the safeguards Meta provides (EU standard contractual clauses, EU–US Data Privacy Framework).</p>
-<p><strong>Why.</strong> To let you know, on your phone, about the appointments Celya booked for you. The legal basis is your consent, given when you turn notifications on, and the performance of our contract.</p>
-<p><strong>How long.</strong> This data is kept for as long as your subscription lasts, then deleted or anonymised as described in section 4. You can ask us to erase it at any time (section 6).</p>
-<p><strong>Stopping.</strong> In your console: turn off the morning summary, or click “Retirer mon numéro” (remove my number); sending stops immediately and your number is erased from your settings. You can also write to us at <a href="mailto:sales@celya.be">sales@celya.be</a>.</p>
+<p><strong>What we send</strong></p>
+<table>
+  <tr><th>Message</th><th>When, and what it contains</th></tr>
+  <tr><td>Confirmation</td><td>Once, when you register your number: “Your number is registered to receive your appointment notifications.”</td></tr>
+  <tr><td>Morning summary</td><td>Every day at the time you choose, if you turn it on: your business name, the number of appointments that day and, for each one (five at most), the time and the person’s name. A slot imported from Google Calendar only appears as “Busy”. On a day with no appointments, nothing is sent.</td></tr>
+</table>
+<ul>
+  <li>These messages go only to the number you registered.</li>
+  <li>We never include your customers’ phone numbers.</li>
+  <li>Celya never messages your customers on WhatsApp and sends no advertising.</li>
+</ul>
+<p><strong>What we keep</strong></p>
+<ul>
+  <li>Your WhatsApp number and the time chosen for the summary.</li>
+  <li>A copy of each message sent (visible in your console) and its delivery identifier.</li>
+  <li>Messages you write to Celya’s WhatsApp number.</li>
+</ul>
+<p><strong>Who processes these messages</strong></p>
+<p>Meta’s WhatsApp Business Platform (Meta Platforms Ireland Limited) sends the messages and processes them on our behalf under its WhatsApp Business data processing terms. This may involve transferring data outside the European Economic Area, covered by the safeguards Meta provides (EU standard contractual clauses, EU–US Data Privacy Framework).</p>
+<p><strong>Why, and on what basis</strong></p>
+<ul>
+  <li>Purpose: to let you know, on your phone, about the appointments Celya booked for you.</li>
+  <li>Legal basis: your consent, given when you turn notifications on, and the performance of our contract.</li>
+</ul>
+<p><strong>How long</strong></p>
+<p>For as long as your subscription lasts, then deleted or anonymised as described in section 4. You can ask us to erase it at any time (section 6).</p>
+<p><strong>Stopping</strong></p>
+<ul>
+  <li>Turn off the morning summary in your console: it is no longer sent.</li>
+  <li>Or click “Retirer mon numéro” (remove my number): sending stops immediately and your number is erased from your settings.</li>
+  <li>Or write to us at <a href="mailto:sales@celya.be">sales@celya.be</a>.</li>
+</ul>
 
 <h2>10. Changes</h2>
 <p>We may update this policy as our service evolves. The current version is always the one published on this page, with its "last updated" date.</p>

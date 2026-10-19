@@ -132,25 +132,81 @@ gtag('consent','default',{ad_storage:'denied',analytics_storage:'denied',ad_user
 
 <h2 id="google-agenda">8. Google Agenda</h2>
 <p>Als u uw Google Agenda-account aan Celya koppelt (Instellingen → Integraties), krijgt Celya Technologies SRL via de Google-API’s toegang tot een deel van uw agendagegevens. Die koppeling is vrijwillig en u kunt ze op elk moment verwijderen.</p>
-<p><strong>Wat we lezen en bewaren.</strong> Voor de agenda die u koppelt: het begin- en einduur van elke afspraak, de titel en de status (bevestigd, geannuleerd, gemarkeerd als „beschikbaar”, uitnodiging geweigerd). We bewaren de beschrijving, de locatie en de deelnemerslijst van uw afspraken niet.</p>
-<p><strong>Wat we schrijven.</strong> Celya maakt in uw Google-account een aparte agenda aan, „Celya — Réservations”. Daarin zetten we elke afspraak die via Celya is geboekt (naam van de persoon, datum en uur, link naar de boeking in uw console). We passen ze aan als ze verplaatst wordt en verwijderen ze als ze in Celya geannuleerd wordt. Celya kan geen afspraken in uw andere agenda’s wijzigen of verwijderen: de toestemming die we aan Google vragen, laat dat niet toe.</p>
-<p><strong>Waarom.</strong> Zodat uw AI-receptioniste nooit een tijdslot voorstelt waarop u al bezet bent, en zodat uw console uw Google-afspraken naast uw Celya-boekingen kan tonen.</p>
-<p><strong>Wat we nooit doen.</strong> De titels van uw afspraken zijn alleen zichtbaar in uw Celya-console, voor de gebruikers van uw account — en voor het Celya-team wanneer het u helpt. Ze worden nooit aan bellers voorgelezen, nooit naar een aanbieder van artificiële intelligentie gestuurd en nooit opgenomen in onze e-mails of WhatsApp-samenvattingen. We verkopen uw Google-gegevens niet, gebruiken ze niet voor reclame en delen ze met niemand, behalve met onze hostingproviders (Supabase voor de database, Vercel voor de applicatie), die ze in onze opdracht verwerken.</p>
-<p><strong>Uw samenvattingen.</strong> Als u de dagelijkse samenvatting van uw agenda via WhatsApp of e-mail ontvangt, kan die vermelden dat een tijdslot „Bezet” is en op welk uur — nooit de titel van de afspraak. Die samenvatting wordt dan via WhatsApp (Meta) of via onze e-maildienst bezorgd, uitsluitend aan u.</p>
-<p><strong>Opslag en beveiliging.</strong> De gegevens worden opgeslagen in de Europese Unie. Uw Google-toegangstokens zijn versleuteld en de toegang tot uw agendagegevens is beperkt tot uw account.</p>
-<p><strong>Hoe lang.</strong> Een geïmporteerde afspraak wordt 30 dagen na het einde ervan uit Celya verwijderd. Als u Google Agenda vanuit Celya ontkoppelt, verwijderen we de agenda „Celya — Réservations” uit uw Google-account, trekken we onze toegang in en wissen we uw toegangstokens en alle gegevens die uit die agenda zijn geïmporteerd. Als de toegang aan de kant van Google wordt ingetrokken of verloopt, wissen we eveneens uw tokens en de geïmporteerde gegevens zodra we dat vaststellen, bij de volgende synchronisatie; de agenda „Celya — Réservations” kunnen we dan niet meer bereiken — u kunt ze zelf in Google Agenda verwijderen.</p>
-<p><strong>Toegang intrekken.</strong> In Celya: Instellingen → Integraties → Ontkoppelen. Of via uw Google-account: <a href="https://myaccount.google.com/connections" target="_blank" rel="noopener">myaccount.google.com/connections</a>.</p>
+<p><strong>Wat we lezen, en waarom</strong></p>
+<table>
+  <tr><th>Gegevens uit uw agenda</th><th>Wat we ermee doen</th></tr>
+  <tr><td>Begin- en einduur van elke afspraak</td><td>Uw AI-receptioniste stelt dat tijdslot nooit voor aan een beller.</td></tr>
+  <tr><td>Titel van de afspraak</td><td>Zichtbaar in uw Celya-console, voor de gebruikers van uw account (en het Celya-team wanneer het u helpt). Nergens anders.</td></tr>
+  <tr><td>Status (bevestigd, geannuleerd, gemarkeerd als „beschikbaar”, uitnodiging geweigerd)</td><td>Weten of het tijdslot echt bezet is.</td></tr>
+  <tr><td>Beschrijving, locatie, deelnemerslijst</td><td>Nooit bewaard.</td></tr>
+</table>
+<p><strong>Wat we schrijven</strong></p>
+<ul>
+  <li>Celya maakt in uw Google-account een aparte agenda aan, „Celya — Réservations”.</li>
+  <li>Daarin zetten we elke afspraak die via Celya is geboekt (naam van de persoon, datum en uur, link naar de boeking in uw console). We passen ze aan als ze verplaatst wordt en verwijderen ze als ze in Celya geannuleerd wordt.</li>
+  <li>Celya kan geen afspraken in uw andere agenda’s wijzigen of verwijderen: de toestemming die we aan Google vragen, laat dat niet toe.</li>
+</ul>
+<p><strong>Waar deze gegevens naartoe gaan</strong></p>
+<ul>
+  <li>Ze worden opgeslagen in de Europese Unie. Uw Google-toegangstokens zijn versleuteld en de toegang tot uw agendagegevens is beperkt tot uw account.</li>
+  <li>Onze hostingproviders verwerken ze in onze opdracht: Supabase (database) en Vercel (applicatie).</li>
+  <li>Het dagelijkse overzicht van uw agenda (via WhatsApp of e-mail) kan vermelden dat een tijdslot „Bezet” is en op welk uur — nooit de titel van de afspraak. Het wordt bezorgd via WhatsApp (Meta, zie punt 9) of via onze e-maildienst, uitsluitend aan u.</li>
+</ul>
+<p><strong>Wat we nooit doen</strong></p>
+<ul>
+  <li>De titels van uw afspraken aan bellers voorlezen.</li>
+  <li>Uw Google-gegevens naar een aanbieder van artificiële intelligentie sturen.</li>
+  <li>Uw Google-gegevens verkopen, voor reclame gebruiken of delen met iemand anders dan onze hostingproviders.</li>
+</ul>
+<p><strong>Hoe lang</strong></p>
+<table>
+  <tr><th>Situatie</th><th>Wat we wissen</th></tr>
+  <tr><td>Een geïmporteerde afspraak is 30 dagen voorbij</td><td>De afspraak wordt uit Celya verwijderd.</td></tr>
+  <tr><td>U ontkoppelt Google Agenda vanuit Celya</td><td>We verwijderen de agenda „Celya — Réservations” uit uw Google-account, trekken onze toegang in en wissen uw toegangstokens en alle gegevens die uit die agenda zijn geïmporteerd.</td></tr>
+  <tr><td>De toegang wordt aan de kant van Google ingetrokken of verloopt</td><td>We wissen uw tokens en de geïmporteerde gegevens zodra we dat vaststellen, bij de volgende synchronisatie. De agenda „Celya — Réservations” kunnen we dan niet meer bereiken — u kunt ze zelf in Google Agenda verwijderen.</td></tr>
+</table>
+<p><strong>Toegang intrekken</strong></p>
+<ul>
+  <li>In Celya: Instellingen → Integraties → Ontkoppelen.</li>
+  <li>Via uw Google-account: <a href="https://myaccount.google.com/connections" target="_blank" rel="noopener">myaccount.google.com/connections</a>.</li>
+</ul>
 <p><strong>Beperkt gebruik.</strong> Het gebruik en de overdracht door Celya van informatie die via Google-API’s wordt ontvangen, voldoet aan het <a href="https://developers.google.com/terms/api-services-user-data-policy" target="_blank" rel="noopener">Google API Services User Data Policy</a>, inclusief de vereisten voor beperkt gebruik (<em>Limited Use</em>). Celya gebruikt gegevens die via Google Workspace-API’s zijn verkregen niet om algemene modellen voor artificiële intelligentie of machine learning te ontwikkelen, te verbeteren of te trainen.</p>
 <p>Vragen: <a href="mailto:sales@celya.be">sales@celya.be</a>.</p>
 
 <h2 id="whatsapp">9. WhatsApp-meldingen</h2>
 <p>Celya kan u meldingen sturen via WhatsApp. Dat is vrijwillig en staat standaard uit: u zet het zelf aan in uw Celya-console (Instellingen → „Notifications WhatsApp”) door uw WhatsApp-nummer in te geven.</p>
-<p><strong>Wat we sturen.</strong> Eén bevestigingsbericht wanneer u uw nummer registreert; daarna, als u het aanzet, een overzicht van uw dag op het uur dat u kiest: de naam van uw zaak, het aantal afspraken van die dag en, voor elke afspraak (hoogstens vijf), het uur en de naam van de persoon. Een tijdslot uit Google Agenda verschijnt alleen als „Bezet”. We vermelden nooit het telefoonnummer van uw klanten. Deze berichten gaan alleen naar het nummer dat u registreerde: Celya stuurt uw klanten nooit berichten via WhatsApp en stuurt geen reclame.</p>
-<p><strong>Wat we bewaren.</strong> Uw WhatsApp-nummer, het gekozen uur voor het overzicht, een kopie van elk verstuurd bericht (zichtbaar in uw console) en de leveringscode ervan. Als u naar het WhatsApp-nummer van Celya schrijft, wordt uw bericht bewaard.</p>
-<p><strong>Via wie deze berichten verlopen.</strong> De berichten worden verstuurd via het WhatsApp Business-platform van Meta (Meta Platforms Ireland Limited), dat ze in onze opdracht verwerkt volgens zijn voorwaarden voor gegevensverwerking van WhatsApp Business. Daarbij kunnen gegevens buiten de Europese Economische Ruimte worden doorgegeven, met de waarborgen die Meta voorziet (standaardcontractbepalingen van de EU, het EU-VS-kader voor gegevensbescherming).</p>
-<p><strong>Waarom.</strong> Om u op uw gsm te verwittigen van de afspraken die Celya voor u heeft vastgelegd. De rechtsgrond is uw toestemming, gegeven wanneer u de meldingen aanzet, en de uitvoering van ons contract.</p>
-<p><strong>Hoe lang.</strong> Deze gegevens worden bewaard zolang uw abonnement loopt en daarna verwijderd of geanonimiseerd zoals beschreven in punt 4. U kunt op elk moment vragen om ze te wissen (punt 6).</p>
-<p><strong>Stoppen.</strong> In uw console: zet het ochtendoverzicht uit, of klik op „Retirer mon numéro” (mijn nummer verwijderen); de berichten stoppen meteen en uw nummer wordt uit uw instellingen gewist. U kunt ons ook schrijven op <a href="mailto:sales@celya.be">sales@celya.be</a>.</p>
+<p><strong>Wat we sturen</strong></p>
+<table>
+  <tr><th>Bericht</th><th>Wanneer, en wat erin staat</th></tr>
+  <tr><td>Bevestiging</td><td>Eén keer, wanneer u uw nummer registreert: een korte bevestiging dat uw nummer is geregistreerd voor de meldingen van uw afspraken.</td></tr>
+  <tr><td>Ochtendoverzicht</td><td>Elke dag op het uur dat u kiest, als u het aanzet: de naam van uw zaak, het aantal afspraken van die dag en, voor elke afspraak (hoogstens vijf), het uur en de naam van de persoon. Een tijdslot uit Google Agenda verschijnt alleen als „Bezet”. Op een dag zonder afspraken wordt niets verstuurd.</td></tr>
+</table>
+<ul>
+  <li>Deze berichten gaan alleen naar het nummer dat u registreerde.</li>
+  <li>We vermelden nooit het telefoonnummer van uw klanten.</li>
+  <li>Celya stuurt uw klanten nooit berichten via WhatsApp en stuurt geen reclame.</li>
+</ul>
+<p><strong>Wat we bewaren</strong></p>
+<ul>
+  <li>Uw WhatsApp-nummer en het gekozen uur voor het overzicht.</li>
+  <li>Een kopie van elk verstuurd bericht (zichtbaar in uw console) en de leveringscode ervan.</li>
+  <li>De berichten die u naar het WhatsApp-nummer van Celya schrijft.</li>
+</ul>
+<p><strong>Wie deze berichten verwerkt</strong></p>
+<p>Het WhatsApp Business-platform van Meta (Meta Platforms Ireland Limited) verstuurt de berichten en verwerkt ze in onze opdracht, volgens zijn voorwaarden voor gegevensverwerking van WhatsApp Business. Daarbij kunnen gegevens buiten de Europese Economische Ruimte worden doorgegeven, met de waarborgen die Meta voorziet (standaardcontractbepalingen van de EU, het EU-VS-kader voor gegevensbescherming).</p>
+<p><strong>Waarom, en op welke grond</strong></p>
+<ul>
+  <li>Doel: u op uw gsm verwittigen van de afspraken die Celya voor u heeft vastgelegd.</li>
+  <li>Rechtsgrond: uw toestemming, gegeven wanneer u de meldingen aanzet, en de uitvoering van ons contract.</li>
+</ul>
+<p><strong>Hoe lang</strong></p>
+<p>Zolang uw abonnement loopt, daarna verwijderd of geanonimiseerd zoals beschreven in punt 4. U kunt op elk moment vragen om ze te wissen (punt 6).</p>
+<p><strong>Stoppen</strong></p>
+<ul>
+  <li>Zet het ochtendoverzicht uit in uw console: het wordt niet meer verstuurd.</li>
+  <li>Of klik op „Retirer mon numéro” (mijn nummer verwijderen): de berichten stoppen meteen en uw nummer wordt uit uw instellingen gewist.</li>
+  <li>Of schrijf ons op <a href="mailto:sales@celya.be">sales@celya.be</a>.</li>
+</ul>
 
 <h2>10. Wijzigingen</h2>
 <p>We kunnen dit beleid bijwerken naarmate onze dienst evolueert. De geldende versie is altijd die op deze pagina, met de datum „laatst bijgewerkt”.</p>
