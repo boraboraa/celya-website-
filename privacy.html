@@ -97,7 +97,7 @@ gtag('consent','default',{ad_storage:'denied',analytics_storage:'denied',ad_user
 <main class="legal">
 <h1>Politique de confidentialité.</h1>
 <p>Simplement : nous ne collectons que le nécessaire, nous ne vendons jamais vos données, et vous en gardez le contrôle.</p>
-<p>Dernière mise à jour : 14 octobre 2026</p>
+<p>Dernière mise à jour : 19 octobre 2026</p>
 
 <h2>1. Qui est responsable de vos données</h2>
 <p>Le responsable du traitement de vos données personnelles est <strong>Celya Technologies SRL</strong> (opérant sous le nom de Celya), numéro d’entreprise 1042.115.837, dont le siège social figure dans les <a href="legal.html">mentions légales</a>. Vous pouvez nous joindre à <a href="mailto:sales@celya.be">sales@celya.be</a> pour tout ce qui concerne vos données.</p>
@@ -132,18 +132,83 @@ gtag('consent','default',{ad_storage:'denied',analytics_storage:'denied',ad_user
 
 <h2 id="google-agenda">8. Google Agenda</h2>
 <p>Si vous connectez votre compte Google Agenda à Celya (Réglages → Intégrations), Celya Technologies SRL accède à certaines données de votre agenda via les API Google. Cette connexion est facultative ; vous pouvez la retirer à tout moment.</p>
-<p><strong>Ce que nous lisons et conservons.</strong> Pour l’agenda que vous connectez : l’heure de début et de fin de chaque événement, son titre, et son état (confirmé, annulé, marqué « disponible », invitation déclinée). Nous ne conservons ni la description, ni le lieu, ni la liste des participants de vos événements.</p>
-<p><strong>Ce que nous écrivons.</strong> Celya crée dans votre compte Google un agenda séparé, « Celya — Réservations ». Nous y ajoutons chaque rendez-vous pris par Celya (nom de la personne, date et heure, lien vers la réservation dans votre console), nous le mettons à jour s’il est déplacé et nous le supprimons s’il est annulé dans Celya. Celya ne peut ni modifier ni supprimer les événements de vos autres agendas : l’autorisation demandée à Google ne le permet pas.</p>
-<p><strong>Pourquoi.</strong> Pour que votre réceptionniste IA ne propose jamais un créneau où vous êtes déjà occupé, et pour afficher vos événements Google à côté de vos rendez-vous Celya dans votre console.</p>
-<p><strong>Ce que nous ne faisons jamais.</strong> Les titres de vos événements ne sont visibles que dans votre console Celya, par les utilisateurs de votre compte — et par l’équipe de Celya lorsqu’elle vous assiste. Ils ne sont jamais lus aux personnes qui appellent, jamais transmis à un fournisseur d’intelligence artificielle, jamais repris dans nos e-mails ou nos résumés WhatsApp. Nous ne vendons pas vos données Google, ne les utilisons pas à des fins publicitaires et ne les partageons avec personne, en dehors de nos hébergeurs (Supabase pour la base de données, Vercel pour l’application) qui les traitent pour notre compte.</p>
-<p><strong>Vos résumés.</strong> Si vous recevez le résumé quotidien de votre agenda par WhatsApp ou par e-mail, il peut indiquer qu’un créneau est « Occupé » et à quelle heure — jamais le titre de l’événement. Ce résumé est alors acheminé par WhatsApp (Meta) ou par notre service d’envoi d’e-mails, à votre seule attention.</p>
-<p><strong>Stockage et sécurité.</strong> Les données sont stockées dans l’Union européenne. Vos jetons d’accès Google sont chiffrés, et l’accès aux données de votre agenda est limité à votre compte.</p>
-<p><strong>Combien de temps.</strong> Un événement importé est supprimé de Celya 30 jours après sa fin. Si vous déconnectez Google Agenda depuis Celya, nous supprimons l’agenda « Celya — Réservations » de votre compte Google, révoquons notre accès, et effaçons vos jetons d’accès et toutes les données importées de cet agenda. Si l’accès est retiré ou expire du côté de Google, nous effaçons de la même façon vos jetons et les données importées dès que nous le constatons, à la synchronisation suivante ; nous ne pouvons alors plus atteindre l’agenda « Celya — Réservations », que vous pouvez supprimer vous-même depuis Google Agenda.</p>
-<p><strong>Retirer l’accès.</strong> Dans Celya : Réglages → Intégrations → Déconnecter. Ou depuis votre compte Google : <a href="https://myaccount.google.com/connections" target="_blank" rel="noopener">myaccount.google.com/connections</a>.</p>
+<p><strong>Ce que nous lisons, et pourquoi</strong></p>
+<table>
+  <tr><th>Donnée de votre agenda</th><th>Ce que nous en faisons</th></tr>
+  <tr><td>Heure de début et de fin de chaque événement</td><td>Votre réceptionniste IA ne propose jamais ce créneau à un appelant.</td></tr>
+  <tr><td>Titre de l’événement</td><td>Affiché dans votre console Celya, pour les utilisateurs de votre compte (et l’équipe de Celya lorsqu’elle vous assiste). Nulle part ailleurs.</td></tr>
+  <tr><td>État (confirmé, annulé, marqué « disponible », invitation déclinée)</td><td>Savoir si le créneau est réellement occupé.</td></tr>
+  <tr><td>Description, lieu, liste des participants</td><td>Jamais conservés.</td></tr>
+</table>
+<p><strong>Ce que nous écrivons</strong></p>
+<ul>
+  <li>Celya crée dans votre compte Google un agenda séparé, « Celya — Réservations ».</li>
+  <li>Nous y ajoutons chaque rendez-vous pris par Celya (nom de la personne, date et heure, lien vers la réservation dans votre console), nous le mettons à jour s’il est déplacé et nous le supprimons s’il est annulé dans Celya.</li>
+  <li>Celya ne peut ni modifier ni supprimer les événements de vos autres agendas : l’autorisation demandée à Google ne le permet pas.</li>
+</ul>
+<p><strong>Où vont ces données</strong></p>
+<ul>
+  <li>Elles sont stockées dans l’Union européenne. Vos jetons d’accès Google sont chiffrés, et l’accès aux données de votre agenda est limité à votre compte.</li>
+  <li>Nos hébergeurs les traitent pour notre compte : Supabase (base de données) et Vercel (application).</li>
+  <li>Le résumé quotidien de votre agenda (par WhatsApp ou par e-mail) peut indiquer qu’un créneau est « Occupé » et à quelle heure — jamais le titre de l’événement. Il est acheminé par WhatsApp (Meta, voir section 9) ou par notre service d’envoi d’e-mails, à votre seule attention.</li>
+</ul>
+<p><strong>Ce que nous ne faisons jamais</strong></p>
+<ul>
+  <li>Lire les titres de vos événements aux personnes qui appellent.</li>
+  <li>Transmettre vos données Google à un fournisseur d’intelligence artificielle.</li>
+  <li>Vendre vos données Google, les utiliser à des fins publicitaires ou les partager avec quiconque en dehors de nos hébergeurs.</li>
+</ul>
+<p><strong>Combien de temps</strong></p>
+<table>
+  <tr><th>Situation</th><th>Ce que nous effaçons</th></tr>
+  <tr><td>Un événement importé est terminé depuis 30 jours</td><td>L’événement est supprimé de Celya.</td></tr>
+  <tr><td>Vous déconnectez Google Agenda depuis Celya</td><td>Nous supprimons l’agenda « Celya — Réservations » de votre compte Google, révoquons notre accès, et effaçons vos jetons d’accès et toutes les données importées de cet agenda.</td></tr>
+  <tr><td>L’accès est retiré ou expire du côté de Google</td><td>Nous effaçons vos jetons et les données importées dès que nous le constatons, à la synchronisation suivante. Nous ne pouvons alors plus atteindre l’agenda « Celya — Réservations » : vous pouvez le supprimer vous-même depuis Google Agenda.</td></tr>
+</table>
+<p><strong>Retirer l’accès</strong></p>
+<ul>
+  <li>Dans Celya : Réglages → Intégrations → Déconnecter.</li>
+  <li>Depuis votre compte Google : <a href="https://myaccount.google.com/connections" target="_blank" rel="noopener">myaccount.google.com/connections</a>.</li>
+</ul>
 <p><strong>Utilisation limitée.</strong> L’utilisation et le transfert, par Celya, des informations reçues des API Google respectent les <a href="https://developers.google.com/terms/api-services-user-data-policy" target="_blank" rel="noopener">Règles relatives aux données utilisateur des services d’API Google</a>, y compris les exigences d’utilisation limitée (<em>Limited Use</em>). Celya n’utilise pas les données obtenues par les API Google Workspace pour développer, améliorer ou entraîner des modèles d’intelligence artificielle ou d’apprentissage automatique généralisés.</p>
 <p>Une question : <a href="mailto:sales@celya.be">sales@celya.be</a>.</p>
 
-<h2>9. Modifications</h2>
+<h2 id="whatsapp">9. Notifications WhatsApp</h2>
+<p>Celya peut vous envoyer des notifications sur WhatsApp. C’est facultatif et désactivé par défaut : vous l’activez vous-même dans votre console Celya (Réglages → « Notifications WhatsApp »), en indiquant votre numéro WhatsApp.</p>
+<p><strong>Ce que nous envoyons</strong></p>
+<table>
+  <tr><th>Message</th><th>Quand, et ce qu’il contient</th></tr>
+  <tr><td>Confirmation</td><td>Une seule fois, quand vous enregistrez votre numéro : « Votre numéro est enregistré pour recevoir les notifications de vos rendez-vous. »</td></tr>
+  <tr><td>Résumé du matin</td><td>Chaque jour à l’heure que vous choisissez, si vous l’activez : le nom de votre entreprise, le nombre de rendez-vous du jour et, pour chacun (cinq au plus), l’heure et le nom de la personne. Un créneau importé de Google Agenda y apparaît seulement comme « Occupé ». Un jour sans rendez-vous, rien n’est envoyé.</td></tr>
+</table>
+<ul>
+  <li>Ces messages partent uniquement vers le numéro que vous avez enregistré.</li>
+  <li>Nous n’y mettons jamais le numéro de téléphone de vos clients.</li>
+  <li>Celya n’écrit jamais à vos clients sur WhatsApp et n’envoie aucun message publicitaire.</li>
+</ul>
+<p><strong>Ce que nous conservons</strong></p>
+<ul>
+  <li>Votre numéro WhatsApp et l’heure choisie pour le résumé.</li>
+  <li>Une copie de chaque message envoyé (visible dans votre console) et son identifiant de remise.</li>
+  <li>Les messages que vous écrivez au numéro WhatsApp de Celya.</li>
+</ul>
+<p><strong>Qui traite ces messages</strong></p>
+<p>La plateforme WhatsApp Business de Meta (Meta Platforms Ireland Limited) envoie les messages et les traite pour notre compte, conformément à ses conditions de traitement des données WhatsApp Business. Ce traitement peut impliquer un transfert de données hors de l’Espace économique européen, encadré par les garanties prévues par Meta (clauses contractuelles types de l’UE, cadre de protection des données UE–États-Unis).</p>
+<p><strong>Pourquoi, et sur quelle base</strong></p>
+<ul>
+  <li>But : vous prévenir, sur votre téléphone, des rendez-vous que Celya a pris pour vous.</li>
+  <li>Base légale : votre consentement, donné en activant les notifications, et l’exécution de notre contrat.</li>
+</ul>
+<p><strong>Combien de temps</strong></p>
+<p>Pendant la durée de votre abonnement, puis suppression ou anonymisation dans les conditions de la section 4. Vous pouvez demander leur effacement à tout moment (section 6).</p>
+<p><strong>Arrêter</strong></p>
+<ul>
+  <li>Désactivez le résumé du matin dans votre console : il n’est plus envoyé.</li>
+  <li>Ou cliquez sur « Retirer mon numéro » : les envois s’arrêtent immédiatement et votre numéro est effacé de vos réglages.</li>
+  <li>Ou écrivez-nous à <a href="mailto:sales@celya.be">sales@celya.be</a>.</li>
+</ul>
+
+<h2>10. Modifications</h2>
 <p>Nous pouvons mettre à jour cette politique à mesure que notre service évolue. La version en vigueur est toujours celle publiée sur cette page, avec sa date de « dernière mise à jour ».</p>
 
 <p>Voir aussi notre <a href="cookies.html">Notice cookies</a> et nos <a href="legal.html">Mentions légales</a>.</p>
