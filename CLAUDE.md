@@ -15,15 +15,31 @@ mais il ne couvre pas tout le tableau — la relecture reste obligatoire.
 
 ## Ce que le site ne dit jamais
 
-- **les seuls montants publics sont les trois formules** : 75, 150 et 300 €
-  hors TVA par mois, pour 250, 750 et 1 750 minutes — sur `prix.html`,
-  `nl/prijzen.html`, `en/pricing.html` et dans les FAQ prix des trois
-  accueils. Aucun autre montant, aucune fourchette, rien d'inventé ailleurs.
+- **les seuls montants publics sont les trois formules — grille du 14 novembre
+  2026, décision de Bora** : **49, 99 et 199 € hors TVA par mois, pour 100,
+  300 et 750 minutes**, décomptées à la seconde. Elle remplace 75 / 150 / 300 €
+  et 250 / 750 / 1 750 minutes partout, sans exception. Les montants, quotas,
+  minutes et règles de l'offre (mise en service = une mensualité, dépassement =
+  passage à la formule du dessus, au-delà de 750 minutes sur devis, messages
+  WhatsApp facturés par Meta sur le compte du client — environ 2 € par mois —,
+  30 jours d'essai sans engagement) **ne vivent que dans le fichier de données
+  central de l'offre** (`data/offre.json`, lot « refonte premium ») : aucun
+  gabarit, aucune page source ne les écrit en dur. Aucun autre montant, aucune
+  fourchette, rien d'inventé ailleurs. Vérifiable :
+  `grep -rE "75 €|250 minutes|1 750"` sur les pages ne renvoie rien.
 - aucun concurrent nommé
 - Celya ne remplace jamais une secrétaire
 - l'agent n'évalue jamais un symptôme médical
-- pas d'emailing, pas d'appels sortants, pas de WhatsApp
-- pas de synchronisation Google Agenda ou Outlook annoncée, pas de SMS de confirmation
+- **jamais** d'emailing, d'appels sortants, ni de message publicitaire
+- **en service depuis le 14 novembre 2026 (décision de Bora), et donc
+  annonçable** : le résumé de chaque appel sur WhatsApp au patron ; les
+  confirmations et rappels clients sur WhatsApp, avec boutons (Confirmer ·
+  Déplacer · Annuler) ; les consignes du patron à Janet par WhatsApp ; Google
+  Agenda relié ; l'agenda Celya intégré ; le SMS **de secours seulement** (le
+  client sans WhatsApp). Les seuls messages envoyés aux clients du patron sont
+  liés à leur appel : confirmation, rappel, modification. **Outlook n'est pas
+  relié** et ne s'annonce pas. Les maquettes de téléphone restent aux couleurs
+  Celya : on ne reproduit pas l'interface de WhatsApp ni celle de Google.
 - aucune revendication multilingue au-delà de FR + NL **en promesse de service**
 - **aucun chiffre sans sa source et sa date**
 
@@ -83,11 +99,25 @@ lève pour un bloc `<div class="langcloud">` des trois accueils ne s'applique
 plus à rien depuis que le nuage a disparu (`grep -rl Deutsch` doit renvoyer
 zéro), mais reste en place pour le jour où il reviendrait.
 
-Formulation autorisée pour l'agenda, FR : « Vous utilisez déjà un logiciel de
-gestion ? Vous le gardez. Une connexion directe à votre outil peut être
-étudiée — parlons-en. » NL : « Gebruikt u al software voor uw praktijk? Die
-houdt u. Een rechtstreekse koppeling met uw tool kan bekeken worden — laten we
-erover praten. »
+**Inchangé par le lot du 14 novembre 2026.** Les maquettes de ce lot disent
+« dans la langue de votre client » (ligne de formule, FAQ) et « Français,
+néerlandais et anglais » (grille de l'accueil) : ni l'une ni l'autre ne se
+publie. Partout où la maquette les porte, c'est la formulation autorisée
+ci-dessus, ou sa forme courte « en français et en néerlandais » (NL « in het
+Frans en het Nederlands », EN « in French and Dutch »), qui s'écrit.
+
+**Formulation autorisée pour l'agenda — remplacée le 14 novembre 2026
+(décision de Bora).** L'ancienne (« Vous gardez votre logiciel… une connexion
+directe peut être étudiée ») ne s'écrit plus. FR : « Votre Google Agenda,
+relié : Janet lit vos disponibilités et y écrit les rendez-vous. Pas d'agenda ?
+Prenez celui de Celya, intégré et pensé pour votre métier. » NL : « Uw Google
+Agenda, gekoppeld: Janet leest uw beschikbaarheid en zet de afspraken erin.
+Geen agenda? Neem dat van Celya, ingebouwd en afgestemd op uw vak. » EN :
+« Your Google Calendar, connected: Janet reads your availability and writes
+the bookings into it. No calendar? Use Celya's, built in and designed for your
+trade. » Nombre d'agendas : Essentiel 1, Pro jusqu'à 3, Premier répondant
+illimités — ces quotas vivent dans `data/offre.json`. **Outlook : pas relié** ;
+s'il faut répondre à la question, c'est « pas aujourd'hui ».
 
 ## Les chiffres publiés
 
@@ -144,6 +174,38 @@ Aucun fichier CSS modifié, aucune règle, aucune variable, aucune couleur.
 Aucun composant visuel nouveau. `bento.js` n'est jamais touché. Compléter une
 série existante en suivant exactement le motif en place n'est pas une
 modification du système.
+
+**Exception datée — lot « refonte premium » du 14 novembre 2026, validé par
+Bora.** Référence visuelle : les maquettes de `docs/maquettes-14-11/` (1440 px,
+captures dans `apercus/`), et le brief `PROMPT-refonte-premium.md` du même
+dossier. Ce lot remplace le thème sombre par un **thème clair** : nouveaux
+tokens dans **un seul fichier CSS** (orange `#FF6A3D`, orange brûlé `#E5522A`,
+encre `#151515`, blanc cassé `#FFF7F0`, fond `#FAF1E4`, beige de bloc
+`#F4E4CE`, gris `#6B635B` / `#4A4540`, filet `#E8D9C3` ; Newsreader pour les
+titres, Figtree pour le texte, JetBrains Mono pour les étiquettes, polices
+auto-hébergées ; `theme-color` et `color-scheme` en clair), et **nouveaux
+composants**, chacun écrit une fois et appelé partout : en-tête flottant, héros
+ruban, badges de certification, emplacement vidéo 16:9, cartes « Ce que Janet
+fait pour vous » (texte complet replié dans un `<details>`, jamais supprimé),
+cases RDV pris / À rappeler / Urgent, branchement en trois colonnes, « Votre
+agenda, ou le nôtre », consignes par WhatsApp, confirmations clients, cartes de
+prix, FAQ, CTA final, pied de page. Aucun emoji, aucune icône gadget.
+
+Ce qui ne se négocie pas pendant ce lot :
+
+- **les règles du budget de rendu (section suivante) restent en vigueur** et
+  s'appliquent aux nouveaux composants : animations du ruban et du C en CSS
+  seul, `transform` / `opacity`, en pause sous `prefers-reduced-motion` et hors
+  écran, aucun JS qui tourne en boucle ;
+- **le consentement et le chargement de GTM ne bougent pas d'une ligne** ;
+- **rien ne dépasse de son cadre**, sur téléphone comme sur ordinateur
+  (balayage à 360, 390, 768 et 1440 px, trois langues) ;
+- URL, `title`, description, H1, liste et ordre des H2, FAQ visibles,
+  `canonical`, `hreflang` et `@graph` ne bougent pas, sauf les corrections de texte devenu faux listées
+  par le brief.
+
+**Après ce lot, la règle « aucun composant visuel nouveau » reprend**, avec le
+nouveau système comme référence.
 
 **Exception datée — lot « design & proportions » du 11 septembre 2026, validé
 par Bora le même jour.** Ce lot est un brief CSS : `bento.css` y est modifié
