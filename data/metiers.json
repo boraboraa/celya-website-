@@ -80,6 +80,30 @@
     "reponse": "Merci, c'est confirmé. À jeudi !",
     "chip": "Jeudi 20 nov. · 10h00"
    }
+  },
+  "nl": {
+   "confirmation": {
+    "initiales": "GM",
+    "entreprise": "Garage Martin",
+    "message": "Goedendag dhr. Peeters, uw afspraak is genoteerd.",
+    "quand": "Donderdag 20 november · 10.00 u",
+    "quoi": "Onderhoud + winterbanden",
+    "ou": "Garage Martin, Waterloo",
+    "reponse": "Bedankt, bevestigd. Tot donderdag!",
+    "chip": "Do 20 nov. · 10.00 u"
+   }
+  },
+  "en": {
+   "confirmation": {
+    "initiales": "GM",
+    "entreprise": "Garage Martin",
+    "message": "Hello Mr Peeters, your appointment is booked.",
+    "quand": "Thursday 20 November · 10:00",
+    "quoi": "Service + winter tyres",
+    "ou": "Garage Martin, Waterloo",
+    "reponse": "Thanks, that's confirmed. See you Thursday!",
+    "chip": "Thu 20 Nov · 10:00"
+   }
   }
  },
  "restaurants": {

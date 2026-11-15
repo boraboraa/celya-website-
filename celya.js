@@ -4,24 +4,42 @@
    Aucun pixel en dur : tout événement passe par dataLayer, et seulement si le
    visiteur a accepté les cookies.
 
-   Budget navigateur : aucune boucle requestAnimationFrame, aucune animation
-   pilotée en JS (le ruban et le C sont en CSS, transform/opacity) ; un seul
-   écouteur resize, passif ; les animations hors écran sont mises en pause
-   (.anim-off) par IntersectionObserver. */
+   Budget navigateur : une seule boucle requestAnimationFrame (RAF), qui ne
+   tourne que lorsqu'il y a du travail ; un seul écouteur scroll et un seul
+   resize, passifs (onScroll / onResize) ; aucune mesure de mise en page dans
+   la boucle — tout passe par vrect() / drect(), en cache ; les animations CSS
+   hors écran sont en pause (.anim-off), la vidéo du héros aussi. */
 
 (function(){
   var LANG=(document.documentElement.lang||'fr').slice(0,2);
   var BLOG=/\/(blog|lp)\//.test(location.pathname); /* blog/ et lp/ sont un niveau sous la racine de la langue : le lien cookies remonte d'un cran */
   var HAS_IO='IntersectionObserver' in window;
+  var REDUCE=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
   var CONSENT_KEY='celya-consent';
 
-  /* ---- un seul écouteur resize, passif, regroupé sur une image ---- */
-  var resizeFns=[],rq=false;
+  /* ---- ordonnanceur : une seule boucle rAF, qui ne tourne que si quelqu'un a du travail ---- */
+  var RAF=(function(){
+    var q=[],id=null;
+    function frame(now){id=null;var run=q;q=[];for(var i=0;i<run.length;i++)run[i](now);}
+    return function(fn){if(q.indexOf(fn)<0)q.push(fn);if(id===null)id=requestAnimationFrame(frame);};
+  })();
+
+  /* ---- mesures en cache ----
+     vrect(el) : rectangle dans le viewport, valable jusqu'au prochain scroll/resize.
+     drect(el) : position dans le document + taille, valable jusqu'au prochain resize. */
+  var VR=new Map(),DR=new Map();
+  function vrect(el){var r=VR.get(el);if(!r){r=el.getBoundingClientRect();VR.set(el,r);}return r;}
+  function drect(el){var r=DR.get(el);if(!r){var b=el.getBoundingClientRect();r={top:b.top+scrollY,left:b.left+scrollX,width:b.width,height:b.height};DR.set(el,r);}return r;}
+
+  /* ---- un seul écouteur scroll, un seul resize, passifs, rythmés par RAF ---- */
+  var scrollFns=[],resizeFns=[];
+  function onScroll(fn){scrollFns.push(fn);}
   function onResize(fn){resizeFns.push(fn);}
-  addEventListener('resize',function(){
-    if(rq)return;rq=true;
-    requestAnimationFrame(function(){rq=false;for(var i=0;i<resizeFns.length;i++)resizeFns[i]();});
-  },{passive:true});
+  function scrolled(){VR.clear();for(var i=0;i<scrollFns.length;i++)scrollFns[i]();}
+  function resized(){VR.clear();DR.clear();for(var i=0;i<resizeFns.length;i++)resizeFns[i]();}
+  addEventListener('scroll',function(){RAF(scrolled);},{passive:true});
+  addEventListener('resize',function(){RAF(resized);},{passive:true});
+  addEventListener('load',function(){RAF(resized);});
 
   /* ---- année du pied de page ---- */
   document.querySelectorAll('.yr').forEach(function(e){e.textContent=new Date().getFullYear();});
@@ -51,6 +69,62 @@
       if(typeof CSSAnimation!=='undefined'&&!(a instanceof CSSAnimation))return;
       seen.push(t);t.classList.add('anim-off');io.observe(t);
     });
+  })();
+
+  /* ---- héros vidéo des accueils (retour du 15/11/2026) ----
+     1. la source et le poster sont choisis UNE fois, au chargement : version
+        mobile sous 720 px de large, version ordinateur au-dessus ;
+     2. prefers-reduced-motion : poster seul, aucune lecture, aucun effet ;
+     3. hors écran : pause (.anim-off), reprise au retour ;
+     4. au défilement, sur les 60 % premiers de la hauteur du héros : la vidéo
+        grossit (1 → 1,06) et se dissout, le texte remonte et s'efface, le C de
+        l'étiquette grandit (28 → 72 px) et se pose en tête de la section
+        suivante. transform et opacity seulement ; positions lues dans drect()
+        (cache invalidé au resize), jamais dans la boucle de défilement. */
+  (function(){
+    var hero=document.querySelector('[data-hv]');if(!hero)return;
+    var v=hero.querySelector('video'),media=hero.querySelector('.hv-media'),txt=hero.querySelector('.hv-txt'),
+        tag=hero.querySelector('.hv-lab'),pill=hero.querySelector('.hv-tag'),box=hero.querySelector('.hv-cbox'),
+        c=box&&box.querySelector('.cv'),slot=document.querySelector('.hv-slot');
+    var mob=innerWidth<720;
+    v.poster=v.getAttribute(mob?'data-poster-m':'data-poster-d');
+    if(REDUCE){v.removeAttribute('autoplay');v.pause();hero.classList.add('hv-still');return;}
+    v.src=v.getAttribute(mob?'data-src-m':'data-src-d');
+    function play(){var p=v.play();if(p&&p.catch)p.catch(function(){});}
+    play();
+    if(HAS_IO)new IntersectionObserver(function(es){
+      var on=es[0].isIntersecting;
+      v.classList.toggle('anim-off',!on);
+      if(on)play();else v.pause();
+    }).observe(hero);
+    /* mesures : une fois, puis à chaque resize */
+    var H=0,dx=0,dy=0,S=72/28;
+    function measure(){
+      var h=drect(hero);H=h.height;
+      if(box&&slot){var a=drect(box),b=drect(slot);dx=(b.left+b.width/2)-(a.left+a.width/2);dy=(b.top+b.height/2)-(a.top+a.height/2);S=b.width/a.width;}
+      update();
+    }
+    function update(){
+      var p=H?Math.min(1,Math.max(0,scrollY/(H*0.6))):0;
+      media.style.transform=p?'scale('+(1+0.06*p).toFixed(4)+')':'';
+      media.style.opacity=p?(1-p).toFixed(3):'';
+      txt.style.transform=p?'translateY('+(-28*p).toFixed(1)+'px)':'';
+      txt.style.opacity=p?Math.max(0,1-p*1.4).toFixed(3):'';
+      if(tag)tag.style.opacity=p?Math.max(0,1-p*2).toFixed(3):'';
+      if(pill)pill.classList.toggle('hv-tag-off',p>0.02);
+      if(c)c.style.transform=p?'translate('+(dx*p).toFixed(1)+'px,'+(dy*p).toFixed(1)+'px) scale('+(1+(S-1)*p).toFixed(3)+')':'';
+    }
+    onResize(measure);onScroll(update);
+    if(document.fonts&&document.fonts.ready)document.fonts.ready.then(function(){RAF(resized);});
+    measure();
+  })();
+
+  /* ---- replis « sur téléphone seulement » : ouverts au-dessus de 720 px ---- */
+  (function(){
+    var ds=document.querySelectorAll('details.fold-m');if(!ds.length)return;
+    var wide=null;
+    function sync(){var w=innerWidth>=720;if(w===wide)return;wide=w;ds.forEach(function(d){d.open=w;});}
+    sync();onResize(sync);
   })();
 
   /* ---- vidéo : rien ne se charge avant le clic ---- */

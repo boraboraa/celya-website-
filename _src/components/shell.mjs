@@ -54,10 +54,10 @@ export function demoBtn(c, cls = 'btn-line') {
   return `<a class="btn ${cls}" href="${c.L(c.t.demo_href)}" data-demo>${c.t.cta_demo}</a>`;
 }
 /** Les deux appels à l'action, partout les mêmes : héros, CTA final, LP. */
-export function ctaPair(c, { dark = false, full = true, hero = false } = {}) {
+export function ctaPair(c, { dark = false, full = true, hero = false, sub = true } = {}) {
   return `<div class="cta-pair"${hero ? ' data-hero' : ''}>
 <div class="cta-btns">${callBtn(c, dark ? 'btn-orange' : 'btn-ink', full)}${demoBtn(c, dark ? 'btn-line-d' : 'btn-line')}</div>
-<p class="cta-sub">${c.t.cta_call_sub}</p>
+${sub ? `<p class="cta-sub">${c.t.cta_call_sub}</p>` : ''}
 </div>`;
 }
 
@@ -132,7 +132,7 @@ ${header(c, { bare })}
 ${main}
 </main>
 ${footer(c, { bare })}
-${mbar(c)}
+${bodyClass === 'p-demo' ? '' : mbar(c)}
 <script src="${c.root}celya.js" defer></script>
 ${own ? own + '\n' : ''}</body>
 </html>

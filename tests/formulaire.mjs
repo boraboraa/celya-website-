@@ -14,7 +14,8 @@
  *   5. dataLayer : generate_lead et click_call présents avec accord cookies,
  *      absents sans accord ; aucune requête vers Google ou Meta sans accord ;
  *   6. barre d'appel mobile : cachée au premier écran, visible après défilement,
- *      ne recouvre jamais le bandeau cookies ni les boutons du héros (360, 390, 393).
+ *      ne recouvre jamais le bandeau cookies ni les boutons du héros (360, 390, 393) ;
+ *      absente de demo.html, où elle recouvrirait le formulaire qu'elle annonce.
  *   7. merci.html : noindex et absent du sitemap.
  *
  *   node tests/formulaire.mjs [pages…]   (défaut : demo.html) */
@@ -145,7 +146,7 @@ async function main() {
   /* 6. barre mobile */
   console.log('\nbarre d\'appel mobile');
   for (const [w, h] of [[360, 640], [390, 730], [393, 730]]) {
-    for (const rel of ['index.html', 'garages.html', 'demo.html']) {
+    for (const rel of ['index.html', 'garages.html', 'prix.html']) {
       for (const consent of ['denied', null]) {
         const { ctx } = await context(browser, { consent, width: w, height: h });
         const p = await ctx.newPage();
@@ -170,6 +171,10 @@ async function main() {
         await ctx.close();
       }
     }
+  }
+
+  for (const rel of ['demo.html', 'nl/demo.html', 'en/demo.html']) {
+    ok(!fs.readFileSync(path.join(ROOT, rel), 'utf8').includes('class="mbar"'), `${rel} : pas de barre d'appel par-dessus le formulaire`);
   }
 
   /* 7. noindex + sitemap */

@@ -54,7 +54,8 @@ function findAll(html, tag, cls) {
 
 /** Enveloppes d'animation de l'ancien thème → texte propre. */
 export function cleanHeading(h) {
-  let s = h;
+  /* deux lignes .lr collées sans blanc : le navigateur les séparait (bloc), le texte aussi */
+  let s = h.replace(/<\/span><\/span>(?=<span class="lr">)/g, '</span></span> ');
   for (let i = 0; i < 4; i++) {
     s = s.replace(/<span class="(?:lr|l2)"><span>([\s\S]*?)<\/span><\/span>/g, '$1');
   }

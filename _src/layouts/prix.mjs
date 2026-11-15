@@ -2,7 +2,7 @@
  * de data/offre.json : cartes, tableau comparatif, paliers du diagnostic. */
 import { one, all, num, eur } from '../lib/core.mjs';
 import { shell, ctaPair } from '../components/shell.mjs';
-import { badges, priceCards, priceNote, faq, related, ctaFinal, splitH2 } from '../components/blocks.mjs';
+import { badges, priceCards, priceNote, faq, related, ctaFinal, splitH2, intro2 } from '../components/blocks.mjs';
 import { ico } from '../components/icons.mjs';
 
 const sec = (page, role) => all(page, 'section').find((s) => s.attrs.role === role);
@@ -73,8 +73,6 @@ function diag(c, b) {
     fill.style.transform='scaleX('+Math.min(1,m/C.max)+')';
     verdict.innerHTML=idx<0?D.over.replace('{max}',fmt(C.max)):D.verdict.replace('{n}',C.paliers[idx].n).replace('{p}',C.paliers[idx].p).replace('{m}',fmt(m));
     caveat.textContent=D.caveat.replace('{c}',fmt(perdus));
-    var cards=document.querySelectorAll('.prices .pc');
-    for(var k=0;k<cards.length;k++)cards[k].classList.toggle('pc-on',k===idx);
   }
   [].forEach.call(document.querySelectorAll('.diag .pills'),function(grp){
     grp.addEventListener('click',function(e){
@@ -91,40 +89,46 @@ function diag(c, b) {
 
 export default function prix(c) {
   const { page } = c;
-  const form = sec(page, 'formules'), tab = sec(page, 'tableau'), dg = sec(page, 'diag'), mod = sec(page, 'modeles');
-  const F = splitH2(form.html), T = splitH2(tab.html), M = splitH2(mod.html);
-  /* le tableau des modèles : chaque cellule reçoit l'intitulé de sa colonne (lecture en cartes sous 720 px) */
-  const cols = [...(M.body.match(/<thead>[\s\S]*?<\/thead>/) || [''])[0].matchAll(/<th[^>]*>([\s\S]*?)<\/th>/g)].map((m) => m[1].replace(/<[^>]+>/g, ''));
-  const modBody = M.body.replace(/<tr>([\s\S]*?)<\/tr>/g, (row, inner) => {
-    let i = 0;
-    return '<tr>' + inner.replace(/<(th|td)\b([^>]*)>/g, (m, tag, attrs) => { const lab = cols[i++] || ''; return tag === 'td' ? `<td${attrs} data-label="${lab.replace(/"/g, '&quot;')}">` : m; }) + '</tr>';
-  }).replace(/<table>/, '<div class="mod-wrap"><table class="mod">').replace(/<\/table>/, '</table></div>');
-
-  const main = `<section class="hero"><div class="w">
-<p class="label">${one(page, 'kick')}</p>
-<h1>${one(page, 'h1')}</h1>
-<p class="lead">${one(page, 'lede')}</p>
-${ctaPair(c, { hero: true })}
-${badges(c)}
-<p class="hero-proof">${one(page, 'proof')}</p>
-</div></section>
-<section class="sec bg-cream"><div class="w">
-<div class="two">${kick(form) ? `<div>${kick(form)}${F.h2}</div>` : F.h2}<div class="prose">${F.body}</div></div>
+  /* le tableau des modèles : chaque cellule reçoit l'intitulé de sa colonne (lecture en cartes sous 860 px) */
+  const modeles = (html) => {
+    const cols = [...((html.match(/<thead>[\s\S]*?<\/thead>/) || [''])[0]).matchAll(/<th[^>]*>([\s\S]*?)<\/th>/g)].map((m) => m[1].replace(/<[^>]+>/g, ''));
+    return html.replace(/<tr>([\s\S]*?)<\/tr>/g, (row, inner) => {
+      let i = 0;
+      return '<tr>' + inner.replace(/<(th|td)\b([^>]*)>/g, (m, tag, attrs) => { const lab = cols[i++] || ''; return tag === 'td' ? `<td${attrs} data-label="${lab.replace(/"/g, '&quot;')}">` : m; }) + '</tr>';
+    }).replace(/<table>/, '<div class="mod-wrap"><table class="mod">').replace(/<\/table>/, '</table></div>');
+  };
+  const sid = (b) => (b.attrs.sid ? ` id="${b.attrs.sid}"` : '');
+  let out = '';
+  for (const b of page.seq) {
+    const r = b.attrs.role;
+    if (b.name === 'section' && r === 'formules') {
+      const F = splitH2(b.html);
+      out += `<section class="sec bg-cream"><div class="w">
+<div class="two">${kick(b) ? `<div>${kick(b)}${F.h2}</div>` : F.h2}<div class="prose">${F.body}</div></div>
 ${priceCards(c)}
 <div class="price-foot"><p class="note">${priceNote(c)}</p><div class="price-go"><a class="btn btn-ink" href="${c.L(c.t.demo_href)}" data-demo>${c.t.price_start}</a><small>${c.t.price_start_sub}</small></div></div>
+</div></section>`;
+    } else if (b.name === 'section' && r === 'tableau') {
+      out += `<section class="sec"><div class="w">${splitH2(b.html).h2}${table(c)}<p class="note">${priceNote(c)}</p></div></section>`;
+    } else if (b.name === 'section' && r === 'diag') {
+      out += diag(c, b);
+    } else if (b.name === 'section' && r === 'modeles') {
+      const M = splitH2(b.html);
+      out += `<section class="sec"${sid(b)}><div class="w">${kick(b)}${M.h2}<div class="prose mod-prose">${modeles(M.body)}</div></div></section>`;
+    } else if (b.name === 'section') {
+      out += intro2(c, b);
+    } else if (b.name === 'pull') {
+      out += `<section class="sec-pull"><div class="w"><blockquote class="pull pull-c"><p>${b.html}</p></blockquote></div></section>`;
+    } else if (b.name === 'faq') out += faq(c, b);
+    else if (b.name === 'related') out += related(c, b);
+    else if (b.name === 'cta') out += ctaFinal(c, b);
+  }
+  const main = `<section class="hero"><div class="w">
+<h1>${one(page, 'h1')}</h1>
+<p class="lead">${one(page, 'lede')}</p>
+${ctaPair(c, { hero: true, sub: false })}
 </div></section>
-<section class="sec"><div class="w">
-${T.h2}
-${table(c)}
-<p class="note">${priceNote(c)}</p>
-</div></section>
-${diag(c, dg)}
-<section class="sec"${mod.attrs.sid ? ` id="${mod.attrs.sid}"` : ''}><div class="w">
-${M.h2}
-<div class="prose mod-prose">${modBody}</div>
-</div></section>
-${faq(c, all(page, 'faq')[0])}
-${related(c, all(page, 'related')[0])}
-${ctaFinal(c, all(page, 'cta')[0])}`;
+<section class="hero-badges"><div class="w">${badges(c)}</div></section>
+${out}`;
   return shell(c, { headHTML: one(page, 'head'), main, bodyClass: 'p-prix' });
 }

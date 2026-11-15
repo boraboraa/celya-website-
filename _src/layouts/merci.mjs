@@ -9,7 +9,7 @@ export default function merci(c) {
 <div class="merci-c">${cVoice()}</div>
 <h1>${one(page, 'h1')}</h1>
 <p class="lead">${one(page, 'lede')}</p>
-${ctaPair(c, { hero: true })}
+${ctaPair(c, { hero: true, sub: false })}
 </div></section>`;
   return shell(c, { headHTML: one(page, 'head'), main, bodyClass: 'p-merci' });
 }

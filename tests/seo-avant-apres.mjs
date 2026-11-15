@@ -97,6 +97,9 @@ export function compare(rel, before, after) {
   if (JSON.stringify(before.h1) !== JSON.stringify(after.h1)) err.push(`H1 : ${JSON.stringify(before.h1)} → ${JSON.stringify(after.h1)}`);
   if (JSON.stringify(before.hreflang) !== JSON.stringify(after.hreflang) && !corr.hreflang) err.push(`hreflang : ${before.hreflang.join(' | ')} → ${after.hreflang.join(' | ')}`);
   /* H2 : sous-suite ordonnée + ajouts de la liste fixe */
+  /* H2 retirés sur décision datée de Bora (corrections-autorisees.json) */
+  const retired = new Set((corr.h2_retires || []).map(norm));
+  before = { ...before, h2: before.h2.filter((h) => !retired.has(h)) };
   let k = 0;
   for (const h of after.h2) {
     if (k < before.h2.length && h === before.h2[k]) { k++; continue; }

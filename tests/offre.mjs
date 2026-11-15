@@ -17,7 +17,8 @@ const fails = [];
 /* 1. sources */
 const prix = offre.formules.map((f) => f.prix_ht), mins = offre.formules.map((f) => f.minutes);
 const enDur = new RegExp(`(?<![\\d.,])(?:${prix.join('|')})${S}(?:€|&euro;|euros?)|€${S}(?:${prix.join('|')})(?![\\d])|(?<![\\d.,])(?:${mins.join('|')})${S}(?:minutes|minuten)`, 'i');
-const sources = [...walk(path.join(ROOT, '_src')), 'celya.css', 'celya.js', 'data/i18n.json', 'data/metiers.json'].map((f) => path.resolve(ROOT, f));
+/* _src/tools : outils de migration, qui citent l'ancienne grille pour la remplacer */
+const sources = [...walk(path.join(ROOT, '_src')).filter((f) => !f.includes(`${path.sep}tools${path.sep}`)), 'celya.css', 'celya.js', 'data/i18n.json', 'data/metiers.json'].map((f) => path.resolve(ROOT, f));
 for (const f of sources) {
   if (!/\.(mjs|js|css|json|html|py)$/.test(f)) continue;
   fs.readFileSync(f, 'utf8').split('\n').forEach((l, i) => {

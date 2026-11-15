@@ -2,7 +2,9 @@
  * par les gabarits. Les téléphones restent aux couleurs Celya : on ne
  * reproduit l'interface ni de WhatsApp, ni de Google. */
 import { ico, cVoice } from './icons.mjs';
-import { esc, strip, eur, num } from '../lib/core.mjs';
+import fs from 'node:fs';
+import path from 'node:path';
+import { esc, strip, eur, num, ROOT } from '../lib/core.mjs';
 
 const H = (lvl, html, attrs = '') => `<h${lvl}${attrs}>${html}</h${lvl}>`;
 
@@ -101,17 +103,21 @@ function visual(c, v, i, photo) {
   }
 }
 
-/** sections : blocs « section » de la page (H2 existants), visuals : data métier */
-export function cards(c, sections, visuals, photo) {
+/** sections : blocs « section » de la page (H2 existants), visuals : data métier.
+ *  heading : le titre du composant n'apparaît qu'au premier groupe de cartes.
+ *  Une carte dont le visuel serait une photo reste sans image : la photo du
+ *  métier sert déjà au bandeau, et une image ne paraît jamais deux fois. */
+export function cards(c, sections, visuals, photo, { heading = true } = {}) {
   const items = sections.map((s, i) => {
     const html = s.html.trim();
     const m = /^<h2([^>]*)>([\s\S]*?)<\/h2>\s*/.exec(html);
     const body = html.slice(m[0].length);
-    const v = visuals[i] || { v: 'photo' };
-    return `<details class="card"><summary><span class="card-v" aria-hidden="true">${visual(c, v, i, photo)}</span><span class="card-h">${H(2, m[2], m[1])}<span class="card-plus" aria-hidden="true"></span></span></summary><div class="card-b">${body}</div></details>`;
+    const v = visuals[i] || { v: 'none' };
+    const vis = v.v === 'photo' || v.v === 'none' ? '' : `<span class="card-v" aria-hidden="true">${visual(c, v, i, photo)}</span>`;
+    return `<details class="card${vis ? '' : ' card-novis'}"><summary>${vis}<span class="card-h">${H(2, m[2], m[1])}<span class="card-plus" aria-hidden="true"></span></span></summary><div class="card-b">${body}</div></details>`;
   }).join('\n');
-  return `<section class="sec bg-cream" id="pour-vous"><div class="w">
-<div class="head-row">${H(2, c.t.cards_h2)}<p class="hint">${c.t.cards_hint}</p></div>
+  return `<section class="sec bg-cream"${heading ? ' id="pour-vous"' : ''}><div class="w">
+${heading ? `<div class="head-row">${H(2, c.t.cards_h2)}<p class="hint">${c.t.cards_hint}</p></div>` : ''}
 <div class="cards">${items}</div>
 </div></section>`;
 }
@@ -169,10 +175,21 @@ export function agenda(c, celyaText) {
 </div></section>`;
 }
 
-/* ---------- téléphone (maquette Celya) ---------- */
+/* ---------- téléphone (cadre Celya) et vraies captures ----------
+ * On ne dessine pas l'interface de WhatsApp ni celle de Google : le cadre de
+ * téléphone est sobre, aux couleurs Celya, et attend une vraie capture. Tant
+ * que assets/captures/<nom>.webp n'existe pas, l'illustration reste, marquée
+ * « Exemple ». Déposer le fichier et relancer le générateur suffit. */
+const SHOTS = { confirmation: 'whatsapp-confirmation', consignes: 'whatsapp-consignes', agenda: 'google-agenda' };
+export function capture(c, key, cls = '') {
+  const rel = `assets/captures/${SHOTS[key]}.webp`;
+  if (!fs.existsSync(path.join(ROOT, rel))) return null;
+  return `<figure class="phone phone-shot ${cls}"><img src="${c.root}${rel}" alt="${esc(c.t.captures[key])}" loading="lazy" decoding="async"></figure>`;
+}
+export const exTag = (c) => `<span class="ex-tag">${c.t.example}</span>`;
 
-function phone(head, body, cls = '') {
-  return `<div class="phone ${cls}" aria-hidden="true"><div class="ph-scr"><div class="ph-head">${head}</div><div class="ph-body">${body}</div></div></div>`;
+function phone(head, body, cls = '', tag = '') {
+  return `<div class="phone ${cls}" aria-hidden="true">${tag}<div class="ph-scr"><div class="ph-head">${head}</div><div class="ph-body">${body}</div></div></div>`;
 }
 const bubble = (who, text, time, cls = '') => `<span class="bub bub-${who} ${cls}"><span>${text}</span><time>${time}</time></span>`;
 
@@ -181,8 +198,8 @@ const bubble = (who, text, time, cls = '') => `<span class="bub bub-${who} ${cls
 export function orders(c) {
   const { t } = c;
   const chat = t.orders_chat.map(([w, x, h], i) => bubble(w, x, h, i >= 4 ? 'pop' : '')).join('');
-  const ph = phone(`<span class="ph-av">${cVoice('cv-xs', false)}</span><span><b>${t.orders_head}</b><small>${t.orders_sub}</small></span>`,
-    `<span class="ph-day">${t.today}</span>${chat}`);
+  const ph = capture(c, 'consignes') || phone(`<span class="ph-av">${cVoice('cv-xs', false)}</span><span><b>${t.orders_head}</b><small>${t.orders_sub}</small></span>`,
+    `<span class="ph-day">${t.today}</span>${chat}`, '', exTag(c));
   return `<section class="sec"><div class="w split">
 ${ph}
 <div class="split-t">
@@ -201,7 +218,8 @@ export function confirm(c, k) {
   const { t, root } = c;
   const rows = t.confirm_rows.map(([b, p]) => `<div class="cf-row"><span class="cf-b">${b}</span><p>${p}</p></div>`).join('');
   const body = `<span class="ph-day">${t.today}</span>${bubble('her', `${k.message}<br><b>${k.quand}</b><br>${k.quoi}<br>${k.ou}`, '14:06')}<span class="ph-btns">${t.confirm_btns.map((b) => `<span>${b}</span>`).join('')}</span>${bubble('me', t.confirm_btns[0], '14:07')}${bubble('her', k.reponse, '14:07', 'pop')}`;
-  const ph = phone(`<span class="ph-av ph-av-ink">${k.initiales}</span><span><b>${k.entreprise}</b><small>${t.confirm_pro}</small></span>`, body);
+  const shot = capture(c, 'confirmation');
+  const ph = shot || phone(`<span class="ph-av ph-av-ink">${k.initiales}</span><span><b>${k.entreprise}</b><small>${t.confirm_pro}</small></span>`, body, '', exTag(c));
   return `<section class="sec bg-cream"><div class="w split split-r">
 <div class="split-t">
 <p class="label label-ic"><img src="${root}assets/brand/whatsapp.svg" width="22" height="22" alt="">${t.confirm_label}</p>
@@ -210,7 +228,7 @@ ${H(2, t.confirm_h2)}
 <div class="cf-rows">${rows}</div>
 <p class="note">${t.confirm_note}</p>
 </div>
-<div class="cf-phone">${ph}<span class="cf-chip" aria-hidden="true"><img src="${root}assets/brand/gcal-64.webp" width="24" height="24" alt=""><span><b>${k.chip}</b><small>${dot('ok')}${t.confirm_chip}</small></span></span></div>
+<div class="cf-phone">${ph}${shot ? '' : `<span class="cf-chip" aria-hidden="true"><img src="${root}assets/brand/gcal-64.webp" width="24" height="24" alt=""><span><b>${k.chip}</b><small>${dot('ok')}${t.confirm_chip}</small></span></span>`}</div>
 </div></section>`;
 }
 
@@ -301,4 +319,30 @@ export function others(c, block, selfHref) {
 export function intro2(c, block, cls = '') {
   const { h2, body } = splitH2(block.html);
   return `<section class="sec ${cls}"${block.attrs.sid ? ` id="${block.attrs.sid}"` : ''}><div class="w two two-top">${h2}<div class="prose">${body}</div></div></section>`;
+}
+
+/* ---------- héros vidéo des accueils (retour du 15/11/2026) ---------- */
+
+/** Le fichier le plus fin disponible : -1080 s'il existe, sinon -720.
+ *  Déposer hero-ordinateur-1080.mp4 dans assets/hero/ et relancer le
+ *  générateur suffit : aucun code à toucher. */
+function heroFile(kind) {
+  for (const q of ['1080', '720']) {
+    const rel = `assets/hero/hero-${kind}-${q}.mp4`;
+    if (fs.existsSync(path.join(ROOT, rel))) return rel;
+  }
+  throw new Error(`assets/hero/hero-${kind}-720.mp4 introuvable`);
+}
+
+/** inner : H1 + phrase + boutons ; tag : libellé de l'étiquette */
+export function heroVideo(c, inner, tag) {
+  const { root } = c;
+  return `<section class="hv" data-hv>
+<div class="hv-media" aria-hidden="true">
+<video muted loop playsinline autoplay preload="metadata" aria-hidden="true" tabindex="-1" disablepictureinpicture data-src-d="${root}${heroFile('ordinateur')}" data-src-m="${root}${heroFile('mobile')}" data-poster-d="${root}assets/hero/hero-ordinateur-poster.webp" data-poster-m="${root}assets/hero/hero-mobile-poster.webp"></video>
+</div>
+<div class="hv-in"><div class="hv-txt">${inner}</div></div>
+<p class="hv-tag"><span class="hv-cbox">${cVoice('hv-c')}</span><span class="hv-lab">${tag}</span></p>
+</section>
+<section class="hv-next"><div class="w"><span class="hv-slot" aria-hidden="true"></span>${badges(c)}</div></section>`;
 }

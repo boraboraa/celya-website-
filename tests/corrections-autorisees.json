@@ -1,14 +1,20 @@
 {
   "_doc": "Écarts SEO autorisés par le lot « refonte premium » (14/11/2026) : seulement les textes devenus faux (brief, section 5) et les décisions de Bora. Chaque entrée dit ce qui change et pourquoi. tests/seo-avant-apres.mjs refuse tout écart absent d'ici.",
   "h2_composants": [
-    "Formule par formule, ligne par ligne."
+    "Formule par formule, ligne par ligne.",
+    "Formule per formule, regel per regel.",
+    "Plan by plan, line by line."
   ],
   "pages": {
     "index.html": {
       "faq": {
         "Combien ça coûte ?": "grille du 14/11 : montants et minutes lus dans data/offre.json"
       },
-      "graph": []
+      "graph": [],
+      "h2_retires": [
+        "Combien vous coûtent les appels manqués ?"
+      ],
+      "_h2_retires": "retour de Bora du 15/11/2026 : bloc calculateur retiré de l'accueil (calculateur-appels-manques.html reste en ligne)"
     },
     "prix.html": {
       "faq": {
@@ -21,6 +27,49 @@
       ],
       "_graph": "Service.offers : nouvelle grille (noms et prix, data/offre.json) ; WebPage.description : même phrase que la meta description",
       "desc": "ancienne grille dans la description : montants lus dans data/offre.json"
+    },
+    "nl/index.html": {
+      "h2_retires": [
+        "Wat kosten gemiste oproepen u?"
+      ],
+      "_h2_retires": "retour du 15/11/2026 : calculateur retiré",
+      "faq": {
+        "Wat kost het?": "grille du 14/11 publiée (data/offre.json) : l'ancienne réponse disait que le prix dépendait d'un entretien",
+        "Hoe snel is het geïnstalleerd?": "« Binnen 48 uur », formulation validée par Bora le 14/11"
+      }
+    },
+    "en/index.html": {
+      "h2_retires": [
+        "What are missed calls costing you?"
+      ],
+      "_h2_retires": "retour du 15/11/2026 : calculateur retiré",
+      "faq": {
+        "How much does it cost?": "grille du 14/11 (data/offre.json)",
+        "How long does setup take?": "« Within 48 hours », formulation validée par Bora le 14/11"
+      }
+    },
+    "nl/prijzen.html": {
+      "desc": "ancienne grille dans la description : montants lus dans data/offre.json",
+      "graph": [
+        "Service",
+        "WebPage"
+      ],
+      "_graph": "Service.offers : nouvelle grille ; WebPage.description : même phrase que la meta description",
+      "faq": {
+        "Zijn er opstartkosten?": "opstart = één maandbedrag (décision du 14/11)"
+      }
+    },
+    "en/pricing.html": {
+      "desc": "ancienne grille dans la description : montants lus dans data/offre.json",
+      "graph": [
+        "Service",
+        "WebPage"
+      ],
+      "_graph": "Service.offers : nouvelle grille ; WebPage.description : même phrase que la meta description",
+      "faq": {
+        "Is there a setup fee?": "setup = one month of the plan (décision du 14/11)",
+        "Do I have to commit for a fixed term?": "30-day free trial, no commitment (data/offre.json)"
+      }
     }
   }
 }

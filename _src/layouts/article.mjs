@@ -25,17 +25,9 @@ export function crumbs(c) {
   }).join('')}</ol></nav>`;
 }
 
-function readingTime(c) {
-  const words = all(c.page, 'section').map((s) => s.html).join(' ').replace(/<[^>]+>/g, ' ').split(/\s+/).filter(Boolean).length;
-  const min = Math.max(1, Math.round(words / 220));
-  return { fr: `Lecture : ${min} min`, nl: `Leestijd: ${min} min`, en: `${min} min read` }[c.lang];
-}
-
 export default function article(c) {
   const { page, t } = c;
-  const kick = one(page, 'kick');
   const lede = one(page, 'lede');
-  const proof = one(page, 'proof');
 
   let body = '';
   const tail = [];
@@ -56,11 +48,9 @@ export default function article(c) {
 ${crumbs(c)}
 <div class="art-grid">
 <div class="art-main">
-${kick ? `<p class="label">${kick}</p>` : ''}
 <h1>${one(page, 'h1')}</h1>
 ${lede ? `<div class="brief"><p class="label label-o">${t.read_brief}</p><p>${lede}</p></div>` : ''}
-<p class="art-meta">${readingTime(c)}${proof ? ` · ${proof}` : ''}</p>
-${ctaPair(c, { hero: true })}
+${ctaPair(c, { hero: true, sub: false })}
 ${badges(c, 'badges-l')}
 <div class="art-body">
 ${body}

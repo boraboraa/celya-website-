@@ -12,7 +12,6 @@ export default function demo(c) {
 ${crumbs(c)}
 <div class="demo-grid">
 <div class="demo-side">
-${one(page, 'kick') ? `<p class="label">${one(page, 'kick')}</p>` : ''}
 <h1>${one(page, 'h1')}</h1>
 <p class="lead">${one(page, 'lede')}</p>
 <div class="demo-call" data-hero><span class="label">${t.cta_call}</span><a href="tel:${offre.telephone.e164}" data-call><b>${offre.telephone.affiche}</b></a><span class="cta-sub">${t.cta_call_sub}</span></div>

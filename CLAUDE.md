@@ -207,6 +207,58 @@ Ce qui ne se négocie pas pendant ce lot :
 **Après ce lot, la règle « aucun composant visuel nouveau » reprend**, avec le
 nouveau système comme référence.
 
+**Retour de Bora du 15 novembre 2026 sur la prévisualisation de la PR #32
+(même lot, même PR).** Brief : `docs/maquettes-14-11/PROMPT-retour-15-11.md`.
+
+- **Nouveau héros des trois accueils : une vidéo plein écran en fond**, derrière
+  la nav et le texte. Fichiers dans `assets/hero/` (boucles de 9 s, sans son) :
+  `hero-ordinateur-720.mp4` (1280 × 720) et `hero-ordinateur-poster.webp`,
+  `hero-mobile-720.mp4` (720 × 1280) et `hero-mobile-poster.webp`. La source est
+  choisie une fois au chargement, par `celya.js` : la version mobile sous 720 px
+  de large, la version ordinateur au-dessus. Le poster suit la même règle.
+  Sous `prefers-reduced-motion`, seul le poster s'affiche, sans lecture. Hors
+  écran, la vidéo est en pause (`.anim-off`), et elle reprend au retour.
+  **Pour passer en 1080p, il suffit de déposer `hero-ordinateur-1080.mp4`**
+  (ou `hero-mobile-1080.mp4`) dans `assets/hero/` et de relancer
+  `node _src/build.mjs` : le générateur prend la version `-1080` si elle
+  existe, la `-720` sinon. Aucun code à toucher.
+  Ce héros remplace l'ancien héros, le ruban d'appel de l'accueil et le bloc
+  vidéo « Voir Celya en 37 secondes ». Les fichiers de `assets/video/` restent
+  dans le dépôt.
+- **Exception d'opacité au défilement, décidée par Bora le 15 novembre 2026.**
+  Elle déroge à la règle « aucune opacité animée au-dessus de la ligne de
+  flottaison » du lot du 11 septembre, et elle ne couvre que ceci : sur les
+  60 premiers pour cent de la hauteur du héros des accueils, la vidéo grossit
+  (scale 1 → 1,06) et se dissout dans le crème (opacity 1 → 0), le texte
+  remonte de quelques pixels et s'efface, et le C animé de l'étiquette grandit
+  jusqu'à environ 72 px pour se poser en tête de la section suivante. Au retour
+  vers le haut, tout se rejoue à l'envers. Contraintes : transform et opacity
+  seulement, piloté par l'écouteur `onScroll` unique de `celya.js` à partir de
+  mesures en cache (`drect()` / `vrect()`, aucune mesure de mise en page dans
+  la boucle), aucun `filter`, `backdrop-filter` ni `will-change` ajouté, et
+  aucun effet sous `prefers-reduced-motion`. **Rien d'autre sur le site ne
+  bénéficie de cette exception.**
+- **Plus de petites écritures dans les héros**, que Bora trouve « trop IA ».
+  Aucune accroche au-dessus du H1, aucune sous-ligne sous les boutons, aucune
+  pastille de preuve, aucune « offre fondateurs » dans un héros. Un héros
+  contient le H1, une phrase et les deux boutons, rien de plus. Les badges Meta
+  Tech Provider et Vérifiée par Google passent juste sous le héros, en tête de
+  la section suivante. Les accroches de section (au-dessus des H2) restent
+  pour l'instant : la liste est dans la PR #32, et c'est Bora qui tranche.
+- **Tailles minimales** : 12 px pour un libellé en capitales, 14 px pour toute
+  phrase, partout, illustrations comprises. Vérifié par `tests/tailles.mjs`.
+- **WhatsApp et Google Agenda** : aucune imitation de leurs interfaces. Les
+  téléphones sont des cadres sobres aux couleurs Celya, qui attendent de vraies
+  captures (`assets/captures/whatsapp-confirmation.webp`,
+  `whatsapp-consignes.webp`, `google-agenda.webp`). Tant qu'un fichier manque,
+  l'illustration reste, avec la mention « Exemple ». Dès qu'il est déposé,
+  relancer `node _src/build.mjs` suffit.
+- **Une image ne paraît jamais deux fois sur une même page.** Si un métier
+  manque d'images, rien n'est inventé : la carte reste sans visuel, et la liste
+  de ce qu'il faut générer est dans la PR.
+- Le bloc « Combien vous coûtent les appels manqués ? » a quitté l'accueil.
+  `calculateur-appels-manques.html` reste en ligne, telle quelle.
+
 **Exception datée — lot « design & proportions » du 11 septembre 2026, validé
 par Bora le même jour.** Ce lot est un brief CSS : `bento.css` y est modifié
 (logo et bouton de nav, pied de page à colonnes titrées, `aside.t-answer` des
@@ -369,10 +421,26 @@ connaissance de cause (le dégradé qui glisse sur les mots, `gpan`, l'est).
 python3 check.py     # h1 unique, title <= 60, desc 70-158, canonical,
                      # JSON-LD, FAQPage == texte visible, liens morts, 410
 python3 sitemap.py
-node sweep.js        # Chromium 390 et 1280 px, pages FR
+node sweep.js        # Chromium 360, 390, 768, 1280 et 1440 px, pages FR
 node sweep_nl.js     # idem, pages NL
+node sweep_en.js     # idem, pages EN (ajouté le 14/11/2026)
 node .claude/hooks/verif-seo.js <fichiers>
+node _src/build.mjs --check          # les pages publiées == ce que produit le générateur
+node tests/seo-avant-apres.mjs       # title, description, H1, H2, FAQ, hreflang, @graph vs origin/main
+node tests/offre.mjs                 # aucun montant hors data/offre.json, plus d'ancienne grille
+node tests/tailles.mjs               # 12 px (libellés) / 14 px (phrases) minimum
+node tests/heros.mjs                 # premier écran, contraste sur la vidéo, pause, poids
+node tests/formulaire.mjs            # formulaire démo, UTM, dataLayer, barre mobile
+node tests/budget-rendu.mjs          # backdrop-filter, will-change, keyframes, rAF, écouteurs
+node tests/consentement.mjs          # bloc consentement + GTM identique à l'octet
 ```
+
+**Le générateur (lot du 14/11/2026).** Les pages migrées ne s'éditent plus à
+la main : leur source est `_src/pages/<chemin>.html`, les composants dans
+`_src/components/`, les gabarits dans `_src/layouts/`, les données dans
+`data/`. `node _src/build.mjs` réécrit les pages aux mêmes URL. Ne jamais
+relancer un outil d'extraction de `_src/tools/` sur une page déjà générée : il
+lit la page publiée, et l'ancienne n'existe plus que dans git.
 
 Le faux positif connu de `contact.html` (le champ honeypot hors écran) est à
 ignorer définitivement.

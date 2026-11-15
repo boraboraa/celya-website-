@@ -678,7 +678,14 @@
       "fiche_title": "Fiche d'appel",
       "fiche_ex": "Exemple",
       "big_label": "Appelez-la maintenant. Elle décroche.",
-      "metiers_all": "Tous les métiers"
+      "metiers_all": "Tous les métiers",
+      "hero_tag": "Appel entrant · Janet répond"
+    },
+    "example": "Exemple",
+    "captures": {
+      "confirmation": "Capture d'écran : un client confirme son rendez-vous sur WhatsApp",
+      "consignes": "Capture d'écran : une consigne envoyée à Janet sur WhatsApp",
+      "agenda": "Capture d'écran : un rendez-vous posé par Janet dans Google Agenda"
     }
   },
   "nl": {
@@ -1129,7 +1136,198 @@
         ]
       ]
     },
-    "merci_href": "merci.html"
+    "merci_href": "merci.html",
+    "home": {
+      "hero_tag": "Inkomende oproep · Janet antwoordt",
+      "cards_p": "Een receptioniste aan de telefoon, zonder pauze of rooster. Ze antwoordt met uw gegevens, regelt wat geregeld kan worden en verwittigt u voor de rest.",
+      "grid": [
+        [
+          "decroche",
+          "Ze neemt op",
+          "Bij de tweede beltoon, als u bezet, afwezig of gesloten bent."
+        ],
+        [
+          "rdv",
+          "Ze plant afspraken in",
+          "In uw Google Agenda of de agenda van Celya, met uw duur en uw tijdsloten."
+        ],
+        [
+          "urgence",
+          "Ze schakelt dringende oproepen door",
+          "Uw gsm rinkelt, met de context al samengevat."
+        ],
+        [
+          "message",
+          "Ze noteert berichten",
+          "Naam, nummer, reden: niets gaat verloren."
+        ],
+        [
+          "resume",
+          "Ze vat alles samen",
+          "Een WhatsApp-bericht na elk echt gesprek."
+        ],
+        [
+          "langues",
+          "Ze spreekt Nederlands en Frans",
+          "En schakelt tijdens het gesprek van de ene taal naar de andere."
+        ],
+        [
+          "nuit",
+          "Ze sluit nooit",
+          "'s Avonds, in het weekend, tijdens uw verlof."
+        ],
+        [
+          "main",
+          "U houdt de touwtjes in handen",
+          "Elke oproep, de samenvatting en de transcriptie in uw console."
+        ]
+      ],
+      "ends_h2": "Dezelfde oproep. <em>Twee uitkomsten.</em>",
+      "ends_p": "Zonder Celya valt de klant op het antwoordapparaat en belt hij iemand anders. Met Celya gaat hij weg met een afspraak.",
+      "ends_a_k": "Antwoordapparaat",
+      "ends_a_t": "0 afspraken",
+      "ends_a_q": "« Goedendag, u bent bij… laat een bericht na na de toon. »",
+      "ends_a_f": "De klant haakt in.",
+      "ends_b_k": "Janet",
+      "ends_b_t": "1 afspraak",
+      "ends_live": "In gesprek · 00:42",
+      "tools_label": "Integraties",
+      "tools_h2": "Gekoppeld aan uw tools. <em>WhatsApp en Google Agenda.</em>",
+      "tools_p": "Niets te installeren. U krijgt alles waar u al bent, en uw afspraken komen vanzelf in uw agenda.",
+      "tools_wa_t": "De samenvatting van elke oproep, <em>in WhatsApp.</em>",
+      "tools_wa_p": "Een bericht na elk echt gesprek: afspraak gemaakt, terugbellen of dringend. Met de naam, het nummer en wat u moet weten.",
+      "tools_wa_n": "Celya is technologieleverancier van het WhatsApp Business-platform van Meta: de berichten gaan via de officiële API.",
+      "tools_g_t": "De afspraak <em>schrijft zichzelf</em> in uw agenda.",
+      "tools_g_p": "Janet ziet uw beschikbaarheid in realtime en boekt het juiste moment. Geen agenda? De agenda van Celya, volledig en afgestemd op uw vak, is inbegrepen.",
+      "tools_g_n": "De toegang van Celya tot uw agenda is door de veiligheidscontrole van Google gegaan. U zet hem stop wanneer u wilt.",
+      "wa_feed": [
+        [
+          "urgent",
+          "Dringend",
+          "Pechhulp A12 · batterij",
+          "Terugbellen op 0475 •• •• 21",
+          "11:20"
+        ],
+        [
+          "rappel",
+          "Terugbellen",
+          "Mevr. Claes · offerte carrosserie",
+          "",
+          "13:41"
+        ],
+        [
+          "rdv",
+          "Afspraak",
+          "Dhr. Peeters · donderdag 10u",
+          "Nazicht + winterbanden",
+          "14:05"
+        ]
+      ],
+      "week": {
+        "titre": "November 2026",
+        "sous": "Google Agenda · week",
+        "jours": [
+          "Ma 11",
+          "Di 12",
+          "Wo 13",
+          "Do 14",
+          "Vr 15"
+        ],
+        "heures": [
+          "9u",
+          "10u",
+          "11u",
+          "12u"
+        ],
+        "blocs": [
+          [
+            1,
+            0,
+            "Olieverversing",
+            ""
+          ],
+          [
+            2,
+            0,
+            "Diagnose",
+            ""
+          ],
+          [
+            0,
+            1,
+            "Onderhoud",
+            ""
+          ],
+          [
+            3,
+            1,
+            "Dhr. Peeters",
+            "door Janet"
+          ],
+          [
+            4,
+            2,
+            "Mevr. Claes",
+            "door Janet"
+          ],
+          [
+            1,
+            3,
+            "Banden",
+            ""
+          ]
+        ]
+      },
+      "fiche_rows": [
+        [
+          "Marie D.",
+          "Afspraak",
+          "Normaal"
+        ],
+        [
+          "Karim B.",
+          "Bericht",
+          "Dringend"
+        ],
+        [
+          "Dhr. Peeters",
+          "Antwoord",
+          "Normaal"
+        ]
+      ],
+      "fiche_detail": [
+        [
+          "Beller",
+          "Marie D."
+        ],
+        [
+          "Reden",
+          "Afspraak"
+        ],
+        [
+          "Urgentie",
+          "Normaal"
+        ],
+        [
+          "Geboekt",
+          "Donderdag 15.20 u"
+        ],
+        [
+          "Transcriptie",
+          "Beschikbaar"
+        ]
+      ],
+      "fiche_title": "Gespreksfiche",
+      "fiche_ex": "Voorbeeld",
+      "big_label": "Bel haar nu. Ze neemt op.",
+      "metiers_all": "Alle sectoren"
+    },
+    "example": "Voorbeeld",
+    "captures": {
+      "confirmation": "Schermafbeelding: een klant bevestigt zijn afspraak via WhatsApp",
+      "consignes": "Schermafbeelding: een instructie aan Janet via WhatsApp",
+      "agenda": "Schermafbeelding: een afspraak die Janet in Google Agenda zette"
+    }
   },
   "en": {
     "base": "en/",
@@ -1488,6 +1686,197 @@
         ]
       ]
     },
-    "merci_href": "merci.html"
+    "merci_href": "merci.html",
+    "home": {
+      "hero_tag": "Incoming call · Janet answers",
+      "cards_p": "A receptionist on the phone, with no breaks and no rota. She answers with your information, handles what can be handled and lets you know about the rest.",
+      "grid": [
+        [
+          "decroche",
+          "She picks up",
+          "On the second ring, when you are busy, away or closed."
+        ],
+        [
+          "rdv",
+          "She books appointments",
+          "In your Google Calendar or Celya's calendar, with your durations and your slots."
+        ],
+        [
+          "urgence",
+          "She puts urgent calls through",
+          "Your mobile rings, with the context already summarised."
+        ],
+        [
+          "message",
+          "She takes messages",
+          "Name, number, reason: nothing gets lost."
+        ],
+        [
+          "resume",
+          "She sums everything up",
+          "A WhatsApp message after every real conversation."
+        ],
+        [
+          "langues",
+          "She speaks French and Dutch",
+          "And switches from one to the other during the call."
+        ],
+        [
+          "nuit",
+          "She never closes",
+          "Evenings, weekends, during your holidays."
+        ],
+        [
+          "main",
+          "You stay in control",
+          "Every call, its summary and its transcript in your console."
+        ]
+      ],
+      "ends_h2": "The same call. <em>Two endings.</em>",
+      "ends_p": "Without Celya, the customer reaches voicemail and calls someone else. With Celya, they leave with a booking.",
+      "ends_a_k": "Voicemail",
+      "ends_a_t": "0 bookings",
+      "ends_a_q": "“Hello, you've reached… please leave a message after the tone.”",
+      "ends_a_f": "The customer hangs up.",
+      "ends_b_k": "Janet",
+      "ends_b_t": "1 booking",
+      "ends_live": "On a call · 00:42",
+      "tools_label": "Integrations",
+      "tools_h2": "Connected to your tools. <em>WhatsApp and Google Calendar.</em>",
+      "tools_p": "Nothing to install. You get everything where you already are, and your bookings land in your calendar.",
+      "tools_wa_t": "The summary of every call, <em>in WhatsApp.</em>",
+      "tools_wa_p": "A message after every real conversation: booked, call back or urgent. With the name, the number and what you need to know.",
+      "tools_wa_n": "Celya is a technology provider of Meta's WhatsApp Business platform: messages go through the official API.",
+      "tools_g_t": "The booking <em>writes itself</em> into your calendar.",
+      "tools_g_p": "Janet sees your availability in real time and books the right slot. No calendar? Celya's calendar, complete and designed for your trade, is included.",
+      "tools_g_n": "Celya's access to your calendar has passed Google's security review. You can switch it off whenever you like.",
+      "wa_feed": [
+        [
+          "urgent",
+          "Urgent",
+          "Breakdown A12 · battery",
+          "Call back on 0475 •• •• 21",
+          "11:20"
+        ],
+        [
+          "rappel",
+          "Call back",
+          "Mrs Claes · bodywork quote",
+          "",
+          "13:41"
+        ],
+        [
+          "rdv",
+          "Booked",
+          "Mr Peeters · Thursday 10 am",
+          "Service + winter tyres",
+          "14:05"
+        ]
+      ],
+      "week": {
+        "titre": "November 2026",
+        "sous": "Google Calendar · week",
+        "jours": [
+          "Mon 11",
+          "Tue 12",
+          "Wed 13",
+          "Thu 14",
+          "Fri 15"
+        ],
+        "heures": [
+          "9 am",
+          "10 am",
+          "11 am",
+          "12 pm"
+        ],
+        "blocs": [
+          [
+            1,
+            0,
+            "Oil change",
+            ""
+          ],
+          [
+            2,
+            0,
+            "Diagnosis",
+            ""
+          ],
+          [
+            0,
+            1,
+            "Service",
+            ""
+          ],
+          [
+            3,
+            1,
+            "Mr Peeters",
+            "by Janet"
+          ],
+          [
+            4,
+            2,
+            "Mrs Claes",
+            "by Janet"
+          ],
+          [
+            1,
+            3,
+            "Tyres",
+            ""
+          ]
+        ]
+      },
+      "fiche_rows": [
+        [
+          "Marie D.",
+          "Booking",
+          "Normal"
+        ],
+        [
+          "Karim B.",
+          "Message",
+          "Urgent"
+        ],
+        [
+          "Mr Peeters",
+          "Answer",
+          "Normal"
+        ]
+      ],
+      "fiche_detail": [
+        [
+          "Caller",
+          "Marie D."
+        ],
+        [
+          "Reason",
+          "Booking"
+        ],
+        [
+          "Urgency",
+          "Normal"
+        ],
+        [
+          "Booked",
+          "Thursday 3.20 pm"
+        ],
+        [
+          "Transcript",
+          "Available"
+        ]
+      ],
+      "fiche_title": "Call record",
+      "fiche_ex": "Example",
+      "big_label": "Call her now. She picks up.",
+      "metiers_all": "All sectors"
+    },
+    "example": "Example",
+    "captures": {
+      "confirmation": "Screenshot: a customer confirms their booking on WhatsApp",
+      "consignes": "Screenshot: an instruction sent to Janet on WhatsApp",
+      "agenda": "Screenshot: a booking Janet added to Google Calendar"
+    }
   }
 }

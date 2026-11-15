@@ -333,7 +333,10 @@
   <url>
     <loc>https://celya.be/demo.html</loc>
     <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/demo.html"/>
+    <xhtml:link rel="alternate" hreflang="nl-BE" href="https://celya.be/nl/demo.html"/>
     <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/demo.html"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://celya.be/nl/demo.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://celya.be/en/demo.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/demo.html"/>
   </url>
   <url>
@@ -421,6 +424,15 @@
     <xhtml:link rel="alternate" hreflang="nl" href="https://celya.be/nl/contact.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://celya.be/en/contact.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/contact.html"/>
+  </url>
+  <url>
+    <loc>https://celya.be/en/demo.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/demo.html"/>
+    <xhtml:link rel="alternate" hreflang="nl-BE" href="https://celya.be/nl/demo.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/demo.html"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://celya.be/nl/demo.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://celya.be/en/demo.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/demo.html"/>
   </url>
   <url>
     <loc>https://celya.be/en/garages.html</loc>
@@ -1026,6 +1038,15 @@
     <xhtml:link rel="alternate" hreflang="nl" href="https://celya.be/nl/contact.html"/>
     <xhtml:link rel="alternate" hreflang="en" href="https://celya.be/en/contact.html"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/contact.html"/>
+  </url>
+  <url>
+    <loc>https://celya.be/nl/demo.html</loc>
+    <xhtml:link rel="alternate" hreflang="fr-BE" href="https://celya.be/demo.html"/>
+    <xhtml:link rel="alternate" hreflang="nl-BE" href="https://celya.be/nl/demo.html"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://celya.be/demo.html"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://celya.be/nl/demo.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://celya.be/en/demo.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://celya.be/demo.html"/>
   </url>
   <url>
     <loc>https://celya.be/nl/dierenartsen.html</loc>

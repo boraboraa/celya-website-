@@ -1,5 +1,6 @@
 #!/usr/bin/env node
-/* Test 5 — budget de rendu (CLAUDE.md, lot performance du 5 septembre 2026),
+/* Test 5 — budget de rendu (une boucle RAF, un écouteur scroll, un resize ; l'effet
+ * du héros au défilement ne lit que des mesures en cache : drect() / vrect()) (CLAUDE.md, lot performance du 5 septembre 2026),
  * appliqué au thème du lot « refonte premium ». Statique ; la vérification à
  * l'exécution (document.getAnimations() hors écran) est faite par sweep*.js. */
 import fs from 'node:fs';
@@ -23,8 +24,8 @@ for (const m of css.matchAll(/@keyframes\s+([\w-]+)\s*\{([\s\S]*?\})\s*\}/g)) {
   if (props.length) fails.push(`@keyframes ${m[1]} anime ${[...new Set(props)].join(', ')} (seuls transform et opacity)`);
 }
 const raf = count(js, /requestAnimationFrame\(/g), scroll = count(js, /addEventListener\(\s*'scroll'/g), resize = count(js, /addEventListener\(\s*'resize'/g);
-if (raf > 1) fails.push(`requestAnimationFrame : ${raf} appels (un seul, pour regrouper le resize)`);
-if (scroll > 0) fails.push(`écouteur scroll : ${scroll} (aucun : IntersectionObserver suffit)`);
+if (raf > 1) fails.push(`requestAnimationFrame : ${raf} appels (une seule boucle, RAF())`);
+if (scroll > 1) fails.push(`écouteur scroll : ${scroll} (un seul, onScroll)`);
 if (resize > 1) fails.push(`écouteur resize : ${resize} (un seul)`);
 if (!/prefers-reduced-motion:\s*reduce/.test(css)) fails.push('aucune règle prefers-reduced-motion');
 if (!/\.anim-off/.test(css) || !/anim-off/.test(js)) fails.push('pause hors écran (.anim-off) absente');
