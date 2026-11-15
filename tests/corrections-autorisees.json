@@ -1,0 +1,26 @@
+{
+  "_doc": "Écarts SEO autorisés par le lot « refonte premium » (14/11/2026) : seulement les textes devenus faux (brief, section 5) et les décisions de Bora. Chaque entrée dit ce qui change et pourquoi. tests/seo-avant-apres.mjs refuse tout écart absent d'ici.",
+  "h2_composants": [
+    "Formule par formule, ligne par ligne."
+  ],
+  "pages": {
+    "index.html": {
+      "faq": {
+        "Combien ça coûte ?": "grille du 14/11 : montants et minutes lus dans data/offre.json"
+      },
+      "graph": []
+    },
+    "prix.html": {
+      "faq": {
+        "Y a-t-il des frais de mise en service ?": "mise en service = une mensualité (décision du 14/11)",
+        "Faut-il s'engager sur une durée ?": "30 jours d'essai sans engagement (data/offre.json)"
+      },
+      "graph": [
+        "Service",
+        "WebPage"
+      ],
+      "_graph": "Service.offers : nouvelle grille (noms et prix, data/offre.json) ; WebPage.description : même phrase que la meta description",
+      "desc": "ancienne grille dans la description : montants lus dans data/offre.json"
+    }
+  }
+}

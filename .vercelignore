@@ -1,1 +1,12 @@
 docs/maquettes-14-11
+
+# lot « refonte premium » : sources du générateur, données et tests — jamais servis
+_src
+data
+tests
+sweep-core.js
+sweep.js
+sweep_nl.js
+sweep_en.js
+check.py
+sitemap.py

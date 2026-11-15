@@ -1,0 +1,1493 @@
+{
+  "_doc": "Textes des composants partagés, par langue. Aucun montant ni quota ici : ils viennent de data/offre.json par les jetons {{offre.…}}. Les liens sont relatifs à l'accueil de la langue (fr : racine, nl : nl/, en : en/).",
+  "fr": {
+    "base": "",
+    "home_label": "Celya — accueil",
+    "skip": "Aller au contenu",
+    "nav": [
+      {
+        "href": "./#marche",
+        "label": "Comment ça marche"
+      },
+      {
+        "href": "metiers.html",
+        "label": "Votre métier",
+        "drop": true
+      },
+      {
+        "href": "prix.html",
+        "label": "Prix"
+      },
+      {
+        "href": "./#faq",
+        "label": "FAQ"
+      },
+      {
+        "href": "blog/",
+        "label": "Blog"
+      },
+      {
+        "href": "contact.html",
+        "label": "Contact"
+      }
+    ],
+    "metiers_nav": [
+      [
+        "garages.html",
+        "Garages"
+      ],
+      [
+        "restaurants.html",
+        "Restaurants"
+      ],
+      [
+        "cabinets.html",
+        "Cabinets médicaux"
+      ],
+      [
+        "veterinaires.html",
+        "Vétérinaires"
+      ],
+      [
+        "independants.html",
+        "Indépendants"
+      ],
+      [
+        "plombiers.html",
+        "Plombiers"
+      ],
+      [
+        "chauffagistes.html",
+        "Chauffagistes"
+      ],
+      [
+        "electriciens.html",
+        "Électriciens"
+      ],
+      [
+        "serruriers.html",
+        "Serruriers"
+      ],
+      [
+        "syndics.html",
+        "Syndics d'immeuble"
+      ],
+      [
+        "fiduciaires.html",
+        "Fiduciaires"
+      ]
+    ],
+    "metiers_all": [
+      "metiers.html",
+      "Tous les métiers"
+    ],
+    "menu": "Menu",
+    "close": "Fermer",
+    "cta_call": "Appeler Janet",
+    "cta_call_sub": "Elle vous répond et vous réserve une démo.",
+    "cta_demo": "Demander une démo",
+    "demo_href": "demo.html",
+    "badge_meta_t": "Meta Tech Provider",
+    "badge_meta_s": "Fournisseur officiel · WhatsApp Business",
+    "badge_google_t": "Vérifiée par Google",
+    "badge_google_s": "Application vérifiée · Google Agenda",
+    "badge_verified": "certifié",
+    "video_title": "Janet en 15 secondes",
+    "video_play": "Lire la vidéo",
+    "incoming": "Appel entrant",
+    "janet_answers": "Janet répond",
+    "wa_from": "Celya · WhatsApp",
+    "cards_h2": "Ce que Janet fait <em>pour vous.</em>",
+    "cards_hint": "Touchez une carte pour le détail",
+    "cases_h2": "Chaque appel, rangé <em>dans la bonne case.</em>",
+    "cases_p": "Rendez-vous, question ou urgence : vous savez quoi faire en un coup d'œil, sur WhatsApp et dans votre console.",
+    "case_rdv": "RDV pris",
+    "case_rappel": "À rappeler",
+    "case_urgent": "Urgent",
+    "case_rdv_t": "Un rendez-vous",
+    "case_rappel_t": "Une question",
+    "case_urgent_t": "Une urgence",
+    "plug_cols": [
+      {
+        "k": "01",
+        "t": "Votre numéro",
+        "p": "Le vôtre avec une déviation d'appel, ou un numéro belge fourni."
+      },
+      {
+        "k": "wa",
+        "t": "Votre WhatsApp",
+        "p": "Connecté en deux minutes, à votre nom."
+      },
+      {
+        "k": "gcal",
+        "t": "Votre agenda",
+        "p": "Google Agenda, ou l'agenda Celya pensé pour votre métier."
+      }
+    ],
+    "plug_foot": [
+      "Rien à installer",
+      "Vous gardez votre opérateur",
+      "Vous coupez quand vous voulez"
+    ],
+    "plug_aside_h": "Comment ça se branche",
+    "plug_aside": [
+      {
+        "k": "01",
+        "t": "Votre numéro",
+        "p": "Vous gardez le vôtre : une déviation d'appel suffit. Pas de numéro professionnel ? On vous en fournit un, belge, inclus."
+      },
+      {
+        "k": "wa",
+        "t": "Votre WhatsApp",
+        "p": "Vous connectez votre compte en deux minutes depuis la console. Il reste à votre nom."
+      },
+      {
+        "k": "gcal",
+        "t": "Votre agenda",
+        "p": "Vous reliez Google Agenda, ou vous prenez l'agenda Celya, complet et pensé pour votre métier."
+      }
+    ],
+    "agenda_h2": "Votre agenda, <em>ou le nôtre.</em>",
+    "agenda_p": "Janet ne propose que des créneaux réellement libres, et les rendez-vous s'écrivent tout seuls. Vous choisissez où.",
+    "agenda_g_label": "Google Agenda",
+    "agenda_g_t": "Vous gardez <em>le vôtre.</em>",
+    "agenda_g_p": "Vous le reliez en deux minutes. Janet lit vos disponibilités en temps réel et écrit les rendez-vous directement dedans, sur votre téléphone comme sur l'ordinateur.",
+    "agenda_c_label": "Agenda Celya",
+    "agenda_c_t": "Pas d'agenda ? <em>Prenez le nôtre.</em>",
+    "agenda_c_default": "Un agenda complet, pensé pour votre métier : des durées par prestation, pauses, congés et jours fériés. Consultable sur ordinateur et sur téléphone.",
+    "agenda_quota": "{n} · {a}",
+    "orders_label": "Vos consignes par WhatsApp · toutes les formules",
+    "orders_h2": "En congé ? <em>Dites-le-lui sur WhatsApp.</em>",
+    "orders_p": "Pas besoin d'ouvrir l'application. Vous écrivez à Janet comme à une collègue : elle change vos horaires, bloque un créneau et prévient vos clients.",
+    "orders_ex": [
+      "« Je suis en congé du 23 au 27 »",
+      "« Bloque demain de 14h à 16h »",
+      "« Ne prends plus de rendez-vous aujourd'hui »",
+      "« Samedi, on ouvre de 9h à 12h »"
+    ],
+    "orders_head": "Janet · Celya",
+    "orders_sub": "Votre réceptionniste",
+    "today": "Aujourd'hui",
+    "orders_chat": [
+      [
+        "me",
+        "Je suis en congé du 23 au 27 décembre.",
+        "09:12"
+      ],
+      [
+        "her",
+        "C'est noté. Je bloque l'agenda du 23 au 27 et j'annonce votre retour le 28 aux clients qui appellent.",
+        "09:12"
+      ],
+      [
+        "me",
+        "Bloque demain de 14h à 16h.",
+        "17:40"
+      ],
+      [
+        "her",
+        "Bloqué. Rien n'était encore réservé sur ce créneau.",
+        "17:40"
+      ],
+      [
+        "me",
+        "Samedi, on ouvre de 9h à 12h.",
+        "18:05"
+      ],
+      [
+        "her",
+        "Samedi 9h-12h ajouté à vos horaires.",
+        "18:05"
+      ]
+    ],
+    "confirm_label": "Confirmations WhatsApp · formule {{offre.pro.nom}}",
+    "confirm_h2": "Vos clients confirment <em>en un clic.</em>",
+    "confirm_p": "Janet prend le rendez-vous, votre client reçoit la confirmation sur WhatsApp et répond d'un geste. Votre agenda suit tout seul.",
+    "confirm_rows": [
+      [
+        "Confirmer",
+        "Confirmé dans votre agenda, sans rien faire."
+      ],
+      [
+        "Déplacer",
+        "Janet lui propose trois créneaux libres. Il choisit, c'est réglé."
+      ],
+      [
+        "Annuler",
+        "Le créneau se libère et vous êtes prévenu."
+      ]
+    ],
+    "confirm_note": "Envoyé depuis votre numéro, à votre nom · Rappel automatique la veille · Pas de WhatsApp ? Votre client reçoit un SMS.",
+    "confirm_pro": "Compte professionnel",
+    "confirm_btns": [
+      "Confirmer",
+      "Déplacer",
+      "Annuler"
+    ],
+    "confirm_reply": "Merci, c'est confirmé. À jeudi !",
+    "confirm_chip": "Confirmé par le client",
+    "price_h2": "Dès {{offre.min_eur}} HT <em>par mois.</em>",
+    "price_start": "Commencer l'essai gratuit",
+    "price_start_sub": "{{offre.essai}} jours gratuits · sans engagement",
+    "price_reco": "Recommandé",
+    "price_per": "HT / mois",
+    "price_minutes": "minutes par mois",
+    "faq_label": "Questions fréquentes",
+    "cta_final_lead": "Appelez-la comme le ferait un client. Elle répond en quelques secondes.",
+    "others_h2": "Le téléphone sonne aussi ailleurs",
+    "foot_cols": [
+      {
+        "h": "Le service",
+        "l": [
+          [
+            "fonctionnalites.html",
+            "Fonctionnalités"
+          ],
+          [
+            "permanence-telephonique.html",
+            "Permanence téléphonique"
+          ],
+          [
+            "prix.html",
+            "Prix"
+          ],
+          [
+            "securite.html",
+            "Sécurité"
+          ],
+          [
+            "traitement-des-donnees.html",
+            "Traitement des données"
+          ],
+          [
+            "support.html",
+            "Support"
+          ]
+        ]
+      },
+      {
+        "h": "Métiers",
+        "l": [
+          [
+            "garages.html",
+            "Garages"
+          ],
+          [
+            "restaurants.html",
+            "Restaurants"
+          ],
+          [
+            "cabinets.html",
+            "Cabinets médicaux"
+          ],
+          [
+            "independants.html",
+            "Indépendants"
+          ],
+          [
+            "metiers.html",
+            "Tous les métiers →"
+          ]
+        ]
+      },
+      {
+        "h": "Ressources",
+        "l": [
+          [
+            "blog/",
+            "Blog"
+          ],
+          [
+            "questions.html",
+            "Vos questions"
+          ],
+          [
+            "glossaire.html",
+            "Glossaire"
+          ],
+          [
+            "calculateur-appels-manques.html",
+            "Calculateur d’appels manqués"
+          ],
+          [
+            "modele-fiche-message-telephonique.html",
+            "Modèle de fiche de message"
+          ],
+          [
+            "grille-horaires-garde-transferts.html",
+            "Grille de mise en service"
+          ]
+        ]
+      },
+      {
+        "h": "Entreprise",
+        "l": [
+          [
+            "a-propos.html",
+            "À propos"
+          ],
+          [
+            "contact.html",
+            "Contact"
+          ],
+          [
+            "conditions.html",
+            "Conditions"
+          ],
+          [
+            "privacy.html",
+            "Confidentialité"
+          ],
+          [
+            "cookies.html",
+            "Cookies"
+          ],
+          [
+            "legal.html",
+            "Mentions légales"
+          ]
+        ]
+      }
+    ],
+    "foot_legal": "Celya · Celya Technologies SRL · BCE/KBO 1042.115.837",
+    "foot_other_langs": [
+      [
+        "nl/",
+        "NL"
+      ],
+      [
+        "en/",
+        "EN"
+      ]
+    ],
+    "mbar_label": "Actions rapides",
+    "read_brief": "En bref",
+    "test_h": "Testez-la <em>maintenant.</em>",
+    "test_p": "Appelez comme le ferait un client.",
+    "crumb_home": "Accueil",
+    "crumb_questions": [
+      "questions.html",
+      "Questions"
+    ],
+    "form": {
+      "name": "Votre nom",
+      "phone": "Téléphone",
+      "phone_ph": "+32 …",
+      "metier": "Votre métier",
+      "metier_ph": "Choisissez…",
+      "metier_other": "Autre",
+      "email": "E-mail",
+      "optional": "facultatif",
+      "moment": "Quand vous rappeler ?",
+      "moments": [
+        [
+          "matin",
+          "Le matin"
+        ],
+        [
+          "apres-midi",
+          "L'après-midi"
+        ],
+        [
+          "fin-de-journee",
+          "En fin de journée"
+        ]
+      ],
+      "consent": "J'accepte d'être recontacté par téléphone ou WhatsApp.",
+      "submit": "Être rappelé pour une démo",
+      "sending": "Envoi…",
+      "err_required": "Indiquez votre nom et votre numéro de téléphone, et cochez la case d'accord.",
+      "err_server": "Une erreur est survenue : appelez Janet directement au {{offre.tel}}.",
+      "privacy": "Vos coordonnées servent uniquement à vous rappeler.",
+      "privacy_link": "privacy.html",
+      "privacy_label": "Confidentialité",
+      "metiers": [
+        [
+          "garages",
+          "Garages"
+        ],
+        [
+          "restaurants",
+          "Restaurants"
+        ],
+        [
+          "cabinets",
+          "Cabinets médicaux"
+        ],
+        [
+          "veterinaires",
+          "Vétérinaires"
+        ],
+        [
+          "independants",
+          "Indépendants"
+        ],
+        [
+          "plombiers",
+          "Plombiers"
+        ],
+        [
+          "chauffagistes",
+          "Chauffagistes"
+        ],
+        [
+          "electriciens",
+          "Électriciens"
+        ],
+        [
+          "serruriers",
+          "Serruriers"
+        ],
+        [
+          "syndics",
+          "Syndics d'immeuble"
+        ],
+        [
+          "fiduciaires",
+          "Fiduciaires"
+        ]
+      ]
+    },
+    "merci_href": "merci.html",
+    "home": {
+      "ruban": {
+        "appelant": [
+          "Bonjour, c'est pour un contrôle avant le contrôle technique, vous auriez une place cette semaine ?",
+          "Oui, jeudi c'est parfait.",
+          "C'est au nom de Peeters."
+        ],
+        "janet": [
+          "Garage Dupont, bonjour, je suis Janet.",
+          "Je vous propose jeudi à 10h.",
+          "C'est noté, M. Peeters. Vous recevez la confirmation sur WhatsApp."
+        ],
+        "heure": "14:03",
+        "chip": {
+          "cal": true,
+          "b": "Jeudi 10h",
+          "s": "M. Peeters"
+        },
+        "wa": {
+          "heure": "14:05",
+          "titre": "RDV pris · jeudi 10h",
+          "sous": "M. Peeters · contrôle avant CT"
+        }
+      },
+      "video": {
+        "mp4": "assets/video/celya-intro-1080.mp4",
+        "webm": "assets/video/celya-intro.webm",
+        "poster": "assets/video/celya-intro-poster.webp",
+        "duree": "0:37",
+        "titre": "Voir Celya en 37 secondes",
+        "tracks": [
+          {
+            "lang": "fr",
+            "label": "Français",
+            "src": "assets/video/celya-intro.fr.vtt"
+          },
+          {
+            "lang": "nl",
+            "label": "Nederlands",
+            "src": "assets/video/celya-intro.nl.vtt"
+          },
+          {
+            "lang": "en",
+            "label": "English",
+            "src": "assets/video/celya-intro.en.vtt"
+          }
+        ]
+      },
+      "cards_p": "Une réceptionniste au téléphone, sans pause ni planning. Elle répond avec vos informations, règle ce qui peut l'être et vous prévient pour le reste.",
+      "grid": [
+        [
+          "decroche",
+          "Elle décroche",
+          "À la deuxième sonnerie, quand vous êtes occupé, absent ou fermé."
+        ],
+        [
+          "rdv",
+          "Elle prend les rendez-vous",
+          "Dans votre Google Agenda ou l'agenda Celya, avec vos durées et vos créneaux."
+        ],
+        [
+          "urgence",
+          "Elle passe les urgences",
+          "Votre mobile sonne, avec le contexte déjà résumé."
+        ],
+        [
+          "message",
+          "Elle prend les messages",
+          "Nom, numéro, motif : rien ne se perd."
+        ],
+        [
+          "resume",
+          "Elle vous résume tout",
+          "Un message WhatsApp après chaque vraie conversation."
+        ],
+        [
+          "langues",
+          "Elle parle français et néerlandais",
+          "Et bascule d'une langue à l'autre en cours d'appel."
+        ],
+        [
+          "nuit",
+          "Elle ne ferme jamais",
+          "Le soir, le week-end, pendant vos congés."
+        ],
+        [
+          "main",
+          "Vous gardez la main",
+          "Chaque appel, son résumé et sa transcription dans votre console."
+        ]
+      ],
+      "ends_h2": "Le même appel. <em>Deux fins.</em>",
+      "ends_p": "Sans Celya, le client tombe sur le répondeur et appelle ailleurs. Avec Celya, il repart avec un rendez-vous.",
+      "ends_a_k": "Répondeur",
+      "ends_a_t": "0 RDV",
+      "ends_a_q": "« Bonjour, vous êtes bien chez… laissez un message après le bip. »",
+      "ends_a_f": "Le client raccroche.",
+      "ends_b_k": "Janet",
+      "ends_b_t": "1 RDV pris",
+      "ends_live": "En appel · 00:42",
+      "tools_label": "Intégrations",
+      "tools_h2": "Branchée sur vos outils. <em>WhatsApp et Google Agenda.</em>",
+      "tools_p": "Rien à installer. Vous recevez tout là où vous êtes déjà, et vos rendez-vous tombent dans votre agenda.",
+      "tools_wa_t": "Le résumé de chaque appel, <em>dans WhatsApp.</em>",
+      "tools_wa_p": "Un message après chaque vraie conversation : rendez-vous pris, à rappeler ou urgent. Avec le nom, le numéro et ce qu'il faut savoir.",
+      "tools_wa_n": "Celya est fournisseur technologique de la plateforme WhatsApp Business de Meta : les messages passent par l'API officielle.",
+      "tools_g_t": "Le rendez-vous <em>s'écrit tout seul</em> dans votre agenda.",
+      "tools_g_p": "Janet voit vos disponibilités en temps réel et réserve le bon créneau. Pas d'agenda ? L'agenda Celya, complet et pensé pour votre métier, est inclus.",
+      "tools_g_n": "L'accès de Celya à votre agenda a passé la vérification de sécurité de Google. Vous le coupez quand vous voulez.",
+      "wa_feed": [
+        [
+          "urgent",
+          "Urgent",
+          "Dépannage A12 · batterie",
+          "Rappeler au 0475 •• •• 21",
+          "11:20"
+        ],
+        [
+          "rappel",
+          "À rappeler",
+          "Mme Claes · devis carrosserie",
+          "",
+          "13:41"
+        ],
+        [
+          "rdv",
+          "RDV pris",
+          "M. Peeters · jeudi 10h",
+          "Contrôle + pneus hiver",
+          "14:05"
+        ]
+      ],
+      "week": {
+        "titre": "Novembre 2026",
+        "sous": "Google Agenda · semaine",
+        "jours": [
+          "Lun 11",
+          "Mar 12",
+          "Mer 13",
+          "Jeu 14",
+          "Ven 15"
+        ],
+        "heures": [
+          "9h",
+          "10h",
+          "11h",
+          "12h"
+        ],
+        "blocs": [
+          [
+            1,
+            0,
+            "Vidange",
+            ""
+          ],
+          [
+            2,
+            0,
+            "Diagnostic",
+            ""
+          ],
+          [
+            0,
+            1,
+            "Révision",
+            ""
+          ],
+          [
+            3,
+            1,
+            "M. Peeters",
+            "par Janet"
+          ],
+          [
+            4,
+            2,
+            "Mme Claes",
+            "par Janet"
+          ],
+          [
+            1,
+            3,
+            "Pneus",
+            ""
+          ]
+        ]
+      },
+      "fiche_rows": [
+        [
+          "Marie D.",
+          "Rendez-vous",
+          "Normale"
+        ],
+        [
+          "Karim B.",
+          "Message",
+          "Urgente"
+        ],
+        [
+          "M. Peeters",
+          "Réponse",
+          "Normale"
+        ]
+      ],
+      "fiche_detail": [
+        [
+          "Appelant",
+          "Marie D."
+        ],
+        [
+          "Motif",
+          "Rendez-vous"
+        ],
+        [
+          "Urgence",
+          "Normale"
+        ],
+        [
+          "Réservé",
+          "Jeudi 15 h 20"
+        ],
+        [
+          "Transcription",
+          "Disponible"
+        ]
+      ],
+      "fiche_title": "Fiche d'appel",
+      "fiche_ex": "Exemple",
+      "big_label": "Appelez-la maintenant. Elle décroche.",
+      "metiers_all": "Tous les métiers"
+    }
+  },
+  "nl": {
+    "base": "nl/",
+    "home_label": "Celya — home",
+    "skip": "Naar de inhoud",
+    "nav": [
+      {
+        "href": "./#marche",
+        "label": "Hoe het werkt"
+      },
+      {
+        "href": "sectoren.html",
+        "label": "Uw sector",
+        "drop": true
+      },
+      {
+        "href": "prijzen.html",
+        "label": "Prijzen"
+      },
+      {
+        "href": "./#faq",
+        "label": "FAQ"
+      },
+      {
+        "href": "blog/",
+        "label": "Blog"
+      },
+      {
+        "href": "contact.html",
+        "label": "Contact"
+      }
+    ],
+    "metiers_nav": [
+      [
+        "garages.html",
+        "Garages"
+      ],
+      [
+        "restaurants.html",
+        "Restaurants"
+      ],
+      [
+        "praktijken.html",
+        "Praktijken"
+      ],
+      [
+        "dierenartsen.html",
+        "Dierenartsen"
+      ],
+      [
+        "zelfstandigen.html",
+        "Zelfstandigen"
+      ],
+      [
+        "loodgieters.html",
+        "Loodgieters"
+      ],
+      [
+        "verwarmingsinstallateurs.html",
+        "Verwarming"
+      ],
+      [
+        "elektriciens.html",
+        "Elektriciens"
+      ],
+      [
+        "slotenmakers.html",
+        "Slotenmakers"
+      ],
+      [
+        "syndici.html",
+        "Syndici"
+      ],
+      [
+        "boekhouders.html",
+        "Boekhouders"
+      ]
+    ],
+    "metiers_all": [
+      "sectoren.html",
+      "Alle sectoren"
+    ],
+    "menu": "Menu",
+    "close": "Sluiten",
+    "cta_call": "Bel Janet",
+    "cta_call_sub": "Ze antwoordt u en plant een demo in.",
+    "cta_demo": "Vraag een demo",
+    "demo_href": "demo.html",
+    "badge_meta_t": "Meta Tech Provider",
+    "badge_meta_s": "Officiële leverancier · WhatsApp Business",
+    "badge_google_t": "Geverifieerd door Google",
+    "badge_google_s": "Geverifieerde app · Google Agenda",
+    "badge_verified": "gecertificeerd",
+    "video_title": "Janet in 15 seconden",
+    "video_play": "Video afspelen",
+    "incoming": "Inkomende oproep",
+    "janet_answers": "Janet antwoordt",
+    "wa_from": "Celya · WhatsApp",
+    "cards_h2": "Wat Janet <em>voor u doet.</em>",
+    "cards_hint": "Tik op een kaart voor de details",
+    "cases_h2": "Elke oproep <em>in het juiste vak.</em>",
+    "cases_p": "Afspraak, vraag of dringend: u ziet in één oogopslag wat u moet doen, op WhatsApp en in uw console.",
+    "case_rdv": "Afspraak",
+    "case_rappel": "Terugbellen",
+    "case_urgent": "Dringend",
+    "case_rdv_t": "Een afspraak",
+    "case_rappel_t": "Een vraag",
+    "case_urgent_t": "Iets dringends",
+    "plug_cols": [
+      {
+        "k": "01",
+        "t": "Uw nummer",
+        "p": "Het uwe met een doorschakeling, of een Belgisch nummer van ons."
+      },
+      {
+        "k": "wa",
+        "t": "Uw WhatsApp",
+        "p": "Gekoppeld in twee minuten, op uw naam."
+      },
+      {
+        "k": "gcal",
+        "t": "Uw agenda",
+        "p": "Google Agenda, of de agenda van Celya, afgestemd op uw vak."
+      }
+    ],
+    "plug_foot": [
+      "Niets te installeren",
+      "U houdt uw operator",
+      "U stopt wanneer u wilt"
+    ],
+    "plug_aside_h": "Hoe het aangesloten wordt",
+    "plug_aside": [
+      {
+        "k": "01",
+        "t": "Uw nummer",
+        "p": "U houdt het uwe: een doorschakeling volstaat. Geen professioneel nummer? Wij geven u er een, Belgisch, inbegrepen."
+      },
+      {
+        "k": "wa",
+        "t": "Uw WhatsApp",
+        "p": "U koppelt uw account in twee minuten vanuit de console. Het blijft op uw naam."
+      },
+      {
+        "k": "gcal",
+        "t": "Uw agenda",
+        "p": "U koppelt Google Agenda, of u neemt de agenda van Celya, volledig en afgestemd op uw vak."
+      }
+    ],
+    "agenda_h2": "Uw agenda, <em>of de onze.</em>",
+    "agenda_p": "Janet stelt alleen echt vrije momenten voor, en de afspraken komen er vanzelf in. U kiest waar.",
+    "agenda_g_label": "Google Agenda",
+    "agenda_g_t": "U houdt <em>de uwe.</em>",
+    "agenda_g_p": "U koppelt hem in twee minuten. Janet leest uw beschikbaarheid in realtime en zet de afspraken er rechtstreeks in, op uw telefoon en op de computer.",
+    "agenda_c_label": "Agenda van Celya",
+    "agenda_c_t": "Geen agenda? <em>Neem de onze.</em>",
+    "agenda_c_default": "Een volledige agenda, afgestemd op uw vak: duur per prestatie, pauzes, verlof en feestdagen. Raadpleegbaar op computer en telefoon.",
+    "agenda_quota": "{n} · {a}",
+    "orders_label": "Uw instructies via WhatsApp · alle formules",
+    "orders_h2": "Met verlof? <em>Zeg het haar via WhatsApp.</em>",
+    "orders_p": "U hoeft de app niet te openen. U schrijft Janet zoals een collega: ze past uw uren aan, blokkeert een moment en verwittigt uw klanten.",
+    "orders_ex": [
+      "« Ik ben met verlof van 23 tot 27 »",
+      "« Blokkeer morgen van 14 tot 16 uur »",
+      "« Neem vandaag geen afspraken meer »",
+      "« Zaterdag zijn we open van 9 tot 12 uur »"
+    ],
+    "orders_head": "Janet · Celya",
+    "orders_sub": "Uw receptioniste",
+    "today": "Vandaag",
+    "orders_chat": [
+      [
+        "me",
+        "Ik ben met verlof van 23 tot 27 december.",
+        "09:12"
+      ],
+      [
+        "her",
+        "Genoteerd. Ik blokkeer de agenda van 23 tot 27 en meld aan bellers dat u op 28 terug bent.",
+        "09:12"
+      ],
+      [
+        "me",
+        "Blokkeer morgen van 14 tot 16 uur.",
+        "17:40"
+      ],
+      [
+        "her",
+        "Geblokkeerd. Er stond nog niets gepland op dat moment.",
+        "17:40"
+      ],
+      [
+        "me",
+        "Zaterdag zijn we open van 9 tot 12 uur.",
+        "18:05"
+      ],
+      [
+        "her",
+        "Zaterdag 9-12 uur toegevoegd aan uw openingsuren.",
+        "18:05"
+      ]
+    ],
+    "confirm_label": "WhatsApp-bevestigingen · formule {{offre.pro.nom}}",
+    "confirm_h2": "Uw klanten bevestigen <em>met één klik.</em>",
+    "confirm_p": "Janet legt de afspraak vast, uw klant krijgt de bevestiging via WhatsApp en antwoordt met één tik. Uw agenda volgt vanzelf.",
+    "confirm_rows": [
+      [
+        "Bevestigen",
+        "Bevestigd in uw agenda, zonder iets te doen."
+      ],
+      [
+        "Verplaatsen",
+        "Janet stelt drie vrije momenten voor. De klant kiest, klaar."
+      ],
+      [
+        "Annuleren",
+        "Het moment komt vrij en u wordt verwittigd."
+      ]
+    ],
+    "confirm_note": "Verstuurd vanaf uw nummer, op uw naam · Automatische herinnering de dag voordien · Geen WhatsApp? Uw klant krijgt een sms.",
+    "confirm_pro": "Zakelijk account",
+    "confirm_btns": [
+      "Bevestigen",
+      "Verplaatsen",
+      "Annuleren"
+    ],
+    "confirm_reply": "Bedankt, bevestigd. Tot donderdag!",
+    "confirm_chip": "Bevestigd door de klant",
+    "price_h2": "Vanaf {{offre.min_eur}} excl. btw <em>per maand.</em>",
+    "price_start": "Start de gratis proefperiode",
+    "price_start_sub": "{{offre.essai}} dagen gratis · zonder verbintenis",
+    "price_reco": "Aanbevolen",
+    "price_per": "excl. btw / maand",
+    "price_minutes": "minuten per maand",
+    "faq_label": "Veelgestelde vragen",
+    "cta_final_lead": "Bel haar zoals een klant dat zou doen. Ze neemt binnen enkele seconden op.",
+    "others_h2": "De telefoon rinkelt ook elders",
+    "foot_cols": [
+      {
+        "h": "De dienst",
+        "l": [
+          [
+            "werking.html",
+            "Wat ze doet"
+          ],
+          [
+            "telefoonpermanentie.html",
+            "Telefoonpermanentie"
+          ],
+          [
+            "prijzen.html",
+            "Prijzen"
+          ],
+          [
+            "veiligheid.html",
+            "Veiligheid"
+          ],
+          [
+            "gegevensverwerking.html",
+            "Gegevensverwerking"
+          ],
+          [
+            "ondersteuning.html",
+            "Ondersteuning"
+          ]
+        ]
+      },
+      {
+        "h": "Sectoren",
+        "l": [
+          [
+            "garages.html",
+            "Garages"
+          ],
+          [
+            "restaurants.html",
+            "Restaurants"
+          ],
+          [
+            "praktijken.html",
+            "Praktijken"
+          ],
+          [
+            "zelfstandigen.html",
+            "Zelfstandigen"
+          ],
+          [
+            "sectoren.html",
+            "Alle sectoren →"
+          ]
+        ]
+      },
+      {
+        "h": "Bronnen",
+        "l": [
+          [
+            "blog/",
+            "Blog"
+          ],
+          [
+            "vragen.html",
+            "Uw vragen"
+          ],
+          [
+            "glossarium.html",
+            "Woordenlijst"
+          ],
+          [
+            "rekenblad-gemiste-oproepen.html",
+            "Rekenblad gemiste oproepen"
+          ],
+          [
+            "model-telefoonbericht.html",
+            "Model telefoonbericht"
+          ],
+          [
+            "uren-wachtdienst-doorschakeling.html",
+            "Het invulblad"
+          ]
+        ]
+      },
+      {
+        "h": "Bedrijf",
+        "l": [
+          [
+            "over-ons.html",
+            "Over ons"
+          ],
+          [
+            "contact.html",
+            "Contact"
+          ],
+          [
+            "voorwaarden.html",
+            "Voorwaarden"
+          ],
+          [
+            "privacy.html",
+            "Privacy"
+          ],
+          [
+            "cookies.html",
+            "Cookies"
+          ],
+          [
+            "legal.html",
+            "Juridische info"
+          ]
+        ]
+      }
+    ],
+    "foot_legal": "Celya · Celya Technologies SRL · BCE/KBO 1042.115.837",
+    "foot_other_langs": [
+      [
+        "../",
+        "FR"
+      ],
+      [
+        "../en/",
+        "EN"
+      ]
+    ],
+    "mbar_label": "Snelle acties",
+    "read_brief": "In het kort",
+    "test_h": "Test haar <em>nu.</em>",
+    "test_p": "Bel zoals een klant dat zou doen.",
+    "crumb_home": "Home",
+    "crumb_questions": [
+      "vragen.html",
+      "Vragen"
+    ],
+    "form": {
+      "name": "Uw naam",
+      "phone": "Telefoon",
+      "phone_ph": "+32 …",
+      "metier": "Uw sector",
+      "metier_ph": "Kies…",
+      "metier_other": "Andere",
+      "email": "E-mail",
+      "optional": "optioneel",
+      "moment": "Wanneer mogen we u terugbellen?",
+      "moments": [
+        [
+          "matin",
+          "In de voormiddag"
+        ],
+        [
+          "apres-midi",
+          "In de namiddag"
+        ],
+        [
+          "fin-de-journee",
+          "Op het einde van de dag"
+        ]
+      ],
+      "consent": "Ik ga akkoord om telefonisch of via WhatsApp gecontacteerd te worden.",
+      "submit": "Bel mij terug voor een demo",
+      "sending": "Versturen…",
+      "err_required": "Vul uw naam en telefoonnummer in en vink het akkoord aan.",
+      "err_server": "Er ging iets mis: bel Janet rechtstreeks op {{offre.tel}}.",
+      "privacy": "Uw gegevens dienen enkel om u terug te bellen.",
+      "privacy_link": "privacy.html",
+      "privacy_label": "Privacy",
+      "metiers": [
+        [
+          "garages",
+          "Garages"
+        ],
+        [
+          "restaurants",
+          "Restaurants"
+        ],
+        [
+          "cabinets",
+          "Medische praktijken"
+        ],
+        [
+          "veterinaires",
+          "Dierenartsen"
+        ],
+        [
+          "independants",
+          "Zelfstandigen"
+        ],
+        [
+          "plombiers",
+          "Loodgieters"
+        ],
+        [
+          "chauffagistes",
+          "Verwarmingsinstallateurs"
+        ],
+        [
+          "electriciens",
+          "Elektriciens"
+        ],
+        [
+          "serruriers",
+          "Slotenmakers"
+        ],
+        [
+          "syndics",
+          "Syndici"
+        ],
+        [
+          "fiduciaires",
+          "Boekhoudkantoren"
+        ]
+      ]
+    },
+    "merci_href": "merci.html"
+  },
+  "en": {
+    "base": "en/",
+    "home_label": "Celya — home",
+    "skip": "Skip to content",
+    "nav": [
+      {
+        "href": "./#marche",
+        "label": "How it works"
+      },
+      {
+        "href": "./#metier",
+        "label": "Your sector",
+        "drop": true
+      },
+      {
+        "href": "pricing.html",
+        "label": "Pricing"
+      },
+      {
+        "href": "./#faq",
+        "label": "FAQ"
+      },
+      {
+        "href": "blog/",
+        "label": "Blog"
+      },
+      {
+        "href": "contact.html",
+        "label": "Contact"
+      }
+    ],
+    "metiers_nav": [
+      [
+        "garages.html",
+        "Garages"
+      ],
+      [
+        "restaurants.html",
+        "Restaurants"
+      ],
+      [
+        "medical-practices.html",
+        "Medical practices"
+      ],
+      [
+        "self-employed.html",
+        "Self-employed"
+      ]
+    ],
+    "metiers_all": null,
+    "menu": "Menu",
+    "close": "Close",
+    "cta_call": "Call Janet",
+    "cta_call_sub": "She answers and books you a demo.",
+    "cta_demo": "Request a demo",
+    "demo_href": "demo.html",
+    "badge_meta_t": "Meta Tech Provider",
+    "badge_meta_s": "Official provider · WhatsApp Business",
+    "badge_google_t": "Verified by Google",
+    "badge_google_s": "Verified app · Google Calendar",
+    "badge_verified": "certified",
+    "video_title": "Janet in 15 seconds",
+    "video_play": "Play the video",
+    "incoming": "Incoming call",
+    "janet_answers": "Janet answers",
+    "wa_from": "Celya · WhatsApp",
+    "cards_h2": "What Janet <em>does for you.</em>",
+    "cards_hint": "Tap a card for the details",
+    "cases_h2": "Every call, <em>in the right box.</em>",
+    "cases_p": "Booking, question or urgent: you know what to do at a glance, on WhatsApp and in your console.",
+    "case_rdv": "Booked",
+    "case_rappel": "Call back",
+    "case_urgent": "Urgent",
+    "case_rdv_t": "A booking",
+    "case_rappel_t": "A question",
+    "case_urgent_t": "An emergency",
+    "plug_cols": [
+      {
+        "k": "01",
+        "t": "Your number",
+        "p": "Yours, with call forwarding, or a Belgian number from us."
+      },
+      {
+        "k": "wa",
+        "t": "Your WhatsApp",
+        "p": "Connected in two minutes, in your name."
+      },
+      {
+        "k": "gcal",
+        "t": "Your calendar",
+        "p": "Google Calendar, or Celya's calendar designed for your trade."
+      }
+    ],
+    "plug_foot": [
+      "Nothing to install",
+      "You keep your operator",
+      "Stop whenever you like"
+    ],
+    "plug_aside_h": "How it connects",
+    "plug_aside": [
+      {
+        "k": "01",
+        "t": "Your number",
+        "p": "You keep yours: call forwarding is enough. No business number? We give you one, Belgian, included."
+      },
+      {
+        "k": "wa",
+        "t": "Your WhatsApp",
+        "p": "You connect your account in two minutes from the console. It stays in your name."
+      },
+      {
+        "k": "gcal",
+        "t": "Your calendar",
+        "p": "You connect Google Calendar, or use Celya's calendar, complete and designed for your trade."
+      }
+    ],
+    "agenda_h2": "Your calendar, <em>or ours.</em>",
+    "agenda_p": "Janet only offers slots that are really free, and bookings write themselves. You choose where.",
+    "agenda_g_label": "Google Calendar",
+    "agenda_g_t": "Keep <em>yours.</em>",
+    "agenda_g_p": "You connect it in two minutes. Janet reads your availability in real time and writes bookings straight into it, on your phone and on your computer.",
+    "agenda_c_label": "Celya calendar",
+    "agenda_c_t": "No calendar? <em>Use ours.</em>",
+    "agenda_c_default": "A complete calendar designed for your trade: durations per service, breaks, holidays and bank holidays. On your computer and your phone.",
+    "agenda_quota": "{n} · {a}",
+    "orders_label": "Your instructions over WhatsApp · every plan",
+    "orders_h2": "On holiday? <em>Tell her on WhatsApp.</em>",
+    "orders_p": "No need to open the app. You write to Janet like a colleague: she changes your hours, blocks a slot and lets your customers know.",
+    "orders_ex": [
+      "“I'm off from the 23rd to the 27th”",
+      "“Block tomorrow from 2 to 4 pm”",
+      "“No more bookings today”",
+      "“Saturday we open from 9 to 12”"
+    ],
+    "orders_head": "Janet · Celya",
+    "orders_sub": "Your receptionist",
+    "today": "Today",
+    "orders_chat": [
+      [
+        "me",
+        "I'm off from 23 to 27 December.",
+        "09:12"
+      ],
+      [
+        "her",
+        "Noted. I'm blocking the calendar from the 23rd to the 27th and telling callers you're back on the 28th.",
+        "09:12"
+      ],
+      [
+        "me",
+        "Block tomorrow from 2 to 4 pm.",
+        "17:40"
+      ],
+      [
+        "her",
+        "Blocked. Nothing was booked in that slot yet.",
+        "17:40"
+      ],
+      [
+        "me",
+        "Saturday we open from 9 to 12.",
+        "18:05"
+      ],
+      [
+        "her",
+        "Saturday 9 am–12 pm added to your hours.",
+        "18:05"
+      ]
+    ],
+    "confirm_label": "WhatsApp confirmations · {{offre.pro.nom}} plan",
+    "confirm_h2": "Your customers confirm <em>in one tap.</em>",
+    "confirm_p": "Janet takes the booking, your customer gets the confirmation on WhatsApp and answers with one tap. Your calendar follows on its own.",
+    "confirm_rows": [
+      [
+        "Confirm",
+        "Confirmed in your calendar, without you lifting a finger."
+      ],
+      [
+        "Reschedule",
+        "Janet offers three free slots. They pick one, done."
+      ],
+      [
+        "Cancel",
+        "The slot frees up and you are told."
+      ]
+    ],
+    "confirm_note": "Sent from your number, in your name · Automatic reminder the day before · No WhatsApp? Your customer gets a text message.",
+    "confirm_pro": "Business account",
+    "confirm_btns": [
+      "Confirm",
+      "Reschedule",
+      "Cancel"
+    ],
+    "confirm_reply": "Thanks, that's confirmed. See you Thursday!",
+    "confirm_chip": "Confirmed by the customer",
+    "price_h2": "From {{offre.min_eur}} excl. VAT <em>a month.</em>",
+    "price_start": "Start the free trial",
+    "price_start_sub": "{{offre.essai}} days free · no commitment",
+    "price_reco": "Recommended",
+    "price_per": "excl. VAT / month",
+    "price_minutes": "minutes a month",
+    "faq_label": "Frequently asked questions",
+    "cta_final_lead": "Call her the way a customer would. She picks up within seconds.",
+    "others_h2": "The phone rings elsewhere too",
+    "foot_cols": [
+      {
+        "h": "Sectors",
+        "l": [
+          [
+            "garages.html",
+            "Garages"
+          ],
+          [
+            "restaurants.html",
+            "Restaurants"
+          ],
+          [
+            "medical-practices.html",
+            "Medical practices"
+          ],
+          [
+            "self-employed.html",
+            "Self-employed"
+          ]
+        ]
+      },
+      {
+        "h": "Resources",
+        "l": [
+          [
+            "pricing.html",
+            "Pricing"
+          ],
+          [
+            "blog/",
+            "Blog"
+          ]
+        ]
+      },
+      {
+        "h": "Company",
+        "l": [
+          [
+            "contact.html",
+            "Contact"
+          ],
+          [
+            "privacy.html",
+            "Privacy"
+          ],
+          [
+            "cookies.html",
+            "Cookies"
+          ],
+          [
+            "legal.html",
+            "Legal notice"
+          ]
+        ]
+      }
+    ],
+    "foot_legal": "Celya · Celya Technologies SRL · BCE/KBO 1042.115.837",
+    "foot_other_langs": [
+      [
+        "../",
+        "FR"
+      ],
+      [
+        "../nl/",
+        "NL"
+      ]
+    ],
+    "mbar_label": "Quick actions",
+    "read_brief": "In short",
+    "test_h": "Try her <em>now.</em>",
+    "test_p": "Call the way a customer would.",
+    "crumb_home": "Home",
+    "crumb_questions": null,
+    "form": {
+      "name": "Your name",
+      "phone": "Phone",
+      "phone_ph": "+32 …",
+      "metier": "Your trade",
+      "metier_ph": "Choose…",
+      "metier_other": "Other",
+      "email": "Email",
+      "optional": "optional",
+      "moment": "When should we call you back?",
+      "moments": [
+        [
+          "matin",
+          "In the morning"
+        ],
+        [
+          "apres-midi",
+          "In the afternoon"
+        ],
+        [
+          "fin-de-journee",
+          "At the end of the day"
+        ]
+      ],
+      "consent": "I agree to be contacted by phone or WhatsApp.",
+      "submit": "Call me back for a demo",
+      "sending": "Sending…",
+      "err_required": "Please give your name and phone number, and tick the consent box.",
+      "err_server": "Something went wrong: call Janet directly on {{offre.tel}}.",
+      "privacy": "Your details are only used to call you back.",
+      "privacy_link": "privacy.html",
+      "privacy_label": "Privacy",
+      "metiers": [
+        [
+          "garages",
+          "Garages"
+        ],
+        [
+          "restaurants",
+          "Restaurants"
+        ],
+        [
+          "cabinets",
+          "Medical practices"
+        ],
+        [
+          "veterinaires",
+          "Vets"
+        ],
+        [
+          "independants",
+          "Self-employed"
+        ],
+        [
+          "plombiers",
+          "Plumbers"
+        ],
+        [
+          "chauffagistes",
+          "Heating engineers"
+        ],
+        [
+          "electriciens",
+          "Electricians"
+        ],
+        [
+          "serruriers",
+          "Locksmiths"
+        ],
+        [
+          "syndics",
+          "Property managers"
+        ],
+        [
+          "fiduciaires",
+          "Accounting firms"
+        ]
+      ]
+    },
+    "merci_href": "merci.html"
+  }
+}

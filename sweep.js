@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 'use strict';
-/* sweep.js — balayage visuel du silo FR (racine + blog/), Chromium 390 et 1280 px.
+/* sweep.js — balayage visuel du silo FR (racine + blog/), Chromium 360, 390, 768 et 1440 px.
  *
  *   node sweep.js                                  tout le silo FR
  *   node sweep.js index.html prix.html             seulement ces pages

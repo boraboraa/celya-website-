@@ -1,0 +1,891 @@
+{
+ "_doc": "Textes propres à chaque métier (ruban, cases, agenda, confirmation, visuels des cartes). Partie fr extraite des maquettes par _src/tools/extraire_metiers.py ; parties nl/en traduites à la main. « video » : null tant qu'aucune source n'existe — le composant montre alors la photo seule, sans bouton lecture.",
+ "garages": {
+  "pages": {
+   "fr": "garages.html",
+   "nl": "garages.html",
+   "en": "garages.html"
+  },
+  "photo": "garages",
+  "video": null,
+  "fr": {
+   "ruban": {
+    "appelant": [
+     "Bonjour, ma voiture ne démarre plus, je suis bloqué sur le parking à Waterloo… c'est une Golf 7."
+    ],
+    "janet": [
+     "Garage Martin, bonjour, je suis Janet.",
+     "Je vous passe tout de suite le garagiste.",
+     "Restez en ligne, il décroche."
+    ],
+    "heure": "08:11",
+    "chip": {
+     "cal": false,
+     "b": "Transféré",
+     "s": "votre mobile sonne"
+    },
+    "wa": {
+     "heure": "08:13",
+     "titre": "Urgent · panne au démarrage",
+     "sous": "Golf 7 · parking à Waterloo"
+    }
+   },
+   "cartes": [
+    {
+     "v": "tri",
+     "h": "Une permanence téléphonique garage qui trie chaque appel"
+    },
+    {
+     "v": "agenda",
+     "rdv": "Entretien + pneus hiver",
+     "h": "La prise de rendez-vous d'atelier, sans lever la tête"
+    },
+    {
+     "v": "transfert",
+     "titre": "Urgent · panne au démarrage",
+     "sous": "Golf 7 · parking à Waterloo",
+     "h": "Les urgences sonnent sur votre mobile, pas dans le vide"
+    },
+    {
+     "v": "qr",
+     "q": "Vous êtes ouverts samedi ?",
+     "r": "Oui, de 9h à 12h.",
+     "h": "Les questions qui vous font redescendre du pont"
+    },
+    {
+     "v": "photo",
+     "h": "Un agenda qui raisonne en ponts et en durées"
+    },
+    {
+     "v": "photo",
+     "h": "Ce qu'un atelier récupère, appel par appel."
+    }
+   ],
+   "cases": {
+    "rdv_t": "Un rendez-vous",
+    "rdv_p": "Entretien, pneus, diagnostic : le créneau est réservé pendant l'appel.",
+    "rappel_t": "Une question",
+    "rappel_p": "Horaires, marques, véhicule de remplacement : elle répond avec vos informations.",
+    "urgent_t": "Une urgence",
+    "urgent_p": "Panne, accident, véhicule bloqué : elle vous passe l'appel."
+   },
+   "agenda_celya": "Un agenda complet, pensé pour votre métier : un agenda par pont, des durées par prestation, pauses, congés et jours fériés. Consultable sur ordinateur et sur téléphone.",
+   "confirmation": {
+    "initiales": "GM",
+    "entreprise": "Garage Martin",
+    "message": "Bonjour M. Peeters, votre rendez-vous est enregistré.",
+    "quand": "Jeudi 20 novembre · 10h00",
+    "quoi": "Entretien + pneus hiver",
+    "ou": "Garage Martin, Waterloo",
+    "reponse": "Merci, c'est confirmé. À jeudi !",
+    "chip": "Jeudi 20 nov. · 10h00"
+   }
+  }
+ },
+ "restaurants": {
+  "pages": {
+   "fr": "restaurants.html",
+   "nl": "restaurants.html",
+   "en": "restaurants.html"
+  },
+  "photo": "restaurants",
+  "video": null,
+  "fr": {
+   "ruban": {
+    "appelant": [
+     "Bonsoir, vous auriez une table pour quatre samedi vers 19h45 ?",
+     "On a une poussette, c'est possible ?"
+    ],
+    "janet": [
+     "Brasserie du Parc, bonsoir, je suis Janet.",
+     "Samedi 19h45 pour quatre, c'est noté.",
+     "Je vous place près de l'entrée pour la poussette."
+    ],
+    "heure": "16:20",
+    "chip": {
+     "cal": true,
+     "b": "Samedi 19h45",
+     "s": "4 couverts"
+    },
+    "wa": {
+     "heure": "16:22",
+     "titre": "Réservation · samedi 19h45",
+     "sous": "4 couverts · une poussette"
+    }
+   },
+   "cartes": [
+    {
+     "v": "agenda",
+     "rdv": "Table pour 4 · une pousset",
+     "h": "Un plan de charge, pas un simple agenda"
+    },
+    {
+     "v": "photo",
+     "h": "Les grandes tablées suivent votre règle"
+    },
+    {
+     "v": "photo",
+     "h": "La prise de réservation automatique, sans quitter la salle"
+    },
+    {
+     "v": "photo",
+     "h": "Elle ne survend jamais votre salle"
+    },
+    {
+     "v": "tri",
+     "h": "Une permanence téléphonique qui trie chaque appel du restaurant"
+    },
+    {
+     "v": "photo",
+     "h": "Déjà Zenchef, Resengo ou TheFork ? Vous les gardez."
+    },
+    {
+     "v": "photo",
+     "h": "Ce que produit une ligne qui décroche à chaque fois."
+    }
+   ],
+   "cases": {
+    "rdv_t": "Une réservation",
+    "rdv_p": "Réservation prise selon votre capacité et vos services, sans surbooking.",
+    "rappel_t": "Une question",
+    "rappel_p": "Allergènes, parking, groupes, horaires : elle répond avec vos informations.",
+    "urgent_t": "Une urgence",
+    "urgent_p": "Un fournisseur, un retard de livraison, un client mécontent : vous êtes prévenu."
+   },
+   "agenda_celya": "Un agenda complet, pensé pour votre métier : vos services, votre capacité par créneau, vos grandes tablées, pauses, congés et jours fériés. Consultable sur ordinateur et sur téléphone.",
+   "confirmation": {
+    "initiales": "BP",
+    "entreprise": "Brasserie du Parc",
+    "message": "Bonsoir Mme Dubois, votre réservation est enregistrée.",
+    "quand": "Samedi 22 novembre · 19h45",
+    "quoi": "Table pour 4 · une poussette",
+    "ou": "Brasserie du Parc, Ixelles",
+    "reponse": "Merci, c'est confirmé. À samedi !",
+    "chip": "Samedi 22 nov. · 19h45"
+   }
+  }
+ },
+ "cabinets": {
+  "pages": {
+   "fr": "cabinets.html",
+   "nl": "praktijken.html",
+   "en": "medical-practices.html"
+  },
+  "photo": "cabinets",
+  "video": null,
+  "fr": {
+   "ruban": {
+    "appelant": [
+     "Bonjour, je voudrais un rendez-vous avec le docteur Lambert, c'est pour un renouvellement d'ordonnance."
+    ],
+    "janet": [
+     "Cabinet du Parc, bonjour, je suis Janet.",
+     "Le docteur Lambert est disponible mardi à 9h20.",
+     "C'est noté, à mardi."
+    ],
+    "heure": "08:42",
+    "chip": {
+     "cal": true,
+     "b": "Mardi 9h20",
+     "s": "Dr Lambert"
+    },
+    "wa": {
+     "heure": "08:44",
+     "titre": "RDV pris · mardi 9h20",
+     "sous": "Mme Claes · renouvellement"
+    }
+   },
+   "cartes": [
+    {
+     "v": "agenda",
+     "rdv": "Dr Lambert · consultation",
+     "h": "La prise de rendez-vous patient, sans « tapez 1 »"
+    },
+    {
+     "v": "photo",
+     "h": "On ne remplace pas votre secrétaire. On lui rend du temps."
+    },
+    {
+     "v": "transfert",
+     "titre": "Urgent · appel transféré",
+     "sous": "Le détail suit sur WhatsApp",
+     "h": "Les urgences ne passent jamais par une machine"
+    },
+    {
+     "v": "fiche",
+     "appelant": "Mme Claes",
+     "motif": "Dr Lambert · consultation",
+     "adresse": "Cabinet du Parc, Etterbeek",
+     "h": "Elle reconnaît ceux qui rappellent"
+    },
+    {
+     "v": "photo",
+     "h": "Plusieurs praticiens, plusieurs agendas"
+    },
+    {
+     "v": "photo",
+     "h": "Le soir, tout est relisible"
+    },
+    {
+     "v": "photo",
+     "h": "Un télésecrétariat enfin accessible"
+    },
+    {
+     "v": "photo",
+     "h": "Jusqu'à 50 % remboursé"
+    }
+   ],
+   "cases": {
+    "rdv_t": "Un rendez-vous",
+    "rdv_p": "Le bon praticien, la bonne durée de consultation, dans le bon agenda.",
+    "rappel_t": "Une question",
+    "rappel_p": "Horaires, gardes, documents à apporter : elle répond avec vos informations.",
+    "urgent_t": "Une urgence",
+    "urgent_p": "Une urgence ne reste jamais bloquée dans une machine : l'appel vous est passé."
+   },
+   "agenda_celya": "Un agenda complet, pensé pour votre métier : un agenda par praticien, des durées par type de consultation, pauses, congés et jours fériés. Consultable sur ordinateur et sur téléphone.",
+   "confirmation": {
+    "initiales": "CP",
+    "entreprise": "Cabinet du Parc",
+    "message": "Bonjour Mme Claes, votre rendez-vous est enregistré.",
+    "quand": "Mardi 18 novembre · 9h20",
+    "quoi": "Dr Lambert · consultation",
+    "ou": "Cabinet du Parc, Etterbeek",
+    "reponse": "Merci, c'est confirmé. À mardi !",
+    "chip": "Mardi 18 nov. · 9h20"
+   }
+  }
+ },
+ "veterinaires": {
+  "pages": {
+   "fr": "veterinaires.html",
+   "nl": "dierenartsen.html",
+   "en": null
+  },
+  "photo": "veterinaires",
+  "video": null,
+  "fr": {
+   "ruban": {
+    "appelant": [
+     "Bonjour, ma chienne boite depuis ce matin, est-ce que vous pourriez la voir aujourd'hui ?",
+     "Elle s'appelle Lola."
+    ],
+    "janet": [
+     "Clinique vétérinaire des Étangs, bonjour, je suis Janet.",
+     "Je peux vous proposer 17h30 aujourd'hui.",
+     "C'est noté pour Lola."
+    ],
+    "heure": "10:14",
+    "chip": {
+     "cal": true,
+     "b": "Aujourd'hui 17h30",
+     "s": "Lola · chienne"
+    },
+    "wa": {
+     "heure": "10:16",
+     "titre": "Consultation · 17h30",
+     "sous": "Lola, chienne · boiterie avant droite"
+    }
+   },
+   "cartes": [
+    {
+     "v": "simultanes",
+     "h": "Un cabinet, deux mains, trois appels"
+    },
+    {
+     "v": "agenda",
+     "rdv": "Lola, chienne · boiterie",
+     "h": "Les consultations posées pendant que vous auscultez"
+    },
+    {
+     "v": "transfert",
+     "titre": "Urgent · appel transféré",
+     "sous": "Le détail suit sur WhatsApp",
+     "h": "Vos critères d'urgence, appliqués à la lettre"
+    },
+    {
+     "v": "qr",
+     "q": "Vous êtes ouverts samedi ?",
+     "r": "Oui, de 9h à 12h.",
+     "h": "La garde du week-end, annoncée correctement"
+    },
+    {
+     "v": "fiche",
+     "appelant": "M. Janssens",
+     "motif": "Lola, chienne · boiterie",
+     "adresse": "Clinique des Étangs, Uccle",
+     "h": "L'espèce, le motif, le nom du propriétaire : notés"
+    }
+   ],
+   "cases": {
+    "rdv_t": "Une consultation",
+    "rdv_p": "Espèce, motif, propriétaire : la consultation est posée pendant que vous auscultez.",
+    "rappel_t": "Une question",
+    "rappel_p": "Vaccins, nourriture, horaires, garde : elle répond avec vos informations.",
+    "urgent_t": "Une urgence",
+    "urgent_p": "Vos critères d'urgence appliqués à la lettre : l'appel vous est passé."
+   },
+   "agenda_celya": "Un agenda complet, pensé pour votre métier : un agenda par vétérinaire, des durées par type de consultation, pauses, congés et jours fériés. Consultable sur ordinateur et sur téléphone.",
+   "confirmation": {
+    "initiales": "CE",
+    "entreprise": "Clinique des Étangs",
+    "message": "Bonjour M. Janssens, la consultation de Lola est enregistrée.",
+    "quand": "Aujourd'hui · 17h30",
+    "quoi": "Lola, chienne · boiterie",
+    "ou": "Clinique des Étangs, Uccle",
+    "reponse": "Merci, c'est confirmé. À tout à l'heure !",
+    "chip": "Aujourd'hui · 17h30"
+   }
+  }
+ },
+ "independants": {
+  "pages": {
+   "fr": "independants.html",
+   "nl": "zelfstandigen.html",
+   "en": "self-employed.html"
+  },
+  "photo": "independants",
+  "video": null,
+  "fr": {
+   "ruban": {
+    "appelant": [
+     "Bonjour, j'aurais voulu un devis pour refaire une salle de bain, vous passez dans le coin de Namur ?"
+    ],
+    "janet": [
+     "Atelier Delvaux, bonjour, je suis Janet.",
+     "Thomas est en intervention, je prends votre demande.",
+     "Il vous rappelle demain matin."
+    ],
+    "heure": "11:05",
+    "chip": {
+     "cal": false,
+     "b": "À rappeler",
+     "s": "demain matin"
+    },
+    "wa": {
+     "heure": "11:07",
+     "titre": "À rappeler · devis salle de bain",
+     "sous": "Mme Lambert · région de Namur"
+    }
+   },
+   "cartes": [
+    {
+     "v": "photo",
+     "h": "Ce que deviennent vos appels manqués"
+    },
+    {
+     "v": "photo",
+     "h": "Elle ne prend que les appels que vous auriez perdus"
+    },
+    {
+     "v": "tri",
+     "h": "Le soir, tout est déjà trié"
+    },
+    {
+     "v": "photo",
+     "h": "Vous partez ? Vous le dites une fois."
+    },
+    {
+     "v": "photo",
+     "h": "Pensé pour ceux qui travaillent seuls"
+    }
+   ],
+   "cases": {
+    "rdv_t": "Un rendez-vous",
+    "rdv_p": "Un créneau libre ? Le rendez-vous est posé dans votre agenda.",
+    "rappel_t": "Une question",
+    "rappel_p": "Zone, délais, type de travaux : elle répond avec vos informations.",
+    "urgent_t": "Une urgence",
+    "urgent_p": "Un client existant, une urgence sur chantier : vous êtes prévenu tout de suite."
+   },
+   "agenda_celya": "Un agenda complet, pensé pour votre métier : un agenda par technicien, des durées par type d'intervention, votre zone, pauses, congés et jours fériés. Consultable sur ordinateur et sur téléphone.",
+   "confirmation": {
+    "initiales": "AD",
+    "entreprise": "Atelier Delvaux",
+    "message": "Bonjour Mme Lambert, votre rendez-vous est enregistré.",
+    "quand": "Mercredi 19 novembre · 14h00",
+    "quoi": "Visite pour devis salle de bain",
+    "ou": "Chez vous, Namur",
+    "reponse": "Merci, c'est confirmé. À mercredi !",
+    "chip": "Mercredi 19 nov. · 14h00"
+   }
+  }
+ },
+ "plombiers": {
+  "pages": {
+   "fr": "plombiers.html",
+   "nl": "loodgieters.html",
+   "en": null
+  },
+  "photo": "plombiers",
+  "video": null,
+  "fr": {
+   "ruban": {
+    "appelant": [
+     "Bonjour, j'ai de l'eau qui coule sous l'évier, ça traverse chez le voisin du dessous… je suis au troisième."
+    ],
+    "janet": [
+     "Sanitaire Lemaire, bonjour, je suis Janet.",
+     "Vous avez pu fermer la vanne ?",
+     "Je vous passe tout de suite le plombier."
+    ],
+    "heure": "19:32",
+    "chip": {
+     "cal": false,
+     "b": "Transféré",
+     "s": "votre mobile sonne"
+    },
+    "wa": {
+     "heure": "19:34",
+     "titre": "Urgent · fuite sous évier",
+     "sous": "3e étage · ça traverse chez le voisin"
+    }
+   },
+   "cartes": [
+    {
+     "v": "simultanes",
+     "h": "Le dépannage part au premier qui répond"
+    },
+    {
+     "v": "tri",
+     "h": "Elle trie l'urgence de la demande de devis"
+    },
+    {
+     "v": "fiche",
+     "appelant": "M. Willems",
+     "motif": "Remplacement mitigeur cuisine",
+     "adresse": "Rue des Tanneurs 14, 3e étage",
+     "h": "L'adresse, l'étage, la nature de la fuite : tout est noté"
+    },
+    {
+     "v": "transfert",
+     "titre": "Urgent · fuite sous évier",
+     "sous": "3e étage · ça traverse chez le voisin",
+     "h": "Les vraies urgences sonnent sur votre mobile"
+    },
+    {
+     "v": "agenda",
+     "rdv": "Remplacement mitigeur cuis",
+     "h": "Vos horaires de garde, respectés à la lettre"
+    }
+   ],
+   "cases": {
+    "rdv_t": "Une intervention",
+    "rdv_p": "Un remplacement, un entretien : le rendez-vous est posé dans votre agenda.",
+    "rappel_t": "Une question",
+    "rappel_p": "Zone d'intervention, délais, déplacement : elle répond avec vos informations.",
+    "urgent_t": "Une urgence",
+    "urgent_p": "Un dégât qui progresse : l'appel part sur votre mobile, adresse déjà notée."
+   },
+   "agenda_celya": "Un agenda complet, pensé pour votre métier : un agenda par technicien, des durées par type d'intervention, votre zone, pauses, congés et jours fériés. Consultable sur ordinateur et sur téléphone.",
+   "confirmation": {
+    "initiales": "SL",
+    "entreprise": "Sanitaire Lemaire",
+    "message": "Bonjour M. Willems, votre intervention est enregistrée.",
+    "quand": "Vendredi 21 novembre · 8h30",
+    "quoi": "Remplacement mitigeur cuisine",
+    "ou": "Rue des Tanneurs 14, 3e étage",
+    "reponse": "Merci, c'est confirmé. À vendredi !",
+    "chip": "Vendredi 21 nov. · 8h30"
+   }
+  }
+ },
+ "chauffagistes": {
+  "pages": {
+   "fr": "chauffagistes.html",
+   "nl": "verwarmingsinstallateurs.html",
+   "en": null
+  },
+  "photo": "chauffagistes",
+  "video": null,
+  "fr": {
+   "ruban": {
+    "appelant": [
+     "Bonjour, on n'a plus de chauffage depuis cette nuit, la chaudière affiche une erreur… c'est une Vaillant."
+    ],
+    "janet": [
+     "Chauffage Peeters, bonjour, je suis Janet.",
+     "Vous avez de l'eau chaude ?",
+     "Je note le code erreur, le technicien vous rappelle dans l'heure."
+    ],
+    "heure": "07:48",
+    "chip": {
+     "cal": false,
+     "b": "Panne",
+     "s": "rappel dans l'heure"
+    },
+    "wa": {
+     "heure": "07:50",
+     "titre": "Panne · plus de chauffage",
+     "sous": "Chaudière Vaillant · code erreur F28"
+    }
+   },
+   "cartes": [
+    {
+     "v": "simultanes",
+     "h": "Le pic de saison, absorbé sans embaucher"
+    },
+    {
+     "v": "tri",
+     "h": "Panne, entretien annuel, devis : trois files, un seul numéro"
+    },
+    {
+     "v": "agenda",
+     "rdv": "Entretien annuel chaudière",
+     "h": "L'entretien de chaudière planifié pendant que vous êtes en cave"
+    },
+    {
+     "v": "transfert",
+     "titre": "Panne · plus de chauffage",
+     "sous": "Chaudière Vaillant · code erreur F28",
+     "h": "Plus de chauffage un dimanche : ce qui remonte, ce qui attend"
+    },
+    {
+     "v": "fiche",
+     "appelant": "Mme Martens",
+     "motif": "Entretien annuel chaudière gaz",
+     "adresse": "Avenue Brugmann 210",
+     "h": "Le type de chaudière et l'agrément, notés dès l'appel"
+    }
+   ],
+   "cases": {
+    "rdv_t": "Un entretien",
+    "rdv_p": "L'entretien annuel planifié pendant que vous êtes en cave.",
+    "rappel_t": "Une question",
+    "rappel_p": "Primes, délais, types de chaudière : elle répond avec vos informations.",
+    "urgent_t": "Une urgence",
+    "urgent_p": "Plus de chauffage, une odeur de gaz : ce qui ne peut pas attendre vous est passé."
+   },
+   "agenda_celya": "Un agenda complet, pensé pour votre métier : un agenda par technicien, des durées par type d'intervention, votre zone, pauses, congés et jours fériés. Consultable sur ordinateur et sur téléphone.",
+   "confirmation": {
+    "initiales": "CP",
+    "entreprise": "Chauffage Peeters",
+    "message": "Bonjour Mme Martens, votre entretien est enregistré.",
+    "quand": "Lundi 24 novembre · 9h00",
+    "quoi": "Entretien annuel chaudière gaz",
+    "ou": "Avenue Brugmann 210",
+    "reponse": "Merci, c'est confirmé. À lundi !",
+    "chip": "Lundi 24 nov. · 9h00"
+   }
+  }
+ },
+ "electriciens": {
+  "pages": {
+   "fr": "electriciens.html",
+   "nl": "elektriciens.html",
+   "en": null
+  },
+  "photo": "electriciens",
+  "video": null,
+  "fr": {
+   "ruban": {
+    "appelant": [
+     "Bonjour, le différentiel saute dès que j'allume le four, je ne sais pas quoi faire…"
+    ],
+    "janet": [
+     "Électricité Dumont, bonjour, je suis Janet.",
+     "Le reste de la maison a du courant ?",
+     "Je note tout, l'électricien vous rappelle aujourd'hui."
+    ],
+    "heure": "12:18",
+    "chip": {
+     "cal": false,
+     "b": "À rappeler",
+     "s": "aujourd'hui"
+    },
+    "wa": {
+     "heure": "12:20",
+     "titre": "À rappeler · différentiel qui saute",
+     "sous": "Au démarrage du four · reste OK"
+    }
+   },
+   "cartes": [
+    {
+     "v": "photo",
+     "h": "L'appel qui arrive au pire moment"
+    },
+    {
+     "v": "tri",
+     "h": "Panne, mise en conformité, devis : elle fait le tri"
+    },
+    {
+     "v": "qr",
+     "q": "Vous êtes ouverts samedi ?",
+     "r": "Oui, de 9h à 12h.",
+     "h": "Le contrôle par organisme agréé, expliqué une fois pour toutes"
+    },
+    {
+     "v": "transfert",
+     "titre": "Urgent · appel transféré",
+     "sous": "Le détail suit sur WhatsApp",
+     "h": "Les urgences transférées, le reste noté"
+    },
+    {
+     "v": "agenda",
+     "rdv": "Diagnostic tableau électri",
+     "h": "Votre zone d'intervention, respectée"
+    }
+   ],
+   "cases": {
+    "rdv_t": "Un rendez-vous",
+    "rdv_p": "Une mise en conformité, un devis : le rendez-vous est posé dans votre agenda.",
+    "rappel_t": "Une question",
+    "rappel_p": "Contrôle par organisme agréé, délais : elle répond avec vos informations.",
+    "urgent_t": "Une urgence",
+    "urgent_p": "Plus de courant, un risque : l'appel part sur votre mobile."
+   },
+   "agenda_celya": "Un agenda complet, pensé pour votre métier : un agenda par technicien, des durées par type d'intervention, votre zone, pauses, congés et jours fériés. Consultable sur ordinateur et sur téléphone.",
+   "confirmation": {
+    "initiales": "ED",
+    "entreprise": "Électricité Dumont",
+    "message": "Bonjour M. Renard, votre rendez-vous est enregistré.",
+    "quand": "Jeudi 20 novembre · 13h00",
+    "quoi": "Diagnostic tableau électrique",
+    "ou": "Rue de la Station 8, Wavre",
+    "reponse": "Merci, c'est confirmé. À jeudi !",
+    "chip": "Jeudi 20 nov. · 13h00"
+   }
+  }
+ },
+ "serruriers": {
+  "pages": {
+   "fr": "serruriers.html",
+   "nl": "slotenmakers.html",
+   "en": null
+  },
+  "photo": "serruriers",
+  "video": null,
+  "fr": {
+   "ruban": {
+    "appelant": [
+     "Bonsoir, j'ai claqué ma porte, les clés sont à l'intérieur… je suis sur le palier, au deuxième."
+    ],
+    "janet": [
+     "Serrurerie Lambert, bonsoir, je suis Janet.",
+     "C'est une porte claquée ou fermée à clé ?",
+     "Je vous passe le serrurier, il est en route ce soir."
+    ],
+    "heure": "23:04",
+    "chip": {
+     "cal": false,
+     "b": "Transféré",
+     "s": "votre mobile sonne"
+    },
+    "wa": {
+     "heure": "23:06",
+     "titre": "Urgent · porte claquée",
+     "sous": "2e étage · clés à l'intérieur"
+    }
+   },
+   "cartes": [
+    {
+     "v": "transfert",
+     "titre": "Urgent · porte claquée",
+     "sous": "2e étage · clés à l'intérieur",
+     "h": "L'urgence ne rappelle jamais deux fois"
+    },
+    {
+     "v": "photo",
+     "h": "La nuit et le week-end, sans permanence humaine"
+    },
+    {
+     "v": "fiche",
+     "appelant": "Mme Hermans",
+     "motif": "Ouverture de porte claquée",
+     "adresse": "Rue Royale 102, 2e étage",
+     "h": "L'adresse et le type de serrure, notés avant votre arrivée"
+    },
+    {
+     "v": "qr",
+     "q": "Vous venez en combien de temps ?",
+     "r": "Environ 30 minutes ce soir.",
+     "h": "Ouverture de porte ou remplacement : la question posée d'emblée"
+    },
+    {
+     "v": "photo",
+     "h": "Vos tarifs de nuit annoncés, sans que vous les répétiez"
+    }
+   ],
+   "cases": {
+    "rdv_t": "Une intervention",
+    "rdv_p": "Un remplacement de serrure, un blindage : le rendez-vous est posé.",
+    "rappel_t": "Une question",
+    "rappel_p": "Tarifs de nuit, délai d'arrivée : elle annonce ce que vous avez validé.",
+    "urgent_t": "Une urgence",
+    "urgent_p": "Une personne à la porte la nuit : l'appel part sur votre mobile."
+   },
+   "agenda_celya": "Un agenda complet, pensé pour votre métier : un agenda par technicien, des durées par type d'intervention, votre zone, pauses, congés et jours fériés. Consultable sur ordinateur et sur téléphone.",
+   "confirmation": {
+    "initiales": "SL",
+    "entreprise": "Serrurerie Lambert",
+    "message": "Bonsoir Mme Hermans, votre intervention est confirmée.",
+    "quand": "Ce soir · arrivée vers 23h40",
+    "quoi": "Ouverture de porte claquée",
+    "ou": "Rue Royale 102, 2e étage",
+    "reponse": "Merci, c'est confirmé. À tout à l'heure !",
+    "chip": "Ce soir · arrivée vers 23h40"
+   }
+  }
+ },
+ "syndics": {
+  "pages": {
+   "fr": "syndics.html",
+   "nl": "syndici.html",
+   "en": null
+  },
+  "photo": "syndics",
+  "video": null,
+  "fr": {
+   "ruban": {
+    "appelant": [
+     "Bonjour, il y a une fuite dans la cage d'escalier, ça vient du troisième… c'est la résidence Les Tilleuls."
+    ],
+    "janet": [
+     "Syndic Gestimmo, bonjour, je suis Janet.",
+     "Quel est votre numéro de lot ?",
+     "L'incident est déjà signalé, l'astreinte est prévenue."
+    ],
+    "heure": "09:27",
+    "chip": {
+     "cal": false,
+     "b": "Incident",
+     "s": "déjà signalé"
+    },
+    "wa": {
+     "heure": "09:29",
+     "titre": "Fuite · résidence Les Tilleuls",
+     "sous": "Cage d'escalier · 3e étage · 6 appels"
+    }
+   },
+   "cartes": [
+    {
+     "v": "simultanes",
+     "h": "Un incident, quinze appels sur le même sujet"
+    },
+    {
+     "v": "tri",
+     "h": "Urgence technique ou question d'assemblée générale"
+    },
+    {
+     "v": "fiche",
+     "appelant": "M. Claes",
+     "motif": "Visite technique · lot 3B",
+     "adresse": "Résidence Les Tilleuls",
+     "h": "L'immeuble et le numéro de lot identifiés dès l'appel"
+    },
+    {
+     "v": "transfert",
+     "titre": "Fuite · résidence Les Tilleuls",
+     "sous": "Cage d'escalier · 3e étage · 6 appels",
+     "h": "Ce qui remonte à l'astreinte, ce qui attend lundi"
+    },
+    {
+     "v": "qr",
+     "q": "L'AG, c'est quand ?",
+     "r": "Le 12 décembre à 19h.",
+     "h": "Les copropriétaires renseignés sans vous déranger"
+    }
+   ],
+   "cases": {
+    "rdv_t": "Un rendez-vous",
+    "rdv_p": "Une visite, un rendez-vous de gestion : posé dans votre agenda.",
+    "rappel_t": "Une question",
+    "rappel_p": "Charges, assemblée générale, documents : elle répond avec vos informations.",
+    "urgent_t": "Une urgence",
+    "urgent_p": "Un incident technique : l'astreinte est prévenue, les quinze autres appels sont regroupés."
+   },
+   "agenda_celya": "Un agenda complet, pensé pour votre métier : un agenda par gestionnaire, vos visites et vos permanences, pauses, congés et jours fériés. Consultable sur ordinateur et sur téléphone.",
+   "confirmation": {
+    "initiales": "SG",
+    "entreprise": "Syndic Gestimmo",
+    "message": "Bonjour M. Claes, votre rendez-vous est enregistré.",
+    "quand": "Mardi 18 novembre · 11h00",
+    "quoi": "Visite technique · lot 3B",
+    "ou": "Résidence Les Tilleuls",
+    "reponse": "Merci, c'est confirmé. À mardi !",
+    "chip": "Mardi 18 nov. · 11h00"
+   }
+  }
+ },
+ "fiduciaires": {
+  "pages": {
+   "fr": "fiduciaires.html",
+   "nl": "boekhouders.html",
+   "en": null
+  },
+  "photo": "fiduciaires",
+  "video": null,
+  "fr": {
+   "ruban": {
+    "appelant": [
+     "Bonjour, c'est pour ma déclaration à l'IPP, j'ai reçu un courrier et je voudrais un rendez-vous avant la date limite."
+    ],
+    "janet": [
+     "Fiduciaire Moreau, bonjour, je suis Janet.",
+     "Je vous propose jeudi à 15h avec Mme Moreau.",
+     "Pensez à apporter vos fiches de paie."
+    ],
+    "heure": "14:51",
+    "chip": {
+     "cal": true,
+     "b": "Jeudi 15h",
+     "s": "Mme Moreau"
+    },
+    "wa": {
+     "heure": "14:53",
+     "titre": "RDV pris · jeudi 15h",
+     "sous": "M. Dubois · déclaration IPP"
+    }
+   },
+   "cartes": [
+    {
+     "v": "simultanes",
+     "h": "Le pic fiscal, chaque année, aux mêmes dates"
+    },
+    {
+     "v": "qr",
+     "q": "C'est quand, la date limite ?",
+     "r": "Le 15 octobre pour vous.",
+     "h": "Les questions récurrentes traitées sans vous"
+    },
+    {
+     "v": "agenda",
+     "rdv": "Déclaration IPP · fiches d",
+     "h": "Les rendez-vous clients posés dans votre agenda"
+    },
+    {
+     "v": "fiche",
+     "appelant": "M. Dubois",
+     "motif": "Déclaration IPP · fiches de paie",
+     "adresse": "Fiduciaire Moreau, Liège",
+     "h": "Les documents manquants réclamés au bon client"
+    },
+    {
+     "v": "transfert",
+     "titre": "Urgent · appel transféré",
+     "sous": "Le détail suit sur WhatsApp",
+     "h": "Ce qui doit remonter tout de suite"
+    }
+   ],
+   "cases": {
+    "rdv_t": "Un rendez-vous",
+    "rdv_p": "Les rendez-vous clients posés dans le bon agenda, avec les documents à apporter.",
+    "rappel_t": "Une question",
+    "rappel_p": "Échéances, documents manquants, honoraires : elle répond avec vos informations.",
+    "urgent_t": "Une urgence",
+    "urgent_p": "Un contrôle fiscal, une échéance du jour : l'appel vous est passé."
+   },
+   "agenda_celya": "Un agenda complet, pensé pour votre métier : un agenda par collaborateur, des durées par type de rendez-vous, pauses, congés et jours fériés. Consultable sur ordinateur et sur téléphone.",
+   "confirmation": {
+    "initiales": "FM",
+    "entreprise": "Fiduciaire Moreau",
+    "message": "Bonjour M. Dubois, votre rendez-vous est enregistré.",
+    "quand": "Jeudi 20 novembre · 15h00",
+    "quoi": "Déclaration IPP · fiches de paie",
+    "ou": "Fiduciaire Moreau, Liège",
+    "reponse": "Merci, c'est confirmé. À jeudi !",
+    "chip": "Jeudi 20 nov. · 15h00"
+   }
+  }
+ }
+}
