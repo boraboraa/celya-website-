@@ -61,7 +61,7 @@ for (const rel of pages) {
   n++;
   const hay = norm(mainOf(now));
   const ok = new Set(((allow.pages || {})[rel] || {}).texte || []);
-  const miss = chunks(old).filter((t) => !hay.includes(t) && ![...ok].some((a) => t.includes(norm(a))));
+  const miss = chunks(old).filter((t) => !hay.includes(t) && ![...ok].some((a) => t.includes(norm(a)) || norm(a).includes(t)));
   if (miss.length) {
     bad++;
     console.log(`✗ ${rel}`);

@@ -233,5 +233,82 @@ retrouve si vous revenez sur la page. Le bouton « vider » l'efface définitive
 </div></footer>
 <div class="mbar" aria-label="Actions rapides" role="region"><a class="btn btn-orange" href="tel:+32460254413" data-call><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M5 3h4l2 5-2.5 1.5a11 11 0 0 0 6 6L16 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 5a2 2 0 0 1 2-2z"/></svg><span>Appeler Janet</span></a><a class="btn btn-line" href="demo.html" data-demo>Demander une démo</a></div>
 <script src="celya.js" defer></script>
+<script>
+(function(){
+  var champs=[].slice.call(document.querySelectorAll('[data-g]'));
+  if(!champs.length)return;
+  var CLE='celya-grille-v1';
+  try{
+    var sauve=JSON.parse(localStorage.getItem(CLE)||'{}');
+    champs.forEach(function(c){if(sauve[c.id])c.value=sauve[c.id];});
+  }catch(e){}
+  function enregistre(){
+    try{
+      var o={};champs.forEach(function(c){if(c.value)o[c.id]=c.value;});
+      localStorage.setItem(CLE,JSON.stringify(o));
+    }catch(e){}
+  }
+  champs.forEach(function(c){c.addEventListener('input',enregistre);});
+
+  function texte(){
+    var l=['GRILLE HORAIRES, GARDE ET TRANSFERTS',
+           'Document de mise en service - celya.be','',''];
+    var titres=document.querySelectorAll('.gf');
+    for(var i=0;i<titres.length;i++){
+      var h=titres[i].querySelector('h3');
+      var cs=titres[i].querySelectorAll('[data-g]');
+      var lignes=[];
+      for(var j=0;j<cs.length;j++){
+        var v=(cs[j].value||'').trim();
+        lignes.push('  '+cs[j].getAttribute('data-g')+' : '+(v||'(a completer)'));
+      }
+      l.push((h?h.textContent.toUpperCase():'SECTION'));
+      l.push(lignes.join('\n'));
+      l.push('');
+    }
+    return l.join('\n');
+  }
+
+  function flash(b,mot){var o=b.textContent;b.textContent=mot;
+    setTimeout(function(){b.textContent=o;},1800);}
+
+  var bp=document.getElementById('g-print');
+  if(bp)bp.addEventListener('click',function(){window.print();});
+
+  var bc=document.getElementById('g-copy');
+  if(bc)bc.addEventListener('click',function(){
+    var t=texte();
+    if(navigator.clipboard&&navigator.clipboard.writeText){
+      navigator.clipboard.writeText(t).then(function(){flash(bc,'Copié');},function(){});
+    }else{
+      var ta=document.createElement('textarea');ta.value=t;document.body.appendChild(ta);
+      ta.select();try{document.execCommand('copy');flash(bc,'Copié');}catch(e){}
+      document.body.removeChild(ta);
+    }
+  });
+
+  var bd=document.getElementById('g-dl');
+  if(bd)bd.addEventListener('click',function(){
+    try{
+      var nom=(document.getElementById('g-nom')||{}).value||'grille';
+      nom=nom.replace(/[^A-Za-z0-9]+/g,'-').replace(/^-|-$/g,'').toLowerCase()||'grille';
+      var blob=new Blob([texte()],{type:'text/plain;charset=utf-8'});
+      var a=document.createElement('a');
+      a.href=URL.createObjectURL(blob);
+      a.download='grille-celya-'+nom+'.txt';
+      document.body.appendChild(a);a.click();
+      setTimeout(function(){URL.revokeObjectURL(a.href);document.body.removeChild(a);},400);
+      flash(bd,'Téléchargé');
+    }catch(e){}
+  });
+
+  var bx=document.getElementById('g-clear');
+  if(bx)bx.addEventListener('click',function(){
+    champs.forEach(function(c){c.value='';});
+    try{localStorage.removeItem(CLE);}catch(e){}
+    flash(bx,'Vidé');
+  });
+})();
+</script>
 </body>
 </html>

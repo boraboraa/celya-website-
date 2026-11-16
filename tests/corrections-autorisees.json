@@ -74,7 +74,8 @@
     "prise-de-rendez-vous.html": {
       "texte": [
         "l'agent écrit dans l'agenda de Celya, pas dans Google Agenda ni dans Outlook.",
-        "Il n'y a aucune synchronisation avec un agenda externe. Vous consultez le vôtre depuis un navigateur, et c'est là que les rendez-vous apparaissent. Pour beaucoup d'indépendants et de petites structures, c'est sans conséquence : le seul agenda qui compte devient celui-là. Si vous tenez absolument à voir vos rendez-vous dans un outil externe, dites-le avant de signer — ce n'est pas ce que nous faisons aujourd'hui."
+        "Il n'y a aucune synchronisation avec un agenda externe. Vous consultez le vôtre depuis un navigateur, et c'est là que les rendez-vous apparaissent. Pour beaucoup d'indépendants et de petites structures, c'est sans conséquence : le seul agenda qui compte devient celui-là. Si vous tenez absolument à voir vos rendez-vous dans un outil externe, dites-le avant de signer — ce n'est pas ce que nous faisons aujourd'hui.",
+        "Vous avez déjà un logiciel métier ? Vous le gardez. Nous prenons les appels que vous ne prenez pas, et nous vous transmettons le rendez-vous et le motif ; ce que vous en faites ensuite dans votre outil vous appartient. Une connexion directe peut être étudiée au cas par cas — c'est une conversation à avoir au téléphone, pas une case à cocher sur une page."
       ],
       "faq": {
         "Est-ce que ça se synchronise avec Google Agenda ou Outlook ?": "texte devenu faux (brief du 14/11, section 5 ; CLAUDE.md, offre et agenda du 14/11)",
@@ -240,6 +241,266 @@
       "texte": [
         "Français, néerlandais, anglais : elle bascule automatiquement dans la langue de l'appelant."
       ]
+    },
+    "agenda-en-ligne-ou-rendez-vous-par-telephone.html": {
+      "texte": [
+        "Vous avez déjà un logiciel métier ? Vous le gardez. Nous prenons les appels que vous ne prenez pas, et nous vous transmettons le rendez-vous et le motif ; une connexion directe peut être étudiée au cas par cas — c'est une conversation à avoir au téléphone."
+      ],
+      "faq": {
+        "J'ai déjà un logiciel de réservation, que devient-il ?": "texte devenu faux (brief du 14/11, section 5 ; CLAUDE.md, offre et agenda du 14/11)"
+      }
+    },
+    "agent-vocal-ou-telesecretariat-humain.html": {
+      "texte": [
+        "Nous n'affichons aucun montant sur ce site et nous ne relevons aucun tarif chez d'autres."
+      ],
+      "faq": {
+        "Lequel coûte le moins cher ?": "texte devenu faux (brief du 14/11, section 5 ; CLAUDE.md, offre et agenda du 14/11)"
+      }
+    },
+    "c-est-quoi-un-telesecretariat.html": {
+      "faq": {
+        "Combien ça coûte ?": "texte devenu faux (brief du 14/11, section 5 ; CLAUDE.md, offre et agenda du 14/11)"
+      }
+    },
+    "cabinets.html": {
+      "texte": [
+        "Vous utilisez déjà un logiciel de gestion de cabinet ? Vous le gardez. Celya prend les appels que vous ne prenez pas et vous transmet le rendez-vous et le motif, sous une forme que votre secrétariat reporte en quelques secondes. Une connexion directe à votre outil peut être étudiée — c'est une discussion à avoir au téléphone, parce que la réponse dépend de votre logiciel : il n'existe aujourd'hui aucun format d'agenda commun aux logiciels du secteur."
+      ]
+    },
+    "electriciens.html": {
+      "faq": {
+        "Est-ce qu'elle peut annoncer un tarif horaire ?": "texte devenu faux (brief du 14/11, section 5 ; CLAUDE.md, offre et agenda du 14/11)"
+      }
+    },
+    "serruriers.html": {
+      "faq": {
+        "Est-ce qu'elle peut annoncer mes tarifs de nuit ?": "texte devenu faux (brief du 14/11, section 5 ; CLAUDE.md, offre et agenda du 14/11)"
+      }
+    },
+    "engager-ou-externaliser-son-accueil.html": {
+      "texte": [
+        "La première est une règle que nous tenons partout sur ce site : nous n'affichons aucun montant, et nous ne relevons pas de tarifs chez d'autres pour les comparer aux nôtres. Les modalités d'une proposition se discutent après avoir regardé une activité réelle."
+      ],
+      "faq": {
+        "Pourquoi n'y a-t-il aucun prix sur cette page ?": "texte devenu faux (brief du 14/11, section 5 ; CLAUDE.md, offre et agenda du 14/11)"
+      }
+    },
+    "forfait-ou-facturation-a-l-appel.html": {
+      "texte": [
+        "Nous n'affichons aucun montant sur ce site, et nous ne relevons pas de tarifs chez d'autres pour les comparer aux nôtres."
+      ]
+    },
+    "je-ne-peux-pas-embaucher-une-secretaire.html": {
+      "texte": [
+        "Les modalités de la vôtre figurent dans votre proposition : nous n'affichons aucun montant sur ce site, et nous ne comparons pas des tarifs relevés chez d'autres."
+      ],
+      "faq": {
+        "Combien ça coûte ?": "texte devenu faux (brief du 14/11, section 5 ; CLAUDE.md, offre et agenda du 14/11)"
+      }
+    },
+    "si-je-recois-peu-d-appels.html": {
+      "texte": [
+        "Nous n'affichons aucun montant sur ce site et cette page ne fera pas exception — les modalités figurent dans votre proposition. Ce que nous pouvons faire,"
+      ]
+    },
+    "transfert-vers-un-humain.html": {
+      "faq": {
+        "Le transfert coûte-t-il quelque chose ?": "texte devenu faux (brief du 14/11, section 5 ; CLAUDE.md, offre et agenda du 14/11)"
+      }
+    },
+    "veterinaires.html": {
+      "texte": [
+        "Vous travaillez déjà avec un logiciel de gestion de clinique ? Vous le gardez. Celya prend les appels que vous ne prenez pas et vous transmet le rendez-vous et le motif ; le report chez vous reste une opération de quelques secondes. Une connexion directe à votre outil peut être étudiée — parlons-en, la réponse dépend de ce que vous utilisez."
+      ]
+    },
+    "nl/aanwerven-of-uitbesteden.html": {
+      "texte": [
+        "Aan de kant van uitbesteden staat er geen bedrag op deze site — de voorwaarden staan in\nuw voorstel."
+      ],
+      "faq": {
+        "Staat er een prijs tegenover ?": "texte devenu faux (brief du 14/11, section 5 ; CLAUDE.md, offre et agenda du 14/11)"
+      }
+    },
+    "nl/afspraken-vastleggen.html": {
+      "texte": [
+        "Er is geen enkele synchronisatie met een externe agenda. U raadpleegt de uwe vanuit een browser, en daar verschijnen de afspraken. Voor veel zelfstandigen en kleine structuren is dat zonder gevolg: de enige agenda die telt, wordt die.",
+        "Gebruikt u al software voor uw praktijk? Die houdt u. Een rechtstreekse koppeling met uw tool kan bekeken worden — laten we erover praten."
+      ],
+      "faq": {
+        "Synchroniseert dit met een externe agenda?": "texte devenu faux (brief du 14/11, section 5 ; CLAUDE.md, offre et agenda du 14/11)",
+        "Krijgt de klant een bevestiging?": "texte devenu faux (brief du 14/11, section 5 ; CLAUDE.md, offre et agenda du 14/11)"
+      }
+    },
+    "nl/belgisch-nummer-houden.html": {
+      "texte": [
+        "Dat kan, en het wordt besproken bij het voorstel."
+      ]
+    },
+    "nl/berichten-noteren.html": {
+      "texte": [
+        "Ze stuurt het niet per sms of e-mail naar uw klant, en ze belt hem niet terug in uw plaats: de agent voert geen enkele uitgaande oproep."
+      ],
+      "faq": {
+        "Kan de agent het bericht per sms of e-mail versturen?": "texte devenu faux (brief du 14/11, section 5 ; CLAUDE.md, offre et agenda du 14/11)"
+      }
+    },
+    "nl/betaal-ik-als-niemand-belt.html": {
+      "texte": [
+        "Wij publiceren geen bedragen op deze site en de modaliteiten van uw voorstel worden besproken na een blik op uw activiteit."
+      ],
+      "faq": {
+        "Betaal ik ook zonder oproepen?": "texte devenu faux (brief du 14/11, section 5 ; CLAUDE.md, offre et agenda du 14/11)"
+      }
+    },
+    "nl/blog/praktijken-keuzemenu-oproepen.html": {
+      "texte": [
+        "ze neemt op en ze praat, in het Nederlands, in het Frans of in het Engels, volgens de taal van de patiënt."
+      ]
+    },
+    "nl/blog/restaurants-telefonische-reserveringen.html": {
+      "texte": [
+        "Nederlands, Frans, Engels: ze schakelt automatisch naar de taal van de beller"
+      ]
+    },
+    "nl/blog/zelfstandigen-gemiste-terugbelverzoeken.html": {
+      "texte": [
+        "Ze spreekt Nederlands, Frans en Engels, en schakelt automatisch naar de taal van de beller"
+      ]
+    },
+    "nl/boven-het-volume.html": {
+      "faq": {
+        "Is er een inbegrepen volume?": "texte devenu faux (brief du 14/11, section 5 ; CLAUDE.md, offre et agenda du 14/11)",
+        "Wat gebeurt er voorbij de grens?": "texte devenu faux (brief du 14/11, section 5 ; CLAUDE.md, offre et agenda du 14/11)"
+      }
+    },
+    "nl/capaciteitsplan.html": {
+      "faq": {
+        "Synchroniseert dit met mijn reservatiesoftware?": "texte devenu faux (brief du 14/11, section 5 ; CLAUDE.md, offre et agenda du 14/11)"
+      }
+    },
+    "nl/forfait-of-per-oproep.html": {
+      "texte": [
+        "Er staat hier geen bedrag: de voorwaarden staan in uw voorstel.",
+        "Onze voorwaarden staan in uw voorstel, na een blik op uw echte activiteit — en er is"
+      ]
+    },
+    "nl/geen-secretaresse-aanwerven.html": {
+      "texte": [
+        "Er staat op deze site geen bedrag, en deze pagina maakt daar geen uitzondering op: de voorwaarden staan in uw voorstel."
+      ],
+      "faq": {
+        "Staat er een prijs op deze pagina ?": "texte devenu faux (brief du 14/11, section 5 ; CLAUDE.md, offre et agenda du 14/11)"
+      }
+    },
+    "nl/hoe-verloopt-de-facturatie.html": {
+      "texte": [
+        "Wij publiceren geen bedragen op deze site. Wat we wél kunnen zeggen: wat een voorstel van klant tot klant doet verschillen."
+      ],
+      "faq": {
+        "Hoe vaak word ik gefactureerd?": "texte devenu faux (brief du 14/11, section 5 ; CLAUDE.md, offre et agenda du 14/11)",
+        "Wat doet de prijs variëren?": "texte devenu faux (brief du 14/11, section 5 ; CLAUDE.md, offre et agenda du 14/11)",
+        "Waarom publiceert u geen prijstabel?": "texte devenu faux (brief du 14/11, section 5 ; CLAUDE.md, offre et agenda du 14/11)"
+      }
+    },
+    "nl/hoelang-tot-de-start.html": {
+      "texte": [
+        "Wat de enkele dagen vraagt, is wat eraan voorafgaat:",
+        "Dus ja: enkele dagen na het akkoord antwoordt de lijn"
+      ],
+      "faq": {
+        "Hoelang voor de lijn antwoordt?": "texte devenu faux (brief du 14/11, section 5 ; CLAUDE.md, offre et agenda du 14/11)"
+      }
+    },
+    "nl/hoeveel-kost-een-telefoonsecretariaat.html": {
+      "texte": [
+        "Geen commerciële koketterie; één voorbeeld volstaat.",
+        "Wat wij wél garanderen: geen verborgen kosten, geen toeslag voor avonden of weekends, en niets te installeren bij u."
+      ],
+      "faq": {
+        "Factureert u per oproep of per forfait?": "texte devenu faux (brief du 14/11, section 5 ; CLAUDE.md, offre et agenda du 14/11)",
+        "Zijn er opstartkosten?": "texte devenu faux (brief du 14/11, section 5 ; CLAUDE.md, offre et agenda du 14/11)",
+        "Wat als mijn volume in het seizoen ontploft?": "texte devenu faux (brief du 14/11, section 5 ; CLAUDE.md, offre et agenda du 14/11)"
+      }
+    },
+    "nl/installatiekosten.html": {
+      "texte": [
+        "Wij publiceren geen bedragen op deze site, en deze pagina is geen uitzondering. De modaliteiten — ook het al dan niet bestaan van opstartkosten — staan in uw voorstel, na een blik op uw echte activiteit.",
+        "Als er een opstartpost is, betaalt die configuratietijd, geen materiaal."
+      ],
+      "faq": {
+        "Zijn er opstartkosten?": "texte devenu faux (brief du 14/11, section 5 ; CLAUDE.md, offre et agenda du 14/11)"
+      }
+    },
+    "nl/is-het-legaal-in-belgie.html": {
+      "texte": [
+        "Geen uitgaande oproep, geen campagne, geen sms, geen e-mail naar uw klanten — technisch niet, contractueel niet."
+      ]
+    },
+    "nl/meerdere-agendas.html": {
+      "texte": [
+        "Gebruikt u al software voor uw praktijk? Die houdt u. Niets vraagt u ervan te veranderen, er uw gegevens uit te halen of iets nieuws te leren.",
+        "Celya neemt de oproepen op die u niet opneemt, en bezorgt u de afspraak, de betrokken persoon en het motief. Uw planningen blijven waar ze zijn, bijgehouden zoals u ze bijhoudt.",
+        "Een rechtstreekse koppeling met uw tool kan bekeken worden — laten we erover praten: het antwoord hangt volledig af van wat u gebruikt en hoe."
+      ],
+      "faq": {
+        "Moet ik van software veranderen?": "texte devenu faux (brief du 14/11, section 5 ; CLAUDE.md, offre et agenda du 14/11)",
+        "Is een koppeling met mijn tool mogelijk?": "texte devenu faux (brief du 14/11, section 5 ; CLAUDE.md, offre et agenda du 14/11)",
+        "Hoeveel personen kunnen erop?": "texte devenu faux (brief du 14/11, section 5 ; CLAUDE.md, offre et agenda du 14/11)"
+      }
+    },
+    "nl/online-agenda-of-telefoon.html": {
+      "texte": [
+        "Uw planning blijft waar ze is. Een rechtstreekse koppeling met uw tool kan bekeken worden — laten we erover praten."
+      ],
+      "faq": {
+        "Hoe vermijd ik dubbele boekingen ?": "texte devenu faux (brief du 14/11, section 5 ; CLAUDE.md, offre et agenda du 14/11)"
+      }
+    },
+    "nl/sectoren.html": {
+      "texte": [
+        "Een rechtstreekse koppeling met uw tool kan worden onderzocht — daar praten we het best even over, want het antwoord hangt volledig af van wat u gebruikt."
+      ],
+      "faq": {
+        "Moet ik van software veranderen ?": "texte devenu faux (brief du 14/11, section 5 ; CLAUDE.md, offre et agenda du 14/11)"
+      }
+    },
+    "nl/wat-is-een-telefoonsecretariaat.html": {
+      "faq": {
+        "Wat kost het?": "texte devenu faux (brief du 14/11, section 5 ; CLAUDE.md, offre et agenda du 14/11)"
+      }
+    },
+    "nl/weinig-oproepen.html": {
+      "texte": [
+        "Wij publiceren geen bedragen op deze site, en deze pagina is geen uitzondering."
+      ]
+    },
+    "en/blog/medical-practices-phone-menu.html": {
+      "texte": [
+        "she picks up and she talks, in French, Dutch or English, depending on the patient’s language."
+      ]
+    },
+    "fonctionnalites.html": {
+      "texte": [
+        "quand une capacité n'existe pas — la synchronisation avec un agenda externe, par exemple — il y a une phrase qui le dit",
+        "Numéro belgeVous gardez le vôtre. Rien ne bouge pour vos clients.",
+        "Horaires et gardeVos heures, vos exceptions, vos congés — appliqués à la lettre.",
+        "Aucune synchronisation avec un agenda externe. L'agent écrit les rendez-vous dans l'agenda de Celya, que vous consultez depuis un navigateur. Il n'écrit pas dans Google Agenda ni dans Outlook, et nous n'avons pas de page « intégrations » — c'est une exclusion volontaire, pas un oubli.\nAucun appel sortant, aucune campagne, aucun SMS, aucun e-mail vers vos clients. Celya répond au téléphone ; elle ne prospecte pas et ne relance personne à votre place.\nAucune évaluation médicale. L'agent n'apprécie aucun symptôme et ne prend aucune décision clinique : il applique les critères de transfert écrits par le cabinet.\nAucun engagement contractuel pris à votre place. Il annonce ce que vous l'avez autorisé à annoncer et bascule sur une prise de message dès qu'une demande dépasse ce périmètre."
+      ],
+      "faq": {
+        "Y a-t-il des intégrations avec Google Agenda ou Outlook ?": "texte devenu faux (brief du 14/11, section 5 ; CLAUDE.md, offre et agenda du 14/11)",
+        "Est-ce que l'agent passe des appels sortants ?": "texte devenu faux (brief du 14/11, section 5 ; CLAUDE.md, offre et agenda du 14/11)",
+        "Combien de temps pour tout configurer ?": "texte devenu faux (brief du 14/11, section 5 ; CLAUDE.md, offre et agenda du 14/11)"
+      }
+    },
+    "nl/werking.html": {
+      "texte": [
+        "Uw Belgisch nummerU houdt het uwe. Er beweegt niets.",
+        "Gebruikt u al een beheerprogramma? U houdt het. Celya neemt de oproepen op die u niet opneemt en geeft u de afspraak en de reden door. Een rechtstreekse koppeling met uw tool kan worden onderzocht — daar praten we het best even over."
+      ],
+      "faq": {
+        "Moet ik van software veranderen ?": "texte devenu faux (brief du 14/11, section 5 ; CLAUDE.md, offre et agenda du 14/11)"
+      }
     }
   }
 }

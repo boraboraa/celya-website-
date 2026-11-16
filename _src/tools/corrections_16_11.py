@@ -26,7 +26,7 @@ C = {
   ('faq', "Est-ce que ça se synchronise avec Google Agenda ou Outlook&nbsp;?",
           "Avec Google Agenda, oui. " + AGENDA + " Outlook, lui, n'est pas relié aujourd'hui."),
   ('faq', "Le client reçoit-il une confirmation&nbsp;?",
-          "Oui, sur WhatsApp&nbsp;: un message de confirmation avec trois boutons — Confirmer, Déplacer, Annuler —, puis un rappel avant le rendez-vous. Le client qui n'a pas WhatsApp la reçoit par SMS. Ce sont les seuls messages envoyés à vos clients, et ils sont tous liés à leur appel."),
+          "Oui, avec les formules {{offre.pro.nom}} et {{offre.premier.nom}}&nbsp;: un message de confirmation sur WhatsApp avec trois boutons — Confirmer, Déplacer, Annuler —, puis un rappel avant le rendez-vous. Le client qui n'a pas WhatsApp la reçoit par SMS. Ce sont les seuls messages envoyés à vos clients, et ils sont tous liés à leur appel."),
  ],
  'prise-de-message.html': [
   ('txt', "<p>Elle ne le transmet ni par SMS ni par e-mail à votre client, et ne le rappelle pas à votre place&nbsp;: l'agent ne passe aucun appel sortant.</p>",
@@ -159,6 +159,233 @@ C = {
  ],
 }
 
+PRIX = 'Nos seuls montants publics sont ceux de nos trois formules, sur la <a href="prix.html">page des prix</a>'
+def add(rel, items):
+    C.setdefault(rel, []).extend(items)
+
+add('agenda-en-ligne-ou-rendez-vous-par-telephone.html', [
+  ('txt', "<p><b>Vous avez déjà un logiciel métier&nbsp;?</b> Vous le gardez. Nous prenons les appels que vous ne prenez pas, et nous vous transmettons le rendez-vous et le motif&nbsp;; une connexion directe peut être étudiée au cas par cas — c'est une conversation à avoir au téléphone.</p>",
+          "<p><b>Vous avez déjà un agenda&nbsp;?</b> Si c'est Google Agenda, il est relié&nbsp;: Janet lit vos disponibilités et y écrit les rendez-vous. Pas d'agenda&nbsp;? Prenez celui de Celya, intégré et pensé pour votre métier. Un autre logiciel de réservation, ou Outlook, n'est pas relié aujourd'hui&nbsp;: vous recevez alors chaque rendez-vous et son motif dans le résumé de l'appel, sur WhatsApp.</p>"),
+  ('faq', "J'ai déjà un logiciel de réservation, que devient-il&nbsp;?",
+          "Vous le gardez. S'il s'agit de Google Agenda, il est relié&nbsp;: Janet y lit vos disponibilités et y écrit les rendez-vous. Un autre logiciel n'est pas relié aujourd'hui&nbsp;: vous recevez chaque rendez-vous et son motif dans le résumé de l'appel, sur WhatsApp."),
+])
+add('agent-vocal-ou-telesecretariat-humain.html', [
+  ('txt', "<p>Nous n'affichons aucun montant sur ce site et nous ne relevons aucun tarif chez d'autres.", "<p>" + PRIX + ", et nous ne relevons aucun tarif chez d'autres."),
+  ('faq', "Lequel coûte le moins cher&nbsp;?",
+          "Cela dépend de votre amplitude et de votre volume. Nos trois formules sont sur la page des prix&nbsp;; ce que nous pouvons dire ici est structurel&nbsp;: le coût d'un télésecrétariat humain suit les heures couvertes, celui d'une ligne automatisée non."),
+])
+add('c-est-quoi-un-telesecretariat.html', [
+  ('faq', "Combien ça coûte&nbsp;?",
+          "Cela dépend du modèle et de votre volume. Chez Celya, trois formules mensuelles, à partir de {{offre.min_prix}}&nbsp;€ hors TVA par mois, détaillées sur la page des prix."),
+])
+add('cabinets.html', [
+  ('txt', "<p><b>Vous utilisez déjà un logiciel de gestion de cabinet&nbsp;?</b> Vous le gardez. Celya prend les appels que vous ne prenez pas et vous transmet le rendez-vous et le motif, sous une forme que votre secrétariat reporte en quelques secondes. Une connexion directe à votre outil peut être étudiée&nbsp;— c'est une discussion à avoir au téléphone, parce que la réponse dépend de votre logiciel&nbsp;: il n'existe aujourd'hui aucun format d'agenda commun aux logiciels du secteur.</p>",
+          "<p><b>Votre agenda est un Google Agenda&nbsp;?</b> Il est relié&nbsp;: Janet lit les disponibilités de chaque praticien et y écrit les rendez-vous. Pas d'agenda&nbsp;? Prenez celui de Celya, intégré et pensé pour votre métier. Un logiciel de gestion de cabinet n'est pas relié aujourd'hui&nbsp;: Celya vous transmet alors le rendez-vous et le motif, sous une forme que votre secrétariat reporte en quelques secondes.</p>"),
+])
+add('electriciens.html', [
+  ('faq', "Est-ce qu'elle peut annoncer un tarif horaire&nbsp;?",
+          "Oui, si vous lui en confiez un. Elle annonce ce que vous avez autorisé, sans jamais s'engager au-delà, et bascule sur une prise de rendez-vous dès qu'un chiffrage sérieux est nécessaire."),
+])
+add('serruriers.html', [
+  ('faq', "Est-ce qu'elle peut annoncer mes tarifs de nuit&nbsp;?",
+          "Oui, si vous lui confiez les vôtres. Elle annonce ce que vous avez autorisé, dans les termes que vous avez écrits, et ne s'engage jamais au-delà. Beaucoup de serruriers y tiennent&nbsp;: annoncer clairement évite la discussion sur le pas de la porte."),
+])
+add('engager-ou-externaliser-son-accueil.html', [
+  ('txt', "<p>La première est une règle que nous tenons partout sur ce site&nbsp;: nous n'affichons aucun montant, et nous ne relevons pas de tarifs chez d'autres pour les comparer aux nôtres. Les modalités d'une proposition se discutent après avoir regardé une activité réelle.</p>",
+          "<p>La première est une règle que nous tenons partout sur ce site&nbsp;: nos seuls montants publics sont ceux de nos trois formules, sur la <a href=\"prix.html\">page des prix</a>, et nous ne relevons pas de tarifs chez d'autres pour les comparer aux nôtres.</p>"),
+  ('faq', "Pourquoi n'y a-t-il aucun prix sur cette page&nbsp;?",
+          "Parce que nos montants vivent sur une seule page, celle des prix, et parce qu'une comparaison par les prix compare deux choses qui ne rendent pas le même service."),
+])
+add('forfait-ou-facturation-a-l-appel.html', [
+  ('txt', "<p>Nous n'affichons aucun montant sur ce site, et nous ne relevons pas de tarifs chez d'autres pour les comparer aux nôtres.", "<p>" + PRIX + ", et nous ne relevons pas de tarifs chez d'autres pour les comparer aux nôtres."),
+])
+add('je-ne-peux-pas-embaucher-une-secretaire.html', [
+  ('txt', "<p>Les modalités de la vôtre figurent dans votre proposition&nbsp;: nous n'affichons aucun montant sur ce site, et nous ne comparons pas des tarifs relevés chez d'autres.",
+          "<p>Nos formules sont publiques&nbsp;: trois formules mensuelles, sur la <a href=\"prix.html\">page des prix</a>, et nous ne comparons pas des tarifs relevés chez d'autres."),
+  ('faq', "Combien ça coûte&nbsp;?",
+          "Trois formules mensuelles, à partir de {{offre.min_prix}}&nbsp;€ hors TVA par mois, détaillées sur la page des prix. La bonne se choisit après avoir regardé votre volume et vos horaires réels."),
+])
+add('prise-de-rendez-vous.html', [
+  ('txt', "<p><b>Vous avez déjà un logiciel métier&nbsp;?</b> Vous le gardez. Nous prenons les appels que vous ne prenez pas, et nous vous transmettons le rendez-vous et le motif&nbsp;; ce que vous en faites ensuite dans votre outil vous appartient. Une connexion directe peut être étudiée au cas par cas&nbsp;— c'est une conversation à avoir au téléphone, pas une case à cocher sur une page.</p>",
+          "<p><b>Vous avez déjà un logiciel métier&nbsp;?</b> Si c'est Google Agenda, il est relié. Sinon, vous le gardez&nbsp;: nous vous transmettons le rendez-vous et le motif dans le résumé de l'appel, sur WhatsApp, et ce que vous en faites ensuite dans votre outil vous appartient. Un autre logiciel n'est pas relié aujourd'hui.</p>"),
+])
+add('si-je-recois-peu-d-appels.html', [
+  ('txt', "<b>Nous n'affichons aucun montant sur ce site et cette page ne fera pas exception</b> — les modalités figurent dans votre proposition. Ce que nous pouvons faire,",
+          "<b>Nos seuls montants publics sont ceux de nos trois formules</b>, sur la <a href=\"prix.html\">page des prix</a>. Ce que nous pouvons faire ici,"),
+])
+add('transfert-vers-un-humain.html', [
+  ('faq', "Le transfert coûte-t-il quelque chose&nbsp;?",
+          "Non&nbsp;: le transfert des urgences vers votre portable est compris dans chaque formule. Les trois formules sont sur la page des prix."),
+])
+add('veterinaires.html', [
+  ('txt', "<p><b>Vous travaillez déjà avec un logiciel de gestion de clinique&nbsp;?</b> Vous le gardez. Celya prend les appels que vous ne prenez pas et vous transmet le rendez-vous et le motif&nbsp;; le report chez vous reste une opération de quelques secondes. Une connexion directe à votre outil peut être étudiée&nbsp;— parlons-en, la réponse dépend de ce que vous utilisez.</p>",
+          "<p><b>Votre agenda est un Google Agenda&nbsp;?</b> Il est relié&nbsp;: Janet lit vos disponibilités et y écrit les rendez-vous. Pas d'agenda&nbsp;? Prenez celui de Celya, intégré et pensé pour votre métier. Un logiciel de gestion de clinique n'est pas relié aujourd'hui&nbsp;: Celya vous transmet alors le rendez-vous et le motif, et le report chez vous reste une opération de quelques secondes.</p>"),
+])
+
+# ---------- néerlandais ----------
+AG_NL = "Uw Google Agenda, gekoppeld: Janet leest uw beschikbaarheid en zet de afspraken erin. Geen agenda? Neem dat van Celya, ingebouwd en afgestemd op uw vak."
+QUOTAS_NL = "{{offre.essentiel.agendas}} in {{offre.essentiel.nom}}, {{offre.pro.agendas}} in {{offre.pro.nom}}, {{offre.premier.agendas}} in {{offre.premier.nom}}"
+PRIJS_NL = 'Onze enige publieke bedragen zijn die van onze drie formules, op de <a href="prijzenpagina">prijzenpagina</a>'.replace('href="prijzenpagina"', 'href="prijzen.html"')
+add('nl/aanwerven-of-uitbesteden.html', [
+  ('txt', "Aan de kant van uitbesteden staat er geen bedrag op deze site — de voorwaarden staan in\nuw voorstel.", "Aan de kant van uitbesteden staan onze drie formules op de <a href=\"prijzen.html\">prijzenpagina</a>."),
+  ('faq', "Staat er een prijs tegenover&nbsp;?", "Ja: onze drie formules staan op de prijzenpagina, vanaf {{offre.min_prix}}&nbsp;€ per maand exclusief btw."),
+])
+add('nl/afspraken-vastleggen.html', [
+  ('txt', "<p>Er is geen enkele synchronisatie met een externe agenda. U raadpleegt de uwe vanuit een browser, en daar verschijnen de afspraken. Voor veel zelfstandigen en kleine structuren is dat zonder gevolg: de enige agenda die telt, wordt die.</p>",
+          "<p>" + AG_NL + " Die van Celya raadpleegt u vanuit een browser, en daar verschijnen de afspraken. Outlook is vandaag niet gekoppeld.</p>"),
+  ('txt', "<p>Gebruikt u al software voor uw praktijk? Die houdt u. Een rechtstreekse koppeling met uw tool kan bekeken worden — laten we erover praten.</p>",
+          "<p>Gebruikt u andere software voor uw praktijk? Die houdt u. Ze is vandaag niet gekoppeld: u krijgt elke afspraak met de reden in de samenvatting van de oproep, op WhatsApp.</p>"),
+  ('faq', "Synchroniseert dit met een externe agenda?", "Met Google Agenda, ja: Janet leest uw beschikbaarheid en zet de afspraken erin. Geen agenda? Neem dat van Celya, ingebouwd en afgestemd op uw vak. Outlook en andere software zijn vandaag niet gekoppeld."),
+  ('faq', "Krijgt de klant een bevestiging?", "Ja, met de formules {{offre.pro.nom}} en {{offre.premier.nom}}: een bevestiging op WhatsApp met drie knoppen — Bevestigen, Verplaatsen, Annuleren —, daarna een herinnering vóór de afspraak. Een klant zonder WhatsApp krijgt ze per sms. Dat zijn de enige berichten aan uw klanten, en ze hangen allemaal samen met hun oproep."),
+])
+add('nl/belgisch-nummer-houden.html', [
+  ('txt', "<p>Dat kan, en het wordt besproken bij het voorstel.", "<p>Dat kan: wij bezorgen u er een, en dat regelen we bij de opstart."),
+])
+add('nl/berichten-noteren.html', [
+  ('txt', "<p>Ze stuurt het niet per sms of e-mail naar uw klant, en ze belt hem niet terug in uw plaats: de agent voert geen enkele uitgaande oproep.</p>",
+          "<p>De samenvatting van de oproep komt bij u op WhatsApp. Uw klant krijgt alleen een bericht dat met zijn oproep te maken heeft — een bevestiging, een herinnering, een gewijzigde afspraak —, en Janet belt hem niet terug in uw plaats: de agent voert geen enkele uitgaande oproep.</p>"),
+  ('faq', "Kan de agent het bericht per sms of e-mail versturen?", "Het bericht gaat naar u, op WhatsApp, met de samenvatting van de oproep. Aan uw klanten stuurt Celya alleen berichten die met hun oproep te maken hebben — bevestiging, herinnering, wijziging —, op WhatsApp, en per sms alleen als ze geen WhatsApp hebben. Geen e-mail, geen uitgaande oproep."),
+])
+add('nl/betaal-ik-als-niemand-belt.html', [
+  ('txt', "<p>Wij publiceren geen bedragen op deze site en de modaliteiten van uw voorstel worden besproken na een blik op uw activiteit.", "<p>Bij Celya is het een forfait: drie maandformules, op de <a href=\"prijzen.html\">prijzenpagina</a>."),
+  ('faq', "Betaal ik ook zonder oproepen?", "Dat hangt van de structuur af: per gebruik kost een kalme maand weinig; per forfait betaalt u de beschikbaarheid. Bij Celya is het een maandforfait: de formule loopt ook in een maand zonder oproepen."),
+])
+add('nl/boven-het-volume.html', [
+  ('faq', "Is er een inbegrepen volume?", "Ja: {{offre.liste_minutes}} minuten per maand volgens de formule, per seconde aangerekend. Elk forfaitair aanbod draagt ergens een grens; bij ons staat ze op papier."),
+  ('faq', "Wat gebeurt er voorbij de grens?", "Bij ons schakelt u over naar de formule erboven; boven {{offre.max_minutes}} minuten: op offerte. Elders, naargelang het aanbod: per stuk betalen, een hoger forfait, of een dienst die inbindt. De derde vorm is die om te bewaken, en ze moet geschreven staan."),
+])
+add('nl/capaciteitsplan.html', [
+  ('faq', "Synchroniseert dit met mijn reservatiesoftware?", "Met Google Agenda, ja: Janet leest uw beschikbaarheid en zet de afspraken erin. Andere reservatiesoftware is vandaag niet gekoppeld: de capaciteit en de afspraken worden dan beheerd in de agenda van Celya, ingebouwd en afgestemd op uw vak."),
+])
+add('nl/forfait-of-per-oproep.html', [
+  ('txt', "Er staat hier geen bedrag: de voorwaarden staan in uw voorstel.", "Er staat hier geen bedrag: onze drie formules staan op de prijzenpagina."),
+  ('txt', "Onze voorwaarden staan in uw voorstel, na een blik op uw echte activiteit — en er is", "Onze drie formules staan op de <a href=\"prijzen.html\">prijzenpagina</a> — en er is"),
+])
+add('nl/geen-secretaresse-aanwerven.html', [
+  ('txt', "<p>Er staat op deze site geen bedrag, en deze pagina maakt daar geen uitzondering op: de voorwaarden staan in uw voorstel.", "<p>Op deze pagina staat geen bedrag: onze drie formules staan op de <a href=\"prijzen.html\">prijzenpagina</a>."),
+  ('faq', "Staat er een prijs op deze pagina&nbsp;?", "Nee: onze drie formules staan op de prijzenpagina, vanaf {{offre.min_prix}}&nbsp;€ per maand exclusief btw."),
+])
+add('nl/hoe-verloopt-de-facturatie.html', [
+  ('txt', "<p>Wij publiceren geen bedragen op deze site. Wat we wél kunnen zeggen: wat een voorstel van klant tot klant doet verschillen.</p>",
+          "<p>Onze bedragen zijn publiek: drie maandformules, op de <a href=\"prijzen.html\">prijzenpagina</a>. Wat een klant van de ene formule naar de andere doet gaan:</p>"),
+  ('faq', "Hoe vaak word ik gefactureerd?", "Elke maand: de drie formules zijn maandformules. Dat bepaalt in welk boekjaar de boeking valt."),
+  ('faq', "Wat doet de prijs variëren?", "De formule: het volume minuten en zijn spreiding, de uren die u wilt dekken, en het aantal agenda's. 's Nachts en in het weekend kost het niets meer."),
+  ('faq', "Waarom publiceert u geen prijstabel?", "Dat doen we nu wel: drie formules, {{offre.liste_prix}}&nbsp;€ per maand exclusief btw, op de prijzenpagina."),
+])
+add('nl/hoelang-tot-de-start.html', [
+  ('txt', '<meta property="og:description" content="Enkele dagen om te antwoorden.', '<meta property="og:description" content="48 uur om te antwoorden.'),
+  ('txt', '<meta name="twitter:description" content="Enkele dagen om te antwoorden.', '<meta name="twitter:description" content="48 uur om te antwoorden.'),
+  ('txt', "<p>Wat de enkele dagen vraagt, is wat eraan voorafgaat:", "<p>Wat die 48 uur vraagt, is wat eraan voorafgaat:"),
+  ('txt', "<p>Dus ja: enkele dagen na het akkoord antwoordt de lijn", "<p>Dus ja: binnen 48 uur na het akkoord antwoordt de lijn"),
+  ('faq', "Hoelang voor de lijn antwoordt?", "Binnen 48 uur na het akkoord, de tijd om uw activiteit en uw regels te beschrijven. De doorschakeling zelf werkt vanaf de volgende oproep."),
+])
+add('nl/hoeveel-kost-een-telefoonsecretariaat.html', [
+  ('txt', "<p>Geen commerciële koketterie; één voorbeeld volstaat.", "<p>Lange tijd stond hier geen enkel bedrag. Geen commerciële koketterie; één voorbeeld volstond."),
+  ('txt', "<p>Wat wij wél garanderen: geen verborgen kosten, geen toeslag voor avonden of weekends, en niets te installeren bij u.</p>",
+          "<p>Sinds november 2026 publiceren we drie formules, omdat ze zeggen wat die tabellen verzwijgen: {{offre.liste_prix}}&nbsp;€ per maand exclusief btw, voor {{offre.liste_minutes}} minuten gesprekken, per seconde aangerekend, en wat er daarboven gebeurt. Alles staat op de <a href=\"prijzen.html\">prijzenpagina</a>.</p>\n<p>Wat wij wél garanderen: geen verborgen kosten, geen toeslag voor avonden of weekends, en niets te installeren bij u.</p>"),
+  ('faq', "Factureert u per oproep of per forfait?", "Per forfait: drie maandformules, elk met een volume minuten, per seconde aangerekend. Gaat u erover, dan schakelt u over naar de formule erboven."),
+  ('faq', "Zijn er opstartkosten?", "Ja: één maandbedrag van uw formule, één keer. Er is echte configuratietijd — uw uren, uw regels, uw typische antwoorden. Dat onderscheidt een lijn die juist antwoordt van een generieke."),
+  ('faq', "Wat als mijn volume in het seizoen ontploft?", "Dan schakelt u over naar de formule erboven. Boven {{offre.max_minutes}} minuten: op offerte. Dat staat vooraf op papier, het wordt niet ontdekt op een factuur."),
+])
+add('nl/installatiekosten.html', [
+  ('txt', "<p>Wij publiceren geen bedragen op deze site, en deze pagina is geen uitzondering. De modaliteiten — ook het al dan niet bestaan van opstartkosten — staan in uw voorstel, na een blik op uw echte activiteit.</p>",
+          "<p>Er zijn opstartkosten, en ze staan op papier: één maandbedrag van uw formule, één keer. De formules zelf staan op de <a href=\"prijzen.html\">prijzenpagina</a>.</p>"),
+  ('txt', "Als er een opstartpost is, betaalt die configuratietijd, geen materiaal.</p>", "De opstart betaalt configuratietijd, geen materiaal.</p>"),
+  ('faq', "Zijn er opstartkosten?", "Ja: één maandbedrag van uw formule, één keer. Ze betaalt configuratietijd, geen materiaal."),
+])
+add('nl/is-het-legaal-in-belgie.html', [
+  ('txt', "Geen uitgaande oproep, geen campagne, geen sms, geen e-mail naar uw klanten — technisch niet, contractueel niet.",
+          "Geen uitgaande oproep, geen campagne, geen reclamebericht naar uw klanten — technisch niet, contractueel niet: de enige berichten die ze krijgen, hangen samen met hun oproep: bevestiging, herinnering, gewijzigde afspraak."),
+])
+add('nl/meerdere-agendas.html', [
+  ('txt', "<p>Gebruikt u al software voor uw praktijk? Die houdt u. Niets vraagt u ervan te veranderen, er uw gegevens uit te halen of iets nieuws te leren.</p>",
+          "<p>Staan uw planningen in Google Agenda? <b>Die zijn gekoppeld:</b> Janet leest ieders beschikbaarheid en zet de afspraken erin. Geen agenda? Neem dat van Celya, ingebouwd en afgestemd op uw vak.</p>"),
+  ('txt', "<p>Celya neemt de oproepen op die u niet opneemt, en bezorgt u de afspraak, de betrokken persoon en het motief. Uw planningen blijven waar ze zijn, bijgehouden zoals u ze bijhoudt.</p>",
+          "<p>Het aantal agenda's hangt af van de formule: " + QUOTAS_NL + ". Voor elke afspraak komt de samenvatting van de oproep op uw WhatsApp, met de betrokken persoon en het motief.</p>"),
+  ('txt', "<p>Een rechtstreekse koppeling met uw tool kan bekeken worden — laten we erover praten: het antwoord hangt volledig af van wat u gebruikt en hoe.</p>",
+          "<p>Andere planningssoftware is vandaag niet gekoppeld, Outlook ook niet. Dat schrijven we liever hier dan dat u het later ontdekt.</p>"),
+  ('faq', "Moet ik van software veranderen?", "Niet als het Google Agenda is: die is gekoppeld, Janet leest er uw beschikbaarheid en zet de afspraken erin. Geen agenda? Neem dat van Celya, ingebouwd en afgestemd op uw vak. Andere software is vandaag niet gekoppeld."),
+  ('faq', "Is een koppeling met mijn tool mogelijk?", "Met Google Agenda, ja, dat draait. Met Outlook of andere software, vandaag niet."),
+  ('faq', "Hoeveel personen kunnen erop?", "Volgens de formule: " + QUOTAS_NL + ". De echte vraag blijft de verdeelregel, en die wordt bij de start beslist."),
+])
+add('nl/online-agenda-of-telefoon.html', [
+  ('txt', "Uw planning blijft waar ze is. Een rechtstreekse koppeling met uw tool kan bekeken worden — laten we erover praten.</p>",
+          "Uw planning blijft waar ze is. Staat ze in Google Agenda, dan is ze gekoppeld: Janet leest uw beschikbaarheid en zet de afspraken erin. Andere software is vandaag niet gekoppeld.</p>"),
+  ('faq', "Hoe vermijd ik dubbele boekingen&nbsp;?", "De vrije momenten die de lijn mag aanbieden, worden vooraf afgesproken. Met Google Agenda, gekoppeld, leest Janet uw beschikbaarheid rechtstreeks; andere software is vandaag niet gekoppeld."),
+])
+add('nl/sectoren.html', [
+  ('txt', "<p>Een rechtstreekse koppeling met uw tool kan worden onderzocht — daar praten we het best even over, want het antwoord hangt volledig af van wat u gebruikt.</p>",
+          "<p>" + AG_NL + " Andere beheerprogramma's en Outlook zijn vandaag niet gekoppeld.</p>"),
+  ('faq', "Moet ik van software veranderen&nbsp;?", "Nee. U houdt wat u gebruikt: Celya geeft u de afspraak, de persoon en de reden door. Google Agenda is gekoppeld; andere software is vandaag niet gekoppeld."),
+])
+add('nl/wat-is-een-telefoonsecretariaat.html', [
+  ('faq', "Wat kost het?", "Dat hangt af van model en volume. Bij Celya: drie maandformules, vanaf {{offre.min_prix}}&nbsp;€ per maand exclusief btw, op de prijzenpagina."),
+])
+add('nl/weinig-oproepen.html', [
+  ('txt', "Wij publiceren geen bedragen op deze site, en deze pagina is geen uitzondering.", PRIJS_NL + "."),
+])
+add('nl/blog/praktijken-keuzemenu-oproepen.html', [
+  ('txt', "ze neemt op en ze praat, in het Nederlands, in het Frans of in het Engels, volgens de taal van de patiënt.", "ze neemt op en ze praat, in het Nederlands of in het Frans, volgens de taal van de patiënt."),
+])
+add('nl/blog/restaurants-telefonische-reserveringen.html', [
+  ('txt', "<p>Nederlands, Frans, Engels: ze schakelt automatisch naar de taal van de beller", "<p>Nederlands en Frans: ze schakelt tijdens het gesprek naar de taal van de beller"),
+])
+add('nl/blog/zelfstandigen-gemiste-terugbelverzoeken.html', [
+  ('txt', "Ze spreekt Nederlands, Frans en Engels, en schakelt automatisch naar de taal van de beller", "Ze antwoordt in het Nederlands en het Frans, en schakelt tijdens het gesprek naar de taal van de beller"),
+])
+
+# ---------- anglais ----------
+add('en/blog/medical-practices-phone-menu.html', [
+  ('txt', "she picks up and she talks, in French, Dutch or English, depending on the patient’s language.", "she picks up and she talks, in French or Dutch, depending on the patient’s language."),
+])
+
+# ---------- fonctionnalités (brief, section 5.4 ; maquette page-fonctionnalites) ----------
+COMP = '<!--@composants {"liste":["agenda","orders","confirm"],"exemple":"garages"}-->\n'
+add('fonctionnalites.html', [
+  ('txt', "quand une capacité n'existe pas — la synchronisation avec un agenda externe, par exemple — il y a une phrase qui le dit",
+          "quand une capacité n'existe pas — la synchronisation avec Outlook, par exemple — il y a une phrase qui le dit"),
+  ('txt', '<a href="numero-belge.html"><b>Numéro belge</b><span>Vous gardez le vôtre. Rien ne bouge pour vos clients.</span></a>',
+          '<a href="numero-belge.html"><b>Numéro belge</b><span>Vous gardez le vôtre, ou on vous en fournit un. Rien ne bouge pour vos clients.</span></a>'),
+  ('txt', "<a href=\"horaires-et-garde.html\"><b>Horaires et garde</b><span>Vos heures, vos exceptions, vos congés — appliqués à la lettre.</span></a>",
+          "<a href=\"horaires-et-garde.html\"><b>Horaires et garde</b><span>Vos heures, vos exceptions, vos congés — appliqués à la lettre.</span></a>\n"
+          "<a href=\"#consignes\"><b>WhatsApp</b><span>Le résumé de chaque appel, directement sur votre WhatsApp.</span></a>\n"
+          "<a href=\"#confirmations\"><b>Confirmations clients</b><span>Confirmer, déplacer, annuler&nbsp;: vos clients répondent en un clic.</span></a>\n"
+          "<a href=\"#confirmations\"><b>SMS de secours</b><span>Pas de WhatsApp chez votre client&nbsp;? La confirmation part en SMS.</span></a>\n"
+          "<a href=\"#agenda\"><b>Agenda</b><span>Google Agenda relié, ou l'agenda Celya intégré. Plusieurs agendas dès la formule {{offre.pro.nom}}.</span></a>\n"
+          "<a href=\"#consignes\"><b>Consignes par WhatsApp</b><span>Congés, horaires, créneaux bloqués&nbsp;: vous écrivez, elle applique.</span></a>"),
+  ('txt', "<p><b>Aucune synchronisation avec un agenda externe.</b> L'agent écrit les rendez-vous dans l'agenda de Celya, que vous consultez depuis un navigateur. Il n'écrit pas dans Google Agenda ni dans Outlook, et nous n'avons pas de page «&nbsp;intégrations&nbsp;» — c'est une exclusion volontaire, pas un oubli.</p>\n"
+          "<p><b>Aucun appel sortant, aucune campagne, aucun SMS, aucun e-mail vers vos clients.</b> Celya répond au téléphone&nbsp;; elle ne prospecte pas et ne relance personne à votre place.</p>\n"
+          "<p><b>Aucune évaluation médicale.</b> L'agent n'apprécie aucun symptôme et ne prend aucune décision clinique&nbsp;: il applique les critères de transfert écrits par le cabinet.</p>\n"
+          "<p><b>Aucun engagement contractuel pris à votre place.</b> Il annonce ce que vous l'avez autorisé à annoncer et bascule sur une prise de message dès qu'une demande dépasse ce périmètre.</p>",
+          "<p>Ce qui n'est pas dans cette liste n'est pas en service. On préfère vous le dire ici que le découvrir en appel.</p>\n"
+          "<p><b>Pas d'appels sortants.</b> Aucune prospection, aucune campagne. Celya répond au téléphone&nbsp;; elle ne démarche personne.</p>\n"
+          "<p><b>Pas de messages publicitaires.</b> Les seuls messages envoyés à vos clients sont ceux liés à leur appel&nbsp;: confirmation, rappel, modification.</p>\n"
+          "<p><b>Aucune évaluation médicale.</b> Elle n'apprécie aucun symptôme&nbsp;: elle applique les critères de transfert écrits par le praticien.</p>\n"
+          "<p><b>Aucun engagement à votre place.</b> Elle annonce ce que vous l'avez autorisée à annoncer et prend un message pour le reste.</p>\n"
+          "<p><b>Outlook n'est pas relié.</b> Google Agenda l'est&nbsp;; Outlook, pas aujourd'hui.</p>"),
+  ('faq', "Y a-t-il des intégrations avec Google Agenda ou Outlook&nbsp;?",
+          "Oui, Google Agenda&nbsp;: les rendez-vous s'écrivent dedans et Janet ne propose que les créneaux libres. Sans agenda, vous utilisez l'agenda Celya intégré. Outlook, pas aujourd'hui."),
+  ('faq', "Est-ce que l'agent passe des appels sortants&nbsp;?",
+          "Non. Celya traite les appels entrants, uniquement. Aucun appel sortant, aucune campagne, aucun message publicitaire&nbsp;: les seuls messages envoyés à vos clients sont liés à leur appel — confirmation, rappel, modification."),
+  ('faq', "Combien de temps pour tout configurer&nbsp;?",
+          "En ligne en 48 heures. Le plus long n'est pas technique&nbsp;: c'est de rassembler ce que l'agent doit savoir — vos horaires, vos prestations, ce que vous refusez, ce qui vous réveille la nuit."),
+  ('txt', '<!--@faq {"kick":"Questions fréquentes","id":"faq-fonctions"}-->', COMP + '<!--@faq {"kick":"Questions fréquentes","id":"faq-fonctions"}-->'),
+])
+add('nl/werking.html', [
+  ('txt', '<a href="belgisch-nummer-houden.html"><b>Uw Belgisch nummer</b><span>U houdt het uwe. Er beweegt niets.</span></a>',
+          '<a href="belgisch-nummer-houden.html"><b>Uw Belgisch nummer</b><span>U houdt het uwe, of wij bezorgen u er een. Er beweegt niets.</span></a>\n'
+          '<a href="#consignes"><b>WhatsApp</b><span>De samenvatting van elke oproep, rechtstreeks op uw WhatsApp.</span></a>\n'
+          '<a href="#confirmations"><b>Bevestigingen voor klanten</b><span>Bevestigen, verplaatsen, annuleren: uw klanten antwoorden met één klik.</span></a>\n'
+          '<a href="#confirmations"><b>Sms als vangnet</b><span>Geen WhatsApp bij uw klant? De bevestiging vertrekt per sms.</span></a>\n'
+          "<a href=\"#agenda\"><b>Agenda</b><span>Google Agenda gekoppeld, of de ingebouwde agenda van Celya. Meerdere agenda's vanaf de formule {{offre.pro.nom}}.</span></a>\n"
+          '<a href="#consignes"><b>Instructies via WhatsApp</b><span>Verlof, uren, geblokkeerde slots: u schrijft, zij past toe.</span></a>'),
+  ('txt', "<p>Gebruikt u al een beheerprogramma? U houdt het. Celya neemt de oproepen op die u niet opneemt en geeft u de afspraak en de reden door. Een rechtstreekse koppeling met uw tool kan worden onderzocht — daar praten we het best even over.</p>",
+          "<p>" + AG_NL + " Outlook en andere beheerprogramma's zijn vandaag niet gekoppeld. En <b>ze stuurt geen reclameberichten</b>: de enige berichten aan uw klanten hangen samen met hun oproep — bevestiging, herinnering, gewijzigde afspraak.</p>"),
+  ('faq', "Moet ik van software veranderen&nbsp;?",
+          "Nee. Google Agenda is gekoppeld: Janet leest uw beschikbaarheid en zet de afspraken erin. Andere software is vandaag niet gekoppeld: Celya geeft u dan de afspraak en de reden door."),
+  ('txt', '<!--@faq {"kick":"Veelgestelde vragen","id":"faq-werking"}-->', COMP + '<!--@faq {"kick":"Veelgestelde vragen","id":"faq-werking"}-->'),
+])
+
 def ld(s):
     """texte tel qu'il s'écrit dans le JSON-LD : sans balise, sans entité."""
     return H.unescape(re.sub(r'<[^>]+>', '', s)).replace(' ', ' ')
@@ -175,16 +402,20 @@ def apply(rel, items, allow):
     page = allow['pages'].setdefault(rel, {})
     for kind, old, new in items:
         if kind == 'txt':
+            if old in new and (new in body or new in head):
+                continue                      # ajout déjà fait (l'ancien texte est contenu dans le nouveau)
             hit = False
             if old in body:
                 body = body.replace(old, new); hit = True
             if old.startswith('<meta') and old in head:
                 head = head.replace(old, new); hit = True
-            elif not old.startswith('<meta') and re.search(flex(json.dumps(ld(old), ensure_ascii=False)[1:-1]), head):
+            elif not old.startswith('<meta') and ld(old).strip() and re.search(flex(json.dumps(ld(old), ensure_ascii=False)[1:-1]), head):
                 head = re.sub(flex(json.dumps(ld(old), ensure_ascii=False)[1:-1]), lambda m: json.dumps(ld(new), ensure_ascii=False)[1:-1], head); hit = True
+            if not hit and (new in body or new in head):
+                continue                      # déjà appliquée
             if not hit:
                 raise SystemExit(f'{rel} : texte introuvable : {old[:70]}')
-            if not old.startswith('<meta'):
+            if not old.startswith(('<meta', '<!--@')):
                 txt = ld(old).strip()
                 page.setdefault('texte', [])
                 if txt not in page['texte']:

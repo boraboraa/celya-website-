@@ -156,5 +156,40 @@ Merci de votre patience, et a bientot.</p>
 </div></footer>
 <div class="mbar" aria-label="Actions rapides" role="region"><a class="btn btn-orange" href="tel:+32460254413" data-call><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M5 3h4l2 5-2.5 1.5a11 11 0 0 0 6 6L16 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 5a2 2 0 0 1 2-2z"/></svg><span>Appeler Janet</span></a><a class="btn btn-line" href="demo.html" data-demo>Demander une démo</a></div>
 <script src="celya.js" defer></script>
+<script>
+(function(){
+  function bind(b){
+    var src=document.getElementById(b.getAttribute('data-copy'));
+    if(!src)return;
+    var lab=b.textContent;
+    b.addEventListener('click',function(){
+      var t=src.textContent;
+      function done(){b.textContent='Copié';setTimeout(function(){b.textContent=lab;},1800);}
+      if(navigator.clipboard&&navigator.clipboard.writeText){
+        navigator.clipboard.writeText(t).then(done,function(){});
+      }else{
+        var ta=document.createElement('textarea');ta.value=t;document.body.appendChild(ta);
+        ta.select();try{document.execCommand('copy');done();}catch(e){}document.body.removeChild(ta);
+      }
+    });
+  }
+  var bs=document.querySelectorAll('[data-copy]');
+  for(var i=0;i<bs.length;i++)bind(bs[i]);
+  var boxes=document.querySelectorAll('.ck input[type=checkbox]');
+  var out=document.getElementById('ckscore');
+  if(boxes.length&&out){
+    function tally(){
+      var n=0;for(var i=0;i<boxes.length;i++)if(boxes[i].checked)n++;
+      out.textContent=n+' point'+(n>1?'s':'')+' sur '+boxes.length+' — '+
+        (n===boxes.length?'rien ne manque.':
+         n>=boxes.length-2?'il reste peu à traiter.':
+         n>=boxes.length/2?'la moitié du chemin est faite.':
+         'la plupart des points restent ouverts.');
+    }
+    for(var j=0;j<boxes.length;j++)boxes[j].addEventListener('change',tally);
+    tally();
+  }
+})();
+</script>
 </body>
 </html>

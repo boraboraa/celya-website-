@@ -89,3 +89,22 @@ Le point le plus simple <em>est de ne pas enregistrer.</em>
 <!--@cta-->
 <h2>Le point le plus simple <em>est de ne rien enregistrer.</em></h2>
 <p>Demandez-nous ce qui reste après l'appel — la réponse est courte.</p>
+<!--@script-->
+<script>
+(function(){
+  var boxes=document.querySelectorAll('.ck input[type=checkbox]');
+  var out=document.getElementById('ckscore');
+  if(!boxes.length||!out)return;
+  function tally(){
+    var n=0;for(var i=0;i<boxes.length;i++)if(boxes[i].checked)n++;
+    var reste=boxes.length-n;
+    out.textContent=n+' point'+(n>1?'s':'')+' sur '+boxes.length+' — '+
+      (reste===0?'aucun point ouvert.':
+       reste<=2?'il reste '+reste+' point'+(reste>1?'s':'')+' à traiter.':
+       n===0?'aucun point traité pour l\'instant.':
+       'il reste '+reste+' points à traiter.');
+  }
+  for(var j=0;j<boxes.length;j++)boxes[j].addEventListener('change',tally);
+  tally();
+})();
+</script>

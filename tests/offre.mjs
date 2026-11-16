@@ -29,10 +29,15 @@ for (const f of sources) {
 
 /* 2. pages générées */
 const OLD = new RegExp(`(?<![\\d.,])(?:75|150|300)${S}(?:€|&euro;)|€${S}(?:75|150|300)(?![\\d])|(?<![\\d.,])(?:250|1${S}750|1,750|1750)${S}(?:minutes|minuten)|75, 150 (?:et|en|and) 300`, 'i');
+/* Les seuls montants qui ne sont pas des prix de Celya : le prix d'une vidange
+ * dans l'enquête sur les garages (blog, trois langues). On retire ce paragraphe
+ * avant le test, rien d'autre. */
+const HORS_OFFRE = /<p>(?:(?!<\/p>)[\s\S])*(?:vidange avec filtre|olie verversen met filter|oil change with filter)(?:(?!<\/p>)[\s\S])*<\/p>/gi;
+const FOURCHETTE = /€[\s\u00a0]?300[\s\u00a0]*(?:–|-|tot|to)[\s\u00a0]*€[\s\u00a0]?3[.,]000/g;   /* même enquête : 300 à 3 000 € de travail d'atelier */
 const pages = fs.readdirSync(path.join(ROOT, '_src/pages'), { recursive: true }).filter((f) => f.endsWith('.html'));
 for (const rel of pages) {
   const html = fs.readFileSync(path.join(ROOT, rel), 'utf8');
-  const m = OLD.exec(html.replace(/<script>[\s\S]*?<\/script>/g, ''));
+  const m = OLD.exec(html.replace(/<script>[\s\S]*?<\/script>/g, '').replace(HORS_OFFRE, '').replace(FOURCHETTE, ''));
   if (m) fails.push(`${rel} — ancienne grille : « ${m[0]} »`);
   const t = /\{\{[^}]*\}\}|\{offre\.[a-z_.]+\}/.exec(html);
   if (t) fails.push(`${rel} — jeton non résolu « ${t[0]} »`);

@@ -3,7 +3,7 @@
  * encadré « Comment ça se branche », appel à Janet. Contenu inchangé. */
 import { one, all, esc } from '../lib/core.mjs';
 import { shell, ctaPair } from '../components/shell.mjs';
-import { badges, plugAside, faq, ctaFinal, related, splitH2 } from '../components/blocks.mjs';
+import { badges, plugAside, faq, ctaFinal, related, splitH2, agenda, orders, confirm } from '../components/blocks.mjs';
 import { ico } from '../components/icons.mjs';
 
 /** Fil d'Ariane visible, lu dans le BreadcrumbList du @graph : jamais inventé. */
@@ -57,7 +57,15 @@ export default function article(c) {
     }
   });
 
-  const tailHTML = tail.map((b) => b.name === 'faq' ? faq(c, b) : b.name === 'related' ? related(c, b) : ctaFinal(c, b)).join('\n');
+  /* composants du système (fonctionnalités) : pleine largeur, avant la FAQ.
+   * <!--@composants {"liste":["agenda","orders","confirm"],"exemple":"garages"}--> */
+  const comp = (page.blocks.composants || [])[0];
+  const ids = { agenda: 'agenda', orders: 'consignes', confirm: 'confirmations' };
+  const compHTML = comp ? comp.attrs.liste.map((k) => {
+    const html = k === 'agenda' ? agenda(c) : k === 'orders' ? orders(c) : confirm(c, c.data.metiers[comp.attrs.exemple][c.lang].confirmation);
+    return html.replace(/^<section /, `<section id="${ids[k]}" `);
+  }).join('\n') : '';
+  const tailHTML = compHTML + tail.map((b) => b.name === 'faq' ? faq(c, b) : b.name === 'related' ? related(c, b) : ctaFinal(c, b)).join('\n');
 
   const main = `<section class="art-hero"><div class="w">
 ${crumbs(c)}

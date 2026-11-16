@@ -125,3 +125,23 @@ Un répondeur enregistre. Elle, elle répond&nbsp;:
 <!--@cta-->
 <h2>Le meilleur message <em>reste celui que personne n'a à laisser.</em></h2>
 <p>Appelez-la&nbsp;: il n'y a pas de bip.</p>
+<!--@script-->
+<script>
+(function(){
+  document.querySelectorAll('[data-copy]').forEach(function(b){
+    b.addEventListener('click',function(){
+      var p=b.closest('.a').querySelector('[data-msg]');
+      if(!p)return;
+      var t=p.textContent.replace(/\s+/g,' ').trim(),done=function(){
+        var o=b.textContent;b.textContent='Copié';setTimeout(function(){b.textContent=o},1600);};
+      if(navigator.clipboard&&navigator.clipboard.writeText){
+        navigator.clipboard.writeText(t).then(done,function(){});
+      }else{
+        var a=document.createElement('textarea');a.value=t;a.setAttribute('readonly','');
+        a.style.position='absolute';a.style.left='-9999px';document.body.appendChild(a);
+        a.select();try{document.execCommand('copy');done()}catch(e){}document.body.removeChild(a);
+      }
+    });
+  });
+})();
+</script>

@@ -104,12 +104,13 @@ def index(rel, src):
         out += ['<!--@related' + (' ' + json.dumps({'kick': k.group(1)}, ensure_ascii=False) if k else '') + '-->', f'<h2>{h2}</h2>\n{rows(s.group(1))}']
     return out
 
-for rel in sys.argv[1:]:
-    src = open(os.path.join(ROOT, rel), encoding='utf-8').read()
-    if 'celya.css' in src:
-        raise SystemExit(f'{rel} est déjà une page générée : restaurer l\'ancienne depuis git avant d\'extraire')
-    out = index(rel, src) if 'blog-hero' in src else post(rel, src)
-    dest = os.path.join(ROOT, '_src/pages', rel)
-    os.makedirs(os.path.dirname(dest), exist_ok=True)
-    open(dest, 'w', encoding='utf-8').write('\n'.join(out) + '\n')
-    print('  _src/pages/' + rel)
+if __name__ == '__main__':
+    for rel in sys.argv[1:]:
+        src = open(os.path.join(ROOT, rel), encoding='utf-8').read()
+        if 'celya.css' in src:
+            raise SystemExit(f'{rel} est déjà une page générée : restaurer l\'ancienne depuis git avant d\'extraire')
+        out = index(rel, src) if 'blog-hero' in src else post(rel, src)
+        dest = os.path.join(ROOT, '_src/pages', rel)
+        os.makedirs(os.path.dirname(dest), exist_ok=True)
+        open(dest, 'w', encoding='utf-8').write('\n'.join(out) + '\n')
+        print('  _src/pages/' + rel)
