@@ -256,7 +256,7 @@ export function prices(c, { h2 = true, intro = '', id = '' } = {}) {
   const { t } = c;
   const title = h2 === true ? H(2, t.price_h2) : h2;
   return `<section class="sec bg-cream"${id ? ` id="${id}"` : ''}><div class="w">
-<div class="price-head">${title}<div class="price-go"><a class="btn btn-ink" href="${c.L(c.t.demo_href)}" data-demo>${t.price_start}</a><small>${t.price_start_sub}</small></div></div>
+<div class="price-head">${title}<div class="price-go"><a class="btn btn-ink" href="${c.L(c.t.demo_href)}" data-demo>${t.price_start}</a></div></div>
 ${intro ? `<div class="prose price-intro">${intro}</div>` : ''}
 ${priceCards(c)}
 <p class="note">${priceNote(c)}</p>

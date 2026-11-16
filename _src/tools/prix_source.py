@@ -48,8 +48,7 @@ T = {
           ('One, two or four simultaneous calls depending on the plan, with no doubled wait. A seasonal peak calls for no hiring.', 'Several calls at the same time, with no doubled wait. A seasonal peak calls for no hiring.')],
    faq=[("Not as a rule. There is real configuration work — your hours, your services, your transfer rules, your standard answers — and that is what separates an agent that answers properly from a generic one. When that work is charged, it is capped at one month of your plan, never more.",
          "Yes: one month of your plan, once. There is real configuration work — your hours, your services, your transfer rules, your standard answers — and that is what separates an agent that answers properly from a generic one. Nothing else is added."),
-        ("The commitment terms are part of the proposal and are open to discussion. What we ask above all",
-         "No. You start with {{offre.essai}} days free, no commitment. What we ask above all")],
+        ]  # 16/11/2026 : l'offre d'essai est retirée — la réponse d'origine sur l'engagement reste,
  ),
 }
 

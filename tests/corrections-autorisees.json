@@ -18,8 +18,7 @@
     },
     "prix.html": {
       "faq": {
-        "Y a-t-il des frais de mise en service ?": "mise en service = une mensualité (décision du 14/11)",
-        "Faut-il s'engager sur une durée ?": "30 jours d'essai sans engagement (data/offre.json)"
+        "Y a-t-il des frais de mise en service ?": "mise en service = une mensualité (décision du 14/11)"
       },
       "graph": [
         "Service",
@@ -67,8 +66,7 @@
       ],
       "_graph": "Service.offers : nouvelle grille ; WebPage.description : même phrase que la meta description",
       "faq": {
-        "Is there a setup fee?": "setup = one month of the plan (décision du 14/11)",
-        "Do I have to commit for a fixed term?": "30-day free trial, no commitment (data/offre.json)"
+        "Is there a setup fee?": "setup = one month of the plan (décision du 14/11)"
       }
     },
     "prise-de-rendez-vous.html": {
