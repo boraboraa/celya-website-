@@ -277,8 +277,11 @@ atterrissage). Aucune page ne charge plus `bento.css`, `bento.js` ni
 `tests/migration.mjs` échoue dès qu'une page servie n'a pas `header.hdr` et
 `celya.css`, ou cite encore l'ancien thème.
 
-- **La marque.** Favicon : `celya-favicon.svg` (le C corail plein sur fond
-  crème, lisible à 16 px), `favicon-48.png`, `favicon-96.png`,
+- **La marque.** Favicon : `celya-favicon.svg` — depuis le 16/11/2026 (après
+  fusion de la PR #32), c'est le favicon validé avec le logo le 14/11/2026 :
+  le C en traits de voix allégé (12 traits épais), blanc cassé sur carré
+  orange `#FF6A3D`. Source : `Bureau/Celya/marque/logo/favicon/` sur le Mac de
+  Bora ; ne pas le redessiner. `favicon-48.png`, `favicon-96.png`,
   `favicon-192.png`, `favicon-512.png`, `apple-touch-icon.png` (180),
   `favicon.ico` (16/32/48), `site.webmanifest`. Logo du `@graph`
   (`Organization` et `LocalBusiness`) : `celya-logo-512.png`. Images de
