@@ -1,9 +1,11 @@
-/* Gabarit « article » : questions, comparaisons, guides (~250 pages).
+/* Gabarit « article » : questions, comparaisons, guides (~250 pages). Sans badges
+ * de certification en tête (retour de Bora du 16/11/2026 : ils restent sur les
+ * accueils, prix, démo, contact et métiers).
  * Colonne de lecture, encadré « En bref » (la phrase d'intro existante),
  * encadré « Comment ça se branche », appel à Janet. Contenu inchangé. */
 import { one, all, esc } from '../lib/core.mjs';
 import { shell, ctaPair } from '../components/shell.mjs';
-import { badges, plugAside, faq, ctaFinal, related, splitH2, agenda, orders, confirm } from '../components/blocks.mjs';
+import { plugAside, faq, ctaFinal, related, splitH2, agenda, orders, confirm } from '../components/blocks.mjs';
 import { ico } from '../components/icons.mjs';
 
 /** Fil d'Ariane visible, lu dans le BreadcrumbList du @graph : jamais inventé. */
@@ -74,7 +76,6 @@ ${crumbs(c)}
 <h1>${one(page, 'h1')}</h1>
 ${lede ? `<div class="brief"><p class="label label-o">${t.read_brief}</p><p>${lede}</p></div>` : ''}
 ${ctaPair(c, { hero: true, sub: false })}
-${badges(c, 'badges-l')}
 <div class="art-body">
 ${body}
 </div>

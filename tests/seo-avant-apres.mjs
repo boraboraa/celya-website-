@@ -111,12 +111,15 @@ export function compare(rel, before, after) {
   for (const f of ['title', 'desc', 'canonical']) {
     if (before[f] !== after[f] && !(corr[f])) err.push(`${f} : « ${before[f]} » → « ${after[f]} »`);
   }
-  if (JSON.stringify(before.h1) !== JSON.stringify(after.h1)) err.push(`H1 : ${JSON.stringify(before.h1)} → ${JSON.stringify(after.h1)}`);
+  if (JSON.stringify(before.h1) !== JSON.stringify(after.h1) && !corr.h1) err.push(`H1 : ${JSON.stringify(before.h1)} → ${JSON.stringify(after.h1)}`);
   if (JSON.stringify(before.hreflang) !== JSON.stringify(after.hreflang) && !corr.hreflang) err.push(`hreflang : ${before.hreflang.join(' | ')} → ${after.hreflang.join(' | ')}`);
   /* H2 : sous-suite ordonnée + ajouts de la liste fixe */
   /* H2 retirés sur décision datée de Bora (corrections-autorisees.json) */
   const retired = new Set((corr.h2_retires || []).map(norm));
-  before = { ...before, h2: before.h2.filter((h) => !retired.has(h)) };
+  /* H2 corrigés parce que leur texte était devenu faux (retour de Bora du
+   * 16/11/2026) : { ancien : nouveau }, même place dans l'ordre */
+  const renamed = Object.fromEntries(Object.entries(corr.h2_modifies || {}).map(([o, n]) => [norm(o), norm(n)]));
+  before = { ...before, h2: before.h2.filter((h) => !retired.has(h)).map((h) => renamed[h] || h) };
   let k = 0;
   for (const h of after.h2) {
     if (k < before.h2.length && h === before.h2[k]) { k++; continue; }
@@ -139,8 +142,9 @@ export function compare(rel, before, after) {
   /* @graph */
   const B = new Map(before.graph.map((n) => [key(n), n])), A = new Map(after.graph.map((n) => [key(n), n]));
   const allowed = corr.graph || [];
+  const gone = corr.graph_retires || [];   /* nœuds retirés sur décision datée (ex. VideoObject de celya-intro) */
   for (const [kk, n] of B) {
-    if (!A.has(kk)) err.push(`@graph : nœud disparu ${kk}`);
+    if (!A.has(kk)) { if (!gone.includes(n['@type'])) err.push(`@graph : nœud disparu ${kk}`); }
     else if (!same(n, A.get(kk)) && !allowed.includes(n['@type']) && !(n['@type'] === 'FAQPage' && corr.faq)) err.push(`@graph : nœud modifié ${kk}`);
   }
   for (const kk of A.keys()) if (!B.has(kk)) err.push(`@graph : nœud ajouté ${kk}`);

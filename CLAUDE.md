@@ -287,9 +287,21 @@ atterrissage). Aucune page ne charge plus `bento.css`, `bento.js` ni
   crème, logo, H1 de l'accueil) ; les articles du blog gardent leur image.
   `og-image.png` et `favicon.svg` n'existent plus : 301 dans `vercel.json`.
   Aucune couleur de l'ancien logo (`22D3EE`, `4F7BFF`, `A855F7`) dans ce qui
-  est servi. Reste à refaire : la vidéo `assets/video/celya-intro-*`, qui finit
-  sur l'ancien C néon — elle n'est plus affichée, seul le `VideoObject` des
-  accueils la cite.
+  est servi.
+- **La vidéo `celya-intro` est retirée du site le 16 novembre 2026** (décision
+  de Bora : elle finit sur l'ancien C néon ; une nouvelle vidéo est prévue).
+  Plus de `VideoObject` dans le `@graph` des accueils, plus aucun lien ni
+  vignette ; les fichiers restent dans `assets/video/`, exclu du déploiement
+  (`.vercelignore`). `grep -ri celya-intro` sur le HTML servi rend zéro. La
+  nouvelle vidéo reviendra avec son `VideoObject`.
+- **Retour de Bora du 16 novembre 2026** : le délai de mise en ligne s'écrit
+  « 48 heures » (NL « 48 uur », EN « 48 hours ») partout, jamais « quelques
+  jours » ; plus d'« audit gratuit » (contact : « Demander une démo ») ; les
+  badges Meta Tech Provider / Vérifiée par Google ne s'affichent en tête que
+  sur les accueils, les prix, la démo, le contact et les pages métiers — pas
+  sur les articles ni sur le blog ; la politique de confidentialité décrit les
+  champs du formulaire (métier, moment de rappel, accord de recontact,
+  provenance) ; les exemples de rendez-vous tombent le jeudi 19 novembre.
 - **Les textes.** Une migration ne réécrit pas : `tests/texte-conserve.mjs`
   vérifie que chaque paragraphe de l'ancienne page se retrouve dans la
   nouvelle. Les seuls écarts sont les textes devenus faux, appliqués par

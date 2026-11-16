@@ -74,11 +74,11 @@
         "initiales": "GM",
         "entreprise": "Garage Martin",
         "message": "Bonjour M. Peeters, votre rendez-vous est enregistré.",
-        "quand": "Jeudi 20 novembre · 10h00",
+        "quand": "Jeudi 19 novembre · 10h00",
         "quoi": "Entretien + pneus hiver",
         "ou": "Garage Martin, Waterloo",
         "reponse": "Merci, c'est confirmé. À jeudi !",
-        "chip": "Jeudi 20 nov. · 10h00"
+        "chip": "Jeudi 19 nov. · 10h00"
       }
     },
     "nl": {
@@ -116,11 +116,11 @@
         "initiales": "GM",
         "entreprise": "Garage Martin",
         "message": "Goedendag dhr. Peeters, uw afspraak is genoteerd.",
-        "quand": "Donderdag 20 november · 10.00 u",
+        "quand": "Donderdag 19 november · 10.00 u",
         "quoi": "Onderhoud + winterbanden",
         "ou": "Garage Martin, Waterloo",
         "reponse": "Bedankt, bevestigd. Tot donderdag!",
-        "chip": "Do 20 nov. · 10.00 u"
+        "chip": "Do 19 nov. · 10.00 u"
       },
       "cartes": []
     },
@@ -159,11 +159,11 @@
         "initiales": "GM",
         "entreprise": "Garage Martin",
         "message": "Hello Mr Peeters, your appointment is booked.",
-        "quand": "Thursday 20 November · 10:00",
+        "quand": "Thursday 19 November · 10:00",
         "quoi": "Service + winter tyres",
         "ou": "Garage Martin, Waterloo",
         "reponse": "Thanks, that's confirmed. See you Thursday!",
-        "chip": "Thu 20 Nov · 10:00"
+        "chip": "Thu 19 Nov · 10:00"
       },
       "cartes": [
         {
@@ -1238,11 +1238,11 @@
         "initiales": "ED",
         "entreprise": "Électricité Dumont",
         "message": "Bonjour M. Renard, votre rendez-vous est enregistré.",
-        "quand": "Jeudi 20 novembre · 13h00",
+        "quand": "Jeudi 19 novembre · 13h00",
         "quoi": "Diagnostic tableau électrique",
         "ou": "Rue de la Station 8, Wavre",
         "reponse": "Merci, c'est confirmé. À jeudi !",
-        "chip": "Jeudi 20 nov. · 13h00"
+        "chip": "Jeudi 19 nov. · 13h00"
       }
     },
     "nl": {
@@ -1280,11 +1280,11 @@
         "initiales": "ED",
         "entreprise": "Électricité Dumont",
         "message": "Goedendag dhr. Renard, uw afspraak is genoteerd.",
-        "quand": "Donderdag 20 november · 13.00 u",
+        "quand": "Donderdag 19 november · 13.00 u",
         "quoi": "Nazicht elektriciteitsbord",
         "ou": "Stationsstraat 8, Waver",
         "reponse": "Bedankt, bevestigd. Tot donderdag!",
-        "chip": "Do 20 nov. · 13.00 u"
+        "chip": "Do 19 nov. · 13.00 u"
       },
       "cartes": [
         {
@@ -1662,11 +1662,11 @@
         "initiales": "FM",
         "entreprise": "Fiduciaire Moreau",
         "message": "Bonjour M. Dubois, votre rendez-vous est enregistré.",
-        "quand": "Jeudi 20 novembre · 15h00",
+        "quand": "Jeudi 19 novembre · 15h00",
         "quoi": "Déclaration IPP · fiches de paie",
         "ou": "Fiduciaire Moreau, Liège",
         "reponse": "Merci, c'est confirmé. À jeudi !",
-        "chip": "Jeudi 20 nov. · 15h00"
+        "chip": "Jeudi 19 nov. · 15h00"
       }
     },
     "nl": {
@@ -1704,11 +1704,11 @@
         "initiales": "FM",
         "entreprise": "Fiduciaire Moreau",
         "message": "Goedendag dhr. Dubois, uw afspraak is genoteerd.",
-        "quand": "Donderdag 20 november · 15.00 u",
+        "quand": "Donderdag 19 november · 15.00 u",
         "quoi": "Aangifte PB · loonfiches",
         "ou": "Fiduciaire Moreau, Luik",
         "reponse": "Bedankt, bevestigd. Tot donderdag!",
-        "chip": "Do 20 nov. · 15.00 u"
+        "chip": "Do 19 nov. · 15.00 u"
       },
       "cartes": [
         {

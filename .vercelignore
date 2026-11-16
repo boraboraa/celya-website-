@@ -21,3 +21,7 @@ apercu-visuel.html
 bento.css
 bento.js
 fonts.css
+
+# vidéo « celya-intro » (ancien C néon) retirée du site le 16/11/2026 ; une
+# nouvelle est prévue. Fichiers gardés dans le dépôt, plus déployés.
+assets/video

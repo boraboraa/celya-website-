@@ -14,7 +14,11 @@
       "h2_retires": [
         "Combien vous coûtent les appels manqués ?"
       ],
-      "_h2_retires": "retour de Bora du 15/11/2026 : bloc calculateur retiré de l'accueil (calculateur-appels-manques.html reste en ligne)"
+      "_h2_retires": "retour de Bora du 15/11/2026 : bloc calculateur retiré de l'accueil (calculateur-appels-manques.html reste en ligne)",
+      "graph_retires": [
+        "VideoObject"
+      ],
+      "_graph_retires": "vidéo celya-intro retirée du site le 16/11/2026 (décision de Bora : ancien C néon, une nouvelle vidéo est prévue)"
     },
     "prix.html": {
       "faq": {
@@ -35,7 +39,11 @@
       "faq": {
         "Wat kost het?": "grille du 14/11 publiée (data/offre.json) : l'ancienne réponse disait que le prix dépendait d'un entretien",
         "Hoe snel is het geïnstalleerd?": "« Binnen 48 uur », formulation validée par Bora le 14/11"
-      }
+      },
+      "graph_retires": [
+        "VideoObject"
+      ],
+      "_graph_retires": "vidéo celya-intro retirée du site le 16/11/2026 (décision de Bora : ancien C néon, une nouvelle vidéo est prévue)"
     },
     "en/index.html": {
       "h2_retires": [
@@ -45,7 +53,11 @@
       "faq": {
         "How much does it cost?": "grille du 14/11 (data/offre.json)",
         "How long does setup take?": "« Within 48 hours », formulation validée par Bora le 14/11"
-      }
+      },
+      "graph_retires": [
+        "VideoObject"
+      ],
+      "_graph_retires": "vidéo celya-intro retirée du site le 16/11/2026 (décision de Bora : ancien C néon, une nouvelle vidéo est prévue)"
     },
     "nl/prijzen.html": {
       "desc": "ancienne grille dans la description : montants lus dans data/offre.json",
@@ -110,7 +122,8 @@
     },
     "fiduciaires.html": {
       "texte": [
-        "aucun appel sortant, aucun SMS, aucun e-mail."
+        "aucun appel sortant, aucun SMS, aucun e-mail.",
+        "Quelques jours suffisent."
       ],
       "faq": {
         "Est-ce qu'elle peut réclamer des documents manquants ?": "texte devenu faux (brief du 14/11, section 5 ; CLAUDE.md, offre et agenda du 14/11)"
@@ -150,18 +163,23 @@
         "S'il y a un poste de mise en service, il paie du temps de configuration, pas du matériel."
       ],
       "faq": {
-        "Y a-t-il des frais de mise en service ?": "texte devenu faux (brief du 14/11, section 5 ; CLAUDE.md, offre et agenda du 14/11)"
+        "Y a-t-il des frais de mise en service ?": "texte devenu faux (brief du 14/11, section 5 ; CLAUDE.md, offre et agenda du 14/11)",
+        "Combien de temps avant le premier appel traité ?": "texte devenu faux (brief du 14/11, section 5 ; CLAUDE.md, offre et agenda du 14/11)"
       }
     },
     "combien-coute-un-secretariat-telephonique.html": {
       "texte": [
         "Ce n'est pas une coquetterie commerciale, et l'explication tient en un exemple.",
-        "Ce que nous garantissons en revanche : pas de frais cachés, pas de supplément d'amplitude horaire, et rien à installer chez vous."
+        "Ce que nous garantissons en revanche : pas de frais cachés, pas de supplément d'amplitude horaire, et rien à installer chez vous.",
+        ">Pourquoi nous n'affichons aucun chiffre"
       ],
       "faq": {
         "Vous facturez à l'appel ou au forfait ?": "texte devenu faux (brief du 14/11, section 5 ; CLAUDE.md, offre et agenda du 14/11)",
         "Y a-t-il des frais de mise en service ?": "texte devenu faux (brief du 14/11, section 5 ; CLAUDE.md, offre et agenda du 14/11)",
         "Que se passe-t-il si mon volume explose en saison ?": "texte devenu faux (brief du 14/11, section 5 ; CLAUDE.md, offre et agenda du 14/11)"
+      },
+      "h2_modifies": {
+        "Pourquoi nous n'affichons aucun chiffre": "Pourquoi nous affichons trois chiffres"
       }
     },
     "comment-se-passe-la-facturation.html": {
@@ -197,10 +215,16 @@
     "combien-de-temps-pour-etre-operationnel.html": {
       "texte": [
         "Ce qui prend les quelques jours, c'est",
-        "Donc oui : quelques jours après l'accord, la ligne répond"
+        "Donc oui : quelques jours après l'accord, la ligne répond",
+        ">Quelques jours pour que la ligne réponde",
+        "Quelques jours pour répondre. Trois semaines pour bien répondre."
       ],
       "faq": {
         "Combien de temps avant que la ligne réponde ?": "texte devenu faux (brief du 14/11, section 5 ; CLAUDE.md, offre et agenda du 14/11)"
+      },
+      "h2_modifies": {
+        "Quelques jours pour que la ligne réponde": "48 heures pour que la ligne réponde",
+        "Quelques jours pour répondre. Trois semaines pour bien répondre.": "48 heures pour répondre. Trois semaines pour bien répondre."
       }
     },
     "independants.html": {
@@ -404,30 +428,47 @@
     "nl/hoelang-tot-de-start.html": {
       "texte": [
         "Wat de enkele dagen vraagt, is wat eraan voorafgaat:",
-        "Dus ja: enkele dagen na het akkoord antwoordt de lijn"
+        "Dus ja: enkele dagen na het akkoord antwoordt de lijn",
+        "Enkele dagen om te antwoorden. Drie weken om juist te antwoorden.",
+        ">Enkele dagen en de lijn antwoordt",
+        "Enkele dagen en de lijn antwoordt."
       ],
       "faq": {
         "Hoelang voor de lijn antwoordt?": "texte devenu faux (brief du 14/11, section 5 ; CLAUDE.md, offre et agenda du 14/11)"
-      }
+      },
+      "h2_modifies": {
+        "Enkele dagen en de lijn antwoordt": "48 uur en de lijn antwoordt"
+      },
+      "h1": "retour de Bora du 16/11/2026 : le texte devenu faux est corrigé dans le titre aussi (« 48 uur om te antwoorden »)",
+      "desc": "retour de Bora du 16/11/2026 : le texte devenu faux est corrigé dans le titre aussi (« 48 uur en de lijn antwoordt »)",
+      "graph": [
+        "WebPage"
+      ]
     },
     "nl/hoeveel-kost-een-telefoonsecretariaat.html": {
       "texte": [
         "Geen commerciële koketterie; één voorbeeld volstaat.",
-        "Wat wij wél garanderen: geen verborgen kosten, geen toeslag voor avonden of weekends, en niets te installeren bij u."
+        "Wat wij wél garanderen: geen verborgen kosten, geen toeslag voor avonden of weekends, en niets te installeren bij u.",
+        ">Waarom hier geen bedrag staat"
       ],
       "faq": {
         "Factureert u per oproep of per forfait?": "texte devenu faux (brief du 14/11, section 5 ; CLAUDE.md, offre et agenda du 14/11)",
         "Zijn er opstartkosten?": "texte devenu faux (brief du 14/11, section 5 ; CLAUDE.md, offre et agenda du 14/11)",
         "Wat als mijn volume in het seizoen ontploft?": "texte devenu faux (brief du 14/11, section 5 ; CLAUDE.md, offre et agenda du 14/11)"
+      },
+      "h2_modifies": {
+        "Waarom hier geen bedrag staat": "Waarom hier drie bedragen staan"
       }
     },
     "nl/installatiekosten.html": {
       "texte": [
         "Wij publiceren geen bedragen op deze site, en deze pagina is geen uitzondering. De modaliteiten — ook het al dan niet bestaan van opstartkosten — staan in uw voorstel, na een blik op uw echte activiteit.",
-        "Als er een opstartpost is, betaalt die configuratietijd, geen materiaal."
+        "Als er een opstartpost is, betaalt die configuratietijd, geen materiaal.",
+        "Enkele dagen om te antwoorden, drie weken om goed te antwoorden."
       ],
       "faq": {
-        "Zijn er opstartkosten?": "texte devenu faux (brief du 14/11, section 5 ; CLAUDE.md, offre et agenda du 14/11)"
+        "Zijn er opstartkosten?": "texte devenu faux (brief du 14/11, section 5 ; CLAUDE.md, offre et agenda du 14/11)",
+        "Hoelang tot de eerste behandelde oproep?": "texte devenu faux (brief du 14/11, section 5 ; CLAUDE.md, offre et agenda du 14/11)"
       }
     },
     "nl/is-het-legaal-in-belgie.html": {
@@ -483,13 +524,25 @@
         "quand une capacité n'existe pas — la synchronisation avec un agenda externe, par exemple — il y a une phrase qui le dit",
         "Numéro belgeVous gardez le vôtre. Rien ne bouge pour vos clients.",
         "Horaires et gardeVos heures, vos exceptions, vos congés — appliqués à la lettre.",
-        "Aucune synchronisation avec un agenda externe. L'agent écrit les rendez-vous dans l'agenda de Celya, que vous consultez depuis un navigateur. Il n'écrit pas dans Google Agenda ni dans Outlook, et nous n'avons pas de page « intégrations » — c'est une exclusion volontaire, pas un oubli.\nAucun appel sortant, aucune campagne, aucun SMS, aucun e-mail vers vos clients. Celya répond au téléphone ; elle ne prospecte pas et ne relance personne à votre place.\nAucune évaluation médicale. L'agent n'apprécie aucun symptôme et ne prend aucune décision clinique : il applique les critères de transfert écrits par le cabinet.\nAucun engagement contractuel pris à votre place. Il annonce ce que vous l'avez autorisé à annoncer et bascule sur une prise de message dès qu'une demande dépasse ce périmètre."
+        "Aucune synchronisation avec un agenda externe. L'agent écrit les rendez-vous dans l'agenda de Celya, que vous consultez depuis un navigateur. Il n'écrit pas dans Google Agenda ni dans Outlook, et nous n'avons pas de page « intégrations » — c'est une exclusion volontaire, pas un oubli.\nAucun appel sortant, aucune campagne, aucun SMS, aucun e-mail vers vos clients. Celya répond au téléphone ; elle ne prospecte pas et ne relance personne à votre place.\nAucune évaluation médicale. L'agent n'apprécie aucun symptôme et ne prend aucune décision clinique : il applique les critères de transfert écrits par le cabinet.\nAucun engagement contractuel pris à votre place. Il annonce ce que vous l'avez autorisé à annoncer et bascule sur une prise de message dès qu'une demande dépasse ce périmètre.",
+        "Dix capacités, une seule façon d'en juger.",
+        "Dix capacités, chacune avec sa page : ce qu'elle fait exactement",
+        "Dix capacités en service, décrites une par une : rendez-vous",
+        "Le délai réelQuelques jours, puis trois semaines."
       ],
       "faq": {
         "Y a-t-il des intégrations avec Google Agenda ou Outlook ?": "texte devenu faux (brief du 14/11, section 5 ; CLAUDE.md, offre et agenda du 14/11)",
         "Est-ce que l'agent passe des appels sortants ?": "texte devenu faux (brief du 14/11, section 5 ; CLAUDE.md, offre et agenda du 14/11)",
         "Combien de temps pour tout configurer ?": "texte devenu faux (brief du 14/11, section 5 ; CLAUDE.md, offre et agenda du 14/11)"
-      }
+      },
+      "h2_modifies": {
+        "Dix capacités, une seule façon d'en juger.": "Quinze capacités, une seule façon d'en juger."
+      },
+      "desc": "retour de Bora du 16/11/2026 : le texte devenu faux est corrigé dans le titre aussi (quinze capacités, dont dix décrites une par une)",
+      "graph": [
+        "CollectionPage"
+      ],
+      "_h2_modifies": "retour de Bora du 16/11/2026 : le texte devenu faux est corrigé dans le titre aussi"
     },
     "nl/werking.html": {
       "texte": [
@@ -515,6 +568,121 @@
       "faq": {
         "Moet ik van praktijksoftware veranderen ?": "texte devenu faux (brief du 14/11, section 5 ; CLAUDE.md, offre et agenda du 14/11)"
       }
+    },
+    "contact.html": {
+      "desc": "audit gratuit retiré (décision de Bora du 16/11/2026) : « Ou demandez une démo »",
+      "graph": [
+        "WebPage"
+      ],
+      "texte": [
+        "Réserver l'audit gratuit"
+      ]
+    },
+    "nl/contact.html": {
+      "desc": "audit gratuit retiré (décision de Bora du 16/11/2026) : « Ou demandez une démo »",
+      "graph": [
+        "WebPage"
+      ],
+      "texte": [
+        "Boek de gratis audit"
+      ]
+    },
+    "en/contact.html": {
+      "desc": "audit gratuit retiré (décision de Bora du 16/11/2026) : « Ou demandez une démo »",
+      "graph": [
+        "WebPage"
+      ],
+      "texte": [
+        "Book the free audit"
+      ]
+    },
+    "questions.html": {
+      "texte": [
+        "Quelques jours pour répondre, trois semaines pour bien répondre."
+      ]
+    },
+    "que-dois-je-preparer.html": {
+      "texte": [
+        "Quelques jours pour répondre, trois semaines pour bien répondre."
+      ]
+    },
+    "faut-il-installer-quelque-chose.html": {
+      "texte": [
+        "Quelques jours pour répondre, trois semaines pour bien répondre."
+      ]
+    },
+    "puis-je-essayer-avant.html": {
+      "texte": [
+        "Quelques jours pour répondre, trois semaines pour bien répondre."
+      ]
+    },
+    "garages.html": {
+      "texte": [
+        "En quelques jours, elle connaît vos prestations"
+      ]
+    },
+    "chauffagistes.html": {
+      "texte": [
+        "Quelques jours suffisent."
+      ]
+    },
+    "pic-appels-saisonnier.html": {
+      "texte": [
+        "Il faut compter quelques jours pour rassembler"
+      ],
+      "faq": {
+        "Combien de temps avant faut-il s'y prendre ?": "texte devenu faux (brief du 14/11, section 5 ; CLAUDE.md, offre et agenda du 14/11)"
+      }
+    },
+    "je-rate-des-appels-clients.html": {
+      "faq": {
+        "En combien de temps est-ce en place ?": "texte devenu faux (brief du 14/11, section 5 ; CLAUDE.md, offre et agenda du 14/11)"
+      }
+    },
+    "metiers.html": {
+      "faq": {
+        "Combien de temps pour être opérationnel ?": "texte devenu faux (brief du 14/11, section 5 ; CLAUDE.md, offre et agenda du 14/11)"
+      }
+    },
+    "je-n-ai-pas-le-temps-de-repondre.html": {
+      "faq": {
+        "Combien de temps prend la mise en place ?": "texte devenu faux (brief du 14/11, section 5 ; CLAUDE.md, offre et agenda du 14/11)"
+      }
+    },
+    "conges-du-batiment-permanence-telephonique.html": {
+      "faq": {
+        "Combien de temps avant les congés faut-il s'y prendre ?": "texte devenu faux (brief du 14/11, section 5 ; CLAUDE.md, offre et agenda du 14/11)"
+      }
+    },
+    "nl/vragen.html": {
+      "texte": [
+        "Enkele dagen om te antwoorden, drie weken om goed te antwoorden."
+      ]
+    },
+    "nl/wat-moet-ik-voorbereiden.html": {
+      "texte": [
+        "Enkele dagen om te antwoorden, drie weken om juist te antwoorden."
+      ]
+    },
+    "nl/kan-ik-eerst-proberen.html": {
+      "texte": [
+        "Enkele dagen om te antwoorden."
+      ]
+    },
+    "privacy.html": {
+      "texte": [
+        "Dernière mise à jour : 28 octobre 2026"
+      ]
+    },
+    "nl/privacy.html": {
+      "texte": [
+        "Laatst bijgewerkt: 28 oktober 2026"
+      ]
+    },
+    "en/privacy.html": {
+      "texte": [
+        "Last updated: 28 October 2026"
+      ]
     }
   }
 }

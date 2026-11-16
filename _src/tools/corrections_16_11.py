@@ -397,6 +397,53 @@ add('nl/werking.html', [
   ('txt', '<!--@faq {"kick":"Veelgestelde vragen","id":"faq-werking"}-->', COMP + '<!--@faq {"kick":"Veelgestelde vragen","id":"faq-werking"}-->'),
 ])
 
+# ---------- retour de Bora du 16/11/2026 : « 48 heures » partout, H2 qui disent vrai ----------
+H48 = "48 heures"
+add('combien-de-temps-pour-etre-operationnel.html', [
+  ('txt', '>Quelques jours <em>pour que la ligne réponde</em></h2>', '>48 heures <em>pour que la ligne réponde</em></h2>'),
+  ('txt', 'Quelques jours pour répondre. <em>Trois semaines pour bien répondre.</em>', '48 heures pour répondre. <em>Trois semaines pour bien répondre.</em>'),
+])
+add('nl/hoelang-tot-de-start.html', [
+  ('txt', 'Enkele dagen om te antwoorden. Drie weken om <em>juist te antwoorden.</em>', '48 uur om te antwoorden. Drie weken om <em>juist te antwoorden.</em>'),
+  ('txt', '>Enkele dagen en <em>de lijn antwoordt</em></h2>', '>48 uur en <em>de lijn antwoordt</em></h2>'),
+  ('txt', 'Enkele dagen en de lijn antwoordt.', '48 uur en de lijn antwoordt.'),
+])
+add('combien-coute-un-secretariat-telephonique.html', [
+  ('txt', ">Pourquoi nous n'affichons <em>aucun chiffre</em></h2>", '>Pourquoi nous affichons <em>trois chiffres</em></h2>'),
+])
+add('nl/hoeveel-kost-een-telefoonsecretariaat.html', [
+  ('txt', '>Waarom hier <em>geen bedrag staat</em></h2>', '>Waarom hier <em>drie bedragen staan</em></h2>'),
+])
+add('fonctionnalites.html', [
+  ('txt', "<h2>Dix capacités, <em>une seule façon d'en juger.</em></h2>", "<h2>Quinze capacités, <em>une seule façon d'en juger.</em></h2>"),
+  ('txt', "Dix capacités, chacune avec sa page&nbsp;: ce qu'elle fait exactement", "Quinze capacités, dont dix avec leur propre page&nbsp;: ce qu'elle fait exactement"),
+  ('txt', "Dix capacités en service, décrites une par une : rendez-vous", "Quinze capacités en service, dont dix décrites une par une : rendez-vous"),
+  ('txt', '<meta property="og:description" content="Dix capacités en service, décrites une par une', '<meta property="og:description" content="Quinze capacités en service, dont dix décrites une par une'),
+  ('txt', '<meta name="twitter:description" content="Dix capacités en service, décrites une par une', '<meta name="twitter:description" content="Quinze capacités en service, dont dix décrites une par une'),
+  ('txt', "<b>Le délai réel</b><span>Quelques jours, puis trois semaines.</span>", "<b>Le délai réel</b><span>48 heures, puis trois semaines.</span>"),
+])
+for rel in ('questions.html', 'que-dois-je-preparer.html', 'faut-il-installer-quelque-chose.html', 'puis-je-essayer-avant.html'):
+    add(rel, [('txt', "<span>Quelques jours pour répondre, trois semaines pour bien répondre.</span>", "<span>48 heures pour répondre, trois semaines pour bien répondre.</span>")])
+add('garages.html', [('txt', "En quelques jours, elle connaît vos prestations", "En 48 heures, elle connaît vos prestations")])
+add('fiduciaires.html', [('txt', "<p>Quelques jours suffisent.", "<p>48 heures suffisent.")])
+add('chauffagistes.html', [('txt', "<p>Quelques jours suffisent.", "<p>48 heures suffisent.")])
+add('pic-appels-saisonnier.html', [
+  ('txt', "Il faut compter quelques jours pour rassembler", "Il faut compter 48 heures pour rassembler"),
+  ('faqtxt', "Combien de temps avant faut-il s'y prendre&nbsp;?", ("Quelques jours de configuration", "48 heures de configuration")),
+])
+add('je-rate-des-appels-clients.html', [('faqtxt', "En combien de temps est-ce en place&nbsp;?", ("prend quelques jours", "prend 48 heures"))])
+add('y-a-t-il-des-frais-d-installation.html', [('faqtxt', "Combien de temps avant le premier appel traité&nbsp;?", ("Quelques jours pour la configuration", "48 heures pour la configuration"))])
+add('metiers.html', [('faqtxt', "Combien de temps pour être opérationnel&nbsp;?", ("Quelques jours.", "48 heures."))])
+add('je-n-ai-pas-le-temps-de-repondre.html', [('faqtxt', "Combien de temps prend la mise en place&nbsp;?", ("Quelques jours pour la configuration", "48 heures pour la configuration"))])
+add('conges-du-batiment-permanence-telephonique.html', [('faqtxt', "Combien de temps avant les congés faut-il s'y prendre&nbsp;?", ("Comptez quelques jours pour la configuration", "Comptez 48 heures pour la configuration"))])
+add('nl/installatiekosten.html', [
+  ('faqtxt', "Hoelang tot de eerste behandelde oproep?", ("Enkele dagen voor de configuratie", "48 uur voor de configuratie")),
+  ('txt', "<span>Enkele dagen om te antwoorden, drie weken om goed te antwoorden.</span>", "<span>48 uur om te antwoorden, drie weken om goed te antwoorden.</span>"),
+])
+add('nl/vragen.html', [('txt', "<span>Enkele dagen om te antwoorden, drie weken om goed te antwoorden.</span>", "<span>48 uur om te antwoorden, drie weken om goed te antwoorden.</span>")])
+add('nl/wat-moet-ik-voorbereiden.html', [('txt', "<span>Enkele dagen om te antwoorden, drie weken om juist te antwoorden.</span>", "<span>48 uur om te antwoorden, drie weken om juist te antwoorden.</span>")])
+add('nl/kan-ik-eerst-proberen.html', [('txt', "<span>Enkele dagen om te antwoorden.</span>", "<span>48 uur om te antwoorden.</span>")])
+
 def ld(s):
     """texte tel qu'il s'écrit dans le JSON-LD : sans balise, sans entité."""
     return H.unescape(re.sub(r'<[^>]+>', '', s)).replace(' ', ' ')
@@ -435,6 +482,13 @@ def apply(rel, items, allow):
             m = re.search(r'(<summary>' + re.escape(old) + r'</summary><div class="a">)([\s\S]*?)(</div></details>)', body)
             if not m:
                 raise SystemExit(f'{rel} : question introuvable : {old}')
+            if kind == 'faqtxt':                  # remplacer un passage dans la réponse, pas toute la réponse
+                o, n = new
+                if o not in m.group(2):
+                    if n in m.group(2):
+                        continue                  # déjà appliquée
+                    raise SystemExit(f'{rel} : passage introuvable dans « {old} » : {o}')
+                new = m.group(2).replace(o, n)
             body = body[:m.start(2)] + new + body[m.end(2):]
             q = ld(old)
             m2 = re.search(r'("name": ' + flex(json.dumps(q, ensure_ascii=False)) + r', "acceptedAnswer": \{"@type": "Answer", "text": )("(?:[^"\\]|\\.)*")', head)

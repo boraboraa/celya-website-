@@ -4,7 +4,7 @@
  * d'ouverture et le sommaire, posé dans la colonne de droite. Texte inchangé. */
 import { one, esc } from '../lib/core.mjs';
 import { shell, ctaPair } from '../components/shell.mjs';
-import { badges, plugAside, ctaFinal, related } from '../components/blocks.mjs';
+import { plugAside, ctaFinal, related } from '../components/blocks.mjs';
 import { ico } from '../components/icons.mjs';
 import { crumbs } from './article.mjs';
 
@@ -22,7 +22,6 @@ ${crumbs(c)}
 <p class="art-meta">${one(page, 'meta')}</p>
 <div class="brief"><p class="label label-o">${t.read_brief}</p><p>${one(page, 'lede')}</p></div>
 ${ctaPair(c, { hero: true, sub: false })}
-${badges(c, 'badges-l')}
 ${fig ? `<figure class="art-fig">${fig}</figure>` : ''}
 <div class="art-body art-post">
 ${one(page, 'body')}

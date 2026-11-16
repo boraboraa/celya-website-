@@ -472,30 +472,6 @@
           "sous": "M. Peeters · contrôle avant CT"
         }
       },
-      "video": {
-        "mp4": "assets/video/celya-intro-1080.mp4",
-        "webm": "assets/video/celya-intro.webm",
-        "poster": "assets/video/celya-intro-poster.webp",
-        "duree": "0:37",
-        "titre": "Voir Celya en 37 secondes",
-        "tracks": [
-          {
-            "lang": "fr",
-            "label": "Français",
-            "src": "assets/video/celya-intro.fr.vtt"
-          },
-          {
-            "lang": "nl",
-            "label": "Nederlands",
-            "src": "assets/video/celya-intro.nl.vtt"
-          },
-          {
-            "lang": "en",
-            "label": "English",
-            "src": "assets/video/celya-intro.en.vtt"
-          }
-        ]
-      },
       "cards_p": "Une réceptionniste au téléphone, sans pause ni planning. Elle répond avec vos informations, règle ce qui peut l'être et vous prévient pour le reste.",
       "grid": [
         [
