@@ -70,6 +70,176 @@
         "Is there a setup fee?": "setup = one month of the plan (décision du 14/11)",
         "Do I have to commit for a fixed term?": "30-day free trial, no commitment (data/offre.json)"
       }
+    },
+    "prise-de-rendez-vous.html": {
+      "texte": [
+        "l'agent écrit dans l'agenda de Celya, pas dans Google Agenda ni dans Outlook.",
+        "Il n'y a aucune synchronisation avec un agenda externe. Vous consultez le vôtre depuis un navigateur, et c'est là que les rendez-vous apparaissent. Pour beaucoup d'indépendants et de petites structures, c'est sans conséquence : le seul agenda qui compte devient celui-là. Si vous tenez absolument à voir vos rendez-vous dans un outil externe, dites-le avant de signer — ce n'est pas ce que nous faisons aujourd'hui."
+      ],
+      "faq": {
+        "Est-ce que ça se synchronise avec Google Agenda ou Outlook ?": "texte devenu faux (brief du 14/11, section 5 ; CLAUDE.md, offre et agenda du 14/11)",
+        "Le client reçoit-il une confirmation ?": "texte devenu faux (brief du 14/11, section 5 ; CLAUDE.md, offre et agenda du 14/11)"
+      }
+    },
+    "prise-de-message.html": {
+      "texte": [
+        "Elle ne le transmet ni par SMS ni par e-mail à votre client, et ne le rappelle pas à votre place : l'agent ne passe aucun appel sortant."
+      ],
+      "faq": {
+        "L'agent peut-il envoyer le message par SMS ou par e-mail ?": "texte devenu faux (brief du 14/11, section 5 ; CLAUDE.md, offre et agenda du 14/11)"
+      }
+    },
+    "plan-de-charge.html": {
+      "faq": {
+        "Est-ce que ça se synchronise avec mon logiciel de réservation ?": "texte devenu faux (brief du 14/11, section 5 ; CLAUDE.md, offre et agenda du 14/11)"
+      }
+    },
+    "est-ce-legal-en-belgique.html": {
+      "texte": [
+        "Aucun appel sortant, aucune campagne, aucun SMS, aucun e-mail vers vos clients — ni techniquement, ni contractuellement."
+      ]
+    },
+    "securite.html": {
+      "texte": [
+        "Aucun appel sortant, aucun SMS, aucun e-mail"
+      ]
+    },
+    "traitement-des-donnees.html": {
+      "texte": [
+        "L'agent ne passe aucun appel sortant et n'envoie ni SMS ni e-mail."
+      ]
+    },
+    "fiduciaires.html": {
+      "texte": [
+        "aucun appel sortant, aucun SMS, aucun e-mail."
+      ],
+      "faq": {
+        "Est-ce qu'elle peut réclamer des documents manquants ?": "texte devenu faux (brief du 14/11, section 5 ; CLAUDE.md, offre et agenda du 14/11)"
+      }
+    },
+    "syndics.html": {
+      "texte": [
+        "aucun appel sortant, aucun SMS, aucun e-mail."
+      ],
+      "faq": {
+        "Est-ce qu'elle envoie des e-mails ou des SMS aux copropriétaires ?": "texte devenu faux (brief du 14/11, section 5 ; CLAUDE.md, offre et agenda du 14/11)"
+      }
+    },
+    "numero-belge.html": {
+      "texte": [
+        "C'est possible, et cela se discute au moment de la proposition."
+      ],
+      "faq": {
+        "Puis-je avoir un numéro fourni par vous ?": "texte devenu faux (brief du 14/11, section 5 ; CLAUDE.md, offre et agenda du 14/11)"
+      }
+    },
+    "plusieurs-personnes-plusieurs-agendas.html": {
+      "texte": [
+        "Vous utilisez déjà un logiciel de gestion pour vos plannings ? Vous le gardez. Rien ne vous demande d'en changer, d'en sortir vos données, ou d'apprendre autre chose.",
+        "Celya prend les appels que vous ne prenez pas, et vous transmet le rendez-vous, la personne concernée et le motif. Vos plannings restent là où ils sont, tenus comme vous les tenez.",
+        "Une connexion directe à votre outil peut être étudiée — c'est une discussion à avoir au téléphone, parce que la réponse dépend entièrement de ce que vous utilisez et de la façon dont vous vous en servez. Nous préférons en parler que de l'écrire ici."
+      ],
+      "faq": {
+        "Est-ce que je dois changer de logiciel ?": "texte devenu faux (brief du 14/11, section 5 ; CLAUDE.md, offre et agenda du 14/11)",
+        "Une connexion à mon outil est-elle possible ?": "texte devenu faux (brief du 14/11, section 5 ; CLAUDE.md, offre et agenda du 14/11)",
+        "Combien de personnes peut-on gérer ?": "texte devenu faux (brief du 14/11, section 5 ; CLAUDE.md, offre et agenda du 14/11)"
+      }
+    },
+    "y-a-t-il-des-frais-d-installation.html": {
+      "texte": [
+        "Nous n'affichons aucun montant sur ce site, et cette page ne fera pas exception. Les modalités — y compris l'existence ou non de frais de mise en service — figurent dans votre proposition, après avoir regardé votre activité réelle.",
+        "S'il y a un poste de mise en service, il paie du temps de configuration, pas du matériel."
+      ],
+      "faq": {
+        "Y a-t-il des frais de mise en service ?": "texte devenu faux (brief du 14/11, section 5 ; CLAUDE.md, offre et agenda du 14/11)"
+      }
+    },
+    "combien-coute-un-secretariat-telephonique.html": {
+      "texte": [
+        "Ce n'est pas une coquetterie commerciale, et l'explication tient en un exemple.",
+        "Ce que nous garantissons en revanche : pas de frais cachés, pas de supplément d'amplitude horaire, et rien à installer chez vous."
+      ],
+      "faq": {
+        "Vous facturez à l'appel ou au forfait ?": "texte devenu faux (brief du 14/11, section 5 ; CLAUDE.md, offre et agenda du 14/11)",
+        "Y a-t-il des frais de mise en service ?": "texte devenu faux (brief du 14/11, section 5 ; CLAUDE.md, offre et agenda du 14/11)",
+        "Que se passe-t-il si mon volume explose en saison ?": "texte devenu faux (brief du 14/11, section 5 ; CLAUDE.md, offre et agenda du 14/11)"
+      }
+    },
+    "comment-se-passe-la-facturation.html": {
+      "texte": [
+        "Nous n'affichons aucun montant sur ce site. Ce que nous pouvons dire, c'est ce qui fait varier une proposition d'un client à l'autre.",
+        "La complexité de la configuration : un métier avec trois motifs standards et un métier avec des durées variables, plusieurs praticiens et des règles d'urgence ne demandent pas le même travail de mise en service.",
+        "C'est pour cela que la proposition vient après avoir regardé votre activité, et pas avant."
+      ],
+      "faq": {
+        "À quelle fréquence suis-je facturé ?": "texte devenu faux (brief du 14/11, section 5 ; CLAUDE.md, offre et agenda du 14/11)",
+        "Qu'est-ce qui fait varier le prix ?": "texte devenu faux (brief du 14/11, section 5 ; CLAUDE.md, offre et agenda du 14/11)",
+        "Pourquoi n'affichez-vous pas de grille ?": "texte devenu faux (brief du 14/11, section 5 ; CLAUDE.md, offre et agenda du 14/11)"
+      }
+    },
+    "si-je-depasse-mon-volume.html": {
+      "texte": [
+        "Chez nous, les modalités figurent dans votre proposition, et elles se discutent après avoir regardé votre année plutôt que votre semaine — précisément pour éviter un seuil calé sur un mois qui ne vous ressemble pas."
+      ],
+      "faq": {
+        "Y a-t-il un volume inclus ?": "texte devenu faux (brief du 14/11, section 5 ; CLAUDE.md, offre et agenda du 14/11)",
+        "Que se passe-t-il au-delà ?": "texte devenu faux (brief du 14/11, section 5 ; CLAUDE.md, offre et agenda du 14/11)"
+      }
+    },
+    "est-ce-que-je-paie-si-personne-n-appelle.html": {
+      "texte": [
+        "Nous n'affichons aucun montant sur ce site et les modalités de votre proposition se discutent après avoir regardé votre activité. Ce que nous pouvons faire ici, c'est expliquer ce que chaque structure produit."
+      ],
+      "faq": {
+        "Je paie même sans appel ?": "texte devenu faux (brief du 14/11, section 5 ; CLAUDE.md, offre et agenda du 14/11)",
+        "Y a-t-il un volume inclus ?": "texte devenu faux (brief du 14/11, section 5 ; CLAUDE.md, offre et agenda du 14/11)"
+      }
+    },
+    "combien-de-temps-pour-etre-operationnel.html": {
+      "texte": [
+        "Ce qui prend les quelques jours, c'est",
+        "Donc oui : quelques jours après l'accord, la ligne répond"
+      ],
+      "faq": {
+        "Combien de temps avant que la ligne réponde ?": "texte devenu faux (brief du 14/11, section 5 ; CLAUDE.md, offre et agenda du 14/11)"
+      }
+    },
+    "independants.html": {
+      "faq": {
+        "Est-ce qu'elle parle néerlandais ?": "texte devenu faux (brief du 14/11, section 5 ; CLAUDE.md, offre et agenda du 14/11)"
+      },
+      "texte": [
+        "En français, néerlandais et anglais."
+      ],
+      "graph": [
+        "Service"
+      ],
+      "_graph": "Service.description : « français, néerlandais et anglais » → « français et néerlandais » (CLAUDE.md : aucune promesse de langue au-delà de FR + NL)"
+    },
+    "restaurants.html": {
+      "texte": [
+        "Français, néerlandais ou anglais",
+        "en français, néerlandais et anglais."
+      ],
+      "graph": [
+        "Service"
+      ],
+      "_graph": "Service.description : « français, néerlandais et anglais » → « français et néerlandais » (CLAUDE.md : aucune promesse de langue au-delà de FR + NL)"
+    },
+    "blog/cabinets-serveur-vocal-appels.html": {
+      "texte": [
+        "elle décroche et elle parle, en français, en néerlandais ou en anglais, selon la langue du patient."
+      ]
+    },
+    "blog/independants-rappels-oublies.html": {
+      "texte": [
+        "Elle parle français, néerlandais et anglais, et bascule automatiquement dans la langue de l'appelant."
+      ]
+    },
+    "blog/restaurants-reservations-telephone.html": {
+      "texte": [
+        "Français, néerlandais, anglais : elle bascule automatiquement dans la langue de l'appelant."
+      ]
     }
   }
 }

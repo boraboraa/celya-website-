@@ -19,7 +19,7 @@ export function crumbs(c) {
     const u = String(url || '').replace(/^https:\/\/celya\.be\//, '');
     return c.root + u || './';
   };
-  return `<nav class="crumbs" aria-label="Fil d'Ariane"><ol>${items.map((it, i) => {
+  return `<nav class="crumbs" aria-label="${esc(c.t.crumbs)}"><ol>${items.map((it, i) => {
     const name = esc(it.name);
     return i === items.length - 1 ? `<li aria-current="page">${name}</li>` : `<li><a href="${rel(it.item)}">${name}</a></li>`;
   }).join('')}</ol></nav>`;
@@ -31,16 +31,31 @@ export default function article(c) {
 
   let body = '';
   const tail = [];
-  for (const b of page.seq) {
+  /* la queue de page : la dernière suite de blocs FAQ / liens / appel final.
+   * Une FAQ placée plus haut (modèles de messages, etc.) reste à sa place, dans la colonne. */
+  const seq = page.seq.filter((b) => ['section', 'pull', 'faq', 'related', 'cta', 'widget'].includes(b.name));
+  let cut = seq.length;
+  while (cut > 0 && ['faq', 'related', 'cta'].includes(seq[cut - 1].name)) cut--;
+  seq.forEach((b, i) => {
+    if (i >= cut) { tail.push(b); return; }
     if (b.name === 'section') {
-      const { h2, body: txt } = splitH2(b.html);
+      let { h2, body: txt } = splitH2(b.html);
+      if (!h2.replace(/<[^>]+>/g, '').trim()) h2 = '';   /* section sans titre (bandeau d'ouverture) */
       body += `<section class="art-s">${b.attrs.kick ? `<p class="label">${b.attrs.kick}</p>` : ''}${h2}\n${txt}</section>\n`;
+    } else if (b.name === 'widget') {
+      body += `<div class="art-widget">${b.html}</div>\n`;
     } else if (b.name === 'pull') {
       body += `<blockquote class="pull"><p>${b.html}</p></blockquote>\n`;
-    } else if (['faq', 'related', 'cta'].includes(b.name)) {
-      tail.push(b);
+    } else if (b.name === 'faq') {
+      const { h2, body: txt } = splitH2(b.html);
+      body += `<section class="art-s"${b.attrs.id ? ` id="${b.attrs.id}"` : ''}>${b.attrs.kick ? `<p class="label">${b.attrs.kick}</p>` : ''}${h2}\n<div class="faq-l">${txt}</div></section>\n`;
+    } else if (b.name === 'related') {
+      const { h2, body: txt } = splitH2(b.html);
+      const links = txt.replace(/<a href="([^"]*)"><b>([\s\S]*?)<\/b><span>([\s\S]*?)<\/span><\/a>/g,
+        (m, h, bb, sp) => `<a class="rel" href="${h}"><b>${bb}</b><span>${sp}</span>${ico.arrow}</a>`);
+      body += `<section class="art-s">${b.attrs.kick ? `<p class="label">${b.attrs.kick}</p>` : ''}${h2}\n<div class="rels rels-col">${links}</div></section>\n`;
     }
-  }
+  });
 
   const tailHTML = tail.map((b) => b.name === 'faq' ? faq(c, b) : b.name === 'related' ? related(c, b) : ctaFinal(c, b)).join('\n');
 

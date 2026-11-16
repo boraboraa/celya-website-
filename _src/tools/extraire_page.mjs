@@ -130,7 +130,13 @@ function section(el, cls) {
   if (mlist) {
     const rows = [...mlist[1].matchAll(/<a class="mrow" href="([^"]*)">[\s\S]*?<b>([\s\S]*?)<\/b><span>([\s\S]*?)<\/span>[\s\S]*?<\/a>/g)]
       .map((r) => `<a href="${r[1]}"><b>${r[2]}</b><span>${r[3]}</span></a>`);
-    return { name: 'related', attrs: { kick }, html: `<h2>${h2}</h2>\n${rows.join('\n')}${mlist[2] ? '\n' + mlist[2] : ''}` };
+    /* une section qui porte à la fois du texte et une liste de liens : le texte
+     * d'abord (section), puis les liens sans titre (related) — rien ne se perd */
+    const ai = el.indexOf('<div class="access-txt">');
+    const prose = ai >= 0 && ai < el.indexOf('<div class="mlist">') ? dedent(inner(outer(el, ai))) : '';
+    const rel = { name: 'related', attrs: { kick: prose ? '' : kick }, html: `${prose ? '' : `<h2>${h2}</h2>\n`}${rows.join('\n')}${mlist[2] ? '\n' + mlist[2] : ''}` };
+    if (prose) return [{ name: 'section', attrs: { kick, ...(id ? { id } : {}) }, html: `<h2${id ? ` id="${id}"` : ''}>${h2}</h2>\n${prose}` }, rel];
+    return rel;
   }
   const body = /<div class="access-txt">([\s\S]*?)<\/div>\s*<\/div>\s*<\/section>$/.exec(el);
   const h2tag = `<h2${id ? ` id="${id}"` : ''}>${h2}</h2>`;
@@ -190,6 +196,8 @@ export function harvest(el) {
 
 function extract(layout, rel) {
   const src = fs.readFileSync(path.join(ROOT, rel), 'utf8');
+  /* garde-fou : une page déjà générée n'a plus l'ancien contenu (CLAUDE.md) */
+  if (src.includes('celya.css')) throw new Error(`${rel} est déjà une page générée : restaurer l'ancienne depuis git avant d'extraire`);
   const lang = /<html lang="([a-z]+)"/.exec(src)[1];
   const main = src.slice(src.indexOf('<main'), src.indexOf('</main>'));
   const h = hero(main);
@@ -206,7 +214,7 @@ function extract(layout, rel) {
     .sort((a, b) => a.at - b.at);
   for (const s of secs) {
     const b = s.study ? study(s.el) : section(s.el, s.cls);
-    if (b) blocks.push([b.name, b.attrs, b.html]);
+    for (const x of [].concat(b || [])) blocks.push([x.name, x.attrs, x.html]);
   }
   const out = [`<!--@page ${JSON.stringify(meta)}-->`];
   for (const [n, a, html] of blocks) out.push(`<!--@${n}${Object.keys(a).length ? ' ' + JSON.stringify(a) : ''}-->\n${html}`);

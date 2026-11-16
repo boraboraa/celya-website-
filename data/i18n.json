@@ -686,7 +686,9 @@
       "confirmation": "Capture d'écran : un client confirme son rendez-vous sur WhatsApp",
       "consignes": "Capture d'écran : une consigne envoyée à Janet sur WhatsApp",
       "agenda": "Capture d'écran : un rendez-vous posé par Janet dans Google Agenda"
-    }
+    },
+    "crumbs": "Fil d'Ariane",
+    "toc": "Sommaire"
   },
   "nl": {
     "base": "nl/",
@@ -1327,7 +1329,9 @@
       "confirmation": "Schermafbeelding: een klant bevestigt zijn afspraak via WhatsApp",
       "consignes": "Schermafbeelding: een instructie aan Janet via WhatsApp",
       "agenda": "Schermafbeelding: een afspraak die Janet in Google Agenda zette"
-    }
+    },
+    "crumbs": "Kruimelpad",
+    "toc": "Inhoud"
   },
   "en": {
     "base": "en/",
@@ -1877,6 +1881,8 @@
       "confirmation": "Screenshot: a customer confirms their booking on WhatsApp",
       "consignes": "Screenshot: an instruction sent to Janet on WhatsApp",
       "agenda": "Screenshot: a booking Janet added to Google Calendar"
-    }
+    },
+    "crumbs": "Breadcrumb",
+    "toc": "Contents"
   }
 }
