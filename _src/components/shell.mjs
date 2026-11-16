@@ -117,13 +117,15 @@ ${cols}
 
 /* ---------- barre d'appel mobile (sous 720 px) ---------- */
 
-function mbar(c) {
-  return `<div class="mbar" aria-label="${esc(c.t.mbar_label)}" role="region">${callBtn(c, 'btn-orange')}${demoBtn(c, 'btn-line')}</div>`;
+/** second : [href, libellé] — pages d'atterrissage : « Être rappelé », vers le formulaire de la page */
+function mbar(c, second) {
+  const b2 = second ? `<a class="btn btn-line" href="${second[0]}">${second[1]}</a>` : demoBtn(c, 'btn-line');
+  return `<div class="mbar" aria-label="${esc(c.t.mbar_label)}" role="region">${callBtn(c, 'btn-orange')}${b2}</div>`;
 }
 
 /* ---------- page complète ---------- */
 
-export function shell(c, { headHTML, main, bare = false, bodyClass = '' }) {
+export function shell(c, { headHTML, main, bare = false, bodyClass = '', mbarSecond = null }) {
   /* scripts propres à la page (<!--@script-->), après celya.js */
   const own = (c.page.blocks.script || []).map((b) => b.html).join('\n');
   return `<!DOCTYPE html>
@@ -136,7 +138,7 @@ ${header(c, { bare })}
 ${main}
 </main>
 ${footer(c, { bare })}
-${/\bp-demo\b/.test(bodyClass) ? '' : mbar(c)}
+${/\bp-demo\b/.test(bodyClass) ? '' : mbar(c, mbarSecond)}
 <script src="${c.root}celya.js" defer></script>
 ${own ? own + '\n' : ''}</body>
 </html>

@@ -63,9 +63,14 @@
     var io=new IntersectionObserver(function(es){
       es.forEach(function(e){e.target.classList.toggle('anim-off',!e.isIntersecting);});
     });
+    /* une scène qui se joue à plusieurs éléments ([data-anim-root], la scène
+       « Un appel, de bout en bout ») se met en pause d'un bloc : sinon ses
+       morceaux se figeraient chacun à leur heure et ne seraient plus en phase */
+    document.querySelectorAll('[data-anim-root]').forEach(function(r){seen.push(r);r.classList.add('anim-off');io.observe(r);});
     document.getAnimations().forEach(function(a){
       var t=a.effect&&a.effect.target;
       if(!t||t.nodeType!==1||seen.indexOf(t)>=0)return;
+      if(t.closest&&t.closest('[data-anim-root]'))return;
       if(typeof CSSAnimation!=='undefined'&&!(a instanceof CSSAnimation))return;
       seen.push(t);t.classList.add('anim-off');io.observe(t);
     });
@@ -97,6 +102,9 @@
       v.classList.toggle('anim-off',!on);
       if(on)play();else v.pause();
     }).observe(hero);
+    /* pages d'atterrissage (data-hv="lp") : la vidéo seule, sans l'effet au
+       défilement — l'exception d'opacité du 15/11/2026 ne couvre que les accueils */
+    if(hero.getAttribute('data-hv')==='lp')return;
     /* mesures : une fois, puis à chaque resize */
     var H=0,dx=0,dy=0,S=72/28;
     function measure(){

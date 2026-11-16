@@ -5,7 +5,7 @@
  * encadré « Comment ça se branche », appel à Janet. Contenu inchangé. */
 import { one, all, esc } from '../lib/core.mjs';
 import { shell, ctaPair } from '../components/shell.mjs';
-import { plugAside, faq, ctaFinal, related, splitH2, agenda, orders, confirm } from '../components/blocks.mjs';
+import { plugAside, faq, ctaFinal, related, splitH2, agenda, orders, confirm, scene, sceneText } from '../components/blocks.mjs';
 import { ico } from '../components/icons.mjs';
 
 /** Fil d'Ariane visible, lu dans le BreadcrumbList du @graph : jamais inventé. */
@@ -38,12 +38,16 @@ export default function article(c) {
   const seq = page.seq.filter((b) => ['section', 'pull', 'faq', 'related', 'cta', 'widget'].includes(b.name));
   let cut = seq.length;
   while (cut > 0 && ['faq', 'related', 'cta'].includes(seq[cut - 1].name)) cut--;
+  /* la scène « Un appel, de bout en bout », version compacte (téléphone seul),
+   * après la première section (lot conversion du 16/11/2026) */
+  let sceneDone = false;
   seq.forEach((b, i) => {
     if (i >= cut) { tail.push(b); return; }
     if (b.name === 'section') {
       let { h2, body: txt } = splitH2(b.html);
       if (!h2.replace(/<[^>]+>/g, '').trim()) h2 = '';   /* section sans titre (bandeau d'ouverture) */
       body += `<section class="art-s">${b.attrs.kick ? `<p class="label">${b.attrs.kick}</p>` : ''}${h2}\n${txt}</section>\n`;
+      if (!sceneDone) { sceneDone = true; body += scene(c, sceneText(c, null), { compact: true }) + '\n'; }
     } else if (b.name === 'widget') {
       body += `<div class="art-widget">${b.html}</div>\n`;
     } else if (b.name === 'pull') {

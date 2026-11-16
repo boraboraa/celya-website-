@@ -663,7 +663,96 @@
       "agenda": "Capture d'écran : un rendez-vous posé par Janet dans Google Agenda"
     },
     "crumbs": "Fil d'Ariane",
-    "toc": "Sommaire"
+    "toc": "Sommaire",
+    "scene": {
+      "label": "Ce que fait Janet",
+      "h3": "Un appel, <em>de bout en bout.</em>",
+      "etapes": [
+        [
+          "L'appel",
+          "Elle décroche et comprend la demande."
+        ],
+        [
+          "Le rendez-vous se pose",
+          "Dans votre agenda, sur un créneau libre."
+        ],
+        [
+          "Vous êtes prévenu",
+          "Le résumé de l'appel arrive sur votre WhatsApp."
+        ],
+        [
+          "Le client confirme",
+          "Confirmer, déplacer ou annuler : en un clic."
+        ],
+        [
+          "Vous donnez une consigne",
+          "Par WhatsApp, en une phrase."
+        ]
+      ],
+      "tags": [
+        "L'appel",
+        "Votre agenda",
+        "Votre WhatsApp",
+        "Chez votre client",
+        "Votre consigne"
+      ],
+      "qui": [
+        "Client",
+        "Janet",
+        "Vous"
+      ],
+      "jour": "Jeudi 19 novembre",
+      "jour_court": "jeudi 19 nov.",
+      "pris": "Pris",
+      "libre": "Libre",
+      "resume_t": "Résumé de l'appel",
+      "confirme": "Confirmé",
+      "rappel": "Rappel envoyé la veille.",
+      "consigne": [
+        "Bloque-moi la journée de demain.",
+        "C'est bloqué. Personne ne pourra réserver demain."
+      ],
+      "sous": "Celya",
+      "generique": {
+        "appel": [
+          "Bonjour, je voudrais un rendez-vous cette semaine.",
+          "Je peux vous proposer jeudi 19 novembre à 10 h.",
+          "Parfait."
+        ],
+        "heures": [
+          "9:00",
+          "10:00",
+          "11:00"
+        ],
+        "motif": "Premier rendez-vous",
+        "resume": [
+          [
+            "Client",
+            "Mme Lambert"
+          ],
+          [
+            "Motif",
+            "Premier rendez-vous"
+          ],
+          [
+            "Créneau",
+            "Jeudi 19 nov. · 10:00"
+          ]
+        ],
+        "confirmation": "Bonjour Mme Lambert, votre rendez-vous est enregistré : jeudi 19 novembre à 10:00."
+      }
+    },
+    "try_label": "Le test le plus simple",
+    "try_h2": "Appelez-la, <em>comme un client.</em>",
+    "mbar_callback": "Être rappelé",
+    "cases_generique": {
+      "rdv_t": "Un rendez-vous",
+      "rdv_p": "Le créneau est réservé pendant l'appel, dans votre agenda.",
+      "rappel_t": "Une question",
+      "rappel_p": "Horaires, adresse, accès : elle répond avec vos informations.",
+      "urgent_t": "Une urgence",
+      "urgent_p": "Ce qui ne peut pas attendre : elle vous passe l'appel."
+    }
   },
   "nl": {
     "base": "nl/",
@@ -1305,7 +1394,96 @@
       "agenda": "Schermafbeelding: een afspraak die Janet in Google Agenda zette"
     },
     "crumbs": "Kruimelpad",
-    "toc": "Inhoud"
+    "toc": "Inhoud",
+    "scene": {
+      "label": "Wat Janet doet",
+      "h3": "Eén gesprek, <em>van begin tot eind.</em>",
+      "etapes": [
+        [
+          "Het gesprek",
+          "Ze neemt op en begrijpt de vraag."
+        ],
+        [
+          "De afspraak staat vast",
+          "In uw agenda, op een vrij moment."
+        ],
+        [
+          "U wordt verwittigd",
+          "De samenvatting van het gesprek komt op uw WhatsApp."
+        ],
+        [
+          "De klant bevestigt",
+          "Bevestigen, verplaatsen of annuleren: met één klik."
+        ],
+        [
+          "U geeft een instructie",
+          "Via WhatsApp, in één zin."
+        ]
+      ],
+      "tags": [
+        "Het gesprek",
+        "Uw agenda",
+        "Uw WhatsApp",
+        "Bij uw klant",
+        "Uw instructie"
+      ],
+      "qui": [
+        "Klant",
+        "Janet",
+        "U"
+      ],
+      "jour": "Donderdag 19 november",
+      "jour_court": "do 19 nov.",
+      "pris": "Bezet",
+      "libre": "Vrij",
+      "resume_t": "Samenvatting van het gesprek",
+      "confirme": "Bevestigd",
+      "rappel": "Herinnering de dag voordien verstuurd.",
+      "consigne": [
+        "Blokkeer morgen de hele dag voor mij.",
+        "Dat is geblokkeerd. Niemand kan morgen nog reserveren."
+      ],
+      "sous": "Celya",
+      "generique": {
+        "appel": [
+          "Goedendag, ik had graag een afspraak deze week.",
+          "Ik kan u donderdag 19 november om 10 uur voorstellen.",
+          "Perfect."
+        ],
+        "heures": [
+          "9.00",
+          "10.00",
+          "11.00"
+        ],
+        "motif": "Eerste afspraak",
+        "resume": [
+          [
+            "Klant",
+            "mevr. Lambert"
+          ],
+          [
+            "Reden",
+            "Eerste afspraak"
+          ],
+          [
+            "Moment",
+            "Do 19 nov. · 10.00 u"
+          ]
+        ],
+        "confirmation": "Goedendag mevr. Lambert, uw afspraak is genoteerd: donderdag 19 november om 10.00 u."
+      }
+    },
+    "try_label": "De eenvoudigste test",
+    "try_h2": "Bel haar, <em>zoals een klant.</em>",
+    "mbar_callback": "Bel mij terug",
+    "cases_generique": {
+      "rdv_t": "Een afspraak",
+      "rdv_p": "Het moment wordt tijdens het gesprek vastgelegd, in uw agenda.",
+      "rappel_t": "Een vraag",
+      "rappel_p": "Openingsuren, adres, bereikbaarheid: ze antwoordt met uw informatie.",
+      "urgent_t": "Iets dringends",
+      "urgent_p": "Wat niet kan wachten: ze schakelt het gesprek naar u door."
+    }
   },
   "en": {
     "base": "en/",
@@ -1856,6 +2034,95 @@
       "agenda": "Screenshot: a booking Janet added to Google Calendar"
     },
     "crumbs": "Breadcrumb",
-    "toc": "Contents"
+    "toc": "Contents",
+    "scene": {
+      "label": "What Janet does",
+      "h3": "One call, <em>end to end.</em>",
+      "etapes": [
+        [
+          "The call",
+          "She answers and understands the request."
+        ],
+        [
+          "The booking lands",
+          "In your calendar, on a free slot."
+        ],
+        [
+          "You're informed",
+          "The call summary arrives on your WhatsApp."
+        ],
+        [
+          "The customer confirms",
+          "Confirm, reschedule or cancel: one tap."
+        ],
+        [
+          "You give an instruction",
+          "On WhatsApp, in one sentence."
+        ]
+      ],
+      "tags": [
+        "The call",
+        "Your calendar",
+        "Your WhatsApp",
+        "With your customer",
+        "Your instruction"
+      ],
+      "qui": [
+        "Customer",
+        "Janet",
+        "You"
+      ],
+      "jour": "Thursday 19 November",
+      "jour_court": "Thu 19 Nov",
+      "pris": "Busy",
+      "libre": "Free",
+      "resume_t": "Call summary",
+      "confirme": "Confirmed",
+      "rappel": "Reminder sent the day before.",
+      "consigne": [
+        "Block out tomorrow for me.",
+        "Done. Nobody can book tomorrow."
+      ],
+      "sous": "Celya",
+      "generique": {
+        "appel": [
+          "Hello, I'd like an appointment this week.",
+          "I can offer you Thursday 19 November at 10 am.",
+          "Perfect."
+        ],
+        "heures": [
+          "9:00",
+          "10:00",
+          "11:00"
+        ],
+        "motif": "First appointment",
+        "resume": [
+          [
+            "Customer",
+            "Mrs Lambert"
+          ],
+          [
+            "Reason",
+            "First appointment"
+          ],
+          [
+            "Slot",
+            "Thu 19 Nov · 10:00"
+          ]
+        ],
+        "confirmation": "Hello Mrs Lambert, your appointment is booked: Thursday 19 November at 10:00."
+      }
+    },
+    "try_label": "The simplest test",
+    "try_h2": "Call her, <em>like a customer would.</em>",
+    "mbar_callback": "Call me back",
+    "cases_generique": {
+      "rdv_t": "A booking",
+      "rdv_p": "The slot is booked during the call, in your calendar.",
+      "rappel_t": "A question",
+      "rappel_p": "Opening hours, address, directions: she answers with your information.",
+      "urgent_t": "An emergency",
+      "urgent_p": "What can't wait: she puts the call through to you."
+    }
   }
 }

@@ -10,7 +10,14 @@
  *  3. Hors écran : video.paused et aucune animation CSS qui tourne hors écran.
  *  4. Poids du premier écran sur téléphone (390×844) : sous 1,2 Mo.
  *
- *   node tests/heros.mjs [index.html nl/index.html en/index.html] */
+ *  Pages d'atterrissage (lot conversion du 16/11/2026) : mêmes contrôles, plus
+ *  les libellés du formulaire translucide dans la mesure de contraste, à 1440,
+ *  768, 390 et 360 px ; un bouton visible au-dessus de 860 px (le formulaire
+ *  est à côté), deux en dessous ; le bouton du formulaire compte parmi ceux
+ *  que rien ne doit recouvrir ; rien ne dépasse (scrollWidth == innerWidth) ;
+ *  aucun effet au défilement (l'exception du 15/11 reste aux accueils).
+ *
+ *   node tests/heros.mjs [pages…]   (défaut : les trois accueils et les quatre pages d'atterrissage) */
 import fs from 'node:fs';
 import path from 'node:path';
 import http from 'node:http';
@@ -82,51 +89,64 @@ async function page(browser, base, rel, { w, h, banner }) {
   return { ctx, p };
 }
 
-const pages = process.argv.slice(2).length ? process.argv.slice(2) : ['index.html', 'nl/index.html', 'en/index.html'];
+const pages = process.argv.slice(2).length ? process.argv.slice(2) : ['index.html', 'nl/index.html', 'en/index.html', 'lp/garages.html', 'lp/ne-plus-rater-d-appels.html', 'nl/lp/garages.html', 'nl/lp/geen-oproepen-meer-missen.html'];
 const srv = await serve();
 const base = `http://127.0.0.1:${srv.address().port}/`;
 const browser = await chromium.launch();
 
 for (const rel of pages) {
   console.log(`\n${rel}`);
+  const LP = /(^|\/)lp\//.test(rel);
   /* 1. premier écran */
-  for (const [w, h] of [[1440, 900], [390, 844], [360, 640]]) {
+  for (const [w, h] of LP ? [[1440, 900], [1280, 800], [768, 1024], [390, 844], [360, 640]] : [[1440, 900], [390, 844], [360, 640]]) {
     for (const banner of [false, true]) {
       const { ctx, p } = await page(browser, base, rel, { w, h, banner });
-      const r = await p.evaluate(() => {
+      const r = await p.evaluate((LP) => {
         const vh = innerHeight, vw = innerWidth;
         const q = (s) => document.querySelector(s);
         const box = (el) => el && el.getBoundingClientRect();
+        const shown = (el) => getComputedStyle(el).display !== 'none';
         const inside = (b) => b && b.top >= 0 && b.bottom <= vh && b.left >= 0 && b.right <= vw && b.width > 0;
         const hits = (a, b) => a && b && a.left < b.right && b.left < a.right && a.top < b.bottom && b.top < a.bottom;
-        const btns = [...document.querySelectorAll('.hv .cta-btns .btn')].map(box);
+        const btns = [...document.querySelectorAll('.hv .cta-btns .btn')].filter(shown).map(box);
+        /* tous les boutons du héros dans l'écran (formulaire compris) : rien ne les recouvre */
+        const all = [...document.querySelectorAll('.hv .btn')].filter(shown).map(box).filter((b) => b.top < vh && b.bottom > 0);
         const covers = [q('.cbanner'), q('.hdr-in'), q('.hv-tag'), q('.mbar')].filter((x) => x && getComputedStyle(x).visibility !== 'hidden').map(box);
+        const want = LP && vw > 860 ? 1 : 2;
         return {
-          h1: inside(box(q('.hv h1'))), lead: inside(box(q('.hv .lead'))), btns: btns.length === 2 && btns.every(inside),
-          covered: btns.some((b) => covers.some((c) => hits(b, c))),
+          h1: inside(box(q('.hv h1'))), lead: inside(box(q('.hv .lead'))), btns: btns.length === want && btns.every(inside), n: btns.length, want,
+          covered: all.some((b) => covers.some((c) => hits(b, c))),
+          sw: document.documentElement.scrollWidth, vw,
         };
-      });
-      ok(r.h1 && r.lead && r.btns, `${w}×${h}${banner ? ' bandeau cookies' : ''} : H1, phrase et deux boutons dans le premier écran`);
-      ok(!r.covered, `${w}×${h}${banner ? ' bandeau cookies' : ''} : aucun bouton recouvert`);
+      }, LP);
+      ok(r.h1 && r.lead && r.btns, `${w}×${h}${banner ? ' bandeau cookies' : ''} : H1, phrase et ${r.want} bouton(s) dans le premier écran (${r.n})`);
+      ok(!r.covered, `${w}×${h}${banner ? ' bandeau cookies' : ''} : aucun bouton du héros recouvert`);
+      if (LP) ok(r.sw === r.vw, `${w}×${h}${banner ? ' bandeau cookies' : ''} : rien ne dépasse (scrollWidth ${r.sw} = ${r.vw})`);
       await ctx.close();
     }
   }
-  /* 2. contraste sur le pixel le plus clair de la vidéo */
-  for (const [w, h] of [[1440, 900], [1280, 800], [390, 844], [360, 640]]) {
+  /* 2. contraste sur le pixel le plus clair de la vidéo (pages d'atterrissage :
+   *    sous le voile et sous le formulaire translucide, libellés compris) */
+  for (const [w, h] of LP ? [[1440, 900], [768, 1024], [390, 844], [360, 640]] : [[1440, 900], [1280, 800], [390, 844], [360, 640]]) {
     const { ctx, p } = await page(browser, base, rel, { w, h, banner: false });
-    const targets = await p.evaluate(() => {
-      const pick = (sel, color) => { const el = document.querySelector(sel); if (!el) return null; const b = el.getBoundingClientRect(); return { sel, color, x: Math.max(0, b.left), y: Math.max(0, b.top), w: b.width, h: b.height }; };
-      const rgb = (el) => getComputedStyle(el).color;
-      const em = document.querySelector('.hv h1 em');
-      return [pick('.hv h1', rgb(document.querySelector('.hv h1'))), em && { ...pick('.hv h1 em', rgb(em)) }, pick('.hv .lead', rgb(document.querySelector('.hv .lead'))), pick('.hv .btn-line', rgb(document.querySelector('.hv .btn-line')))].filter(Boolean);
-    });
-    /* texte masqué, nav et étiquette aussi : on ne mesure que la vidéo voilée */
-    await p.addStyleTag({ content: '.hv-txt,.hdr,.hv-tag{visibility:hidden!important}.hv .btn-line{visibility:hidden!important}' });
+    const { targets, clipH } = await p.evaluate((LP) => {
+      const box = (el, sel) => { const b = el.getBoundingClientRect(); return { sel, color: getComputedStyle(el).color, x: Math.max(0, b.left), y: Math.max(0, b.top + scrollY), w: b.width, h: b.height }; };
+      const shown = (el) => el.getClientRects().length > 0 && getComputedStyle(el).display !== 'none';
+      const sels = ['.hv h1', '.hv h1 em', '.hv .lead', '.hv .cta-btns .btn-line'];
+      if (LP) sels.push('.lpv .form-t', '.lpv .f-field label', '.lpv .f-legend', '.lpv .f-consent span', '.lpv .f-small');
+      const out = [];
+      for (const sel of sels) for (const el of document.querySelectorAll(sel)) if (shown(el)) out.push(box(el, sel));
+      const hv = document.querySelector('.hv').getBoundingClientRect();
+      return { targets: out, clipH: Math.ceil(hv.bottom + scrollY) };
+    }, LP);
+    /* texte masqué, nav et étiquette aussi : on ne mesure que la vidéo voilée
+     * (et, sur les pages d'atterrissage, le fond translucide du formulaire) */
+    await p.addStyleTag({ content: '.hv-txt,.lpv-t,.hdr,.hv-tag{visibility:hidden!important}.hv .btn-line{visibility:hidden!important}.lpv .form *{visibility:hidden!important}' });
     const worst = Object.fromEntries(targets.map((t) => [t.sel, Infinity]));
     const dur = await p.evaluate(() => document.querySelector('.hv video').duration || 9);
     for (let i = 0; i < 10; i++) {
       await p.evaluate(async (t) => { const v = document.querySelector('.hv video'); v.pause(); v.currentTime = t; await new Promise((r) => { v.onseeked = r; setTimeout(r, 1500); }); }, (dur * i) / 10);
-      const img = png(await p.screenshot());
+      const img = png(await p.screenshot({ fullPage: true, clip: { x: 0, y: 0, width: w, height: clipH } }));
       for (const t of targets) {
         const [r, g, b] = t.color.match(/\d+/g).map(Number);
         const fg = lum(r, g, b);
@@ -163,6 +183,12 @@ for (const rel of pages) {
     await p.evaluate(() => scrollTo({ top: 0, behavior: 'instant' }));
     await p.waitForTimeout(600);
     ok(await p.evaluate(() => !document.querySelector('.hv video').paused), 'retour en haut : la vidéo reprend');
+    if (LP) {
+      await p.evaluate(() => scrollTo({ top: 300, behavior: 'instant' }));
+      await p.waitForTimeout(300);
+      const st = await p.evaluate(() => { const m = document.querySelector('.hv-media'); return m.style.transform + m.style.opacity; });
+      ok(st === '', 'défilement : aucun effet sur la vidéo (exception du 15/11 réservée aux accueils)');
+    }
     await ctx.close();
   }
   /* 4. poids du premier écran sur téléphone */

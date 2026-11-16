@@ -688,6 +688,52 @@
       "texte": [
         "Dix capacités, décrites une par une."
       ]
+    },
+    "lp/garages.html": {
+      "texte": [
+        "Les urgences sonnent sur votre portable",
+        "Une voiture qui ne démarre pas, un client au bord de la route : elle repère l'urgence et vous la transfère.",
+        "Les rendez-vous d'atelier pris pendant l'appel",
+        "Entretien, pneus, freins : sur vos créneaux réels, dans votre Google Agenda ou l'agenda Celya.",
+        "Une fiche claire sur WhatsApp",
+        "Client, véhicule, motif : le résumé de chaque appel arrive sur votre WhatsApp."
+      ],
+      "_texte": "lot conversion Google Ads du 16/11/2026 (brief, section 2) : les trois bénéfices (ul.benefits) sont remplacés par « Chaque appel, rangé dans la bonne case » et « Appelez-la, comme un client » ; le héros reçoit la phrase du brief (section 1)",
+      "_h1": "brief du 16/11/2026, section 1 : <em> du H1 raccourci (« Janet décroche à votre place. » / « Janet neemt op in uw plaats. »)"
+    },
+    "lp/ne-plus-rater-d-appels.html": {
+      "texte": [
+        "Chaque appel décroché",
+        "Même quand vous êtes occupé, en rendez-vous ou fermé : elle répond en quelques secondes, et prend plusieurs appels en même temps.",
+        "Les rendez-vous pris pendant l'appel",
+        "Dans votre Google Agenda ou dans l'agenda Celya, sur vos créneaux réellement libres.",
+        "Le résumé sur WhatsApp",
+        "Qui a appelé, pour quoi, ce qui est urgent : tout arrive sur votre WhatsApp, et l'urgent vous est transféré."
+      ],
+      "_texte": "lot conversion Google Ads du 16/11/2026 (brief, section 2) : les trois bénéfices (ul.benefits) sont remplacés par « Chaque appel, rangé dans la bonne case » et « Appelez-la, comme un client » ; le héros reçoit la phrase du brief (section 1)"
+    },
+    "nl/lp/garages.html": {
+      "texte": [
+        "Dringende oproepen rinkelen op uw gsm",
+        "Een wagen die niet start, een klant langs de weg: ze herkent de urgentie en schakelt door naar u.",
+        "Werkplaatsafspraken tijdens de oproep",
+        "Onderhoud, banden, remmen: op uw echte vrije momenten, in uw Google Agenda of de agenda van Celya.",
+        "Een duidelijke fiche op WhatsApp",
+        "Klant, wagen, reden: de samenvatting van elke oproep komt op uw WhatsApp."
+      ],
+      "_texte": "lot conversion Google Ads du 16/11/2026 (brief, section 2) : les trois bénéfices (ul.benefits) sont remplacés par « Chaque appel, rangé dans la bonne case » et « Appelez-la, comme un client » ; le héros reçoit la phrase du brief (section 1)",
+      "_h1": "brief du 16/11/2026, section 1 : <em> du H1 raccourci (« Janet décroche à votre place. » / « Janet neemt op in uw plaats. »)"
+    },
+    "nl/lp/geen-oproepen-meer-missen.html": {
+      "texte": [
+        "Elke oproep opgenomen",
+        "Ook als u bezet bent, in een afspraak of gesloten: ze neemt op binnen enkele seconden, en meerdere oproepen tegelijk.",
+        "Afspraken vastgelegd tijdens de oproep",
+        "In uw Google Agenda of in de agenda van Celya, op uw echt vrije momenten.",
+        "De samenvatting op WhatsApp",
+        "Wie belde, waarvoor, wat dringend is: alles komt op uw WhatsApp, en het dringende wordt naar u doorgeschakeld."
+      ],
+      "_texte": "lot conversion Google Ads du 16/11/2026 (brief, section 2) : les trois bénéfices (ul.benefits) sont remplacés par « Chaque appel, rangé dans la bonne case » et « Appelez-la, comme un client » ; le héros reçoit la phrase du brief (section 1)"
     }
   }
 }

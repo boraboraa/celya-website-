@@ -321,6 +321,51 @@ atterrissage). Aucune page ne charge plus `bento.css`, `bento.js` ni
   `lp/garages.html`, `nl/lp/geen-oproepen-meer-missen.html`,
   `nl/lp/garages.html` — noindex, hors sitemap, sans menu.
 
+**Lot « conversion Google Ads » du 16 novembre 2026 (décisions de Bora).**
+Brief : `docs/maquettes-16-11/PROMPT-conversion-16-11.md`, aperçu validé
+`docs/maquettes-16-11/apercu-lp-garages.html` (hors déploiement).
+
+- **Exception datée à la règle « un héros contient le H1, une phrase et les
+  deux boutons, rien de plus » : sur les quatre pages d'atterrissage
+  seulement** (`lp/garages.html`, `lp/ne-plus-rater-d-appels.html`,
+  `nl/lp/garages.html`, `nl/lp/geen-oproepen-meer-missen.html`), le
+  formulaire de démo est dans le héros, posé en transparence sur la vidéo de
+  l'accueil (même `heroMedia()`, même choix de source par `celya.js`, même
+  pause hors écran, poster seul sous `prefers-reduced-motion`). Le texte passe
+  sur la vidéo lui aussi, sous un voile crème léger. **Aucune autre page n'en
+  bénéficie.** Pas de `backdrop-filter`, pas de `filter`, pas d'ombre : la
+  transparence est un voile, jamais un flou. Les pages d'atterrissage n'ont
+  **pas** l'effet au défilement des accueils (`data-hv="lp"`) : l'exception
+  d'opacité du 15/11 reste aux seuls accueils. Contraste mesuré par
+  `tests/heros.mjs` (H1, phrase, libellés du formulaire ≥ 4,5 sur le pixel le
+  plus clair de la vidéo, à 360, 390, 768 et 1440 px) ; pour tenir 4,5 sur
+  la partie orange du H1 à 360 × 640, le voile mobile de l'aperçu est renforcé
+  sur ses 260 premiers pixels seulement (.74 → .62 au lieu de .55 → .40).
+  Sur ordinateur, le bandeau cookies de ces pages prend sa forme de barre basse
+  (celle qu'il a déjà sous 720 px) : en carte au coin bas droit, il recouvrait
+  le bouton du formulaire — position seule, le consentement ne bouge pas. La barre mobile
+  (« Appeler Janet » / « Être rappelé », vers `#lp`) est sur ces pages ; le
+  bouton des prix renvoie au formulaire de la page.
+- **La scène « Un appel, de bout en bout »** (`scene()` dans
+  `_src/components/blocks.mjs`, écrite une fois) : un téléphone aux couleurs
+  Celya, mention « Exemple », cinq étapes sur une boucle de 15 s (l'appel, le
+  rendez-vous, le résumé au patron, la confirmation du client, la consigne du
+  patron). CSS seul, quatre `@keyframes` en `transform` / `opacity`, aucun JS
+  qui tourne ; elle se met en pause **d'un bloc** hors écran
+  (`[data-anim-root]`, `celya.js`) pour que ses étapes restent en phase ;
+  sous `prefers-reduced-motion`, l'état final, fixe, les cinq étapes lisibles.
+  Aucun H2 dedans (une étiquette et un H3). Textes dans les données :
+  `data/metiers.json` (`<métier>.<langue>.scene`) pour les pages métiers et la
+  page d'atterrissage garages, `data/i18n.json` (`scene.generique`) ailleurs ;
+  exemple daté du jeudi 19 novembre. Placée sous les badges des accueils, des
+  pages métiers et des pages d'atterrissage ; en version compacte (téléphone
+  seul) après la première section des articles. Vérifiée par `tests/scene.mjs`.
+- **Pages d'atterrissage, dans cet ordre** : héros, badges, scène, Comment ça
+  marche (quatre étapes, `ol.steps`), les cases RDV pris / À rappeler /
+  Urgent, « Appelez-la, comme un client » (`tryCall()`), prix, FAQ en cinq
+  questions (« Vos questions, nos réponses »), appel final. Les trois
+  bénéfices ont disparu (`tests/corrections-autorisees.json`).
+
 **Exception datée — lot « design & proportions » du 11 septembre 2026, validé
 par Bora le même jour.** Ce lot est un brief CSS : `bento.css` y est modifié
 (logo et bouton de nav, pied de page à colonnes titrées, `aside.t-answer` des
@@ -491,13 +536,15 @@ node _src/build.mjs --check          # les pages publiées == ce que produit le 
 node tests/seo-avant-apres.mjs       # title, description, H1, H2, FAQ, hreflang, @graph vs origin/main
 node tests/offre.mjs                 # aucun montant hors data/offre.json, plus d'ancienne grille
 node tests/tailles.mjs               # 12 px (libellés) / 14 px (phrases) minimum
-node tests/heros.mjs                 # premier écran, contraste sur la vidéo, pause, poids
+node tests/heros.mjs                 # premier écran, contraste sur la vidéo, pause, poids (accueils + LP)
 node tests/formulaire.mjs            # formulaire démo, UTM, dataLayer, barre mobile
 node tests/budget-rendu.mjs          # backdrop-filter, will-change, keyframes, rAF, écouteurs
 node tests/consentement.mjs          # bloc consentement + GTM identique à l'octet
 node tests/migration.mjs             # toute page servie sur le nouveau gabarit (16/11/2026)
 node tests/texte-conserve.mjs        # aucun paragraphe perdu par la migration
 node tests/outils.mjs                # modèles, check-lists, grilles, calculateurs répondent
+node tests/scene.mjs                 # la scène : placement, textes par métier, pause, mouvement réduit
+node tests/lp.mjs                    # pages d'atterrissage : ordre des blocs, formulaire, liens, barre mobile
 ```
 
 **Le générateur (lot du 14/11/2026).** Les pages migrées ne s'éditent plus à

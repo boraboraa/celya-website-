@@ -16,7 +16,7 @@
  * les cartes dont le visuel serait une photo restent sans image. */
 import { one, all, strip } from '../lib/core.mjs';
 import { shell, ctaPair } from '../components/shell.mjs';
-import { badges, ribbon, video, cards, cases, plug, agenda, orders, confirm, prices, faq, ctaFinal, related, intro2 } from '../components/blocks.mjs';
+import { badges, ribbon, video, cards, cases, plug, agenda, orders, confirm, prices, faq, ctaFinal, related, intro2, scene, sceneText } from '../components/blocks.mjs';
 
 const norm = (h) => strip(h).replace(/&nbsp;|\u00a0|&#160;/g, ' ').replace(/\s+/g, ' ').replace(/\s([:;?!])/g, '$1').replace(/[’]/g, "'").trim().toLowerCase();
 
@@ -85,6 +85,7 @@ export default function metier(c) {
 ${ctaPair(c, { hero: true, sub: false })}
 </div></section>
 <section class="hero-badges"><div class="w">${badges(c)}</div></section>
+${scene(c, sceneText(c, id))}
 ${ribbon(c, T.ruban)}
 <div class="w vid-wrap">${video(c, { photo: M.photo, alt: '', v: M.video, title: c.t.video_title })}</div>
 ${out}`;

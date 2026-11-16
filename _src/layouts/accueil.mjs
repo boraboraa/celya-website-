@@ -4,7 +4,7 @@
  * Écoutez-la. Les composants du lot s'intercalent avec leurs propres H2. */
 import { one, all } from '../lib/core.mjs';
 import { shell, ctaPair } from '../components/shell.mjs';
-import { heroVideo, orders, confirm, prices, faq, splitH2, picture, capture, exTag } from '../components/blocks.mjs';
+import { heroVideo, orders, confirm, prices, faq, splitH2, picture, capture, exTag, scene, sceneText, steps as stepsBlock } from '../components/blocks.mjs';
 import { ico, cVoice } from '../components/icons.mjs';
 
 const sec = (page, role) => all(page, 'section').find((s) => s.attrs.role === role);
@@ -39,11 +39,8 @@ export default function accueil(c) {
 </div>
 </div></div></section>`;
 
-  /* Comment ça marche */
-  const stepsHTML = `<section class="sec"${sid(steps)}><div class="w-wide">
-<div class="steps-h">${kick(steps)}${S(steps).h2}</div>
-${S(steps).body}
-</div></section>`;
+  /* Comment ça marche : le composant des étapes, partagé avec les pages d'atterrissage */
+  const stepsHTML = stepsBlock(c, steps, { wide: true });
 
   /* Vos mains sont prises (NL/EN : une citation tient lieu de titre, sans H2) */
   const rolesLead = (/<p class="roles-lead">[\s\S]*?<\/p>/.exec(S(roles).body) || [''])[0];
@@ -113,6 +110,7 @@ ${cVoice('cv-bg')}
   const main = `${heroVideo(c, `<h1>${one(page, 'h1')}</h1>
 <p class="lead">${one(page, 'lede')}</p>
 ${ctaPair(c, { hero: true, sub: false })}`, h.hero_tag)}
+${scene(c, sceneText(c, null))}
 ${grid}
 ${ends}
 ${stepsHTML}

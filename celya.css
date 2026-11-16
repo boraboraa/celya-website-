@@ -585,17 +585,6 @@ fieldset.f-moment{border:0;padding:0;margin:0;display:flex;flex-direction:column
 .merci .cta-pair{margin-top:10px}
 .merci-c{width:120px;margin:0 auto 28px}
 .merci .lead{margin:24px auto}
-.benefits{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;list-style:none;padding:0;margin:0}
-.benefits li{background:var(--cream);border-radius:var(--r-m);padding:26px;display:flex;flex-direction:column;gap:10px}
-.benefits h3{font-size:24px}
-.benefits p{font-size:15.5px;color:var(--g2);margin:0}
-@media (max-width:860px){.benefits{grid-template-columns:1fr}}
-.lp-hero{padding:40px 0 60px}
-.lp-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:56px;align-items:start}
-.lp-grid h1{font-size:clamp(34px,4.4vw,62px)}
-.lp-tel{display:block;font:400 clamp(30px,3.4vw,44px)/1.1 var(--serif);letter-spacing:-.02em;text-decoration:none;margin:4px 0 0}
-@media (max-width:900px){.lp-grid{grid-template-columns:1fr;gap:28px}}
-@media (max-width:720px){.lp-hero{padding:18px 0 40px}.lp-grid h1{font-size:32px}.lp-hero .lead{font-size:16px}}
 .hdr-bare .hdr-in{justify-content:space-between}
 
 /* ---------- animations : pause hors écran, rien sous mouvement réduit ---------- */
@@ -973,3 +962,114 @@ fieldset.f-moment{border:0;padding:0;margin:0;display:flex;flex-direction:column
 .legal-body table{width:100%;border-collapse:collapse;font-size:15px;display:block;overflow-x:auto;margin:0 0 1.2em}
 .legal-body th,.legal-body td{border-bottom:1px solid var(--line);padding:10px 12px;text-align:left;vertical-align:top;overflow-wrap:anywhere}
 .legal-body th{color:var(--ink);font-weight:600}
+
+/* ---------- pages d'atterrissage : héros vidéo et formulaire translucide ----------
+   Lot conversion Google Ads du 16/11/2026 (exception datée de CLAUDE.md, ces
+   quatre pages seulement). Valeurs de l'aperçu validé par Bora
+   (docs/maquettes-16-11/apercu-lp-garages.html). La transparence est un voile
+   crème, jamais un flou : aucun backdrop-filter, aucun filter, aucune ombre.
+   Même vidéo, même choix de source que l'accueil ; pas d'effet au défilement. */
+.lpv{height:auto;min-height:100vh;display:flex;align-items:center}
+.lpv .hv-media::before{background:linear-gradient(90deg,rgba(250,241,228,.62) 0%,rgba(250,241,228,.42) 38%,rgba(250,241,228,.10) 54%,rgba(250,241,228,.25) 66%,rgba(250,241,228,.55) 100%)}
+.lpv-grid{position:relative;z-index:2;display:grid;grid-template-columns:1.1fr .9fr;gap:64px;align-items:center;padding-top:120px;padding-bottom:72px}
+.lpv-t h1{font-size:clamp(40px,4.6vw,64px);line-height:1.05;margin:0 0 20px}
+.lpv-t h1 em{color:var(--o-txt)}
+.lpv-t .lead{max-width:30em;margin:0 0 28px;color:var(--ink)}
+.lpv .cta-btns{justify-content:flex-start}
+.lpv-m{display:none}
+.lpv .form{background:rgba(255,247,240,.62);border:1px solid rgba(255,255,255,.7);box-shadow:none;padding:28px 28px 24px}
+.lpv .form .f-field input,.lpv .form .f-field select{background:rgba(255,255,255,.78);border-color:rgba(181,160,132,.55)}
+.lpv .form .f-opts label{background:rgba(255,255,255,.55)}
+@media (max-width:860px){
+  .lpv{min-height:0;display:block}
+  .lpv .hv-media{bottom:auto;height:max(100svh,800px);background-image:url(assets/hero/hero-mobile-poster.webp);background-position:center bottom}
+  .lpv .hv-media video{object-position:center bottom}
+  .lpv .hv-media::after{display:none}
+  /* voile de l'aperçu, renforcé sous le H1 seulement (0-260 px) : à 360 × 640
+     la partie orange du titre tombait à 4,3 sur le pixel le plus clair */
+  .lpv .hv-media::before{background:linear-gradient(180deg,rgba(250,241,228,.74) 0,rgba(250,241,228,.62) 260px,rgba(250,241,228,.40) 470px,rgba(250,241,228,0) 560px,rgba(250,241,228,0) calc(100% - 150px),rgba(250,241,228,.75) calc(100% - 50px),var(--page) 100%)}
+  .lpv .cta-btns .btn-line{background:rgba(250,241,228,.8)}
+  .lpv-grid{grid-template-columns:1fr;gap:0;padding-top:92px;padding-bottom:40px}
+  .lpv-t{min-height:calc(max(100svh,800px) - 92px - 110px)}
+  .lpv-t h1{font-size:clamp(32px,8.5vw,40px);margin-bottom:12px}
+  .lpv-t .lead{font-size:16px;margin-bottom:18px}
+  .lpv-m{display:inline-flex}
+  .lpv .cta-btns{display:flex;flex-direction:column;gap:10px}
+  .lpv .cta-btns .btn{width:100%;min-height:48px}
+  .lpv .form{background:rgba(255,247,240,.66);border:1px solid rgba(255,255,255,.75);padding:22px 18px}
+}
+
+/* le bandeau cookies, en carte au coin bas droit, recouvrait le bouton du
+   formulaire du héros sur ordinateur : sur ces pages, il prend la forme de
+   barre basse qu'il a déjà sous 720 px. Position seule : le consentement et
+   le chargement de GTM ne bougent pas. */
+@media (min-width:721px){
+  .p-lp .cbanner{left:0;right:0;bottom:0;max-width:none;border-radius:0;border-width:1px 0 0;flex-direction:row;align-items:center;justify-content:center;gap:24px;padding:12px 24px}
+}
+
+/* « Appelez-la, comme un client » (pages d'atterrissage) */
+.try{display:grid;grid-template-columns:1.3fr 1fr;gap:40px;align-items:center;background:var(--beige);border-radius:28px;padding:48px 56px}
+.try h2{margin:6px 0 12px}
+.try p:last-child{color:var(--g2)}
+.try-b{display:flex;flex-direction:column;gap:12px}
+@media (max-width:860px){.try{grid-template-columns:1fr;padding:32px 24px;gap:24px}}
+
+/* ---------- la scène « Un appel, de bout en bout » (lot conversion du 16/11/2026) ----------
+   Le repos (sans animation) est l'état final : les cinq étapes empilées,
+   lisibles — c'est ce que voit prefers-reduced-motion. Avec mouvement, les
+   étapes se superposent et se relaient sur une boucle de 15 s : transform et
+   opacity seulement, une @keyframes par mouvement (étape, apparition,
+   glissement, surlignage). Toute la scène se met en pause d'un bloc hors écran
+   (.anim-off sur [data-anim-root], celya.js), pour rester en phase. */
+.scn-sec{padding:var(--space-in) 0 0}
+.scn-sec .scn{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:72px;align-items:center}
+.scn-t h3{font-size:clamp(30px,3vw,40px);line-height:1.05;margin:0 0 28px}
+.scn-steps{list-style:none;counter-reset:sc;padding:0;margin:0;display:flex;flex-direction:column;gap:4px;max-width:460px}
+.scn-steps li{position:relative;counter-increment:sc;display:grid;grid-template-columns:30px minmax(0,1fr);column-gap:12px;padding:12px 16px;border-radius:16px}
+.scn-steps li::before{content:counter(sc);position:relative;z-index:1;grid-row:1/3;font:400 24px/1.1 var(--serif);color:var(--o2)}
+.scn-steps b,.scn-steps span{position:relative;z-index:1}
+.scn-steps b{font-size:16px}
+.scn-steps span{font-size:15px;color:var(--g2)}
+.scn-hi{position:absolute;inset:0;border-radius:16px;background:var(--cream);border:1px solid var(--line);opacity:0}
+.scn-ph{min-height:0}
+.scn-body{position:relative;flex:none;padding:14px 12px 18px;gap:14px}
+.scn-st{display:flex;flex-direction:column;gap:8px}
+.scn-tag{align-self:center;font:500 12px/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--g1);background:var(--cream);border-radius:999px;padding:6px 10px;margin-bottom:2px}
+.scn-st .bub small{display:block;font-size:12px;font-weight:650;color:var(--g1)}
+.scn-cal{display:flex;flex-direction:column;background:var(--cream);border-radius:14px;overflow:hidden;font-size:14px}
+.scn-day{padding:10px 12px;font-weight:650;border-bottom:1px solid var(--line)}
+.scn-row{display:grid;grid-template-columns:46px minmax(0,1fr);align-items:center;gap:8px;min-height:58px;padding:6px 10px 6px 0;border-bottom:1px solid var(--line)}
+.scn-row:last-child{border-bottom:0}
+.scn-row i{font-style:normal;font-size:12px;color:var(--g1);text-align:right}
+.scn-busy,.scn-free{font-size:14px;color:var(--g1);padding:8px 10px;border-radius:10px;background:var(--page)}
+.scn-free{background:transparent;border:1px dashed var(--line)}
+.scn-rdv{display:flex;flex-direction:column;gap:2px;padding:8px 10px;border-radius:10px;background:var(--rose);border-left:3px solid var(--o)}
+.scn-rdv b{display:flex;align-items:center;gap:6px;font-size:14px}
+.scn-rdv span{font-size:14px;color:var(--g2)}
+.scn-card{background:var(--cream);border-radius:14px;padding:12px 14px;display:flex;flex-direction:column;gap:8px}
+.scn-card-h{display:flex;align-items:center;gap:8px;font-size:14px}
+.scn-card dl{margin:0;display:flex;flex-direction:column}
+.scn-card dl div{display:grid;grid-template-columns:minmax(0,92px) minmax(0,1fr);gap:8px;padding:6px 0;border-top:1px solid var(--line);font-size:14px}
+.scn-card dt{color:var(--g1)}
+.scn-card dd{margin:0;font-weight:600}
+.scn-btns span{position:relative;overflow:hidden}
+.scn-btns b{position:relative;font-weight:600}
+.scn-pick{position:absolute;inset:0;border:2px solid var(--o-txt);border-radius:10px}
+.scn-ok{align-self:flex-start;display:inline-flex;align-items:center;gap:8px;background:var(--cream);border-radius:999px;padding:6px 12px;font-size:14px;font-weight:650}
+.scn-note{font-size:14px;color:var(--g1);padding-left:4px}
+.scn-compact{margin:0 0 64px;display:flex;flex-direction:column;align-items:center;gap:18px}
+.scn-compact .label{margin:0}
+@media (prefers-reduced-motion:no-preference){
+  .scn-body{height:410px;overflow:hidden}
+  .scn-st{position:absolute;left:12px;right:12px;top:14px;opacity:0;animation:scn 15s linear infinite both;animation-delay:var(--d)}
+  .scn-in{animation:scn-in 15s linear infinite both;animation-delay:var(--d)}
+  .scn-slide{animation:scn-slide 15s linear infinite both;animation-delay:var(--d)}
+  .scn-hi{animation:scn-hi 15s linear infinite both;animation-delay:var(--d)}
+}
+@media (prefers-reduced-motion:reduce){.scn-st+.scn-st{padding-top:14px;border-top:1px solid var(--line)}}
+.scn.anim-off *,.scn.anim-off *::before,.scn.anim-off *::after{animation-play-state:paused!important}
+@keyframes scn{0%{opacity:0;transform:translateY(10px)}3%,18%{opacity:1;transform:none}20%,100%{opacity:0;transform:translateY(-6px)}}
+@keyframes scn-in{0%{opacity:0;transform:translateY(8px)}3%,20%{opacity:1;transform:none}22%,100%{opacity:0;transform:none}}
+@keyframes scn-slide{0%{opacity:0;transform:translateX(36px)}4%,20%{opacity:1;transform:none}22%,100%{opacity:0;transform:none}}
+@keyframes scn-hi{0%{opacity:0}2%,18%{opacity:1}20%,100%{opacity:0}}
+@media (max-width:860px){.scn-sec .scn{grid-template-columns:minmax(0,1fr);gap:40px}.scn-sec .scn-ph{justify-self:center}}

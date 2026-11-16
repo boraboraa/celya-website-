@@ -252,11 +252,12 @@ export function priceCards(c) {
 }
 
 /** h2 : true = titre du composant (« Dès … HT par mois », price_h2) ; ou HTML d'un H2 existant */
-export function prices(c, { h2 = true, intro = '', id = '' } = {}) {
+/** demoHref : cible du bouton « Demander une démo » (pages d'atterrissage : « #lp », le formulaire de la page) */
+export function prices(c, { h2 = true, intro = '', id = '', demoHref = '' } = {}) {
   const { t } = c;
   const title = h2 === true ? H(2, t.price_h2) : h2;
   return `<section class="sec bg-cream"${id ? ` id="${id}"` : ''}><div class="w">
-<div class="price-head">${title}<div class="price-go"><a class="btn btn-ink" href="${c.L(c.t.demo_href)}" data-demo>${t.price_start}</a></div></div>
+<div class="price-head">${title}<div class="price-go"><a class="btn btn-ink" href="${demoHref || c.L(c.t.demo_href)}" data-demo>${t.price_start}</a></div></div>
 ${intro ? `<div class="prose price-intro">${intro}</div>` : ''}
 ${priceCards(c)}
 <p class="note">${priceNote(c)}</p>
@@ -334,15 +335,99 @@ function heroFile(kind) {
   throw new Error(`assets/hero/hero-${kind}-720.mp4 introuvable`);
 }
 
+/** La vidéo de fond, écrite une fois : accueils et pages d'atterrissage.
+ *  Source et poster choisis par celya.js (mobile sous 720 px). */
+export function heroMedia(c) {
+  const { root } = c;
+  return `<div class="hv-media" aria-hidden="true">
+<video muted loop playsinline autoplay preload="metadata" aria-hidden="true" tabindex="-1" disablepictureinpicture data-src-d="${root}${heroFile('ordinateur')}" data-src-m="${root}${heroFile('mobile')}" data-poster-d="${root}assets/hero/hero-ordinateur-poster.webp" data-poster-m="${root}assets/hero/hero-mobile-poster.webp"></video>
+</div>`;
+}
+
 /** inner : H1 + phrase + boutons ; tag : libellé de l'étiquette */
 export function heroVideo(c, inner, tag) {
-  const { root } = c;
   return `<section class="hv" data-hv>
-<div class="hv-media" aria-hidden="true">
-<video muted loop playsinline autoplay preload="metadata" aria-hidden="true" tabindex="-1" disablepictureinpicture data-src-d="${root}${heroFile('ordinateur')}" data-src-m="${root}${heroFile('mobile')}" data-poster-d="${root}assets/hero/hero-ordinateur-poster.webp" data-poster-m="${root}assets/hero/hero-mobile-poster.webp"></video>
-</div>
+${heroMedia(c)}
 <div class="hv-in"><div class="hv-txt">${inner}</div></div>
 <p class="hv-tag"><span class="hv-cbox">${cVoice('hv-c')}</span><span class="hv-lab">${tag}</span></p>
 </section>
 <section class="hv-next"><div class="w"><span class="hv-slot" aria-hidden="true"></span>${badges(c)}</div></section>`;
+}
+
+/* ---------- « Comment ça marche » en quatre étapes (accueils, pages d'atterrissage) ---------- */
+
+/** block : section de la page source (H2 + <ol class="steps">), attrs.kick, attrs.sid */
+export function steps(c, block, { wide = false } = {}) {
+  const { h2, body } = splitH2(block.html);
+  return `<section class="sec"${block.attrs.sid ? ` id="${block.attrs.sid}"` : ''}><div class="${wide ? 'w-wide' : 'w'}">
+<div class="steps-h">${block.attrs.kick ? `<p class="label">${block.attrs.kick}</p>` : ''}${h2}</div>
+${body}
+</div></section>`;
+}
+
+/* ---------- « Appelez-la, comme un client » (pages d'atterrissage) ---------- */
+
+/** p : la phrase de la page ; second : cible du second bouton (le formulaire de la page) */
+export function tryCall(c, p, second) {
+  const { t, offre } = c;
+  return `<section class="sec-tight"><div class="w"><div class="try">
+<div><p class="label label-o">${t.try_label}</p>${H(2, t.try_h2)}<p>${p}</p></div>
+<div class="try-b"><a class="btn btn-orange" href="tel:${offre.telephone.e164}" data-call><span>${t.cta_call} · <span class="nw">${offre.telephone.affiche}</span></span></a><a class="btn btn-line" href="${second}">${t.form.submit}</a></div>
+</div></div></section>`;
+}
+
+/* ---------- la scène « Un appel, de bout en bout » (lot conversion du 16/11/2026) ----------
+ * Un téléphone aux couleurs Celya (on ne reproduit l'interface ni de WhatsApp
+ * ni de Google), mention « Exemple » visible. Cinq étapes sur une boucle de
+ * 15 s : l'appel, le rendez-vous, le résumé au patron, la confirmation du
+ * client, la consigne du patron. CSS seul (transform / opacity, quatre
+ * @keyframes), aucun JS qui tourne ; toute la scène se met en pause d'un bloc
+ * hors écran (data-anim-root, celya.js), pour que les étapes restent en phase ;
+ * sous prefers-reduced-motion, l'état final, fixe, les cinq étapes lisibles.
+ * Aucun H2 : une étiquette et un H3, pour que la liste des H2 ne bouge pas.
+ *
+ * ex : jeu de textes (data/metiers.json <métier>.<langue>.scene, ou
+ * data/i18n.json scene.generique) ; compact : téléphone seul (articles). */
+const STEP = 3; /* secondes par étape : 5 × 3 = 15 s */
+const at = (stage, local) => `style="--d:${(stage * STEP + local).toFixed(1)}s"`;
+
+export function scene(c, ex, { compact = false } = {}) {
+  const { t } = c;
+  const sc = t.scene;
+  const [cli, jan, moi] = sc.qui;
+  const tag = (i) => `<span class="scn-tag">${i + 1} · ${sc.tags[i]}</span>`;
+  const say = (who, label, text, d) => `<span class="bub bub-${who} scn-in" ${d}><small>${label}</small>${text}</span>`;
+  const stage = (i, body) => `<div class="scn-st" ${at(i, 0)}>${tag(i)}${body}</div>`;
+
+  const s1 = stage(0, say('me', cli, ex.appel[0], at(0, 0.2)) + say('her', jan, ex.appel[1], at(0, 0.8)) + say('me', cli, ex.appel[2], at(0, 1.4)));
+  const s2 = stage(1, `<div class="scn-cal"><span class="scn-day">${sc.jour}</span>
+<span class="scn-row"><i>${ex.heures[0]}</i><span class="scn-busy">${sc.pris}</span></span>
+<span class="scn-row"><i>${ex.heures[1]}</i><span class="scn-rdv scn-slide" ${at(1, 0.4)}><b><span class="dot dot-rdv" aria-hidden="true"></span>${t.case_rdv}</b><span>${sc.jour_court} · ${ex.heures[1]} · ${ex.motif}</span></span></span>
+<span class="scn-row"><i>${ex.heures[2]}</i><span class="scn-free">${sc.libre}</span></span></div>`);
+  const s3 = stage(2, `<div class="scn-card scn-in" ${at(2, 0.2)}><b class="scn-card-h"><span class="dot dot-rdv" aria-hidden="true"></span>${sc.resume_t}</b>
+<dl>${ex.resume.map(([k, v], i) => `<div class="scn-in" ${at(2, 0.5 + i * 0.3)}><dt>${k}</dt><dd>${v}</dd></div>`).join('')}</dl></div>`);
+  const s4 = stage(3, `<span class="bub bub-her scn-in" ${at(3, 0.2)}>${ex.confirmation}</span>
+<span class="ph-btns scn-btns scn-in" ${at(3, 0.2)}>${t.confirm_btns.map((b, i) => `<span>${i === 0 ? `<i class="scn-pick scn-in" ${at(3, 0.9)}></i>` : ''}<b>${b}</b></span>`).join('')}</span>
+<span class="scn-ok scn-in" ${at(3, 1.2)}><span class="dot dot-ok" aria-hidden="true"></span>${sc.confirme}</span>
+<span class="scn-note scn-in" ${at(3, 1.5)}>${sc.rappel}</span>`);
+  const s5 = stage(4, say('me', moi, sc.consigne[0], at(4, 0.2)) + say('her', jan, sc.consigne[1], at(4, 0.9)));
+
+  const phone = `<div class="phone scn-ph" aria-hidden="true">${exTag(c)}<div class="ph-scr"><div class="ph-head"><span class="ph-av">${cVoice('cv-xs', false)}</span><span><b>Janet</b><small>${sc.sous}</small></span></div>
+<div class="ph-body scn-body">${s1}${s2}${s3}${s4}${s5}</div></div></div>`;
+  /* le téléphone est décoratif (aria-hidden) : les étapes se lisent dans la liste à côté */
+
+  if (compact) {
+    return `<figure class="scn scn-compact" data-anim-root><figcaption class="label">${sc.label}</figcaption>${phone}</figure>`;
+  }
+  return `<section class="sec scn-sec"><div class="w scn" data-anim-root>
+<div class="scn-t"><p class="label">${sc.label}</p>${H(3, sc.h3)}
+<ol class="scn-steps" role="list">${sc.etapes.map(([b, p], i) => `<li><i class="scn-hi" ${at(i, 0)} aria-hidden="true"></i><b>${b}</b><span>${p}</span></li>`).join('')}</ol></div>
+${phone}
+</div></section>`;
+}
+
+/** Le jeu de textes d'une page : celui du métier s'il existe, sinon le générique */
+export function sceneText(c, metier) {
+  const m = metier && c.data.metiers[metier] && c.data.metiers[metier][c.lang];
+  return (m && m.scene) || c.t.scene.generique;
 }
