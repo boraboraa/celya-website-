@@ -49,12 +49,29 @@ function mainOf(html) {
   const i = html.indexOf('<main'), j = html.indexOf('</main>');
   return i >= 0 ? html.slice(i, j) : html;
 }
+/* Logo du 16/11/2026 (décision de Bora) : l'ancienne image de marque
+ * (og-image.png, 1200 × 630) est remplacée par celya-logo-512.png pour "logo" et
+ * par l'image de partage de la langue pour "image". C'est la seule équivalence
+ * admise dans le @graph : ces URL valent « image de marque », et un ImageObject
+ * qui en porte une perd ses dimensions avant comparaison. Rien d'autre. */
+const MARQUE = /^https:\/\/celya\.be\/(og-image\.png|celya-logo-512\.png|assets\/partage\/partage-(fr|nl|en)\.png)$/;
+function marque(v) {
+  if (typeof v === 'string') return MARQUE.test(v) ? '«image de marque»' : v;
+  if (Array.isArray(v)) return v.map(marque);
+  if (v && typeof v === 'object') {
+    const o = Object.fromEntries(Object.entries(v).map(([k, x]) => [k, marque(x)]));
+    if (o['@type'] === 'ImageObject' && o.url === '«image de marque»') { delete o.width; delete o.height; }
+    return o;
+  }
+  return v;
+}
+
 export function seo(html) {
   const g = (re) => { const m = re.exec(html); return m ? m[1] : null; };
   const main = mainOf(html);
   const graph = [];
   for (const m of html.matchAll(/<script type="application\/ld\+json">\s*([\s\S]*?)\s*<\/script>/g)) {
-    try { graph.push(...(JSON.parse(m[1])['@graph'] || [])); } catch { graph.push({ '@type': 'JSON-INVALIDE' }); }
+    try { graph.push(...(JSON.parse(m[1])['@graph'] || []).map(marque)); } catch { graph.push({ '@type': 'JSON-INVALIDE' }); }
   }
   const faq = [...main.matchAll(/<details(?![^>]*class=\"card)[^>]*>\s*<summary>((?:(?!<\/summary>)[\s\S])*)<\/summary>\s*<div class="a">((?:(?!<\/details>)[\s\S])*?)<\/div>\s*<\/details>/g)]
     .map((m) => [norm(m[1]), norm(m[2])]);

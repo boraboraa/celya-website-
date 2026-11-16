@@ -34,7 +34,11 @@ function head(c, extraHead) {
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 ${extraHead}${robots}
-<link rel="icon" type="image/svg+xml" href="${root}favicon.svg">
+<link rel="icon" type="image/svg+xml" href="${root}celya-favicon.svg">
+<link rel="icon" type="image/png" sizes="48x48" href="${root}favicon-48.png">
+<link rel="icon" href="${root}favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="${root}apple-touch-icon.png">
+<link rel="manifest" href="${root}site.webmanifest">
 <meta name="theme-color" content="#FAF1E4">
 <meta name="color-scheme" content="light">
 ${CONSENT_DEFAULT}

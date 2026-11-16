@@ -99,6 +99,16 @@
       "source": "/clinics.html",
       "destination": "/cabinets.html",
       "permanent": true
+    },
+    {
+      "source": "/og-image.png",
+      "destination": "/assets/partage/partage-fr.png",
+      "permanent": true
+    },
+    {
+      "source": "/favicon.svg",
+      "destination": "/celya-favicon.svg",
+      "permanent": true
     }
   ],
   "rewrites": [
