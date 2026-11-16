@@ -21,12 +21,21 @@ mais il ne couvre pas tout le tableau — la relecture reste obligatoire.
   et 250 / 750 / 1 750 minutes partout, sans exception. Les montants, quotas,
   minutes et règles de l'offre (mise en service = une mensualité, dépassement =
   passage à la formule du dessus, au-delà de 750 minutes sur devis, messages
-  WhatsApp facturés par Meta sur le compte du client — environ 2 € par mois —,
-  30 jours d'essai sans engagement) **ne vivent que dans le fichier de données
+  WhatsApp facturés par Meta sur le compte du client — environ 2 € par mois)
+  **ne vivent que dans le fichier de données
   central de l'offre** (`data/offre.json`, lot « refonte premium ») : aucun
   gabarit, aucune page source ne les écrit en dur. Aucun autre montant, aucune
   fourchette, rien d'inventé ailleurs. Vérifiable :
   `grep -rE "75 €|250 minutes|1 750"` sur les pages ne renvoie rien.
+- **plus aucun essai gratuit — décision de Bora du 16 novembre 2026.** Ni
+  « essai gratuit », ni « 30 jours d'essai », ni « sans engagement » attaché à
+  un essai, en FR, NL ou EN ; sous les grilles de prix, le bouton est
+  « Demander une démo » (NL « Vraag een demo », EN « Request a demo »), vers
+  la page démo de la langue. `data/offre.json` n'a plus de règle d'essai et le
+  jeton `{{offre.essai}}` n'existe plus. Vérifiable :
+  `grep -riE "essai gratuit|jours d.essai|30 jours gratuits|proefperiode|30 dagen gratis|free trial"`
+  sur les pages servies, `_src/` et `data/` ne renvoie rien (« 30 days » de
+  `en/privacy.html` parle d'autre chose et ne se touche pas).
 - aucun concurrent nommé
 - Celya ne remplace jamais une secrétaire
 - l'agent n'évalue jamais un symptôme médical
@@ -259,6 +268,44 @@ nouveau système comme référence.
 - Le bloc « Combien vous coûtent les appels manqués ? » a quitté l'accueil.
   `calculateur-appels-manques.html` reste en ligne, telle quelle.
 
+**Lot du 16 novembre 2026 (même PR #32) : tout le site est sur le nouveau
+gabarit.** Les 301 pages servies sortent de `node _src/build.mjs` (gabarits
+article, billet, blog, contact, légal, métier, prix, accueil, démo, merci,
+atterrissage). Aucune page ne charge plus `bento.css`, `bento.js` ni
+`fonts.css` : ces fichiers restent dans le dépôt mais sortent du déploiement
+(`.vercelignore`), comme `apercu.html` et `apercu-visuel.html`.
+`tests/migration.mjs` échoue dès qu'une page servie n'a pas `header.hdr` et
+`celya.css`, ou cite encore l'ancien thème.
+
+- **La marque.** Favicon : `celya-favicon.svg` (le C corail plein sur fond
+  crème, lisible à 16 px), `favicon-48.png`, `favicon-96.png`,
+  `favicon-192.png`, `favicon-512.png`, `apple-touch-icon.png` (180),
+  `favicon.ico` (16/32/48), `site.webmanifest`. Logo du `@graph`
+  (`Organization` et `LocalBusiness`) : `celya-logo-512.png`. Images de
+  partage (`og:image`, `twitter:image`, `"image"` du JSON-LD) :
+  `assets/partage/partage-fr.png`, `-nl.png`, `-en.png` (1200 × 630, fond
+  crème, logo, H1 de l'accueil) ; les articles du blog gardent leur image.
+  `og-image.png` et `favicon.svg` n'existent plus : 301 dans `vercel.json`.
+  Aucune couleur de l'ancien logo (`22D3EE`, `4F7BFF`, `A855F7`) dans ce qui
+  est servi. Reste à refaire : la vidéo `assets/video/celya-intro-*`, qui finit
+  sur l'ancien C néon — elle n'est plus affichée, seul le `VideoObject` des
+  accueils la cite.
+- **Les textes.** Une migration ne réécrit pas : `tests/texte-conserve.mjs`
+  vérifie que chaque paragraphe de l'ancienne page se retrouve dans la
+  nouvelle. Les seuls écarts sont les textes devenus faux, appliqués par
+  `_src/tools/corrections_16_11.py` (visible et FAQPage ensemble) et listés
+  page par page dans `tests/corrections-autorisees.json`.
+  `conditions.html` et `nl/voorwaarden.html` gardent leur texte : leur
+  formulation sur les messages aux clients attend l'accord de Bora.
+- **Les outils des pages** (modèles à copier, check-lists, grilles,
+  calculateurs) gardent leur script d'origine au caractère près
+  (`_src/tools/scripts_page.py`) ; `tests/outils.mjs` vérifie qu'ils répondent.
+- **Contact** : même envoi qu'avant (web-lead, source « website form »,
+  honeypot, nom + téléphone ou e-mail), plus le métier et l'attribution.
+- **Pages d'atterrissage** : `lp/ne-plus-rater-d-appels.html`,
+  `lp/garages.html`, `nl/lp/geen-oproepen-meer-missen.html`,
+  `nl/lp/garages.html` — noindex, hors sitemap, sans menu.
+
 **Exception datée — lot « design & proportions » du 11 septembre 2026, validé
 par Bora le même jour.** Ce lot est un brief CSS : `bento.css` y est modifié
 (logo et bouton de nav, pied de page à colonnes titrées, `aside.t-answer` des
@@ -433,6 +480,9 @@ node tests/heros.mjs                 # premier écran, contraste sur la vidéo, 
 node tests/formulaire.mjs            # formulaire démo, UTM, dataLayer, barre mobile
 node tests/budget-rendu.mjs          # backdrop-filter, will-change, keyframes, rAF, écouteurs
 node tests/consentement.mjs          # bloc consentement + GTM identique à l'octet
+node tests/migration.mjs             # toute page servie sur le nouveau gabarit (16/11/2026)
+node tests/texte-conserve.mjs        # aucun paragraphe perdu par la migration
+node tests/outils.mjs                # modèles, check-lists, grilles, calculateurs répondent
 ```
 
 **Le générateur (lot du 14/11/2026).** Les pages migrées ne s'éditent plus à
