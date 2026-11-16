@@ -339,6 +339,17 @@ add('en/blog/medical-practices-phone-menu.html', [
   ('txt', "she picks up and she talks, in French, Dutch or English, depending on the patient’s language.", "she picks up and she talks, in French or Dutch, depending on the patient’s language."),
 ])
 
+# ---------- métiers NL / EN (lot du 16/11) ----------
+add('nl/dierenartsen.html', [
+  ('txt', "<p>Gebruikt u al een praktijkprogramma? U houdt het. Celya neemt de oproepen op die u niet opneemt en geeft de afspraak en de reden door. Een rechtstreekse koppeling kan worden onderzocht — daar praten we het best even over.</p>",
+          "<p>Uw Google Agenda, gekoppeld: Janet leest uw beschikbaarheid en zet de afspraken erin. Geen agenda? Neem dat van Celya, ingebouwd en afgestemd op uw vak. Gebruikt u een praktijkprogramma? U houdt het: het is vandaag niet gekoppeld, en Celya geeft u de afspraak en de reden door.</p>"),
+  ('faq', "Moet ik van praktijksoftware veranderen&nbsp;?",
+          "Nee. Google Agenda is gekoppeld; een praktijkprogramma is vandaag niet gekoppeld: u houdt wat u gebruikt en krijgt de afspraak en de reden doorgegeven."),
+])
+add('en/restaurants.html', [
+  ('txt', "<li><b>French, Dutch or English</b></li>", "<li><b>French or Dutch</b></li>"),
+])
+
 # ---------- fonctionnalités (brief, section 5.4 ; maquette page-fonctionnalites) ----------
 COMP = '<!--@composants {"liste":["agenda","orders","confirm"],"exemple":"garages"}-->\n'
 add('fonctionnalites.html', [

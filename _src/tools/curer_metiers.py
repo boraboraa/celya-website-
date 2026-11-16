@@ -9,10 +9,12 @@
 import json, os, re, sys
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
 M = json.load(open(os.path.join(ROOT, 'data/metiers.json'), encoding='utf-8'))
-PLUG = re.compile(r'^<h2[^>]*>(Dévier ses appels|Rien à changer)', re.I)
+PLUG = re.compile(r'^<h2[^>]*>(Dévier ses appels|Rien à changer|Niets te veranderen|Uw oproepen doorschakelen|Doorschakelen|Nothing to change|Forward)', re.I)
 
-def cure(fid):
-    rel = M[fid]['pages']['fr']
+def cure(fid, lang='fr'):
+    rel = M[fid]['pages'][lang]
+    if lang != 'fr':
+        rel = f'{lang}/{rel}'
     p = os.path.join(ROOT, '_src/pages', rel)
     s = open(p, encoding='utf-8').read()
     meta = json.loads(re.search(r'<!--@page (\{.*?\})-->', s).group(1))
@@ -49,5 +51,10 @@ def cure(fid):
     roles = re.findall(r'<!--@section \{[^}]*"role": "(\w+)"', ''.join(out))
     print(f'  {rel:22} rôles : {", ".join(roles)}')
 
-for fid in sys.argv[1:]:
-    cure(fid)
+# python3 _src/tools/curer_metiers.py [--lang nl] garages …
+args = sys.argv[1:]
+lang = 'fr'
+if args[:1] == ['--lang']:
+    lang, args = args[1], args[2:]
+for fid in args:
+    cure(fid, lang)

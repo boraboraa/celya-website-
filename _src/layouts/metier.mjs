@@ -4,6 +4,7 @@
  * gardent leur ordre :
  *   role:"intro"  → section en deux colonnes (H2 + texte) ;
  *   role:"note"   → petite ligne de texte, sans titre ;
+ *   role:"roles"  → liste de rôles (accroche, H3, phrase), sans titre ;
  *   sans rôle     → une carte « Ce que Janet fait pour vous » (les sections
  *                   consécutives forment une grille ; texte replié, jamais supprimé) ;
  *   role:"plug"   → les cases RDV / À rappeler / Urgent, puis le branchement ;
@@ -61,6 +62,8 @@ export default function metier(c) {
       if (r === 'intro' || r === 'post' || r === 'after') out += intro2(c, b);
       else if (r === 'note') out += `<section class="sec-note"><div class="w"><p class="note-line">${b.html.replace(/<\/?p>/g, '')}</p></div></section>`;
       else if (r === 'plug') { out += cases(c, T.cases) + plug(c, b); casesDone = true; }
+      /* pages métier NL courtes : trois rôles (accroche, H3, phrase), sans H2 */
+      else if (r === 'roles') out += `<section class="sec"><div class="w"><div class="roles">${b.html}</div></div></section>`;
     } else if (b.name === 'pull') {
       if (group.length) pending.push(b); else out += pullHTML(b);
     } else if (b.name === 'faq') {

@@ -501,6 +501,22 @@
       "faq": {
         "Moet ik van software veranderen ?": "texte devenu faux (brief du 14/11, section 5 ; CLAUDE.md, offre et agenda du 14/11)"
       }
+    },
+    "en/restaurants.html": {
+      "texte": [
+        "“A table for four, Saturday 7:30 pm?”",
+        "“There'll be twelve of us on Friday night — is that possible?”",
+        "French, Dutch or English"
+      ],
+      "_texte": "bulles de l'ancienne démo animée (widget du thème sombre), remplacée par le ruban d'appel et les composants du gabarit métier — même traitement que restaurants.html (FR), validé le 15/11"
+    },
+    "nl/dierenartsen.html": {
+      "texte": [
+        "Gebruikt u al een praktijkprogramma? U houdt het. Celya neemt de oproepen op die u niet opneemt en geeft de afspraak en de reden door. Een rechtstreekse koppeling kan worden onderzocht — daar praten we het best even over."
+      ],
+      "faq": {
+        "Moet ik van praktijksoftware veranderen ?": "texte devenu faux (brief du 14/11, section 5 ; CLAUDE.md, offre et agenda du 14/11)"
+      }
     }
   }
 }

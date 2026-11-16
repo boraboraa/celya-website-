@@ -955,3 +955,21 @@ fieldset.f-moment{border:0;padding:0;margin:0;display:flex;flex-direction:column
 @media (max-width:900px){.contact-grid{grid-template-columns:minmax(0,1fr);gap:40px}}
 .f-body{display:flex;flex-direction:column;gap:16px}
 .f-body[hidden]{display:none}
+
+/* ---------- fiche d'exemple (pages métier NL courtes) ---------- */
+.fiche-l{margin:0;border-top:1px solid var(--line)}
+.fiche-l div{display:grid;grid-template-columns:minmax(0,130px) minmax(0,1fr);gap:16px;padding:12px 0;border-bottom:1px solid var(--line)}
+.fiche-l dt{color:var(--g1);font-size:15px}
+.fiche-l dd{margin:0;color:var(--ink);font-weight:600;font-size:15px}
+
+/* ---------- pages légales ---------- */
+.legal-in{max-width:760px}
+.legal-in h1{font-size:clamp(38px,4.4vw,60px);line-height:1.02;margin-bottom:28px;overflow-wrap:break-word}
+.legal-body{font-size:17px;line-height:1.7;color:var(--g2)}
+.legal-body h2{font-size:clamp(26px,2.4vw,32px);line-height:1.15;margin:48px 0 16px;color:var(--ink)}
+.legal-body h3{font-size:22px;margin:28px 0 10px;color:var(--ink)}
+.legal-body b,.legal-body strong,.legal-body a{color:var(--ink)}
+.legal-body ul,.legal-body ol{margin:0 0 1em}
+.legal-body table{width:100%;border-collapse:collapse;font-size:15px;display:block;overflow-x:auto;margin:0 0 1.2em}
+.legal-body th,.legal-body td{border-bottom:1px solid var(--line);padding:10px 12px;text-align:left;vertical-align:top;overflow-wrap:anywhere}
+.legal-body th{color:var(--ink);font-weight:600}
