@@ -117,7 +117,7 @@ Téléphone (sous 860 px) :
 ## 2. Ce qui suit le héros, sur les quatre pages, dans cet ordre
 
 1. **Badges** Meta Tech Provider / Vérifiée par Google (inchangés).
-2. **La bande de preuves** (section 3).
+2. **La bande de preuves** (section 3) — masquée tant que les chiffres ne sont pas fournis.
 3. **La scène animée** (section 4).
 4. **« Comment ça marche », en quatre étapes**, avec les mots du métier sur la
    page garages (voir l'aperçu : « Un client appelle le garage · Janet
@@ -149,69 +149,40 @@ avec la raison.
 
 ---
 
-## 3. La bande de preuves : trois chiffres, leur source, leur date
+## 3. La bande de preuves : construite, mais masquée tant qu'elle est vide
 
-Dessin : trois tuiles crème en ligne (grand nombre en Newsreader, libellé
-dessous), puis une ligne de source. Sur téléphone, les trois tiennent sur une
-ligne. Voir l'aperçu (`lpv-stats`, `lpv-src`).
+Le composant est construit maintenant. **Les chiffres viendront plus tard** :
+Bora doit d'abord fournir une source qu'on peut recompter. Tant que
+`data/preuves.json` n'est pas rempli, la bande ne s'affiche nulle part.
 
-| Chiffre | FR | NL | EN |
-|---|---|---|---|
-| 1 265 | appels reçus | ontvangen oproepen | calls received |
-| 108 | rendez-vous posés par Janet | afspraken ingepland door Janet | bookings made by Janet |
-| 7 | entreprises belges | Belgische bedrijven | Belgian businesses |
+**Le dessin** (voir l'aperçu, `lpv-stats` et `lpv-src`) : trois tuiles crème en
+ligne, avec un grand nombre en Newsreader et un libellé dessous, puis une ligne
+de source. Sur téléphone, les trois tiennent sur une ligne.
 
-Ligne de source (FR) : « Journal d'appels Celya, appels entrants seuls, du
-1er septembre au 16 novembre 2026. » Traduis-la en NL et en EN.
+**Le fichier `data/preuves.json`** est livré **vide**. Il prévoit trois entrées
+`{ valeur, libelle: {fr, nl, en} }`, ainsi que `source: {fr, nl, en}`,
+`date_debut`, `date_fin` et `requete`.
 
-- **Les valeurs vivent dans un seul fichier de données**, `data/preuves.json`
-  (valeurs, libellés FR/NL/EN, dates de début et de fin, phrase de source).
-  Aucune page ne les écrit en dur. `tests/offre.mjs`, ou un nouveau
-  `tests/preuves.mjs`, échoue si « 1 265 » ou « 108 » apparaît hors du
-  composant.
-- **Pas de H2 dans la bande** (une étiquette au plus) : la liste des H2 des
-  pages indexées ne bouge pas.
-- **Où elle va** : les quatre pages d'atterrissage, l'accueil (FR, NL, EN,
-  sous les badges), `prix.html` / `nl/prijzen.html` / `en/pricing.html`, les
-  pages démo et les pages métiers.
+**La règle d'affichage, et son test** (`tests/preuves.mjs`) :
 
-### La définition, à écrire dans `CLAUDE.md`
+- la bande ne s'affiche que si **les trois valeurs ET la source ET les dates**
+  sont remplies ;
+- si une seule de ces pièces manque, le générateur n'écrit rien : pas de bande,
+  pas de tuile vide ;
+- le test vérifie les deux cas, rempli et vide ;
+- aucun chiffre n'est écrit en dur ailleurs que dans ce fichier.
 
-Écris-la sous « Les chiffres publiés », comme on l'a fait pour « messages
-pris ». Elle est distincte du relevé du 28 août, qui ne bouge pas.
+**Contraintes de mise en page :**
 
-- **Appels reçus** : appels entrants (`direction = 'inbound'`) sur les lignes
-  des **sept entreprises clientes**. Ce qui est exclu, et pourquoi :
-  - la ligne « Celya — Production » : notre propre ligne de démo ;
-  - les comptes de démonstration et de prospects (Douniazad Spa, Service
-    Sinistres Smartphone) ;
-  - les appels sortants.
-- **Rendez-vous posés par Janet** : les mêmes appels, avec
-  `disposition = 'rdv_planifie'`.
-- **Entreprises** : les sept organisations clientes.
+- **pas de H2 dans la bande** (une étiquette au plus), pour que la liste des H2
+  des pages indexées ne bouge pas ;
+- **son emplacement est déjà réservé** sur les quatre pages d'atterrissage
+  (sous les badges), sur l'accueil FR/NL/EN, sur les prix, sur la démo et sur
+  les pages métiers. Quand elle est vide, aucun espace ne reste à sa place.
 
-```sql
--- Projet Supabase celya-sales-agent (piufpzeicmvgtieybgra)
-select count(*) as appels_recus,
-       count(*) filter (where disposition = 'rdv_planifie') as rdv_poses
-from public.calls
-where direction = 'inbound'
-  and org_id in (
-    '4dd4aa18-4699-44e2-ba53-7cae0e34d72f',  -- RZ Cars (« Anas »)
-    'e674ac2a-2d60-4052-8c2b-675fc3af6a8e',  -- SD Motors
-    '56c33a17-6825-4242-b6f2-72cf5fd35489',  -- Garage Boetendael
-    '3898f926-86e4-4294-aecb-ca5e1cb2a76c',  -- New Auto Torino
-    'a635889c-df6c-4d56-8f8e-490035bf9d10',  -- 100% Moto
-    '4b698002-d7cb-4dfb-b7d2-3d2a91faf050',  -- Service City Car
-    '708f8365-b387-4612-931c-14ebb6b8022c'   -- Garage Avant Garde
-  )
-  and created_at >= timestamptz '2026-09-01 00:00:00+02'
-  and created_at <  timestamptz '2026-11-17 00:00:00+01';  -- fin du 16 novembre 2026, heure de Bruxelles
--- => 1265 | 108  (vérifié le 16/11/2026 au soir)
-```
-
-Pour rejouer : changer la borne de fin, la date de la ligne de source et les
-trois chiffres ensemble, dans `data/preuves.json`.
+**Dans `CLAUDE.md`, sous « Les chiffres publiés »** : la bande de preuves ne
+s'affiche qu'avec une source et une date, comme tout chiffre du site. On la
+remplit dans `data/preuves.json`, puis on relance `node _src/build.mjs`.
 
 ---
 
@@ -263,7 +234,7 @@ place à la suivante) :
 
 | Page | Emplacement |
 |---|---|
-| Accueil (FR, NL, EN) | juste après la vidéo du héros et les badges, avant la bande de preuves |
+| Accueil (FR, NL, EN) | juste après la vidéo du héros et les badges, avant l'emplacement de la bande de preuves |
 | 11 pages métiers × 3 langues | **remontée juste sous les badges du héros** ; les blocs consignes et confirmations existants restent plus bas |
 | Articles (`p-article`) | une **version compacte** (téléphone seul, sans texte à côté) après la première section |
 | Pages d'atterrissage | entre la bande de preuves et « Comment ça marche » |
