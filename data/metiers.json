@@ -361,11 +361,11 @@
         "initiales": "BP",
         "entreprise": "Brasserie du Parc",
         "message": "Bonsoir Mme Dubois, votre réservation est enregistrée.",
-        "quand": "Samedi 22 novembre · 19h45",
+        "quand": "Samedi 21 novembre · 19h45",
         "quoi": "Table pour 4 · une poussette",
         "ou": "Brasserie du Parc, Ixelles",
         "reponse": "Merci, c'est confirmé. À samedi !",
-        "chip": "Samedi 22 nov. · 19h45"
+        "chip": "Samedi 21 nov. · 19h45"
       },
       "scene": {
         "appel": [
@@ -432,11 +432,11 @@
         "initiales": "BP",
         "entreprise": "Brasserie du Parc",
         "message": "Goedenavond mevr. Dubois, uw reservatie is genoteerd.",
-        "quand": "Zaterdag 22 november · 19.45 u",
+        "quand": "Zaterdag 21 november · 19.45 u",
         "quoi": "Tafel voor 4 · een kinderwagen",
         "ou": "Brasserie du Parc, Elsene",
         "reponse": "Bedankt, bevestigd. Tot zaterdag!",
-        "chip": "Za 22 nov. · 19.45 u"
+        "chip": "Za 21 nov. · 19.45 u"
       },
       "cartes": [],
       "scene": {
@@ -504,11 +504,11 @@
         "initiales": "BP",
         "entreprise": "Brasserie du Parc",
         "message": "Good evening Mrs Dubois, your booking is confirmed.",
-        "quand": "Saturday 22 November · 19:45",
+        "quand": "Saturday 21 November · 19:45",
         "quoi": "Table for 4 · one pushchair",
         "ou": "Brasserie du Parc, Ixelles",
         "reponse": "Thanks, that's confirmed. See you Saturday!",
-        "chip": "Sat 22 Nov · 19:45"
+        "chip": "Sat 21 Nov · 19:45"
       },
       "cartes": [
         {
@@ -640,11 +640,11 @@
         "initiales": "CP",
         "entreprise": "Cabinet du Parc",
         "message": "Bonjour Mme Claes, votre rendez-vous est enregistré.",
-        "quand": "Mardi 18 novembre · 9h20",
+        "quand": "Mardi 17 novembre · 9h20",
         "quoi": "Dr Lambert · consultation",
         "ou": "Cabinet du Parc, Etterbeek",
         "reponse": "Merci, c'est confirmé. À mardi !",
-        "chip": "Mardi 18 nov. · 9h20"
+        "chip": "Mardi 17 nov. · 9h20"
       },
       "scene": {
         "appel": [
@@ -710,11 +710,11 @@
         "initiales": "CP",
         "entreprise": "Cabinet du Parc",
         "message": "Goedendag mevr. Claes, uw afspraak is genoteerd.",
-        "quand": "Dinsdag 18 november · 9.20 u",
+        "quand": "Dinsdag 17 november · 9.20 u",
         "quoi": "Dr. Lambert · consultatie",
         "ou": "Cabinet du Parc, Etterbeek",
         "reponse": "Bedankt, bevestigd. Tot dinsdag!",
-        "chip": "Di 18 nov. · 9.20 u"
+        "chip": "Di 17 nov. · 9.20 u"
       },
       "cartes": [],
       "scene": {
@@ -781,11 +781,11 @@
         "initiales": "CP",
         "entreprise": "Cabinet du Parc",
         "message": "Hello Mrs Claes, your appointment is booked.",
-        "quand": "Tuesday 18 November · 9:20",
+        "quand": "Tuesday 17 November · 9:20",
         "quoi": "Dr Lambert · consultation",
         "ou": "Cabinet du Parc, Etterbeek",
         "reponse": "Thanks, that's confirmed. See you Tuesday!",
-        "chip": "Tue 18 Nov · 9:20"
+        "chip": "Tue 17 Nov · 9:20"
       },
       "cartes": [
         {
@@ -1111,11 +1111,11 @@
         "initiales": "AD",
         "entreprise": "Atelier Delvaux",
         "message": "Bonjour Mme Lambert, votre rendez-vous est enregistré.",
-        "quand": "Mercredi 19 novembre · 14h00",
+        "quand": "Jeudi 19 novembre · 14h00",
         "quoi": "Visite pour devis salle de bain",
         "ou": "Chez vous, Namur",
-        "reponse": "Merci, c'est confirmé. À mercredi !",
-        "chip": "Mercredi 19 nov. · 14h00"
+        "reponse": "Merci, c'est confirmé. À jeudi !",
+        "chip": "Jeudi 19 nov. · 14h00"
       },
       "scene": {
         "appel": [
@@ -1185,11 +1185,11 @@
         "initiales": "AD",
         "entreprise": "Atelier Delvaux",
         "message": "Goedendag mevr. Lambert, uw afspraak is genoteerd.",
-        "quand": "Woensdag 19 november · 14.00 u",
+        "quand": "Donderdag 19 november · 14.00 u",
         "quoi": "Plaatsbezoek voor offerte badkamer",
         "ou": "Bij u thuis, Namen",
-        "reponse": "Bedankt, bevestigd. Tot woensdag!",
-        "chip": "Wo 19 nov. · 14.00 u"
+        "reponse": "Bedankt, bevestigd. Tot donderdag!",
+        "chip": "Do 19 nov. · 14.00 u"
       },
       "cartes": [],
       "scene": {
@@ -1260,11 +1260,11 @@
         "initiales": "AD",
         "entreprise": "Atelier Delvaux",
         "message": "Hello Mrs Lambert, your appointment is booked.",
-        "quand": "Wednesday 19 November · 14:00",
+        "quand": "Thursday 19 November · 14:00",
         "quoi": "Visit for a bathroom quote",
         "ou": "At your home, Namur",
-        "reponse": "Thanks, that's confirmed. See you Wednesday!",
-        "chip": "Wed 19 Nov · 14:00"
+        "reponse": "Thanks, that's confirmed. See you Thursday!",
+        "chip": "Thu 19 Nov · 14:00"
       },
       "cartes": [
         {
@@ -1384,11 +1384,11 @@
         "initiales": "SL",
         "entreprise": "Sanitaire Lemaire",
         "message": "Bonjour M. Willems, votre intervention est enregistrée.",
-        "quand": "Vendredi 21 novembre · 8h30",
+        "quand": "Vendredi 20 novembre · 8h30",
         "quoi": "Remplacement mitigeur cuisine",
         "ou": "Rue des Tanneurs 14, 3e étage",
         "reponse": "Merci, c'est confirmé. À vendredi !",
-        "chip": "Vendredi 21 nov. · 8h30"
+        "chip": "Vendredi 20 nov. · 8h30"
       },
       "scene": {
         "appel": [
@@ -1458,11 +1458,11 @@
         "initiales": "SL",
         "entreprise": "Sanitaire Lemaire",
         "message": "Goedendag dhr. Willems, uw interventie is genoteerd.",
-        "quand": "Vrijdag 21 november · 8.30 u",
+        "quand": "Vrijdag 20 november · 8.30 u",
         "quoi": "Vervanging mengkraan keuken",
         "ou": "Huidevettersstraat 14, 3e verdieping",
         "reponse": "Bedankt, bevestigd. Tot vrijdag!",
-        "chip": "Vr 21 nov. · 8.30 u"
+        "chip": "Vr 20 nov. · 8.30 u"
       },
       "cartes": [
         {
@@ -1589,11 +1589,11 @@
         "initiales": "CP",
         "entreprise": "Chauffage Peeters",
         "message": "Bonjour Mme Martens, votre entretien est enregistré.",
-        "quand": "Lundi 24 novembre · 9h00",
+        "quand": "Lundi 23 novembre · 9h00",
         "quoi": "Entretien annuel chaudière gaz",
         "ou": "Avenue Brugmann 210",
         "reponse": "Merci, c'est confirmé. À lundi !",
-        "chip": "Lundi 24 nov. · 9h00"
+        "chip": "Lundi 23 nov. · 9h00"
       },
       "scene": {
         "appel": [
@@ -1663,11 +1663,11 @@
         "initiales": "CP",
         "entreprise": "Chauffage Peeters",
         "message": "Goedendag mevr. Martens, uw onderhoud is genoteerd.",
-        "quand": "Maandag 24 november · 9.00 u",
+        "quand": "Maandag 23 november · 9.00 u",
         "quoi": "Jaarlijks onderhoud gasketel",
         "ou": "Brugmannlaan 210",
         "reponse": "Bedankt, bevestigd. Tot maandag!",
-        "chip": "Ma 24 nov. · 9.00 u"
+        "chip": "Ma 23 nov. · 9.00 u"
       },
       "cartes": [
         {
@@ -2200,11 +2200,11 @@
         "initiales": "SG",
         "entreprise": "Syndic Gestimmo",
         "message": "Bonjour M. Claes, votre rendez-vous est enregistré.",
-        "quand": "Mardi 18 novembre · 11h00",
+        "quand": "Mardi 17 novembre · 11h00",
         "quoi": "Visite technique · lot 3B",
         "ou": "Résidence Les Tilleuls",
         "reponse": "Merci, c'est confirmé. À mardi !",
-        "chip": "Mardi 18 nov. · 11h00"
+        "chip": "Mardi 17 nov. · 11h00"
       },
       "scene": {
         "appel": [
@@ -2274,11 +2274,11 @@
         "initiales": "SG",
         "entreprise": "Syndic Gestimmo",
         "message": "Goedendag dhr. Claes, uw afspraak is genoteerd.",
-        "quand": "Dinsdag 18 november · 11.00 u",
+        "quand": "Dinsdag 17 november · 11.00 u",
         "quoi": "Technisch plaatsbezoek · kavel 3B",
         "ou": "Residentie Les Tilleuls",
         "reponse": "Bedankt, bevestigd. Tot dinsdag!",
-        "chip": "Di 18 nov. · 11.00 u"
+        "chip": "Di 17 nov. · 11.00 u"
       },
       "cartes": [
         {

@@ -9,7 +9,8 @@
  *     dans le héros ; aucune accroche, aucune sous-ligne, aucune pastille ;
  *  3. formulaire : même envoi (data-lead, source « demo form », page merci),
  *     mêmes champs que demo.html, dans le même ordre ;
- *  4. prix : « Demander une démo » renvoie au formulaire de la page (#lp) ;
+ *  4. prix et appel final : « Demander une démo » renvoie au formulaire de la
+ *     page (#lp), plus à demo.html (décision de Bora du 16/11/2026) ;
  *  5. FAQ : cinq questions, « Vos questions, nos réponses », dont « changer de
  *     numéro » et « sauront-ils que c'est une IA » ;
  *  6. cases : textes du métier sur les pages garages, génériques ailleurs ;
@@ -68,6 +69,9 @@ for (const [rel, lang, metier] of PAGES) {
   ok(fields(html) === fields(read(lang === 'fr' ? 'demo.html' : 'nl/demo.html')), 'formulaire : mêmes champs que la page démo, même ordre');
   /* 4. prix */
   ok(/<div class="price-go"><a class="btn btn-ink" href="#lp" data-demo>/.test(main), 'prix : « Demander une démo » renvoie au formulaire de la page');
+  const cta = /<div class="panel bg-ink cta-final">[\s\S]*?<\/section>/.exec(main)[0];
+  ok(/<a class="btn btn-line-d" href="#lp" data-demo>/.test(cta) && !/demo\.html/.test(cta), 'appel final : « Demander une démo » renvoie au formulaire de la page, plus à la page démo');
+  ok(!/href="[^"]*demo\.html"/.test(main), 'aucun lien vers la page démo : tout renvoie au formulaire de la page');
   /* 5. FAQ */
   const faq = /<section class="sec bg-page" id="faq">[\s\S]*?<\/section>/.exec(main)[0];
   const qs = [...faq.matchAll(/<summary>([\s\S]*?)<\/summary>/g)].map((m) => dec(m[1]));

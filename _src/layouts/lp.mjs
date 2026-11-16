@@ -8,7 +8,8 @@
  * seulement. Puis, dans cet ordre : badges, la scène « Un appel, de bout en
  * bout », Comment ça marche (quatre étapes), les cases RDV / À rappeler /
  * Urgent, « Appelez-la, comme un client », les prix (bouton vers le
- * formulaire de la page), la FAQ (cinq questions), l'appel final. */
+ * formulaire de la page), la FAQ (cinq questions), l'appel final (son bouton
+ * « Demander une démo » renvoie aussi au formulaire de la page). */
 import { one, all } from '../lib/core.mjs';
 import { shell } from '../components/shell.mjs';
 import { badges, prices, faq, ctaFinal, heroMedia, scene, sceneText, steps, cases, tryCall } from '../components/blocks.mjs';
@@ -40,6 +41,6 @@ ${cases(c, (M && M.cases) || t.cases_generique)}
 ${tryCall(c, one(page, 'test'), form)}
 ${prices(c, { demoHref: form })}
 ${faq(c, page.blocks.faq[0])}
-${ctaFinal(c, page.blocks.cta[0])}`;
+${ctaFinal(c, page.blocks.cta[0], { demoHref: form })}`;
   return shell(c, { headHTML: one(page, 'head'), main, bare: true, bodyClass: 'p-lp', mbarSecond: [form, t.mbar_callback] });
 }

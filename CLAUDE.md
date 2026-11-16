@@ -345,7 +345,12 @@ Brief : `docs/maquettes-16-11/PROMPT-conversion-16-11.md`, aperçu validé
   (celle qu'il a déjà sous 720 px) : en carte au coin bas droit, il recouvrait
   le bouton du formulaire — position seule, le consentement ne bouge pas. La barre mobile
   (« Appeler Janet » / « Être rappelé », vers `#lp`) est sur ces pages ; le
-  bouton des prix renvoie au formulaire de la page.
+  bouton des prix **et celui de l'appel final** renvoient au formulaire de la
+  page (`#lp`), plus à `demo.html` (décision de Bora du 16/11/2026, retour sur
+  la PR #34). **Le bandeau en barre basse sur ordinateur reste propre aux
+  pages d'atterrissage** : il ne s'étend pas au reste du site (même décision).
+  Le `mailto:sales@celya.be` du pied de page reste : « aucune adresse e-mail
+  dans le HTML ou le JS » vise le formulaire, qui n'en porte aucune.
 - **La scène « Un appel, de bout en bout »** (`scene()` dans
   `_src/components/blocks.mjs`, écrite une fois) : un téléphone aux couleurs
   Celya, mention « Exemple », cinq étapes sur une boucle de 15 s (l'appel, le
@@ -367,7 +372,20 @@ Brief : `docs/maquettes-16-11/PROMPT-conversion-16-11.md`, aperçu validé
   marche (quatre étapes, `ol.steps`), les cases RDV pris / À rappeler /
   Urgent, « Appelez-la, comme un client » (`tryCall()`), prix, FAQ en cinq
   questions (« Vos questions, nos réponses »), appel final. Les trois
-  bénéfices ont disparu (`tests/corrections-autorisees.json`).
+  bénéfices ont disparu (`tests/corrections-autorisees.json`). Sur la page
+  générique, qui avait déjà « Faut-il changer de numéro ? », la cinquième
+  question est « Et si je décroche moi-même ? » (décision de Bora du 16/11).
+- **Un jour écrit à côté d'une date est le bon** (`tests/dates.mjs`, FR, NL,
+  EN, en toutes lettres comme en abrégé, année 2026 quand elle n'est pas
+  écrite). Les exemples de `data/metiers.json` portaient des jours de 2025 ;
+  le 16/11/2026, chacun a gardé son jour de la semaine (il est cité dans les
+  dialogues : « À samedi ! ») et pris la date 2026 de ce jour dans la semaine
+  de l'exemple : samedi 21, mardi 17, vendredi 20, lundi 23 novembre. Les
+  indépendants passent au jeudi 19 : c'est le même rendez-vous que leur scène.
+  Même règle pour « maandag 3 augustus » (au lieu de 5) dans deux articles NL.
+- **« Comment ça marche » des accueils NL et EN** : la liste des quatre étapes
+  était vide depuis l'extraction du 14/11 ; elle porte de nouveau le texte de
+  l'ancienne page, mot pour mot (`1c2ce15^:nl/index.html`, `en/index.html`).
 
 **Exception datée — lot « design & proportions » du 11 septembre 2026, validé
 par Bora le même jour.** Ce lot est un brief CSS : `bento.css` y est modifié
@@ -548,6 +566,7 @@ node tests/texte-conserve.mjs        # aucun paragraphe perdu par la migration
 node tests/outils.mjs                # modèles, check-lists, grilles, calculateurs répondent
 node tests/scene.mjs                 # la scène : placement, textes par métier, pause, mouvement réduit
 node tests/lp.mjs                    # pages d'atterrissage : ordre des blocs, formulaire, liens, barre mobile
+node tests/dates.mjs                 # chaque jour de la semaine correspond à sa date (2026 par défaut)
 ```
 
 **Le générateur (lot du 14/11/2026).** Les pages migrées ne s'éditent plus à

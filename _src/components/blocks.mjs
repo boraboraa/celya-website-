@@ -280,21 +280,22 @@ export function faq(c, block, { id = 'faq' } = {}) {
 </div></section>`;
 }
 
-export function ctaFinal(c, block) {
+/** demoHref : cible de « Demander une démo » (pages d'atterrissage : « #lp », le formulaire de la page — décision de Bora du 16/11/2026) */
+export function ctaFinal(c, block, { demoHref = '' } = {}) {
   const { h2, body } = splitH2(block.html);
   return `<section class="sec-panel"><div class="panel bg-ink cta-final">
 ${cVoice('cv-bg')}
 <div class="cta-in">${h2.replace('<h2', '<h2 class="h-xl"')}
 ${body ? `<div class="cta-p">${body}</div>` : `<p class="cta-p">${c.t.cta_final_lead}</p>`}
-${ctaPairDark(c)}
+${ctaPairDark(c, demoHref)}
 </div>
 </div></section>`;
 }
 
 /* ctaPair vit dans shell.mjs ; recopie locale pour éviter un import circulaire */
-function ctaPairDark(c) {
+function ctaPairDark(c, demoHref = '') {
   const { t, offre } = c;
-  return `<div class="cta-pair"><div class="cta-btns"><a class="btn btn-orange" href="tel:${offre.telephone.e164}" data-call>${ico.phone}<span>${t.cta_call} · <span class="nw">${offre.telephone.affiche}</span></span></a><a class="btn btn-line-d" href="${c.L(t.demo_href)}" data-demo>${t.cta_demo}</a></div><p class="cta-sub">${t.cta_call_sub}</p></div>`;
+  return `<div class="cta-pair"><div class="cta-btns"><a class="btn btn-orange" href="tel:${offre.telephone.e164}" data-call>${ico.phone}<span>${t.cta_call} · <span class="nw">${offre.telephone.affiche}</span></span></a><a class="btn btn-line-d" href="${demoHref || c.L(t.demo_href)}" data-demo>${t.cta_demo}</a></div><p class="cta-sub">${t.cta_call_sub}</p></div>`;
 }
 
 export function related(c, block) {
