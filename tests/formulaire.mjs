@@ -137,7 +137,7 @@ async function main() {
       const click = (await p.evaluate(() => window.dataLayer.filter((e) => e && e.event === 'click_call')));
       ok(click.length >= 1 && click[0].page === '/' + rel, 'avec accord : click_call {page} dans dataLayer');
       const gl = evs.find((e) => e.event === 'generate_lead');
-      ok(gl && gl.form === 'demo' && gl.metier === 'restaurants' && gl.utm_campaign === 'essai', 'avec accord : generate_lead {form, metier, utm_campaign}');
+      ok(gl && gl.form === (rel.includes('lp/') ? 'lp' : 'demo') && gl.metier === 'restaurants' && gl.utm_campaign === 'essai', 'avec accord : generate_lead {form, metier, utm_campaign}');
       ok(leads.length === 1, 'avec accord : envoi effectué');
       await ctx.close();
     }

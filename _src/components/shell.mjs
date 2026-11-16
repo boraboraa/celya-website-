@@ -132,7 +132,7 @@ ${header(c, { bare })}
 ${main}
 </main>
 ${footer(c, { bare })}
-${bodyClass === 'p-demo' ? '' : mbar(c)}
+${/\bp-demo\b/.test(bodyClass) ? '' : mbar(c)}
 <script src="${c.root}celya.js" defer></script>
 ${own ? own + '\n' : ''}</body>
 </html>
