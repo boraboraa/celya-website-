@@ -117,23 +117,22 @@ Téléphone (sous 860 px) :
 ## 2. Ce qui suit le héros, sur les quatre pages, dans cet ordre
 
 1. **Badges** Meta Tech Provider / Vérifiée par Google (inchangés).
-2. **La bande de preuves** (section 3) — masquée tant que les chiffres ne sont pas fournis.
-3. **La scène animée** (section 4).
-4. **« Comment ça marche », en quatre étapes**, avec les mots du métier sur la
+2. **La scène animée** (section 3).
+3. **« Comment ça marche », en quatre étapes**, avec les mots du métier sur la
    page garages (voir l'aperçu : « Un client appelle le garage · Janet
    décroche · Elle agit (Rendez-vous, Message, Urgence) · Vous recevez tout »).
    Réutilise le composant des étapes de l'accueil (`ol.steps`).
-5. **« Chaque appel, rangé dans la bonne case »** : le composant `cases()`,
+4. **« Chaque appel, rangé dans la bonne case »** : le composant `cases()`,
    avec les textes du métier pour la page garages et les textes génériques
    pour l'autre.
-6. **« Appelez-la, comme un client »** : un bloc beige avec, à gauche,
+5. **« Appelez-la, comme un client »** : un bloc beige avec, à gauche,
    l'étiquette « Le test le plus simple », un H2 et une phrase
    (garages : « Demandez un rendez-vous pour un entretien, ou dites que votre
    voiture ne démarre plus. Vous entendrez ce que vos clients entendront. »),
    et à droite les deux boutons (appeler, être rappelé). Composant unique.
-7. **Les prix**, avec le bouton « Demander une démo » qui renvoie **au
+6. **Les prix**, avec le bouton « Demander une démo » qui renvoie **au
    formulaire de la page** (`#lp`), pas à `demo.html`.
-8. **La FAQ, cinq questions** : les trois actuelles, plus deux.
+7. **La FAQ, cinq questions** : les trois actuelles, plus deux.
    - « Dois-je changer de numéro ? » — « Non. Vous gardez votre numéro et
      déviez simplement les appels vers Janet. »
    - « Mes clients sauront-ils que c'est une IA ? » — « Oui, elle le dit. Et
@@ -141,7 +140,7 @@ Téléphone (sous 860 px) :
 
    Le H2 devient « Vos questions, *nos réponses* ». Si la page porte un
    `FAQPage`, il suit le texte visible.
-9. **L'appel final** (inchangé).
+8. **L'appel final** (inchangé).
 
 Les trois bénéfices actuels (`ul.benefits`) sont remplacés par les blocs 4 et
 5. Ajoute ce retrait dans `tests/corrections-autorisees.json`, page par page,
@@ -149,44 +148,7 @@ avec la raison.
 
 ---
 
-## 3. La bande de preuves : construite, mais masquée tant qu'elle est vide
-
-Le composant est construit maintenant. **Les chiffres viendront plus tard** :
-Bora doit d'abord fournir une source qu'on peut recompter. Tant que
-`data/preuves.json` n'est pas rempli, la bande ne s'affiche nulle part.
-
-**Le dessin** (voir l'aperçu, `lpv-stats` et `lpv-src`) : trois tuiles crème en
-ligne, avec un grand nombre en Newsreader et un libellé dessous, puis une ligne
-de source. Sur téléphone, les trois tiennent sur une ligne.
-
-**Le fichier `data/preuves.json`** est livré **vide**. Il prévoit trois entrées
-`{ valeur, libelle: {fr, nl, en} }`, ainsi que `source: {fr, nl, en}`,
-`date_debut`, `date_fin` et `requete`.
-
-**La règle d'affichage, et son test** (`tests/preuves.mjs`) :
-
-- la bande ne s'affiche que si **les trois valeurs ET la source ET les dates**
-  sont remplies ;
-- si une seule de ces pièces manque, le générateur n'écrit rien : pas de bande,
-  pas de tuile vide ;
-- le test vérifie les deux cas, rempli et vide ;
-- aucun chiffre n'est écrit en dur ailleurs que dans ce fichier.
-
-**Contraintes de mise en page :**
-
-- **pas de H2 dans la bande** (une étiquette au plus), pour que la liste des H2
-  des pages indexées ne bouge pas ;
-- **son emplacement est déjà réservé** sur les quatre pages d'atterrissage
-  (sous les badges), sur l'accueil FR/NL/EN, sur les prix, sur la démo et sur
-  les pages métiers. Quand elle est vide, aucun espace ne reste à sa place.
-
-**Dans `CLAUDE.md`, sous « Les chiffres publiés »** : la bande de preuves ne
-s'affiche qu'avec une source et une date, comme tout chiffre du site. On la
-remplit dans `data/preuves.json`, puis on relance `node _src/build.mjs`.
-
----
-
-## 4. La scène animée « Un appel, de bout en bout »
+## 3. La scène animée « Un appel, de bout en bout »
 
 Un composant unique, écrit une fois. Il montre ce que Janet fait vraiment,
 dans un **téléphone aux couleurs Celya** (cadre sobre de `capture()` /
@@ -234,17 +196,17 @@ place à la suivante) :
 
 | Page | Emplacement |
 |---|---|
-| Accueil (FR, NL, EN) | juste après la vidéo du héros et les badges, avant l'emplacement de la bande de preuves |
+| Accueil (FR, NL, EN) | juste après la vidéo du héros et les badges |
 | 11 pages métiers × 3 langues | **remontée juste sous les badges du héros** ; les blocs consignes et confirmations existants restent plus bas |
 | Articles (`p-article`) | une **version compacte** (téléphone seul, sans texte à côté) après la première section |
-| Pages d'atterrissage | entre la bande de preuves et « Comment ça marche » |
+| Pages d'atterrissage | juste sous les badges, avant « Comment ça marche » |
 
 **Pas de H2 dans le composant** : une étiquette et un `h3` au plus, pour que
 la liste des H2 des pages indexées ne bouge pas (`tests/seo-avant-apres.mjs`).
 
 ---
 
-## 5. Hors périmètre de ce lot
+## 4. Hors périmètre de ce lot
 
 - **L'envoi du formulaire** : c'est le lot `web-lead` du dépôt
   `celya-sales-agent`, l'e-mail vers `sales@celya.be`. Ici, le formulaire garde
@@ -254,7 +216,7 @@ la liste des H2 des pages indexées ne bouge pas (`tests/seo-avant-apres.mjs`).
   d'une ligne.
 - `conditions.html` et `nl/voorwaarden.html` : on n'y touche pas.
 
-## 6. Avant d'ouvrir la PR
+## 5. Avant d'ouvrir la PR
 
 - Toutes les vérifications de `CLAUDE.md`, toutes vertes :
   - `check.py`, `sitemap.py`, `sweep*.js` ;
@@ -270,3 +232,9 @@ la liste des H2 des pages indexées ne bouge pas (`tests/seo-avant-apres.mjs`).
   qui reste à décider par Bora.
 
 **Effort : high.**
+
+## Hors brief : pas de bande de chiffres
+
+L'aperçu (`apercu-lp-garages.html`) montre une bande de trois chiffres sous les
+badges : **elle n'est pas à faire.** Aucun chiffre, aucune bande de preuves dans
+ce lot.
