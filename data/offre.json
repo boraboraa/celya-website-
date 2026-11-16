@@ -1,0 +1,290 @@
+{
+  "_doc": "Seule source des montants, quotas et règles de l'offre (grille du 14/11/2026, décision de Bora). Aucun gabarit ni page source ne les écrit en dur : ils s'insèrent par {{offre.…}}. Voir CLAUDE.md.",
+  "devise": "€",
+  "telephone": {
+    "e164": "+32460254413",
+    "affiche": "+32 460 25 44 13"
+  },
+  "formules": [
+    {
+      "id": "essentiel",
+      "prix_ht": 49,
+      "minutes": 100,
+      "agendas": 1,
+      "sms_secours": 0,
+      "nom": {
+        "fr": "Essentiel",
+        "nl": "Essentieel",
+        "en": "Essential"
+      },
+      "agendas_txt": {
+        "fr": "1 agenda",
+        "nl": "1 agenda",
+        "en": "1 calendar"
+      },
+      "pour": {
+        "fr": "Pour ne plus rater un appel.",
+        "nl": "Om geen oproep meer te missen.",
+        "en": "So you never miss a call again."
+      },
+      "inclus": {
+        "fr": [
+          "Numéro belge inclus",
+          "En français et en néerlandais",
+          "1 agenda : Google ou Celya",
+          "Résumé de chaque appel sur WhatsApp",
+          "Vos consignes par WhatsApp",
+          "Transfert des urgences vers votre portable"
+        ],
+        "nl": [
+          "Belgisch nummer inbegrepen",
+          "In het Frans en het Nederlands",
+          "1 agenda: Google of Celya",
+          "Samenvatting van elke oproep via WhatsApp",
+          "Uw instructies via WhatsApp",
+          "Dringende oproepen doorgeschakeld naar uw gsm"
+        ],
+        "en": [
+          "Belgian number included",
+          "In French and Dutch",
+          "1 calendar: Google or Celya",
+          "Summary of every call on WhatsApp",
+          "Your instructions over WhatsApp",
+          "Urgent calls transferred to your mobile"
+        ]
+      }
+    },
+    {
+      "id": "pro",
+      "prix_ht": 99,
+      "minutes": 300,
+      "agendas": 3,
+      "sms_secours": 50,
+      "recommandee": true,
+      "nom": {
+        "fr": "Pro",
+        "nl": "Pro",
+        "en": "Pro"
+      },
+      "agendas_txt": {
+        "fr": "jusqu'à 3 agendas",
+        "nl": "tot 3 agenda's",
+        "en": "up to 3 calendars"
+      },
+      "pour": {
+        "fr": "Pour une équipe qui prend des rendez-vous.",
+        "nl": "Voor een team dat afspraken maakt.",
+        "en": "For a team that takes bookings."
+      },
+      "inclus": {
+        "fr": [
+          "Tout l'Essentiel",
+          "Jusqu'à 3 agendas",
+          "Confirmations et rappels sur WhatsApp",
+          "Vos clients confirment, déplacent ou annulent en un clic",
+          "50 SMS de secours par mois"
+        ],
+        "nl": [
+          "Alles uit Essentieel",
+          "Tot 3 agenda's",
+          "Bevestigingen en herinneringen via WhatsApp",
+          "Uw klanten bevestigen, verplaatsen of annuleren met één klik",
+          "50 reserve-sms'en per maand"
+        ],
+        "en": [
+          "Everything in Essential",
+          "Up to 3 calendars",
+          "Confirmations and reminders on WhatsApp",
+          "Your customers confirm, reschedule or cancel in one tap",
+          "50 backup text messages a month"
+        ]
+      }
+    },
+    {
+      "id": "premier",
+      "prix_ht": 199,
+      "minutes": 750,
+      "agendas": null,
+      "sms_secours": 100,
+      "nom": {
+        "fr": "Premier répondant",
+        "nl": "Eerste hulplijn",
+        "en": "First responder"
+      },
+      "agendas_txt": {
+        "fr": "agendas illimités",
+        "nl": "onbeperkt agenda's",
+        "en": "unlimited calendars"
+      },
+      "pour": {
+        "fr": "Pour les gros volumes et plusieurs adresses.",
+        "nl": "Voor grote volumes en meerdere vestigingen.",
+        "en": "For high volumes and several locations."
+      },
+      "inclus": {
+        "fr": [
+          "Tout le Pro",
+          "Agendas illimités, plusieurs sites",
+          "Revue mensuelle de vos appels",
+          "Support prioritaire",
+          "100 SMS de secours par mois"
+        ],
+        "nl": [
+          "Alles uit Pro",
+          "Onbeperkt agenda's, meerdere vestigingen",
+          "Maandelijkse doorlichting van uw oproepen",
+          "Voorrang bij support",
+          "100 reserve-sms'en per maand"
+        ],
+        "en": [
+          "Everything in Pro",
+          "Unlimited calendars, several locations",
+          "Monthly review of your calls",
+          "Priority support",
+          "100 backup text messages a month"
+        ]
+      }
+    }
+  ],
+  "regles": {
+    "meta_mensuel_approx": 2,
+    "decompte": {
+      "fr": "Minutes décomptées à la seconde",
+      "nl": "Minuten per seconde aangerekend",
+      "en": "Minutes billed by the second"
+    },
+    "mise_en_service": {
+      "fr": "Mise en service : une mensualité",
+      "nl": "Opstartkost: één maandbedrag",
+      "en": "Setup: one monthly fee"
+    },
+    "depassement": {
+      "fr": "Vous dépassez ? Vous passez à la formule du dessus",
+      "nl": "Gaat u erover? Dan schakelt u over naar de formule erboven",
+      "en": "Going over? You move up to the next plan"
+    },
+    "au_dela": {
+      "fr": "Au-delà de {{offre.max_minutes}} minutes : sur devis",
+      "nl": "Boven {{offre.max_minutes}} minuten: op offerte",
+      "en": "Beyond {{offre.max_minutes}} minutes: on quote"
+    },
+    "meta": {
+      "fr": "Messages WhatsApp à vos clients facturés par Meta sur votre compte (environ {{offre.meta}} € par mois)",
+      "nl": "WhatsApp-berichten naar uw klanten worden door Meta op uw account aangerekend (ongeveer {{offre.meta}} € per maand)",
+      "en": "WhatsApp messages to your customers are billed by Meta to your account (about €{{offre.meta}} a month)"
+    },
+    "ht": {
+      "fr": "Prix hors TVA",
+      "nl": "Prijzen exclusief btw",
+      "en": "Prices excl. VAT"
+    }
+  },
+  "tableau": {
+    "_doc": "Comparatif « formule par formule » : une ligne = une fonction. v = « minutes », « agendas », « sms », ou trois booléens (essentiel, pro, premier).",
+    "lignes": [
+      {
+        "v": "minutes",
+        "fr": "Minutes par mois (décomptées à la seconde)",
+        "nl": "Minuten per maand (per seconde aangerekend)",
+        "en": "Minutes a month (billed by the second)"
+      },
+      {
+        "v": [
+          true,
+          true,
+          true
+        ],
+        "fr": "Numéro belge fourni, ou déviation du vôtre",
+        "nl": "Belgisch nummer van ons, of doorschakeling van het uwe",
+        "en": "Belgian number provided, or forwarding from yours"
+      },
+      {
+        "v": "agendas",
+        "fr": "Agendas (Google Agenda ou agenda Celya)",
+        "nl": "Agenda's (Google Agenda of agenda van Celya)",
+        "en": "Calendars (Google Calendar or Celya calendar)"
+      },
+      {
+        "v": [
+          true,
+          true,
+          true
+        ],
+        "fr": "Vos consignes par WhatsApp : congés, horaires, créneaux bloqués",
+        "nl": "Uw instructies via WhatsApp: verlof, uren, geblokkeerde momenten",
+        "en": "Your instructions over WhatsApp: holidays, hours, blocked slots"
+      },
+      {
+        "v": [
+          true,
+          true,
+          true
+        ],
+        "fr": "Résumé de chaque appel sur WhatsApp",
+        "nl": "Samenvatting van elke oproep via WhatsApp",
+        "en": "Summary of every call on WhatsApp"
+      },
+      {
+        "v": [
+          false,
+          true,
+          true
+        ],
+        "fr": "Confirmations et rappels clients sur WhatsApp, avec boutons",
+        "nl": "Bevestigingen en herinneringen aan klanten via WhatsApp, met knoppen",
+        "en": "Customer confirmations and reminders on WhatsApp, with buttons"
+      },
+      {
+        "v": "sms",
+        "fr": "SMS de secours si le client n'a pas WhatsApp",
+        "nl": "Reserve-sms als de klant geen WhatsApp heeft",
+        "en": "Backup text message if the customer has no WhatsApp"
+      },
+      {
+        "v": [
+          true,
+          true,
+          true
+        ],
+        "fr": "Transfert des urgences",
+        "nl": "Doorschakeling van dringende oproepen",
+        "en": "Urgent calls transferred"
+      },
+      {
+        "v": [
+          false,
+          false,
+          true
+        ],
+        "fr": "Plusieurs sites",
+        "nl": "Meerdere vestigingen",
+        "en": "Several locations"
+      },
+      {
+        "v": [
+          false,
+          false,
+          true
+        ],
+        "fr": "Revue mensuelle de vos appels",
+        "nl": "Maandelijkse doorlichting van uw oproepen",
+        "en": "Monthly review of your calls"
+      },
+      {
+        "v": [
+          false,
+          false,
+          true
+        ],
+        "fr": "Support prioritaire",
+        "nl": "Voorrang bij support",
+        "en": "Priority support"
+      }
+    ],
+    "sms_mois": {
+      "fr": "{n} / mois",
+      "nl": "{n} / maand",
+      "en": "{n} / month"
+    }
+  }
+}

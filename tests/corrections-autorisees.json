@@ -1,0 +1,693 @@
+{
+  "_doc": "Écarts SEO autorisés par le lot « refonte premium » (14/11/2026) : seulement les textes devenus faux (brief, section 5) et les décisions de Bora. Chaque entrée dit ce qui change et pourquoi. tests/seo-avant-apres.mjs refuse tout écart absent d'ici.",
+  "h2_composants": [
+    "Formule par formule, ligne par ligne.",
+    "Formule per formule, regel per regel.",
+    "Plan by plan, line by line."
+  ],
+  "pages": {
+    "index.html": {
+      "faq": {
+        "Combien ça coûte ?": "grille du 14/11 : montants et minutes lus dans data/offre.json"
+      },
+      "graph": [],
+      "h2_retires": [
+        "Combien vous coûtent les appels manqués ?"
+      ],
+      "_h2_retires": "retour de Bora du 15/11/2026 : bloc calculateur retiré de l'accueil (calculateur-appels-manques.html reste en ligne)",
+      "graph_retires": [
+        "VideoObject"
+      ],
+      "_graph_retires": "vidéo celya-intro retirée du site le 16/11/2026 (décision de Bora : ancien C néon, une nouvelle vidéo est prévue)"
+    },
+    "prix.html": {
+      "faq": {
+        "Y a-t-il des frais de mise en service ?": "mise en service = une mensualité (décision du 14/11)"
+      },
+      "graph": [
+        "Service",
+        "WebPage"
+      ],
+      "_graph": "Service.offers : nouvelle grille (noms et prix, data/offre.json) ; WebPage.description : même phrase que la meta description",
+      "desc": "ancienne grille dans la description : montants lus dans data/offre.json"
+    },
+    "nl/index.html": {
+      "h2_retires": [
+        "Wat kosten gemiste oproepen u?"
+      ],
+      "_h2_retires": "retour du 15/11/2026 : calculateur retiré",
+      "faq": {
+        "Wat kost het?": "grille du 14/11 publiée (data/offre.json) : l'ancienne réponse disait que le prix dépendait d'un entretien",
+        "Hoe snel is het geïnstalleerd?": "« Binnen 48 uur », formulation validée par Bora le 14/11"
+      },
+      "graph_retires": [
+        "VideoObject"
+      ],
+      "_graph_retires": "vidéo celya-intro retirée du site le 16/11/2026 (décision de Bora : ancien C néon, une nouvelle vidéo est prévue)"
+    },
+    "en/index.html": {
+      "h2_retires": [
+        "What are missed calls costing you?"
+      ],
+      "_h2_retires": "retour du 15/11/2026 : calculateur retiré",
+      "faq": {
+        "How much does it cost?": "grille du 14/11 (data/offre.json)",
+        "How long does setup take?": "« Within 48 hours », formulation validée par Bora le 14/11"
+      },
+      "graph_retires": [
+        "VideoObject"
+      ],
+      "_graph_retires": "vidéo celya-intro retirée du site le 16/11/2026 (décision de Bora : ancien C néon, une nouvelle vidéo est prévue)"
+    },
+    "nl/prijzen.html": {
+      "desc": "ancienne grille dans la description : montants lus dans data/offre.json",
+      "graph": [
+        "Service",
+        "WebPage"
+      ],
+      "_graph": "Service.offers : nouvelle grille ; WebPage.description : même phrase que la meta description",
+      "faq": {
+        "Zijn er opstartkosten?": "opstart = één maandbedrag (décision du 14/11)"
+      }
+    },
+    "en/pricing.html": {
+      "desc": "ancienne grille dans la description : montants lus dans data/offre.json",
+      "graph": [
+        "Service",
+        "WebPage"
+      ],
+      "_graph": "Service.offers : nouvelle grille ; WebPage.description : même phrase que la meta description",
+      "faq": {
+        "Is there a setup fee?": "setup = one month of the plan (décision du 14/11)"
+      }
+    },
+    "prise-de-rendez-vous.html": {
+      "texte": [
+        "l'agent écrit dans l'agenda de Celya, pas dans Google Agenda ni dans Outlook.",
+        "Il n'y a aucune synchronisation avec un agenda externe. Vous consultez le vôtre depuis un navigateur, et c'est là que les rendez-vous apparaissent. Pour beaucoup d'indépendants et de petites structures, c'est sans conséquence : le seul agenda qui compte devient celui-là. Si vous tenez absolument à voir vos rendez-vous dans un outil externe, dites-le avant de signer — ce n'est pas ce que nous faisons aujourd'hui.",
+        "Vous avez déjà un logiciel métier ? Vous le gardez. Nous prenons les appels que vous ne prenez pas, et nous vous transmettons le rendez-vous et le motif ; ce que vous en faites ensuite dans votre outil vous appartient. Une connexion directe peut être étudiée au cas par cas — c'est une conversation à avoir au téléphone, pas une case à cocher sur une page."
+      ],
+      "faq": {
+        "Est-ce que ça se synchronise avec Google Agenda ou Outlook ?": "texte devenu faux (brief du 14/11, section 5 ; CLAUDE.md, offre et agenda du 14/11)",
+        "Le client reçoit-il une confirmation ?": "texte devenu faux (brief du 14/11, section 5 ; CLAUDE.md, offre et agenda du 14/11)"
+      }
+    },
+    "prise-de-message.html": {
+      "texte": [
+        "Elle ne le transmet ni par SMS ni par e-mail à votre client, et ne le rappelle pas à votre place : l'agent ne passe aucun appel sortant."
+      ],
+      "faq": {
+        "L'agent peut-il envoyer le message par SMS ou par e-mail ?": "texte devenu faux (brief du 14/11, section 5 ; CLAUDE.md, offre et agenda du 14/11)"
+      }
+    },
+    "plan-de-charge.html": {
+      "faq": {
+        "Est-ce que ça se synchronise avec mon logiciel de réservation ?": "texte devenu faux (brief du 14/11, section 5 ; CLAUDE.md, offre et agenda du 14/11)"
+      }
+    },
+    "est-ce-legal-en-belgique.html": {
+      "texte": [
+        "Aucun appel sortant, aucune campagne, aucun SMS, aucun e-mail vers vos clients — ni techniquement, ni contractuellement."
+      ]
+    },
+    "securite.html": {
+      "texte": [
+        "Aucun appel sortant, aucun SMS, aucun e-mail"
+      ]
+    },
+    "traitement-des-donnees.html": {
+      "texte": [
+        "L'agent ne passe aucun appel sortant et n'envoie ni SMS ni e-mail."
+      ]
+    },
+    "fiduciaires.html": {
+      "texte": [
+        "aucun appel sortant, aucun SMS, aucun e-mail.",
+        "Quelques jours suffisent."
+      ],
+      "faq": {
+        "Est-ce qu'elle peut réclamer des documents manquants ?": "texte devenu faux (brief du 14/11, section 5 ; CLAUDE.md, offre et agenda du 14/11)"
+      }
+    },
+    "syndics.html": {
+      "texte": [
+        "aucun appel sortant, aucun SMS, aucun e-mail."
+      ],
+      "faq": {
+        "Est-ce qu'elle envoie des e-mails ou des SMS aux copropriétaires ?": "texte devenu faux (brief du 14/11, section 5 ; CLAUDE.md, offre et agenda du 14/11)"
+      }
+    },
+    "numero-belge.html": {
+      "texte": [
+        "C'est possible, et cela se discute au moment de la proposition."
+      ],
+      "faq": {
+        "Puis-je avoir un numéro fourni par vous ?": "texte devenu faux (brief du 14/11, section 5 ; CLAUDE.md, offre et agenda du 14/11)"
+      }
+    },
+    "plusieurs-personnes-plusieurs-agendas.html": {
+      "texte": [
+        "Vous utilisez déjà un logiciel de gestion pour vos plannings ? Vous le gardez. Rien ne vous demande d'en changer, d'en sortir vos données, ou d'apprendre autre chose.",
+        "Celya prend les appels que vous ne prenez pas, et vous transmet le rendez-vous, la personne concernée et le motif. Vos plannings restent là où ils sont, tenus comme vous les tenez.",
+        "Une connexion directe à votre outil peut être étudiée — c'est une discussion à avoir au téléphone, parce que la réponse dépend entièrement de ce que vous utilisez et de la façon dont vous vous en servez. Nous préférons en parler que de l'écrire ici."
+      ],
+      "faq": {
+        "Est-ce que je dois changer de logiciel ?": "texte devenu faux (brief du 14/11, section 5 ; CLAUDE.md, offre et agenda du 14/11)",
+        "Une connexion à mon outil est-elle possible ?": "texte devenu faux (brief du 14/11, section 5 ; CLAUDE.md, offre et agenda du 14/11)",
+        "Combien de personnes peut-on gérer ?": "texte devenu faux (brief du 14/11, section 5 ; CLAUDE.md, offre et agenda du 14/11)"
+      }
+    },
+    "y-a-t-il-des-frais-d-installation.html": {
+      "texte": [
+        "Nous n'affichons aucun montant sur ce site, et cette page ne fera pas exception. Les modalités — y compris l'existence ou non de frais de mise en service — figurent dans votre proposition, après avoir regardé votre activité réelle.",
+        "S'il y a un poste de mise en service, il paie du temps de configuration, pas du matériel."
+      ],
+      "faq": {
+        "Y a-t-il des frais de mise en service ?": "texte devenu faux (brief du 14/11, section 5 ; CLAUDE.md, offre et agenda du 14/11)",
+        "Combien de temps avant le premier appel traité ?": "texte devenu faux (brief du 14/11, section 5 ; CLAUDE.md, offre et agenda du 14/11)"
+      }
+    },
+    "combien-coute-un-secretariat-telephonique.html": {
+      "texte": [
+        "Ce n'est pas une coquetterie commerciale, et l'explication tient en un exemple.",
+        "Ce que nous garantissons en revanche : pas de frais cachés, pas de supplément d'amplitude horaire, et rien à installer chez vous.",
+        ">Pourquoi nous n'affichons aucun chiffre"
+      ],
+      "faq": {
+        "Vous facturez à l'appel ou au forfait ?": "texte devenu faux (brief du 14/11, section 5 ; CLAUDE.md, offre et agenda du 14/11)",
+        "Y a-t-il des frais de mise en service ?": "texte devenu faux (brief du 14/11, section 5 ; CLAUDE.md, offre et agenda du 14/11)",
+        "Que se passe-t-il si mon volume explose en saison ?": "texte devenu faux (brief du 14/11, section 5 ; CLAUDE.md, offre et agenda du 14/11)"
+      },
+      "h2_modifies": {
+        "Pourquoi nous n'affichons aucun chiffre": "Pourquoi nous affichons trois chiffres"
+      }
+    },
+    "comment-se-passe-la-facturation.html": {
+      "texte": [
+        "Nous n'affichons aucun montant sur ce site. Ce que nous pouvons dire, c'est ce qui fait varier une proposition d'un client à l'autre.",
+        "La complexité de la configuration : un métier avec trois motifs standards et un métier avec des durées variables, plusieurs praticiens et des règles d'urgence ne demandent pas le même travail de mise en service.",
+        "C'est pour cela que la proposition vient après avoir regardé votre activité, et pas avant."
+      ],
+      "faq": {
+        "À quelle fréquence suis-je facturé ?": "texte devenu faux (brief du 14/11, section 5 ; CLAUDE.md, offre et agenda du 14/11)",
+        "Qu'est-ce qui fait varier le prix ?": "texte devenu faux (brief du 14/11, section 5 ; CLAUDE.md, offre et agenda du 14/11)",
+        "Pourquoi n'affichez-vous pas de grille ?": "texte devenu faux (brief du 14/11, section 5 ; CLAUDE.md, offre et agenda du 14/11)"
+      }
+    },
+    "si-je-depasse-mon-volume.html": {
+      "texte": [
+        "Chez nous, les modalités figurent dans votre proposition, et elles se discutent après avoir regardé votre année plutôt que votre semaine — précisément pour éviter un seuil calé sur un mois qui ne vous ressemble pas."
+      ],
+      "faq": {
+        "Y a-t-il un volume inclus ?": "texte devenu faux (brief du 14/11, section 5 ; CLAUDE.md, offre et agenda du 14/11)",
+        "Que se passe-t-il au-delà ?": "texte devenu faux (brief du 14/11, section 5 ; CLAUDE.md, offre et agenda du 14/11)"
+      }
+    },
+    "est-ce-que-je-paie-si-personne-n-appelle.html": {
+      "texte": [
+        "Nous n'affichons aucun montant sur ce site et les modalités de votre proposition se discutent après avoir regardé votre activité. Ce que nous pouvons faire ici, c'est expliquer ce que chaque structure produit."
+      ],
+      "faq": {
+        "Je paie même sans appel ?": "texte devenu faux (brief du 14/11, section 5 ; CLAUDE.md, offre et agenda du 14/11)",
+        "Y a-t-il un volume inclus ?": "texte devenu faux (brief du 14/11, section 5 ; CLAUDE.md, offre et agenda du 14/11)"
+      }
+    },
+    "combien-de-temps-pour-etre-operationnel.html": {
+      "texte": [
+        "Ce qui prend les quelques jours, c'est",
+        "Donc oui : quelques jours après l'accord, la ligne répond",
+        ">Quelques jours pour que la ligne réponde",
+        "Quelques jours pour répondre. Trois semaines pour bien répondre."
+      ],
+      "faq": {
+        "Combien de temps avant que la ligne réponde ?": "texte devenu faux (brief du 14/11, section 5 ; CLAUDE.md, offre et agenda du 14/11)"
+      },
+      "h2_modifies": {
+        "Quelques jours pour que la ligne réponde": "48 heures pour que la ligne réponde",
+        "Quelques jours pour répondre. Trois semaines pour bien répondre.": "48 heures pour répondre. Trois semaines pour bien répondre."
+      }
+    },
+    "independants.html": {
+      "faq": {
+        "Est-ce qu'elle parle néerlandais ?": "texte devenu faux (brief du 14/11, section 5 ; CLAUDE.md, offre et agenda du 14/11)"
+      },
+      "texte": [
+        "En français, néerlandais et anglais."
+      ],
+      "graph": [
+        "Service"
+      ],
+      "_graph": "Service.description : « français, néerlandais et anglais » → « français et néerlandais » (CLAUDE.md : aucune promesse de langue au-delà de FR + NL)"
+    },
+    "restaurants.html": {
+      "texte": [
+        "Français, néerlandais ou anglais",
+        "en français, néerlandais et anglais."
+      ],
+      "graph": [
+        "Service"
+      ],
+      "_graph": "Service.description : « français, néerlandais et anglais » → « français et néerlandais » (CLAUDE.md : aucune promesse de langue au-delà de FR + NL)"
+    },
+    "blog/cabinets-serveur-vocal-appels.html": {
+      "texte": [
+        "elle décroche et elle parle, en français, en néerlandais ou en anglais, selon la langue du patient."
+      ]
+    },
+    "blog/independants-rappels-oublies.html": {
+      "texte": [
+        "Elle parle français, néerlandais et anglais, et bascule automatiquement dans la langue de l'appelant."
+      ]
+    },
+    "blog/restaurants-reservations-telephone.html": {
+      "texte": [
+        "Français, néerlandais, anglais : elle bascule automatiquement dans la langue de l'appelant."
+      ]
+    },
+    "agenda-en-ligne-ou-rendez-vous-par-telephone.html": {
+      "texte": [
+        "Vous avez déjà un logiciel métier ? Vous le gardez. Nous prenons les appels que vous ne prenez pas, et nous vous transmettons le rendez-vous et le motif ; une connexion directe peut être étudiée au cas par cas — c'est une conversation à avoir au téléphone."
+      ],
+      "faq": {
+        "J'ai déjà un logiciel de réservation, que devient-il ?": "texte devenu faux (brief du 14/11, section 5 ; CLAUDE.md, offre et agenda du 14/11)"
+      }
+    },
+    "agent-vocal-ou-telesecretariat-humain.html": {
+      "texte": [
+        "Nous n'affichons aucun montant sur ce site et nous ne relevons aucun tarif chez d'autres."
+      ],
+      "faq": {
+        "Lequel coûte le moins cher ?": "texte devenu faux (brief du 14/11, section 5 ; CLAUDE.md, offre et agenda du 14/11)"
+      }
+    },
+    "c-est-quoi-un-telesecretariat.html": {
+      "faq": {
+        "Combien ça coûte ?": "texte devenu faux (brief du 14/11, section 5 ; CLAUDE.md, offre et agenda du 14/11)"
+      }
+    },
+    "cabinets.html": {
+      "texte": [
+        "Vous utilisez déjà un logiciel de gestion de cabinet ? Vous le gardez. Celya prend les appels que vous ne prenez pas et vous transmet le rendez-vous et le motif, sous une forme que votre secrétariat reporte en quelques secondes. Une connexion directe à votre outil peut être étudiée — c'est une discussion à avoir au téléphone, parce que la réponse dépend de votre logiciel : il n'existe aujourd'hui aucun format d'agenda commun aux logiciels du secteur."
+      ]
+    },
+    "electriciens.html": {
+      "faq": {
+        "Est-ce qu'elle peut annoncer un tarif horaire ?": "texte devenu faux (brief du 14/11, section 5 ; CLAUDE.md, offre et agenda du 14/11)"
+      }
+    },
+    "serruriers.html": {
+      "faq": {
+        "Est-ce qu'elle peut annoncer mes tarifs de nuit ?": "texte devenu faux (brief du 14/11, section 5 ; CLAUDE.md, offre et agenda du 14/11)"
+      }
+    },
+    "engager-ou-externaliser-son-accueil.html": {
+      "texte": [
+        "La première est une règle que nous tenons partout sur ce site : nous n'affichons aucun montant, et nous ne relevons pas de tarifs chez d'autres pour les comparer aux nôtres. Les modalités d'une proposition se discutent après avoir regardé une activité réelle."
+      ],
+      "faq": {
+        "Pourquoi n'y a-t-il aucun prix sur cette page ?": "texte devenu faux (brief du 14/11, section 5 ; CLAUDE.md, offre et agenda du 14/11)"
+      }
+    },
+    "forfait-ou-facturation-a-l-appel.html": {
+      "texte": [
+        "Nous n'affichons aucun montant sur ce site, et nous ne relevons pas de tarifs chez d'autres pour les comparer aux nôtres."
+      ]
+    },
+    "je-ne-peux-pas-embaucher-une-secretaire.html": {
+      "texte": [
+        "Les modalités de la vôtre figurent dans votre proposition : nous n'affichons aucun montant sur ce site, et nous ne comparons pas des tarifs relevés chez d'autres."
+      ],
+      "faq": {
+        "Combien ça coûte ?": "texte devenu faux (brief du 14/11, section 5 ; CLAUDE.md, offre et agenda du 14/11)"
+      }
+    },
+    "si-je-recois-peu-d-appels.html": {
+      "texte": [
+        "Nous n'affichons aucun montant sur ce site et cette page ne fera pas exception — les modalités figurent dans votre proposition. Ce que nous pouvons faire,"
+      ]
+    },
+    "transfert-vers-un-humain.html": {
+      "faq": {
+        "Le transfert coûte-t-il quelque chose ?": "texte devenu faux (brief du 14/11, section 5 ; CLAUDE.md, offre et agenda du 14/11)"
+      }
+    },
+    "veterinaires.html": {
+      "texte": [
+        "Vous travaillez déjà avec un logiciel de gestion de clinique ? Vous le gardez. Celya prend les appels que vous ne prenez pas et vous transmet le rendez-vous et le motif ; le report chez vous reste une opération de quelques secondes. Une connexion directe à votre outil peut être étudiée — parlons-en, la réponse dépend de ce que vous utilisez."
+      ]
+    },
+    "nl/aanwerven-of-uitbesteden.html": {
+      "texte": [
+        "Aan de kant van uitbesteden staat er geen bedrag op deze site — de voorwaarden staan in\nuw voorstel."
+      ],
+      "faq": {
+        "Staat er een prijs tegenover ?": "texte devenu faux (brief du 14/11, section 5 ; CLAUDE.md, offre et agenda du 14/11)"
+      }
+    },
+    "nl/afspraken-vastleggen.html": {
+      "texte": [
+        "Er is geen enkele synchronisatie met een externe agenda. U raadpleegt de uwe vanuit een browser, en daar verschijnen de afspraken. Voor veel zelfstandigen en kleine structuren is dat zonder gevolg: de enige agenda die telt, wordt die.",
+        "Gebruikt u al software voor uw praktijk? Die houdt u. Een rechtstreekse koppeling met uw tool kan bekeken worden — laten we erover praten."
+      ],
+      "faq": {
+        "Synchroniseert dit met een externe agenda?": "texte devenu faux (brief du 14/11, section 5 ; CLAUDE.md, offre et agenda du 14/11)",
+        "Krijgt de klant een bevestiging?": "texte devenu faux (brief du 14/11, section 5 ; CLAUDE.md, offre et agenda du 14/11)"
+      }
+    },
+    "nl/belgisch-nummer-houden.html": {
+      "texte": [
+        "Dat kan, en het wordt besproken bij het voorstel."
+      ]
+    },
+    "nl/berichten-noteren.html": {
+      "texte": [
+        "Ze stuurt het niet per sms of e-mail naar uw klant, en ze belt hem niet terug in uw plaats: de agent voert geen enkele uitgaande oproep."
+      ],
+      "faq": {
+        "Kan de agent het bericht per sms of e-mail versturen?": "texte devenu faux (brief du 14/11, section 5 ; CLAUDE.md, offre et agenda du 14/11)"
+      }
+    },
+    "nl/betaal-ik-als-niemand-belt.html": {
+      "texte": [
+        "Wij publiceren geen bedragen op deze site en de modaliteiten van uw voorstel worden besproken na een blik op uw activiteit."
+      ],
+      "faq": {
+        "Betaal ik ook zonder oproepen?": "texte devenu faux (brief du 14/11, section 5 ; CLAUDE.md, offre et agenda du 14/11)"
+      }
+    },
+    "nl/blog/praktijken-keuzemenu-oproepen.html": {
+      "texte": [
+        "ze neemt op en ze praat, in het Nederlands, in het Frans of in het Engels, volgens de taal van de patiënt."
+      ]
+    },
+    "nl/blog/restaurants-telefonische-reserveringen.html": {
+      "texte": [
+        "Nederlands, Frans, Engels: ze schakelt automatisch naar de taal van de beller"
+      ]
+    },
+    "nl/blog/zelfstandigen-gemiste-terugbelverzoeken.html": {
+      "texte": [
+        "Ze spreekt Nederlands, Frans en Engels, en schakelt automatisch naar de taal van de beller"
+      ]
+    },
+    "nl/boven-het-volume.html": {
+      "faq": {
+        "Is er een inbegrepen volume?": "texte devenu faux (brief du 14/11, section 5 ; CLAUDE.md, offre et agenda du 14/11)",
+        "Wat gebeurt er voorbij de grens?": "texte devenu faux (brief du 14/11, section 5 ; CLAUDE.md, offre et agenda du 14/11)"
+      }
+    },
+    "nl/capaciteitsplan.html": {
+      "faq": {
+        "Synchroniseert dit met mijn reservatiesoftware?": "texte devenu faux (brief du 14/11, section 5 ; CLAUDE.md, offre et agenda du 14/11)"
+      }
+    },
+    "nl/forfait-of-per-oproep.html": {
+      "texte": [
+        "Er staat hier geen bedrag: de voorwaarden staan in uw voorstel.",
+        "Onze voorwaarden staan in uw voorstel, na een blik op uw echte activiteit — en er is"
+      ]
+    },
+    "nl/geen-secretaresse-aanwerven.html": {
+      "texte": [
+        "Er staat op deze site geen bedrag, en deze pagina maakt daar geen uitzondering op: de voorwaarden staan in uw voorstel."
+      ],
+      "faq": {
+        "Staat er een prijs op deze pagina ?": "texte devenu faux (brief du 14/11, section 5 ; CLAUDE.md, offre et agenda du 14/11)"
+      }
+    },
+    "nl/hoe-verloopt-de-facturatie.html": {
+      "texte": [
+        "Wij publiceren geen bedragen op deze site. Wat we wél kunnen zeggen: wat een voorstel van klant tot klant doet verschillen."
+      ],
+      "faq": {
+        "Hoe vaak word ik gefactureerd?": "texte devenu faux (brief du 14/11, section 5 ; CLAUDE.md, offre et agenda du 14/11)",
+        "Wat doet de prijs variëren?": "texte devenu faux (brief du 14/11, section 5 ; CLAUDE.md, offre et agenda du 14/11)",
+        "Waarom publiceert u geen prijstabel?": "texte devenu faux (brief du 14/11, section 5 ; CLAUDE.md, offre et agenda du 14/11)"
+      }
+    },
+    "nl/hoelang-tot-de-start.html": {
+      "texte": [
+        "Wat de enkele dagen vraagt, is wat eraan voorafgaat:",
+        "Dus ja: enkele dagen na het akkoord antwoordt de lijn",
+        "Enkele dagen om te antwoorden. Drie weken om juist te antwoorden.",
+        ">Enkele dagen en de lijn antwoordt",
+        "Enkele dagen en de lijn antwoordt."
+      ],
+      "faq": {
+        "Hoelang voor de lijn antwoordt?": "texte devenu faux (brief du 14/11, section 5 ; CLAUDE.md, offre et agenda du 14/11)"
+      },
+      "h2_modifies": {
+        "Enkele dagen en de lijn antwoordt": "48 uur en de lijn antwoordt"
+      },
+      "h1": "retour de Bora du 16/11/2026 : le texte devenu faux est corrigé dans le titre aussi (« 48 uur om te antwoorden »)",
+      "desc": "retour de Bora du 16/11/2026 : le texte devenu faux est corrigé dans le titre aussi (« 48 uur en de lijn antwoordt »)",
+      "graph": [
+        "WebPage"
+      ]
+    },
+    "nl/hoeveel-kost-een-telefoonsecretariaat.html": {
+      "texte": [
+        "Geen commerciële koketterie; één voorbeeld volstaat.",
+        "Wat wij wél garanderen: geen verborgen kosten, geen toeslag voor avonden of weekends, en niets te installeren bij u.",
+        ">Waarom hier geen bedrag staat"
+      ],
+      "faq": {
+        "Factureert u per oproep of per forfait?": "texte devenu faux (brief du 14/11, section 5 ; CLAUDE.md, offre et agenda du 14/11)",
+        "Zijn er opstartkosten?": "texte devenu faux (brief du 14/11, section 5 ; CLAUDE.md, offre et agenda du 14/11)",
+        "Wat als mijn volume in het seizoen ontploft?": "texte devenu faux (brief du 14/11, section 5 ; CLAUDE.md, offre et agenda du 14/11)"
+      },
+      "h2_modifies": {
+        "Waarom hier geen bedrag staat": "Waarom hier drie bedragen staan"
+      }
+    },
+    "nl/installatiekosten.html": {
+      "texte": [
+        "Wij publiceren geen bedragen op deze site, en deze pagina is geen uitzondering. De modaliteiten — ook het al dan niet bestaan van opstartkosten — staan in uw voorstel, na een blik op uw echte activiteit.",
+        "Als er een opstartpost is, betaalt die configuratietijd, geen materiaal.",
+        "Enkele dagen om te antwoorden, drie weken om goed te antwoorden."
+      ],
+      "faq": {
+        "Zijn er opstartkosten?": "texte devenu faux (brief du 14/11, section 5 ; CLAUDE.md, offre et agenda du 14/11)",
+        "Hoelang tot de eerste behandelde oproep?": "texte devenu faux (brief du 14/11, section 5 ; CLAUDE.md, offre et agenda du 14/11)"
+      }
+    },
+    "nl/is-het-legaal-in-belgie.html": {
+      "texte": [
+        "Geen uitgaande oproep, geen campagne, geen sms, geen e-mail naar uw klanten — technisch niet, contractueel niet."
+      ]
+    },
+    "nl/meerdere-agendas.html": {
+      "texte": [
+        "Gebruikt u al software voor uw praktijk? Die houdt u. Niets vraagt u ervan te veranderen, er uw gegevens uit te halen of iets nieuws te leren.",
+        "Celya neemt de oproepen op die u niet opneemt, en bezorgt u de afspraak, de betrokken persoon en het motief. Uw planningen blijven waar ze zijn, bijgehouden zoals u ze bijhoudt.",
+        "Een rechtstreekse koppeling met uw tool kan bekeken worden — laten we erover praten: het antwoord hangt volledig af van wat u gebruikt en hoe."
+      ],
+      "faq": {
+        "Moet ik van software veranderen?": "texte devenu faux (brief du 14/11, section 5 ; CLAUDE.md, offre et agenda du 14/11)",
+        "Is een koppeling met mijn tool mogelijk?": "texte devenu faux (brief du 14/11, section 5 ; CLAUDE.md, offre et agenda du 14/11)",
+        "Hoeveel personen kunnen erop?": "texte devenu faux (brief du 14/11, section 5 ; CLAUDE.md, offre et agenda du 14/11)"
+      }
+    },
+    "nl/online-agenda-of-telefoon.html": {
+      "texte": [
+        "Uw planning blijft waar ze is. Een rechtstreekse koppeling met uw tool kan bekeken worden — laten we erover praten."
+      ],
+      "faq": {
+        "Hoe vermijd ik dubbele boekingen ?": "texte devenu faux (brief du 14/11, section 5 ; CLAUDE.md, offre et agenda du 14/11)"
+      }
+    },
+    "nl/sectoren.html": {
+      "texte": [
+        "Een rechtstreekse koppeling met uw tool kan worden onderzocht — daar praten we het best even over, want het antwoord hangt volledig af van wat u gebruikt."
+      ],
+      "faq": {
+        "Moet ik van software veranderen ?": "texte devenu faux (brief du 14/11, section 5 ; CLAUDE.md, offre et agenda du 14/11)"
+      }
+    },
+    "nl/wat-is-een-telefoonsecretariaat.html": {
+      "faq": {
+        "Wat kost het?": "texte devenu faux (brief du 14/11, section 5 ; CLAUDE.md, offre et agenda du 14/11)"
+      }
+    },
+    "nl/weinig-oproepen.html": {
+      "texte": [
+        "Wij publiceren geen bedragen op deze site, en deze pagina is geen uitzondering."
+      ]
+    },
+    "en/blog/medical-practices-phone-menu.html": {
+      "texte": [
+        "she picks up and she talks, in French, Dutch or English, depending on the patient’s language."
+      ]
+    },
+    "fonctionnalites.html": {
+      "texte": [
+        "quand une capacité n'existe pas — la synchronisation avec un agenda externe, par exemple — il y a une phrase qui le dit",
+        "Numéro belgeVous gardez le vôtre. Rien ne bouge pour vos clients.",
+        "Horaires et gardeVos heures, vos exceptions, vos congés — appliqués à la lettre.",
+        "Aucune synchronisation avec un agenda externe. L'agent écrit les rendez-vous dans l'agenda de Celya, que vous consultez depuis un navigateur. Il n'écrit pas dans Google Agenda ni dans Outlook, et nous n'avons pas de page « intégrations » — c'est une exclusion volontaire, pas un oubli.\nAucun appel sortant, aucune campagne, aucun SMS, aucun e-mail vers vos clients. Celya répond au téléphone ; elle ne prospecte pas et ne relance personne à votre place.\nAucune évaluation médicale. L'agent n'apprécie aucun symptôme et ne prend aucune décision clinique : il applique les critères de transfert écrits par le cabinet.\nAucun engagement contractuel pris à votre place. Il annonce ce que vous l'avez autorisé à annoncer et bascule sur une prise de message dès qu'une demande dépasse ce périmètre.",
+        "Dix capacités, une seule façon d'en juger.",
+        "Dix capacités, chacune avec sa page : ce qu'elle fait exactement",
+        "Dix capacités en service, décrites une par une : rendez-vous",
+        "Le délai réelQuelques jours, puis trois semaines."
+      ],
+      "faq": {
+        "Y a-t-il des intégrations avec Google Agenda ou Outlook ?": "texte devenu faux (brief du 14/11, section 5 ; CLAUDE.md, offre et agenda du 14/11)",
+        "Est-ce que l'agent passe des appels sortants ?": "texte devenu faux (brief du 14/11, section 5 ; CLAUDE.md, offre et agenda du 14/11)",
+        "Combien de temps pour tout configurer ?": "texte devenu faux (brief du 14/11, section 5 ; CLAUDE.md, offre et agenda du 14/11)"
+      },
+      "h2_modifies": {
+        "Dix capacités, une seule façon d'en juger.": "Quinze capacités, une seule façon d'en juger."
+      },
+      "desc": "retour de Bora du 16/11/2026 : le texte devenu faux est corrigé dans le titre aussi (quinze capacités, dont dix décrites une par une)",
+      "graph": [
+        "CollectionPage"
+      ],
+      "_h2_modifies": "retour de Bora du 16/11/2026 : le texte devenu faux est corrigé dans le titre aussi"
+    },
+    "nl/werking.html": {
+      "texte": [
+        "Uw Belgisch nummerU houdt het uwe. Er beweegt niets.",
+        "Gebruikt u al een beheerprogramma? U houdt het. Celya neemt de oproepen op die u niet opneemt en geeft u de afspraak en de reden door. Een rechtstreekse koppeling met uw tool kan worden onderzocht — daar praten we het best even over."
+      ],
+      "faq": {
+        "Moet ik van software veranderen ?": "texte devenu faux (brief du 14/11, section 5 ; CLAUDE.md, offre et agenda du 14/11)"
+      }
+    },
+    "en/restaurants.html": {
+      "texte": [
+        "“A table for four, Saturday 7:30 pm?”",
+        "“There'll be twelve of us on Friday night — is that possible?”",
+        "French, Dutch or English"
+      ],
+      "_texte": "bulles de l'ancienne démo animée (widget du thème sombre), remplacée par le ruban d'appel et les composants du gabarit métier — même traitement que restaurants.html (FR), validé le 15/11"
+    },
+    "nl/dierenartsen.html": {
+      "texte": [
+        "Gebruikt u al een praktijkprogramma? U houdt het. Celya neemt de oproepen op die u niet opneemt en geeft de afspraak en de reden door. Een rechtstreekse koppeling kan worden onderzocht — daar praten we het best even over."
+      ],
+      "faq": {
+        "Moet ik van praktijksoftware veranderen ?": "texte devenu faux (brief du 14/11, section 5 ; CLAUDE.md, offre et agenda du 14/11)"
+      }
+    },
+    "contact.html": {
+      "desc": "audit gratuit retiré (décision de Bora du 16/11/2026) : « Ou demandez une démo »",
+      "graph": [
+        "WebPage"
+      ],
+      "texte": [
+        "Réserver l'audit gratuit"
+      ]
+    },
+    "nl/contact.html": {
+      "desc": "audit gratuit retiré (décision de Bora du 16/11/2026) : « Ou demandez une démo »",
+      "graph": [
+        "WebPage"
+      ],
+      "texte": [
+        "Boek de gratis audit"
+      ]
+    },
+    "en/contact.html": {
+      "desc": "audit gratuit retiré (décision de Bora du 16/11/2026) : « Ou demandez une démo »",
+      "graph": [
+        "WebPage"
+      ],
+      "texte": [
+        "Book the free audit"
+      ]
+    },
+    "questions.html": {
+      "texte": [
+        "Quelques jours pour répondre, trois semaines pour bien répondre."
+      ]
+    },
+    "que-dois-je-preparer.html": {
+      "texte": [
+        "Quelques jours pour répondre, trois semaines pour bien répondre."
+      ]
+    },
+    "faut-il-installer-quelque-chose.html": {
+      "texte": [
+        "Quelques jours pour répondre, trois semaines pour bien répondre."
+      ]
+    },
+    "puis-je-essayer-avant.html": {
+      "texte": [
+        "Quelques jours pour répondre, trois semaines pour bien répondre."
+      ]
+    },
+    "garages.html": {
+      "texte": [
+        "En quelques jours, elle connaît vos prestations"
+      ]
+    },
+    "chauffagistes.html": {
+      "texte": [
+        "Quelques jours suffisent."
+      ]
+    },
+    "pic-appels-saisonnier.html": {
+      "texte": [
+        "Il faut compter quelques jours pour rassembler"
+      ],
+      "faq": {
+        "Combien de temps avant faut-il s'y prendre ?": "texte devenu faux (brief du 14/11, section 5 ; CLAUDE.md, offre et agenda du 14/11)"
+      }
+    },
+    "je-rate-des-appels-clients.html": {
+      "faq": {
+        "En combien de temps est-ce en place ?": "texte devenu faux (brief du 14/11, section 5 ; CLAUDE.md, offre et agenda du 14/11)"
+      }
+    },
+    "metiers.html": {
+      "faq": {
+        "Combien de temps pour être opérationnel ?": "texte devenu faux (brief du 14/11, section 5 ; CLAUDE.md, offre et agenda du 14/11)"
+      }
+    },
+    "je-n-ai-pas-le-temps-de-repondre.html": {
+      "faq": {
+        "Combien de temps prend la mise en place ?": "texte devenu faux (brief du 14/11, section 5 ; CLAUDE.md, offre et agenda du 14/11)"
+      }
+    },
+    "conges-du-batiment-permanence-telephonique.html": {
+      "faq": {
+        "Combien de temps avant les congés faut-il s'y prendre ?": "texte devenu faux (brief du 14/11, section 5 ; CLAUDE.md, offre et agenda du 14/11)"
+      }
+    },
+    "nl/vragen.html": {
+      "texte": [
+        "Enkele dagen om te antwoorden, drie weken om goed te antwoorden."
+      ]
+    },
+    "nl/wat-moet-ik-voorbereiden.html": {
+      "texte": [
+        "Enkele dagen om te antwoorden, drie weken om juist te antwoorden."
+      ]
+    },
+    "nl/kan-ik-eerst-proberen.html": {
+      "texte": [
+        "Enkele dagen om te antwoorden."
+      ]
+    },
+    "privacy.html": {
+      "texte": [
+        "Dernière mise à jour : 28 octobre 2026"
+      ]
+    },
+    "nl/privacy.html": {
+      "texte": [
+        "Laatst bijgewerkt: 28 oktober 2026"
+      ]
+    },
+    "en/privacy.html": {
+      "texte": [
+        "Last updated: 28 October 2026"
+      ]
+    },
+    "serveur-vocal-ou-agent-vocal.html": {
+      "texte": [
+        "Dix capacités, décrites une par une."
+      ]
+    }
+  }
+}

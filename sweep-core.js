@@ -1,7 +1,7 @@
 'use strict';
 /* sweep-core.js — noyau commun de sweep.js (FR) et sweep_nl.js (NL).
  *
- * Ouvre chaque page du silo dans Chromium à 390 px puis à 1280 px et relève :
+ * Ouvre chaque page du silo dans Chromium à 360, 390, 768, 1280 et 1440 px et relève :
  *   1. le débordement horizontal du document, avec le ou les éléments fautifs ;
  *   2. les erreurs JavaScript et les requêtes en 4xx/5xx ;
  *   3. le texte tronqué et les blocs de texte qui se chevauchent ;
@@ -301,6 +301,7 @@ function auditInPage(cfg) {
     const d = el.scrollWidth - cw;
     if (d <= 4) continue;
     if (el.querySelector(MEDIA)) continue;      /* recadrage d'image, pas du texte */
+    if (el.closest('.sr')) continue;            /* texte réservé aux lecteurs d'écran (clip 1 px) : masqué exprès */
     const txt = (el.textContent || '').replace(/\s+/g, ' ').trim();
     if (txt.length < 2) continue;
     res.truncated.push({
@@ -560,7 +561,9 @@ function auditInPage(cfg) {
  * 5. Le balayage
  * ------------------------------------------------------------------ */
 
-const WIDTHS = [390, 1280];
+/* Lot « refonte premium » (14/11/2026) : 360, 390, 768 et 1440 px, trois langues.
+ * SWEEP_WIDTHS=390,1280 node sweep.js pour un autre jeu de largeurs. */
+const WIDTHS = (process.env.SWEEP_WIDTHS || '360,390,768,1280,1440').split(',').map(Number);
 const ALLOWED_BACKDROP = ['header.top', '.drop-panel']; /* .hero-demo a disparu le 11/09/2026 (lot design) */
 
 function tag(s, n) { return (s + ' '.repeat(n)).slice(0, n); }

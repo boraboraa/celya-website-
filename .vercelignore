@@ -1,0 +1,27 @@
+docs/maquettes-14-11
+
+# lot « refonte premium » : sources du générateur, données et tests — jamais servis
+_src
+data
+tests
+sweep-core.js
+sweep.js
+sweep_nl.js
+sweep_en.js
+check.py
+sitemap.py
+
+# pages internes d'aperçu (noindex, liées nulle part) : elles montraient l'ancien
+# thème ; retirées du déploiement le 16/11/2026 plutôt que migrées (fichiers gardés)
+apercu.html
+apercu-visuel.html
+
+# ancien thème (16/11/2026) : plus aucune page ne charge bento.css, bento.js ni
+# fonts.css ; les fichiers restent dans le dépôt, ils ne sont plus servis
+bento.css
+bento.js
+fonts.css
+
+# vidéo « celya-intro » (ancien C néon) retirée du site le 16/11/2026 ; une
+# nouvelle est prévue. Fichiers gardés dans le dépôt, plus déployés.
+assets/video

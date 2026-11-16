@@ -44,7 +44,7 @@ FICHIERS_EXCLUS = {"apercu.html", "apercu-visuel.html"}
 PREFIXE_FIXTURE = "_"
 
 # Répertoires balayés quand on lance check.py sans argument.
-DOSSIERS = ("", "nl", "en", "blog", "nl/blog", "en/blog")
+DOSSIERS = ("", "nl", "en", "blog", "nl/blog", "en/blog", "lp", "nl/lp")
 
 LONGUEUR_TITLE_MAX = 60
 LONGUEUR_DESC_MIN = 70

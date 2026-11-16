@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 'use strict';
-/* sweep_nl.js — balayage visuel du silo NL (nl/ + nl/blog/), Chromium 390 et 1280 px.
+/* sweep_nl.js — balayage visuel du silo NL (nl/ + nl/blog/), Chromium 360, 390, 768 et 1440 px.
  *
  *   node sweep_nl.js                               tout le silo NL
  *   node sweep_nl.js nl/index.html                 seulement ces pages

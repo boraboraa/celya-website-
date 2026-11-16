@@ -21,15 +21,15 @@ module.exports = (req, res) => {
     '<meta name="viewport" content="width=device-width, initial-scale=1">\n' +
     '<title>Page supprimee - Celya</title>\n' +
     '<style>' +
-    'html{color-scheme:dark}' +
+    'html{color-scheme:light}' +
     'body{margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;' +
-    'background:#070A14;color:#E6EEFF;font:400 16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;' +
+    'background:#FAF1E4;color:#151515;font:400 16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;' +
     'text-align:center;padding:24px}' +
     'main{max-width:34rem}' +
     'h1{font-size:22px;margin:0 0 12px;font-weight:700}' +
-    'p{margin:0 0 20px;color:#AAB6D0}' +
-    'a{display:inline-block;padding:12px 22px;border-radius:99px;text-decoration:none;color:#070A14;' +
-    'font-weight:600;background:linear-gradient(90deg,#22D3EE,#4F7BFF,#A855F7)}' +
+    'p{margin:0 0 20px;color:#4A4540}' +
+    'a{display:inline-block;padding:12px 22px;border-radius:99px;text-decoration:none;color:#151515;' +
+    'font-weight:600;background:#FF6A3D}' +
     '</style>\n' +
     '</head>\n' +
     '<body>\n' +

@@ -15,15 +15,40 @@ mais il ne couvre pas tout le tableau — la relecture reste obligatoire.
 
 ## Ce que le site ne dit jamais
 
-- **les seuls montants publics sont les trois formules** : 75, 150 et 300 €
-  hors TVA par mois, pour 250, 750 et 1 750 minutes — sur `prix.html`,
-  `nl/prijzen.html`, `en/pricing.html` et dans les FAQ prix des trois
-  accueils. Aucun autre montant, aucune fourchette, rien d'inventé ailleurs.
+- **les seuls montants publics sont les trois formules — grille du 14 novembre
+  2026, décision de Bora** : **49, 99 et 199 € hors TVA par mois, pour 100,
+  300 et 750 minutes**, décomptées à la seconde. Elle remplace 75 / 150 / 300 €
+  et 250 / 750 / 1 750 minutes partout, sans exception. Les montants, quotas,
+  minutes et règles de l'offre (mise en service = une mensualité, dépassement =
+  passage à la formule du dessus, au-delà de 750 minutes sur devis, messages
+  WhatsApp facturés par Meta sur le compte du client — environ 2 € par mois)
+  **ne vivent que dans le fichier de données
+  central de l'offre** (`data/offre.json`, lot « refonte premium ») : aucun
+  gabarit, aucune page source ne les écrit en dur. Aucun autre montant, aucune
+  fourchette, rien d'inventé ailleurs. Vérifiable :
+  `grep -rE "75 €|250 minutes|1 750"` sur les pages ne renvoie rien.
+- **plus aucun essai gratuit — décision de Bora du 16 novembre 2026.** Ni
+  « essai gratuit », ni « 30 jours d'essai », ni « sans engagement » attaché à
+  un essai, en FR, NL ou EN ; sous les grilles de prix, le bouton est
+  « Demander une démo » (NL « Vraag een demo », EN « Request a demo »), vers
+  la page démo de la langue. `data/offre.json` n'a plus de règle d'essai et le
+  jeton `{{offre.essai}}` n'existe plus. Vérifiable :
+  `grep -riE "essai gratuit|jours d.essai|30 jours gratuits|proefperiode|30 dagen gratis|free trial"`
+  sur les pages servies, `_src/` et `data/` ne renvoie rien (« 30 days » de
+  `en/privacy.html` parle d'autre chose et ne se touche pas).
 - aucun concurrent nommé
 - Celya ne remplace jamais une secrétaire
 - l'agent n'évalue jamais un symptôme médical
-- pas d'emailing, pas d'appels sortants, pas de WhatsApp
-- pas de synchronisation Google Agenda ou Outlook annoncée, pas de SMS de confirmation
+- **jamais** d'emailing, d'appels sortants, ni de message publicitaire
+- **en service depuis le 14 novembre 2026 (décision de Bora), et donc
+  annonçable** : le résumé de chaque appel sur WhatsApp au patron ; les
+  confirmations et rappels clients sur WhatsApp, avec boutons (Confirmer ·
+  Déplacer · Annuler) ; les consignes du patron à Janet par WhatsApp ; Google
+  Agenda relié ; l'agenda Celya intégré ; le SMS **de secours seulement** (le
+  client sans WhatsApp). Les seuls messages envoyés aux clients du patron sont
+  liés à leur appel : confirmation, rappel, modification. **Outlook n'est pas
+  relié** et ne s'annonce pas. Les maquettes de téléphone restent aux couleurs
+  Celya : on ne reproduit pas l'interface de WhatsApp ni celle de Google.
 - aucune revendication multilingue au-delà de FR + NL **en promesse de service**
 - **aucun chiffre sans sa source et sa date**
 
@@ -83,11 +108,25 @@ lève pour un bloc `<div class="langcloud">` des trois accueils ne s'applique
 plus à rien depuis que le nuage a disparu (`grep -rl Deutsch` doit renvoyer
 zéro), mais reste en place pour le jour où il reviendrait.
 
-Formulation autorisée pour l'agenda, FR : « Vous utilisez déjà un logiciel de
-gestion ? Vous le gardez. Une connexion directe à votre outil peut être
-étudiée — parlons-en. » NL : « Gebruikt u al software voor uw praktijk? Die
-houdt u. Een rechtstreekse koppeling met uw tool kan bekeken worden — laten we
-erover praten. »
+**Inchangé par le lot du 14 novembre 2026.** Les maquettes de ce lot disent
+« dans la langue de votre client » (ligne de formule, FAQ) et « Français,
+néerlandais et anglais » (grille de l'accueil) : ni l'une ni l'autre ne se
+publie. Partout où la maquette les porte, c'est la formulation autorisée
+ci-dessus, ou sa forme courte « en français et en néerlandais » (NL « in het
+Frans en het Nederlands », EN « in French and Dutch »), qui s'écrit.
+
+**Formulation autorisée pour l'agenda — remplacée le 14 novembre 2026
+(décision de Bora).** L'ancienne (« Vous gardez votre logiciel… une connexion
+directe peut être étudiée ») ne s'écrit plus. FR : « Votre Google Agenda,
+relié : Janet lit vos disponibilités et y écrit les rendez-vous. Pas d'agenda ?
+Prenez celui de Celya, intégré et pensé pour votre métier. » NL : « Uw Google
+Agenda, gekoppeld: Janet leest uw beschikbaarheid en zet de afspraken erin.
+Geen agenda? Neem dat van Celya, ingebouwd en afgestemd op uw vak. » EN :
+« Your Google Calendar, connected: Janet reads your availability and writes
+the bookings into it. No calendar? Use Celya's, built in and designed for your
+trade. » Nombre d'agendas : Essentiel 1, Pro jusqu'à 3, Premier répondant
+illimités — ces quotas vivent dans `data/offre.json`. **Outlook : pas relié** ;
+s'il faut répondre à la question, c'est « pas aujourd'hui ».
 
 ## Les chiffres publiés
 
@@ -144,6 +183,140 @@ Aucun fichier CSS modifié, aucune règle, aucune variable, aucune couleur.
 Aucun composant visuel nouveau. `bento.js` n'est jamais touché. Compléter une
 série existante en suivant exactement le motif en place n'est pas une
 modification du système.
+
+**Exception datée — lot « refonte premium » du 14 novembre 2026, validé par
+Bora.** Référence visuelle : les maquettes de `docs/maquettes-14-11/` (1440 px,
+captures dans `apercus/`), et le brief `PROMPT-refonte-premium.md` du même
+dossier. Ce lot remplace le thème sombre par un **thème clair** : nouveaux
+tokens dans **un seul fichier CSS** (orange `#FF6A3D`, orange brûlé `#E5522A`,
+encre `#151515`, blanc cassé `#FFF7F0`, fond `#FAF1E4`, beige de bloc
+`#F4E4CE`, gris `#6B635B` / `#4A4540`, filet `#E8D9C3` ; Newsreader pour les
+titres, Figtree pour le texte, JetBrains Mono pour les étiquettes, polices
+auto-hébergées ; `theme-color` et `color-scheme` en clair), et **nouveaux
+composants**, chacun écrit une fois et appelé partout : en-tête flottant, héros
+ruban, badges de certification, emplacement vidéo 16:9, cartes « Ce que Janet
+fait pour vous » (texte complet replié dans un `<details>`, jamais supprimé),
+cases RDV pris / À rappeler / Urgent, branchement en trois colonnes, « Votre
+agenda, ou le nôtre », consignes par WhatsApp, confirmations clients, cartes de
+prix, FAQ, CTA final, pied de page. Aucun emoji, aucune icône gadget.
+
+Ce qui ne se négocie pas pendant ce lot :
+
+- **les règles du budget de rendu (section suivante) restent en vigueur** et
+  s'appliquent aux nouveaux composants : animations du ruban et du C en CSS
+  seul, `transform` / `opacity`, en pause sous `prefers-reduced-motion` et hors
+  écran, aucun JS qui tourne en boucle ;
+- **le consentement et le chargement de GTM ne bougent pas d'une ligne** ;
+- **rien ne dépasse de son cadre**, sur téléphone comme sur ordinateur
+  (balayage à 360, 390, 768 et 1440 px, trois langues) ;
+- URL, `title`, description, H1, liste et ordre des H2, FAQ visibles,
+  `canonical`, `hreflang` et `@graph` ne bougent pas, sauf les corrections de texte devenu faux listées
+  par le brief.
+
+**Après ce lot, la règle « aucun composant visuel nouveau » reprend**, avec le
+nouveau système comme référence.
+
+**Retour de Bora du 15 novembre 2026 sur la prévisualisation de la PR #32
+(même lot, même PR).** Brief : `docs/maquettes-14-11/PROMPT-retour-15-11.md`.
+
+- **Nouveau héros des trois accueils : une vidéo plein écran en fond**, derrière
+  la nav et le texte. Fichiers dans `assets/hero/` (boucles de 9 s, sans son) :
+  `hero-ordinateur-720.mp4` (1280 × 720) et `hero-ordinateur-poster.webp`,
+  `hero-mobile-720.mp4` (720 × 1280) et `hero-mobile-poster.webp`. La source est
+  choisie une fois au chargement, par `celya.js` : la version mobile sous 720 px
+  de large, la version ordinateur au-dessus. Le poster suit la même règle.
+  Sous `prefers-reduced-motion`, seul le poster s'affiche, sans lecture. Hors
+  écran, la vidéo est en pause (`.anim-off`), et elle reprend au retour.
+  **Pour passer en 1080p, il suffit de déposer `hero-ordinateur-1080.mp4`**
+  (ou `hero-mobile-1080.mp4`) dans `assets/hero/` et de relancer
+  `node _src/build.mjs` : le générateur prend la version `-1080` si elle
+  existe, la `-720` sinon. Aucun code à toucher.
+  Ce héros remplace l'ancien héros, le ruban d'appel de l'accueil et le bloc
+  vidéo « Voir Celya en 37 secondes ». Les fichiers de `assets/video/` restent
+  dans le dépôt.
+- **Exception d'opacité au défilement, décidée par Bora le 15 novembre 2026.**
+  Elle déroge à la règle « aucune opacité animée au-dessus de la ligne de
+  flottaison » du lot du 11 septembre, et elle ne couvre que ceci : sur les
+  60 premiers pour cent de la hauteur du héros des accueils, la vidéo grossit
+  (scale 1 → 1,06) et se dissout dans le crème (opacity 1 → 0), le texte
+  remonte de quelques pixels et s'efface, et le C animé de l'étiquette grandit
+  jusqu'à environ 72 px pour se poser en tête de la section suivante. Au retour
+  vers le haut, tout se rejoue à l'envers. Contraintes : transform et opacity
+  seulement, piloté par l'écouteur `onScroll` unique de `celya.js` à partir de
+  mesures en cache (`drect()` / `vrect()`, aucune mesure de mise en page dans
+  la boucle), aucun `filter`, `backdrop-filter` ni `will-change` ajouté, et
+  aucun effet sous `prefers-reduced-motion`. **Rien d'autre sur le site ne
+  bénéficie de cette exception.**
+- **Plus de petites écritures dans les héros**, que Bora trouve « trop IA ».
+  Aucune accroche au-dessus du H1, aucune sous-ligne sous les boutons, aucune
+  pastille de preuve, aucune « offre fondateurs » dans un héros. Un héros
+  contient le H1, une phrase et les deux boutons, rien de plus. Les badges Meta
+  Tech Provider et Vérifiée par Google passent juste sous le héros, en tête de
+  la section suivante. Les accroches de section (au-dessus des H2) restent
+  pour l'instant : la liste est dans la PR #32, et c'est Bora qui tranche.
+- **Tailles minimales** : 12 px pour un libellé en capitales, 14 px pour toute
+  phrase, partout, illustrations comprises. Vérifié par `tests/tailles.mjs`.
+- **WhatsApp et Google Agenda** : aucune imitation de leurs interfaces. Les
+  téléphones sont des cadres sobres aux couleurs Celya, qui attendent de vraies
+  captures (`assets/captures/whatsapp-confirmation.webp`,
+  `whatsapp-consignes.webp`, `google-agenda.webp`). Tant qu'un fichier manque,
+  l'illustration reste, avec la mention « Exemple ». Dès qu'il est déposé,
+  relancer `node _src/build.mjs` suffit.
+- **Une image ne paraît jamais deux fois sur une même page.** Si un métier
+  manque d'images, rien n'est inventé : la carte reste sans visuel, et la liste
+  de ce qu'il faut générer est dans la PR.
+- Le bloc « Combien vous coûtent les appels manqués ? » a quitté l'accueil.
+  `calculateur-appels-manques.html` reste en ligne, telle quelle.
+
+**Lot du 16 novembre 2026 (même PR #32) : tout le site est sur le nouveau
+gabarit.** Les 301 pages servies sortent de `node _src/build.mjs` (gabarits
+article, billet, blog, contact, légal, métier, prix, accueil, démo, merci,
+atterrissage). Aucune page ne charge plus `bento.css`, `bento.js` ni
+`fonts.css` : ces fichiers restent dans le dépôt mais sortent du déploiement
+(`.vercelignore`), comme `apercu.html` et `apercu-visuel.html`.
+`tests/migration.mjs` échoue dès qu'une page servie n'a pas `header.hdr` et
+`celya.css`, ou cite encore l'ancien thème.
+
+- **La marque.** Favicon : `celya-favicon.svg` (le C corail plein sur fond
+  crème, lisible à 16 px), `favicon-48.png`, `favicon-96.png`,
+  `favicon-192.png`, `favicon-512.png`, `apple-touch-icon.png` (180),
+  `favicon.ico` (16/32/48), `site.webmanifest`. Logo du `@graph`
+  (`Organization` et `LocalBusiness`) : `celya-logo-512.png`. Images de
+  partage (`og:image`, `twitter:image`, `"image"` du JSON-LD) :
+  `assets/partage/partage-fr.png`, `-nl.png`, `-en.png` (1200 × 630, fond
+  crème, logo, H1 de l'accueil) ; les articles du blog gardent leur image.
+  `og-image.png` et `favicon.svg` n'existent plus : 301 dans `vercel.json`.
+  Aucune couleur de l'ancien logo (`22D3EE`, `4F7BFF`, `A855F7`) dans ce qui
+  est servi.
+- **La vidéo `celya-intro` est retirée du site le 16 novembre 2026** (décision
+  de Bora : elle finit sur l'ancien C néon ; une nouvelle vidéo est prévue).
+  Plus de `VideoObject` dans le `@graph` des accueils, plus aucun lien ni
+  vignette ; les fichiers restent dans `assets/video/`, exclu du déploiement
+  (`.vercelignore`). `grep -ri celya-intro` sur le HTML servi rend zéro. La
+  nouvelle vidéo reviendra avec son `VideoObject`.
+- **Retour de Bora du 16 novembre 2026** : le délai de mise en ligne s'écrit
+  « 48 heures » (NL « 48 uur », EN « 48 hours ») partout, jamais « quelques
+  jours » ; plus d'« audit gratuit » (contact : « Demander une démo ») ; les
+  badges Meta Tech Provider / Vérifiée par Google ne s'affichent en tête que
+  sur les accueils, les prix, la démo, le contact et les pages métiers — pas
+  sur les articles ni sur le blog ; la politique de confidentialité décrit les
+  champs du formulaire (métier, moment de rappel, accord de recontact,
+  provenance) ; les exemples de rendez-vous tombent le jeudi 19 novembre.
+- **Les textes.** Une migration ne réécrit pas : `tests/texte-conserve.mjs`
+  vérifie que chaque paragraphe de l'ancienne page se retrouve dans la
+  nouvelle. Les seuls écarts sont les textes devenus faux, appliqués par
+  `_src/tools/corrections_16_11.py` (visible et FAQPage ensemble) et listés
+  page par page dans `tests/corrections-autorisees.json`.
+  `conditions.html` et `nl/voorwaarden.html` gardent leur texte : leur
+  formulation sur les messages aux clients attend l'accord de Bora.
+- **Les outils des pages** (modèles à copier, check-lists, grilles,
+  calculateurs) gardent leur script d'origine au caractère près
+  (`_src/tools/scripts_page.py`) ; `tests/outils.mjs` vérifie qu'ils répondent.
+- **Contact** : même envoi qu'avant (web-lead, source « website form »,
+  honeypot, nom + téléphone ou e-mail), plus le métier et l'attribution.
+- **Pages d'atterrissage** : `lp/ne-plus-rater-d-appels.html`,
+  `lp/garages.html`, `nl/lp/geen-oproepen-meer-missen.html`,
+  `nl/lp/garages.html` — noindex, hors sitemap, sans menu.
 
 **Exception datée — lot « design & proportions » du 11 septembre 2026, validé
 par Bora le même jour.** Ce lot est un brief CSS : `bento.css` y est modifié
@@ -307,10 +480,29 @@ connaissance de cause (le dégradé qui glisse sur les mots, `gpan`, l'est).
 python3 check.py     # h1 unique, title <= 60, desc 70-158, canonical,
                      # JSON-LD, FAQPage == texte visible, liens morts, 410
 python3 sitemap.py
-node sweep.js        # Chromium 390 et 1280 px, pages FR
+node sweep.js        # Chromium 360, 390, 768, 1280 et 1440 px, pages FR
 node sweep_nl.js     # idem, pages NL
+node sweep_en.js     # idem, pages EN (ajouté le 14/11/2026)
 node .claude/hooks/verif-seo.js <fichiers>
+node _src/build.mjs --check          # les pages publiées == ce que produit le générateur
+node tests/seo-avant-apres.mjs       # title, description, H1, H2, FAQ, hreflang, @graph vs origin/main
+node tests/offre.mjs                 # aucun montant hors data/offre.json, plus d'ancienne grille
+node tests/tailles.mjs               # 12 px (libellés) / 14 px (phrases) minimum
+node tests/heros.mjs                 # premier écran, contraste sur la vidéo, pause, poids
+node tests/formulaire.mjs            # formulaire démo, UTM, dataLayer, barre mobile
+node tests/budget-rendu.mjs          # backdrop-filter, will-change, keyframes, rAF, écouteurs
+node tests/consentement.mjs          # bloc consentement + GTM identique à l'octet
+node tests/migration.mjs             # toute page servie sur le nouveau gabarit (16/11/2026)
+node tests/texte-conserve.mjs        # aucun paragraphe perdu par la migration
+node tests/outils.mjs                # modèles, check-lists, grilles, calculateurs répondent
 ```
+
+**Le générateur (lot du 14/11/2026).** Les pages migrées ne s'éditent plus à
+la main : leur source est `_src/pages/<chemin>.html`, les composants dans
+`_src/components/`, les gabarits dans `_src/layouts/`, les données dans
+`data/`. `node _src/build.mjs` réécrit les pages aux mêmes URL. Ne jamais
+relancer un outil d'extraction de `_src/tools/` sur une page déjà générée : il
+lit la page publiée, et l'ancienne n'existe plus que dans git.
 
 Le faux positif connu de `contact.html` (le champ honeypot hors écran) est à
 ignorer définitivement.
