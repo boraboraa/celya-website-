@@ -143,6 +143,39 @@ async function main() {
     }
   }
 
+  /* 5. formulaire de contact (lot du 16/11) : même comportement qu'avant la
+   *    migration — web-lead, source « website form », honeypot, nom + téléphone
+   *    ou e-mail, confirmation sur place — plus le métier et l'attribution. */
+  for (const rel of ['contact.html', 'nl/contact.html', 'en/contact.html']) {
+    console.log(`\n${rel}`);
+    for (const consent of ['denied', 'granted']) {
+      const { ctx, external, leads } = await context(browser, { consent });
+      const p = await ctx.newPage();
+      await p.goto(base + rel + '?utm_source=google&utm_campaign=contact-test&gclid=G-9', { waitUntil: 'load' });
+      if (consent === 'granted') await p.evaluate(() => { window.__evs = []; const push = window.dataLayer.push.bind(window.dataLayer); window.dataLayer.push = (e) => { window.__evs.push(JSON.parse(JSON.stringify(e, (k, v) => (typeof v === 'function' ? undefined : v)))); if (typeof e.eventCallback === 'function') setTimeout(e.eventCallback, 0); return push(e); }; });
+      await p.fill('form[data-lead] [name=name]', 'Test Contact');
+      await p.click('form[data-lead] button[type=submit]');
+      ok(await p.locator('form[data-lead] .f-err.on').count() === 1 && leads.length === 0, `${consent} : nom seul, sans téléphone ni e-mail → refusé`);
+      await p.fill('form[data-lead] [name=email]', 'test@example.com');
+      await p.fill('form[data-lead] [name=need]', 'Essai automatique');
+      await p.selectOption('form[data-lead] [name=metier]', 'garages');
+      await p.click('form[data-lead] button[type=submit]');
+      await p.waitForTimeout(500);
+      const L = leads[0] || {};
+      ok(leads.length === 1 && L.source === 'website form' && L.website === '' && L.email === 'test@example.com' && L.need === 'Essai automatique' && L.metier === 'garages', `${consent} : nom + e-mail suffit ; corps « website form », besoin, métier, honeypot vide`);
+      ok(L.utm_campaign === 'contact-test' && L.gclid === 'G-9' && L.page === '/' + rel, `${consent} : attribution et page transmises`);
+      ok(await p.locator('form[data-lead] .f-ok').isVisible() && /contact\.html(\?|$)/.test(p.url()) && await p.locator("form[data-lead] .f-body").isHidden(), `${consent} : confirmation affichée sur place, sans redirection`);
+      if (consent === 'granted') {
+        const gl = (await p.evaluate(() => window.__evs)).find((e) => e.event === 'generate_lead');
+        ok(gl && gl.form === 'contact' && gl.metier === 'garages', 'avec accord : generate_lead {form: contact, metier}');
+      } else {
+        const dl = await p.evaluate(() => (window.dataLayer || []).filter((e) => e && e.event && e.event !== 'gtm.js').length);
+        ok(dl === 0 && external.length === 0, 'sans accord : aucun événement, aucune requête externe');
+      }
+      await ctx.close();
+    }
+  }
+
   /* 6. barre mobile */
   console.log('\nbarre d\'appel mobile');
   for (const [w, h] of [[360, 640], [390, 730], [393, 730]]) {

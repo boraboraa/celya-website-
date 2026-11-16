@@ -195,6 +195,8 @@
       var bad=[];
       if(!val('name'))bad.push(E.name);
       if(E.phone&&(E.phone.required||val('phone'))&&val('phone').replace(/\D/g,'').length<8)bad.push(E.phone);
+      /* contact : comme avant la migration, un téléphone ou un e-mail suffit, mais l'un des deux est requis */
+      if(f.getAttribute('data-need')==='phone-or-email'&&!val('phone')&&!val('email'))bad.push(E.phone,E.email);
       if(E.consent&&!E.consent.checked)bad.push(E.consent);
       if(E.email&&val('email')&&!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(val('email')))bad.push(E.email);
       [].forEach.call(f.querySelectorAll('[aria-invalid]'),function(x){x.removeAttribute('aria-invalid');});
