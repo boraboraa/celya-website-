@@ -424,6 +424,7 @@ add('fonctionnalites.html', [
 ])
 for rel in ('questions.html', 'que-dois-je-preparer.html', 'faut-il-installer-quelque-chose.html', 'puis-je-essayer-avant.html'):
     add(rel, [('txt', "<span>Quelques jours pour répondre, trois semaines pour bien répondre.</span>", "<span>48 heures pour répondre, trois semaines pour bien répondre.</span>")])
+add('serveur-vocal-ou-agent-vocal.html', [('txt', "<span>Dix capacités, décrites une par une.</span>", "<span>Quinze capacités, décrites une par une.</span>")])
 add('garages.html', [('txt', "En quelques jours, elle connaît vos prestations", "En 48 heures, elle connaît vos prestations")])
 add('fiduciaires.html', [('txt', "<p>Quelques jours suffisent.", "<p>48 heures suffisent.")])
 add('chauffagistes.html', [('txt', "<p>Quelques jours suffisent.", "<p>48 heures suffisent.")])
