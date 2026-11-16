@@ -14,7 +14,8 @@
  * Dans Chromium :
  *  4. CSS seul : uniquement les @keyframes de la scène, boucle de 15 s, toutes
  *     les animations en phase (même currentTime) ;
- *  5. hors écran : toutes en pause, d'un bloc ; au retour, toujours en phase ;
+ *  5. hors écran : toutes en pause, d'un bloc (la scène ne tourne que si son
+ *     téléphone est entier à l'écran) ; au retour, toujours en phase ;
  *  6. chaque étape tient dans l'écran du téléphone, à 360 et 1440 px ; rien
  *     ne dépasse de la page (scrollWidth == innerWidth) ;
  *  7. prefers-reduced-motion : aucune animation, l'état final fixe, les cinq
@@ -132,6 +133,11 @@ for (const [w, h] of [[1440, 900], [360, 640]]) {
       await p.waitForTimeout(600);
       a = await p.evaluate(anims);
       ok(a.every((x) => x.state === 'paused'), `${rel} : hors écran, toutes en pause (${a.filter((x) => x.state !== 'paused').length} en marche)`);
+      /* téléphone coupé par le bas de l'écran : la scène attend d'être entière */
+      await p.evaluate(() => { const b = document.querySelector('[data-anim-root] .phone').getBoundingClientRect(); scrollTo({ top: b.top + scrollY - innerHeight + 200, behavior: 'instant' }); });
+      await p.waitForTimeout(600);
+      a = await p.evaluate(anims);
+      ok(a.every((x) => x.state === 'paused'), `${rel} : téléphone à moitié visible, toujours en pause (${a.filter((x) => x.state !== 'paused').length} en marche)`);
       await p.evaluate(() => document.querySelector('[data-anim-root]').scrollIntoView({ block: 'center' }));
       await p.waitForTimeout(600);
       a = await p.evaluate(anims);

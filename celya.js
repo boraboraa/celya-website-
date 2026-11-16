@@ -65,8 +65,19 @@
     });
     /* une scène qui se joue à plusieurs éléments ([data-anim-root], la scène
        « Un appel, de bout en bout ») se met en pause d'un bloc : sinon ses
-       morceaux se figeraient chacun à leur heure et ne seraient plus en phase */
-    document.querySelectorAll('[data-anim-root]').forEach(function(r){seen.push(r);r.classList.add('anim-off');io.observe(r);});
+       morceaux se figeraient chacun à leur heure et ne seraient plus en phase.
+       Elle ne tourne que lorsque son téléphone est entier à l'écran (ou le
+       remplit) : aucune de ses étapes ne s'anime alors hors écran. */
+    var roots=document.querySelectorAll('[data-anim-root]');
+    if(roots.length){
+      var rio=new IntersectionObserver(function(es){
+        es.forEach(function(e){
+          var full=e.intersectionRatio>=0.99||(e.rootBounds&&e.intersectionRect.height>=e.rootBounds.height-2);
+          e.target._animRoot.classList.toggle('anim-off',!full);
+        });
+      },{threshold:[0,0.5,0.9,0.99,1]});
+      roots.forEach(function(r){var ph=r.querySelector('.phone')||r;seen.push(r);r.classList.add('anim-off');ph._animRoot=r;rio.observe(ph);});
+    }
     document.getAnimations().forEach(function(a){
       var t=a.effect&&a.effect.target;
       if(!t||t.nodeType!==1||seen.indexOf(t)>=0)return;

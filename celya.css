@@ -1064,12 +1064,16 @@ fieldset.f-moment{border:0;padding:0;margin:0;display:flex;flex-direction:column
   .scn-st{position:absolute;left:12px;right:12px;top:14px;opacity:0;animation:scn 15s linear infinite both;animation-delay:var(--d)}
   .scn-in{animation:scn-in 15s linear infinite both;animation-delay:var(--d)}
   .scn-slide{animation:scn-slide 15s linear infinite both;animation-delay:var(--d)}
+}
+/* le surlignage des étapes suit le téléphone quand la liste est à côté de lui ;
+   dessous (sous 860 px), il resterait hors écran pendant que le téléphone joue */
+@media (prefers-reduced-motion:no-preference) and (min-width:861px){
   .scn-hi{animation:scn-hi 15s linear infinite both;animation-delay:var(--d)}
 }
 @media (prefers-reduced-motion:reduce){.scn-st+.scn-st{padding-top:14px;border-top:1px solid var(--line)}}
 .scn.anim-off *,.scn.anim-off *::before,.scn.anim-off *::after{animation-play-state:paused!important}
 @keyframes scn{0%{opacity:0;transform:translateY(10px)}3%,18%{opacity:1;transform:none}20%,100%{opacity:0;transform:translateY(-6px)}}
 @keyframes scn-in{0%{opacity:0;transform:translateY(8px)}3%,20%{opacity:1;transform:none}22%,100%{opacity:0;transform:none}}
-@keyframes scn-slide{0%{opacity:0;transform:translateX(36px)}4%,20%{opacity:1;transform:none}22%,100%{opacity:0;transform:none}}
+@keyframes scn-slide{0%{opacity:0;transform:translateX(-28px)}4%,20%{opacity:1;transform:none}22%,100%{opacity:0;transform:none}}
 @keyframes scn-hi{0%{opacity:0}2%,18%{opacity:1}20%,100%{opacity:0}}
 @media (max-width:860px){.scn-sec .scn{grid-template-columns:minmax(0,1fr);gap:40px}.scn-sec .scn-ph{justify-self:center}}

@@ -351,8 +351,11 @@ Brief : `docs/maquettes-16-11/PROMPT-conversion-16-11.md`, aperçu validé
   Celya, mention « Exemple », cinq étapes sur une boucle de 15 s (l'appel, le
   rendez-vous, le résumé au patron, la confirmation du client, la consigne du
   patron). CSS seul, quatre `@keyframes` en `transform` / `opacity`, aucun JS
-  qui tourne ; elle se met en pause **d'un bloc** hors écran
-  (`[data-anim-root]`, `celya.js`) pour que ses étapes restent en phase ;
+  qui tourne ; elle se met en pause **d'un bloc** (`[data-anim-root]`,
+  `celya.js`) pour que ses étapes restent en phase, et ne tourne que lorsque
+  son téléphone est entier à l'écran — aucune étape ne s'anime alors hors
+  écran ; le surlignage de la liste d'étapes ne suit le téléphone qu'au-dessus
+  de 860 px, quand la liste est à côté de lui ;
   sous `prefers-reduced-motion`, l'état final, fixe, les cinq étapes lisibles.
   Aucun H2 dedans (une étiquette et un H3). Textes dans les données :
   `data/metiers.json` (`<métier>.<langue>.scene`) pour les pages métiers et la
