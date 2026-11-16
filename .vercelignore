@@ -10,3 +10,8 @@ sweep_nl.js
 sweep_en.js
 check.py
 sitemap.py
+
+# pages internes d'aperçu (noindex, liées nulle part) : elles montraient l'ancien
+# thème ; retirées du déploiement le 16/11/2026 plutôt que migrées (fichiers gardés)
+apercu.html
+apercu-visuel.html

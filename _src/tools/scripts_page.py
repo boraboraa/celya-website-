@@ -29,6 +29,8 @@ def run(rel):
     if not os.path.exists(p) or rel in AVANT:
         return 0
     src = open(p, encoding='utf-8').read()
+    if '"layout": "contact"' in src:
+        return 0                          # contact : l'envoi du formulaire passe par celya.js ([data-lead])
     add = [s for s in body_scripts(rel) if s.strip() and s.strip() not in src]
     if add:
         src = src.rstrip('\n') + '\n' + ''.join('<!--@script-->\n<script>\n' + s.strip('\n') + '\n</script>\n' for s in add)
