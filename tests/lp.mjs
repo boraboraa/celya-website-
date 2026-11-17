@@ -9,8 +9,10 @@
  *     dans le héros ; aucune accroche, aucune sous-ligne, aucune pastille ;
  *  3. formulaire : même envoi (data-lead, source « demo form », page merci),
  *     mêmes champs que demo.html, dans le même ordre ;
- *  4. prix et appel final : « Demander une démo » renvoie au formulaire de la
- *     page (#lp), plus à demo.html (décision de Bora du 16/11/2026) ;
+ *  4. prix et appel final : le bouton renvoie au formulaire de la page (#lp),
+ *     plus à demo.html (décision de Bora du 16/11/2026) ; une action, un nom :
+ *     tout ce qui mène au formulaire dit « Être rappelé pour une démo » (NL
+ *     « Bel mij terug voor een demo »), comme son bouton (17/11/2026) ;
  *  5. FAQ : cinq questions, « Vos questions, nos réponses », dont « changer de
  *     numéro » et « sauront-ils que c'est une IA » ;
  *  6. cases : textes du métier sur les pages garages, génériques ailleurs ;
@@ -72,6 +74,11 @@ for (const [rel, lang, metier] of PAGES) {
   const cta = /<div class="panel bg-ink cta-final">[\s\S]*?<\/section>/.exec(main)[0];
   ok(/<a class="btn btn-line-d" href="#lp" data-demo>/.test(cta) && !/demo\.html/.test(cta), 'appel final : « Demander une démo » renvoie au formulaire de la page, plus à la page démo');
   ok(!/href="[^"]*demo\.html"/.test(main), 'aucun lien vers la page démo : tout renvoie au formulaire de la page');
+  /* une action, un nom (décision de Bora du 17/11/2026) : tout ce qui mène au
+   * formulaire porte le libellé de son bouton ; seule la barre mobile garde la forme courte */
+  const toForm = [...main.matchAll(/<a [^>]*href="#lp"[^>]*>([\s\S]*?)<\/a>/g)].map((m) => dec(m[1].replace(/<[^>]+>/g, '')).trim());
+  ok(toForm.length === 4 && toForm.every((x) => x === dec(t.form.submit)), `vers le formulaire : ${toForm.length} boutons, tous « ${t.form.submit} » (${[...new Set(toForm)].join(' / ')})`);
+  ok(!html.includes(t.price_start) && !html.includes(t.cta_demo), `plus aucun « ${t.cta_demo} » sur la page`);
   /* 5. FAQ */
   const faq = /<section class="sec bg-page" id="faq">[\s\S]*?<\/section>/.exec(main)[0];
   const qs = [...faq.matchAll(/<summary>([\s\S]*?)<\/summary>/g)].map((m) => dec(m[1]));

@@ -9,7 +9,9 @@
  * bout », Comment ça marche (quatre étapes), les cases RDV / À rappeler /
  * Urgent, « Appelez-la, comme un client », les prix (bouton vers le
  * formulaire de la page), la FAQ (cinq questions), l'appel final (son bouton
- * « Demander une démo » renvoie aussi au formulaire de la page). */
+ * renvoie aussi au formulaire de la page). Une action, un nom (17/11/2026) :
+ * partout où l'on va au formulaire, le bouton dit « Être rappelé pour une
+ * démo », comme le bouton du formulaire ; la barre mobile garde « Être rappelé ». */
 import { one, all } from '../lib/core.mjs';
 import { shell } from '../components/shell.mjs';
 import { badges, prices, faq, ctaFinal, heroMedia, scene, sceneText, steps, cases, tryCall } from '../components/blocks.mjs';
@@ -39,8 +41,8 @@ ${scene(c, sceneText(c, metier))}
 ${steps(c, all(page, 'steps')[0])}
 ${cases(c, (M && M.cases) || t.cases_generique)}
 ${tryCall(c, one(page, 'test'), form)}
-${prices(c, { demoHref: form })}
+${prices(c, { demoHref: form, demoLabel: t.form.submit })}
 ${faq(c, page.blocks.faq[0])}
-${ctaFinal(c, page.blocks.cta[0], { demoHref: form })}`;
+${ctaFinal(c, page.blocks.cta[0], { demoHref: form, demoLabel: t.form.submit })}`;
   return shell(c, { headHTML: one(page, 'head'), main, bare: true, bodyClass: 'p-lp', mbarSecond: [form, t.mbar_callback] });
 }

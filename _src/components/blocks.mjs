@@ -252,12 +252,13 @@ export function priceCards(c) {
 }
 
 /** h2 : true = titre du composant (« Dès … HT par mois », price_h2) ; ou HTML d'un H2 existant */
-/** demoHref : cible du bouton « Demander une démo » (pages d'atterrissage : « #lp », le formulaire de la page) */
-export function prices(c, { h2 = true, intro = '', id = '', demoHref = '' } = {}) {
+/** demoHref / demoLabel : cible et libellé du bouton « Demander une démo » (pages d'atterrissage :
+ *  « #lp » et « Être rappelé pour une démo », le bouton du formulaire de la page — une action, un nom) */
+export function prices(c, { h2 = true, intro = '', id = '', demoHref = '', demoLabel = '' } = {}) {
   const { t } = c;
   const title = h2 === true ? H(2, t.price_h2) : h2;
   return `<section class="sec bg-cream"${id ? ` id="${id}"` : ''}><div class="w">
-<div class="price-head">${title}<div class="price-go"><a class="btn btn-ink" href="${demoHref || c.L(c.t.demo_href)}" data-demo>${t.price_start}</a></div></div>
+<div class="price-head">${title}<div class="price-go"><a class="btn btn-ink" href="${demoHref || c.L(c.t.demo_href)}" data-demo>${demoLabel || t.price_start}</a></div></div>
 ${intro ? `<div class="prose price-intro">${intro}</div>` : ''}
 ${priceCards(c)}
 <p class="note">${priceNote(c)}</p>
@@ -280,22 +281,23 @@ export function faq(c, block, { id = 'faq' } = {}) {
 </div></section>`;
 }
 
-/** demoHref : cible de « Demander une démo » (pages d'atterrissage : « #lp », le formulaire de la page — décision de Bora du 16/11/2026) */
-export function ctaFinal(c, block, { demoHref = '' } = {}) {
+/** demoHref / demoLabel : cible et libellé de « Demander une démo » (pages d'atterrissage : « #lp » et
+ *  « Être rappelé pour une démo », le bouton du formulaire — décisions de Bora des 16 et 17/11/2026) */
+export function ctaFinal(c, block, { demoHref = '', demoLabel = '' } = {}) {
   const { h2, body } = splitH2(block.html);
   return `<section class="sec-panel"><div class="panel bg-ink cta-final">
 ${cVoice('cv-bg')}
 <div class="cta-in">${h2.replace('<h2', '<h2 class="h-xl"')}
 ${body ? `<div class="cta-p">${body}</div>` : `<p class="cta-p">${c.t.cta_final_lead}</p>`}
-${ctaPairDark(c, demoHref)}
+${ctaPairDark(c, demoHref, demoLabel)}
 </div>
 </div></section>`;
 }
 
 /* ctaPair vit dans shell.mjs ; recopie locale pour éviter un import circulaire */
-function ctaPairDark(c, demoHref = '') {
+function ctaPairDark(c, demoHref = '', demoLabel = '') {
   const { t, offre } = c;
-  return `<div class="cta-pair"><div class="cta-btns"><a class="btn btn-orange" href="tel:${offre.telephone.e164}" data-call>${ico.phone}<span>${t.cta_call} · <span class="nw">${offre.telephone.affiche}</span></span></a><a class="btn btn-line-d" href="${demoHref || c.L(t.demo_href)}" data-demo>${t.cta_demo}</a></div><p class="cta-sub">${t.cta_call_sub}</p></div>`;
+  return `<div class="cta-pair"><div class="cta-btns"><a class="btn btn-orange" href="tel:${offre.telephone.e164}" data-call>${ico.phone}<span>${t.cta_call} · <span class="nw">${offre.telephone.affiche}</span></span></a><a class="btn btn-line-d" href="${demoHref || c.L(t.demo_href)}" data-demo>${demoLabel || t.cta_demo}</a></div><p class="cta-sub">${t.cta_call_sub}</p></div>`;
 }
 
 export function related(c, block) {

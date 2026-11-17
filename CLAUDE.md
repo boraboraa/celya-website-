@@ -347,7 +347,11 @@ Brief : `docs/maquettes-16-11/PROMPT-conversion-16-11.md`, aperçu validé
   (« Appeler Janet » / « Être rappelé », vers `#lp`) est sur ces pages ; le
   bouton des prix **et celui de l'appel final** renvoient au formulaire de la
   page (`#lp`), plus à `demo.html` (décision de Bora du 16/11/2026, retour sur
-  la PR #34). **Le bandeau en barre basse sur ordinateur reste propre aux
+  la PR #34). **Une action, un seul nom** (décision du 17/11/2026) : sur ces
+  pages, tout bouton qui mène au formulaire dit « Être rappelé pour une démo »
+  (NL « Bel mij terug voor een demo »), le libellé du bouton du formulaire ;
+  plus aucun « Demander une démo » ; la barre mobile garde sa forme courte,
+  « Être rappelé » / « Bel mij terug ». Le reste du site ne change pas. **Le bandeau en barre basse sur ordinateur reste propre aux
   pages d'atterrissage** : il ne s'étend pas au reste du site (même décision).
   Le `mailto:sales@celya.be` du pied de page reste : « aucune adresse e-mail
   dans le HTML ou le JS » vise le formulaire, qui n'en porte aucune.
