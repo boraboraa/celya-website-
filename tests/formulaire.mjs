@@ -15,7 +15,8 @@
  *      absents sans accord ; aucune requête vers Google ou Meta sans accord ;
  *   6. barre d'appel mobile : cachée au premier écran, visible après défilement,
  *      ne recouvre jamais le bandeau cookies ni les boutons du héros (360, 390, 393) ;
- *      absente de demo.html, où elle recouvrirait le formulaire qu'elle annonce.
+ *      absente de demo.html, où elle recouvrirait le formulaire qu'elle annonce ;
+ *      présente sur les pages d'atterrissage (lot conversion du 16/11/2026).
  *   7. merci.html : noindex et absent du sitemap.
  *
  *   node tests/formulaire.mjs [pages…]   (défaut : demo.html) */
@@ -135,10 +136,15 @@ async function main() {
       await p.waitForTimeout(600);
       evs.push(...(await p.evaluate(() => window.__evs)));
       const click = (await p.evaluate(() => window.dataLayer.filter((e) => e && e.event === 'click_call')));
-      ok(click.length >= 1 && click[0].page === '/' + rel, 'avec accord : click_call {page} dans dataLayer');
+      /* lot « prêt pour les publicités » (17/11/2026) : mêmes noms d'événements,
+       * plus form (data-lead), page, lang ; event_id identique à celui du corps envoyé à web-lead */
+      const kind = rel.includes('lp/') ? 'lp-' + path.basename(rel, '.html') : 'demo';
+      const lang = /^(nl|en)\//.test(rel) ? rel.slice(0, 2) : 'fr';
+      ok(click.length >= 1 && click[0].page === '/' + rel && click[0].form === kind && click[0].lang === lang, `avec accord : click_call {form: ${kind}, page, lang: ${lang}} dans dataLayer`);
       const gl = evs.find((e) => e.event === 'generate_lead');
-      ok(gl && gl.form === (rel.includes('lp/') ? 'lp' : 'demo') && gl.metier === 'restaurants' && gl.utm_campaign === 'essai', 'avec accord : generate_lead {form, metier, utm_campaign}');
+      ok(gl && gl.form === kind && gl.page === '/' + rel && gl.lang === lang && gl.metier === 'restaurants' && gl.utm_campaign === 'essai', `avec accord : generate_lead {form: ${kind}, page, lang, metier, utm_campaign}`);
       ok(leads.length === 1, 'avec accord : envoi effectué');
+      ok(gl && typeof gl.event_id === 'string' && gl.event_id.length >= 16 && leads[0] && leads[0].event_id === gl.event_id, `avec accord : event_id identique dans generate_lead et dans le corps envoyé à web-lead (${gl && gl.event_id})`);
       await ctx.close();
     }
   }
@@ -167,7 +173,7 @@ async function main() {
       ok(await p.locator('form[data-lead] .f-ok').isVisible() && /contact\.html(\?|$)/.test(p.url()) && await p.locator("form[data-lead] .f-body").isHidden(), `${consent} : confirmation affichée sur place, sans redirection`);
       if (consent === 'granted') {
         const gl = (await p.evaluate(() => window.__evs)).find((e) => e.event === 'generate_lead');
-        ok(gl && gl.form === 'contact' && gl.metier === 'garages', 'avec accord : generate_lead {form: contact, metier}');
+        ok(gl && gl.form === 'contact' && gl.metier === 'garages' && gl.page === '/' + rel && gl.lang === (rel.startsWith('nl/') ? 'nl' : rel.startsWith('en/') ? 'en' : 'fr') && gl.event_id && gl.event_id === L.event_id, 'avec accord : generate_lead {form: contact, page, lang, metier, event_id = celui du corps}');
       } else {
         const dl = await p.evaluate(() => (window.dataLayer || []).filter((e) => e && e.event && e.event !== 'gtm.js').length);
         ok(dl === 0 && external.length === 0, 'sans accord : aucun événement, aucune requête externe');
@@ -179,7 +185,7 @@ async function main() {
   /* 6. barre mobile */
   console.log('\nbarre d\'appel mobile');
   for (const [w, h] of [[360, 640], [390, 730], [393, 730]]) {
-    for (const rel of ['index.html', 'garages.html', 'prix.html']) {
+    for (const rel of ['index.html', 'garages.html', 'prix.html', 'lp/garages.html', 'nl/lp/geen-oproepen-meer-missen.html']) {   /* pages d'atterrissage : barre ajoutée le 16/11/2026 */
       for (const consent of ['denied', null]) {
         const { ctx } = await context(browser, { consent, width: w, height: h });
         const p = await ctx.newPage();

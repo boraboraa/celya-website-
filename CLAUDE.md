@@ -321,6 +321,136 @@ atterrissage). Aucune page ne charge plus `bento.css`, `bento.js` ni
   `lp/garages.html`, `nl/lp/geen-oproepen-meer-missen.html`,
   `nl/lp/garages.html` — noindex, hors sitemap, sans menu.
 
+**Lot « conversion Google Ads » du 16 novembre 2026 (décisions de Bora).**
+Brief : `docs/maquettes-16-11/PROMPT-conversion-16-11.md`, aperçu validé
+`docs/maquettes-16-11/apercu-lp-garages.html` (hors déploiement).
+
+- **Exception datée à la règle « un héros contient le H1, une phrase et les
+  deux boutons, rien de plus » : sur les quatre pages d'atterrissage
+  seulement** (`lp/garages.html`, `lp/ne-plus-rater-d-appels.html`,
+  `nl/lp/garages.html`, `nl/lp/geen-oproepen-meer-missen.html`), le
+  formulaire de démo est dans le héros, posé en transparence sur la vidéo de
+  l'accueil (même `heroMedia()`, même choix de source par `celya.js`, même
+  pause hors écran, poster seul sous `prefers-reduced-motion`). Le texte passe
+  sur la vidéo lui aussi, sous un voile crème léger. **Aucune autre page n'en
+  bénéficie.** Pas de `backdrop-filter`, pas de `filter`, pas d'ombre : la
+  transparence est un voile, jamais un flou. Les pages d'atterrissage n'ont
+  **pas** l'effet au défilement des accueils (`data-hv="lp"`) : l'exception
+  d'opacité du 15/11 reste aux seuls accueils. Contraste mesuré par
+  `tests/heros.mjs` (H1, phrase, libellés du formulaire ≥ 4,5 sur le pixel le
+  plus clair de la vidéo, à 360, 390, 768 et 1440 px) ; pour tenir 4,5 sur
+  la partie orange du H1 à 360 × 640, le voile mobile de l'aperçu est renforcé
+  sur ses 260 premiers pixels seulement (.74 → .62 au lieu de .55 → .40).
+  Sur ordinateur, le bandeau cookies de ces pages prend sa forme de barre basse
+  (celle qu'il a déjà sous 720 px) : en carte au coin bas droit, il recouvrait
+  le bouton du formulaire — position seule, le consentement ne bouge pas. La barre mobile
+  (« Appeler Janet » / « Être rappelé », vers `#lp`) est sur ces pages ; le
+  bouton des prix **et celui de l'appel final** renvoient au formulaire de la
+  page (`#lp`), plus à `demo.html` (décision de Bora du 16/11/2026, retour sur
+  la PR #34). **Une action, un seul nom** (décision du 17/11/2026) : sur ces
+  pages, tout bouton qui mène au formulaire dit « Être rappelé pour une démo »
+  (NL « Bel mij terug voor een demo »), le libellé du bouton du formulaire ;
+  plus aucun « Demander une démo » ; la barre mobile garde sa forme courte,
+  « Être rappelé » / « Bel mij terug ». Le reste du site ne change pas. **Le bandeau en barre basse sur ordinateur reste propre aux
+  pages d'atterrissage** : il ne s'étend pas au reste du site (même décision).
+  Le `mailto:sales@celya.be` du pied de page reste : « aucune adresse e-mail
+  dans le HTML ou le JS » vise le formulaire, qui n'en porte aucune.
+- **La scène « Un appel, de bout en bout »** (`scene()` dans
+  `_src/components/blocks.mjs`, écrite une fois) : un téléphone aux couleurs
+  Celya, mention « Exemple », cinq étapes sur une boucle de 15 s (l'appel, le
+  rendez-vous, le résumé au patron, la confirmation du client, la consigne du
+  patron). CSS seul, quatre `@keyframes` en `transform` / `opacity`, aucun JS
+  qui tourne ; elle se met en pause **d'un bloc** (`[data-anim-root]`,
+  `celya.js`) pour que ses étapes restent en phase, et ne tourne que lorsque
+  son téléphone est entier à l'écran — aucune étape ne s'anime alors hors
+  écran ; le surlignage de la liste d'étapes ne suit le téléphone qu'au-dessus
+  de 860 px, quand la liste est à côté de lui ;
+  sous `prefers-reduced-motion`, l'état final, fixe, les cinq étapes lisibles.
+  Aucun H2 dedans (une étiquette et un H3). Textes dans les données :
+  `data/metiers.json` (`<métier>.<langue>.scene`) pour les pages métiers et la
+  page d'atterrissage garages, `data/i18n.json` (`scene.generique`) ailleurs ;
+  exemple daté du jeudi 19 novembre. Placée sous les badges des accueils, des
+  pages métiers et des pages d'atterrissage ; en version compacte (téléphone
+  seul) après la première section des articles. Vérifiée par `tests/scene.mjs`.
+- **Pages d'atterrissage, dans cet ordre** : héros, badges, scène, Comment ça
+  marche (quatre étapes, `ol.steps`), les cases RDV pris / À rappeler /
+  Urgent, « Appelez-la, comme un client » (`tryCall()`), prix, FAQ en cinq
+  questions (« Vos questions, nos réponses »), appel final. Les trois
+  bénéfices ont disparu (`tests/corrections-autorisees.json`). Sur la page
+  générique, qui avait déjà « Faut-il changer de numéro ? », la cinquième
+  question est « Et si je décroche moi-même ? » (décision de Bora du 16/11).
+- **Un jour écrit à côté d'une date est le bon** (`tests/dates.mjs`, FR, NL,
+  EN, en toutes lettres comme en abrégé, année 2026 quand elle n'est pas
+  écrite). Les exemples de `data/metiers.json` portaient des jours de 2025 ;
+  le 16/11/2026, chacun a gardé son jour de la semaine (il est cité dans les
+  dialogues : « À samedi ! ») et pris la date 2026 de ce jour dans la semaine
+  de l'exemple : samedi 21, mardi 17, vendredi 20, lundi 23 novembre. Les
+  indépendants passent au jeudi 19 : c'est le même rendez-vous que leur scène.
+  Même règle pour « maandag 3 augustus » (au lieu de 5) dans deux articles NL.
+- **« Comment ça marche » des accueils NL et EN** : la liste des quatre étapes
+  était vide depuis l'extraction du 14/11 ; elle porte de nouveau le texte de
+  l'ancienne page, mot pour mot (`1c2ce15^:nl/index.html`, `en/index.html`).
+
+**Lot « prêt pour les publicités » du 17 novembre 2026 (décisions de Bora,
+même PR #34).** Le site reçoit du trafic payant (Google Ads, Meta Ads). La
+mesure passe toujours par GTM (GTM-KF9QCKB2), chargé après « Accepter » : ce
+lot ne touche pas à ce mécanisme ; il corrige ce que le site dit et ce qu'il
+garde.
+
+- **Exception datée à « le consentement et le chargement de GTM ne bougent pas
+  d'une ligne » : seul le texte du message du bandeau change**, dans les trois
+  langues — FR « Mesure et publicité (Google Analytics, Google Ads, Meta) :
+  à vous de choisir. », NL « Cookies voor metingen en advertenties (Google
+  Analytics, Google Ads, Meta): u beslist. », EN « Cookies for analytics and
+  ads (Google Analytics, Google Ads, Meta): you choose. » ; le lien « En savoir
+  plus » reste. Le moment où GTM se
+  charge, les appels `gtag('consent', …)`, les boutons, la clé
+  `celya-consent`, la position et la hauteur du bandeau ne changent pas d'un
+  octet : `tests/consentement.mjs` masque les trois messages et exige que tout
+  le reste du bloc soit identique à l'octet à celui de `main`, et que les
+  messages soient exactement ceux-là. **Les trois tiennent en 2 lignes à
+  360 px** (bandeau de 121 px, comme avant le lot). La première formulation FR
+  et EN (« Cookies de mesure et de publicité… », « Cookies for analytics and
+  advertising… ») en prenait 3 (142 px) : Bora a retenu le 17/11 les variantes
+  mesurées. Deux lignes à 360 px = 656 px de texte au plus, lien « En savoir
+  plus » compris, et la coupure se fait au mot : mesurer avant de changer.
+- **Plus aucune ressource de Google Fonts** (décision du 17/11/2026) : les
+  polices sont auto-hébergées depuis le 14/11 ; le dernier reste, un
+  `preconnect` vers `fonts.gstatic.com` dans le `<head>` de 124 pages NL, a
+  disparu des sources et des pages, et la notice cookies (FR, NL, EN) ne dit
+  plus que le site charge des polices depuis Google. Vérifiable :
+  `grep -rE "fonts\.(googleapis|gstatic)\.com"` sur les pages servies rend
+  zéro.
+- **Les notices nomment les outils publicitaires** : `cookies.html`,
+  `privacy.html` et leurs versions NL et EN listent Google Ads (conversions,
+  gclid) et le Meta Pixel (Meta Platforms Ireland ; conversions, fbclid),
+  chargés seulement après « Accepter », l'identifiant de clic gardé 90 jours
+  au plus sur l'appareil, le lien vers la politique de chaque éditeur ; la
+  politique de confidentialité dit que l'identifiant de clic part avec le
+  formulaire de démo, et la base légale (consentement). Écarts listés dans
+  `tests/corrections-autorisees.json`. « Aucun traceur publicitaire » ne
+  s'écrit plus ; « aucun traceur publicitaire **sans votre accord** » si.
+- **L'attribution tient 90 jours, et seulement avec l'accord** (`celya.js`,
+  clé `celya-attrib`). Sans accord : `sessionStorage` seulement, comme avant.
+  Après « Accepter » : recopiée dans `localStorage` avec la date d'arrivée
+  (les 90 jours comptent depuis le clic sur l'annonce, pas depuis la dernière
+  visite) ; un visiteur qui revient la retrouve ; une nouvelle arrivée avec
+  des paramètres la remplace ; au-delà de 90 jours, effacée. Après
+  « Refuser », ou sans accord à l'ouverture d'une page (accord retiré en
+  effaçant les données du site), `localStorage` ne garde rien. Le lien avec
+  les boutons du bandeau passe par l'écouteur `click` existant (il suit celui
+  du bouton, qui a déjà écrit le choix) : aucun écouteur nouveau, et le bloc
+  consentement n'est pas touché. Vérifié par `tests/attribution.mjs` (J+1,
+  J+89, J+91, refus, accord retiré, nouvelle arrivée).
+- **Les événements** `click_call` et `generate_lead` gardent leur nom (Google
+  Ads est réglé dessus) et portent `form` (le `data-lead` : `demo`, `contact`,
+  `lp-garages`, `lp-ne-plus-rater-d-appels`, `lp-geen-oproepen-meer-missen`),
+  `page`, `lang` ; `generate_lead` porte aussi `metier` et `event_id`, le
+  même identifiant que celui envoyé à web-lead (`event_id` dans le corps),
+  pour dédoublonner plus tard le pixel Meta et les envois serveur. **Aucun nom
+  de régie ni identifiant de compte dans le code du site** : tout se règle
+  dans GTM.
+
 **Exception datée — lot « design & proportions » du 11 septembre 2026, validé
 par Bora le même jour.** Ce lot est un brief CSS : `bento.css` y est modifié
 (logo et bouton de nav, pied de page à colonnes titrées, `aside.t-answer` des
@@ -491,13 +621,17 @@ node _src/build.mjs --check          # les pages publiées == ce que produit le 
 node tests/seo-avant-apres.mjs       # title, description, H1, H2, FAQ, hreflang, @graph vs origin/main
 node tests/offre.mjs                 # aucun montant hors data/offre.json, plus d'ancienne grille
 node tests/tailles.mjs               # 12 px (libellés) / 14 px (phrases) minimum
-node tests/heros.mjs                 # premier écran, contraste sur la vidéo, pause, poids
+node tests/heros.mjs                 # premier écran, contraste sur la vidéo, pause, poids (accueils + LP)
 node tests/formulaire.mjs            # formulaire démo, UTM, dataLayer, barre mobile
 node tests/budget-rendu.mjs          # backdrop-filter, will-change, keyframes, rAF, écouteurs
-node tests/consentement.mjs          # bloc consentement + GTM identique à l'octet
+node tests/consentement.mjs          # bloc consentement + GTM identique à l'octet (hors texte du message, 17/11/2026)
 node tests/migration.mjs             # toute page servie sur le nouveau gabarit (16/11/2026)
 node tests/texte-conserve.mjs        # aucun paragraphe perdu par la migration
 node tests/outils.mjs                # modèles, check-lists, grilles, calculateurs répondent
+node tests/scene.mjs                 # la scène : placement, textes par métier, pause, mouvement réduit
+node tests/lp.mjs                    # pages d'atterrissage : ordre des blocs, formulaire, liens, barre mobile
+node tests/dates.mjs                 # chaque jour de la semaine correspond à sa date (2026 par défaut)
+node tests/attribution.mjs           # UTM / gclid / fbclid : session sans accord, 90 jours après « Accepter », rien après « Refuser »
 ```
 
 **Le générateur (lot du 14/11/2026).** Les pages migrées ne s'éditent plus à

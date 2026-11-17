@@ -1,5 +1,5 @@
 {
-  "_doc": "Textes propres à chaque métier (ruban, cases, agenda, confirmation, visuels des cartes). Partie fr extraite des maquettes par _src/tools/extraire_metiers.py ; parties nl/en traduites pour le lot du 16/11/2026 (cartes : H2 des pages NL et EN, relues contre docs/vocabulaire-be.md). « video » : null tant qu'aucune source n'existe — le composant montre alors la photo seule, sans bouton lecture.",
+  "_doc": "Textes propres à chaque métier (ruban, cases, agenda, confirmation, visuels des cartes). Partie fr extraite des maquettes par _src/tools/extraire_metiers.py ; parties nl/en traduites pour le lot du 16/11/2026 (cartes : H2 des pages NL et EN, relues contre docs/vocabulaire-be.md). « video » : null tant qu'aucune source n'existe — le composant montre alors la photo seule, sans bouton lecture. « scene » : la scène « Un appel, de bout en bout » (lot conversion du 16/11/2026), exemple daté du jeudi 19 novembre ; le jeu générique vit dans data/i18n.json (scene.generique).",
   "garages": {
     "pages": {
       "fr": "garages.html",
@@ -79,6 +79,38 @@
         "ou": "Garage Martin, Waterloo",
         "reponse": "Merci, c'est confirmé. À jeudi !",
         "chip": "Jeudi 19 nov. · 10h00"
+      },
+      "scene": {
+        "appel": [
+          "Bonjour, ma voiture fait un bruit au freinage.",
+          "Je peux vous proposer jeudi 19 novembre à 10 h.",
+          "Parfait."
+        ],
+        "heures": [
+          "9:00",
+          "10:00",
+          "11:00"
+        ],
+        "motif": "Freins",
+        "resume": [
+          [
+            "Client",
+            "M. Peeters"
+          ],
+          [
+            "Véhicule",
+            "Golf 7"
+          ],
+          [
+            "Motif",
+            "Bruit au freinage"
+          ],
+          [
+            "Créneau",
+            "Jeudi 19 nov. · 10:00"
+          ]
+        ],
+        "confirmation": "Bonjour M. Peeters, votre rendez-vous au Garage Martin est enregistré : jeudi 19 novembre à 10:00."
       }
     },
     "nl": {
@@ -122,7 +154,39 @@
         "reponse": "Bedankt, bevestigd. Tot donderdag!",
         "chip": "Do 19 nov. · 10.00 u"
       },
-      "cartes": []
+      "cartes": [],
+      "scene": {
+        "appel": [
+          "Goedendag, mijn wagen maakt lawaai bij het remmen.",
+          "Ik kan u donderdag 19 november om 10 uur voorstellen.",
+          "Perfect."
+        ],
+        "heures": [
+          "9.00",
+          "10.00",
+          "11.00"
+        ],
+        "motif": "Remmen",
+        "resume": [
+          [
+            "Klant",
+            "dhr. Peeters"
+          ],
+          [
+            "Wagen",
+            "Golf 7"
+          ],
+          [
+            "Reden",
+            "Lawaai bij het remmen"
+          ],
+          [
+            "Moment",
+            "Do 19 nov. · 10.00 u"
+          ]
+        ],
+        "confirmation": "Goedendag dhr. Peeters, uw afspraak bij Garage Martin is genoteerd: donderdag 19 november om 10.00 u."
+      }
     },
     "en": {
       "ruban": {
@@ -187,7 +251,39 @@
           "q": "Are you open on Saturday?",
           "r": "Yes, from 9:00 to 12:00."
         }
-      ]
+      ],
+      "scene": {
+        "appel": [
+          "Hello, my car makes a noise when I brake.",
+          "I can offer you Thursday 19 November at 10 am.",
+          "Perfect."
+        ],
+        "heures": [
+          "9:00",
+          "10:00",
+          "11:00"
+        ],
+        "motif": "Brakes",
+        "resume": [
+          [
+            "Customer",
+            "Mr Peeters"
+          ],
+          [
+            "Vehicle",
+            "Golf 7"
+          ],
+          [
+            "Reason",
+            "Noise when braking"
+          ],
+          [
+            "Slot",
+            "Thu 19 Nov · 10:00"
+          ]
+        ],
+        "confirmation": "Hello Mr Peeters, your appointment at Garage Martin is booked: Thursday 19 November at 10:00."
+      }
     }
   },
   "restaurants": {
@@ -265,11 +361,39 @@
         "initiales": "BP",
         "entreprise": "Brasserie du Parc",
         "message": "Bonsoir Mme Dubois, votre réservation est enregistrée.",
-        "quand": "Samedi 22 novembre · 19h45",
+        "quand": "Samedi 21 novembre · 19h45",
         "quoi": "Table pour 4 · une poussette",
         "ou": "Brasserie du Parc, Ixelles",
         "reponse": "Merci, c'est confirmé. À samedi !",
-        "chip": "Samedi 22 nov. · 19h45"
+        "chip": "Samedi 21 nov. · 19h45"
+      },
+      "scene": {
+        "appel": [
+          "Bonsoir, vous auriez une table pour quatre jeudi soir ?",
+          "Je peux vous proposer jeudi 19 novembre à 19 h 30.",
+          "Parfait."
+        ],
+        "heures": [
+          "18:30",
+          "19:30",
+          "20:30"
+        ],
+        "motif": "Table pour 4",
+        "resume": [
+          [
+            "Client",
+            "Mme Dubois"
+          ],
+          [
+            "Réservation",
+            "Table pour 4"
+          ],
+          [
+            "Créneau",
+            "Jeudi 19 nov. · 19:30"
+          ]
+        ],
+        "confirmation": "Bonsoir Mme Dubois, votre réservation à la Brasserie du Parc est enregistrée : jeudi 19 novembre à 19:30."
       }
     },
     "nl": {
@@ -308,13 +432,41 @@
         "initiales": "BP",
         "entreprise": "Brasserie du Parc",
         "message": "Goedenavond mevr. Dubois, uw reservatie is genoteerd.",
-        "quand": "Zaterdag 22 november · 19.45 u",
+        "quand": "Zaterdag 21 november · 19.45 u",
         "quoi": "Tafel voor 4 · een kinderwagen",
         "ou": "Brasserie du Parc, Elsene",
         "reponse": "Bedankt, bevestigd. Tot zaterdag!",
-        "chip": "Za 22 nov. · 19.45 u"
+        "chip": "Za 21 nov. · 19.45 u"
       },
-      "cartes": []
+      "cartes": [],
+      "scene": {
+        "appel": [
+          "Goedenavond, hebt u een tafel voor vier op donderdagavond?",
+          "Ik kan u donderdag 19 november om 19.30 u voorstellen.",
+          "Perfect."
+        ],
+        "heures": [
+          "18.30",
+          "19.30",
+          "20.30"
+        ],
+        "motif": "Tafel voor 4",
+        "resume": [
+          [
+            "Klant",
+            "mevr. Dubois"
+          ],
+          [
+            "Reservatie",
+            "Tafel voor 4"
+          ],
+          [
+            "Moment",
+            "Do 19 nov. · 19.30 u"
+          ]
+        ],
+        "confirmation": "Goedenavond mevr. Dubois, uw reservatie bij Brasserie du Parc is genoteerd: donderdag 19 november om 19.30 u."
+      }
     },
     "en": {
       "ruban": {
@@ -352,11 +504,11 @@
         "initiales": "BP",
         "entreprise": "Brasserie du Parc",
         "message": "Good evening Mrs Dubois, your booking is confirmed.",
-        "quand": "Saturday 22 November · 19:45",
+        "quand": "Saturday 21 November · 19:45",
         "quoi": "Table for 4 · one pushchair",
         "ou": "Brasserie du Parc, Ixelles",
         "reponse": "Thanks, that's confirmed. See you Saturday!",
-        "chip": "Sat 22 Nov · 19:45"
+        "chip": "Sat 21 Nov · 19:45"
       },
       "cartes": [
         {
@@ -374,7 +526,35 @@
           "h": "Call handling that sorts every call to the restaurant",
           "v": "tri"
         }
-      ]
+      ],
+      "scene": {
+        "appel": [
+          "Good evening, do you have a table for four on Thursday evening?",
+          "I can offer you Thursday 19 November at 7:30 pm.",
+          "Perfect."
+        ],
+        "heures": [
+          "18:30",
+          "19:30",
+          "20:30"
+        ],
+        "motif": "Table for 4",
+        "resume": [
+          [
+            "Customer",
+            "Mrs Dubois"
+          ],
+          [
+            "Booking",
+            "Table for 4"
+          ],
+          [
+            "Slot",
+            "Thu 19 Nov · 19:30"
+          ]
+        ],
+        "confirmation": "Good evening Mrs Dubois, your table at Brasserie du Parc is booked: Thursday 19 November at 19:30."
+      }
     }
   },
   "cabinets": {
@@ -460,11 +640,39 @@
         "initiales": "CP",
         "entreprise": "Cabinet du Parc",
         "message": "Bonjour Mme Claes, votre rendez-vous est enregistré.",
-        "quand": "Mardi 18 novembre · 9h20",
+        "quand": "Mardi 17 novembre · 9h20",
         "quoi": "Dr Lambert · consultation",
         "ou": "Cabinet du Parc, Etterbeek",
         "reponse": "Merci, c'est confirmé. À mardi !",
-        "chip": "Mardi 18 nov. · 9h20"
+        "chip": "Mardi 17 nov. · 9h20"
+      },
+      "scene": {
+        "appel": [
+          "Bonjour, je voudrais un rendez-vous avec le docteur Lambert pour un renouvellement d'ordonnance.",
+          "Je peux vous proposer jeudi 19 novembre à 9 h 20.",
+          "Parfait."
+        ],
+        "heures": [
+          "9:00",
+          "9:20",
+          "9:40"
+        ],
+        "motif": "Dr Lambert",
+        "resume": [
+          [
+            "Patient",
+            "Mme Claes"
+          ],
+          [
+            "Motif",
+            "Renouvellement d'ordonnance"
+          ],
+          [
+            "Créneau",
+            "Jeudi 19 nov. · 9:20"
+          ]
+        ],
+        "confirmation": "Bonjour Mme Claes, votre rendez-vous au Cabinet du Parc est enregistré : jeudi 19 novembre à 9:20."
       }
     },
     "nl": {
@@ -502,13 +710,41 @@
         "initiales": "CP",
         "entreprise": "Cabinet du Parc",
         "message": "Goedendag mevr. Claes, uw afspraak is genoteerd.",
-        "quand": "Dinsdag 18 november · 9.20 u",
+        "quand": "Dinsdag 17 november · 9.20 u",
         "quoi": "Dr. Lambert · consultatie",
         "ou": "Cabinet du Parc, Etterbeek",
         "reponse": "Bedankt, bevestigd. Tot dinsdag!",
-        "chip": "Di 18 nov. · 9.20 u"
+        "chip": "Di 17 nov. · 9.20 u"
       },
-      "cartes": []
+      "cartes": [],
+      "scene": {
+        "appel": [
+          "Goedendag, ik had graag een afspraak bij dokter Lambert voor een nieuw voorschrift.",
+          "Ik kan u donderdag 19 november om 9.20 u voorstellen.",
+          "Perfect."
+        ],
+        "heures": [
+          "9.00",
+          "9.20",
+          "9.40"
+        ],
+        "motif": "Dr. Lambert",
+        "resume": [
+          [
+            "Patiënt",
+            "mevr. Claes"
+          ],
+          [
+            "Reden",
+            "Nieuw voorschrift"
+          ],
+          [
+            "Moment",
+            "Do 19 nov. · 9.20 u"
+          ]
+        ],
+        "confirmation": "Goedendag mevr. Claes, uw afspraak bij Cabinet du Parc is genoteerd: donderdag 19 november om 9.20 u."
+      }
     },
     "en": {
       "ruban": {
@@ -545,11 +781,11 @@
         "initiales": "CP",
         "entreprise": "Cabinet du Parc",
         "message": "Hello Mrs Claes, your appointment is booked.",
-        "quand": "Tuesday 18 November · 9:20",
+        "quand": "Tuesday 17 November · 9:20",
         "quoi": "Dr Lambert · consultation",
         "ou": "Cabinet du Parc, Etterbeek",
         "reponse": "Thanks, that's confirmed. See you Tuesday!",
-        "chip": "Tue 18 Nov · 9:20"
+        "chip": "Tue 17 Nov · 9:20"
       },
       "cartes": [
         {
@@ -570,7 +806,35 @@
           "motif": "Dr Lambert · consultation",
           "adresse": "Cabinet du Parc, Etterbeek"
         }
-      ]
+      ],
+      "scene": {
+        "appel": [
+          "Hello, I'd like an appointment with Dr Lambert to renew a prescription.",
+          "I can offer you Thursday 19 November at 9:20 am.",
+          "Perfect."
+        ],
+        "heures": [
+          "9:00",
+          "9:20",
+          "9:40"
+        ],
+        "motif": "Dr Lambert",
+        "resume": [
+          [
+            "Patient",
+            "Mrs Claes"
+          ],
+          [
+            "Reason",
+            "Prescription renewal"
+          ],
+          [
+            "Slot",
+            "Thu 19 Nov · 9:20"
+          ]
+        ],
+        "confirmation": "Hello Mrs Claes, your appointment at Cabinet du Parc is booked: Thursday 19 November at 9:20."
+      }
     }
   },
   "veterinaires": {
@@ -652,6 +916,38 @@
         "ou": "Clinique des Étangs, Uccle",
         "reponse": "Merci, c'est confirmé. À tout à l'heure !",
         "chip": "Aujourd'hui · 17h30"
+      },
+      "scene": {
+        "appel": [
+          "Bonjour, je voudrais faire vacciner ma chienne, Lola.",
+          "Je peux vous proposer jeudi 19 novembre à 17 h 30.",
+          "Parfait."
+        ],
+        "heures": [
+          "17:00",
+          "17:30",
+          "18:00"
+        ],
+        "motif": "Vaccin · Lola",
+        "resume": [
+          [
+            "Client",
+            "M. Janssens"
+          ],
+          [
+            "Animal",
+            "Lola, chienne"
+          ],
+          [
+            "Motif",
+            "Vaccination"
+          ],
+          [
+            "Créneau",
+            "Jeudi 19 nov. · 17:30"
+          ]
+        ],
+        "confirmation": "Bonjour M. Janssens, la consultation de Lola à la Clinique des Étangs est enregistrée : jeudi 19 novembre à 17:30."
       }
     },
     "nl": {
@@ -715,7 +1011,39 @@
           "motif": "Minou, kat · vaccinatie",
           "adresse": "Clinique des Étangs, Ukkel"
         }
-      ]
+      ],
+      "scene": {
+        "appel": [
+          "Goedendag, ik zou mijn hond Lola willen laten vaccineren.",
+          "Ik kan u donderdag 19 november om 17.30 u voorstellen.",
+          "Perfect."
+        ],
+        "heures": [
+          "17.00",
+          "17.30",
+          "18.00"
+        ],
+        "motif": "Vaccin · Lola",
+        "resume": [
+          [
+            "Klant",
+            "dhr. Janssens"
+          ],
+          [
+            "Dier",
+            "Lola, hond"
+          ],
+          [
+            "Reden",
+            "Vaccinatie"
+          ],
+          [
+            "Moment",
+            "Do 19 nov. · 17.30 u"
+          ]
+        ],
+        "confirmation": "Goedendag dhr. Janssens, de consultatie van Lola bij Clinique des Étangs is genoteerd: donderdag 19 november om 17.30 u."
+      }
     }
   },
   "independants": {
@@ -783,11 +1111,43 @@
         "initiales": "AD",
         "entreprise": "Atelier Delvaux",
         "message": "Bonjour Mme Lambert, votre rendez-vous est enregistré.",
-        "quand": "Mercredi 19 novembre · 14h00",
+        "quand": "Jeudi 19 novembre · 14h00",
         "quoi": "Visite pour devis salle de bain",
         "ou": "Chez vous, Namur",
-        "reponse": "Merci, c'est confirmé. À mercredi !",
-        "chip": "Mercredi 19 nov. · 14h00"
+        "reponse": "Merci, c'est confirmé. À jeudi !",
+        "chip": "Jeudi 19 nov. · 14h00"
+      },
+      "scene": {
+        "appel": [
+          "Bonjour, j'aurais voulu un devis pour refaire une salle de bain.",
+          "Thomas peut passer jeudi 19 novembre à 14 h.",
+          "Parfait."
+        ],
+        "heures": [
+          "13:00",
+          "14:00",
+          "15:00"
+        ],
+        "motif": "Devis salle de bain",
+        "resume": [
+          [
+            "Client",
+            "Mme Lambert"
+          ],
+          [
+            "Motif",
+            "Devis salle de bain"
+          ],
+          [
+            "Adresse",
+            "Namur"
+          ],
+          [
+            "Créneau",
+            "Jeudi 19 nov. · 14:00"
+          ]
+        ],
+        "confirmation": "Bonjour Mme Lambert, la visite de l'Atelier Delvaux est enregistrée : jeudi 19 novembre à 14:00."
       }
     },
     "nl": {
@@ -825,13 +1185,45 @@
         "initiales": "AD",
         "entreprise": "Atelier Delvaux",
         "message": "Goedendag mevr. Lambert, uw afspraak is genoteerd.",
-        "quand": "Woensdag 19 november · 14.00 u",
+        "quand": "Donderdag 19 november · 14.00 u",
         "quoi": "Plaatsbezoek voor offerte badkamer",
         "ou": "Bij u thuis, Namen",
-        "reponse": "Bedankt, bevestigd. Tot woensdag!",
-        "chip": "Wo 19 nov. · 14.00 u"
+        "reponse": "Bedankt, bevestigd. Tot donderdag!",
+        "chip": "Do 19 nov. · 14.00 u"
       },
-      "cartes": []
+      "cartes": [],
+      "scene": {
+        "appel": [
+          "Goedendag, ik had graag een offerte om mijn badkamer te vernieuwen.",
+          "Thomas kan donderdag 19 november om 14 uur langskomen.",
+          "Perfect."
+        ],
+        "heures": [
+          "13.00",
+          "14.00",
+          "15.00"
+        ],
+        "motif": "Offerte badkamer",
+        "resume": [
+          [
+            "Klant",
+            "mevr. Lambert"
+          ],
+          [
+            "Reden",
+            "Offerte badkamer"
+          ],
+          [
+            "Adres",
+            "Namen"
+          ],
+          [
+            "Moment",
+            "Do 19 nov. · 14.00 u"
+          ]
+        ],
+        "confirmation": "Goedendag mevr. Lambert, het bezoek van Atelier Delvaux is genoteerd: donderdag 19 november om 14.00 u."
+      }
     },
     "en": {
       "ruban": {
@@ -868,11 +1260,11 @@
         "initiales": "AD",
         "entreprise": "Atelier Delvaux",
         "message": "Hello Mrs Lambert, your appointment is booked.",
-        "quand": "Wednesday 19 November · 14:00",
+        "quand": "Thursday 19 November · 14:00",
         "quoi": "Visit for a bathroom quote",
         "ou": "At your home, Namur",
-        "reponse": "Thanks, that's confirmed. See you Wednesday!",
-        "chip": "Wed 19 Nov · 14:00"
+        "reponse": "Thanks, that's confirmed. See you Thursday!",
+        "chip": "Thu 19 Nov · 14:00"
       },
       "cartes": [
         {
@@ -886,7 +1278,39 @@
           "h": "In the evening, it is already sorted",
           "v": "tri"
         }
-      ]
+      ],
+      "scene": {
+        "appel": [
+          "Hello, I'd like a quote to redo a bathroom.",
+          "Thomas can come by on Thursday 19 November at 2 pm.",
+          "Perfect."
+        ],
+        "heures": [
+          "13:00",
+          "14:00",
+          "15:00"
+        ],
+        "motif": "Bathroom quote",
+        "resume": [
+          [
+            "Customer",
+            "Mrs Lambert"
+          ],
+          [
+            "Reason",
+            "Bathroom quote"
+          ],
+          [
+            "Address",
+            "Namur"
+          ],
+          [
+            "Slot",
+            "Thu 19 Nov · 14:00"
+          ]
+        ],
+        "confirmation": "Hello Mrs Lambert, the visit from Atelier Delvaux is booked: Thursday 19 November at 14:00."
+      }
     }
   },
   "plombiers": {
@@ -960,11 +1384,43 @@
         "initiales": "SL",
         "entreprise": "Sanitaire Lemaire",
         "message": "Bonjour M. Willems, votre intervention est enregistrée.",
-        "quand": "Vendredi 21 novembre · 8h30",
+        "quand": "Vendredi 20 novembre · 8h30",
         "quoi": "Remplacement mitigeur cuisine",
         "ou": "Rue des Tanneurs 14, 3e étage",
         "reponse": "Merci, c'est confirmé. À vendredi !",
-        "chip": "Vendredi 21 nov. · 8h30"
+        "chip": "Vendredi 20 nov. · 8h30"
+      },
+      "scene": {
+        "appel": [
+          "Bonjour, je voudrais faire remplacer le mitigeur de ma cuisine.",
+          "Je peux vous proposer jeudi 19 novembre à 8 h 30.",
+          "Parfait."
+        ],
+        "heures": [
+          "7:30",
+          "8:30",
+          "9:30"
+        ],
+        "motif": "Mitigeur cuisine",
+        "resume": [
+          [
+            "Client",
+            "M. Willems"
+          ],
+          [
+            "Motif",
+            "Remplacement du mitigeur"
+          ],
+          [
+            "Adresse",
+            "Ixelles"
+          ],
+          [
+            "Créneau",
+            "Jeudi 19 nov. · 8:30"
+          ]
+        ],
+        "confirmation": "Bonjour M. Willems, votre intervention avec Sanitaire Lemaire est enregistrée : jeudi 19 novembre à 8:30."
       }
     },
     "nl": {
@@ -1002,11 +1458,11 @@
         "initiales": "SL",
         "entreprise": "Sanitaire Lemaire",
         "message": "Goedendag dhr. Willems, uw interventie is genoteerd.",
-        "quand": "Vrijdag 21 november · 8.30 u",
+        "quand": "Vrijdag 20 november · 8.30 u",
         "quoi": "Vervanging mengkraan keuken",
         "ou": "Huidevettersstraat 14, 3e verdieping",
         "reponse": "Bedankt, bevestigd. Tot vrijdag!",
-        "chip": "Vr 21 nov. · 8.30 u"
+        "chip": "Vr 20 nov. · 8.30 u"
       },
       "cartes": [
         {
@@ -1027,7 +1483,39 @@
           "motif": "Lek onder de spoelbak",
           "adresse": "Huidevettersstraat 14, 3e verdieping"
         }
-      ]
+      ],
+      "scene": {
+        "appel": [
+          "Goedendag, ik zou de mengkraan in mijn keuken willen laten vervangen.",
+          "Ik kan u donderdag 19 november om 8.30 u voorstellen.",
+          "Perfect."
+        ],
+        "heures": [
+          "7.30",
+          "8.30",
+          "9.30"
+        ],
+        "motif": "Mengkraan keuken",
+        "resume": [
+          [
+            "Klant",
+            "dhr. Willems"
+          ],
+          [
+            "Reden",
+            "Vervanging mengkraan"
+          ],
+          [
+            "Adres",
+            "Elsene"
+          ],
+          [
+            "Moment",
+            "Do 19 nov. · 8.30 u"
+          ]
+        ],
+        "confirmation": "Goedendag dhr. Willems, uw interventie met Sanitaire Lemaire is genoteerd: donderdag 19 november om 8.30 u."
+      }
     }
   },
   "chauffagistes": {
@@ -1101,11 +1589,43 @@
         "initiales": "CP",
         "entreprise": "Chauffage Peeters",
         "message": "Bonjour Mme Martens, votre entretien est enregistré.",
-        "quand": "Lundi 24 novembre · 9h00",
+        "quand": "Lundi 23 novembre · 9h00",
         "quoi": "Entretien annuel chaudière gaz",
         "ou": "Avenue Brugmann 210",
         "reponse": "Merci, c'est confirmé. À lundi !",
-        "chip": "Lundi 24 nov. · 9h00"
+        "chip": "Lundi 23 nov. · 9h00"
+      },
+      "scene": {
+        "appel": [
+          "Bonjour, je voudrais l'entretien annuel de ma chaudière.",
+          "Je peux vous proposer jeudi 19 novembre à 9 h.",
+          "Parfait."
+        ],
+        "heures": [
+          "8:00",
+          "9:00",
+          "10:00"
+        ],
+        "motif": "Entretien chaudière",
+        "resume": [
+          [
+            "Client",
+            "Mme Martens"
+          ],
+          [
+            "Motif",
+            "Entretien annuel"
+          ],
+          [
+            "Appareil",
+            "Chaudière gaz"
+          ],
+          [
+            "Créneau",
+            "Jeudi 19 nov. · 9:00"
+          ]
+        ],
+        "confirmation": "Bonjour Mme Martens, votre entretien avec Chauffage Peeters est enregistré : jeudi 19 novembre à 9:00."
       }
     },
     "nl": {
@@ -1143,11 +1663,11 @@
         "initiales": "CP",
         "entreprise": "Chauffage Peeters",
         "message": "Goedendag mevr. Martens, uw onderhoud is genoteerd.",
-        "quand": "Maandag 24 november · 9.00 u",
+        "quand": "Maandag 23 november · 9.00 u",
         "quoi": "Jaarlijks onderhoud gasketel",
         "ou": "Brugmannlaan 210",
         "reponse": "Bedankt, bevestigd. Tot maandag!",
-        "chip": "Ma 24 nov. · 9.00 u"
+        "chip": "Ma 23 nov. · 9.00 u"
       },
       "cartes": [
         {
@@ -1165,7 +1685,39 @@
           "motif": "Gasketel Vaillant · foutcode F28",
           "adresse": "Brugmannlaan 210"
         }
-      ]
+      ],
+      "scene": {
+        "appel": [
+          "Goedendag, ik had graag het jaarlijks onderhoud van mijn ketel.",
+          "Ik kan u donderdag 19 november om 9 uur voorstellen.",
+          "Perfect."
+        ],
+        "heures": [
+          "8.00",
+          "9.00",
+          "10.00"
+        ],
+        "motif": "Onderhoud ketel",
+        "resume": [
+          [
+            "Klant",
+            "mevr. Martens"
+          ],
+          [
+            "Reden",
+            "Jaarlijks onderhoud"
+          ],
+          [
+            "Toestel",
+            "Gasketel"
+          ],
+          [
+            "Moment",
+            "Do 19 nov. · 9.00 u"
+          ]
+        ],
+        "confirmation": "Goedendag mevr. Martens, uw onderhoud met Chauffage Peeters is genoteerd: donderdag 19 november om 9.00 u."
+      }
     }
   },
   "electriciens": {
@@ -1243,6 +1795,38 @@
         "ou": "Rue de la Station 8, Wavre",
         "reponse": "Merci, c'est confirmé. À jeudi !",
         "chip": "Jeudi 19 nov. · 13h00"
+      },
+      "scene": {
+        "appel": [
+          "Bonjour, je voudrais faire vérifier mon tableau électrique.",
+          "Je peux vous proposer jeudi 19 novembre à 13 h.",
+          "Parfait."
+        ],
+        "heures": [
+          "12:00",
+          "13:00",
+          "14:00"
+        ],
+        "motif": "Tableau électrique",
+        "resume": [
+          [
+            "Client",
+            "M. Renard"
+          ],
+          [
+            "Motif",
+            "Diagnostic du tableau"
+          ],
+          [
+            "Adresse",
+            "Wavre"
+          ],
+          [
+            "Créneau",
+            "Jeudi 19 nov. · 13:00"
+          ]
+        ],
+        "confirmation": "Bonjour M. Renard, votre rendez-vous avec Électricité Dumont est enregistré : jeudi 19 novembre à 13:00."
       }
     },
     "nl": {
@@ -1304,7 +1888,39 @@
           "motif": "Differentieel springt · oven",
           "adresse": "Stationsstraat 8, Waver"
         }
-      ]
+      ],
+      "scene": {
+        "appel": [
+          "Goedendag, ik zou mijn elektriciteitsbord willen laten nakijken.",
+          "Ik kan u donderdag 19 november om 13 uur voorstellen.",
+          "Perfect."
+        ],
+        "heures": [
+          "12.00",
+          "13.00",
+          "14.00"
+        ],
+        "motif": "Elektriciteitsbord",
+        "resume": [
+          [
+            "Klant",
+            "dhr. Renard"
+          ],
+          [
+            "Reden",
+            "Nazicht elektriciteitsbord"
+          ],
+          [
+            "Adres",
+            "Waver"
+          ],
+          [
+            "Moment",
+            "Do 19 nov. · 13.00 u"
+          ]
+        ],
+        "confirmation": "Goedendag dhr. Renard, uw afspraak met Électricité Dumont is genoteerd: donderdag 19 november om 13.00 u."
+      }
     }
   },
   "serruriers": {
@@ -1384,6 +2000,38 @@
         "ou": "Rue Royale 102, 2e étage",
         "reponse": "Merci, c'est confirmé. À tout à l'heure !",
         "chip": "Ce soir · arrivée vers 23h40"
+      },
+      "scene": {
+        "appel": [
+          "Bonjour, je voudrais faire changer le cylindre de ma porte d'entrée.",
+          "Je peux vous proposer jeudi 19 novembre à 11 h.",
+          "Parfait."
+        ],
+        "heures": [
+          "10:00",
+          "11:00",
+          "12:00"
+        ],
+        "motif": "Cylindre",
+        "resume": [
+          [
+            "Client",
+            "Mme Hermans"
+          ],
+          [
+            "Motif",
+            "Remplacement du cylindre"
+          ],
+          [
+            "Adresse",
+            "Schaerbeek"
+          ],
+          [
+            "Créneau",
+            "Jeudi 19 nov. · 11:00"
+          ]
+        ],
+        "confirmation": "Bonjour Mme Hermans, votre intervention avec Serrurerie Lambert est enregistrée : jeudi 19 novembre à 11:00."
       }
     },
     "nl": {
@@ -1445,7 +2093,39 @@
           "motif": "Deur dichtgevallen · sleutels binnen",
           "adresse": "Koningsstraat 102, 2e verdieping"
         }
-      ]
+      ],
+      "scene": {
+        "appel": [
+          "Goedendag, ik zou de cilinder van mijn voordeur willen laten vervangen.",
+          "Ik kan u donderdag 19 november om 11 uur voorstellen.",
+          "Perfect."
+        ],
+        "heures": [
+          "10.00",
+          "11.00",
+          "12.00"
+        ],
+        "motif": "Cilinder",
+        "resume": [
+          [
+            "Klant",
+            "mevr. Hermans"
+          ],
+          [
+            "Reden",
+            "Vervanging cilinder"
+          ],
+          [
+            "Adres",
+            "Schaarbeek"
+          ],
+          [
+            "Moment",
+            "Do 19 nov. · 11.00 u"
+          ]
+        ],
+        "confirmation": "Goedendag mevr. Hermans, uw interventie met Serrurerie Lambert is genoteerd: donderdag 19 november om 11.00 u."
+      }
     }
   },
   "syndics": {
@@ -1520,11 +2200,43 @@
         "initiales": "SG",
         "entreprise": "Syndic Gestimmo",
         "message": "Bonjour M. Claes, votre rendez-vous est enregistré.",
-        "quand": "Mardi 18 novembre · 11h00",
+        "quand": "Mardi 17 novembre · 11h00",
         "quoi": "Visite technique · lot 3B",
         "ou": "Résidence Les Tilleuls",
         "reponse": "Merci, c'est confirmé. À mardi !",
-        "chip": "Mardi 18 nov. · 11h00"
+        "chip": "Mardi 17 nov. · 11h00"
+      },
+      "scene": {
+        "appel": [
+          "Bonjour, je voudrais un rendez-vous pour une visite technique, je suis au lot 3B.",
+          "Je peux vous proposer jeudi 19 novembre à 11 h.",
+          "Parfait."
+        ],
+        "heures": [
+          "10:00",
+          "11:00",
+          "12:00"
+        ],
+        "motif": "Visite · lot 3B",
+        "resume": [
+          [
+            "Copropriétaire",
+            "M. Claes"
+          ],
+          [
+            "Immeuble",
+            "Résidence Les Tilleuls"
+          ],
+          [
+            "Motif",
+            "Visite technique"
+          ],
+          [
+            "Créneau",
+            "Jeudi 19 nov. · 11:00"
+          ]
+        ],
+        "confirmation": "Bonjour M. Claes, votre rendez-vous avec le Syndic Gestimmo est enregistré : jeudi 19 novembre à 11:00."
       }
     },
     "nl": {
@@ -1562,11 +2274,11 @@
         "initiales": "SG",
         "entreprise": "Syndic Gestimmo",
         "message": "Goedendag dhr. Claes, uw afspraak is genoteerd.",
-        "quand": "Dinsdag 18 november · 11.00 u",
+        "quand": "Dinsdag 17 november · 11.00 u",
         "quoi": "Technisch plaatsbezoek · kavel 3B",
         "ou": "Residentie Les Tilleuls",
         "reponse": "Bedankt, bevestigd. Tot dinsdag!",
-        "chip": "Di 18 nov. · 11.00 u"
+        "chip": "Di 17 nov. · 11.00 u"
       },
       "cartes": [
         {
@@ -1586,7 +2298,39 @@
           "motif": "Lek in de traphal · kavel 3B",
           "adresse": "Residentie Les Tilleuls"
         }
-      ]
+      ],
+      "scene": {
+        "appel": [
+          "Goedendag, ik had graag een afspraak voor een technisch plaatsbezoek, ik woon in kavel 3B.",
+          "Ik kan u donderdag 19 november om 11 uur voorstellen.",
+          "Perfect."
+        ],
+        "heures": [
+          "10.00",
+          "11.00",
+          "12.00"
+        ],
+        "motif": "Bezoek · kavel 3B",
+        "resume": [
+          [
+            "Mede-eigenaar",
+            "dhr. Claes"
+          ],
+          [
+            "Gebouw",
+            "Residentie Les Tilleuls"
+          ],
+          [
+            "Reden",
+            "Technisch plaatsbezoek"
+          ],
+          [
+            "Moment",
+            "Do 19 nov. · 11.00 u"
+          ]
+        ],
+        "confirmation": "Goedendag dhr. Claes, uw afspraak met Syndic Gestimmo is genoteerd: donderdag 19 november om 11.00 u."
+      }
     }
   },
   "fiduciaires": {
@@ -1667,6 +2411,38 @@
         "ou": "Fiduciaire Moreau, Liège",
         "reponse": "Merci, c'est confirmé. À jeudi !",
         "chip": "Jeudi 19 nov. · 15h00"
+      },
+      "scene": {
+        "appel": [
+          "Bonjour, je voudrais un rendez-vous pour ma déclaration à l'IPP.",
+          "Je peux vous proposer jeudi 19 novembre à 15 h, avec Mme Moreau.",
+          "Parfait."
+        ],
+        "heures": [
+          "14:00",
+          "15:00",
+          "16:00"
+        ],
+        "motif": "Déclaration IPP",
+        "resume": [
+          [
+            "Client",
+            "M. Dubois"
+          ],
+          [
+            "Motif",
+            "Déclaration IPP"
+          ],
+          [
+            "Avec",
+            "Mme Moreau"
+          ],
+          [
+            "Créneau",
+            "Jeudi 19 nov. · 15:00"
+          ]
+        ],
+        "confirmation": "Bonjour M. Dubois, votre rendez-vous à la Fiduciaire Moreau est enregistré : jeudi 19 novembre à 15:00."
       }
     },
     "nl": {
@@ -1728,7 +2504,39 @@
           "motif": "Aangifte PB · loonfiches",
           "adresse": "Fiduciaire Moreau, Luik"
         }
-      ]
+      ],
+      "scene": {
+        "appel": [
+          "Goedendag, ik had graag een afspraak voor mijn aangifte personenbelasting.",
+          "Ik kan u donderdag 19 november om 15 uur voorstellen, bij mevr. Moreau.",
+          "Perfect."
+        ],
+        "heures": [
+          "14.00",
+          "15.00",
+          "16.00"
+        ],
+        "motif": "Aangifte PB",
+        "resume": [
+          [
+            "Klant",
+            "dhr. Dubois"
+          ],
+          [
+            "Reden",
+            "Aangifte personenbelasting"
+          ],
+          [
+            "Bij",
+            "mevr. Moreau"
+          ],
+          [
+            "Moment",
+            "Do 19 nov. · 15.00 u"
+          ]
+        ],
+        "confirmation": "Goedendag dhr. Dubois, uw afspraak bij Fiduciaire Moreau is genoteerd: donderdag 19 november om 15.00 u."
+      }
     }
   }
 }
