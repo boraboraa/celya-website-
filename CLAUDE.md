@@ -399,20 +399,28 @@ garde.
 
 - **Exception datée à « le consentement et le chargement de GTM ne bougent pas
   d'une ligne » : seul le texte du message du bandeau change**, dans les trois
-  langues — FR « Cookies de mesure et de publicité (Google Analytics, Google
-  Ads, Meta) : à vous de choisir. », NL « Cookies voor metingen en
-  advertenties (Google Analytics, Google Ads, Meta): u beslist. », EN
-  « Cookies for analytics and advertising (Google Analytics, Google Ads,
-  Meta): you choose. » ; le lien « En savoir plus » reste. Le moment où GTM se
+  langues — FR « Mesure et publicité (Google Analytics, Google Ads, Meta) :
+  à vous de choisir. », NL « Cookies voor metingen en advertenties (Google
+  Analytics, Google Ads, Meta): u beslist. », EN « Cookies for analytics and
+  ads (Google Analytics, Google Ads, Meta): you choose. » ; le lien « En savoir
+  plus » reste. Le moment où GTM se
   charge, les appels `gtag('consent', …)`, les boutons, la clé
   `celya-consent`, la position et la hauteur du bandeau ne changent pas d'un
   octet : `tests/consentement.mjs` masque les trois messages et exige que tout
   le reste du bloc soit identique à l'octet à celui de `main`, et que les
-  messages soient exactement ceux-là. **Mesuré à 360 px** : le nouveau texte
-  FR est plus long à l'écran que l'ancien (663 px contre 649) et prend
-  **3 lignes** (bandeau de 142 px ; l'ancien tenait en 2, 121 px) ; l'anglais
-  aussi (620 px, 3 lignes) ; le néerlandais tient en 2. Deux lignes à 360 px
-  = 656 px. Seule la formulation peut le régler (voir la PR #34).
+  messages soient exactement ceux-là. **Les trois tiennent en 2 lignes à
+  360 px** (bandeau de 121 px, comme avant le lot). La première formulation FR
+  et EN (« Cookies de mesure et de publicité… », « Cookies for analytics and
+  advertising… ») en prenait 3 (142 px) : Bora a retenu le 17/11 les variantes
+  mesurées. Deux lignes à 360 px = 656 px de texte au plus, lien « En savoir
+  plus » compris, et la coupure se fait au mot : mesurer avant de changer.
+- **Plus aucune ressource de Google Fonts** (décision du 17/11/2026) : les
+  polices sont auto-hébergées depuis le 14/11 ; le dernier reste, un
+  `preconnect` vers `fonts.gstatic.com` dans le `<head>` de 124 pages NL, a
+  disparu des sources et des pages, et la notice cookies (FR, NL, EN) ne dit
+  plus que le site charge des polices depuis Google. Vérifiable :
+  `grep -rE "fonts\.(googleapis|gstatic)\.com"` sur les pages servies rend
+  zéro.
 - **Les notices nomment les outils publicitaires** : `cookies.html`,
   `privacy.html` et leurs versions NL et EN listent Google Ads (conversions,
   gclid) et le Meta Pixel (Meta Platforms Ireland ; conversions, fbclid),

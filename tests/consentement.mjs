@@ -5,7 +5,8 @@
  *
  * Exception datée du 17/11/2026 (décision de Bora, lot « prêt pour les
  * publicités ») : seul le TEXTE du message du bandeau change, dans les trois
- * langues. Le test masque les trois chaînes msg:'…', exige que tout le reste
+ * langues (FR et EN raccourcis le même jour pour tenir en 2 lignes à 360 px).
+ * Le test masque les trois chaînes msg:'…', exige que tout le reste
  * du bloc soit identique à l'octet, et que les trois messages soient
  * exactement ceux décidés. Les empreintes avant / après sont affichées. */
 import crypto from 'node:crypto';
@@ -21,9 +22,9 @@ const block = (s) => { const i = s.indexOf('/* ---- consentement cookies + Googl
 const fails = [];
 const a = block(old), b = block(cur);
 const MSG = {
-  fr: 'Cookies de mesure et de publicité (Google Analytics, Google Ads, Meta)\u00a0: à vous de choisir.',
+  fr: 'Mesure et publicité (Google Analytics, Google Ads, Meta)\u00a0: à vous de choisir.',
   nl: 'Cookies voor metingen en advertenties (Google Analytics, Google Ads, Meta): u beslist.',
-  en: 'Cookies for analytics and advertising (Google Analytics, Google Ads, Meta): you choose.',
+  en: 'Cookies for analytics and ads (Google Analytics, Google Ads, Meta): you choose.',
 };
 const mask = (s) => s.replace(/msg:'[^']*'/g, "msg:''");
 const sha = (s) => crypto.createHash('sha256').update(s).digest('hex').slice(0, 12);

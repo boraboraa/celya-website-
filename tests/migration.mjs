@@ -3,7 +3,8 @@
  * Parcourt toutes les pages HTML servies (le dépôt, moins ce que .vercelignore
  * écarte du déploiement) et échoue si une seule ne porte pas l'en-tête du
  * nouveau gabarit (<header class="hdr">) et celya.css, ou si elle référence
- * encore l'ancien thème (bento.css, bento.js, dark.css).
+ * encore l'ancien thème (bento.css, bento.js, dark.css), ou une ressource
+ * Google Fonts (fonts.googleapis.com, fonts.gstatic.com — 17/11/2026).
  *
  *   node tests/migration.mjs            (liste les pages en écart)
  *   node tests/migration.mjs --compte   (seulement les totaux) */
@@ -28,6 +29,9 @@ for (const f of files.sort()) {
   if (!/<link rel="stylesheet" href="[^"]*celya\.css">/.test(s)) why.push('pas de celya.css');
   const m = OLD.exec(s);
   if (m) why.push('référence ' + m[0]);
+  /* plus aucune ressource Google Fonts (polices auto-hébergées ; décision de Bora du 17/11/2026) */
+  const g = /fonts\.(googleapis|gstatic)\.com/.exec(s);
+  if (g) why.push('Google Fonts : ' + g[0]);
   if (why.length) bad.push([f, why]);
 }
 if (!quiet) for (const [f, why] of bad) console.log(`✗ ${f} — ${why.join(', ')}`);

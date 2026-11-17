@@ -292,9 +292,9 @@
       (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer',GTM_ID);
     }
     var T={
-      fr:{msg:'Cookies de mesure et de publicité (Google Analytics, Google Ads, Meta) : à vous de choisir.',ok:'Accepter',no:'Refuser',more:'En savoir plus'},
+      fr:{msg:'Mesure et publicité (Google Analytics, Google Ads, Meta) : à vous de choisir.',ok:'Accepter',no:'Refuser',more:'En savoir plus'},
       nl:{msg:'Cookies voor metingen en advertenties (Google Analytics, Google Ads, Meta): u beslist.',ok:'Accepteren',no:'Weigeren',more:'Meer info'},
-      en:{msg:'Cookies for analytics and advertising (Google Analytics, Google Ads, Meta): you choose.',ok:'Accept',no:'Decline',more:'More info'}
+      en:{msg:'Cookies for analytics and ads (Google Analytics, Google Ads, Meta): you choose.',ok:'Accept',no:'Decline',more:'More info'}
     };var t=T[LANG]||T.fr;
     var saved=null;try{saved=localStorage.getItem(KEY);}catch(e){}
     if(saved==='granted'){grant();loadGTM();return;}
