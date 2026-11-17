@@ -183,20 +183,57 @@
     }else dataLayer.push(ev);
   }
   window.celyaTrack=track;
+  /* événements (lot « prêt pour les publicités », 17/11/2026) : les noms
+     click_call et generate_lead ne changent pas (Google Ads est réglé dessus) ;
+     ils portent form (le data-lead du formulaire : demo, contact, lp-garages…),
+     page et lang. Aucun nom de régie ni identifiant de compte ici : tout se
+     règle dans GTM. */
+  var leadForm=document.querySelector('form[data-lead]');
   document.addEventListener('click',function(e){
     var a=e.target.closest&&e.target.closest('a[href^="tel:"]');
-    if(a)track({event:'click_call',page:location.pathname});
+    if(a)track({event:'click_call',form:leadForm?leadForm.getAttribute('data-lead'):'',page:location.pathname,lang:LANG});
+    /* bandeau cookies : le bloc consentement a déjà écrit le choix du visiteur
+       (son écouteur, sur le bouton, passe avant celui-ci) ; l'attribution suit */
+    if(e.target.closest&&e.target.closest('.caccept,.cdecline'))keepAttr();
   });
+  /* identifiant unique d'un envoi : le même part à web-lead et dans generate_lead
+     (dédoublonnage futur du pixel Meta et des envois depuis le serveur) */
+  function eventId(){try{if(window.crypto&&crypto.randomUUID)return crypto.randomUUID();}catch(e){}return Date.now().toString(36)+'-'+Math.random().toString(36).slice(2,12);}
 
-  /* ---- attribution : UTM et identifiants de clic, lus à l'arrivée, gardés pour la session ---- */
-  var ATTR_KEY='celya-attrib',PARAMS=['utm_source','utm_medium','utm_campaign','utm_content','utm_term','gclid','fbclid'];
+  /* ---- attribution : UTM et identifiants de clic, lus à l'arrivée ----
+     Sans accord : gardés pour la session seulement (sessionStorage), comme avant.
+     Après « Accepter » : recopiés dans localStorage (même clé, avec la date
+     d'arrivée), pour un visiteur qui revient plus tard ; gardés 90 jours au
+     plus à partir de cette date, puis effacés ; une nouvelle arrivée avec des
+     paramètres remplace l'ancienne. Après « Refuser », ou sans accord à
+     l'ouverture d'une page (accord retiré en effaçant les données du site),
+     localStorage ne garde rien. */
+  var ATTR_KEY='celya-attrib',ATTR_DAYS=90,PARAMS=['utm_source','utm_medium','utm_campaign','utm_content','utm_term','gclid','fbclid'];
   function readAttr(){try{return JSON.parse(sessionStorage.getItem(ATTR_KEY)||'{}')||{};}catch(e){return {};}}
+  function readKept(){
+    try{
+      var o=JSON.parse(localStorage.getItem(ATTR_KEY)||'null');
+      if(!o||!o.attr||!(o.saved_at>0))return null;
+      if(Date.now()-o.saved_at>ATTR_DAYS*864e5){localStorage.removeItem(ATTR_KEY);return null;}
+      return o.attr;
+    }catch(e){return null;}
+  }
+  function keepAttr(){
+    try{
+      if(!consented()){localStorage.removeItem(ATTR_KEY);return;}
+      var a=readAttr();
+      localStorage.setItem(ATTR_KEY,JSON.stringify({attr:a,saved_at:a.t||Date.now()}));
+    }catch(e){}
+  }
   (function(){
     var a=readAttr(),q=new URLSearchParams(location.search),seen=false,i;
     for(i=0;i<PARAMS.length;i++){if(q.get(PARAMS[i])){seen=true;break;}}
-    if(seen){a={};for(i=0;i<PARAMS.length;i++){var v=q.get(PARAMS[i]);if(v)a[PARAMS[i]]=v.slice(0,200);}a.landing_page=location.pathname;}
+    if(seen){a={t:Date.now()};for(i=0;i<PARAMS.length;i++){var v=q.get(PARAMS[i]);if(v)a[PARAMS[i]]=v.slice(0,200);}a.landing_page=location.pathname;}
+    else if(!a.landing_page&&consented()){var k=readKept();if(k)a=k;} /* retour d'un visiteur qui a accepté */
     if(!a.landing_page)a.landing_page=location.pathname; /* page d'origine de la session */
+    if(!a.t)a.t=Date.now();
     try{sessionStorage.setItem(ATTR_KEY,JSON.stringify(a));}catch(e){}
+    keepAttr();
   })();
 
   /* ---- formulaires de prospect (demo.html, pages d'atterrissage, contact.html) ---- */
@@ -226,7 +263,8 @@
         source:f.getAttribute('data-source')||'website form',
         metier:val('metier'),moment:E.moment?(f.querySelector('input[name=moment]:checked')||{}).value||'':'',
         consent_contact:E.consent?!!E.consent.checked:undefined,
-        lang:LANG,page:location.pathname,landing_page:val('landing_page')
+        lang:LANG,page:location.pathname,landing_page:val('landing_page'),
+        event_id:eventId()
       };
       PARAMS.forEach(function(k){body[k]=val(k);});
       if(btn){btn.disabled=true;btn.textContent=f.getAttribute('data-sending')||'…';}
@@ -235,7 +273,7 @@
       }).then(function(r){return r.json();}).then(function(j){
         if(!j||!j.ok)throw 0;
         var next=f.getAttribute('data-next');
-        track({event:'generate_lead',form:kind,metier:body.metier||'',utm_campaign:body.utm_campaign||''},function(){
+        track({event:'generate_lead',event_id:body.event_id,form:kind,page:body.page,lang:LANG,metier:body.metier||'',utm_campaign:body.utm_campaign||''},function(){
           if(next)location.href=next;else{var ok=f.querySelector('.f-ok');if(ok){f.querySelector('.f-body').hidden=true;ok.hidden=false;}}
         });
       }).catch(function(){
@@ -254,9 +292,9 @@
       (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer',GTM_ID);
     }
     var T={
-      fr:{msg:'Nous utilisons des cookies pour mesurer l’audience (Google Analytics). À vous de choisir.',ok:'Accepter',no:'Refuser',more:'En savoir plus'},
-      nl:{msg:'We gebruiken cookies om bezoekers te meten (Google Analytics). U beslist.',ok:'Accepteren',no:'Weigeren',more:'Meer info'},
-      en:{msg:'We use cookies to measure visits (Google Analytics). You choose.',ok:'Accept',no:'Decline',more:'More info'}
+      fr:{msg:'Cookies de mesure et de publicité (Google Analytics, Google Ads, Meta) : à vous de choisir.',ok:'Accepter',no:'Refuser',more:'En savoir plus'},
+      nl:{msg:'Cookies voor metingen en advertenties (Google Analytics, Google Ads, Meta): u beslist.',ok:'Accepteren',no:'Weigeren',more:'Meer info'},
+      en:{msg:'Cookies for analytics and advertising (Google Analytics, Google Ads, Meta): you choose.',ok:'Accept',no:'Decline',more:'More info'}
     };var t=T[LANG]||T.fr;
     var saved=null;try{saved=localStorage.getItem(KEY);}catch(e){}
     if(saved==='granted'){grant();loadGTM();return;}

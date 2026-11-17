@@ -671,18 +671,27 @@
     },
     "privacy.html": {
       "texte": [
-        "Dernière mise à jour : 28 octobre 2026"
-      ]
+        "Dernière mise à jour : 28 octobre 2026",
+        "Dernière mise à jour : 16 novembre 2026",
+        "Nous n’utilisons pas de traceurs publicitaires, et nous n’achetons ni ne vendons de données personnelles."
+      ],
+      "_texte": "lot « prêt pour les publicités » du 17/11/2026 (décision de Bora) : le site mesure les conversions de ses publicités (Google Ads, Meta Pixel), chargés après « Accepter » comme Google Analytics ; « aucun traceur publicitaire » devient faux, la notice nomme les outils, l'identifiant de clic et sa durée de 90 jours ; ajouts sans retrait : identifiant de clic envoyé avec le formulaire de démo, mesure publicitaire, base légale (consentement), effacement à 90 jours, Google et Meta destinataires"
     },
     "nl/privacy.html": {
       "texte": [
-        "Laatst bijgewerkt: 28 oktober 2026"
-      ]
+        "Laatst bijgewerkt: 28 oktober 2026",
+        "Laatst bijgewerkt: 16 november 2026",
+        "We gebruiken geen advertentietrackers, en we kopen of verkopen geen persoonsgegevens."
+      ],
+      "_texte": "lot « prêt pour les publicités » du 17/11/2026 (décision de Bora) : le site mesure les conversions de ses publicités (Google Ads, Meta Pixel), chargés après « Accepter » comme Google Analytics ; « aucun traceur publicitaire » devient faux, la notice nomme les outils, l'identifiant de clic et sa durée de 90 jours ; ajouts sans retrait : identifiant de clic envoyé avec le formulaire de démo, mesure publicitaire, base légale (consentement), effacement à 90 jours, Google et Meta destinataires"
     },
     "en/privacy.html": {
       "texte": [
-        "Last updated: 28 October 2026"
-      ]
+        "Last updated: 28 October 2026",
+        "Last updated: 16 November 2026",
+        "We do not use advertising trackers, and we do not buy or sell personal data."
+      ],
+      "_texte": "lot « prêt pour les publicités » du 17/11/2026 (décision de Bora) : le site mesure les conversions de ses publicités (Google Ads, Meta Pixel), chargés après « Accepter » comme Google Analytics ; « aucun traceur publicitaire » devient faux, la notice nomme les outils, l'identifiant de clic et sa durée de 90 jours ; ajouts sans retrait : identifiant de clic envoyé avec le formulaire de démo, mesure publicitaire, base légale (consentement), effacement à 90 jours, Google et Meta destinataires"
     },
     "serveur-vocal-ou-agent-vocal.html": {
       "texte": [
@@ -734,6 +743,33 @@
         "Wie belde, waarvoor, wat dringend is: alles komt op uw WhatsApp, en het dringende wordt naar u doorgeschakeld."
       ],
       "_texte": "lot conversion Google Ads du 16/11/2026 (brief, section 2) : les trois bénéfices (ul.benefits) sont remplacés par « Chaque appel, rangé dans la bonne case » et « Appelez-la, comme un client » ; le héros reçoit la phrase du brief (section 1)"
+    },
+    "cookies.html": {
+      "texte": [
+        "En clair : ce site limite les cookies au strict minimum et n’utilise aucun traceur publicitaire.",
+        "Dernière mise à jour : 6 septembre 2026",
+        "Le site de Celya est volontairement léger. Nous utilisons Google Analytics 4 pour mesurer l’audience, uniquement si vous l’acceptez via la bannière de cookies. Nous ne déposons aucun cookie publicitaire ou de pistage inter-sites. Le site charge aussi les polices web depuis Google.",
+        "L’analytics ne fonctionne qu’avec votre consentement. Vous pouvez changer d’avis à tout moment en effaçant les cookies de ce site : la bannière réapparaîtra. Si nous ajoutons d’autres outils déposant des cookies, nous mettrons d’abord cette notice à jour."
+      ],
+      "_texte": "lot « prêt pour les publicités » du 17/11/2026 (décision de Bora) : le site mesure les conversions de ses publicités (Google Ads, Meta Pixel), chargés après « Accepter » comme Google Analytics ; « aucun traceur publicitaire » devient faux, la notice nomme les outils, l'identifiant de clic et sa durée de 90 jours ; ajouts sans retrait : lignes du tableau (Google Ads, Meta Pixel, provenance de la visite)"
+    },
+    "nl/cookies.html": {
+      "texte": [
+        "In het kort: deze site houdt cookies tot het strikte minimum en gebruikt geen advertentietrackers.",
+        "Laatst bijgewerkt: 6 september 2026",
+        "De website van Celya is bewust licht. We gebruiken Google Analytics 4 om bezoeken te meten, alleen als u dit aanvaardt via de cookiebanner. We plaatsen geen advertentie- of cross-site trackingcookies. De site laadt ook weblettertypes van Google.",
+        "Analytics werkt alleen met uw toestemming. U kunt uw keuze altijd wijzigen door de cookies van deze site te wissen: de banner verschijnt dan opnieuw. Voegen we andere tools toe die cookies plaatsen, dan werken we eerst deze verklaring bij."
+      ],
+      "_texte": "lot « prêt pour les publicités » du 17/11/2026 (décision de Bora) : le site mesure les conversions de ses publicités (Google Ads, Meta Pixel), chargés après « Accepter » comme Google Analytics ; « aucun traceur publicitaire » devient faux, la notice nomme les outils, l'identifiant de clic et sa durée de 90 jours ; ajouts sans retrait : lignes du tableau (Google Ads, Meta Pixel, provenance de la visite)"
+    },
+    "en/cookies.html": {
+      "texte": [
+        "Plainly: this site keeps cookies to the strict minimum and uses no advertising trackers.",
+        "Last updated: 6 September 2026",
+        "Celya’s website is intentionally lightweight. We use Google Analytics 4 to measure visits, but only if you accept it on the cookie banner. We set no advertising or cross-site tracking cookies. The site also loads web fonts from Google.",
+        "Analytics runs only with your consent. You can change your choice at any time by clearing this site’s cookies: the banner will appear again. If we add other tools that set cookies, we’ll update this notice first."
+      ],
+      "_texte": "lot « prêt pour les publicités » du 17/11/2026 (décision de Bora) : le site mesure les conversions de ses publicités (Google Ads, Meta Pixel), chargés après « Accepter » comme Google Analytics ; « aucun traceur publicitaire » devient faux, la notice nomme les outils, l'identifiant de clic et sa durée de 90 jours ; ajouts sans retrait : lignes du tableau (Google Ads, Meta Pixel, provenance de la visite)"
     }
   }
 }

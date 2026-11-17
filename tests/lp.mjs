@@ -67,7 +67,7 @@ for (const [rel, lang, metier] of PAGES) {
   ok(/<a class="btn btn-line lpv-m" href="#lp">/.test(hero), 'héros : « Être rappelé » vers le formulaire (#lp)');
   ok(/<video [^>]*data-src-d="[^"]*assets\/hero\/hero-ordinateur-(720|1080)\.mp4"[^>]*data-src-m="[^"]*hero-mobile-(720|1080)\.mp4"/.test(hero), 'héros : la vidéo de l\'accueil (mêmes fichiers, même choix de source)');
   /* 3. formulaire */
-  ok(/<form class="form" id="lp" data-lead="lp" data-source="demo form" data-next="[^"]*merci\.html"/.test(hero), 'formulaire dans le héros : même envoi (web-lead, « demo form », merci)');
+  ok(new RegExp(`<form class="form" id="lp" data-lead="lp-${path.basename(rel, '.html')}" data-source="demo form" data-next="[^"]*merci\\.html"`).test(hero), `formulaire dans le héros : même envoi (web-lead, « demo form », merci), data-lead « lp-${path.basename(rel, '.html')} »`);
   ok(fields(html) === fields(read(lang === 'fr' ? 'demo.html' : 'nl/demo.html')), 'formulaire : mêmes champs que la page démo, même ordre');
   /* 4. prix */
   ok(/<div class="price-go"><a class="btn btn-ink" href="#lp" data-demo>/.test(main), 'prix : « Demander une démo » renvoie au formulaire de la page');

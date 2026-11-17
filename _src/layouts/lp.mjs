@@ -22,6 +22,9 @@ export default function lp(c) {
   const metier = page.meta.metier;
   const M = metier && c.data.metiers[metier] && c.data.metiers[metier][c.lang];
   const form = '#lp';
+  /* data-lead de la page : « lp-garages », « lp-ne-plus-rater-d-appels »… — il
+   * part dans form des événements generate_lead et click_call (17/11/2026) */
+  const lead = 'lp-' + c.rel.split('/').pop().replace(/\.html$/, '');
   /* le héros : le texte et le formulaire passent sur la vidéo, voile crème léger.
    * « Être rappelé » n'existe que sous 860 px, quand le formulaire est dessous. */
   const hero = `<section class="hv lpv" data-hv="lp">
@@ -32,7 +35,7 @@ ${heroMedia(c)}
 <p class="lead">${one(page, 'lede')}</p>
 <div class="cta-btns" data-hero><a class="btn btn-orange" href="tel:${offre.telephone.e164}" data-call><span>${t.cta_call} · <span class="nw">${offre.telephone.affiche}</span></span></a><a class="btn btn-line lpv-m" href="${form}">${t.form.submit}</a></div>
 </div>
-${demoForm(c, { id: 'lp', kind: 'lp', title: one(page, 'formtitle') })}
+${demoForm(c, { id: 'lp', kind: lead, title: one(page, 'formtitle') })}
 </div></section>`;
 
   const main = `${hero}

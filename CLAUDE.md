@@ -391,6 +391,58 @@ Brief : `docs/maquettes-16-11/PROMPT-conversion-16-11.md`, aperçu validé
   était vide depuis l'extraction du 14/11 ; elle porte de nouveau le texte de
   l'ancienne page, mot pour mot (`1c2ce15^:nl/index.html`, `en/index.html`).
 
+**Lot « prêt pour les publicités » du 17 novembre 2026 (décisions de Bora,
+même PR #34).** Le site reçoit du trafic payant (Google Ads, Meta Ads). La
+mesure passe toujours par GTM (GTM-KF9QCKB2), chargé après « Accepter » : ce
+lot ne touche pas à ce mécanisme ; il corrige ce que le site dit et ce qu'il
+garde.
+
+- **Exception datée à « le consentement et le chargement de GTM ne bougent pas
+  d'une ligne » : seul le texte du message du bandeau change**, dans les trois
+  langues — FR « Cookies de mesure et de publicité (Google Analytics, Google
+  Ads, Meta) : à vous de choisir. », NL « Cookies voor metingen en
+  advertenties (Google Analytics, Google Ads, Meta): u beslist. », EN
+  « Cookies for analytics and advertising (Google Analytics, Google Ads,
+  Meta): you choose. » ; le lien « En savoir plus » reste. Le moment où GTM se
+  charge, les appels `gtag('consent', …)`, les boutons, la clé
+  `celya-consent`, la position et la hauteur du bandeau ne changent pas d'un
+  octet : `tests/consentement.mjs` masque les trois messages et exige que tout
+  le reste du bloc soit identique à l'octet à celui de `main`, et que les
+  messages soient exactement ceux-là. **Mesuré à 360 px** : le nouveau texte
+  FR est plus long à l'écran que l'ancien (663 px contre 649) et prend
+  **3 lignes** (bandeau de 142 px ; l'ancien tenait en 2, 121 px) ; l'anglais
+  aussi (620 px, 3 lignes) ; le néerlandais tient en 2. Deux lignes à 360 px
+  = 656 px. Seule la formulation peut le régler (voir la PR #34).
+- **Les notices nomment les outils publicitaires** : `cookies.html`,
+  `privacy.html` et leurs versions NL et EN listent Google Ads (conversions,
+  gclid) et le Meta Pixel (Meta Platforms Ireland ; conversions, fbclid),
+  chargés seulement après « Accepter », l'identifiant de clic gardé 90 jours
+  au plus sur l'appareil, le lien vers la politique de chaque éditeur ; la
+  politique de confidentialité dit que l'identifiant de clic part avec le
+  formulaire de démo, et la base légale (consentement). Écarts listés dans
+  `tests/corrections-autorisees.json`. « Aucun traceur publicitaire » ne
+  s'écrit plus ; « aucun traceur publicitaire **sans votre accord** » si.
+- **L'attribution tient 90 jours, et seulement avec l'accord** (`celya.js`,
+  clé `celya-attrib`). Sans accord : `sessionStorage` seulement, comme avant.
+  Après « Accepter » : recopiée dans `localStorage` avec la date d'arrivée
+  (les 90 jours comptent depuis le clic sur l'annonce, pas depuis la dernière
+  visite) ; un visiteur qui revient la retrouve ; une nouvelle arrivée avec
+  des paramètres la remplace ; au-delà de 90 jours, effacée. Après
+  « Refuser », ou sans accord à l'ouverture d'une page (accord retiré en
+  effaçant les données du site), `localStorage` ne garde rien. Le lien avec
+  les boutons du bandeau passe par l'écouteur `click` existant (il suit celui
+  du bouton, qui a déjà écrit le choix) : aucun écouteur nouveau, et le bloc
+  consentement n'est pas touché. Vérifié par `tests/attribution.mjs` (J+1,
+  J+89, J+91, refus, accord retiré, nouvelle arrivée).
+- **Les événements** `click_call` et `generate_lead` gardent leur nom (Google
+  Ads est réglé dessus) et portent `form` (le `data-lead` : `demo`, `contact`,
+  `lp-garages`, `lp-ne-plus-rater-d-appels`, `lp-geen-oproepen-meer-missen`),
+  `page`, `lang` ; `generate_lead` porte aussi `metier` et `event_id`, le
+  même identifiant que celui envoyé à web-lead (`event_id` dans le corps),
+  pour dédoublonner plus tard le pixel Meta et les envois serveur. **Aucun nom
+  de régie ni identifiant de compte dans le code du site** : tout se règle
+  dans GTM.
+
 **Exception datée — lot « design & proportions » du 11 septembre 2026, validé
 par Bora le même jour.** Ce lot est un brief CSS : `bento.css` y est modifié
 (logo et bouton de nav, pied de page à colonnes titrées, `aside.t-answer` des
@@ -564,13 +616,14 @@ node tests/tailles.mjs               # 12 px (libellés) / 14 px (phrases) minim
 node tests/heros.mjs                 # premier écran, contraste sur la vidéo, pause, poids (accueils + LP)
 node tests/formulaire.mjs            # formulaire démo, UTM, dataLayer, barre mobile
 node tests/budget-rendu.mjs          # backdrop-filter, will-change, keyframes, rAF, écouteurs
-node tests/consentement.mjs          # bloc consentement + GTM identique à l'octet
+node tests/consentement.mjs          # bloc consentement + GTM identique à l'octet (hors texte du message, 17/11/2026)
 node tests/migration.mjs             # toute page servie sur le nouveau gabarit (16/11/2026)
 node tests/texte-conserve.mjs        # aucun paragraphe perdu par la migration
 node tests/outils.mjs                # modèles, check-lists, grilles, calculateurs répondent
 node tests/scene.mjs                 # la scène : placement, textes par métier, pause, mouvement réduit
 node tests/lp.mjs                    # pages d'atterrissage : ordre des blocs, formulaire, liens, barre mobile
 node tests/dates.mjs                 # chaque jour de la semaine correspond à sa date (2026 par défaut)
+node tests/attribution.mjs           # UTM / gclid / fbclid : session sans accord, 90 jours après « Accepter », rien après « Refuser »
 ```
 
 **Le générateur (lot du 14/11/2026).** Les pages migrées ne s'éditent plus à
