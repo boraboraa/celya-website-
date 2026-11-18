@@ -13,6 +13,11 @@ function gtag(){dataLayer.push(arguments)}
 gtag('consent','default',{ad_storage:'denied',analytics_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',wait_for_update:500});
 </script>`;
 
+/* L'application des clients : une seule adresse pour tout le site (lot du
+ * 18/11/2026). « Se connecter » y mène depuis l'en-tête, le menu mobile et le
+ * pied de page des pages avec menu — jamais depuis les pages d'atterrissage. */
+export const APP_LOGIN = 'https://app.celya.be/login';
+
 /** Contexte de rendu d'une page : langue, préfixes de chemin, textes. */
 export function context(page, data, rel) {
   const lang = page.meta.lang;
@@ -89,12 +94,13 @@ ${callBtn(c, 'btn-orange btn-sm hdr-call')}
     : `<a href="${L(n.href)}">${n.label}</a>`).join('');
   const mnav = t.nav.filter((n) => !n.drop).map((n) => `<a href="${L(n.href)}">${n.label}</a>`).join('') +
     `<b class="mnav-h">${t.nav.find((n) => n.drop).label}</b><div class="mnav-grid">${t.metiers_nav.map(([h, l]) => `<a href="${L(h)}">${l}</a>`).join('')}</div>` +
-    (t.metiers_all ? `<a href="${L(t.metiers_all[0])}">${t.metiers_all[1]}</a>` : '');
+    (t.metiers_all ? `<a href="${L(t.metiers_all[0])}">${t.metiers_all[1]}</a>` : '') +
+    `<a class="mnav-login" href="${APP_LOGIN}">${t.login}</a>`;
   return `<header class="hdr"><div class="hdr-in">
 <a class="hdr-logo" href="${c.home}" aria-label="${esc(t.home_label)}">${logo()}</a>
 <nav class="hdr-nav" aria-label="Navigation">${nav}</nav>
 ${langSwitch(c, 'hdr-lang')}
-<div class="hdr-cta">${demoBtn(c, 'btn-line btn-sm hdr-demo')}${callBtn(c, 'btn-orange btn-sm hdr-call')}</div>
+<div class="hdr-cta"><a class="hdr-login" href="${APP_LOGIN}">${t.login}</a>${demoBtn(c, 'btn-line btn-sm hdr-demo')}${callBtn(c, 'btn-orange btn-sm hdr-call')}</div>
 <button class="burger" type="button" aria-expanded="false" aria-controls="mnav"><span class="burger-l">${t.menu}</span><i></i><i></i></button>
 </div>
 <nav class="mnav" id="mnav" aria-label="Menu">${mnav}${langSwitch(c, 'mnav-lang')}</nav>
@@ -105,8 +111,10 @@ ${langSwitch(c, 'hdr-lang')}
 
 function footer(c, { bare = false } = {}) {
   const { t, L } = c;
+  /* « Se connecter » : à la position col.login de sa colonne (data/i18n.json) */
+  const withLogin = (col) => (col.login == null ? col.l : [...col.l.slice(0, col.login), [APP_LOGIN, t.login], ...col.l.slice(col.login)]);
   const cols = bare ? '' : `<div class="ft-cols">${t.foot_cols.map((col) =>
-    `<div><b>${col.h}</b>${col.l.map(([h, l]) => `<a href="${L(h)}">${l}</a>`).join('')}</div>`).join('')}</div>`;
+    `<div><b>${col.h}</b>${withLogin(col).map(([h, l]) => `<a href="${L(h)}">${l}</a>`).join('')}</div>`).join('')}</div>`;
   const langs = t.foot_other_langs.map(([h, l]) => `<a href="${h.startsWith('../') ? c.home + h : L(h)}">${l}</a>`).join('');
   return `<footer class="ft"><div class="w-wide">
 <div class="ft-top"><a class="ft-logo" href="${c.home}" aria-label="${esc(t.home_label)}">${logo()}</a>${badges(c, 'badges-ft')}</div>

@@ -50,7 +50,7 @@
     function set(open){document.body.classList.toggle('mnav-open',open);btn.setAttribute('aria-expanded',open?'true':'false');}
     btn.addEventListener('click',function(){set(btn.getAttribute('aria-expanded')!=='true');});
     document.addEventListener('keydown',function(e){if(e.key==='Escape'&&document.body.classList.contains('mnav-open')){set(false);btn.focus();}});
-    onResize(function(){if(innerWidth>1180)set(false);});
+    onResize(function(){if(innerWidth>1279)set(false);}); /* même seuil que celya.css (18/11/2026) */
   })();
 
   /* ---- rien ne s'anime hors écran : chaque élément animé est observé, et
@@ -253,16 +253,15 @@
       if(E.phone&&(E.phone.required||val('phone'))&&val('phone').replace(/\D/g,'').length<8)bad.push(E.phone);
       /* contact : comme avant la migration, un téléphone ou un e-mail suffit, mais l'un des deux est requis */
       if(f.getAttribute('data-need')==='phone-or-email'&&!val('phone')&&!val('email'))bad.push(E.phone,E.email);
-      if(E.consent&&!E.consent.checked)bad.push(E.consent);
       if(E.email&&val('email')&&!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(val('email')))bad.push(E.email);
       [].forEach.call(f.querySelectorAll('[aria-invalid]'),function(x){x.removeAttribute('aria-invalid');});
       if(bad.length){bad.forEach(function(x){if(x)x.setAttribute('aria-invalid','true');});fail(f.getAttribute('data-err-required'));if(bad[0])bad[0].focus();return;}
       var body={
         name:val('name'),company:val('company'),phone:val('phone'),email:val('email'),
-        need:val('need'),website:E.website?E.website.value:'',
+        need:val('need')||undefined,website:E.website?E.website.value:'', /* message facultatif : rien quand il est vide */
         source:f.getAttribute('data-source')||'website form',
         metier:val('metier'),moment:E.moment?(f.querySelector('input[name=moment]:checked')||{}).value||'':'',
-        consent_contact:E.consent?!!E.consent.checked:undefined,
+        consent_contact:f.hasAttribute('data-accord')?true:undefined, /* formulaire démo : envoyer vaut accord (18/11/2026) */
         lang:LANG,page:location.pathname,landing_page:val('landing_page'),
         event_id:eventId()
       };

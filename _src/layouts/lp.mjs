@@ -11,7 +11,9 @@
  * formulaire de la page), la FAQ (cinq questions), l'appel final (son bouton
  * renvoie aussi au formulaire de la page). Une action, un nom (17/11/2026) :
  * partout où l'on va au formulaire, le bouton dit « Être rappelé pour une
- * démo », comme le bouton du formulaire ; la barre mobile garde « Être rappelé ». */
+ * démo », comme le bouton du formulaire ; la barre mobile garde « Être rappelé ».
+ * Lot du 18/11/2026 : le titre du formulaire vient de data/i18n.json (le même
+ * partout), et le métier de la page (garages) est pré-rempli dans le choix. */
 import { one, all } from '../lib/core.mjs';
 import { shell } from '../components/shell.mjs';
 import { badges, prices, faq, ctaFinal, heroMedia, scene, sceneText, steps, cases, tryCall } from '../components/blocks.mjs';
@@ -35,7 +37,7 @@ ${heroMedia(c)}
 <p class="lead">${one(page, 'lede')}</p>
 <div class="cta-btns" data-hero><a class="btn btn-orange" href="tel:${offre.telephone.e164}" data-call><span>${t.cta_call} · <span class="nw">${offre.telephone.affiche}</span></span></a><a class="btn btn-line lpv-m" href="${form}">${t.form.submit}</a></div>
 </div>
-${demoForm(c, { id: 'lp', kind: lead, title: one(page, 'formtitle') })}
+${demoForm(c, { id: 'lp', kind: lead, metier: metier || '' })}
 </div></section>`;
 
   const main = `${hero}
