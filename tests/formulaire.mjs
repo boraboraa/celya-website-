@@ -19,7 +19,7 @@
  *      présente sur les pages d'atterrissage (lot conversion du 16/11/2026).
  *   7. merci.html : noindex et absent du sitemap.
  *
- * Lot du 18/11/2026 (« Se connecter » et formulaire qui convertit) :
+ * Lot du 18/11/2026 (formulaire de démo) :
  *   8. le formulaire démo, sur chaque page qui le porte (démo FR/NL/EN, pages
  *      d'atterrissage) : aucune case obligatoire, la phrase d'accord sous le
  *      bouton, le titre « On vous rappelle sous 24 heures » et sa phrase, le
@@ -29,14 +29,9 @@
  *      à l'envoi : consent_contact: true, need seulement s'il est écrit ;
  *   9. merci.html : « sous 24 heures » et le bouton « Appeler Janet » avec le
  *      numéro, dans les trois langues ;
- *  10. « Se connecter » vers https://app.celya.be/login dans l'en-tête, le menu
- *      mobile et le pied de page des pages avec menu, jamais sur les pages
- *      d'atterrissage ; l.en-tête ne déborde pas (360, 390, 768, 1200, 1279, 1280,
- *      1440 px, trois langues).
  *
  *   node tests/formulaire.mjs [pages…]   (défaut : demo.html) */
 import fs from 'node:fs';
-import { execFileSync } from 'node:child_process';
 import path from 'node:path';
 import http from 'node:http';
 import { createRequire } from 'node:module';
@@ -306,50 +301,6 @@ async function main() {
     const btns = [...main.matchAll(/<a class="btn[^"]*" href="([^"]*)"[^>]*>([\s\S]*?)<\/a>/g)];
     ok(words.every((w) => main.includes(w)), `${rel} : « ${words.join(' … ')} »`);
     ok(btns.length === 1 && btns[0][1] === 'tel:' + DATA.offre.telephone.e164 && btns[0][2].includes(DATA.i18n[lang].cta_call) && btns[0][2].includes(DATA.offre.telephone.affiche), `${rel} : un seul bouton, « ${DATA.i18n[lang].cta_call} » avec le numéro`);
-  }
-
-  /* 10. « Se connecter » */
-  console.log('\nSe connecter (18/11/2026)');
-  const LOGIN = 'https://app.celya.be/login';
-  const srcHits = execFileSync('git', ['grep', '-c', 'app.celya.be/login', '--', '_src', 'data'], { cwd: ROOT, encoding: 'utf8' }).trim().split('\n');
-  ok(srcHits.length === 1 && /^_src\/components\/shell\.mjs:1$/.test(srcHits[0]), `adresse écrite une seule fois dans les sources (${srcHits.join(', ')})`);
-  let withMenu = 0, lp = 0, badPages = [];
-  for (const rel of execFileSync('git', ['ls-files', '--cached', '--others', '--exclude-standard', '*.html'], { cwd: ROOT, encoding: 'utf8' }).split('\n')) {
-    if (!rel || /^(_src|docs|tests|api|assets|node_modules)\//.test(rel)) continue;
-    const html = fs.readFileSync(path.join(ROOT, rel), 'utf8');
-    if (!html.includes('<header class="hdr')) continue;
-    const lang = (/<html lang="(\w+)"/.exec(html) || [])[1];
-    const label = DATA.i18n[lang] && DATA.i18n[lang].login;
-    const n = html.split(LOGIN).length - 1;
-    if (html.includes('<header class="hdr hdr-bare">')) { lp++; if (n) badPages.push(rel); continue; }
-    withMenu++;
-    const hdr = new RegExp(`<div class="hdr-cta"><a class="hdr-login" href="${LOGIN}">${label}</a><a class="btn`).test(html);
-    const mnav = new RegExp(`<nav class="mnav"[\\s\\S]*<a class="mnav-login" href="${LOGIN}">${label}</a>[\\s\\S]*</nav>`).test(html);
-    const ft = /<div class="ft-cols">[\s\S]*?<\/div><\/div>/.exec(html);
-    if (!(n === 3 && hdr && mnav && ft && ft[0].includes(`<a href="${LOGIN}">${label}</a>`))) badPages.push(rel);
-  }
-  ok(withMenu > 250 && lp === 4 && badPages.length === 0, `en-tête (à gauche des deux boutons), menu mobile et pied de page sur ${withMenu} pages avec menu ; absent des ${lp} pages d'atterrissage${badPages.length ? ' — en écart : ' + badPages.slice(0, 6).join(', ') : ''}`);
-  for (const rel of ['index.html', 'nl/index.html', 'en/index.html', 'nl/garages.html', 'prise-de-message.html']) {
-    for (const w of [360, 390, 768, 1200, 1279, 1280, 1440]) {
-      const { ctx } = await context(browser, { consent: 'denied', width: w, height: 800 });
-      const p = await ctx.newPage();
-      await p.goto(base + rel, { waitUntil: 'load' });
-      const r = await p.evaluate(() => {
-        const hi = document.querySelector('.hdr-in'), H = hi.getBoundingClientRect();
-        const out = [...hi.querySelectorAll('*')].filter((e) => e.getClientRects().length && getComputedStyle(e).visibility !== 'hidden')
-          .map((e) => [e, e.getBoundingClientRect()]).filter(([, b]) => b.width && (b.right > H.right + 0.5 || b.left < H.left - 0.5)).map(([e]) => e.className || e.tagName);
-        const lg = document.querySelector('.hdr-login'), on = lg.getClientRects().length > 0, L = on && lg.getBoundingClientRect();
-        const first = [...hi.querySelectorAll('.hdr-cta .btn')].find((x) => x.getClientRects().length);
-        return { out, sw: document.documentElement.scrollWidth, vw: innerWidth, on, lines: lg.getClientRects().length, left: on && first ? L.right <= first.getBoundingClientRect().left : true };
-      });
-      ok(!r.out.length && r.sw === r.vw && r.lines <= 1 && r.left && r.on === (w > 720), `${rel} @${w} : en-tête dans son cadre, « Se connecter » ${w > 720 ? 'visible, sur une ligne, à gauche des boutons' : 'dans le menu'}${r.out.length ? ' — dépasse : ' + r.out.join('|') : ''}`);
-      if (w <= 1279) {
-        await p.click('.burger', { timeout: 3000 }).catch(() => {});
-        const m = await p.evaluate(() => { const a = document.querySelector('.mnav-login'), n = document.querySelector('.mnav'); const A = a.getBoundingClientRect(), N = n.getBoundingClientRect(); return a.getClientRects().length > 0 && A.width > 0 && A.left >= N.left && A.right <= N.right && document.documentElement.scrollWidth === innerWidth; });
-        ok(m, `${rel} @${w} : menu ouvert, « Se connecter » en bas, dans le cadre`);
-      }
-      await ctx.close();
-    }
   }
 
   await browser.close();

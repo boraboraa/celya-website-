@@ -129,16 +129,13 @@ ul,ol{padding-left:1.2em;margin:0 0 1em}
 .hdr-lang,.mnav-lang{display:flex;gap:2px;font:500 12px/1 var(--mono);letter-spacing:.06em;margin-left:auto}
 .hdr-lang a,.mnav-lang a{padding:9px 7px;border-radius:8px;text-decoration:none;color:var(--g1)}
 .hdr-lang a.on,.mnav-lang a.on{color:var(--ink);background:var(--page)}
-.hdr-cta{display:flex;gap:8px;flex:none;align-items:center}
-/* « Se connecter » (18/11/2026) : un lien texte discret, à gauche des deux boutons */
-.hdr-login{padding:10px 8px;border-radius:10px;font-size:var(--fs-small);color:var(--g2);text-decoration:none;white-space:nowrap}
-.hdr-login:hover{color:var(--ink);background:var(--page)}
+.hdr-cta{display:flex;gap:8px;flex:none}
 .burger{display:none;margin-left:auto;align-items:center;gap:10px;min-height:44px;padding:0 14px;border-radius:12px;border:1px solid var(--line);background:var(--page);font:600 14px var(--sans);color:var(--ink);cursor:pointer}
 .burger i{display:block;width:16px;height:2px;background:currentColor;border-radius:2px}
 .burger i+i{margin-left:-26px;transform:translateY(6px)}
 .burger i:first-of-type{transform:translateY(-3px)}
 .mnav{display:none}
-@media (max-width:1279px){ /* 1180 → 1279 le 18/11/2026 : « Se connecter » ne tient pas à côté du menu complet en FR sous 1265 px */
+@media (max-width:1180px){
   .hdr-nav,.hdr-lang{display:none}
   .hdr-cta{margin-left:auto}
   .burger{display:inline-flex;margin-left:0}
@@ -149,13 +146,12 @@ ul,ol{padding-left:1.2em;margin:0 0 1em}
   .mnav-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 8px}
   .mnav-grid a{padding:10px;text-decoration:none;font-size:15px}
   .mnav-lang{margin:12px 0 0;padding-top:8px;border-top:1px solid var(--line)}
-  .mnav>a.mnav-login{border-bottom:0;color:var(--g2)}
 }
 @media (max-width:720px){
   .hdr{top:8px;margin-top:8px;padding:0 10px}
   .hdr-in{gap:10px;padding:6px 6px 6px 14px;min-height:58px}
   .logo{width:84px;height:36px}
-  .hdr-demo,.hdr-login{display:none}
+  .hdr-demo{display:none}
   .hdr-call{padding:8px 14px;font-size:14px;min-height:44px}
   .burger{padding:0 12px}
   .burger-l{display:none}
