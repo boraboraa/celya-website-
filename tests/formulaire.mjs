@@ -31,7 +31,7 @@
  *      numéro, dans les trois langues ;
  *  10. « Se connecter » vers https://app.celya.be/login dans l'en-tête, le menu
  *      mobile et le pied de page des pages avec menu, jamais sur les pages
- *      d'atterrissage ; l'en-tête ne déborde pas (360, 390, 768, 1279, 1280,
+ *      d'atterrissage ; l.en-tête ne déborde pas (360, 390, 768, 1200, 1279, 1280,
  *      1440 px, trois langues).
  *
  *   node tests/formulaire.mjs [pages…]   (défaut : demo.html) */
@@ -290,7 +290,7 @@ async function main() {
     ok(r.ta && r.ta.rows === 2 && r.ta.max === 500 && !r.ta.req && r.ta.last && r.ta.label.includes(F.message) && r.ta.label.includes(F.optional), `${tag} message facultatif : dernier champ, 2 lignes, 500 caractères, jamais requis`);
     if (pre) {
       /* le visiteur qui n'est pas garagiste peut changer */
-      await p.selectOption('form[data-lead] [name=metier]', 'dentistes');
+      await p.selectOption('form[data-lead] [name=metier]', 'dentistes').catch(() => {});
       ok(await p.locator('form[data-lead] [name=metier]').inputValue() === 'dentistes', `${tag} le métier pré-rempli se change`);
     }
     await ctx.close();
@@ -330,7 +330,7 @@ async function main() {
   }
   ok(withMenu > 250 && lp === 4 && badPages.length === 0, `en-tête (à gauche des deux boutons), menu mobile et pied de page sur ${withMenu} pages avec menu ; absent des ${lp} pages d'atterrissage${badPages.length ? ' — en écart : ' + badPages.slice(0, 6).join(', ') : ''}`);
   for (const rel of ['index.html', 'nl/index.html', 'en/index.html', 'nl/garages.html', 'prise-de-message.html']) {
-    for (const w of [360, 390, 768, 1279, 1280, 1440]) {
+    for (const w of [360, 390, 768, 1200, 1279, 1280, 1440]) {
       const { ctx } = await context(browser, { consent: 'denied', width: w, height: 800 });
       const p = await ctx.newPage();
       await p.goto(base + rel, { waitUntil: 'load' });
@@ -344,8 +344,8 @@ async function main() {
       });
       ok(!r.out.length && r.sw === r.vw && r.lines <= 1 && r.left && r.on === (w > 720), `${rel} @${w} : en-tête dans son cadre, « Se connecter » ${w > 720 ? 'visible, sur une ligne, à gauche des boutons' : 'dans le menu'}${r.out.length ? ' — dépasse : ' + r.out.join('|') : ''}`);
       if (w <= 1279) {
-        await p.click('.burger');
-        const m = await p.evaluate(() => { const a = document.querySelector('.mnav-login'), n = document.querySelector('.mnav'); const A = a.getBoundingClientRect(), N = n.getBoundingClientRect(); return a.getClientRects().length > 0 && A.left >= N.left && A.right <= N.right && document.documentElement.scrollWidth === innerWidth; });
+        await p.click('.burger', { timeout: 3000 }).catch(() => {});
+        const m = await p.evaluate(() => { const a = document.querySelector('.mnav-login'), n = document.querySelector('.mnav'); const A = a.getBoundingClientRect(), N = n.getBoundingClientRect(); return a.getClientRects().length > 0 && A.width > 0 && A.left >= N.left && A.right <= N.right && document.documentElement.scrollWidth === innerWidth; });
         ok(m, `${rel} @${w} : menu ouvert, « Se connecter » en bas, dans le cadre`);
       }
       await ctx.close();
