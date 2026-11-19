@@ -129,13 +129,16 @@ ul,ol{padding-left:1.2em;margin:0 0 1em}
 .hdr-lang,.mnav-lang{display:flex;gap:2px;font:500 12px/1 var(--mono);letter-spacing:.06em;margin-left:auto}
 .hdr-lang a,.mnav-lang a{padding:9px 7px;border-radius:8px;text-decoration:none;color:var(--g1)}
 .hdr-lang a.on,.mnav-lang a.on{color:var(--ink);background:var(--page)}
-.hdr-cta{display:flex;gap:8px;flex:none}
+.hdr-cta{display:flex;gap:8px;flex:none;align-items:center}
+/* accès à l'application (19/11/2026) : « Se connecter » en lien texte, à gauche des deux boutons */
+.hdr-login{padding:10px 8px;border-radius:10px;font-size:15px;font-weight:600;color:var(--ink);text-decoration:none;white-space:nowrap}
+.hdr-login:hover{background:var(--page)}
 .burger{display:none;margin-left:auto;align-items:center;gap:10px;min-height:44px;padding:0 14px;border-radius:12px;border:1px solid var(--line);background:var(--page);font:600 14px var(--sans);color:var(--ink);cursor:pointer}
 .burger i{display:block;width:16px;height:2px;background:currentColor;border-radius:2px}
 .burger i+i{margin-left:-26px;transform:translateY(6px)}
 .burger i:first-of-type{transform:translateY(-3px)}
 .mnav{display:none}
-@media (max-width:1180px){
+@media (max-width:1259px){ /* 1180 → 1259 le 19/11/2026 : avec « Se connecter » et « Essai gratuit », l'en-tête FR complet ne tient qu'à partir de 1235 px ; 25 px de marge */
   .hdr-nav,.hdr-lang{display:none}
   .hdr-cta{margin-left:auto}
   .burger{display:inline-flex;margin-left:0}
@@ -146,13 +149,17 @@ ul,ol{padding-left:1.2em;margin:0 0 1em}
   .mnav-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 8px}
   .mnav-grid a{padding:10px;text-decoration:none;font-size:15px}
   .mnav-lang{margin:12px 0 0;padding-top:8px;border-top:1px solid var(--line)}
+  .mnav-grid+a{border-bottom:0} /* « Tous les métiers » : le filet du bloc suivant sépare déjà */
+  .mnav-app{display:flex;flex-direction:column;gap:10px;margin:12px 0 0;padding-top:14px;border-top:1px solid var(--line)}
+  .mnav-app .btn{width:100%}
+  .mnav-login{display:block;padding:10px;text-align:center;font-size:16px;font-weight:600;color:var(--ink);text-decoration:none}
 }
 @media (max-width:720px){
   .hdr{top:8px;margin-top:8px;padding:0 10px}
   .hdr-in{gap:10px;padding:6px 6px 6px 14px;min-height:58px}
   .logo{width:84px;height:36px}
-  .hdr-demo{display:none}
-  .hdr-call{padding:8px 14px;font-size:14px;min-height:44px}
+  .hdr-demo,.hdr-login{display:none}
+  .hdr-call,.hdr-trial{padding:8px 14px;font-size:14px;min-height:44px}
   .burger{padding:0 12px}
   .burger-l{display:none}
 }
@@ -401,6 +408,7 @@ ul,ol{padding-left:1.2em;margin:0 0 1em}
 .price-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;margin-bottom:36px;flex-wrap:wrap}
 .price-go{display:flex;flex-direction:column;align-items:flex-end;gap:8px}
 .price-go small{font-size:14px;color:var(--g1)}
+.price-go .btn{width:100%}
 .price-intro{margin:-12px 0 36px;max-width:720px}
 .prices{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;align-items:stretch}
 .pc{background:var(--beige);border-radius:var(--r-m);padding:28px 26px 30px;display:flex;flex-direction:column;gap:6px;min-width:0}

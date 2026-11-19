@@ -50,7 +50,7 @@
     function set(open){document.body.classList.toggle('mnav-open',open);btn.setAttribute('aria-expanded',open?'true':'false');}
     btn.addEventListener('click',function(){set(btn.getAttribute('aria-expanded')!=='true');});
     document.addEventListener('keydown',function(e){if(e.key==='Escape'&&document.body.classList.contains('mnav-open')){set(false);btn.focus();}});
-    onResize(function(){if(innerWidth>1180)set(false);});
+    onResize(function(){if(innerWidth>1259)set(false);}); /* même seuil que celya.css (19/11/2026) */
   })();
 
   /* ---- rien ne s'anime hors écran : chaque élément animé est observé, et
@@ -192,6 +192,10 @@
   document.addEventListener('click',function(e){
     var a=e.target.closest&&e.target.closest('a[href^="tel:"]');
     if(a)track({event:'click_call',form:leadForm?leadForm.getAttribute('data-lead'):'',page:location.pathname,lang:LANG});
+    /* accès à l'application (19/11/2026) : « Essai gratuit » → sign_up_start,
+       « Se connecter » → login_click ; place = header, menu, pricing ou footer */
+    var app=e.target.closest&&e.target.closest('a[data-app]');
+    if(app)track({event:app.getAttribute('data-app')==='signup'?'sign_up_start':'login_click',place:app.getAttribute('data-place')||'',page:location.pathname,lang:LANG});
     /* bandeau cookies : le bloc consentement a déjà écrit le choix du visiteur
        (son écouteur, sur le bouton, passe avant celui-ci) ; l'attribution suit */
     if(e.target.closest&&e.target.closest('.caccept,.cdecline'))keepAttr();

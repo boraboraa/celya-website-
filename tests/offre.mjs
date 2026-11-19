@@ -4,7 +4,11 @@
  *    sources (_src/, celya.css, celya.js, data/i18n.json, data/metiers.json) ;
  *  - l'ancienne grille (75 / 150 / 300 €, 250 / 750 / 1 750 minutes) n'apparaît
  *    plus dans aucune page générée ;
- *  - aucun jeton {{…}} non résolu dans une page générée. */
+ *  - aucun jeton {{…}} non résolu dans une page générée ;
+ *  - essai gratuit (décision de Bora du 19/11/2026) : la durée vit dans
+ *    data/offre.json (regles.essai_jours) et ne s'écrit nulle part en dur dans
+ *    les sources ; plus aucune formule de l'ancien essai de 30 jours, ni dans
+ *    les pages servies, ni dans _src/, ni dans data/. */
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -42,5 +46,27 @@ for (const rel of pages) {
   const t = /\{\{[^}]*\}\}|\{offre\.[a-z_.]+\}/.exec(html);
   if (t) fails.push(`${rel} — jeton non résolu « ${t[0]} »`);
 }
-console.log(fails.length ? fails.join('\n') + `\n\n${fails.length} écart(s).` : `Offre : ${sources.length} sources sans montant en dur, ${pages.length} pages générées sans ancienne grille.`);
+/* 3. essai gratuit : 14 jours, une seule source */
+const J = offre.regles && offre.regles.essai_jours;
+if (!Number.isInteger(J) || !offre.regles.essai || !['fr', 'nl', 'en'].every((l) => (offre.regles.essai[l] || '').includes('{{offre.essai}}'))) fails.push('data/offre.json — regles.essai_jours et regles.essai (fr, nl, en, avec {{offre.essai}}) attendus');
+const essaiEnDur = new RegExp(`(?<![\\d.,])${J}${S}(?:jours?|dagen|days?)\\b`, 'i');
+/* dans les pages, seulement accolée à l'essai (« 14 jours de rétractation » n'est pas l'essai) */
+const essaiEnDurPage = new RegExp(`(?<![\\d.,])${J}${S}(?:jours?|dagen|days?)${S}(?:d['’]essai|gratuits?|gratis|proef|(?:free${S})?trial|free)`, 'i');
+for (const f of sources) {
+  if (!/\.(mjs|js|css|json|html|py)$/.test(f)) continue;
+  const re = f.includes(`${path.sep}_src${path.sep}pages${path.sep}`) ? essaiEnDurPage : essaiEnDur;
+  fs.readFileSync(f, 'utf8').split('\n').forEach((l, i) => {
+    const m = re.exec(l);
+    if (m) fails.push(`${path.relative(ROOT, f)}:${i + 1} — durée de l'essai en dur « ${m[0]} » : passer par {{offre.essai}}`);
+  });
+}
+const ANCIEN_ESSAI = /30[\s\u00a0-]*(?:jours?|dagen|days?)[\s\u00a0]*(?:d['’]essai|gratuits?|gratis|proef|(?:free[\s\u00a0]*)?trial|free)|essai[\s\u00a0]+(?:gratuit[\s\u00a0]+)?de[\s\u00a0]+30[\s\u00a0]+jours|proefperiode[\s\u00a0]+van[\s\u00a0]+30|30[\s\u00a0-]*day[\s\u00a0-]+(?:free[\s\u00a0]+)?trial/i;
+const served = walk(ROOT).filter((f) => f.endsWith('.html') && !/[\\/](?:docs|node_modules|\.git|tests)[\\/]/.test(path.relative(ROOT, f).replace(/^/, '/')));
+for (const f of [...served, ...walk(path.join(ROOT, '_src')), ...walk(path.join(ROOT, 'data'))]) {
+  if (!/\.(mjs|js|json|html|py)$/.test(f)) continue;
+  const m = ANCIEN_ESSAI.exec(fs.readFileSync(f, 'utf8'));
+  if (m) fails.push(`${path.relative(ROOT, f)} — ancien essai de 30 jours : « ${m[0]} »`);
+}
+
+console.log(fails.length ? fails.join('\n') + `\n\n${fails.length} écart(s).` : `Offre : ${sources.length} sources sans montant ni durée d'essai en dur, ${pages.length} pages générées sans ancienne grille, aucun essai de 30 jours.`);
 process.exit(fails.length ? 1 : 0);

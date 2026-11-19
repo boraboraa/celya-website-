@@ -2,7 +2,7 @@
  * de data/offre.json : cartes, tableau comparatif, paliers du diagnostic. */
 import { one, all, num, eur } from '../lib/core.mjs';
 import { shell, ctaPair } from '../components/shell.mjs';
-import { badges, priceCards, priceNote, faq, related, ctaFinal, splitH2, intro2 } from '../components/blocks.mjs';
+import { badges, priceCards, priceNote, priceGo, faq, related, ctaFinal, splitH2, intro2 } from '../components/blocks.mjs';
 import { ico } from '../components/icons.mjs';
 
 const sec = (page, role) => all(page, 'section').find((s) => s.attrs.role === role);
@@ -106,7 +106,7 @@ export default function prix(c) {
       out += `<section class="sec bg-cream"><div class="w">
 <div class="two">${kick(b) ? `<div>${kick(b)}${F.h2}</div>` : F.h2}<div class="prose">${F.body}</div></div>
 ${priceCards(c)}
-<div class="price-foot"><p class="note">${priceNote(c)}</p><div class="price-go"><a class="btn btn-ink" href="${c.L(c.t.demo_href)}" data-demo>${c.t.price_start}</a><small>${c.t.price_start_sub}</small></div></div>
+<div class="price-foot"><p class="note">${priceNote(c)}</p>${priceGo(c)}</div>
 </div></section>`;
     } else if (b.name === 'section' && r === 'tableau') {
       out += `<section class="sec"><div class="w">${splitH2(b.html).h2}${table(c)}<p class="note">${priceNote(c)}</p></div></section>`;

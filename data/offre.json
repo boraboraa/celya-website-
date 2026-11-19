@@ -148,6 +148,7 @@
   ],
   "regles": {
     "meta_mensuel_approx": 2,
+    "essai_jours": 14,
     "decompte": {
       "fr": "Minutes décomptées à la seconde",
       "nl": "Minuten per seconde aangerekend",
@@ -172,6 +173,12 @@
       "fr": "Messages WhatsApp à vos clients facturés par Meta sur votre compte (environ {{offre.meta}} € par mois)",
       "nl": "WhatsApp-berichten naar uw klanten worden door Meta op uw account aangerekend (ongeveer {{offre.meta}} € per maand)",
       "en": "WhatsApp messages to your customers are billed by Meta to your account (about €{{offre.meta}} a month)"
+    },
+    "essai": {
+      "_doc": "Essai gratuit (décision de Bora du 19/11/2026) : {{offre.essai}} jours, carte demandée à l'inscription, rien n'est débité avant la fin de l'essai. Il se prend dans l'application : APP_SIGNUP, dans _src/components/shell.mjs.",
+      "fr": "{{offre.essai}} jours gratuits, rien n'est débité avant la fin de l'essai",
+      "nl": "{{offre.essai}} dagen gratis, er wordt niets afgeschreven voor het einde van de proefperiode",
+      "en": "{{offre.essai}} days free, nothing is charged before the trial ends"
     },
     "ht": {
       "fr": "Prix hors TVA",

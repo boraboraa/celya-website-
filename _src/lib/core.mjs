@@ -94,6 +94,7 @@ export function offreTokens(offre, lang) {
   t['offre.min_eur'] = eur(Math.min(...prix), lang);
   t['offre.max_minutes'] = num(Math.max(...mins), lang);
   t['offre.meta'] = num(offre.regles.meta_mensuel_approx, lang);
+  t['offre.essai'] = num(offre.regles.essai_jours, lang); /* jours d'essai gratuit (19/11/2026) */
   t['offre.tel'] = offre.telephone.affiche.replace(/ /g, NBSP);
   t['offre.tel_e164'] = offre.telephone.e164;
   /* listes : « 49, 99 et 199 » / « 49, 99 en 199 » / « 49, 99 and 199 » */

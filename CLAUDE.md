@@ -27,15 +27,22 @@ mais il ne couvre pas tout le tableau — la relecture reste obligatoire.
   gabarit, aucune page source ne les écrit en dur. Aucun autre montant, aucune
   fourchette, rien d'inventé ailleurs. Vérifiable :
   `grep -rE "75 €|250 minutes|1 750"` sur les pages ne renvoie rien.
-- **plus aucun essai gratuit — décision de Bora du 16 novembre 2026.** Ni
-  « essai gratuit », ni « 30 jours d'essai », ni « sans engagement » attaché à
-  un essai, en FR, NL ou EN ; sous les grilles de prix, le bouton est
-  « Demander une démo » (NL « Vraag een demo », EN « Request a demo »), vers
-  la page démo de la langue. `data/offre.json` n'a plus de règle d'essai et le
-  jeton `{{offre.essai}}` n'existe plus. Vérifiable :
-  `grep -riE "essai gratuit|jours d.essai|30 jours gratuits|proefperiode|30 dagen gratis|free trial"`
-  sur les pages servies, `_src/` et `data/` ne renvoie rien (« 30 days » de
-  `en/privacy.html` parle d'autre chose et ne se touche pas).
+- **l'essai gratuit : 14 jours, dans l'application — décision de Bora du
+  19 novembre 2026** (elle remplace « plus aucun essai gratuit » du
+  16/11/2026). L'essai dure 14 jours, la carte est demandée à l'inscription,
+  rien n'est débité avant la fin de l'essai ; il se prend sur
+  `https://app.celya.be/inscription` (« Essai gratuit », NL « Gratis
+  proberen », EN « Free trial »), la connexion sur `https://app.celya.be/login`
+  (« Se connecter », « Aanmelden », « Log in »). Les deux adresses ne
+  s'écrivent qu'une fois, `APP_SIGNUP` et `APP_LOGIN` dans
+  `_src/components/shell.mjs` ; les pages NL et EN y ajoutent `?lang=nl` /
+  `?lang=en` (l'application est en français et en anglais). La durée et la
+  règle vivent dans `data/offre.json` (`regles.essai_jours`, `regles.essai`,
+  jeton `{{offre.essai}}`), jamais en dur. **Les pages d'atterrissage restent
+  à la seule démo** (aucun lien vers l'application) et « Demander une démo »
+  reste partout sur le site. **Plus jamais l'ancien essai de 30 jours** : ni
+  « 30 jours d'essai », ni « 30 jours gratuits », ni « 30-day trial ».
+  Vérifiable : `node tests/offre.mjs` et `node tests/acces-app.mjs`.
 - aucun concurrent nommé
 - Celya ne remplace jamais une secrétaire
 - l'agent n'évalue jamais un symptôme médical
@@ -408,6 +415,33 @@ Brief : `docs/maquettes-16-11/PROMPT-conversion-16-11.md`, aperçu validé
   était vide depuis l'extraction du 14/11 ; elle porte de nouveau le texte de
   l'ancienne page, mot pour mot (`1c2ce15^:nl/index.html`, `en/index.html`).
 
+**Lot « accès à l'application » du 19 novembre 2026 (décision de Bora, PR
+#35).** Brief : la règle de l'essai ci-dessus.
+
+- **En-tête des pages avec menu**, dans `.hdr-cta` et dans cet ordre :
+  « Se connecter » en lien texte (`.hdr-login`, 15 px, 600, encre),
+  « Demander une démo » (bouton contour), « Essai gratuit » (bouton orange,
+  `.hdr-trial`). **« Appeler Janet » n'est plus dans l'en-tête** ; il reste
+  dans les héros, la barre mobile, les CTA et l'en-tête des pages
+  d'atterrissage. Sous 720 px, seul « Essai gratuit » reste à côté du menu.
+- **Le menu passe en burger sous 1260 px** (`max-width:1259px` dans
+  `celya.css`, `innerWidth>1259` dans `celya.js` : les deux ensemble). Mesuré :
+  l'en-tête FR complet ne tient qu'à partir de 1235 px ; 1259 laisse 25 px de
+  marge. Le NL tient dès 1181 px, l'EN avec 96 px de reste.
+- **Menu mobile**, avant le choix de langue : « Essai gratuit · 14 jours »
+  (pleine largeur, orange), « Demander une démo » (contour), « Se connecter »
+  (lien centré). **Pied de page** : « Se connecter » après Contact dans la
+  colonne Entreprise / Bedrijf / Company (`foot_cols[].login` dans
+  `data/i18n.json`).
+- **Sous chaque grille de prix** (hors pages d'atterrissage, composant
+  `priceGo`) : « Commencer l'essai gratuit » (orange), « Demander une démo »
+  (contour), puis la règle de l'essai, de `data/offre.json`.
+- **Mesure** : au clic, `sign_up_start` (essai) ou `login_click` (connexion),
+  avec `place` (`header`, `menu`, `pricing`, `footer`), `page`, `lang` ; par
+  l'écouteur de clic existant de `celya.js` (`a[data-app]`, `data-place`),
+  seulement avec l'accord cookies, comme les autres événements. `click_call`
+  et `generate_lead` ne changent pas ; le bloc consentement non plus.
+
 **Lot « prêt pour les publicités » du 17 novembre 2026 (décisions de Bora,
 même PR #34).** Le site reçoit du trafic payant (Google Ads, Meta Ads). La
 mesure passe toujours par GTM (GTM-KF9QCKB2), chargé après « Accepter » : ce
@@ -636,7 +670,7 @@ node sweep_en.js     # idem, pages EN (ajouté le 14/11/2026)
 node .claude/hooks/verif-seo.js <fichiers>
 node _src/build.mjs --check          # les pages publiées == ce que produit le générateur
 node tests/seo-avant-apres.mjs       # title, description, H1, H2, FAQ, hreflang, @graph vs origin/main
-node tests/offre.mjs                 # aucun montant hors data/offre.json, plus d'ancienne grille
+node tests/offre.mjs                 # aucun montant ni durée d'essai hors data/offre.json, plus d'ancienne grille ni d'essai de 30 jours
 node tests/tailles.mjs               # 12 px (libellés) / 14 px (phrases) minimum
 node tests/heros.mjs                 # premier écran, contraste sur la vidéo, pause, poids (accueils + LP)
 node tests/formulaire.mjs            # formulaire démo, UTM, dataLayer, barre mobile
@@ -650,6 +684,8 @@ node tests/lp.mjs                    # pages d'atterrissage : ordre des blocs, f
 node tests/dates.mjs                 # chaque jour de la semaine correspond à sa date (2026 par défaut)
 node tests/attribution.mjs           # UTM / gclid / fbclid : session sans accord, 90 jours après « Accepter », rien après « Refuser »
 node tests/tiret-long.mjs            # aucun tiret long dans les fichiers servis, _src/ et data/ (19/11/2026)
+node tests/acces-app.mjs             # Se connecter / Essai gratuit : liens, ordre, cadre, événements (19/11/2026)
+node tests/acces-app.mjs --mutants   # chaque vérification ci-dessus crie sur une copie cassée
 ```
 
 **Le générateur (lot du 14/11/2026).** Les pages migrées ne s'éditent plus à

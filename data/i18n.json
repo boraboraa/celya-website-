@@ -82,6 +82,10 @@
       "Tous les métiers"
     ],
     "menu": "Menu",
+    "login": "Se connecter",
+    "trial": "Essai gratuit",
+    "trial_menu": "Essai gratuit · {{offre.essai}} jours",
+    "price_trial": "Commencer l'essai gratuit",
     "close": "Fermer",
     "cta_call": "Appeler Janet",
     "cta_call_sub": "Elle vous répond et vous réserve une démo.",
@@ -345,7 +349,8 @@
             "legal.html",
             "Mentions légales"
           ]
-        ]
+        ],
+        "login": 2
       }
     ],
     "foot_legal": "Celya · Celya Technologies SRL · BCE/KBO 1042.115.837",
@@ -851,6 +856,10 @@
       "Alle sectoren"
     ],
     "menu": "Menu",
+    "login": "Aanmelden",
+    "trial": "Gratis proberen",
+    "trial_menu": "Gratis proberen · {{offre.essai}} dagen",
+    "price_trial": "Start de gratis proefperiode",
     "close": "Sluiten",
     "cta_call": "Bel Janet",
     "cta_call_sub": "Ze antwoordt u en plant een demo in.",
@@ -1114,7 +1123,8 @@
             "legal.html",
             "Juridische info"
           ]
-        ]
+        ],
+        "login": 2
       }
     ],
     "foot_legal": "Celya · Celya Technologies SRL · BCE/KBO 1042.115.837",
@@ -1566,6 +1576,10 @@
     ],
     "metiers_all": null,
     "menu": "Menu",
+    "login": "Log in",
+    "trial": "Free trial",
+    "trial_menu": "Free trial · {{offre.essai}} days",
+    "price_trial": "Start free trial",
     "close": "Close",
     "cta_call": "Call Janet",
     "cta_call_sub": "She answers and books you a demo.",
@@ -1772,7 +1786,8 @@
             "legal.html",
             "Legal notice"
           ]
-        ]
+        ],
+        "login": 1
       }
     ],
     "foot_legal": "Celya · Celya Technologies SRL · BCE/KBO 1042.115.837",

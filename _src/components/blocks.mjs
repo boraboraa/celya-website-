@@ -5,6 +5,7 @@ import { ico, cVoice } from './icons.mjs';
 import fs from 'node:fs';
 import path from 'node:path';
 import { esc, strip, eur, num, ROOT } from '../lib/core.mjs';
+import { trialBtn } from './shell.mjs';
 
 const H = (lvl, html, attrs = '') => `<h${lvl}${attrs}>${html}</h${lvl}>`;
 
@@ -251,6 +252,16 @@ export function priceCards(c) {
 </article>`).join('')}</div>`;
 }
 
+/** Les boutons sous une grille de prix (19/11/2026) : « Commencer l'essai
+ *  gratuit » d'abord, « Demander une démo » ensuite, puis la règle de l'essai
+ *  (data/offre.json). Pages d'atterrissage (demoHref) : la démo seule, vers le
+ *  formulaire de la page, comme avant. */
+export function priceGo(c, { demoHref = '', demoLabel = '' } = {}) {
+  const { t, offre, lang } = c;
+  if (demoHref) return `<div class="price-go"><a class="btn btn-ink" href="${demoHref}" data-demo>${demoLabel || t.price_start}</a></div>`;
+  return `<div class="price-go">${trialBtn(c, 'btn-orange', 'pricing', t.price_trial)}<a class="btn btn-line" href="${c.L(t.demo_href)}" data-demo>${t.price_start}</a><small>${offre.regles.essai[lang]}.</small></div>`;
+}
+
 /** h2 : true = titre du composant (« Dès … HT par mois », price_h2) ; ou HTML d'un H2 existant */
 /** demoHref / demoLabel : cible et libellé du bouton « Demander une démo » (pages d'atterrissage :
  *  « #lp » et « Être rappelé pour une démo », le bouton du formulaire de la page : une action, un nom) */
@@ -258,7 +269,7 @@ export function prices(c, { h2 = true, intro = '', id = '', demoHref = '', demoL
   const { t } = c;
   const title = h2 === true ? H(2, t.price_h2) : h2;
   return `<section class="sec bg-cream"${id ? ` id="${id}"` : ''}><div class="w">
-<div class="price-head">${title}<div class="price-go"><a class="btn btn-ink" href="${demoHref || c.L(c.t.demo_href)}" data-demo>${demoLabel || t.price_start}</a></div></div>
+<div class="price-head">${title}${priceGo(c, { demoHref, demoLabel })}</div>
 ${intro ? `<div class="prose price-intro">${intro}</div>` : ''}
 ${priceCards(c)}
 <p class="note">${priceNote(c)}</p>
