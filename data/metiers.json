@@ -1,5 +1,5 @@
 {
-  "_doc": "Textes propres à chaque métier (ruban, cases, agenda, confirmation, visuels des cartes). Partie fr extraite des maquettes par _src/tools/extraire_metiers.py ; parties nl/en traduites pour le lot du 16/11/2026 (cartes : H2 des pages NL et EN, relues contre docs/vocabulaire-be.md). « video » : null tant qu'aucune source n'existe — le composant montre alors la photo seule, sans bouton lecture. « scene » : la scène « Un appel, de bout en bout » (lot conversion du 16/11/2026), exemple daté du jeudi 19 novembre ; le jeu générique vit dans data/i18n.json (scene.generique).",
+  "_doc": "Textes propres à chaque métier (ruban, cases, agenda, confirmation, visuels des cartes). Partie fr extraite des maquettes par _src/tools/extraire_metiers.py ; parties nl/en traduites pour le lot du 16/11/2026 (cartes : H2 des pages NL et EN, relues contre docs/vocabulaire-be.md). « video » : null tant qu'aucune source n'existe : le composant montre alors la photo seule, sans bouton lecture. « scene » : la scène « Un appel, de bout en bout » (lot conversion du 16/11/2026), exemple daté du jeudi 19 novembre ; le jeu générique vit dans data/i18n.json (scene.generique).",
   "garages": {
     "pages": {
       "fr": "garages.html",

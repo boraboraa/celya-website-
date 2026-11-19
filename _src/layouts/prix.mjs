@@ -9,9 +9,9 @@ const sec = (page, role) => all(page, 'section').find((s) => s.attrs.role === ro
 const kick = (b) => (b.attrs.kick ? `<p class="label">${b.attrs.kick}</p>` : '');
 
 const DIAG = {
-  fr: { q1: "Combien d'appels recevez-vous par jour&nbsp;?", q2: 'Vous décrochez quand&nbsp;?', calls: ['environ 5', 'environ 15', '30 et plus'], miss: ['au bureau, aux heures ouvrables', 'quand je peux', 'jamais en intervention'], read: 'Votre relevé', per: 'minutes par mois', avg: '1 min 41', calls_w: 'appels par jour', days: 'jours ouvrés', notTaken: 'que vous ne prenez pas', callsU: 'appels', mean: 'en moyenne', verdict: 'Votre formule&nbsp;: <b>{n}</b>, {p} par mois hors TVA — c’est le premier palier qui couvre vos {m} minutes.', over: 'Au-delà de {max} minutes&nbsp;: <b>sur devis</b>. On en parle&nbsp;?', caveat: 'Soit {c} appels par mois qui, aujourd’hui, sonnent dans le vide.', fmtLocale: 'fr-BE' },
-  nl: { q1: 'Hoeveel oproepen krijgt u per dag?', q2: 'Wanneer neemt u op?', calls: ['ongeveer 5', 'ongeveer 15', '30 en meer'], miss: ['op kantoor, tijdens de kantooruren', 'als ik kan', 'nooit tijdens een interventie'], read: 'Uw overzicht', per: 'minuten per maand', avg: '1 min 41', calls_w: 'oproepen per dag', days: 'werkdagen', notTaken: 'die u niet opneemt', callsU: 'oproepen', mean: 'gemiddeld', verdict: 'Uw formule: <b>{n}</b>, {p} per maand excl. btw — de eerste schijf die uw {m} minuten dekt.', over: 'Boven {max} minuten: <b>op offerte</b>. Zullen we erover praten?', caveat: 'Dat zijn {c} oproepen per maand die vandaag in het niets rinkelen.', fmtLocale: 'nl-BE' },
-  en: { q1: 'How many calls do you get a day?', q2: 'When do you pick up?', calls: ['about 5', 'about 15', '30 or more'], miss: ['at the office, during office hours', 'when I can', 'never during a job'], read: 'Your figures', per: 'minutes a month', avg: '1 min 41', calls_w: 'calls a day', days: 'working days', notTaken: 'that you miss', callsU: 'calls', mean: 'on average', verdict: 'Your plan: <b>{n}</b>, {p} a month excl. VAT — the first tier that covers your {m} minutes.', over: 'Beyond {max} minutes: <b>on quote</b>. Shall we talk?', caveat: 'That is {c} calls a month ringing out today.', fmtLocale: 'en-GB' },
+  fr: { q1: "Combien d'appels recevez-vous par jour&nbsp;?", q2: 'Vous décrochez quand&nbsp;?', calls: ['environ 5', 'environ 15', '30 et plus'], miss: ['au bureau, aux heures ouvrables', 'quand je peux', 'jamais en intervention'], read: 'Votre relevé', per: 'minutes par mois', avg: '1 min 41', calls_w: 'appels par jour', days: 'jours ouvrés', notTaken: 'que vous ne prenez pas', callsU: 'appels', mean: 'en moyenne', verdict: 'Votre formule&nbsp;: <b>{n}</b>, {p} par mois hors TVA. C’est le premier palier qui couvre vos {m} minutes.', over: 'Au-delà de {max} minutes&nbsp;: <b>sur devis</b>. On en parle&nbsp;?', caveat: 'Soit {c} appels par mois qui, aujourd’hui, sonnent dans le vide.', fmtLocale: 'fr-BE' },
+  nl: { q1: 'Hoeveel oproepen krijgt u per dag?', q2: 'Wanneer neemt u op?', calls: ['ongeveer 5', 'ongeveer 15', '30 en meer'], miss: ['op kantoor, tijdens de kantooruren', 'als ik kan', 'nooit tijdens een interventie'], read: 'Uw overzicht', per: 'minuten per maand', avg: '1 min 41', calls_w: 'oproepen per dag', days: 'werkdagen', notTaken: 'die u niet opneemt', callsU: 'oproepen', mean: 'gemiddeld', verdict: 'Uw formule: <b>{n}</b>, {p} per maand excl. btw, de eerste schijf die uw {m} minuten dekt.', over: 'Boven {max} minuten: <b>op offerte</b>. Zullen we erover praten?', caveat: 'Dat zijn {c} oproepen per maand die vandaag in het niets rinkelen.', fmtLocale: 'nl-BE' },
+  en: { q1: 'How many calls do you get a day?', q2: 'When do you pick up?', calls: ['about 5', 'about 15', '30 or more'], miss: ['at the office, during office hours', 'when I can', 'never during a job'], read: 'Your figures', per: 'minutes a month', avg: '1 min 41', calls_w: 'calls a day', days: 'working days', notTaken: 'that you miss', callsU: 'calls', mean: 'on average', verdict: 'Your plan: <b>{n}</b>, {p} a month excl. VAT, the first tier that covers your {m} minutes.', over: 'Beyond {max} minutes: <b>on quote</b>. Shall we talk?', caveat: 'That is {c} calls a month ringing out today.', fmtLocale: 'en-GB' },
 };
 
 function table(c) {
@@ -21,8 +21,8 @@ function table(c) {
   const cell = (row, f, i) => {
     if (row.v === 'minutes') return num(f.minutes, lang);
     if (row.v === 'agendas') return f.agendas_txt[lang].replace(/ agendas?$| agenda's?$| calendars?$/, '') || f.agendas_txt[lang];
-    if (row.v === 'sms') return f.sms_secours ? T.sms_mois[lang].replace('{n}', num(f.sms_secours, lang)) : '<span class="no" aria-label="non">—</span>';
-    return row.v[i] ? `${ico.check}<span class="sr">oui</span>` : '<span class="no">—</span><span class="sr">non</span>';
+    if (row.v === 'sms') return f.sms_secours ? T.sms_mois[lang].replace('{n}', num(f.sms_secours, lang)) : '<span class="no" aria-label="non">–</span>';
+    return row.v[i] ? `${ico.check}<span class="sr">oui</span>` : '<span class="no">–</span><span class="sr">non</span>';
   };
   const head = F.map((f) => `<th scope="col"${f.recommandee ? ' class="hl"' : ''}>${f.nom[lang]} · ${eur(f.prix_ht, lang)}</th>`).join('');
   const rows = T.lignes.map((row) => `<tr><th scope="row">${row[lang]}</th>${F.map((f, i) => `<td data-label="${f.nom[lang]}"${f.recommandee ? ' class="hl"' : ''}>${cell(row, f, i)}</td>`).join('')}</tr>`).join('');
@@ -53,11 +53,11 @@ function diag(c, b) {
 </div>
 </div></div></section>
 <script>
-/* Le diagnostic — deux réponses, une formule, le calcul posé à l'écran.
+/* Le diagnostic : deux réponses, une formule, le calcul posé à l'écran.
    Aucune donnée envoyée, rien stocké. Paliers et prix : data/offre.json.
    DUREE : 1 min 41 (101 s) par appel, moyenne relevée dans la table calls du
    projet Supabase celya-sales-agent, appels entrants des deux clients réels,
-   du 23/07 au 04/09/2026 — 101 appels sur sept semaines (voir l'historique de
+   du 23/07 au 04/09/2026, soit 101 appels sur sept semaines (voir l'historique de
    prix.html). Les parts d'appels non pris (35 / 60 / 85 %) traduisent ce que
    le visiteur déclare ; 22 jours ouvrés par mois est la convention usuelle. */
 (function(){

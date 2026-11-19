@@ -2,7 +2,7 @@
   "_doc": "Textes des composants partagés, par langue. Aucun montant ni quota ici : ils viennent de data/offre.json par les jetons {{offre.…}}. Les liens sont relatifs à l'accueil de la langue (fr : racine, nl : nl/, en : en/).",
   "fr": {
     "base": "",
-    "home_label": "Celya — accueil",
+    "home_label": "Celya, accueil",
     "skip": "Aller au contenu",
     "nav": [
       {
@@ -771,7 +771,7 @@
   },
   "nl": {
     "base": "nl/",
-    "home_label": "Celya — home",
+    "home_label": "Celya, home",
     "skip": "Naar de inhoud",
     "nav": [
       {
@@ -1517,7 +1517,7 @@
   },
   "en": {
     "base": "en/",
-    "home_label": "Celya — home",
+    "home_label": "Celya, home",
     "skip": "Skip to content",
     "nav": [
       {

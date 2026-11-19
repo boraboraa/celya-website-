@@ -51,6 +51,22 @@ mais il ne couvre pas tout le tableau — la relecture reste obligatoire.
   Celya : on ne reproduit pas l'interface de WhatsApp ni celle de Google.
 - aucune revendication multilingue au-delà de FR + NL **en promesse de service**
 - **aucun chiffre sans sa source et sa date**
+- **aucun tiret long « — » (U+2014), nulle part sur le site : décision de Bora
+  du 19 novembre 2026** (il donne au texte un air écrit par une IA). Les titres
+  finissent par « | Celya » (`<title>`, `og:title`, `twitter:title`, `name` du
+  JSON-LD) ; dans le texte, une virgule, un deux-points, un point ou des
+  parenthèses, selon ce qui se lit le mieux ; dans un libellé d'interface, « · »,
+  un deux-points ou deux éléments. Le tiret demi-cadratin « – » des plages
+  (10–15, 9h–18h) reste, et marque aussi une case vide (tableau des prix,
+  calculateurs). Le nom de l'agenda créé chez le client s'écrit « Celya –
+  Réservations ». `node tests/tiret-long.mjs` échoue sur tout tiret long
+  (caractère, `&mdash;`, `&#8212;`, `\u2014` dans un script) dans les fichiers
+  servis et dans `_src/` et `data/` ; seuls les outils d'extraction de
+  `_src/tools/` gardent la forme échappée `\u2014` dans leurs chaînes.
+  Seconde exception datée au bloc consentement : le commentaire du Consent Mode
+  par défaut du `<head>` devient « Consent Mode v2 : tout est refusé… » (un
+  caractère d'un commentaire ; le code reste identique à l'octet,
+  `tests/consentement.mjs` le vérifie).
 
 ## L'entité : Celya Technologies SRL, et la TVA qui n'est pas encore là
 
@@ -62,8 +78,9 @@ l'ancienne dénomination comme sur son numéro doit renvoyer **zéro**. Le sièg
 lui, n'a pas bougé.
 
 **La TVA n'est pas activée.** Le numéro se publie donc en une seule forme,
-`BE 1042.115.837 — en cours d'activation` (NL : `activering loopt`, EN :
-`activation in progress`), et **jamais seul**. Le pied de page, lui, porte le
+`BE 1042.115.837 (en cours d'activation)` (NL : `(activering loopt)`, EN :
+`(activation in progress)`), et **jamais seul** (entre parenthèses depuis le
+19/11/2026 : plus de tiret long sur le site). Le pied de page, lui, porte le
 numéro d'entreprise sous son libellé de numéro d'entreprise : `BCE/KBO
 1042.115.837`.
 
@@ -632,6 +649,7 @@ node tests/scene.mjs                 # la scène : placement, textes par métier
 node tests/lp.mjs                    # pages d'atterrissage : ordre des blocs, formulaire, liens, barre mobile
 node tests/dates.mjs                 # chaque jour de la semaine correspond à sa date (2026 par défaut)
 node tests/attribution.mjs           # UTM / gclid / fbclid : session sans accord, 90 jours après « Accepter », rien après « Refuser »
+node tests/tiret-long.mjs            # aucun tiret long dans les fichiers servis, _src/ et data/ (19/11/2026)
 ```
 
 **Le générateur (lot du 14/11/2026).** Les pages migrées ne s'éditent plus à

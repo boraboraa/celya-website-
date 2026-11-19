@@ -7,7 +7,7 @@ import { badges } from './blocks.mjs';
 /* Le Consent Mode v2 par défaut, recopié de l'ancien <head> à l'octet près :
  * tout est refusé tant que le visiteur n'a pas accepté. Ne pas toucher. */
 export const CONSENT_DEFAULT = `<script>
-/* Consent Mode v2 — tout est refusé tant que le visiteur n'a pas accepté */
+/* Consent Mode v2 : tout est refusé tant que le visiteur n'a pas accepté */
 window.dataLayer=window.dataLayer||[];
 function gtag(){dataLayer.push(arguments)}
 gtag('consent','default',{ad_storage:'denied',analytics_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',wait_for_update:500});
@@ -117,7 +117,7 @@ ${cols}
 
 /* ---------- barre d'appel mobile (sous 720 px) ---------- */
 
-/** second : [href, libellé] — pages d'atterrissage : « Être rappelé », vers le formulaire de la page */
+/** second : [href, libellé] ; pages d'atterrissage : « Être rappelé », vers le formulaire de la page */
 function mbar(c, second) {
   const b2 = second ? `<a class="btn btn-line" href="${second[0]}">${second[1]}</a>` : demoBtn(c, 'btn-line');
   return `<div class="mbar" aria-label="${esc(c.t.mbar_label)}" role="region">${callBtn(c, 'btn-orange')}${b2}</div>`;

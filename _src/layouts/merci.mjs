@@ -1,4 +1,4 @@
-/* merci.html : noindex, hors sitemap — après l'envoi du formulaire démo.
+/* merci.html : noindex, hors sitemap, après l'envoi du formulaire démo.
  * Lot du 18/11/2026 : « C'est reçu. On vous rappelle sous 24 heures. En
  * attendant, appelez Janet : c'est la meilleure démo. », puis un seul bouton,
  * « Appeler Janet » avec le numéro (celui de data/offre.json, comme partout). */

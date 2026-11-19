@@ -1,10 +1,10 @@
-/* Pages d'atterrissage (lp/, nl/lp/) : un seul objectif, la démo — ou
- * l'appel. noindex, hors sitemap, sans menu (en-tête « bare » : logo et
+/* Pages d'atterrissage (lp/, nl/lp/) : un seul objectif, la démo (ou
+ * l'appel). noindex, hors sitemap, sans menu (en-tête « bare » : logo et
  * bouton d'appel).
  *
  * Lot conversion Google Ads du 16/11/2026 (décision de Bora, exception datée
  * de CLAUDE.md) : le héros porte la vidéo de fond de l'accueil, et le
- * formulaire de démo y est posé en transparence — sur ces quatre pages
+ * formulaire de démo y est posé en transparence, sur ces quatre pages
  * seulement. Puis, dans cet ordre : badges, la scène « Un appel, de bout en
  * bout », Comment ça marche (quatre étapes), les cases RDV / À rappeler /
  * Urgent, « Appelez-la, comme un client », les prix (bouton vers le
@@ -24,7 +24,7 @@ export default function lp(c) {
   const metier = page.meta.metier;
   const M = metier && c.data.metiers[metier] && c.data.metiers[metier][c.lang];
   const form = '#lp';
-  /* data-lead de la page : « lp-garages », « lp-ne-plus-rater-d-appels »… — il
+  /* data-lead de la page : « lp-garages », « lp-ne-plus-rater-d-appels »… : il
    * part dans form des événements generate_lead et click_call (17/11/2026) */
   const lead = 'lp-' + c.rel.split('/').pop().replace(/\.html$/, '');
   /* le héros : le texte et le formulaire passent sur la vidéo, voile crème léger.

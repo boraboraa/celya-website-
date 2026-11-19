@@ -113,7 +113,7 @@ def extract(fid):
 
 def main():
     old = json.load(open(OUT, encoding='utf-8')) if os.path.exists(OUT) else {}
-    data = {'_doc': old.get('_doc', "Textes propres à chaque métier (ruban, cases, agenda, confirmation, visuels des cartes). Partie fr extraite des maquettes par _src/tools/extraire_metiers.py ; parties nl/en traduites à la main. « video » : null tant qu'aucune source n'existe — le composant montre alors la photo seule, sans bouton lecture.")}
+    data = {'_doc': old.get('_doc', "Textes propres à chaque métier (ruban, cases, agenda, confirmation, visuels des cartes). Partie fr extraite des maquettes par _src/tools/extraire_metiers.py ; parties nl/en traduites à la main. « video » : null tant qu'aucune source n'existe : le composant montre alors la photo seule, sans bouton lecture.")}
     for fid in PAGES:
         e = extract(fid)
         prev = old.get(fid, {})

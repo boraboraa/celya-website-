@@ -1,13 +1,13 @@
-/* Celya — JS du thème clair (lot « refonte premium », 14/11/2026).
+/* Celya : JS du thème clair (lot « refonte premium », 14/11/2026).
    GTM (GTM-KF9QCKB2) ne se charge QU'APRÈS le consentement (localStorage
-   'celya-consent') — jamais d'iframe noscript. GA4 est configuré DANS GTM.
+   'celya-consent'), jamais d'iframe noscript. GA4 est configuré DANS GTM.
    Aucun pixel en dur : tout événement passe par dataLayer, et seulement si le
    visiteur a accepté les cookies.
 
    Budget navigateur : une seule boucle requestAnimationFrame (RAF), qui ne
    tourne que lorsqu'il y a du travail ; un seul écouteur scroll et un seul
    resize, passifs (onScroll / onResize) ; aucune mesure de mise en page dans
-   la boucle — tout passe par vrect() / drect(), en cache ; les animations CSS
+   la boucle : tout passe par vrect() / drect(), en cache ; les animations CSS
    hors écran sont en pause (.anim-off), la vidéo du héros aussi. */
 
 (function(){
@@ -114,7 +114,7 @@
       if(on)play();else v.pause();
     }).observe(hero);
     /* pages d'atterrissage (data-hv="lp") : la vidéo seule, sans l'effet au
-       défilement — l'exception d'opacité du 15/11/2026 ne couvre que les accueils */
+       défilement ; l'exception d'opacité du 15/11/2026 ne couvre que les accueils */
     if(hero.getAttribute('data-hv')==='lp')return;
     /* mesures : une fois, puis à chaque resize */
     var H=0,dx=0,dy=0,S=72/28;

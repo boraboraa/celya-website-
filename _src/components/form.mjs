@@ -3,7 +3,7 @@
  * Champs cachés d'attribution remplis par celya.js depuis la session.
  *
  * Lot du 18/11/2026 (décisions de Bora) : un titre qui promet (« On vous
- * rappelle sous 24 heures ») et sa phrase ; plus de case d'accord — une
+ * rappelle sous 24 heures ») et sa phrase ; plus de case d'accord, une
  * phrase sous le bouton, et envoyer vaut accord (data-accord : celya.js envoie
  * consent_contact: true) ; le métier pré-rempli quand la page en a un (pages
  * d'atterrissage garages), toujours visible et modifiable ; un dernier champ

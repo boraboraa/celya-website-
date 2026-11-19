@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Pages légales (mentions légales, confidentialité, cookies ; FR, NL, EN), une
 fois : le <head> SEO et le contenu de <main class="legal"> sont recopiés tels
-quels — texte inchangé, à l'octet près. Refuse une page déjà générée.
+quels : texte inchangé, à l'octet près. Refuse une page déjà générée.
 
     python3 _src/tools/legal_source.py legal.html privacy.html cookies.html nl/legal.html …
 """

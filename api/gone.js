@@ -1,5 +1,5 @@
 /**
- * 410 Gone — anciennes pages de services qui n'ont aucun équivalent sur le site actuel.
+ * 410 Gone : anciennes pages de services qui n'ont aucun équivalent sur le site actuel.
  *
  * Rediriger ces URLs vers l'accueil les fait traiter comme des soft 404 : Google les
  * garde en file d'attente et consomme le budget d'exploration. Un 410 dit explicitement

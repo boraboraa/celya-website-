@@ -1,4 +1,4 @@
-/* Celya — noyau du générateur (Node 22, aucune dépendance).
+/* Celya : noyau du générateur (Node 22, aucune dépendance).
  *
  * Une page source (_src/pages/<chemin>.html) est un fichier HTML découpé en
  * blocs par des commentaires-balises :
@@ -12,7 +12,7 @@
  * Un bloc court jusqu'au marqueur suivant. Les blocs de même nom s'empilent
  * dans l'ordre (page.blocks.section = [..]). Rien n'est interprété dans le
  * contenu d'un bloc, sauf les jetons {{offre.…}} / {{t.…}} résolus à la fin,
- * sur la page entière — <head> et JSON-LD compris, pour que la FAQ visible et
+ * sur la page entière (<head> et JSON-LD compris), pour que la FAQ visible et
  * le FAQPage portent toujours le même montant.
  */
 import fs from 'node:fs';
@@ -104,7 +104,7 @@ export function offreTokens(offre, lang) {
   return t;
 }
 
-/** Résout {{clé}} — une clé inconnue arrête la construction. */
+/** Résout {{clé}} ; une clé inconnue arrête la construction. */
 export function fill(html, tokens, file) {
   return html.replace(/\{\{\s*([a-z0-9_.]+)\s*\}\}/gi, (m, k) => {
     if (!(k in tokens)) throw new Error(`${file} : jeton inconnu {{${k}}}`);

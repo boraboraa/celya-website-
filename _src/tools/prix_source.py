@@ -26,12 +26,12 @@ T = {
 <p>Geen verborgen kosten, geen toeslag voor ruimere uren, niets te installeren bij u. En stopt u, dan zet u de doorschakeling af&nbsp;: uw oproepen komen terug bij u, er valt niets af te breken.</p>''',
    tableau='<h2>Formule per formule, <em>regel per regel.</em></h2>',
    diag='''<p>Vertrek van wat u ziet&nbsp;: hoeveel oproepen per dag, hoeveel u er mist. De berekening geeft een formule. Gaat u de maand erna erboven, dan schuift u gewoon door naar de formule erboven.</p>
-<p class="diag-call">Geloof ons niet op ons woord. <a href="tel:{{offre.tel_e164}}" data-call>{{offre.tel}}</a> — Janet neemt op. Het is een AI&nbsp;: u hoort het, of niet.</p>''',
+<p class="diag-call">Geloof ons niet op ons woord. <a href="tel:{{offre.tel_e164}}" data-call>{{offre.tel}}</a> \u2014 Janet neemt op. Het is een AI&nbsp;: u hoort het, of niet.</p>''',
    diag_kick='De diagnose',
    table=[('<b>75, 150 of 300&nbsp;€</b> exclusief btw, volgens de formule. Nooit per minuut.', '<b>{{offre.essentiel.prix}}, {{offre.pro.prix}} of {{offre.premier.prix}}&nbsp;€</b> exclusief btw, volgens de formule. Nooit per minuut.'),
           ('Eén, twee of vier gelijktijdige oproepen volgens de formule, zonder dubbele wachttijd. Het seizoenspiek vraagt geen aanwerving.', 'Meerdere oproepen tegelijk, zonder dubbele wachttijd. Het seizoenspiek vraagt geen aanwerving.')],
-   faq=[("Niet systematisch. Er is wel echt instelwerk — uw uren, uw diensten, uw doorschakelregels, uw standaardantwoorden — en dat is net wat een agent die juist antwoordt onderscheidt van een algemene. Wordt dat werk aangerekend, dan is het afgetopt op één maandbedrag van uw formule, nooit meer.",
-         "Ja: één maandbedrag van uw formule, één keer. Er is echt instelwerk — uw uren, uw diensten, uw doorschakelregels, uw standaardantwoorden — en dat is net wat een agent die juist antwoordt onderscheidt van een algemene. Er komt niets bij.")],
+   faq=[("Niet systematisch. Er is wel echt instelwerk \u2014 uw uren, uw diensten, uw doorschakelregels, uw standaardantwoorden \u2014 en dat is net wat een agent die juist antwoordt onderscheidt van een algemene. Wordt dat werk aangerekend, dan is het afgetopt op één maandbedrag van uw formule, nooit meer.",
+         "Ja: één maandbedrag van uw formule, één keer. Er is echt instelwerk \u2014 uw uren, uw diensten, uw doorschakelregels, uw standaardantwoorden \u2014 en dat is net wat een agent die juist antwoordt onderscheidt van een algemene. Er komt niets bij.")],
  ),
  'en': dict(
    rel='en/pricing.html',
@@ -42,13 +42,13 @@ T = {
 <p>No hidden fees, no surcharge for wider hours, nothing to install at your place. And if you stop, you switch off call forwarding: your calls come back to you, there is nothing to take down.</p>''',
    tableau='<h2>Plan by plan, <em>line by line.</em></h2>',
    diag='''<p>Start from what you can see: how many calls a day, how many you miss. The arithmetic gives a plan. If you go over the next month, you simply move up to the plan above.</p>
-<p class="diag-call">Don't take our word for it. <a href="tel:{{offre.tel_e164}}" data-call>{{offre.tel}}</a> — Janet picks up. She is an AI: you will hear it, or not.</p>''',
+<p class="diag-call">Don't take our word for it. <a href="tel:{{offre.tel_e164}}" data-call>{{offre.tel}}</a> \u2014 Janet picks up. She is an AI: you will hear it, or not.</p>''',
    diag_kick='The diagnostic',
    table=[('<b>&euro;75, &euro;150 or &euro;300</b> excl. VAT, depending on the plan. Never by the minute.', '<b>€{{offre.essentiel.prix}}, €{{offre.pro.prix}} or €{{offre.premier.prix}}</b> excl. VAT, depending on the plan. Never by the minute.'),
           ('One, two or four simultaneous calls depending on the plan, with no doubled wait. A seasonal peak calls for no hiring.', 'Several calls at the same time, with no doubled wait. A seasonal peak calls for no hiring.')],
-   faq=[("Not as a rule. There is real configuration work — your hours, your services, your transfer rules, your standard answers — and that is what separates an agent that answers properly from a generic one. When that work is charged, it is capped at one month of your plan, never more.",
-         "Yes: one month of your plan, once. There is real configuration work — your hours, your services, your transfer rules, your standard answers — and that is what separates an agent that answers properly from a generic one. Nothing else is added."),
-        ]  # 16/11/2026 : l'offre d'essai est retirée — la réponse d'origine sur l'engagement reste,
+   faq=[("Not as a rule. There is real configuration work \u2014 your hours, your services, your transfer rules, your standard answers \u2014 and that is what separates an agent that answers properly from a generic one. When that work is charged, it is capped at one month of your plan, never more.",
+         "Yes: one month of your plan, once. There is real configuration work \u2014 your hours, your services, your transfer rules, your standard answers \u2014 and that is what separates an agent that answers properly from a generic one. Nothing else is added."),
+        ]  # 16/11/2026 : l'offre d'essai est retirée ; la réponse d'origine sur l'engagement reste,
  ),
 }
 

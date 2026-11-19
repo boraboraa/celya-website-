@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-/* Celya — générateur du site (Node 22, aucune dépendance).
+/* Celya : générateur du site (Node 22, aucune dépendance).
  *
  *   node _src/build.mjs              construit toutes les pages de _src/pages
  *   node _src/build.mjs a.html …     seulement celles-là (chemins de sortie)

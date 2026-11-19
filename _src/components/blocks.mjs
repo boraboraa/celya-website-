@@ -37,7 +37,7 @@ export function ribbon(c, r) {
   const chip = r.chip.cal
     ? `<span class="rib-chip"><img src="${root}assets/brand/gcal-64.webp" width="22" height="22" alt=""><span><b>${r.chip.b}</b> · ${r.chip.s}</span></span>`
     : `<span class="rib-chip">${ico.phone}<span><b>${r.chip.b}</b> · ${r.chip.s}</span></span>`;
-  const sum = `${t.incoming} · ${r.heure} — « ${r.appelant[0]} » — ${t.janet_answers} : « ${r.janet[0]} » — ${strip(r.chip.b)} · ${strip(r.chip.s)}. ${r.wa.titre} (${r.wa.sous}).`;
+  const sum = `${t.incoming} · ${r.heure}. « ${r.appelant[0]} » ${t.janet_answers} : « ${r.janet[0]} » ${strip(r.chip.b)} · ${strip(r.chip.s)}. ${r.wa.titre} (${r.wa.sous}).`;
   return `<figure class="rib">
 <figcaption class="sr">${esc(sum)}</figcaption>
 <div class="rib-stage" aria-hidden="true">
@@ -74,7 +74,7 @@ export function video(c, { photo, alt, v, title }) {
   const tracks = (v.tracks || []).map((tr) => `<track kind="captions" srclang="${tr.lang}" label="${esc(tr.label)}" src="${src(tr.src)}"${tr.lang === c.lang ? ' default' : ''}>`).join('');
   return `<div class="vid">
 <video preload="none" playsinline poster="${src(poster)}" width="1600" height="900">${v.webm ? `<source src="${src(v.webm)}" type="video/webm">` : ''}<source src="${src(v.mp4)}" type="video/mp4">${tracks}</video>
-<button class="vid-play" type="button" aria-label="${esc(c.t.video_play)} — ${esc(strip(title || c.t.video_title))}">${ico.play}</button>
+<button class="vid-play" type="button" aria-label="${esc(c.t.video_play)}${c.lang === 'fr' ? ' : ' : ': '}${esc(strip(title || c.t.video_title))}">${ico.play}</button>
 <p class="vid-cap" aria-hidden="true"><b>${title || c.t.video_title}</b>${v.duree ? `<span>${v.duree}</span>` : ''}</p>
 </div>`;
 }
@@ -253,7 +253,7 @@ export function priceCards(c) {
 
 /** h2 : true = titre du composant (« Dès … HT par mois », price_h2) ; ou HTML d'un H2 existant */
 /** demoHref / demoLabel : cible et libellé du bouton « Demander une démo » (pages d'atterrissage :
- *  « #lp » et « Être rappelé pour une démo », le bouton du formulaire de la page — une action, un nom) */
+ *  « #lp » et « Être rappelé pour une démo », le bouton du formulaire de la page : une action, un nom) */
 export function prices(c, { h2 = true, intro = '', id = '', demoHref = '', demoLabel = '' } = {}) {
   const { t } = c;
   const title = h2 === true ? H(2, t.price_h2) : h2;
@@ -282,7 +282,7 @@ export function faq(c, block, { id = 'faq' } = {}) {
 }
 
 /** demoHref / demoLabel : cible et libellé de « Demander une démo » (pages d'atterrissage : « #lp » et
- *  « Être rappelé pour une démo », le bouton du formulaire — décisions de Bora des 16 et 17/11/2026) */
+ *  « Être rappelé pour une démo », le bouton du formulaire ; décisions de Bora des 16 et 17/11/2026) */
 export function ctaFinal(c, block, { demoHref = '', demoLabel = '' } = {}) {
   const { h2, body } = splitH2(block.html);
   return `<section class="sec-panel"><div class="panel bg-ink cta-final">

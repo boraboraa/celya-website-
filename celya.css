@@ -1,4 +1,4 @@
-/* Celya — feuille unique du thème clair (lot « refonte premium », 14/11/2026).
+/* Celya : feuille unique du thème clair (lot « refonte premium », 14/11/2026).
    Tokens, polices et composants : tout est ici, rien ailleurs.
    Budget de rendu (CLAUDE.md) : aucun backdrop-filter, un seul will-change
    (aucun ici), aucun filter: sur un élément qui bouge ; les animations ne
@@ -1020,7 +1020,7 @@ fieldset.f-moment{border:0;padding:0;margin:0;display:flex;flex-direction:column
 
 /* ---------- la scène « Un appel, de bout en bout » (lot conversion du 16/11/2026) ----------
    Le repos (sans animation) est l'état final : les cinq étapes empilées,
-   lisibles — c'est ce que voit prefers-reduced-motion. Avec mouvement, les
+   lisibles : c'est ce que voit prefers-reduced-motion. Avec mouvement, les
    étapes se superposent et se relaient sur une boucle de 15 s : transform et
    opacity seulement, une @keyframes par mouvement (étape, apparition,
    glissement, surlignage). Toute la scène se met en pause d'un bloc hors écran
