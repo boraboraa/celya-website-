@@ -418,16 +418,21 @@ Brief : `docs/maquettes-16-11/PROMPT-conversion-16-11.md`, aperçu validé
 **Lot « accès à l'application » du 19 novembre 2026 (décision de Bora, PR
 #35).** Brief : la règle de l'essai ci-dessus.
 
-- **En-tête des pages avec menu**, dans `.hdr-cta` et dans cet ordre :
-  « Se connecter » en lien texte (`.hdr-login`, 15 px, 600, encre),
-  « Demander une démo » (bouton contour), « Essai gratuit » (bouton orange,
-  `.hdr-trial`). **« Appeler Janet » n'est plus dans l'en-tête** ; il reste
-  dans les héros, la barre mobile, les CTA et l'en-tête des pages
-  d'atterrissage. Sous 720 px, seul « Essai gratuit » reste à côté du menu.
-- **Le menu passe en burger sous 1260 px** (`max-width:1259px` dans
-  `celya.css`, `innerWidth>1259` dans `celya.js` : les deux ensemble). Mesuré :
-  l'en-tête FR complet ne tient qu'à partir de 1235 px ; 1259 laisse 25 px de
-  marge. Le NL tient dès 1181 px, l'EN avec 96 px de reste.
+- **En-tête des pages avec menu** (révisé le 19/11/2026, décision de Bora :
+  deux gros boutons côte à côte se disputaient le clic), dans `.hdr-cta` :
+  « Se connecter » en lien texte (`.hdr-login`, 15 px, 600, encre), puis
+  **un seul bouton, « Demander une démo » en orange** (`.hdr-demo`), la
+  conversion principale. **« Essai gratuit » n'est plus dans l'en-tête** : il
+  vit sous les grilles de prix et dans le menu mobile. « Appeler Janet » n'y
+  est pas non plus ; il reste dans les héros, la barre mobile, les CTA et
+  l'en-tête des pages d'atterrissage. Sous 720 px, seul « Demander une démo »
+  reste à côté du menu. **La langue est un sélecteur « FR ▾ »** (`langDrop`,
+  `.drop.hdr-lang`) qui ouvre les autres langues au survol et au clavier,
+  comme le menu des métiers ; le menu mobile garde ses trois liens.
+- **Le menu passe en burger sous 1181 px** (`max-width:1180px` dans
+  `celya.css`, `innerWidth>1180` dans `celya.js` : les deux ensemble), comme
+  avant le 19/11. Mesuré : l'en-tête FR complet tient dès 1065 px, NL dès 985,
+  EN dès 950 ; 1180 laisse 115 px de marge.
 - **Menu mobile**, avant le choix de langue : « Essai gratuit · 14 jours »
   (pleine largeur, orange), « Demander une démo » (contour), « Se connecter »
   (lien centré). **Pied de page** : « Se connecter » après Contact dans la
@@ -437,7 +442,7 @@ Brief : `docs/maquettes-16-11/PROMPT-conversion-16-11.md`, aperçu validé
   `priceGo`) : « Commencer l'essai gratuit » (orange), « Demander une démo »
   (contour), puis la règle de l'essai, de `data/offre.json`.
 - **Mesure** : au clic, `sign_up_start` (essai) ou `login_click` (connexion),
-  avec `place` (`header`, `menu`, `pricing`, `footer`), `page`, `lang` ; par
+  avec `place` (`header` pour la connexion seulement, `menu`, `pricing`, `footer`), `page`, `lang` ; par
   l'écouteur de clic existant de `celya.js` (`a[data-app]`, `data-place`),
   seulement avec l'accord cookies, comme les autres événements. `click_call`
   et `generate_lead` ne changent pas ; le bloc consentement non plus.

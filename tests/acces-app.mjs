@@ -6,9 +6,10 @@
  * les pages NL et EN y ajoutent ?lang=nl / ?lang=en.
  *
  *   url      chaque adresse est écrite une seule fois dans _src/ et data/ ;
- *   header   pages avec menu : dans .hdr-cta, dans cet ordre, « Se connecter »
- *            (lien texte), « Demander une démo », « Essai gratuit » (bouton
- *            orange) ; plus de bouton « Appeler Janet » dans l'en-tête ;
+ *   header   pages avec menu : dans .hdr-cta, « Se connecter » (lien texte)
+ *            puis « Demander une démo » (bouton orange), rien d'autre : ni
+ *            « Essai gratuit », ni « Appeler Janet » ; la langue est un
+ *            sélecteur « FR ▾ » (révision du 19/11/2026, décision de Bora) ;
  *   menu     menu mobile : « Essai gratuit · N jours », « Demander une démo »,
  *            « Se connecter », juste avant le choix de langue ;
  *   footer   pied de page : « Se connecter » dans la colonne Entreprise, après
@@ -19,7 +20,7 @@
  *   lp       pages d'atterrissage : aucun lien vers l'application, la grille
  *            garde sa seule démo vers le formulaire de la page ;
  *   layout   l'en-tête tient dans son cadre (360 à 1440 px, FR/NL/EN) ; sous
- *            720 px seul « Essai gratuit » reste à côté du menu ; le menu
+ *            720 px seul « Demander une démo » reste à côté du menu ; le menu
  *            ouvert garde le bloc dans son cadre ;
  *   events   avec accord cookies : sign_up_start / login_click {place, page,
  *            lang} au clic (en-tête, menu, prix, pied de page) ; rien sans
@@ -84,9 +85,12 @@ function statics(root) {
     /* en-tête */
     const cta = (/<div class="hdr-cta">([\s\S]*?)<\/div>\n<button class="burger"/.exec(html) || [])[1] || '';
     const want = new RegExp(`^<a class="hdr-login" href="${reEsc(L)}" data-app="login" data-place="header">${reEsc(t.login)}</a>` +
-      `<a class="btn btn-line btn-sm hdr-demo" href="[^"]+" data-demo>${reEsc(t.cta_demo)}</a>` +
-      `<a class="btn btn-orange btn-sm hdr-trial" href="${reEsc(S)}" data-app="signup" data-place="header">${reEsc(t.trial)}</a>$`);
+      `<a class="btn btn-orange btn-sm hdr-demo" href="[^"]+" data-demo>${reEsc(t.cta_demo)}</a>$`);
     if (!want.test(cta)) F.header.push(`${rel} : en-tête « ${cta.slice(0, 160)}… »`);
+    const hdr = (/<header class="hdr">[\s\S]*?<\/header>/.exec(html) || [''])[0];
+    if (/<div class="hdr-lang">/.test(hdr)) F.header.push(`${rel} : langues en liens côte à côte dans l'en-tête`);
+    const langDrop = /<div class="drop hdr-lang"><span class="drop-t" tabindex="0" aria-label="[^"]+">([A-Z]{2})<svg[\s\S]*?<div class="drop-p lang-p">((?:<a href="[^"]+" hreflang="[a-z]{2}" lang="[a-z]{2}">[A-Z]{2}<\/a>)+)<\/div><\/div>/.exec(hdr);
+    if (/<nav class="mnav"[\s\S]*?<div class="mnav-lang">[\s\S]*?hreflang=/.test(html) && (!langDrop || langDrop[1] !== lang.toUpperCase() || langDrop[2].includes(`>${lang.toUpperCase()}<`))) F.header.push(`${rel} : sélecteur de langue « ${lang.toUpperCase()} ▾ » absent ou faux`);
     if (/<header class="hdr">[\s\S]*?data-call[\s\S]*?<\/header>/.test(html)) F.header.push(`${rel} : « ${t.cta_call} » encore dans l'en-tête`);
     /* menu mobile */
     const menu = new RegExp(`<div class="mnav-app"><a class="btn btn-orange" href="${reEsc(S)}" data-app="signup" data-place="menu">${reEsc(t.trial_menu.replace('{{offre.essai}}', days))}</a>` +
@@ -101,7 +105,7 @@ function statics(root) {
     const nL = html.split(`"${L}"`).length - 1, nS = html.split(`"${S}"`).length - 1;
     const go = html.match(/<div class="price-go">[\s\S]*?<\/div>/g) || [];
     if (nL !== 3) F.footer.push(`${rel} : ${nL} lien(s) « ${t.login} » (3 attendus : en-tête, menu, pied de page)`);
-    if (nS !== 2 + go.length) F.pricing.push(`${rel} : ${nS} lien(s) d'essai pour ${go.length} grille(s) (2 + grilles attendus)`);
+    if (nS !== 1 + go.length) F.pricing.push(`${rel} : ${nS} lien(s) d'essai pour ${go.length} grille(s) (menu + grilles attendus)`);
     /* grille de prix */
     const rule = offre.regles.essai[lang].replace('{{offre.essai}}', days) + '.';
     for (const g of go) {
@@ -133,7 +137,7 @@ function serve(root) {
   });
 }
 
-async function browserChecks(root, browser, { widths = [360, 390, 768, 1024, 1181, 1200, 1259, 1260, 1280, 1440], pages = ['index.html', 'nl/index.html', 'en/index.html', 'prise-de-message.html'] } = {}) {
+async function browserChecks(root, browser, { widths = [360, 390, 768, 1024, 1050, 1180, 1181, 1200, 1280, 1440], pages = ['index.html', 'nl/index.html', 'en/index.html', 'prise-de-message.html'] } = {}) {
   const F = { layout: [], events: [] };
   const srv = await serve(root);
   const base = `http://127.0.0.1:${srv.address().port}/`;
@@ -166,7 +170,7 @@ async function browserChecks(root, browser, { widths = [360, 390, 768, 1024, 118
         const lines = [...document.querySelectorAll('.hdr-cta > *')].filter(vis).every((e) => e.getClientRects().length === 1 && e.getBoundingClientRect().height < 60);
         return { out, sw: document.documentElement.scrollWidth, vw: innerWidth, order: order.map((x) => x[0]), sorted, lines, burger: vis(document.querySelector('.burger')), nav: vis(document.querySelector('.hdr-nav')) };
       });
-      const wantOrder = w <= 720 ? ['hdr-trial'] : ['hdr-login', 'hdr-demo', 'hdr-trial'];
+      const wantOrder = w <= 720 ? ['hdr-demo'] : ['hdr-login', 'hdr-demo'];
       const okLayout = !r.out.length && r.sw === r.vw && r.sorted && r.lines && JSON.stringify(r.order) === JSON.stringify(wantOrder) && r.burger === (w <= burgerMax) && r.nav === (w > burgerMax);
       if (!okLayout) F.layout.push(`${rel} @${w} : ${JSON.stringify(r)}`);
       if (r.burger) {
@@ -187,7 +191,7 @@ async function browserChecks(root, browser, { widths = [360, 390, 768, 1024, 118
   }
   /* events */
   const cases = [
-    ['index.html', 1440, '.hdr-trial', 'sign_up_start', 'header', 'fr'],
+    ['index.html', 1440, '.hdr-login', 'login_click', 'header', 'fr'],
     ['nl/index.html', 1440, '.hdr-login', 'login_click', 'header', 'nl'],
     ['en/index.html', 390, '.mnav-app [data-app=signup]', 'sign_up_start', 'menu', 'en'],
     ['index.html', 390, '.mnav-login', 'login_click', 'menu', 'fr'],
@@ -223,7 +227,7 @@ async function run(root, { quiet = false, browserOpts } = {}) {
   await browser.close();
   const F = { ...s.F, ...b };
   if (!quiet) {
-    const label = { url: 'adresses écrites une seule fois (shell.mjs)', header: `en-tête des ${s.normal} pages avec menu : Se connecter, démo, essai`, menu: 'menu mobile : essai, démo, connexion avant la langue', footer: 'pied de page : Se connecter après Contact', pricing: `${s.prices} grilles de prix : essai, démo, règle de l'essai`, lp: `${s.lps} pages d'atterrissage : aucun lien vers l'application`, layout: 'en-tête dans son cadre, ordre, menu (360 à 1440 px, FR/NL/EN)', events: 'sign_up_start / login_click avec accord, rien sans' };
+    const label = { url: 'adresses écrites une seule fois (shell.mjs)', header: `en-tête des ${s.normal} pages avec menu : Se connecter, démo ; langue en sélecteur`, menu: 'menu mobile : essai, démo, connexion avant la langue', footer: 'pied de page : Se connecter après Contact', pricing: `${s.prices} grilles de prix : essai, démo, règle de l'essai`, lp: `${s.lps} pages d'atterrissage : aucun lien vers l'application`, layout: 'en-tête dans son cadre, ordre, menu (360 à 1440 px, FR/NL/EN)', events: 'sign_up_start / login_click avec accord, rien sans' };
     for (const [k, v] of Object.entries(F)) {
       console.log(`  ${v.length ? '✗' : '✓'} ${label[k]}`);
       v.slice(0, 8).forEach((x) => console.log(`      ${x}`));
@@ -237,16 +241,18 @@ async function run(root, { quiet = false, browserOpts } = {}) {
 
 const MUTANTS = [
   ['url', 'adresse recopiée dans un composant', (r) => fs.appendFileSync(path.join(r, '_src/components/blocks.mjs'), `\n/* ${LOGIN} */\n`)],
-  ['header', '« Se connecter » après la démo', (r) => edit(r, 'index.html', /(<a class="hdr-login"[^>]*>[^<]*<\/a>)(<a class="btn btn-line btn-sm hdr-demo"[^>]*>[^<]*<\/a>)/, '$2$1')],
+  ['header', '« Se connecter » après la démo', (r) => edit(r, 'index.html', /(<a class="hdr-login"[^>]*>[^<]*<\/a>)(<a class="btn btn-orange btn-sm hdr-demo"[^>]*>[^<]*<\/a>)/, '$2$1')],
+  ['header', '« Essai gratuit » revient dans l\'en-tête', (r) => edit(r, 'prix.html', /(<a class="btn btn-orange btn-sm hdr-demo"[^>]*>[^<]*<\/a>)<\/div>/, `$1<a class="btn btn-orange btn-sm hdr-trial" href="${SIGNUP}" data-app="signup" data-place="header">Essai gratuit</a></div>`)],
+  ['header', 'langues de nouveau côte à côte', (r) => edit(r, 'en/index.html', /<div class="drop hdr-lang">[\s\S]*?<\/div><\/div>/, '<div class="hdr-lang"><a href="../index.html">FR</a><a href="../nl/index.html">NL</a><a class="on" href="index.html">EN</a></div>')],
   ['header', '« Appeler Janet » revient dans l\'en-tête', (r) => edit(r, 'garages.html', /(<div class="hdr-cta">)/, '$1<a class="btn btn-orange btn-sm hdr-call" href="tel:+32460254413" data-call>x</a>')],
-  ['header', '?lang=nl oublié', (r) => edit(r, 'nl/garages.html', 'https://app.celya.be/inscription?lang=nl" data-app="signup" data-place="header"', 'https://app.celya.be/inscription" data-app="signup" data-place="header"')],
+  ['header', '?lang=nl oublié', (r) => edit(r, 'nl/garages.html', 'https://app.celya.be/login?lang=nl" data-app="login" data-place="header"', 'https://app.celya.be/login" data-app="login" data-place="header"')],
   ['menu', 'connexion retirée du menu', (r) => edit(r, 'nl/index.html', /<a class="mnav-login"[^>]*>[^<]*<\/a>/, '')],
   ['footer', 'connexion retirée du pied de page', (r) => edit(r, 'en/index.html', /<a class="ft-login"[^>]*>[^<]*<\/a>/, '')],
   ['pricing', 'essai retiré de la grille', (r) => edit(r, 'prix.html', /(<div class="price-go">)<a class="btn btn-orange"[^>]*>[^<]*<\/a>/, '$1')],
   ['pricing', 'règle de l\'essai modifiée', (r) => edit(r, 'nl/prijzen.html', /(<div class="price-go">[\s\S]*?<small>)[^<]*/, '$130 dagen gratis.')],
   ['lp', 'connexion sur une page d\'atterrissage', (r) => edit(r, 'lp/garages.html', /(<\/footer>)/, `<a href="${LOGIN}">x</a>$1`)],
-  ['layout', 'seuil du menu ramené à 1180 px', (r) => edit(r, 'celya.css', '@media (max-width:1259px){', '@media (max-width:1180px){')],
-  ['layout', 'connexion visible sous 720 px', (r) => edit(r, 'celya.css', '.hdr-demo,.hdr-login{display:none}', '.hdr-demo{display:none}')],
+  ['layout', 'seuil du menu ramené à 1040 px', (r) => edit(r, 'celya.css', '@media (max-width:1180px){', '@media (max-width:1040px){')],
+  ['layout', 'connexion visible sous 720 px', (r) => edit(r, 'celya.css', '  .hdr-login{display:none}', '  .hdr-x{display:none}')],
   ['layout', 'menu : bloc d\'accès qui déborde', (r) => edit(r, 'celya.css', '.mnav-app .btn{width:100%}', '.mnav-app .btn{width:130%}')],
   ['events', 'sign_up_start renommé', (r) => edit(r, 'celya.js', "'sign_up_start'", "'signup_start'")],
   ['events', 'place perdu', (r) => edit(r, 'celya.js', "place:app.getAttribute('data-place')||''", "place:''")],

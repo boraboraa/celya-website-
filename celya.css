@@ -126,11 +126,16 @@ ul,ol{padding-left:1.2em;margin:0 0 1em}
 .drop-p a{padding:9px 12px;border-radius:10px;text-decoration:none;color:var(--ink);font-size:15px}
 .drop-p a:hover{background:var(--page)}
 .drop-all{grid-column:1/-1;display:flex;align-items:center;gap:8px;border-top:1px solid var(--line);border-radius:0 0 10px 10px!important;margin-top:4px;padding-top:12px!important;color:var(--g2)!important}
-.hdr-lang,.mnav-lang{display:flex;gap:2px;font:500 12px/1 var(--mono);letter-spacing:.06em;margin-left:auto}
-.hdr-lang a,.mnav-lang a{padding:9px 7px;border-radius:8px;text-decoration:none;color:var(--g1)}
-.hdr-lang a.on,.mnav-lang a.on{color:var(--ink);background:var(--page)}
+.mnav-lang{display:flex;gap:2px;font:500 12px/1 var(--mono);letter-spacing:.06em;margin-left:auto}
+.mnav-lang a{padding:9px 7px;border-radius:8px;text-decoration:none;color:var(--g1)}
+.mnav-lang a.on{color:var(--ink);background:var(--page)}
+/* langue de l'en-tête (19/11/2026) : « FR ▾ », les autres langues au survol */
+.hdr-lang{margin-left:auto}
+.hdr-lang .drop-t{font:500 12px/1 var(--mono);letter-spacing:.06em;color:var(--ink);cursor:default}
+.hdr-lang .lang-p{left:0;width:auto;min-width:76px;grid-template-columns:1fr;padding:6px}
+.hdr-lang .lang-p a{font:500 12px/1 var(--mono);letter-spacing:.06em;color:var(--g1);padding:10px 12px}
 .hdr-cta{display:flex;gap:8px;flex:none;align-items:center}
-/* accès à l'application (19/11/2026) : « Se connecter » en lien texte, à gauche des deux boutons */
+/* accès à l'application (19/11/2026) : « Se connecter » en lien texte, à gauche du bouton de démo */
 .hdr-login{padding:10px 8px;border-radius:10px;font-size:15px;font-weight:600;color:var(--ink);text-decoration:none;white-space:nowrap}
 .hdr-login:hover{background:var(--page)}
 .burger{display:none;margin-left:auto;align-items:center;gap:10px;min-height:44px;padding:0 14px;border-radius:12px;border:1px solid var(--line);background:var(--page);font:600 14px var(--sans);color:var(--ink);cursor:pointer}
@@ -138,7 +143,7 @@ ul,ol{padding-left:1.2em;margin:0 0 1em}
 .burger i+i{margin-left:-26px;transform:translateY(6px)}
 .burger i:first-of-type{transform:translateY(-3px)}
 .mnav{display:none}
-@media (max-width:1259px){ /* 1180 → 1259 le 19/11/2026 : avec « Se connecter » et « Essai gratuit », l'en-tête FR complet ne tient qu'à partir de 1235 px ; 25 px de marge */
+@media (max-width:1180px){ /* 1180 px, comme avant le 19/11/2026 : avec un seul bouton et la langue en sélecteur, l'en-tête FR complet tient dès 1065 px (mesuré), 115 px de marge */
   .hdr-nav,.hdr-lang{display:none}
   .hdr-cta{margin-left:auto}
   .burger{display:inline-flex;margin-left:0}
@@ -158,8 +163,8 @@ ul,ol{padding-left:1.2em;margin:0 0 1em}
   .hdr{top:8px;margin-top:8px;padding:0 10px}
   .hdr-in{gap:10px;padding:6px 6px 6px 14px;min-height:58px}
   .logo{width:84px;height:36px}
-  .hdr-demo,.hdr-login{display:none}
-  .hdr-call,.hdr-trial{padding:8px 14px;font-size:14px;min-height:44px}
+  .hdr-login{display:none}
+  .hdr-call,.hdr-demo{padding:8px 14px;font-size:14px;min-height:44px}
   .burger{padding:0 12px}
   .burger-l{display:none}
 }

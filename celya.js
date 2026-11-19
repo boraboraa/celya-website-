@@ -50,7 +50,7 @@
     function set(open){document.body.classList.toggle('mnav-open',open);btn.setAttribute('aria-expanded',open?'true':'false');}
     btn.addEventListener('click',function(){set(btn.getAttribute('aria-expanded')!=='true');});
     document.addEventListener('keydown',function(e){if(e.key==='Escape'&&document.body.classList.contains('mnav-open')){set(false);btn.focus();}});
-    onResize(function(){if(innerWidth>1259)set(false);}); /* même seuil que celya.css (19/11/2026) */
+    onResize(function(){if(innerWidth>1180)set(false);}); /* même seuil que celya.css */
   })();
 
   /* ---- rien ne s'anime hors écran : chaque élément animé est observé, et

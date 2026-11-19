@@ -91,6 +91,17 @@ function langSwitch(c, cls) {
     `<a${l === c.lang ? ' class="on" aria-current="true"' : ''} href="${langs[l]}" hreflang="${l}" lang="${l}">${l.toUpperCase()}</a>`).join('')}</div>`;
 }
 
+/** Langue de l'en-tête (19/11/2026, décision de Bora) : un petit sélecteur
+ *  « FR ▾ » au lieu de trois liens côte à côte ; il ouvre les autres langues
+ *  au survol et au clavier, comme le menu des métiers. */
+function langDrop(c) {
+  const langs = c.page.meta.langs || {};
+  const autres = ['fr', 'nl', 'en'].filter((l) => langs[l] && l !== c.lang);
+  if (!autres.length) return '';
+  return `<div class="drop hdr-lang"><span class="drop-t" tabindex="0" aria-label="${esc(c.t.lang_label)} : ${c.lang.toUpperCase()}">${c.lang.toUpperCase()}${ico.chev}</span><div class="drop-p lang-p">${autres.map((l) =>
+    `<a href="${langs[l]}" hreflang="${l}" lang="${l}">${l.toUpperCase()}</a>`).join('')}</div></div>`;
+}
+
 function header(c, { bare = false } = {}) {
   const { t, L } = c;
   if (bare) {
@@ -109,13 +120,15 @@ ${callBtn(c, 'btn-orange btn-sm hdr-call')}
     `<b class="mnav-h">${t.nav.find((n) => n.drop).label}</b><div class="mnav-grid">${t.metiers_nav.map(([h, l]) => `<a href="${L(h)}">${l}</a>`).join('')}</div>` +
     (t.metiers_all ? `<a href="${L(t.metiers_all[0])}">${t.metiers_all[1]}</a>` : '') +
     `<div class="mnav-app">${trialBtn(c, 'btn-orange', 'menu', t.trial_menu)}${demoBtn(c, 'btn-line')}${loginLink(c, 'mnav-login', 'menu')}</div>`;
-  /* en-tête (19/11/2026) : « Se connecter », « Demander une démo », « Essai gratuit » ;
-   * « Appeler Janet » n'y est plus (il reste dans les héros, la barre mobile, les CTA) */
+  /* en-tête (19/11/2026, décision de Bora) : « Se connecter » en lien texte et un
+   * seul bouton, « Demander une démo » en orange (la conversion principale).
+   * « Essai gratuit » vit sous les grilles de prix et dans le menu mobile ;
+   * « Appeler Janet » reste dans les héros, la barre mobile et les CTA. */
   return `<header class="hdr"><div class="hdr-in">
 <a class="hdr-logo" href="${c.home}" aria-label="${esc(t.home_label)}">${logo()}</a>
 <nav class="hdr-nav" aria-label="Navigation">${nav}</nav>
-${langSwitch(c, 'hdr-lang')}
-<div class="hdr-cta">${loginLink(c, 'hdr-login', 'header')}${demoBtn(c, 'btn-line btn-sm hdr-demo')}${trialBtn(c, 'btn-orange btn-sm hdr-trial', 'header')}</div>
+${langDrop(c)}
+<div class="hdr-cta">${loginLink(c, 'hdr-login', 'header')}${demoBtn(c, 'btn-orange btn-sm hdr-demo')}</div>
 <button class="burger" type="button" aria-expanded="false" aria-controls="mnav"><span class="burger-l">${t.menu}</span><i></i><i></i></button>
 </div>
 <nav class="mnav" id="mnav" aria-label="Menu">${mnav}${langSwitch(c, 'mnav-lang')}</nav>
