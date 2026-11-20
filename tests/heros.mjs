@@ -133,7 +133,7 @@ for (const rel of pages) {
       const box = (el, sel) => { const b = el.getBoundingClientRect(); return { sel, color: getComputedStyle(el).color, x: Math.max(0, b.left), y: Math.max(0, b.top + scrollY), w: b.width, h: b.height }; };
       const shown = (el) => el.getClientRects().length > 0 && getComputedStyle(el).display !== 'none';
       const sels = ['.hv h1', '.hv h1 em', '.hv .lead', '.hv .cta-btns .btn-line'];
-      if (LP) sels.push('.lpv .form-t', '.lpv .f-field label', '.lpv .f-legend', '.lpv .f-consent span', '.lpv .f-small');
+      if (LP) sels.push('.lpv .form-t', '.lpv .form-sub', '.lpv .f-field label', '.lpv .f-legend', '.lpv .f-accord', '.lpv .f-small');
       const out = [];
       for (const sel of sels) for (const el of document.querySelectorAll(sel)) if (shown(el)) out.push(box(el, sel));
       const hv = document.querySelector('.hv').getBoundingClientRect();

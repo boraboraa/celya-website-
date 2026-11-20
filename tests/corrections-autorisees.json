@@ -673,25 +673,31 @@
       "texte": [
         "Dernière mise à jour : 28 octobre 2026",
         "Dernière mise à jour : 16 novembre 2026",
-        "Nous n’utilisons pas de traceurs publicitaires, et nous n’achetons ni ne vendons de données personnelles."
+        "Nous n’utilisons pas de traceurs publicitaires, et nous n’achetons ni ne vendons de données personnelles.",
+        "Dernière mise à jour : 17 novembre 2026",
+        "Champs complémentaires des formulaires de démo et de contact : votre métier, le moment où vous préférez être rappelé, et votre accord pour être recontacté par téléphone ou par WhatsApp."
       ],
-      "_texte": "lot « prêt pour les publicités » du 17/11/2026 (décision de Bora) : le site mesure les conversions de ses publicités (Google Ads, Meta Pixel), chargés après « Accepter » comme Google Analytics ; « aucun traceur publicitaire » devient faux, la notice nomme les outils, l'identifiant de clic et sa durée de 90 jours ; ajouts sans retrait : identifiant de clic envoyé avec le formulaire de démo, mesure publicitaire, base légale (consentement), effacement à 90 jours, Google et Meta destinataires"
+      "_texte": "lot « prêt pour les publicités » du 17/11/2026 (décision de Bora) : le site mesure les conversions de ses publicités (Google Ads, Meta Pixel), chargés après « Accepter » comme Google Analytics ; « aucun traceur publicitaire » devient faux, la notice nomme les outils, l'identifiant de clic et sa durée de 90 jours ; ajouts sans retrait : identifiant de clic envoyé avec le formulaire de démo, mesure publicitaire, base légale (consentement), effacement à 90 jours, Google et Meta destinataires ; lot « Se connecter et formulaire » du 18/11/2026 (décision de Bora) : la case d'accord du formulaire de démo disparaît, envoyer le formulaire vaut accord (phrase sous le bouton) et un message facultatif s'ajoute ; la liste des champs le dit, date de mise à jour au 18/11"
     },
     "nl/privacy.html": {
       "texte": [
         "Laatst bijgewerkt: 28 oktober 2026",
         "Laatst bijgewerkt: 16 november 2026",
-        "We gebruiken geen advertentietrackers, en we kopen of verkopen geen persoonsgegevens."
+        "We gebruiken geen advertentietrackers, en we kopen of verkopen geen persoonsgegevens.",
+        "Laatst bijgewerkt: 17 november 2026",
+        "Bijkomende velden van het demo- en contactformulier: uw vak, het moment waarop u liefst teruggebeld wordt, en uw akkoord om telefonisch of via WhatsApp opnieuw gecontacteerd te worden."
       ],
-      "_texte": "lot « prêt pour les publicités » du 17/11/2026 (décision de Bora) : le site mesure les conversions de ses publicités (Google Ads, Meta Pixel), chargés après « Accepter » comme Google Analytics ; « aucun traceur publicitaire » devient faux, la notice nomme les outils, l'identifiant de clic et sa durée de 90 jours ; ajouts sans retrait : identifiant de clic envoyé avec le formulaire de démo, mesure publicitaire, base légale (consentement), effacement à 90 jours, Google et Meta destinataires"
+      "_texte": "lot « prêt pour les publicités » du 17/11/2026 (décision de Bora) : le site mesure les conversions de ses publicités (Google Ads, Meta Pixel), chargés après « Accepter » comme Google Analytics ; « aucun traceur publicitaire » devient faux, la notice nomme les outils, l'identifiant de clic et sa durée de 90 jours ; ajouts sans retrait : identifiant de clic envoyé avec le formulaire de démo, mesure publicitaire, base légale (consentement), effacement à 90 jours, Google et Meta destinataires ; lot « Se connecter et formulaire » du 18/11/2026 (décision de Bora) : la case d'accord du formulaire de démo disparaît, envoyer le formulaire vaut accord (phrase sous le bouton) et un message facultatif s'ajoute ; la liste des champs le dit, date de mise à jour au 18/11"
     },
     "en/privacy.html": {
       "texte": [
         "Last updated: 28 October 2026",
         "Last updated: 16 November 2026",
-        "We do not use advertising trackers, and we do not buy or sell personal data."
+        "We do not use advertising trackers, and we do not buy or sell personal data.",
+        "Last updated: 17 November 2026",
+        "Additional fields of the demo and contact forms: your trade, the time you prefer to be called back, and your consent to be contacted again by phone or WhatsApp."
       ],
-      "_texte": "lot « prêt pour les publicités » du 17/11/2026 (décision de Bora) : le site mesure les conversions de ses publicités (Google Ads, Meta Pixel), chargés après « Accepter » comme Google Analytics ; « aucun traceur publicitaire » devient faux, la notice nomme les outils, l'identifiant de clic et sa durée de 90 jours ; ajouts sans retrait : identifiant de clic envoyé avec le formulaire de démo, mesure publicitaire, base légale (consentement), effacement à 90 jours, Google et Meta destinataires"
+      "_texte": "lot « prêt pour les publicités » du 17/11/2026 (décision de Bora) : le site mesure les conversions de ses publicités (Google Ads, Meta Pixel), chargés après « Accepter » comme Google Analytics ; « aucun traceur publicitaire » devient faux, la notice nomme les outils, l'identifiant de clic et sa durée de 90 jours ; ajouts sans retrait : identifiant de clic envoyé avec le formulaire de démo, mesure publicitaire, base légale (consentement), effacement à 90 jours, Google et Meta destinataires ; lot « Se connecter et formulaire » du 18/11/2026 (décision de Bora) : la case d'accord du formulaire de démo disparaît, envoyer le formulaire vaut accord (phrase sous le bouton) et un message facultatif s'ajoute ; la liste des champs le dit, date de mise à jour au 18/11"
     },
     "serveur-vocal-ou-agent-vocal.html": {
       "texte": [
@@ -752,9 +758,10 @@
         "L’analytics ne fonctionne qu’avec votre consentement. Vous pouvez changer d’avis à tout moment en effaçant les cookies de ce site : la bannière réapparaîtra. Si nous ajoutons d’autres outils déposant des cookies, nous mettrons d’abord cette notice à jour.",
         "Charge les polices du site depuis les serveurs de Google. Cela peut exposer votre IP à Google.",
         "Requête tierce (pas de cookie de consentement)",
-        "Le site charge aussi les polices web depuis Google."
+        "Le site charge aussi les polices web depuis Google.",
+        "Dernière mise à jour : 17 novembre 2026"
       ],
-      "_texte": "lot « prêt pour les publicités » du 17/11/2026 (décision de Bora) : le site mesure les conversions de ses publicités (Google Ads, Meta Pixel), chargés après « Accepter » comme Google Analytics ; « aucun traceur publicitaire » devient faux, la notice nomme les outils, l'identifiant de clic et sa durée de 90 jours ; ajouts sans retrait : lignes du tableau (Google Ads, Meta Pixel, provenance de la visite)",
+      "_texte": "lot « prêt pour les publicités » du 17/11/2026 (décision de Bora) : le site mesure les conversions de ses publicités (Google Ads, Meta Pixel), chargés après « Accepter » comme Google Analytics ; « aucun traceur publicitaire » devient faux, la notice nomme les outils, l'identifiant de clic et sa durée de 90 jours ; ajouts sans retrait : lignes du tableau (Google Ads, Meta Pixel, provenance de la visite) ; lot « Se connecter et formulaire » du 18/11/2026 (demande de Bora) : la liste nomme les cookies de Google Ads (_gcl_au, 90 jours, source business.safety.google/adscookies) et du Meta Pixel (_fbp et _fbc, 90 jours, source developers.facebook.com, paramètres fbp et fbc), chacun déposé seulement après « Accepter » ; ajouts sans retrait, date de mise à jour au 18/11",
       "_texte_polices": "décision de Bora du 17/11/2026 : plus aucune ressource Google Fonts (polices auto-hébergées depuis le 14/11, dernier preconnect retiré) ; la ligne « Google Fonts » du tableau et la phrase sur les polices chargées depuis Google deviennent fausses et disparaissent"
     },
     "nl/cookies.html": {
@@ -765,9 +772,10 @@
         "Analytics werkt alleen met uw toestemming. U kunt uw keuze altijd wijzigen door de cookies van deze site te wissen: de banner verschijnt dan opnieuw. Voegen we andere tools toe die cookies plaatsen, dan werken we eerst deze verklaring bij.",
         "Laadt de lettertypes van de site vanaf Googles servers. Dit kan uw IP aan Google blootstellen.",
         "Verzoek aan derde (geen cookie)",
-        "De site laadt ook weblettertypes van Google."
+        "De site laadt ook weblettertypes van Google.",
+        "Laatst bijgewerkt: 17 november 2026"
       ],
-      "_texte": "lot « prêt pour les publicités » du 17/11/2026 (décision de Bora) : le site mesure les conversions de ses publicités (Google Ads, Meta Pixel), chargés après « Accepter » comme Google Analytics ; « aucun traceur publicitaire » devient faux, la notice nomme les outils, l'identifiant de clic et sa durée de 90 jours ; ajouts sans retrait : lignes du tableau (Google Ads, Meta Pixel, provenance de la visite)",
+      "_texte": "lot « prêt pour les publicités » du 17/11/2026 (décision de Bora) : le site mesure les conversions de ses publicités (Google Ads, Meta Pixel), chargés après « Accepter » comme Google Analytics ; « aucun traceur publicitaire » devient faux, la notice nomme les outils, l'identifiant de clic et sa durée de 90 jours ; ajouts sans retrait : lignes du tableau (Google Ads, Meta Pixel, provenance de la visite) ; lot « Se connecter et formulaire » du 18/11/2026 (demande de Bora) : la liste nomme les cookies de Google Ads (_gcl_au, 90 jours, source business.safety.google/adscookies) et du Meta Pixel (_fbp et _fbc, 90 jours, source developers.facebook.com, paramètres fbp et fbc), chacun déposé seulement après « Accepter » ; ajouts sans retrait, date de mise à jour au 18/11",
       "_texte_polices": "décision de Bora du 17/11/2026 : plus aucune ressource Google Fonts (polices auto-hébergées depuis le 14/11, dernier preconnect retiré) ; la ligne « Google Fonts » du tableau et la phrase sur les polices chargées depuis Google deviennent fausses et disparaissent"
     },
     "en/cookies.html": {
@@ -778,10 +786,32 @@
         "Analytics runs only with your consent. You can change your choice at any time by clearing this site’s cookies: the banner will appear again. If we add other tools that set cookies, we’ll update this notice first.",
         "Loads the site's typefaces from Google's servers. This can expose your IP to Google.",
         "Third-party request (no consent cookie)",
-        "The site also loads web fonts from Google."
+        "The site also loads web fonts from Google.",
+        "Last updated: 17 November 2026"
       ],
-      "_texte": "lot « prêt pour les publicités » du 17/11/2026 (décision de Bora) : le site mesure les conversions de ses publicités (Google Ads, Meta Pixel), chargés après « Accepter » comme Google Analytics ; « aucun traceur publicitaire » devient faux, la notice nomme les outils, l'identifiant de clic et sa durée de 90 jours ; ajouts sans retrait : lignes du tableau (Google Ads, Meta Pixel, provenance de la visite)",
+      "_texte": "lot « prêt pour les publicités » du 17/11/2026 (décision de Bora) : le site mesure les conversions de ses publicités (Google Ads, Meta Pixel), chargés après « Accepter » comme Google Analytics ; « aucun traceur publicitaire » devient faux, la notice nomme les outils, l'identifiant de clic et sa durée de 90 jours ; ajouts sans retrait : lignes du tableau (Google Ads, Meta Pixel, provenance de la visite) ; lot « Se connecter et formulaire » du 18/11/2026 (demande de Bora) : la liste nomme les cookies de Google Ads (_gcl_au, 90 jours, source business.safety.google/adscookies) et du Meta Pixel (_fbp et _fbc, 90 jours, source developers.facebook.com, paramètres fbp et fbc), chacun déposé seulement après « Accepter » ; ajouts sans retrait, date de mise à jour au 18/11",
       "_texte_polices": "décision de Bora du 17/11/2026 : plus aucune ressource Google Fonts (polices auto-hébergées depuis le 14/11, dernier preconnect retiré) ; la ligne « Google Fonts » du tableau et la phrase sur les polices chargées depuis Google deviennent fausses et disparaissent"
+    },
+    "merci.html": {
+      "texte": [
+        "C'est noté. On vous rappelle dans la journée.",
+        "Ou appelez Janet maintenant : elle vous répond et vous réserve la démo pendant l'appel."
+      ],
+      "_texte": "lot « Se connecter et formulaire » du 18/11/2026 (décision de Bora) : après l'envoi, « C'est reçu. On vous rappelle sous 24 heures. En attendant, appelez Janet : c'est la meilleure démo. » et un seul bouton, « Appeler Janet » avec le numéro ; page noindex, hors sitemap ; la description suit"
+    },
+    "nl/merci.html": {
+      "texte": [
+        "Genoteerd. We bellen u vandaag nog terug.",
+        "Of bel Janet nu: ze antwoordt u en plant de demo in tijdens het gesprek."
+      ],
+      "_texte": "lot « Se connecter et formulaire » du 18/11/2026 (décision de Bora) : après l'envoi, « C'est reçu. On vous rappelle sous 24 heures. En attendant, appelez Janet : c'est la meilleure démo. » et un seul bouton, « Appeler Janet » avec le numéro ; page noindex, hors sitemap ; la description suit"
+    },
+    "en/merci.html": {
+      "texte": [
+        "Noted. We will call you back today.",
+        "Or call Janet now: she answers and books the demo during the call."
+      ],
+      "_texte": "lot « Se connecter et formulaire » du 18/11/2026 (décision de Bora) : après l'envoi, « C'est reçu. On vous rappelle sous 24 heures. En attendant, appelez Janet : c'est la meilleure démo. » et un seul bouton, « Appeler Janet » avec le numéro ; page noindex, hors sitemap ; la description suit"
     }
   },
   "google_fonts_retire": {

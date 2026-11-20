@@ -8,7 +8,13 @@
  * langues (FR et EN raccourcis le même jour pour tenir en 2 lignes à 360 px).
  * Le test masque les trois chaînes msg:'…', exige que tout le reste
  * du bloc soit identique à l'octet, et que les trois messages soient
- * exactement ceux décidés. Les empreintes avant / après sont affichées. */
+ * exactement ceux décidés. Les empreintes avant / après sont affichées.
+ *
+ * Seconde exception datée, du 19/11/2026 (décision de Bora : plus aucun tiret
+ * long sur le site) : dans le Consent Mode par défaut du <head>, le
+ * commentaire « Consent Mode v2 — tout est refusé… » devient « Consent Mode
+ * v2 : tout est refusé… ». Un caractère d'un commentaire JavaScript ; le code,
+ * lui, reste identique à l'octet, et le test le vérifie. */
 import crypto from 'node:crypto';
 import fs from 'node:fs';
 import path from 'node:path';
@@ -35,9 +41,10 @@ else {
   for (const [l, m] of Object.entries(MSG)) if (!b.includes(`${l}:{msg:'${m}',`)) fails.push(`message ${l} : ce n'est pas le texte décidé le 17/11/2026 (« ${m} »)`);
 }
 const head = (s) => (/<script>\s*\/\* Consent Mode v2[\s\S]*?<\/script>/.exec(s) || [null])[0];
-const oldHead = head(execFileSync('git', ['show', `${REF}:garages.html`], { cwd: ROOT, encoding: 'utf8' }));
+const COMMENTAIRE = ['/* Consent Mode v2 \u2014 tout est refusé', '/* Consent Mode v2 : tout est refusé'];
+const oldHead = (head(execFileSync('git', ['show', `${REF}:garages.html`], { cwd: ROOT, encoding: 'utf8' })) || '').replace(...COMMENTAIRE);
 const pages = fs.readdirSync(path.join(ROOT, '_src/pages'), { recursive: true }).filter((f) => f.endsWith('.html'));
 for (const rel of pages) if (head(fs.readFileSync(path.join(ROOT, rel), 'utf8')) !== oldHead) fails.push(`${rel} : Consent Mode par défaut différent`);
 if (/googletagmanager|fbq\(|facebook\.net|gtag\/js/.test(pages.map((r) => fs.readFileSync(path.join(ROOT, r), 'utf8').replace(/<script>[\s\S]*?<\/script>/g, '')).join(''))) fails.push('pixel ou balise en dur dans une page');
-console.log(fails.length ? fails.join('\n') : `Consentement : hors des trois messages, bloc identique à l'octet à ${REF}:bento.js (${mask(a).length} octets, empreinte ${sha(mask(a))}) ; empreinte du bloc entier ${sha(a)} → ${sha(b)} (seul le texte change) ; messages du 17/11 en fr, nl, en ; Consent Mode par défaut identique sur ${pages.length} pages, aucun pixel en dur.`);
+console.log(fails.length ? fails.join('\n') : `Consentement : hors des trois messages, bloc identique à l'octet à ${REF}:bento.js (${mask(a).length} octets, empreinte ${sha(mask(a))}) ; empreinte du bloc entier ${sha(a)} → ${sha(b)} (seul le texte change) ; messages du 17/11 en fr, nl, en ; Consent Mode par défaut identique sur ${pages.length} pages (commentaire du 19/11 mis à part), aucun pixel en dur.`);
 process.exit(fails.length ? 1 : 0);

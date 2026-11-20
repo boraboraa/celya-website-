@@ -10,7 +10,7 @@
  * l'appel final. Ce qui est réécrit : seulement les enveloppes décoratives de
  * l'ancien thème (spans d'animation .lr/.l2, classes .it/.gradtxt → <em>).
  * Ce qui disparaît : les widgets de démonstration du thème sombre, la table
- * « Sur cette page » (elle répète les H2), et les boutons — le gabarit les
+ * « Sur cette page » (elle répète les H2), et les boutons : le gabarit les
  * fournit. Les pages « métier », « accueil » et « prix » se relisent à la main
  * après extraction : leurs sections portent des widgets que le gabarit remplace
  * par les composants du lot. */
@@ -131,7 +131,7 @@ function section(el, cls) {
     const rows = [...mlist[1].matchAll(/<a class="mrow" href="([^"]*)">[\s\S]*?<b>([\s\S]*?)<\/b><span>([\s\S]*?)<\/span>[\s\S]*?<\/a>/g)]
       .map((r) => `<a href="${r[1]}"><b>${r[2]}</b><span>${r[3]}</span></a>`);
     /* une section qui porte à la fois du texte et une liste de liens : le texte
-     * d'abord (section), puis les liens sans titre (related) — rien ne se perd */
+     * d'abord (section), puis les liens sans titre (related) ; rien ne se perd */
     const ai = el.indexOf('<div class="access-txt">');
     const prose = ai >= 0 && ai < el.indexOf('<div class="mlist">') ? dedent(inner(outer(el, ai))) : '';
     const rel = { name: 'related', attrs: { kick: prose ? '' : kick }, html: `${prose ? '' : `<h2>${h2}</h2>\n`}${rows.join('\n')}${mlist[2] ? '\n' + mlist[2] : ''}` };
@@ -168,16 +168,16 @@ export function harvest(el) {
   s = s.replace(/<span class="(?:exbadge|wave[^"]*)"[^>]*>[\s\S]*?<\/span>/g, '');
   /* entonnoir : une carte = une ligne */
   s = s.replace(/<div class="fcard[^"]*">\s*<b class="fc-tag">([\s\S]*?)<\/b>\s*<p class="fc-q">([\s\S]*?)<\/p>\s*<div class="fc-out">\s*<span class="fo-ic"><\/span>\s*<div><b>([\s\S]*?)<\/b><span>([\s\S]*?)<\/span><\/div>\s*<\/div>\s*<\/div>/g,
-    '<li><b>$1</b> — $2 → <b>$3</b> : $4</li>');
+    '<li><b>$1</b> \u2014 $2 → <b>$3</b> : $4</li>');
   s = s.replace(/<div class="fun-cards">([\s\S]*?)<\/div>(?=\s*<p class="fun-note">|\s*<\/div>)/, '<ul>$1</ul>');
-  s = s.replace(/<div class="fun-top">\s*<b>\s*([\s\S]*?)<\/b>\s*<span>([\s\S]*?)<\/span>\s*<\/div>/, '<p><b>$1</b> — $2</p>');
+  s = s.replace(/<div class="fun-top">\s*<b>\s*([\s\S]*?)<\/b>\s*<span>([\s\S]*?)<\/span>\s*<\/div>/, '<p><b>$1</b> \u2014 $2</p>');
   s = s.replace(/<div class="fun-janet"><b>([\s\S]*?)<\/b>\s*<\/div>/, '<p>$1</p>');
   /* listes de détail : numérotées ou non */
   let k;
   while ((k = s.indexOf('<div class="det-list">')) >= 0) {
     const el2 = outer(s, k), inner2 = inner(el2);
     const items = [...inner2.matchAll(/<div class="det-li">(?:<span class="n">\d+<\/span>)?([\s\S]*?)<\/div>/g)]
-      .map((x) => `<li>${x[1].replace(/<span class="dur">([\s\S]*?)<\/span>/, ' — $1').trim()}</li>`);
+      .map((x) => `<li>${x[1].replace(/<span class="dur">([\s\S]*?)<\/span>/, ' \u2014 $1').trim()}</li>`);
     const note = /<p class="det-note">([\s\S]*?)<\/p>/.exec(inner2);
     const tag = /<span class="n">/.test(inner2) ? 'ol' : 'ul';
     s = s.slice(0, k) + (items.length ? `<${tag}>${items.join('')}</${tag}>` : '') + (note ? `<p>${note[1]}</p>` : '') + s.slice(k + el2.length);

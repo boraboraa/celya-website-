@@ -16,6 +16,11 @@
  *  - FAQPage == FAQ visible (questions et réponses) ;
  *  - @graph : nœud par nœud, identique, sauf les nœuds listés pour la page.
  *
+ * Tiret long (décision de Bora du 19/11/2026) : un texte d'avant qui portait
+ * « — » est accepté si la seule différence est la réécriture de ce tiret
+ * (virgule, deux-points, point, parenthèses, « | Celya »), mots identiques :
+ * voir sansTiretLong() dans tests/tiret-long.mjs. Rien d'autre n'est assoupli.
+ *
  *   node tests/seo-avant-apres.mjs [--ref origin/main] [pages…]
  * Sortie 1 au premier écart non autorisé. */
 import fs from 'node:fs';
@@ -23,6 +28,7 @@ import path from 'node:path';
 import { execFileSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 import { loadData, offreTokens, fill } from '../_src/lib/core.mjs';
+import { memeSansTiret as eq, sansTiretLong } from './tiret-long.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const args = process.argv.slice(2);
@@ -102,16 +108,22 @@ H2_OK.push(...(CORR.h2_composants || []).map(norm));
 
 const key = (n) => `${n['@type']}${n['@id'] ? ' ' + n['@id'] : ''}`;
 const sortObj = (o) => (Array.isArray(o) ? o.map(sortObj) : o && typeof o === 'object' ? Object.fromEntries(Object.keys(o).sort().map((k) => [k, sortObj(o[k])])) : o);
-const same = (a, b) => JSON.stringify(sortObj(a)) === JSON.stringify(sortObj(b));
+/* égalité de nœuds ; une chaîne d'avant qui portait un tiret long se compare sans lui */
+const tir = (a, b) => (typeof a === 'string' && typeof b === 'string' && a.includes('\u2014') ? [sansTiretLong(a), sansTiretLong(b)]
+  : Array.isArray(a) && Array.isArray(b) && a.length === b.length ? [a.map((x, i) => tir(x, b[i])[0]), a.map((x, i) => tir(x, b[i])[1])]
+  : a && b && typeof a === 'object' && typeof b === 'object' && !Array.isArray(a) && !Array.isArray(b)
+    ? (() => { const A = {}, B = { ...b }; for (const k of Object.keys(a)) { const [x, y] = tir(a[k], b[k]); A[k] = x; if (k in b) B[k] = y; } return [A, B]; })()
+  : [a, b]);
+const same = (a, b) => { const [x, y] = tir(a, b); return JSON.stringify(sortObj(x)) === JSON.stringify(sortObj(y)); };
 
 export function compare(rel, before, after) {
   const err = [];
   const corr = CORR.pages[rel] || {};
   const corrFaq = Object.fromEntries(Object.entries(corr.faq || {}).map(([q, v]) => [norm(q), v]));
   for (const f of ['title', 'desc', 'canonical']) {
-    if (before[f] !== after[f] && !(corr[f])) err.push(`${f} : « ${before[f]} » → « ${after[f]} »`);
+    if (!eq(before[f], after[f]) && !(corr[f])) err.push(`${f} : « ${before[f]} » → « ${after[f]} »`);
   }
-  if (JSON.stringify(before.h1) !== JSON.stringify(after.h1) && !corr.h1) err.push(`H1 : ${JSON.stringify(before.h1)} → ${JSON.stringify(after.h1)}`);
+  if (!(before.h1.length === after.h1.length && before.h1.every((h, i) => eq(h, after.h1[i]))) && !corr.h1) err.push(`H1 : ${JSON.stringify(before.h1)} → ${JSON.stringify(after.h1)}`);
   if (JSON.stringify(before.hreflang) !== JSON.stringify(after.hreflang) && !corr.hreflang) err.push(`hreflang : ${before.hreflang.join(' | ')} → ${after.hreflang.join(' | ')}`);
   /* H2 : sous-suite ordonnée + ajouts de la liste fixe */
   /* H2 retirés sur décision datée de Bora (corrections-autorisees.json) */
@@ -122,15 +134,15 @@ export function compare(rel, before, after) {
   before = { ...before, h2: before.h2.filter((h) => !retired.has(h)).map((h) => renamed[h] || h) };
   let k = 0;
   for (const h of after.h2) {
-    if (k < before.h2.length && h === before.h2[k]) { k++; continue; }
+    if (k < before.h2.length && eq(before.h2[k], h)) { k++; continue; }
     if (!H2_OK.includes(h) && !(corr.h2_ajouts || []).includes(h)) err.push(`H2 ajouté hors liste : « ${h} »`);
   }
   if (k < before.h2.length) err.push(`H2 perdu ou déplacé : « ${before.h2[k]} » (ordre attendu : ${before.h2.join(' / ')})`);
   /* FAQ visible */
   const qb = before.faq.map((x) => x[0]), qa = after.faq.map((x) => x[0]);
-  if (JSON.stringify(qb) !== JSON.stringify(qa)) err.push(`FAQ : questions différentes\n      avant : ${qb.join(' | ')}\n      après : ${qa.join(' | ')}`);
+  if (!(qb.length === qa.length && qb.every((q, i) => eq(q, qa[i])))) err.push(`FAQ : questions différentes\n      avant : ${qb.join(' | ')}\n      après : ${qa.join(' | ')}`);
   else before.faq.forEach(([q, a], i) => {
-    if (a !== after.faq[i][1] && !corrFaq[q]) err.push(`FAQ « ${q} » : réponse modifiée sans correction listée\n      avant : ${a}\n      après : ${after.faq[i][1]}`);
+    if (!eq(a, after.faq[i][1]) && !corrFaq[q]) err.push(`FAQ « ${q} » : réponse modifiée sans correction listée\n      avant : ${a}\n      après : ${after.faq[i][1]}`);
   });
   /* FAQPage == FAQ visible : chaque question déclarée existe à l'écran, même réponse, même ordre */
   if (after.faqpage) {

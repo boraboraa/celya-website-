@@ -1,17 +1,19 @@
-/* Pages d'atterrissage (lp/, nl/lp/) : un seul objectif, la démo — ou
- * l'appel. noindex, hors sitemap, sans menu (en-tête « bare » : logo et
+/* Pages d'atterrissage (lp/, nl/lp/) : un seul objectif, la démo (ou
+ * l'appel). noindex, hors sitemap, sans menu (en-tête « bare » : logo et
  * bouton d'appel).
  *
  * Lot conversion Google Ads du 16/11/2026 (décision de Bora, exception datée
  * de CLAUDE.md) : le héros porte la vidéo de fond de l'accueil, et le
- * formulaire de démo y est posé en transparence — sur ces quatre pages
+ * formulaire de démo y est posé en transparence, sur ces quatre pages
  * seulement. Puis, dans cet ordre : badges, la scène « Un appel, de bout en
  * bout », Comment ça marche (quatre étapes), les cases RDV / À rappeler /
  * Urgent, « Appelez-la, comme un client », les prix (bouton vers le
  * formulaire de la page), la FAQ (cinq questions), l'appel final (son bouton
  * renvoie aussi au formulaire de la page). Une action, un nom (17/11/2026) :
  * partout où l'on va au formulaire, le bouton dit « Être rappelé pour une
- * démo », comme le bouton du formulaire ; la barre mobile garde « Être rappelé ». */
+ * démo », comme le bouton du formulaire ; la barre mobile garde « Être rappelé ».
+ * Lot du 18/11/2026 : le titre du formulaire vient de data/i18n.json (le même
+ * partout), et le métier de la page (garages) est pré-rempli dans le choix. */
 import { one, all } from '../lib/core.mjs';
 import { shell } from '../components/shell.mjs';
 import { badges, prices, faq, ctaFinal, heroMedia, scene, sceneText, steps, cases, tryCall } from '../components/blocks.mjs';
@@ -22,7 +24,7 @@ export default function lp(c) {
   const metier = page.meta.metier;
   const M = metier && c.data.metiers[metier] && c.data.metiers[metier][c.lang];
   const form = '#lp';
-  /* data-lead de la page : « lp-garages », « lp-ne-plus-rater-d-appels »… — il
+  /* data-lead de la page : « lp-garages », « lp-ne-plus-rater-d-appels »… : il
    * part dans form des événements generate_lead et click_call (17/11/2026) */
   const lead = 'lp-' + c.rel.split('/').pop().replace(/\.html$/, '');
   /* le héros : le texte et le formulaire passent sur la vidéo, voile crème léger.
@@ -35,7 +37,7 @@ ${heroMedia(c)}
 <p class="lead">${one(page, 'lede')}</p>
 <div class="cta-btns" data-hero><a class="btn btn-orange" href="tel:${offre.telephone.e164}" data-call><span>${t.cta_call} · <span class="nw">${offre.telephone.affiche}</span></span></a><a class="btn btn-line lpv-m" href="${form}">${t.form.submit}</a></div>
 </div>
-${demoForm(c, { id: 'lp', kind: lead, title: one(page, 'formtitle') })}
+${demoForm(c, { id: 'lp', kind: lead, metier: metier || '' })}
 </div></section>`;
 
   const main = `${hero}

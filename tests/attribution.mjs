@@ -67,7 +67,6 @@ const kept = (p) => p.evaluate(() => { try { return JSON.parse(localStorage.getI
 async function send(p, leads) {
   await p.fill('form[data-lead] [name=name]', 'Test Attribution');
   await p.fill('form[data-lead] [name=phone]', '+32 470 00 00 00');
-  await p.check('form[data-lead] [name=consent]');
   await p.evaluate(() => document.querySelector('form[data-lead]').setAttribute('data-next', ''));
   await p.click('form[data-lead] button[type=submit]');
   for (let i = 0; i < 40 && !leads.length; i++) await p.waitForTimeout(50);

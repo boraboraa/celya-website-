@@ -2,7 +2,7 @@
   "_doc": "Textes des composants partagés, par langue. Aucun montant ni quota ici : ils viennent de data/offre.json par les jetons {{offre.…}}. Les liens sont relatifs à l'accueil de la langue (fr : racine, nl : nl/, en : en/).",
   "fr": {
     "base": "",
-    "home_label": "Celya — accueil",
+    "home_label": "Celya, accueil",
     "skip": "Aller au contenu",
     "nav": [
       {
@@ -82,6 +82,11 @@
       "Tous les métiers"
     ],
     "menu": "Menu",
+    "login": "Se connecter",
+    "trial": "Essai gratuit",
+    "lang_label": "Langue",
+    "trial_menu": "Essai gratuit · {{offre.essai}} jours",
+    "price_trial": "Commencer l'essai gratuit",
     "close": "Fermer",
     "cta_call": "Appeler Janet",
     "cta_call_sub": "Elle vous répond et vous réserve une démo.",
@@ -345,7 +350,8 @@
             "legal.html",
             "Mentions légales"
           ]
-        ]
+        ],
+        "login": 2
       }
     ],
     "foot_legal": "Celya · Celya Technologies SRL · BCE/KBO 1042.115.837",
@@ -369,6 +375,8 @@
       "Questions"
     ],
     "form": {
+      "title": "On vous rappelle sous 24 heures",
+      "title_sub": "Une démo de Janet, par téléphone, adaptée à votre métier.",
       "name": "Votre nom",
       "phone": "Téléphone",
       "phone_ph": "+32 …",
@@ -377,6 +385,7 @@
       "metier_other": "Autre",
       "email": "E-mail",
       "optional": "facultatif",
+      "message": "Votre message",
       "moment": "Quand vous rappeler ?",
       "moments": [
         [
@@ -392,10 +401,10 @@
           "En fin de journée"
         ]
       ],
-      "consent": "J'accepte d'être recontacté par téléphone ou WhatsApp.",
+      "accord": "En envoyant, vous acceptez qu'on vous rappelle.",
       "submit": "Être rappelé pour une démo",
       "sending": "Envoi…",
-      "err_required": "Indiquez votre nom et votre numéro de téléphone, et cochez la case d'accord.",
+      "err_required": "Indiquez votre nom et votre numéro de téléphone.",
       "err_server": "Une erreur est survenue : appelez Janet directement au {{offre.tel}}.",
       "privacy": "Vos coordonnées servent uniquement à vous rappeler.",
       "privacy_link": "privacy.html",
@@ -444,6 +453,18 @@
         [
           "fiduciaires",
           "Fiduciaires"
+        ],
+        [
+          "salons",
+          "Coiffure et esthétique"
+        ],
+        [
+          "paramedical",
+          "Kinés et paramédical"
+        ],
+        [
+          "dentistes",
+          "Dentistes"
         ]
       ]
     },
@@ -756,7 +777,7 @@
   },
   "nl": {
     "base": "nl/",
-    "home_label": "Celya — home",
+    "home_label": "Celya, home",
     "skip": "Naar de inhoud",
     "nav": [
       {
@@ -836,6 +857,11 @@
       "Alle sectoren"
     ],
     "menu": "Menu",
+    "login": "Aanmelden",
+    "trial": "Gratis proberen",
+    "lang_label": "Taal",
+    "trial_menu": "Gratis proberen · {{offre.essai}} dagen",
+    "price_trial": "Start de gratis proefperiode",
     "close": "Sluiten",
     "cta_call": "Bel Janet",
     "cta_call_sub": "Ze antwoordt u en plant een demo in.",
@@ -1099,7 +1125,8 @@
             "legal.html",
             "Juridische info"
           ]
-        ]
+        ],
+        "login": 2
       }
     ],
     "foot_legal": "Celya · Celya Technologies SRL · BCE/KBO 1042.115.837",
@@ -1123,6 +1150,8 @@
       "Vragen"
     ],
     "form": {
+      "title": "We bellen u binnen 24 uur terug",
+      "title_sub": "Een demo van Janet, per telefoon, afgestemd op uw vak.",
       "name": "Uw naam",
       "phone": "Telefoon",
       "phone_ph": "+32 …",
@@ -1131,6 +1160,7 @@
       "metier_other": "Andere",
       "email": "E-mail",
       "optional": "optioneel",
+      "message": "Uw bericht",
       "moment": "Wanneer mogen we u terugbellen?",
       "moments": [
         [
@@ -1146,10 +1176,10 @@
           "Op het einde van de dag"
         ]
       ],
-      "consent": "Ik ga akkoord om telefonisch of via WhatsApp gecontacteerd te worden.",
+      "accord": "Door te verzenden, gaat u ermee akkoord dat we u terugbellen.",
       "submit": "Bel mij terug voor een demo",
       "sending": "Versturen…",
-      "err_required": "Vul uw naam en telefoonnummer in en vink het akkoord aan.",
+      "err_required": "Vul uw naam en telefoonnummer in.",
       "err_server": "Er ging iets mis: bel Janet rechtstreeks op {{offre.tel}}.",
       "privacy": "Uw gegevens dienen enkel om u terug te bellen.",
       "privacy_link": "privacy.html",
@@ -1198,6 +1228,18 @@
         [
           "fiduciaires",
           "Boekhoudkantoren"
+        ],
+        [
+          "salons",
+          "Kappers en schoonheidssalons"
+        ],
+        [
+          "paramedical",
+          "Kinesisten en paramedici"
+        ],
+        [
+          "dentistes",
+          "Tandartsen"
         ]
       ]
     },
@@ -1487,7 +1529,7 @@
   },
   "en": {
     "base": "en/",
-    "home_label": "Celya — home",
+    "home_label": "Celya, home",
     "skip": "Skip to content",
     "nav": [
       {
@@ -1536,6 +1578,11 @@
     ],
     "metiers_all": null,
     "menu": "Menu",
+    "login": "Log in",
+    "trial": "Free trial",
+    "lang_label": "Language",
+    "trial_menu": "Free trial · {{offre.essai}} days",
+    "price_trial": "Start free trial",
     "close": "Close",
     "cta_call": "Call Janet",
     "cta_call_sub": "She answers and books you a demo.",
@@ -1742,7 +1789,8 @@
             "legal.html",
             "Legal notice"
           ]
-        ]
+        ],
+        "login": 1
       }
     ],
     "foot_legal": "Celya · Celya Technologies SRL · BCE/KBO 1042.115.837",
@@ -1763,6 +1811,8 @@
     "crumb_home": "Home",
     "crumb_questions": null,
     "form": {
+      "title": "We call you back within 24 hours",
+      "title_sub": "A demo of Janet, by phone, tailored to your trade.",
       "name": "Your name",
       "phone": "Phone",
       "phone_ph": "+32 …",
@@ -1771,6 +1821,7 @@
       "metier_other": "Other",
       "email": "Email",
       "optional": "optional",
+      "message": "Your message",
       "moment": "When should we call you back?",
       "moments": [
         [
@@ -1786,10 +1837,10 @@
           "At the end of the day"
         ]
       ],
-      "consent": "I agree to be contacted by phone or WhatsApp.",
+      "accord": "By sending, you agree that we call you back.",
       "submit": "Call me back for a demo",
       "sending": "Sending…",
-      "err_required": "Please give your name and phone number, and tick the consent box.",
+      "err_required": "Please give your name and phone number.",
       "err_server": "Something went wrong: call Janet directly on {{offre.tel}}.",
       "privacy": "Your details are only used to call you back.",
       "privacy_link": "privacy.html",
@@ -1838,6 +1889,18 @@
         [
           "fiduciaires",
           "Accounting firms"
+        ],
+        [
+          "salons",
+          "Hair and beauty salons"
+        ],
+        [
+          "paramedical",
+          "Physios and allied health"
+        ],
+        [
+          "dentistes",
+          "Dentists"
         ]
       ]
     },

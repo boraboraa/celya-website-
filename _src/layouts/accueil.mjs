@@ -62,7 +62,7 @@ export default function accueil(c) {
 <div class="phone phone-s" aria-hidden="true">${exTag(c)}<div class="ph-scr"><div class="ph-head"><span class="ph-av">${cVoice('cv-xs', false)}</span><span><b>Celya</b><small>${t.confirm_pro}</small></span></div><div class="ph-body"><span class="ph-day">${t.today}</span>${feed}</div></div></div>
 <p class="tool-n">${ico.seal('#0866FF')}<span><b>${t.badge_meta_t}</b>${h.tools_wa_n}</span></p></div>
 <div class="tool tool-g"><p class="label"><img src="${root}assets/brand/gcal-64.webp" width="30" height="30" alt="">Google Agenda</p><h3>${h.tools_g_t}</h3><p>${h.tools_g_p}</p>
-<div class="tool-cal" aria-hidden="true">${exTag(c)}<span class="mini-cal"><span class="mc-h"><img src="${root}assets/brand/gcal-64.webp" width="18" height="18" alt="">${h.week.jours[3]}</span>${h.week.heures.slice(0, 3).map((hr, i) => `<span class="mc-r"><i>${hr}</i>${i === 1 ? `<span class="mc-new">${h.week.blocs[3][2]}<small> · ${h.week.blocs[3][3]}</small></span>` : i === 0 ? `<span class="mc-busy">${h.week.blocs[0][2]}</span>` : '<span class="mc-free">—</span>'}</span>`).join('')}</span></div>
+<div class="tool-cal" aria-hidden="true">${exTag(c)}<span class="mini-cal"><span class="mc-h"><img src="${root}assets/brand/gcal-64.webp" width="18" height="18" alt="">${h.week.jours[3]}</span>${h.week.heures.slice(0, 3).map((hr, i) => `<span class="mc-r"><i>${hr}</i>${i === 1 ? `<span class="mc-new">${h.week.blocs[3][2]}<small> · ${h.week.blocs[3][3]}</small></span>` : i === 0 ? `<span class="mc-busy">${h.week.blocs[0][2]}</span>` : '<span class="mc-free">–</span>'}</span>`).join('')}</span></div>
 <p class="tool-n">${ico.seal('#1A73E8')}<span><b>${t.badge_google_t}</b>${h.tools_g_n}</span></p></div>
 </div>
 </div></section>`;

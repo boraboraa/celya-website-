@@ -1,4 +1,4 @@
-/* Celya — feuille unique du thème clair (lot « refonte premium », 14/11/2026).
+/* Celya : feuille unique du thème clair (lot « refonte premium », 14/11/2026).
    Tokens, polices et composants : tout est ici, rien ailleurs.
    Budget de rendu (CLAUDE.md) : aucun backdrop-filter, un seul will-change
    (aucun ici), aucun filter: sur un élément qui bouge ; les animations ne
@@ -126,16 +126,24 @@ ul,ol{padding-left:1.2em;margin:0 0 1em}
 .drop-p a{padding:9px 12px;border-radius:10px;text-decoration:none;color:var(--ink);font-size:15px}
 .drop-p a:hover{background:var(--page)}
 .drop-all{grid-column:1/-1;display:flex;align-items:center;gap:8px;border-top:1px solid var(--line);border-radius:0 0 10px 10px!important;margin-top:4px;padding-top:12px!important;color:var(--g2)!important}
-.hdr-lang,.mnav-lang{display:flex;gap:2px;font:500 12px/1 var(--mono);letter-spacing:.06em;margin-left:auto}
-.hdr-lang a,.mnav-lang a{padding:9px 7px;border-radius:8px;text-decoration:none;color:var(--g1)}
-.hdr-lang a.on,.mnav-lang a.on{color:var(--ink);background:var(--page)}
-.hdr-cta{display:flex;gap:8px;flex:none}
+.mnav-lang{display:flex;gap:2px;font:500 12px/1 var(--mono);letter-spacing:.06em;margin-left:auto}
+.mnav-lang a{padding:9px 7px;border-radius:8px;text-decoration:none;color:var(--g1)}
+.mnav-lang a.on{color:var(--ink);background:var(--page)}
+/* langue de l'en-tête (19/11/2026) : « FR ▾ », les autres langues au survol */
+.hdr-lang{margin-left:auto}
+.hdr-lang .drop-t{font:500 12px/1 var(--mono);letter-spacing:.06em;color:var(--ink);cursor:default}
+.hdr-lang .lang-p{left:0;width:auto;min-width:76px;grid-template-columns:1fr;padding:6px}
+.hdr-lang .lang-p a{font:500 12px/1 var(--mono);letter-spacing:.06em;color:var(--g1);padding:10px 12px}
+.hdr-cta{display:flex;gap:8px;flex:none;align-items:center}
+/* accès à l'application (19/11/2026) : « Se connecter » en lien texte, à gauche du bouton de démo */
+.hdr-login{padding:10px 8px;border-radius:10px;font-size:15px;font-weight:600;color:var(--ink);text-decoration:none;white-space:nowrap}
+.hdr-login:hover{background:var(--page)}
 .burger{display:none;margin-left:auto;align-items:center;gap:10px;min-height:44px;padding:0 14px;border-radius:12px;border:1px solid var(--line);background:var(--page);font:600 14px var(--sans);color:var(--ink);cursor:pointer}
 .burger i{display:block;width:16px;height:2px;background:currentColor;border-radius:2px}
 .burger i+i{margin-left:-26px;transform:translateY(6px)}
 .burger i:first-of-type{transform:translateY(-3px)}
 .mnav{display:none}
-@media (max-width:1180px){
+@media (max-width:1180px){ /* 1180 px, comme avant le 19/11/2026 : avec un seul bouton et la langue en sélecteur, l'en-tête FR complet tient dès 1065 px (mesuré), 115 px de marge */
   .hdr-nav,.hdr-lang{display:none}
   .hdr-cta{margin-left:auto}
   .burger{display:inline-flex;margin-left:0}
@@ -146,13 +154,17 @@ ul,ol{padding-left:1.2em;margin:0 0 1em}
   .mnav-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 8px}
   .mnav-grid a{padding:10px;text-decoration:none;font-size:15px}
   .mnav-lang{margin:12px 0 0;padding-top:8px;border-top:1px solid var(--line)}
+  .mnav-grid+a{border-bottom:0} /* « Tous les métiers » : le filet du bloc suivant sépare déjà */
+  .mnav-app{display:flex;flex-direction:column;gap:10px;margin:12px 0 0;padding-top:14px;border-top:1px solid var(--line)}
+  .mnav-app .btn{width:100%}
+  .mnav-login{display:block;padding:10px;text-align:center;font-size:16px;font-weight:600;color:var(--ink);text-decoration:none}
 }
 @media (max-width:720px){
   .hdr{top:8px;margin-top:8px;padding:0 10px}
   .hdr-in{gap:10px;padding:6px 6px 6px 14px;min-height:58px}
   .logo{width:84px;height:36px}
-  .hdr-demo{display:none}
-  .hdr-call{padding:8px 14px;font-size:14px;min-height:44px}
+  .hdr-login{display:none}
+  .hdr-call,.hdr-demo{padding:8px 14px;font-size:14px;min-height:44px}
   .burger{padding:0 12px}
   .burger-l{display:none}
 }
@@ -401,6 +413,7 @@ ul,ol{padding-left:1.2em;margin:0 0 1em}
 .price-head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;margin-bottom:36px;flex-wrap:wrap}
 .price-go{display:flex;flex-direction:column;align-items:flex-end;gap:8px}
 .price-go small{font-size:14px;color:var(--g1)}
+.price-go .btn{width:100%}
 .price-intro{margin:-12px 0 36px;max-width:720px}
 .prices{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;align-items:stretch}
 .pc{background:var(--beige);border-radius:var(--r-m);padding:28px 26px 30px;display:flex;flex-direction:column;gap:6px;min-width:0}
@@ -563,8 +576,12 @@ fieldset.f-moment{border:0;padding:0;margin:0;display:flex;flex-direction:column
 .f-opts{display:flex;flex-wrap:wrap;gap:8px}
 .f-opts label{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:8px 14px;border:1px solid #CDBDA6;border-radius:999px;background:#fff;font-size:14.5px;cursor:pointer}
 .f-opts input{accent-color:var(--ink);width:16px;height:16px;margin:0}
-.f-consent{display:flex;gap:12px;align-items:flex-start;font-size:14.5px;line-height:1.45;cursor:pointer}
-.f-consent input{width:20px;height:20px;margin:1px 0 0;accent-color:var(--ink);flex:none}
+/* titre du formulaire démo (18/11/2026) : une promesse, à la taille d'un titre de carte */
+.form-head{display:flex;flex-direction:column;gap:6px}
+.form-promise{font:400 var(--fs-h3)/1.15 var(--serif);letter-spacing:-.025em;color:var(--ink);margin:0;text-wrap:balance}
+.form-sub{font-size:15px;line-height:1.45;color:var(--g2);margin:0}
+.f-field textarea.f-short{min-height:0}
+.f-accord{color:var(--g2)}
 .f-err{display:none;color:#B3261E;font-size:14px;margin:0}
 .f-err.on{display:block}
 .f-small{font-size:14px;color:var(--g1);margin:0}
@@ -971,14 +988,14 @@ fieldset.f-moment{border:0;padding:0;margin:0;display:flex;flex-direction:column
    Même vidéo, même choix de source que l'accueil ; pas d'effet au défilement. */
 .lpv{height:auto;min-height:100vh;display:flex;align-items:center}
 .lpv .hv-media::before{background:linear-gradient(90deg,rgba(250,241,228,.62) 0%,rgba(250,241,228,.42) 38%,rgba(250,241,228,.10) 54%,rgba(250,241,228,.25) 66%,rgba(250,241,228,.55) 100%)}
-.lpv-grid{position:relative;z-index:2;display:grid;grid-template-columns:1.1fr .9fr;gap:64px;align-items:center;padding-top:120px;padding-bottom:72px}
+.lpv-grid{position:relative;z-index:2;display:grid;grid-template-columns:1.1fr .9fr;gap:64px;align-items:center;padding-top:56px;padding-bottom:72px} /* 120 → 56 px le 18/11/2026 : le formulaire a gagné son titre et le message ; son bouton reste dans le premier écran à 1280 × 800 */
 .lpv-t h1{font-size:clamp(40px,4.6vw,64px);line-height:1.05;margin:0 0 20px}
 .lpv-t h1 em{color:var(--o-txt)}
 .lpv-t .lead{max-width:30em;margin:0 0 28px;color:var(--ink)}
 .lpv .cta-btns{justify-content:flex-start}
 .lpv-m{display:none}
-.lpv .form{background:rgba(255,247,240,.62);border:1px solid rgba(255,255,255,.7);box-shadow:none;padding:28px 28px 24px}
-.lpv .form .f-field input,.lpv .form .f-field select{background:rgba(255,255,255,.78);border-color:rgba(181,160,132,.55)}
+.lpv .form{background:rgba(255,247,240,.62);border:1px solid rgba(255,255,255,.7);box-shadow:none;padding:24px 28px 22px;gap:12px}
+.lpv .form .f-field input,.lpv .form .f-field select,.lpv .form .f-field textarea{background:rgba(255,255,255,.78);border-color:rgba(181,160,132,.55)}
 .lpv .form .f-opts label{background:rgba(255,255,255,.55)}
 @media (max-width:860px){
   .lpv{min-height:0;display:block}
@@ -1016,7 +1033,7 @@ fieldset.f-moment{border:0;padding:0;margin:0;display:flex;flex-direction:column
 
 /* ---------- la scène « Un appel, de bout en bout » (lot conversion du 16/11/2026) ----------
    Le repos (sans animation) est l'état final : les cinq étapes empilées,
-   lisibles — c'est ce que voit prefers-reduced-motion. Avec mouvement, les
+   lisibles : c'est ce que voit prefers-reduced-motion. Avec mouvement, les
    étapes se superposent et se relaient sur une boucle de 15 s : transform et
    opacity seulement, une @keyframes par mouvement (étape, apparition,
    glissement, surlignage). Toute la scène se met en pause d'un bloc hors écran

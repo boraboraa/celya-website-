@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """Scripts propres à une page (copier un modèle, cocher une check-list, remplir
 une grille, calculer) : reprend, de la version d'origine (git, origin/main), les
-<script> en ligne du <body> — ni le JSON-LD, ni le bloc de consentement du
-<head>, ni bento.js — et les ajoute à la source comme blocs <!--@script-->.
+<script> en ligne du <body> (ni le JSON-LD, ni le bloc de consentement du
+<head>, ni bento.js) et les ajoute à la source comme blocs <!--@script-->.
 Le code ne change pas d'un caractère. Un script déjà présent n'est pas doublé.
 
     python3 _src/tools/scripts_page.py <pages…>     (sans argument : toutes les pages migrées)

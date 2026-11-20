@@ -7,11 +7,29 @@ import { badges } from './blocks.mjs';
 /* Le Consent Mode v2 par défaut, recopié de l'ancien <head> à l'octet près :
  * tout est refusé tant que le visiteur n'a pas accepté. Ne pas toucher. */
 export const CONSENT_DEFAULT = `<script>
-/* Consent Mode v2 — tout est refusé tant que le visiteur n'a pas accepté */
+/* Consent Mode v2 : tout est refusé tant que le visiteur n'a pas accepté */
 window.dataLayer=window.dataLayer||[];
 function gtag(){dataLayer.push(arguments)}
 gtag('consent','default',{ad_storage:'denied',analytics_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',wait_for_update:500});
 </script>`;
+
+/* L'application des clients (décision de Bora du 19/11/2026) : ses deux
+ * adresses ne s'écrivent qu'ici. « Se connecter » et « Essai gratuit » y mènent
+ * depuis l'en-tête, le menu mobile, le pied de page (connexion seule) et les
+ * grilles de prix des pages avec menu ; jamais depuis les pages
+ * d'atterrissage, qui restent à la seule démo. */
+export const APP_LOGIN = 'https://app.celya.be/login';
+export const APP_SIGNUP = 'https://app.celya.be/inscription';
+/** L'application parle français et anglais : les pages NL et EN y ajoutent
+ *  ?lang=nl / ?lang=en (sans effet si l'application l'ignore). */
+export const appHref = (url, lang) => (lang === 'fr' ? url : `${url}?lang=${lang}`);
+/** data-app / data-place : lus par celya.js (événements login_click et sign_up_start) */
+export function loginLink(c, cls, place) {
+  return `<a class="${cls}" href="${appHref(APP_LOGIN, c.lang)}" data-app="login" data-place="${place}">${c.t.login}</a>`;
+}
+export function trialBtn(c, cls, place, label = c.t.trial) {
+  return `<a class="btn ${cls}" href="${appHref(APP_SIGNUP, c.lang)}" data-app="signup" data-place="${place}">${label}</a>`;
+}
 
 /** Contexte de rendu d'une page : langue, préfixes de chemin, textes. */
 export function context(page, data, rel) {
@@ -73,6 +91,17 @@ function langSwitch(c, cls) {
     `<a${l === c.lang ? ' class="on" aria-current="true"' : ''} href="${langs[l]}" hreflang="${l}" lang="${l}">${l.toUpperCase()}</a>`).join('')}</div>`;
 }
 
+/** Langue de l'en-tête (19/11/2026, décision de Bora) : un petit sélecteur
+ *  « FR ▾ » au lieu de trois liens côte à côte ; il ouvre les autres langues
+ *  au survol et au clavier, comme le menu des métiers. */
+function langDrop(c) {
+  const langs = c.page.meta.langs || {};
+  const autres = ['fr', 'nl', 'en'].filter((l) => langs[l] && l !== c.lang);
+  if (!autres.length) return '';
+  return `<div class="drop hdr-lang"><span class="drop-t" tabindex="0" aria-label="${esc(c.t.lang_label)} : ${c.lang.toUpperCase()}">${c.lang.toUpperCase()}${ico.chev}</span><div class="drop-p lang-p">${autres.map((l) =>
+    `<a href="${langs[l]}" hreflang="${l}" lang="${l}">${l.toUpperCase()}</a>`).join('')}</div></div>`;
+}
+
 function header(c, { bare = false } = {}) {
   const { t, L } = c;
   if (bare) {
@@ -89,12 +118,17 @@ ${callBtn(c, 'btn-orange btn-sm hdr-call')}
     : `<a href="${L(n.href)}">${n.label}</a>`).join('');
   const mnav = t.nav.filter((n) => !n.drop).map((n) => `<a href="${L(n.href)}">${n.label}</a>`).join('') +
     `<b class="mnav-h">${t.nav.find((n) => n.drop).label}</b><div class="mnav-grid">${t.metiers_nav.map(([h, l]) => `<a href="${L(h)}">${l}</a>`).join('')}</div>` +
-    (t.metiers_all ? `<a href="${L(t.metiers_all[0])}">${t.metiers_all[1]}</a>` : '');
+    (t.metiers_all ? `<a href="${L(t.metiers_all[0])}">${t.metiers_all[1]}</a>` : '') +
+    `<div class="mnav-app">${trialBtn(c, 'btn-orange', 'menu', t.trial_menu)}${demoBtn(c, 'btn-line')}${loginLink(c, 'mnav-login', 'menu')}</div>`;
+  /* en-tête (19/11/2026, décision de Bora) : « Se connecter » en lien texte et un
+   * seul bouton, « Demander une démo » en orange (la conversion principale).
+   * « Essai gratuit » vit sous les grilles de prix et dans le menu mobile ;
+   * « Appeler Janet » reste dans les héros, la barre mobile et les CTA. */
   return `<header class="hdr"><div class="hdr-in">
 <a class="hdr-logo" href="${c.home}" aria-label="${esc(t.home_label)}">${logo()}</a>
 <nav class="hdr-nav" aria-label="Navigation">${nav}</nav>
-${langSwitch(c, 'hdr-lang')}
-<div class="hdr-cta">${demoBtn(c, 'btn-line btn-sm hdr-demo')}${callBtn(c, 'btn-orange btn-sm hdr-call')}</div>
+${langDrop(c)}
+<div class="hdr-cta">${loginLink(c, 'hdr-login', 'header')}${demoBtn(c, 'btn-orange btn-sm hdr-demo')}</div>
 <button class="burger" type="button" aria-expanded="false" aria-controls="mnav"><span class="burger-l">${t.menu}</span><i></i><i></i></button>
 </div>
 <nav class="mnav" id="mnav" aria-label="Menu">${mnav}${langSwitch(c, 'mnav-lang')}</nav>
@@ -105,8 +139,14 @@ ${langSwitch(c, 'hdr-lang')}
 
 function footer(c, { bare = false } = {}) {
   const { t, L } = c;
+  /* « Se connecter » : à la position col.login de sa colonne (data/i18n.json) */
+  const links = (col) => {
+    const a = col.l.map(([h, l]) => `<a href="${L(h)}">${l}</a>`);
+    if (col.login != null) a.splice(col.login, 0, loginLink(c, 'ft-login', 'footer'));
+    return a.join('');
+  };
   const cols = bare ? '' : `<div class="ft-cols">${t.foot_cols.map((col) =>
-    `<div><b>${col.h}</b>${col.l.map(([h, l]) => `<a href="${L(h)}">${l}</a>`).join('')}</div>`).join('')}</div>`;
+    `<div><b>${col.h}</b>${links(col)}</div>`).join('')}</div>`;
   const langs = t.foot_other_langs.map(([h, l]) => `<a href="${h.startsWith('../') ? c.home + h : L(h)}">${l}</a>`).join('');
   return `<footer class="ft"><div class="w-wide">
 <div class="ft-top"><a class="ft-logo" href="${c.home}" aria-label="${esc(t.home_label)}">${logo()}</a>${badges(c, 'badges-ft')}</div>
@@ -117,7 +157,7 @@ ${cols}
 
 /* ---------- barre d'appel mobile (sous 720 px) ---------- */
 
-/** second : [href, libellé] — pages d'atterrissage : « Être rappelé », vers le formulaire de la page */
+/** second : [href, libellé] ; pages d'atterrissage : « Être rappelé », vers le formulaire de la page */
 function mbar(c, second) {
   const b2 = second ? `<a class="btn btn-line" href="${second[0]}">${second[1]}</a>` : demoBtn(c, 'btn-line');
   return `<div class="mbar" aria-label="${esc(c.t.mbar_label)}" role="region">${callBtn(c, 'btn-orange')}${b2}</div>`;

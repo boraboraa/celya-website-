@@ -4,11 +4,14 @@
  * l'ancienne page (origin/main, ou --ref) doit se retrouver, mot pour mot, dans
  * le <main> de la nouvelle. Ce qui est volontairement retiré ou corrigé est
  * listé dans tests/corrections-autorisees.json (pages.<page>.texte).
+ * Un texte d'avant qui portait un tiret long « — » se retrouve s'il ne diffère
+ * que par sa réécriture (décision de Bora du 19/11/2026, tests/tiret-long.mjs).
  *
  *   node tests/texte-conserve.mjs [--ref origin/main] [pages…]   (défaut : toutes) */
 import fs from 'node:fs';
 import path from 'node:path';
 import { execFileSync } from 'node:child_process';
+import { sansTiretLong } from './tiret-long.mjs';
 
 const ROOT = path.resolve(path.dirname(new URL(import.meta.url).pathname), '..');
 const args = process.argv.slice(2);
@@ -59,9 +62,9 @@ for (const rel of pages) {
   const now = fs.readFileSync(path.join(ROOT, rel), 'utf8');
   if (!now.includes('celya.css')) continue;                                          // pas encore migrée
   n++;
-  const hay = norm(mainOf(now));
+  const hay = norm(mainOf(now)), hayT = sansTiretLong(hay);
   const ok = new Set(((allow.pages || {})[rel] || {}).texte || []);
-  const miss = chunks(old).filter((t) => !hay.includes(t) && ![...ok].some((a) => t.includes(norm(a)) || norm(a).includes(t)));
+  const miss = chunks(old).filter((t) => !hay.includes(t) && !(t.includes('\u2014') && hayT.includes(sansTiretLong(t))) && ![...ok].some((a) => t.includes(norm(a)) || norm(a).includes(t)));
   if (miss.length) {
     bad++;
     console.log(`✗ ${rel}`);

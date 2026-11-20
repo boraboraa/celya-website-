@@ -19,12 +19,24 @@
  *      présente sur les pages d'atterrissage (lot conversion du 16/11/2026).
  *   7. merci.html : noindex et absent du sitemap.
  *
+ * Lot du 18/11/2026 (formulaire de démo) :
+ *   8. le formulaire démo, sur chaque page qui le porte (démo FR/NL/EN, pages
+ *      d'atterrissage) : aucune case obligatoire, la phrase d'accord sous le
+ *      bouton, le titre « On vous rappelle sous 24 heures » et sa phrase, le
+ *      métier pré-rempli « garages » sur les deux pages garages et vide
+ *      ailleurs, les trois métiers ajoutés avant « Autre », le message
+ *      facultatif en dernier champ (2 lignes, 500 caractères, jamais requis) ;
+ *      à l'envoi : consent_contact: true, need seulement s'il est écrit ;
+ *   9. merci.html : « sous 24 heures » et le bouton « Appeler Janet » avec le
+ *      numéro, dans les trois langues ;
+ *
  *   node tests/formulaire.mjs [pages…]   (défaut : demo.html) */
 import fs from 'node:fs';
 import path from 'node:path';
 import http from 'node:http';
 import { createRequire } from 'node:module';
 import { fileURLToPath } from 'node:url';
+import { loadData } from '../_src/lib/core.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const require = createRequire(import.meta.url);
@@ -45,6 +57,7 @@ function serve() {
   });
 }
 
+const DATA = loadData();
 const fails = [];
 const ok = (cond, msg) => { if (!cond) fails.push(msg); console.log(`  ${cond ? '✓' : '✗'} ${msg}`); };
 
@@ -99,13 +112,12 @@ async function main() {
       await p.fill('form[data-lead] [name=phone]', '+32 470 00 00 00');
       await p.selectOption('form[data-lead] [name=metier]', 'garages');
       await p.check('form[data-lead] input[name=moment][value=matin]');
-      await p.click('form[data-lead] button[type=submit]');
-      ok(await p.locator('form[data-lead] .f-err.on').count() === 1 && leads.length === 0, 'sans case d\'accord cochée : refusé');
-      await p.check('form[data-lead] [name=consent]');
+      ok(await p.locator('form[data-lead] input[type=checkbox]').count() === 0, 'aucune case à cocher dans le formulaire');
       await Promise.all([p.waitForURL(/merci\.html$/, { timeout: 8000 }).catch(() => {}), p.click('form[data-lead] button[type=submit]')]);
       const L = leads[0] || {};
       ok(leads.length === 1, 'un seul appel à web-lead');
-      ok(L.source === 'demo form' && L.metier === 'garages' && L.moment === 'matin' && L.consent_contact === true && L.website === '', 'corps : source « demo form », métier, moment, accord, honeypot vide');
+      ok(L.source === 'demo form' && L.metier === 'garages' && L.moment === 'matin' && L.consent_contact === true && L.website === '', 'corps : source « demo form », métier, moment, accord (consent_contact: true sans case), honeypot vide');
+      ok(!('need' in L), 'corps : message vide → aucun champ need envoyé');
       ok(L.utm_campaign === 'garages-bxl' && L.gclid === 'G-123' && L.fbclid === 'F-456' && L.landing_page === '/' + rel && L.page === '/' + rel, 'corps : attribution et pages transmises');
       ok(/merci\.html$/.test(p.url()), 'redirection vers merci.html');
       const dl = await p.evaluate(() => (window.dataLayer || []).filter((e) => e && e.event && e.event !== 'gtm.js').length);
@@ -123,7 +135,7 @@ async function main() {
       await p.fill('form[data-lead] [name=name]', 'Test');
       await p.fill('form[data-lead] [name=phone]', '+32470000000');
       await p.selectOption('form[data-lead] [name=metier]', 'restaurants');
-      await p.check('form[data-lead] [name=consent]');
+      await p.fill('form[data-lead] [name=need]', 'Je voudrais être rappelé après 16h.');
       /* on capte le dataLayer juste avant la redirection */
       await p.exposeFunction('__dl', () => {});
       const evs = [];
@@ -144,6 +156,8 @@ async function main() {
       const gl = evs.find((e) => e.event === 'generate_lead');
       ok(gl && gl.form === kind && gl.page === '/' + rel && gl.lang === lang && gl.metier === 'restaurants' && gl.utm_campaign === 'essai', `avec accord : generate_lead {form: ${kind}, page, lang, metier, utm_campaign}`);
       ok(leads.length === 1, 'avec accord : envoi effectué');
+      ok(leads[0] && leads[0].need === 'Je voudrais être rappelé après 16h.' && leads[0].consent_contact === true, 'corps : message écrit → need envoyé tel quel, consent_contact: true');
+      ok(gl && Object.keys(gl).sort().join() === 'event,eventTimeout,event_id,form,lang,metier,page,utm_campaign', `generate_lead : mêmes paramètres qu'avant, le message n'y part pas (${gl && Object.keys(gl).sort().join()})`);
       ok(gl && typeof gl.event_id === 'string' && gl.event_id.length >= 16 && leads[0] && leads[0].event_id === gl.event_id, `avec accord : event_id identique dans generate_lead et dans le corps envoyé à web-lead (${gl && gl.event_id})`);
       await ctx.close();
     }
@@ -230,6 +244,63 @@ async function main() {
     const html = fs.readFileSync(path.join(ROOT, rel), 'utf8');
     ok(/<meta name="robots" content="noindex/.test(html), `${rel} : noindex`);
     ok(!smap.includes('celya.be/' + rel + '<'), `${rel} : absent du sitemap`);
+  }
+
+  /* 8. formulaire démo, lot du 18/11/2026 — sur chaque page qui le porte */
+  console.log('\nformulaire démo (18/11/2026)');
+  const FORMS = [['demo.html', 'fr', ''], ['nl/demo.html', 'nl', ''], ['en/demo.html', 'en', ''],
+    ['lp/garages.html', 'fr', 'garages'], ['lp/ne-plus-rater-d-appels.html', 'fr', ''],
+    ['nl/lp/garages.html', 'nl', 'garages'], ['nl/lp/geen-oproepen-meer-missen.html', 'nl', '']];
+  for (const [rel, lang, pre] of FORMS) {
+    const F = DATA.i18n[lang].form;
+    const { ctx } = await context(browser, { consent: 'denied' });
+    const p = await ctx.newPage();
+    await p.goto(base + rel, { waitUntil: 'load' });
+    const r = await p.evaluate(() => {
+      const f = document.querySelector('form[data-lead]');
+      const btn = f.querySelector('button[type=submit]');
+      const after = btn.nextElementSibling;
+      const sel = f.querySelector('select[name=metier]');
+      const ta = f.querySelector('textarea[name=need]');
+      const fields = [...f.querySelectorAll('.f-field, fieldset')].filter((x) => !x.parentElement.closest('.f-field, fieldset'));
+      const last = fields[fields.length - 1];
+      const tt = f.querySelector('.form-promise');
+      return {
+        checkboxes: f.querySelectorAll('input[type=checkbox]').length,
+        required: [...f.querySelectorAll('[required]')].map((x) => x.name).sort().join(),
+        accord: after && after.querySelector('.f-accord') ? after.querySelector('.f-accord').textContent.trim() : '',
+        title: tt ? tt.textContent.trim() : '', titleSize: tt ? parseFloat(getComputedStyle(tt).fontSize) : 0,
+        sub: (f.querySelector('.form-sub') || {}).textContent || '',
+        metier: sel.value, metierShown: sel.getClientRects().length > 0 && !sel.disabled,
+        values: [...sel.options].map((o) => o.value),
+        ta: ta ? { rows: ta.rows, max: ta.maxLength, req: ta.required, last: last && last.contains(ta), label: (f.querySelector('label[for="' + ta.id + '"]') || {}).textContent || '' } : null,
+      };
+    });
+    const tag = `${rel} :`;
+    ok(r.checkboxes === 0 && r.required === 'name,phone', `${tag} aucune case, seuls le nom et le téléphone sont obligatoires (${r.required})`);
+    ok(r.accord === F.accord, `${tag} phrase d'accord sous le bouton (« ${r.accord} »)`);
+    ok(r.title === F.title && r.sub.trim() === F.title_sub && r.titleSize >= 22, `${tag} titre « ${F.title} » (${r.titleSize}px) et sa phrase`);
+    ok(r.metier === pre && r.metierShown, `${tag} métier ${pre ? `pré-rempli « ${pre} »` : 'vide au départ'}, visible et modifiable`);
+    ok(r.values.slice(-4).join() === 'salons,paramedical,dentistes,autre' && F.metiers.slice(-3).every(([v, l]) => l && v), `${tag} trois métiers ajoutés avant « Autre » (${r.values.slice(-4).join(', ')})`);
+    ok(r.ta && r.ta.rows === 2 && r.ta.max === 500 && !r.ta.req && r.ta.last && r.ta.label.includes(F.message) && r.ta.label.includes(F.optional), `${tag} message facultatif : dernier champ, 2 lignes, 500 caractères, jamais requis`);
+    if (pre) {
+      /* le visiteur qui n'est pas garagiste peut changer */
+      await p.selectOption('form[data-lead] [name=metier]', 'dentistes').catch(() => {});
+      ok(await p.locator('form[data-lead] [name=metier]').inputValue() === 'dentistes', `${tag} le métier pré-rempli se change`);
+    }
+    await ctx.close();
+  }
+
+  /* 9. après l'envoi */
+  console.log('\nmerci (18/11/2026)');
+  const MERCI = { 'merci.html': ['On vous rappelle sous 24 heures', 'appelez Janet', 'meilleure démo'], 'nl/merci.html': ['binnen 24 uur', 'Bel intussen Janet', 'beste demo'], 'en/merci.html': ['within 24 hours', 'call Janet', 'best demo'] };
+  for (const [rel, words] of Object.entries(MERCI)) {
+    const html = fs.readFileSync(path.join(ROOT, rel), 'utf8');
+    const main = html.slice(html.indexOf('<main'), html.indexOf('</main>'));
+    const lang = /^(nl|en)\//.test(rel) ? rel.slice(0, 2) : 'fr';
+    const btns = [...main.matchAll(/<a class="btn[^"]*" href="([^"]*)"[^>]*>([\s\S]*?)<\/a>/g)];
+    ok(words.every((w) => main.includes(w)), `${rel} : « ${words.join(' … ')} »`);
+    ok(btns.length === 1 && btns[0][1] === 'tel:' + DATA.offre.telephone.e164 && btns[0][2].includes(DATA.i18n[lang].cta_call) && btns[0][2].includes(DATA.offre.telephone.affiche), `${rel} : un seul bouton, « ${DATA.i18n[lang].cta_call} » avec le numéro`);
   }
 
   await browser.close();
